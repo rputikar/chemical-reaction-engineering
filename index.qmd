@@ -1,18 +1,17 @@
 ---
-title: Advanced Modeling and Control
+title: Chemical Reaction Engineering
 subtitle: 
-  "Explore cutting-edge techniques in advanced control, including the design and
-  implementation of advanced process control methods in dynamic and
-  multivariable industrial processes using MATLAB's Simulink tool. Dive into the
-  world of advanced modelling, discovering tools for data analysis, empirical
-  modelling, and process design to optimize the performance and efficiency of
-  process equipment."
+  "Get a solid grasp on reaction equilibrium, kinetics, and reactor design.
+  You'll learn to analyze lab data, understand different reactor types, and
+  dive into both homogeneous and heterogeneous reactions. It's essential
+  knowledge for those in the chemical engineering field."
+
 details: 
-  "CHEN4011, Semester 2, 2023 <br>
+  "CHEN3010, Semester 1, 2024 <br>
    West Australian School of Mines: Minerals, Energy, and Chemical Engineering <br>
    Curtin University"
 editor: source
-course-logo: ./assets/images/amc-course-hero.jpeg
+course-logo: ./assets/images/cre-course-hero.jpeg
 format:
   html:
     template-partials:
@@ -23,42 +22,40 @@ metadata-files:
 
 ## Course Overview
 
-This course builds upon introductory process control course (CHEN3005: Process
-Instrumentation and Control). It introduces advanced modeling and control
-techniques. The course aims to provide broad overview of various topics and
-provide foundational knowledge for further exploration of the subject. 
-While not comprehensive, it covers essential material, and current trends.
+This unit covers the theory and practice of reaction equilibrium, reaction
+kinetics and the interpretation of batch reactor data. Students are introduced
+to the design of batch and continuous reactors, reactor geometrics,
+ideal tubular, mixed and staged reactors for single and multiple reactions.
+They will learn how to interpret laboratory data and use data analytics to
+deduce rate laws and reaction mechanism. They will investigate thermal
+and pressure effects, isothermal and non-isothermal homogeneous reactions, and
+deviations from ideal reactor models. Heterogeneous reaction systems,
+including solid catalysed reactions, and residence time distributions will be
+analysed.
 
 Most of the material is designed to be easily understood by undergraduate 
 chemical engineering student. However, some background in mathematics,
 including differential equations, as well as a solid understanding of material
-and energy balance concepts and unit operations.
+and energy balance concepts.
 
-The unit is divided into two parts: advanced control, and advanced modeling. In
-the advanced control section, we delve into the complexities of industrial
-processes, which are dynamic and often multivariable. To effectively control
-such processes, advanced techniques beyond simple feedback loops studied in the
-Process Instrumentation and Control unit are required. The key focus of this
-section is on the design and implementation of advanced process control methods
-in process plants. Additionally, we will explore the utilization of Simulink, a
-MATLAB tool, for controller design and simulation.
+This is a core unit for chemical engineering. In this unit, mole balance, rate
+law, stoichiometry and energy balance will be introduced which will help you to
+design and operate the chemical reactors. 
 
-In advanced modeling section, we will address the crucial role of
-mathematical modeling in the design and optimization of process equipment. This
-section equips students with modeling tools for data analysis, empirical
-modeling, and process design. These tools are essential for understanding and
-representing the behavior of complex processes, aiding in optimization efforts
-and decision-making. This year, we will focus on data driven models and also
-explore some aspects of machine learning and its applications to statistical
-process control. 
+Reaction Engineering CHEN3010 is a compulsory unit, specific to the following
+courses:
 
-By combining the two components, students will gain the necessary skills to
-tackle the challenges of dynamic and multivariable industrial processes,
-enabling them to understand, and design effective control strategies and
-optimize process performance.
+- Bachelor of Engineering (Chemical Engineering)
+- Bachelor of Engineering (Chemical Engineering)/Bachelor of Science (Extractive Metallurgy)
+- Bachelor of Science (Chemistry)/Bachelor of Engineering (Chemical Engineering)
 
-## What do process control engineers do?
+Failure twice may lead to the termination from that course.
 
+## What is chemical engineering? 
+
+{{< video https://www.youtube.com/embed/j_VEavNH2gs >}}
+
+<!--
 ::: {.panel-tabset}
 ## Day in the Life: process control engineer
 {{< video https://www.youtube.com/embed/kK_8gvijNPI >}}
@@ -66,6 +63,7 @@ optimize process performance.
 ## Water Works Wednesday - Process Control Systems Engineer
 {{< video https://www.youtube.com/watch?v=fsWU13R3azU >}}
 :::
+-->
 
 ## Learning Outcomes
 

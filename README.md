@@ -18,7 +18,8 @@ gh repo clone rputikar/chemical-reaction-engineering
 Set up python virtual environment and activate it.
 
 ```powershell
-python -m venv _env
+python -m venv _env 
+
 .\_env\Scripts\Activate.ps1
 ```
 
@@ -53,6 +54,7 @@ Use `winget` (Windows Package Manager) simplifies the installation process.
 3. **Verify Installations**:
    ```powershell
    git --version
+
    gh --version
    ```
 
@@ -64,6 +66,7 @@ Use `winget` (Windows Package Manager) simplifies the installation process.
 5. **Set Git Credentials**:
    ```powershell
    git config --global user.name "Your GitHub Username"
+
    git config --global user.email "Your GitHub Email"
    ```
 

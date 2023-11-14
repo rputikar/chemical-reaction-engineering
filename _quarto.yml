@@ -91,55 +91,19 @@ website:
       - section: "Lectures"
         id: lectures
         contents:
-          - file: ./content/lectures/01-recap/index.qmd
-          - file: ./content/lectures/02-ratio_and_feedforward_control/index.qmd
-          - file: ./content/lectures/03-cascade_control/index.qmd
-          - file: ./content/lectures/04-pid_enhancements/index.qmd
-          - file: ./content/lectures/05-time_series_modelling_and_analysis/index.qmd
-          - file: ./content/lectures/06-principal_component_analysis/index.qmd
-          - file: ./content/lectures/07-ANN_modelling/index.qmd
-          - file: ./content/lectures/08-decentralized_control/index.qmd
-          - file: ./content/lectures/09-Multivariable_Centralized_Control_and_MPC/index.qmd
-          - file: ./content/lectures/10-digital_control/index.qmd
-          # - file: ./content/lectures/11-model_based_optimization/index.qmd
-          #
+          #  - file: ./content/lectures/01-recap/index.qmd
+         #
       #    - section: "Workshops"
       #      id: workshops
       #      contents:
       #        - file: ./content/workshops/workshop-01/index.qmd
       #          text: Workshop 01
-      #        - file: ./content/workshops/workshop-02/index.qmd
-      #          text: Workshop 02
-      #        - file: ./content/workshops/workshop-03/index.qmd
-      #          text: Workshop 03
-      #        - file: ./content/workshops/workshop-04/index.qmd
-      #          text: Workshop 04
-      #        - file: ./content/workshops/workshop-05/index.qmd
-      #          text: Workshop 05
-      #        - file: ./content/workshops/workshop-06/index.qmd
-      #          text: Workshop 06
-      #        - file: ./content/workshops/workshop-07/index.qmd
-      #          text: Workshop 07
-      #        - file: ./content/workshops/workshop-08/index.qmd
-      #          text: Workshop 08
-      #        - file: ./content/workshops/workshop-09/index.qmd
-      #          text: Workshop 09
-      #
-      - section: "Computer Labs"
-        id: computer-labs
+     #
+      - section: "Labs"
+        id: labs
         contents:
-          - file: ./content/labs/lab-01/index.qmd
-          - file: ./content/labs/lab-02/index.qmd
-          - file: ./content/labs/lab-03/index.qmd
-          - file: ./content/labs/lab-04/index.qmd
-          - file: ./content/labs/lab-05/index.qmd
-          - file: ./content/labs/lab-06/index.qmd
-          - file: ./content/labs/lab-07/index.qmd
-          - file: ./content/labs/lab-08/index.qmd
-  #          text: Lab 08
-  #        - file: ./content/labs/lab-09/index.qmd
-  #          text: Lab 09
-  #
+          #  - file: ./content/labs/lab-01/index.qmd
+ #
 format:
   html:
     theme:
@@ -155,6 +119,5 @@ format:
     email-obfuscation: javascript
     link-external-newwindow: true
     link-external-icon: true
-    # link-external-filter: ^(?:http:|https:)\/\/(amc\.utikar\.com\|localhost)
     link-external-filter: ^(?:http:|https:)\/\/(?:[a-zA-Z0-9-]+\.)?smilelab\.dev\/|localhost
     include-after-body: ./assets/helpers/goatcounter.html
