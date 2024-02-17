@@ -45,7 +45,7 @@ Besides these books the following books are useful as well.
 
 ## Course structure
 
-![Program calender 2024, Semester 1](../../assets/images/program_calender_2024_s1.png)
+![Program calender 2024, Semester 1](../../assets/images/program_calendar_2024_s1.png)
 
 ## Course policies
 
