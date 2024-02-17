@@ -6,64 +6,46 @@ title: Syllabus
 
 We will cover a broad range of topics including: 
 
-- Cascade, Ratio and Feedforward control. 
-- PID Enhancements: inferential, over-ride and selective control; scheduling
-  controller tuning; implementation 
-- Other Advanced Control Techniques: deadtime compensation; adaptive control
-  (programmed adaptation; self-tuning control; online parameter estimation). 
-- Multi-input Multi-output Systems: process and control loop interactions;
-  control loop pairings; decoupling control systems; multivariable control.
-- Digital Control Systems: Z transforms; discrete time models; dynamic
-  response; discrete time control algorithms; closed loop analysis; digital
-  control system implementation. Review of process modelling and simulation
-  techniques. Modelling for Fault Diagnosis: prediction-based and
-  identification-based diagnosis. Empirical Modelling: linear and non-linear
-  models; artificial neural networks; ARMAX models. 
-- Modelling Hybrid (Discrete- Continuous) Systems: representation and solution. 
-- Case Studies and Applications in Process Engineering.
+- Mole balance
+- Conversion and Reactor sizing
+- Rate laws and Stoichiometry
+- Isothermal reactor design
+- Collection and Analysis of Rate data
+- Multiple reactions
+- Non isothermal reactor design
+- Reaction mechanisms and Catalysis
+- External diffusion effects: heterogeneous reactions
+- Diffusion effects: heterogeneous reactions
+- Distribution of residence time
 
 ## Course materials
 
 ### Books
 
 The books listed in [the course reading
-list](https://curtin.alma.exlibrisgroup.com/leganto/readinglist/lists/14056101590001951)
+list](https://curtin.alma.exlibrisgroup.com/leganto/public/61CUR_INST/lists/15697875750001951)
 will be very userful reference material for topics covered in the course.   
 
-The content is mainly based on following books. 
+The content is mainly based on Elements of Chemical Reaction Engineering (@fogler2016)
 
-- @riggs2007
-- @seborg2016
-- @romagnoli2020
-- @coughanowr2008
+Besides these books the following books are useful as well. 
 
-Besides these books the following online books are useful as well. 
-
-- @marlin1995
-- @peterwoolf
+- Chemical reaction engineering (@levenspiel1999)
+- Chemical reaction engineering and reactor technology (@salmi2019)
 
 ### Other materials
 
-- Process control - Analysis, Design, and Assessment course from IIT Madras by
-  [Prof. Raghunathan
-  Rengaswamy](https://rbcdsai.iitm.ac.in/people/raghunathan-rengaswamy/). The
-  youtube play list is
-  [here](https://www.youtube.com/playlist?list=PLyqSpQzTE6M-OjiNwE2GQzXmZ6NaVWUnf).
-- [Process Dynamics and
-  Control](https://apmonitor.com/che436/index.php/Main/HomePage) course from
-  BYU by [Prof. John D.
-  Hedengren](https://apm.byu.edu/prism/index.php/Members/JohnHedengren). 
-- Prof. Douglas Cooper's [Contol Guru](https://controlguru.com/table-of-contents/) website.
-
-### MATLAB
-
-We will use [MATLAB](https://au.mathworks.com/products/matlab.html)
-extensively. The mathworks website has tons of resources to help you learn
-MATLAB.
+- [Chemical Reaction Engineering 1 (Homogeneous Reactors)](https://www.youtube.com/playlist?list=PLbMVogVj5nJRrrhcrAIIJs1W0qgH5axqO)
+  by Prof K. Krishnaiah,Department of Chemical Engineering,IIT Madras. 
+- [Advanced Chemical Reaction Engineering Lectures](https://www.youtube.com/playlist?list=PLnqlE22sKQiaxcidrmQ2jRxyD04XQAWfV)
+  series by Dr. Sheila Samsatli
+- [Reaction Engineering](https://www.youtube.com/playlist?list=PLBUHO4VNB5hACoKj0fpVd5pBr2akmbvEO)
+  videos by Raili Taylor
+- [Chemical Reaction Engineering](https://www.youtube.com/playlist?list=PLE6AABEBC55CC0F74) course by Prof.Jayant Modak,Department of Chemical Engineering,IISC Bangalore.
 
 ## Course structure
 
-![Program calender 2023, Semester 2](../../assets/images/program_calender_2023_s2.png)
+![Program calender 2024, Semester 1](../../assets/images/program_calender_2024_s1.png)
 
 ## Course policies
 
