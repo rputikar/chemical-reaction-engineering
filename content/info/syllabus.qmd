@@ -36,12 +36,12 @@ Besides these books the following books are useful as well.
 ### Other materials
 
 - [Chemical Reaction Engineering 1 (Homogeneous Reactors)](https://www.youtube.com/playlist?list=PLbMVogVj5nJRrrhcrAIIJs1W0qgH5axqO)
-  by Prof K. Krishnaiah,Department of Chemical Engineering,IIT Madras. 
+  by Prof K. Krishnaiah,Department of Chemical Engineering, IIT Madras. 
 - [Advanced Chemical Reaction Engineering Lectures](https://www.youtube.com/playlist?list=PLnqlE22sKQiaxcidrmQ2jRxyD04XQAWfV)
   series by Dr. Sheila Samsatli
 - [Reaction Engineering](https://www.youtube.com/playlist?list=PLBUHO4VNB5hACoKj0fpVd5pBr2akmbvEO)
   videos by Raili Taylor
-- [Chemical Reaction Engineering](https://www.youtube.com/playlist?list=PLE6AABEBC55CC0F74) course by Prof.Jayant Modak,Department of Chemical Engineering,IISC Bangalore.
+- [Chemical Reaction Engineering](https://www.youtube.com/playlist?list=PLE6AABEBC55CC0F74) course by Prof.Jayant Modak,Department of Chemical Engineering, IISc Bangalore.
 
 ## Course structure
 

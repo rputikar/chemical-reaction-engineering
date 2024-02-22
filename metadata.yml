@@ -2,7 +2,7 @@ staff:
   - id: rpu
     name: A/Prof. Ranjeet Utikar
     name_no_title: Ranjeet Utikar
-    email: "r.utikar@curtin.edu.au"
+    email: r.utikar@curtin.edu.au
     phone: +61 0892669837
     url: "https://www.utikar.com"
     # mastodon: "@smilelab@mstdn.social"
@@ -14,6 +14,32 @@ staff:
       If you would like to see me, please book an appointment.
     appointment_url: "https://outlook.office365.com/owa/calendar/RanjeetUtikar@curtin.onmicrosoft.com/bookings/"
     photo: ./assets/images/RanjeetUtikar.jpg
+
+  - id: mts
+    name: Dr. Milin Shah
+    name_no_title: Milin Shah
+    email: "Milinkumar.Shah@curtin.edu.au"
+    phone: +61 08 9266 1263 
+    url: "https://staffportal.curtin.edu.au/staff/profile/view/milin-shah-4b579da4/"
+    office: Building 204, Room  319/320 <br>
+      Bentley Campus
+    contact_policy: Best way to contact is via email.
+      I hope to respond within 24-36 hours.
+      If you would like to see me, please book an appointment.
+    photo: ./assets/images/MilinShah.png
+
+  - id: jk 
+    name: Dr. Jibrail Kansedo
+    name_no_title: Jibrail Kansedo
+    email: "jibrail.k@curtin.edu.my"
+    phone: "+60 85 630 100 Ext: 2468"
+    url: "https://engsci.curtin.edu.my/departments/chemical-energy-engineering/people/jibrail-kansedo/"
+    office: Skylark 3 Room 371 <br>
+      Miri Campus
+    contact_policy: Best way to contact is via email.
+      I hope to respond within 24-36 hours.
+      If you would like to see me, please book an appointment.
+    photo: ./assets/images/JibrailKansedo.jpg
 
   - id: jn
     name: A/Prof. Jobrun Nandong
@@ -30,35 +56,49 @@ staff:
     photo: ./assets/images/JobrunNandong.jpg
 
 coordinator:
-  id: rpu
-  name: A/Prof. Ranjeet Utikar
-  name_no_title: Ranjeet Utikar
-  email: "r.utikar@curtin.edu.au"
-  phone: +61 08 9266 9837
-  url: https://www.utikar.com
-  # mastodon: "@smilelab@mstdn.social"
-  github: rputikar
-  office: Building 204, Room 432 <br>
-    Bentley Campus
-  contact_policy: Best way to contact is via email.
-    I hope to respond within 24-36 hours.
-    If you would like to see me, please book an appointment using "_schedule an
-    appointment_" link on the left.
-  appointment_url: "https://outlook.office365.com/owa/calendar/RanjeetUtikar@curtin.onmicrosoft.com/bookings/"
-  photo: ./assets/images/RanjeetUtikar.jpg
+  - id: rpu
+    name: A/Prof. Ranjeet Utikar
+    name_no_title: Ranjeet Utikar
+    email: "r.utikar@curtin.edu.au"
+    phone: +61 08 9266 9837
+    url: https://www.utikar.com
+    # mastodon: "@smilelab@mstdn.social"
+    github: rputikar
+    office: Building 204, Room 432 <br>
+      Bentley Campus
+    contact_policy: Best way to contact is via email.
+      I hope to respond within 24-36 hours.
+      If you would like to see me, please book an appointment using "_schedule an
+      appointment_" link on the left.
+    appointment_url: "https://outlook.office365.com/owa/calendar/RanjeetUtikar@curtin.onmicrosoft.com/bookings/"
+    photo: ./assets/images/RanjeetUtikar.jpg
 
 admin:
-  id: rl
-  name: Ms. Ruby Lo
-  name_no_title: Ruby Lo
-  email: TeachingSupport-WASM-MECE@curtin.edu.au
-  url: "https://staffportal.curtin.edu.au/staff/profile/view/ruby-lo-fc65c900/"
-  office: Faculty of Science and Engineering <br>
-    Bentley Campus
-  contact_policy: Best way to contact is via email.
-    I hope to respond within 24-36 hours.
-    If you would like to see me, please book an appointment.
-  photo: ./assets/images/scientist_woman.jpeg
+  - id: ch
+    name: Ms. Cherie Ha
+    name_no_title: Cherie Ha
+    email: TeachingSupport-WASM-MECE@curtin.edu.au
+    url: "https://staffportal.curtin.edu.au/staff/profile/view/cherie-ha-46dfe4cd/"
+    office: Faculty of Science and Engineering <br>
+      Bentley Campus
+    contact_policy: Best way to contact is via email.
+      I hope to respond within 24-36 hours.
+      If you would like to see me, please book an appointment.
+    photo: ./assets/images/scientist_woman.jpeg
+
+  - id: dci
+    name: Ms. Dora Cecelia Indin
+    name_no_title: Dora Cecelia Indin
+    email: dora.indin@curtin.edu.my
+    phone: "+60 85 630100 Ext:2531"
+    office: Skylark 3 - Room 402  <br>
+       Miri Campus
+    contact_policy: Best way to contact is via email.
+      I hope to respond within 24-36 hours.
+      If you would like to see me, please book an appointment.
+    photo: ./assets/images/scientist_woman.jpeg
+
+
 # teaching-staff:
 #   staff:
 #     - ref: rpu

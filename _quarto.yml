@@ -64,7 +64,7 @@ website:
     border: false
     background: "#535353"
     left: |
-      Copyright 2023 &copy; [SMILE Lab](https://www.smilelab.dev) <br>
+      Copyright 2024 &copy; [SMILE Lab](https://www.smilelab.dev) <br>
     right: |
       {{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}}
       {{< fa brands creative-commons-sa >}} Except where otherwise noted,
