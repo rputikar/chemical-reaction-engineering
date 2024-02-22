@@ -1,0 +1,25 @@
+subtitle: "CHEN3010: Chemical Reaction Engineering"
+footer: "CHEN3010: Chemical Reaction Engineering"
+
+format:
+  revealjs:
+    keep-yaml: true
+    controls: true
+    # self-contained: true
+    chalkboard:
+      boardmarker-width: 5
+      buttons: false
+    toc: true
+    toc-depth: 1
+    menu: true
+    theme: [default, ../../assets/styles/revealjs/slide.custom.scss]
+    logo: ../../assets/images/cee_logo.svg
+    slide-number: c/t
+
+    pointer:
+      # set pointer configuration options here
+      - color: "#d02670"
+      - pointerSize: 20
+
+revealjs-plugins:
+  - pointer

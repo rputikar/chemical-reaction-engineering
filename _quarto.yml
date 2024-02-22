@@ -91,17 +91,17 @@ website:
       - section: "Lectures"
         id: lectures
         contents:
-          #  - file: ./content/lectures/01-recap/index.qmd
+          - file: ./content/lectures/01-mole-balances/index.qmd
          #
-      #    - section: "Workshops"
-      #      id: workshops
-      #      contents:
+      - section: "Workshops"
+        id: workshops
+        contents:
       #        - file: ./content/workshops/workshop-01/index.qmd
       #          text: Workshop 01
      #
-      - section: "Labs"
-        id: labs
-        contents:
+     # - section: "Labs"
+     #    id: labs
+     #    contents:
           #  - file: ./content/labs/lab-01/index.qmd
  #
 format:

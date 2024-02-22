@@ -1,0 +1,47 @@
+---
+title: "Pre class activity: Mole balances"
+date: 2024-02-22
+format:
+  pdf
+---
+
+Solve the following problems.
+
+1. In the Decon process for the manufacture of chlorine, a dry mixture of
+   hydrochloric acid gas and air is passed over a heated catalyst which
+   promotes oxidation of acid. Air is used 30% in excess of that theoretically
+   required. Calculate the weight of air·supplied per kilogram of the acid.
+   (Atomic weight of chlorine = 35.5, Air contains 23.2% $\ce{O2}$ by weight)
+
+2. Chlorobenzene ($\ce{C6H5Cl}$) is nitrated using a mixture of nitric acid and
+   sulphuric acid. During the pilot plant run, a charge consists of 100 kg of
+   chlorobenzene, 106.5 kg of nitric acid of 65.5% strength, 108 kg of
+   sulphuric acid of 93.6% strength. After two hours of operation, tbc final
+   product mixture was analysed and found to contain 2% unreacted
+   chlorobenzene. Also, the product distribution was found to be 66%
+   paranitrocblorobenzene and 34% orthonitrochloro-benzene (by weight). The
+   chemical reaction involved are:
+
+   $$
+    \begin{gathered}
+    \ce{C6H5Cl} + \ce{HNO3} \rightarrow o \ce{C6H4ClNO2} + \ce{H2O}  \\
+    \ce{C6H5Cl} + \ce{HNO3} \rightarrow p \ce{C6H4ClNO2} + \ce{H2O} 
+    \end{gathered}
+   $$
+
+   Calculate: 
+   (a) analysis of charge, 
+   (b) % conversion of chlorobenzene and
+   (c) composition of the product mixture. (Atomic weight data: H = 1, N = 14,
+   S = 32, Cl = 35.5)
+
+3. Pure sulphur is burnt in a sulphur burner with dry air. Oxygen is used 20%
+   excess above that required for the complete combustion of sulphur lo $\ce{SO3}$ The
+   efficiency of burner is such that only 30% of the sulphur burns to $\ce{SO3}$ and
+   remainder goes to $\ce{SO3}$.
+
+   Calculate: 
+   (a) the analysis of the resulting mixture in mole% and 
+   (b) the weight of gas per kg of sulphur burnt.
+
+

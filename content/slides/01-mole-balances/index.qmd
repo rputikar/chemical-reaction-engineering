@@ -1,80 +1,91 @@
 ---
-title: 
-  Recap of basics of process control and modelling
-date: 2023/07/24
-format: html
+title: "Mole balances"
+format: revealjs
 ---
 
-## Pre Class Activities
+```{python}
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+import control as ctrl
+import scipy as sp
+from scipy.optimize import minimize
+from scipy import signal
+from IPython.display import display, Markdown
+plt.style.use('../../../assets/templates/present.mpstyle')
+```
 
-- Revisit your notes from CHEN2004, and CHEN3005. 
-- Go through the slides and lecture video below. 
-- Complete MATLAB training material mentioned in [Getting
-  Ready](../../info/index.qmd) section.  
-- Watch [Introduction to MATLAB
-  programming](https://ocw.mit.edu/courses/18-s997-introduction-to-matlab-programming-fall-2011/pages/library/videos/)
-  videos from MIT OCW.
+# Introduction
 
-## Slides
+* Chemical processes
+* What is reaction engineering?
+* Real world examples
+* Overview of reaction engineering
 
-The slides for this lecture are provided as interactive document online. Click
-on the button below to view them in fullscreen (The link will open in a new tab
-or window). You can also view them as pdf for printing, or later viewing.  
+## Chemical processes
 
-:::{.grid}
-::: {.g-col-1}
-[Slides](../../slides/01-recap/index.qmd){target="_blank" .btn .btn-success .btn-lg role="button"}
+::: {.r-stack}
+
+![](../../../assets/images/typical_process_flow_diagram-01.png){.fragment .absolute top=50 right=50 width=90%}
+![](../../../assets/images/typical_process_flow_diagram-02.png){.fragment .absolute top=50 right=50 width=90%}
+![](../../../assets/images/typical_process_flow_diagram-03.png){.fragment .absolute top=50 right=50 width=90%}
+![](../../../assets/images/typical_process_flow_diagram-04.png){.fragment .absolute top=50 right=50 width=90%}
+![](../../../assets/images/typical_process_flow_diagram-05.png){.fragment .absolute top=50 right=50 width=90%}
+
+:::
+
+::: {.fragment .absolute top=450}
+
+* Selection of reactor system is key to economic success or failure of a
+  chemical plant 
+
+* Understanding how chemical reactors work lies at the heart of almost every
+  chemical processing operation. 
 
 :::
 
-::: {.g-col-1}
-[PDF](../../slides/01-recap/01-recap.pdf){target="_blank" .btn .btn-info .btn-lg role="button"}
+## What is reaction engineering
 
-:::
-:::
+:::: {.columns}
 
-The slides are also placed below for your reference. Use your keypad's
-{{< fa arrow-left >}} and {{< fa arrow-right >}} to navigate the slides.
+::: {.column width=50%}
 
-::: {.container style="position: relative;overflow: hidden;width:
-100%;min-height:600px;"}
-<iframe src="../../slides/01-recap/"
-style="position=absolute;top: 0;left: 0;bottom: 0;right: 0;width:
-100%;min-height:600px;"></iframe>
-:::
+::: {.incremental}
 
-<!--
-## Videos
+- CRE is the field that studies the rates and mechanisms of chemical reactions
+  and the design of the reactors in which they take place.
 
-## Lecture notes
+- Reactor design is a specialized task that involves evaluating various options.
+  It draws on knowledge from thermodynamics, kinetics, fluid mechanics, and heat
+  and mass transfer, along with economic considerations.
 
-Detailed lcture notes are available for this lecture. 
-You can browse them by
-clicking on the link below. 
-You can also download them in various formats from
-the link. 
-
-:::{.grid}
-::: {.g-col-3}
-[Lecture Notes](../../notes/01-recap/index.qmd){.btn .btn-success .btn-lg role="button"}
-
-:::
-:::
--->
-
-## In-Class Resources
-
-The in-class activities/ tasks for this lecture are at:
-
-:::{.grid}
-::: {.g-col-5}
-
-[in-class activities](../../notes/01-recap/in-class-activities.qmd){.btn .btn-success .btn-lg role="button"}
+- CRE is the synthesis of all these factors with the aim of properly designing
+  and understanding the chemical reactor.
 
 :::
 :::
 
+::: {.column width=50%}
+
+![](../../../assets/images/omnibook_alchemist_sketch_levenspeil.jpg)
+
+:::
+
+::::
+
+:::{.fragment}
+:::{.callout-note appearance="simple"}
+
+It is the primary knowledge of chemical kinetics and reactor design that
+distinguishes the chemical engineer from other engineers  
+
+:::
+:::
 
 
+## Real world examples
+
+## Overview of reaction engineering
 
 
+# 

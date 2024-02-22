@@ -11,12 +11,15 @@ format: html
 
 - Go through the slides and lecture video below. 
 
-- Complete MATLAB training material mentioned in [Getting
-  Ready](../../info/index.qmd) section.  
+- Complete the in-class activities/ tasks for this lecture.
 
-- Watch [Introduction to MATLAB
-  programming](https://ocw.mit.edu/courses/18-s997-introduction-to-matlab-programming-fall-2011/pages/library/videos/)
-  videos from MIT OCW.
+:::{.grid}
+::: {.g-col-5}
+
+[pre-class activities](../../notes/01-mole-balances/pre-class-activities.qmd){.btn .btn-success .btn-lg role="button"}
+
+:::
+:::
 
 ## Slides
 
