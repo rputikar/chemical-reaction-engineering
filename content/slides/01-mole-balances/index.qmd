@@ -19,7 +19,7 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 
 * Chemical processes
 * What is reaction engineering?
-* Real world examples
+* Industrial reactors
 * Overview of reaction engineering
 
 ## Chemical processes
@@ -44,6 +44,42 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 
 :::
 
+::: {.notes}
+Typically, all chemical processes are designed to convert raw materials to
+produce a product that meet all the quality specifications and is ready for the
+market.
+
+These chemical processes broadly involve three steps. 
+
+Initially, the raw materials are subjected to a sequence of physical treatments
+to refine them into a form suitable for chemical reaction. This may include the
+removal of impurities that could adversely affect the catalyst within the
+reactor. 
+
+These materials, once treated, are introduced into the reactor, which is the
+central component of the process. In this stage, the raw materials are
+chemically transformed, yielding a mixture of desired products along with
+by-products.
+
+The reaction step typically does not yield pure products due to unreacted raw
+materials and the formation of by-products. Consequently, a separation step is
+essential after the reaction to isolate the desired products from the undesired
+ones. 
+
+Materials that do not react are returned to the beginning of the chemical
+process. This recycling is critical for efficient raw material utilization,
+ensuring the process remains economically viable.
+
+The economic success of any chemical process is critically dependent on the
+design of the reactor. It requires a delicate balance – minimizing the costs
+associated with the reactor itself while also accounting for the expense
+involved in treating materials after the reaction has taken place. 
+
+Therefore, understanding how chemical reactors work lies at the heart of almost
+every chemical processing operation. 
+
+:::
+
 ## What is reaction engineering
 
 :::: {.columns}
@@ -52,14 +88,14 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 
 ::: {.incremental}
 
-- CRE is the field that studies the rates and mechanisms of chemical reactions
+* CRE is the field that studies the rates and mechanisms of chemical reactions
   and the design of the reactors in which they take place.
 
-- Reactor design is a specialized task that involves evaluating various options.
+* Reactor design is a specialized task that involves evaluating various options.
   It draws on knowledge from thermodynamics, kinetics, fluid mechanics, and heat
   and mass transfer, along with economic considerations.
 
-- CRE is the synthesis of all these factors with the aim of properly designing
+* CRE is the synthesis of all these factors with the aim of properly designing
   and understanding the chemical reactor.
 
 :::
@@ -82,10 +118,240 @@ distinguishes the chemical engineer from other engineers
 :::
 :::
 
+:::{.notes}
 
-## Real world examples
+In unit operations, we focus on the design of equipment for the physical
+treatment steps. Whereas, chemical reaction engineering is concerned with the
+chemical treatment step of a process.
 
-## Overview of reaction engineering
+Chemical reaction engineering, or CRE, is dedicated to understanding the rates
+at which chemical reactions occur and the underlying mechanisms. CRE is also
+about the design of the reactors themselves, where these reactions take place.
+
+The real challenge in CRE is to bring together knowledge from thermodynamics,
+chemical kinetics, and even economics. Our aim is to create reactors that are
+not just efficient at processing materials but also cost-effective. This
+balance is key to the economic feasibility of the entire chemical process.
+
+So, CRE is about synthesis. It's about combining all these complex factors to
+design a reactor that we fully understand and that operates optimally.
+
+And it's this specific knowledge in chemical kinetics and reactor design that
+really sets chemical engineers apart from other engineers. It's our domain,
+where we apply our specialized skills to make a significant impact in the field
+of chemical processing.
+
+:::
+
+## Industrial reactors
+### Batch reactor
+
+![](../../../assets/images/stirred_reactor.jpg)
+
+:::{.notes}
+
+Batch reactors are used in pharmaceutical industry, and Specialty chemicals manufacturing.
+They are versatile and are used for operations where flexibility in operations
+is required. 
+
+:::
+
+## Industrial reactors
+### Tubular reactor
+
+![](../../../assets/images/Interactive-turbulent-tubular-reactor.jpg)
+
+:::{.notes}
+
+Tubular reactors are typically used for continuous processing in chemical
+manufacturing. Its design allows for efficient heat and mass transfer, making
+it ideal for large-scale production.
 
 
-# 
+:::
+
+## Industrial reactors
+### Stirred reactor
+
+![](../../../assets/images/anaerobic_digester.jpg)
+
+:::{.notes}
+
+Stirred reactors are commonly used in industrial applications
+for processes that require uniform mixing. Its design allows for consistent
+distribution of reactants and efficient reaction management.
+
+:::
+
+## Industrial reactors
+### Catalytic cracking reactor
+
+![](../../../assets/images/americas-petroleum-industries-pour-out-fuel-and-lubricants-for-the-united-nations-2.jpg)
+
+:::{.notes}
+
+This slide shows a catalytic cracking reactor, a key component in petroleum
+refineries. These reactors break down large hydrocarbon molecules into smaller,
+more valuable ones like gasoline and diesel. They are crucial for maximizing
+the yield of high-demand fuels from crude oil.
+
+:::
+
+## Industrial reactors
+### Calcination kiln
+
+![](../../../assets/images/csm_GDO-4000px_12ba794453.jpg)
+
+:::{.notes}
+
+This is an image of a calcination kiln, an industrial reactor used to process
+raw materials at high temperatures. This type of kiln is integral to
+the production of cement, lime, and various other materials that require
+high-temperature treatment to alter their physical or chemical properties
+before further processing.
+
+:::
+
+
+## Industrial reactors
+### Microreactors
+
+![](../../../assets/images/continuous-1702460370_4109061_1972989.jpg)
+
+
+:::{.notes}
+
+Microreactors are small-scale continuous flow reactors
+that allow precise control of reaction conditions. They're used for rapid
+testing of chemical reactions and process optimization, and are becoming
+increasingly important in pharmaceuticals, fine chemicals, and research and
+development due to their efficiency and scalability.
+
+:::
+
+
+## Industrial reactors
+### Electrolyzers
+
+![](../../../assets/images/electrolyzer.jpg)
+
+:::{.notes}
+
+Industrial electrolyzers are specialized reactors used
+for electrochemical processes such as hydrogen production via water electrolysis.
+
+:::
+
+
+
+## Industrial reactors
+### Raceway ponds
+
+![](../../../assets/images/algal-pond-Cyanotech-overview.jpg)
+
+:::{.notes}
+
+Raceway ponds are open-air shallow ponds used in the
+cultivation of algae and other aquatic organisms. They are often used in the
+biofuel industry for growing algae that can be converted into biodiesel. These
+systems allow for controlled conditions to optimize the growth rate of the
+algae and are an example of bioreactors in industrial biotechnology. 
+
+:::
+
+
+## How do we design a chemical reactor?
+
+::: {.r-stack}
+
+![](../../../assets/images/chemical_reactor_design_task-01.png){.fragment .absolute top=50 right=50}
+![](../../../assets/images/chemical_reactor_design_task-02.png){.fragment .absolute top=50 right=50}
+![](../../../assets/images/chemical_reactor_design_task-03.png){.fragment .absolute top=50 right=50}
+![](../../../assets/images/chemical_reactor_design_task-04.png){.fragment .absolute top=50 right=50}
+
+:::
+
+:::{.notes}
+
+To evaluate a reactor's performance, we need to establish a performance
+equation. This mathematical relationship correlates the inputs like
+concentrations, flow rates, and temperatures to outputs including product
+concentration, temperature, and conversion. This equation is crucial for
+comparing different reactor designs and operational conditions, optimizing
+performance, and scaling up from laboratory to industrial scale.
+
+Understanding the contacting pattern is also essential. This refers to the
+manner in which materials move and interact within the reactor, including the
+timing of their mixing and their physical characteristics such as clumpiness or
+dispersal. For instance, some materials naturally form clumps, like solids, or
+may not easily mix, like certain noncoalescing liquids.
+
+Kinetics, the study of reaction rates, is a fundamental aspect of reaction
+engineering. If reactions occur quickly, equilibrium conditions will largely
+dictate the reactor's output. For slower reactions, the reaction rate,
+alongside heat and mass transfer rates, become significant factors in
+determining the reactor's performance. These principles allow chemical
+engineers to design reactors that meet specific process requirements.
+
+:::
+
+
+## How do we design a chemical reactor?
+ 
+### Maximize the space-time yield
+![](../../../assets/images/chemical_reactor_schematic.png){}
+
+:::: {.columns}
+
+::: {.column width=50%}
+::: {.fragment}
+
+### Reaction
+* Stoichiometry
+* Kinetics: elementary vs non-elementary
+* Single vs multiple reactions
+
+:::
+
+:::
+
+::: {.column width=50%}
+
+::: {.fragment}
+
+### Reactor
+* Isothermal vs non-isothermal
+* Ideal vs nonideal
+* Steady-state vs nonsteady-state
+
+:::
+:::
+
+::::
+
+:::{.notes}
+
+Raceway ponds are open-air shallow ponds used in the
+cultivation of algae and other aquatic organisms. They are often used in the
+biofuel industry for growing algae that can be converted into biodiesel. These
+systems allow for controlled conditions to optimize the growth rate of the
+algae and are an example of bioreactors in industrial biotechnology. 
+
+:::
+
+
+# Mole balance
+
+* Definitions
+  - Chemical identity
+  - Reaction rate
+
+* Basic mole balance
+
+* Mass balance in reactors 
+  - Batch reactor
+  - Continuous stirred tank reactor (CSTR)
+  - Plug flow reactor (PFR)
+  - Packed bed reactor (PBR)
+
+

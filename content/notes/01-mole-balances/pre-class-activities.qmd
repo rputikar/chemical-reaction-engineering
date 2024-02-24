@@ -5,7 +5,7 @@ format:
   pdf
 ---
 
-Solve the following problems.
+## Solve the following problems
 
 1. In the Decon process for the manufacture of chlorine, a dry mixture of
    hydrochloric acid gas and air is passed over a heated catalyst which
