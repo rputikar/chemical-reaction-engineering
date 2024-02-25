@@ -70,7 +70,7 @@ the link.
 
 :::{.grid}
 ::: {.g-col-3}
-[Lecture Notes](../../notes/01-mole-balances/index.qmd){.btn .btn-success .btn-lg role="button"}
+[Lecture Notes](../../notes/01-mole-balances/Ranjeet_Notes_Fogler_Chapter 01 - Mole balances.pdf){.btn .btn-success .btn-lg role="button"}
 
 :::
 :::
