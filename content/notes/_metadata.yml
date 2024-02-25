@@ -6,16 +6,20 @@ author:
 format:
   html:
     fig-cap-location: bottom
-  docx:
-    number-sections: true
-    number-depth: 3
-    shift-heading-level-by: -1
-    reference-doc: ../../assets/templates/reference-doc.docx
-  odt:
-    number-sections: true
-    number-depth: 3
-    shift-heading-level-by: -1
-    reference-doc: ../../assets/templates/reference-odt.odt
+    html-math-method: katex
+    include-in-header:
+      - text: |
+          <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/mhchem.min.js" integrity="sha384-ifpG+NlgMq0kvOSGqGQxW1mJKpjjMDmZdpKGq3tbvD3WPhyshCEEYClriK/wRVU0"  crossorigin="anonymous"></script>
+  # docx:
+  #   number-sections: true
+  #   number-depth: 3
+  #   shift-heading-level-by: -1
+  #   reference-doc: ../../assets/templates/reference-doc.docx
+  # odt:
+  #   number-sections: true
+  #   number-depth: 3
+  #   shift-heading-level-by: -1
+  #   reference-doc: ../../assets/templates/reference-odt.odt
   pdf:
     citeproc: true
     pdf-engine: lualatex

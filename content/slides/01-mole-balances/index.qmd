@@ -342,16 +342,393 @@ algae and are an example of bioreactors in industrial biotechnology.
 
 # Mole balance
 
-* Definitions
-  - Chemical identity
-  - Reaction rate
+* Rate of reaction
 
 * Basic mole balance
 
-* Mass balance in reactors 
+* Mole balance in reactors 
   - Batch reactor
   - Continuous stirred tank reactor (CSTR)
   - Plug flow reactor (PFR)
   - Packed bed reactor (PBR)
 
+## Reaction rate
+
+:::{.incremental .extrapad}
+
+* A chemical species is said to have reacted when it has lost its chemical identity.
+
+* The identity of a chemical species is determined by the kind, number, and
+  configuration of that species’ atoms.
+
+* There are three ways for a species to loose its identity:
+
+  - Decomposition: $\ce{CH3-CH3 -> H2 + H2C=CH2}$
+
+  - Combination: $\ce{N2 + O2 -> 2NO}$
+
+  - Isomerization: $\ce{C2H5CH=CH2 -> CH2=C(CH3)2}$
+
+* The rate of reaction tells us how fast a number of moles of one chemical
+  species are being consumed to form another chemical species.
+
+* The rate of a reaction ($mol/dm^3/s$) can be expressed as either:
+  - The rate of Disappearance of reactant: $-r_A$
+  - The rate of Formation (Generation) of product:  $r_P$
+
+:::
+
+:::{.notes}
+
+Some reactions occur very rapidly; others very, very slowly. For example, in
+the production of polyethylene, one of our most important plastics,or in the
+production of gasoline from crude petroleum, we want the reaction step to be
+complete in less than one second, while in waste water treatment, reaction may
+take days and days to do the job.
+
+:::
+
+## Reaction rate
+
+
+:::{.highlight .center}
+$$ \ce{A + B -> C + D} $$
+:::
+
+:::{.incremental}
+* $r_A, r_B$   = the rate of formation of species A, and B per unit volume
+* $-r_A, -r_B$ = the rate of a disappearance of species A, and B per unit volume 
+
+:::{.extrapad}
+* $r_C, r_D$   = the rate of formation of species C, and D per unit volume 
+:::
+
+* For species $j$: 
+  - $r_j$ is the rate of formation of species $j$ per unit volume [e.g. $mol/dm^3 s$]
+  - $r_j$ is a function of concentration, temperature, pressure, and the type of catalyst (if any)  
+  - $r_j$ is independent of the type of reaction system (batch, plug flow, etc.) 
+  - $r_j$ is an algebraic equation, not a differential equation 
+
+:::
+
+:::{.fragment .callout-note appearance="simple"}
+
+The algebraic expression for the reaction rate equation, $r_j$, is also known as the **rate law**. 
+
+:::
+
+## Rate law
+
+:::{.highlight}
+$$
+-r_A = f \begin{bmatrix} \text{temperature dependent terms}, & \text{concentration dependent terms} \end{bmatrix}
+$$
+:::
+
+* Some examples of rate law
+
+  - Arrhenius equation: $-r_A = A e^{-E_A/RT} C_A^a$
+
+    :::{.smaller}
+      - $A$: Pre-exponential factor
+      - $E_A$: Activation energy
+      - $R$: Gas constant
+      - $T$: Temperature
+      - $C_A$: concentration
+      - $a$: order of the reaction
+    :::
+
+  - Michaelis-Menton kinetics: $-r_A = \frac{k_1 C_A}{1 + k_2 C_A}$
+
+* For a catalytic reaction we refer to $–r_A’$ , which is the rate of
+  disappearance of species A on a per mass of catalyst basis. ($mol/gcat/s$).
+
+## General mole balance
+
+:::{.highlight .center}
+$$ 
+  \text{in} - \text{out} + \text{generation}  = \text{accumulation}  
+$$
+:::
+
+![](../../../assets/images/mole_balance.png){width=60%}
+
+:::{.fragment .smaller}
+$$
+\begin{array}{c} 
+  \text {rate of} \\ 
+  \text {flow of } j \\ 
+  \text {into system} 
+\end{array}  - 
+\begin{array}{c} 
+  \text {rate of} \\ 
+  \text {flow of } j \\ 
+  \text {out of system} 
+\end{array}  +
+\underbrace{
+\begin{array}{c} 
+  \text {rate of} \\ 
+  \text {generation} \\ 
+  \text {of } j \text { by rxn} 
+\end{array} -
+\begin{array}{c} 
+  \text {rate of} \\ 
+  \text {decomposition} \\ 
+  \text {of } j \text { by rxn} 
+\end{array}  
+}= 
+\begin{array}{c} 
+  \text {rate of} \\ 
+  \text {accumulation} \\ 
+  \text {of } j
+\end{array}
+$$
+
+:::
+:::{.fragment}
+
+$$
+F_{j0} \qquad - \qquad F_j \qquad + \qquad G_j \qquad = \qquad  \frac{dN_j}{dt}
+$$
+
+:::
+:::{.fragment}
+
+
+:::{.extrapad}
+$$
+\frac{mol}{s} \qquad + \qquad \frac{mol}{s} \qquad + \qquad \frac{mol}{s} \qquad = \qquad  \frac{d}{dt}\left(mol\right)
+$$
+:::
+:::
+
+## Uniform generation
+
+
+![](../../../assets/images/mole_balance_uniformly_mixed.png){width=60%}
+
+:::{.fragment}
+
+<!-- * If the system is uniform throughout its entire volume, then: -->
+
+  $$
+   G_j = r_j V
+  $$
+
+  $$
+  \left[
+  \begin{array}{c} 
+   \text {moles of } j \\ 
+   \text {generated per} \\ 
+   \text {unit time} (mol/s) 
+  \end{array}  
+  \right] =
+  \left[
+  \begin{array}{c} 
+   \text {moles of } j \\ 
+   \text {generated per} \\ 
+   \text {unit time and} \\
+   \text {volume }(mol/s \cdot m^3) 
+  \end{array}  
+  \right]
+  \left[
+  \begin{array}{c} 
+   \text {} \\
+   \text {Volume}  \\ 
+   (m^3)  \\
+   \text {}
+  \end{array}  
+  \right]
+ $$
+
+:::
+:::{.fragment}
+
+:::{.highlight}
+
+$$
+F_{j0} \qquad - \qquad F_j \qquad + \qquad r_j V \qquad = \qquad  \frac{dN_j}{dt}
+$$
+
+:::
+:::
+
+
+## Non-uniform generation
+
+
+![](../../../assets/images/mole_balance_non-uniform.png){width=60%}
+
+:::{.fragment}
+
+
+$$
+ G_j = \sum_{i=1}^{n} r_{ji} \Delta V_i
+$$
+
+$$
+G_j=\lim _{\substack{n \rightarrow \infty \\ \Delta V \rightarrow 0}} \sum_{i=1}^m r_j \Delta V = \int^V r_j d V
+$$
+
+:::
+:::{.fragment}
+
+:::{.highlight}
+
+$$
+F_{j0} \qquad - \qquad F_j \qquad + \qquad \int^V r_j dV \qquad = \qquad  \frac{dN_j}{dt}
+$$
+
+:::
+:::
+
+## Review - general mole balance
+
+![](../../../assets/images/mole_balance.png){width=80%}
+
+
+:::{.extrapad .incremental}
+
+* General form: $F_{j0} - F_j  + G_j =  \frac{dN_j}{dt}$
+
+* Uniform generation
+  $$
+  F_{j0} - F_j + r_j V =  \frac{dN_j}{dt}
+  $$
+
+
+* Non-uniform generation
+  $$
+  F_{j0} - F_j + \int^V r_j dV =  \frac{dN_j}{dt}
+  $$
+
+:::
+
+
+## Batch reactor
+
+::::{.columns}
+:::{.column width=45%}
+
+- Reactants placed in reactor (Charge); reaction allowed to proceed over time.
+- **Closed system**: no reactants added or products removed during reaction.
+- **Unsteady-state**: composition changes over time.
+- **Ideal batch reactor**: contents perfectly mixed.
+- Concentration and temperature are uniform throughout the reactor but change with time.
+
+- **Typical uses**: Small scale operations, expensive products (e.g. pharmaceutical), new processes. 
+  
+:::
+:::{.column width=10%}
+:::
+
+:::{.column width=45%}
+
+![](../../../assets/images/batch_reactor_photo_sr100.png){width=70%}
+
+:::
+::::
+
+## Continuous stirred tank reactor (CSTR)
+
+::::{.columns}
+:::{.column width=50%}
+
+![](../../../assets/images/stallkamp-biogas-hochfermenter-cstr.jpg)
+ 
+:::
+:::{.column width=5%}
+:::
+
+:::{.column width=45%}
+
+- **Open system**: Reactants are continuously fed and products removed.
+- The incoming stream blends immediately with the reactor's contents.
+- **Perfect mixing**: similar to an ideal batch reactor.
+- Temperature and concentration are consistent throughout.
+- Exit stream composition matches the reactor's interior.
+- Reaction rates are constant, maintaining steady-state.
+
+:::
+::::
+
+- **Typical uses**: Large-scale industrial chemical production (e.g. metallurgy), wastewater treatment
+
+
+## Plug flow reactor (PFR)
+
+
+::::{.columns}
+:::{.column width=50%}
+
+![](../../../assets/images/Plug-Flow-Reactor-Static-Mixer.jpg)
+ 
+:::
+:::{.column width=5%}
+:::
+
+:::{.column width=45%}
+
+- Also known as a tubular reactor.
+- Cylindrical shape with openings at both ends.
+- Materials move steadily through the reactor's length.
+- Reactants are consumed along the reactor's length.
+- **Steady state operations**:
+  - **No radial gradients** Temperature, concentration, reaction rates are
+    constant at any given cross section.
+  - All material spends exactly same time in the reactor.
+
+:::
+::::
+
+- **Typical examples**: Food industry (continuous baking or sterilization), polymerization reactions
+
+
+## Packed bed reactor (PBR)
+
+::::{.columns}
+:::{.column width=50%}
+
+- Vertical cylindrical shell design.
+- Flow is often gravity-driven.
+- Heterogeneous reactions with a fixed catalyst bed.
+- Reactants pass from top through the catalyst layer.
+- Concentration gradient forms along the reactor's length.
+- Reactions occur at catalyst pellet surfaces.
+- Reaction rate ($r'_A$)depends on catalyst mass ($W$), not reactor volume ($V$).
+
+- **Typical examples**: Catalytic converters, petroleum refining, air purification
+  
+:::
+:::{.column width=5%}
+:::
+
+:::{.column width=45%}
+
+![](../../../assets/images/Packed-Tower-with-mist-elim.jpg){width=90%}
+
+:::
+::::
+
+## Selection of reactors
+
+* **Batch**
+  - small scale, production of expensive products (e.g. pharmacy)
+  - high labor costs per batch
+  - difficult for large-scale production
+
+* **CSTR**: most homogeneous liquid-phase flow reactors
+  - when intense agitation is required
+  - relatively easy to maintain good temperature control
+  - the conversion of reactant per volume of reactor is the smallest of the
+    flow reactors - very large reactors are necessary to obtain high
+    conversions
+
+* **PFR**: most homogeneous gas-phase flow reactors
+  - relatively easy to maintain
+  - usually produces the highest conversion per reactor volume (weight of
+    catalyst if it is a packed-bed catalyze gas reaction) of any of the flow
+    reactors
+  - difficult to control temperature within the reactor
+  - hot spots can occur
 

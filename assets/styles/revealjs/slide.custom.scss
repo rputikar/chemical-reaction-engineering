@@ -170,6 +170,10 @@ h1.title {
   border: none;
 }
 
+.reveal .extrapad li:not(:last-child) {
+  margin-bottom: 30px !important;
+}
+
 .fragment.hide {
   transition: all 0s !important;
   # display: none !important;
