@@ -1,80 +1,116 @@
 ---
 title: 
-  Recap of basics of process control and modelling
-date: 2023/07/24
+  "Workshop 01: mole balances"
+date: 2024/02/24
 format: html
 ---
 
-## Pre Class Activities
+Try following problems from Fogler 5e[@fogler2016].
 
-- Revisit your notes from CHEN2004, and CHEN3005. 
-- Go through the slides and lecture video below. 
-- Complete MATLAB training material mentioned in [Getting
-  Ready](../../info/index.qmd) section.  
-- Watch [Introduction to MATLAB
-  programming](https://ocw.mit.edu/courses/18-s997-introduction-to-matlab-programming-fall-2011/pages/library/videos/)
-  videos from MIT OCW.
+Q 1-5, Q 1-6, P 1-4, P 1-5, P 1-8. 
 
-## Slides
+We will go through some of these problems in the workshop. 
 
-The slides for this lecture are provided as interactive document online. Click
-on the button below to view them in fullscreen (The link will open in a new tab
-or window). You can also view them as pdf for printing, or later viewing.  
 
-:::{.grid}
-::: {.g-col-1}
-[Slides](../../slides/01-recap/index.qmd){target="_blank" .btn .btn-success .btn-lg role="button"}
+1. **Q 1-5**: What assumptions were made in the derivation of the design
+   equation for:
+
+   (a) The batch reactor (BR)?
+   (b) The CSTR?
+   (c) The plug-flow reactor (PFR)?
+   (d) The packed-bed reactor (PBR)?
+   (e) State in words the meanings of $–r_A$ and $–r′_A$.
+
+
+2. **Q 1-6**: Use the mole balance to derive an equation analogous to Equation
+   (1-7) ($V = (F_j0 - F_j)/ -r_j)$ for a fluidized CSTR containing catalyst
+   particles ([@fig-q-1-6]) in terms of the catalyst weight, $W$, and other
+   appropriate terms.
+
+::: {.content-visible when-format="html"}
+
+![fig-q1.6](../../../assets/images/fig-q1-6.png){#fig-q-1-6 width=70%}
+
+:::
+
+::: {.content-visible unless-format="html"}
+
+![fig-q1.6](../../../assets/images/fig-q1-6.png){#fig-q-1-6}
 
 :::
 
-::: {.g-col-1}
-[PDF](../../slides/01-recap/01-recap.pdf){target="_blank" .btn .btn-info .btn-lg role="button"}
+3. **P 1-4**: Schematic diagrams of the Los Angeles basin are shown in
+   [@fig-p-1-4]. The basin floor covers approximately 700 square miles ( $2
+   \cdot 10^{10} ft^2$ ) and is almost completely surrounded by mountain
+   ranges. If one assumes an inversion height in the basin of 2,000 ft, the
+   corresponding volume of air in the basin is ( $4 \cdot 10^{13} ft^3$ ). We
+   shall use this system volume to model the accumulation and depletion of air
+   pollutants. As a very rough first approximation, we shall treat the Los
+   Angeles basin as a well-mixed container (analogous to a CSTR) in which there
+   are no spatial variations in pollutant concentrations. 
+
+   We shall perform an unsteady-state mole balance
+   (Equation (1–4) ($F_j0 - F_j + \int^V r_j dV = dN_j/dt$)) on $\ce{CO}$ as it
+   is depleted from the basin area by a Santa Ana wind. Santa Ana winds are
+   high-velocity winds that originate in the Mojave Desert just to the
+   northeast of Los Angeles. Load the Smog in Los Angeles
+   Basin Web Module. Use the data in the module to work parts 1–12 (a) through
+   (h) given in the module. Load the Living Example Polymath code and explore
+   the problem. For part (i), vary the parameters $v_0$, a, and b, and write a
+   paragraph describing what you find.
+
+   There is heavier traffic in the L.A. basin in the mornings and in the
+   evenings as workers go to and from work in downtown L.A. Consequently, the
+   flow of CO into the L.A. basin might be better represented by the sine
+   function over a 24-hour period.
+
+::: {.content-visible when-format="html"}
+
+![fig-p1-4](../../../assets/images/fig-p-1-4.png){#fig-p-1-4 width=70%}
 
 :::
-:::
 
-The slides are also placed below for your reference. Use your keypad's
-{{< fa arrow-left >}} and {{< fa arrow-right >}} to navigate the slides.
+::: {.content-visible unless-format="html"}
 
-::: {.container style="position: relative;overflow: hidden;width:
-100%;min-height:600px;"}
-<iframe src="../../slides/01-recap/"
-style="position=absolute;top: 0;left: 0;bottom: 0;right: 0;width:
-100%;min-height:600px;"></iframe>
-:::
+![fig-p1-4](../../../assets/images/fig-p-1-4.png){#fig-p-1-4}
 
-<!--
-## Videos
-
-## Lecture notes
-
-Detailed lcture notes are available for this lecture. 
-You can browse them by
-clicking on the link below. 
-You can also download them in various formats from
-the link. 
-
-:::{.grid}
-::: {.g-col-3}
-[Lecture Notes](../../notes/01-recap/index.qmd){.btn .btn-success .btn-lg role="button"}
-
-:::
-:::
--->
-
-## In-Class Resources
-
-The in-class activities/ tasks for this lecture are at:
-
-:::{.grid}
-::: {.g-col-5}
-
-[in-class activities](../../notes/01-recap/in-class-activities.qmd){.btn .btn-success .btn-lg role="button"}
-
-:::
 :::
 
 
+4. **P 1-5**: The reaction $\ce{A -> B}$ is to be carried out isothermally in a
+   continuous-ﬂow reactor. The entering volumetric flow rate $v_0$ is $10 dm^3/h$.
+   (Note: $F_A = C_A v$. For a constant volumetric flow rate $v = v_0$ , then
+   $F_A = C_A v_0$ . Also, $C_{A0} = F_{A0} ⁄ v_0 = ( [ 5 mol/h ] ⁄ [ 10 dm^3
+   /h ] ) = 0.5 mol/dm^3.)$
+
+   Calculate both the CSTR and PFR reactor volumes necessary to consume 99% of
+   A (i.e., $C_A= 0.01 C_{A0}$) when the entering molar flow rate is $5 mol/h$,
+   assuming the reaction rate $–r_A$ is
+
+   (a) $–r_A = k$ with $k = 0.05 mol/h \cdot dm^3$
+   (b) $–r_A = kC_A$ with $k = 0.0001 s^{–1}$
+   (c) $–r_A = kC_A^2$ with $k = 300 dm^3/ mol \cdot h$
+   (d) Repeat (a), (b), and/or (c) to calculate the time necessary to consume
+       99.9% of species A in a $1000 dm^3$ constant-volume batch reactor with
+       $C_{A0} = 0.5 mol/dm^3$.
 
 
+5. We are going to consider the cell as a reactor. The nutrient corn steep
+   liquor enters the cell of the microorganism Penicillium chrysogenum
+   ([@fig-penicillium]) and is decomposed to form such products as amino acids.
+   RNA. and DNA. Write an unsteady mass balance an (a) the corn steep liquor.
+   (b) RNA. and (c) penicillin. Assume the cell is well mixed and that RNA
+   remains inside the cell.
+
+::: {.content-visible when-format="html"}
+
+![Penicillium chrysogenum](../../../assets/images/penicillium.png){#fig-penicillium width=70%}
+
+:::
+
+::: {.content-visible unless-format="html"}
+
+![Penicillium chrysogenum](../../../assets/images/penicillium.png){#fig-penicillium}
+
+:::
 

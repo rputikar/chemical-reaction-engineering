@@ -11,7 +11,7 @@ format: html
 
 - Go through the slides and lecture video below. 
 
-- Complete the in-class activities/ tasks for this lecture.
+- Complete the pre-class activities/ tasks for this lecture.
 
 :::{.grid}
 ::: {.g-col-5}
@@ -57,7 +57,6 @@ style="position=absolute;top: 0;left: 0;bottom: 0;right: 0;width:
 {{< video https://www.youtube.com/embed/e3H5DPYlOF8 >}}
 
 :::
-
 
 
 ## Lecture notes

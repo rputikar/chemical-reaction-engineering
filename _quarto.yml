@@ -84,10 +84,6 @@ website:
           - file: content/info/syllabus.qmd
             text: Syllabus
 
-      # - section: "Lectures"
-      #   id: lectures
-      #   content: content/lectures/*/*.qmd
-
       - section: "Lectures"
         id: lectures
         contents:
@@ -96,13 +92,19 @@ website:
       - section: "Workshops"
         id: workshops
         contents:
-      #        - file: ./content/workshops/workshop-01/index.qmd
-      #          text: Workshop 01
+          - file: ./content/workshops/index.qmd
+          - file: ./content/workshops/01-mole-balances/index.qmd
      #
-     # - section: "Labs"
-     #    id: labs
-     #    contents:
+      - section: "Labs"
+        id: labs
+        contents:
           #  - file: ./content/labs/lab-01/index.qmd
+     #  
+      - section: "Portfolio"
+        id: portfolio
+        contents:
+          #          - file: ./content/portfolio/01-mole-balances/index.qmd
+
  #
 format:
   html:

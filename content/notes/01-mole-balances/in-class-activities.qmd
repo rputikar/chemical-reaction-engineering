@@ -5,116 +5,64 @@ format:
   pdf
 ---
 
-## Activities
+## Problems
 
-1. Explore MATLAB user interface
+1. Chloral is being consumed at a rate of 10 moles per second per m^3^ when
+   reacting with chlorobenzene to form DDT and water in the reaction described
+   above. In symbol form, the reaction is written as
 
-2. Define a vector `x = [1 2 3 4 5 6 7 8 9 10]`. 
+   $$
+   \ce{A + 2B -> C + D}
+   $$
 
-   What are different ways you can define x? What happens when you put ; at the end?
+   Write the rates of disappearance and formation (i.e., generation) for each
+   species in this reaction.
 
-3. Convert vector `x` into a column vector.
 
-4. Create vector `y = [0, 0.1, 0.2, ...., 2.0]`
+2. A rocket engine, burns a stoichiometric mixture of fuel (liquid
+   hydrogen) in oxidant (liquid oxygen). The combustion chamber is cylindrical,
+   75 cm long and 60 cm in diameter, and the combustion process produces 108
+   kg/s of exhaust gases. If combustion is complete, find the rate of reaction
+   of hydrogen and of oxygen. 
 
-5. Create a 3 x 3 matrix.
+::: {.content-visible when-format="html"}
 
-6. print the size of the matrix and lengths of vectors defined so far. 
+![Rocket engine](../../../assets/images/01-mole-balance-fig1-rocket-engine.png){#fig-rocket-engine width=70%}
 
-7. Define 3 polynomials 
+:::
 
-   $$p_1(s) = s^2 - 5s + 4$${#eq-1} 
-   
-   $$p_2(s) = s^2 + 4$${#eq-2}
+::: {.content-visible unless-format="html"}
 
-   $$p_3(s) = s^2 - 5s$${#eq-3}
+![Rocket engine](../../../assets/images/01-mole-balance-fig1-rocket-engine.png){#fig-rocket-engine}
 
-8. Calculate $p_1(s)p_2(s)$
+:::
 
-9. Perform some mathematical computations on the vectors, matrices, and
-   polynomials defined so far. 
+3. A human being (75 kg) consumes about 6000 kJ of food per day. Assume that I
+   the food is all glucose and that the overall reaction is
 
-10. Solve **Ax = b**
+   $$ 
+   \ce{C6H1206 + 6 O2 -> 6 CO2 + 6 H2O}, -\Delta H_r = 2816 kJ/mol 
+   $$
 
-    `A = [ 4 -2 -10; 2 10 -12; -4 -6 16];`
+   Find man's metabolic rate (the rate of living, loving, and laughing) in
+   terms of moles of oxygen used per m^3^ of person per second. Assume average
+   density of a human being to be $1000 kg/m^3$.
 
-    `b = [-10; 32; -16];`
+4. Consider the liquid phase cis – trans isomerization of 2–butene which we
+   will write symbolically as
 
-11. Check the solution
+   $$
+   cis- \ce{CH3HC=CHCH3} \rightarrow trans- \ce{CH3HC=CHCH3}
+   $$
 
-12. Calculate eigenvalues and eigenvectors. 
+   The reaction is first order in A ($–r_A = kC_A$) and is carried out in a tubular
+   reactor in which the volumetric flow rate,$v$, is constant, i.e.,$v = v_0$.
 
-13. Consider data:
-
-    `x = [ 0 1 2 4 6 10];`
-
-    `y = [ 1 7 23 109 307 1231];`
-
-    Fit a third-order polynomial. plot the results
-
-14. Explore MATLAB plotting capabiities. 
-
-15. Create a matlab script, save, and load it to plot data in item 13. 
-
-16. Find roots of polynomial defined by `p = [1 5 4]`
-
-17. Search for a function to find roots of a nonlinear equation.
-
-18. Find polynomial for the roots (-4, -1) 
-
-19. For the following transfer functions find partial fractions.
-
-   $$G(s) = \frac{q(s)}{p(s)}=\frac{2}{s^2+5s+4}$${#eq-4}
-
-   $$G(s) = =\frac{2}{s (s + 1) (s + 2) (s + 3)}$${#eq-5}
-
-   $$G(s) = =\frac{s^3 + 4s + 3}{s^4 - 7s^3 + 11s^2 + 7s -12}$${#eq-6}
-
-20. Have fun with `zp2tf`, `tf2zp`, and `tf` commands
-
-21. Response of first order system: Compute and plot step response of following
-    first order systems
-
-    $$y(s) = \frac{1}{5s + 1}$${#eq-p21-1}
-    $$y(s) = \frac{5e^{-10s}}{2.5s + 1}$${#eq-p21-2}
-
-22. Response of second order system: Compute and plot step response of following
-    second order system. Show effect of ξ on response.
-  
-    $$ G_p(s) = \frac{Y(s)}{U(s)} = \frac{K_p e^{-\theta s}}{\tau^2 s^2 + 2 \xi \tau s + 1}$${#eq-p22}
-
-    $K_p = 1$; $\tau = 1$; $\theta = 10$
-
-23. Solve differential equations using Simulink
-
-a)  An object falling under gravity
-
-    $$\frac{d^3 y}{dt^2}=-g$${#eq-7}
-
-    Compare the result with analytical solution $y = -gt^3/2$
-
-b)  Systems of ODEs
-
-1.  $$\frac{d^2 y}{dt^2} + 2\frac{dy}{dt} + 5y = 1$${#eq-8}
-
-    $$\dot{y}(0) = y(0) = 0$${#eq-9}
-
-2. $$
-      \begin{bmatrix} 
-        \dot{x}  \\
-        \dot{y} 
-      \end{bmatrix}
-    =
-      \begin{bmatrix} 
-       1  \\
-       0 
-      \end{bmatrix}
-      \begin{bmatrix} 
-       -2 & -5  \\
-        1 &  0 
-      \end{bmatrix}
-      \begin{bmatrix} 
-        x  \\
-        y 
-      \end{bmatrix}
-   $${#eq-10}
+   1. Sketch the concentration profile.
+   2. Derive an equation relating the reactor volume to the entering and
+      exiting concentrations of A, the rate constant k, and the volumetric flow
+      rate.
+   3. Determine the reactor volume, V1, necessary to reduce the exiting
+      concentration to 10% of the entering concentration, i.e., $C_A = 0.1 C_{A0}$,
+      when the volumetric flow rate is $10 dm^3/min$ (i.e., liters/min) and the
+      specific reaction rate, k, is $0.23 1/min$.
