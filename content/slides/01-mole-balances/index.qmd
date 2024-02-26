@@ -732,3 +732,66 @@ $$
   - difficult to control temperature within the reactor
   - hot spots can occur
 
+
+## Mole balance: Batch reactor
+
+::::{.columns}
+
+:::{.column width=40%}
+
+![](../../../assets/images/mole_balance_batch_reactor.png){width=70%}
+
+
+:::
+:::{.column width=5%}
+:::
+
+:::{.column width=55%}
+
+ 
+:::
+::::
+
+## Mole balance: CSTR
+
+::::{.columns}
+:::{.column width=50%}
+
+![](../../../assets/images/mole_balance_cstr.png)
+ 
+:::
+:::{.column width=5%}
+:::
+
+:::{.column width=45%}
+
+:::
+::::
+
+
+
+## Mole balance: PFR
+
+![](../../../assets/images/mole_balance_pfr.png){width=70%}
+
+
+## Mole balance: PBR
+
+::::{.columns}
+
+:::{.column width=35%}
+
+![](../../../assets/images/mole_balance_pbr.png){width=70%}
+
+:::
+:::{.column width=5%}
+:::
+
+
+:::{.column width=60%}
+
+ 
+:::
+::::
+
+

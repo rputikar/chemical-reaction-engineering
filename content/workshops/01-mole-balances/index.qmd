@@ -98,9 +98,12 @@ We will go through some of these problems in the workshop.
 5. We are going to consider the cell as a reactor. The nutrient corn steep
    liquor enters the cell of the microorganism Penicillium chrysogenum
    ([@fig-penicillium]) and is decomposed to form such products as amino acids.
-   RNA. and DNA. Write an unsteady mass balance an (a) the corn steep liquor.
-   (b) RNA. and (c) penicillin. Assume the cell is well mixed and that RNA
-   remains inside the cell.
+   RNA. and DNA. Write an unsteady mass balance on 
+
+   (a) the corn steep liquor.
+   (b) RNA, and 
+   (c) penicillin. Assume the cell is well mixed and that RNA remains inside
+       the cell.
 
 ::: {.content-visible when-format="html"}
 
