@@ -1,0 +1,90 @@
+---
+title: "Workshop problem sets"
+date: 2024-02-22
+format:
+  pdf
+---
+
+
+## Problem sets
+
+The following problems will be covered in the workshops. 
+It would be a good idea to go through them before the workshop. 
+Problems are from Fogler 5e [@fogler2016]. 
+
+
+
+**Workshop 2**:
+Q 1-5,
+Q 1-6,
+P 1-4,
+P 1-5,
+P 1-8
+
+**Workshop 3**:
+P 2-3,
+P 2-4,
+P 2-7,
+P 2-10
+
+**Workshop 4**:
+P 3-5,
+P 3-10,
+P 3-11,
+P 3-12
+
+**Workshop 5**:
+P 4-6,
+P 4-8,
+P 4-11
+
+**Workshop 6**:
+P 5-7,
+P 5-8,
+P 5-9,
+P 5-11,
+P 5-24
+
+**Workshop 7**:
+P 6-4,
+P 6-6,
+P 6-7
+
+**Workshop 8**:
+P 7-4,
+P 7-5,
+P 7-6,
+P 7-7,
+P 7-10
+
+**Workshop 9**:
+P 8-3,
+P 8-4,
+P 8-7,
+P 8-9
+
+**Workshop 10**:
+P 9-4,
+P 9-5,
+P 9-6,
+P 9-9,
+P 9-16
+
+**Workshop 11**:
+P 11-5,
+P 11-6,
+P 12.6,
+P 12.21
+
+**Workshop 12**:
+P 10-3,
+P 10-14,
+P 10-19,
+P 14-9
+
+**Workshop 13**:
+P 16-3,
+P 16-6,
+P 16-11
+
+
