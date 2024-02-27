@@ -1,0 +1,427 @@
+---
+title: "Conversion and reactor sizing"
+format: revealjs
+---
+
+```{python}
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+import control as ctrl
+import scipy as sp
+from scipy.optimize import minimize
+from scipy import signal
+from IPython.display import display, Markdown
+plt.style.use('../../../assets/templates/present.mpstyle')
+```
+
+## Is this a reactor
+
+::: {.r-stack}
+
+![](../../../assets/images/is-this-a-reactor-1.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+![](../../../assets/images/is-this-a-reactor-2.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+![](../../../assets/images/is-this-a-reactor-3.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+![](../../../assets/images/is-this-a-reactor-4.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+![](../../../assets/images/is-this-a-reactor-5.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+![](../../../assets/images/is-this-a-reactor-6.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+![](../../../assets/images/is-this-a-reactor-7.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+![](../../../assets/images/is-this-a-reactor-8.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+![](../../../assets/images/is-this-a-reactor-9.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+![](../../../assets/images/is-this-a-reactor-10.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+![](../../../assets/images/is-this-a-reactor-11.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+![](../../../assets/images/is-this-a-reactor-12.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+![](../../../assets/images/is-this-a-reactor-13.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+![](../../../assets/images/is-this-a-reactor-14.png){.fragment .current-visible .absolute top=50 right=50 width=90%}
+
+:::
+
+## Review - general mole balance
+
+![](../../../assets/images/mole_balance.png){width=80%}
+
+
+:::{.extrapad .incremental}
+
+* General form: $F_{j0} - F_j  + G_j =  \frac{dN_j}{dt}$
+
+* Uniform generation
+  $$
+  F_{j0} - F_j + r_j V =  \frac{dN_j}{dt}
+  $$
+
+
+* Non-uniform generation
+  $$
+  F_{j0} - F_j + \int^V r_j dV =  \frac{dN_j}{dt}
+  $$
+
+:::
+
+## Reactor mole balance
+
+
+::: {.columns}
+:::: {.column width="100%"}
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+:::{.extrapad}
+
+| Reactor | Differential form | Algebraic form | Integral form |
+|:--------|:------------------|:---------------|:--------------|
+| Batch | $$ \frac{dN_A}{dt} = r_AV $$|| $$ t = \int_{N_{A0}}^{N_A} \frac{dN_A}{r_A V}$$|
+| CSTR | | $$V = \frac{F_{A0} - F_A}{-r_A} $$ | |
+| PFR | $$ \frac{dF_A}{dV} = r_A $$|| $$ V = \int_{F_{A0}}^{F_A} \frac{dF_A}{r_A}$$|
+| PBR | $$ \frac{dF_A}{dW} = r'_A $$|| $$ W = \int_{F_{A0}}^{F_A} \frac{dN_A}{r'_A}$$|
+||||||
+
+:::
+
+::::
+:::
+
+
+## Conversion, X
+
+:::{.incremental}
+
+* Conversion is convenient for relating: $r_j, V, \upsilon, N_j, F_j,  \text{and } C_j$
+
+* Consider the generic reaction
+
+  $$ \ce{a A + b B -> c C + d D}$$
+
+* Choose limiting reactant A as basis of calculation and normalize
+
+  $$ \ce{ A + \frac{b}{a} B -> \frac{c}{a} C + \frac{d}{a} D}$$
+
+* :::{.highlight}
+  **Conversion (X)**: The fraction or percentage of a reactant that is consumed
+  during a chemical reaction.
+  :::
+  $$ 
+  X = \frac{\text{moles of A reacted}}{\text{moles of A fed}}
+  $$
+
+* **Batch system**: “Moles A fed” is the amount of A at the start of the reactor (t=0)
+  **Flow system**: “Moles A fed” is the amount of A entering the reactor
+
+:::
+
+## Conversion, X
+
+:::{.extrapad}
+Consider $\ce{A + 2B -> 2C}$, Start with 1 mole of A & 1 mole of B
+:::
+
+::::{.columns}
+
+:::{.column .fragment width=45%}
+
+### A is the basis:
+
+At the end we have
+
+:::{.incremental}
+* 1 mole A, 1 mole B 
+  
+  $X_A = 0/1 = 0$ 
+  $\Rightarrow \text{no reaction}$
+
+* $\frac{1}{2}$ mole A, 0 mole B 
+
+  $X_A = 0.5/1 = 1/2 (0.5)$ 
+
+
+* 0 mole A, [-1 mole B]{.highlight}
+
+  $X_A = 1/1 = 1$ 
+  $\Rightarrow \text{complete reaction, but not possible}$
+
+:::
+
+:::
+:::{.column width=10%}
+:::
+
+:::{.column .fragment width=45%}
+
+### B is the basis:
+
+At the end we have
+
+:::{.incremental}
+* 1 mole A, 1 mole B 
+  
+  $X_B = 0/1 = 0$ 
+  $\Rightarrow \text{no reaction}$
+
+* $\frac{1}{2}$ mole A, 0 mole B 
+
+  $X_B = 1/1 = 1$ 
+  $\Rightarrow \text{complete reaction}$
+
+:::
+
+
+:::
+::::
+
+::: {.callout-note .fragment appearance="simple"}
+
+Pick the limiting reagent as the basis to calculate conversion
+
+:::
+
+
+## Moles and molar flow rate in terms of $X_A$
+
+:::{.highlight}
+
+$$ 
+\ce{ A + \frac{b}{a} B -> \frac{c}{a} C + \frac{d}{a} D}
+\qquad \qquad
+X = \frac{\text{moles of A reacted}}{\text{moles of A fed}}
+$$
+
+:::
+
+:::{.incremental}
+
+* **Batch systems**: Longer reactant is in reactor, more reactant is converted
+  to product (until reactant is consumed or the reaction reaches equilibrium)
+
+  $$N_A = N_{A0} - N_{A0} X_A$$
+
+  $$N_A = N_{A0}( 1 - X_A)$$
+
+* **Flow systems**: For a given flow rate, the larger the reactor, the more
+  time it takes the reactant to pass through the reactor, the more time to
+  react 
+
+  $$F_A = F_{A0} - F_{A0} X_A$$
+
+  $$F_A = F_{A0}( 1 - X_A)$$
+
+:::
+
+## Design equation in terms of X: Batch reactor
+
+::::{.columns}
+
+:::{.column width=55%}
+
+
+:::{.incremental}
+
+* Ideal batch reactor design equation
+
+  $$
+  \frac{dN_A}{dt}=r_A V
+  $$
+
+* $$N_A = N_{A0}( 1 - X_A)$$
+
+* Taking the derivative of $N_A$ equation
+
+  $$
+  \frac{d}{dt}N_A = \frac{d}{dt}\left( N_{A0}(1 - X_A)\right)
+  $$
+
+  $$
+  \frac{dN_A}{dt} = 0 - N_{A0}\frac{dX_A}{dt}
+  $$
+
+* Substituting
+
+  :::{.highlight}
+  $$
+  N_{A0} \frac{dX_A}{dt} = -r_A V
+  $$
+  :::
+:::
+
+
+:::
+:::{.column width=5%}
+:::
+
+
+:::{.column width=40%}
+![](../../../assets/images/mole_balance_batch_reactor.png){width=70%}
+
+:::{.fragment .absolute top=600}
+
+:::{.highlight}
+$$
+t = N_{A0} \int_0^{X_A}\frac{dX_A}{-r_A V}
+$$
+:::
+
+:::
+:::
+::::
+
+
+## Design equation in terms of X: CSTR
+
+::::{.columns}
+:::{.column width=50%}
+
+:::{.incremental}
+
+* Ideal steady state CSTR design equation
+ 
+  $$
+  V = \frac{F_{A0}-F_A}{-r_A}
+  $$
+
+* Substitute for $F_A$
+
+  $$F_A = F_{A0}( 1 - X_A)$$
+
+  $$
+  V = \frac{\cancel{F_{A0}} - \left[ \cancel{F_{A0}} - F_{A0} X_A \right]}{-r_A}
+  $$
+
+
+* :::{.highlight}
+  $$
+  V = \frac{- F_{A0} X_A}{-r_A}
+  $$
+  :::
+
+:::
+ 
+:::
+:::{.column width=5%}
+:::
+
+:::{.column width=45%}
+
+![](../../../assets/images/mole_balance_cstr.png)
+
+:::
+::::
+
+::: {.callout-note .fragment appearance="simple"}
+
+$V$ is the CSTR volume required to achieve a specified conversion. $X_A$ and
+$–r_A$ are evaluated at the exit of the CSTR 
+
+:::
+
+
+## Design equation in terms of X: PFR
+
+:::{.incremental}
+
+* Ideal steady state PFR design equation
+ 
+  $$
+  \frac{dF_A}{dV} =r_A
+  $$
+
+* $$F_A = F_{A0}( 1 - X_A)$$
+
+* Taking the derivative of $F_A$ equation
+
+  $$
+  \frac{d}{dV}F_A = \frac{d}{dV}\left( F_{A0}(1 - X_A)\right)  
+ $$
+
+  $$
+  \frac{dF_A}{dV} = 0 - F_{A0}\frac{dX_A}{dV}
+  \qquad \Rightarrow \qquad 
+  \frac{dF_A}{dV} = - F_{A0}\frac{dX_A}{dV}
+  $$
+
+* Substituting
+
+  :::{.highlight}
+  $$
+  F_{A0} \frac{dX_A}{dV} = -r_A 
+  \qquad \Rightarrow \qquad 
+  V  = F_{A0} \int_0^{X_A} \frac{dX_A}{-r_A}
+  $$
+  :::
+:::
+ 
+
+## Design equation in terms of X: PBR
+
+
+::::{.columns}
+
+:::{.column width=35%}
+
+![](../../../assets/images/mole_balance_pbr.png){width=70%}
+
+:::
+:::{.column width=5%}
+:::
+
+
+:::{.column width=60%}
+
+ 
+* Ideal steady state PBR design equation
+ 
+  $$
+  \frac{dF_A}{dW} =r'_A
+  $$
+
+* $$F_A = F_{A0}( 1 - X_A)$$
+
+* Taking the derivative of $F_A$ equation
+
+  $$
+  \frac{d}{dW}F_A = \frac{d}{dW}\left( F_{A0}(1 - X_A)\right)  
+  $$
+
+  $$
+  \frac{dF_A}{dW} = - F_{A0}\frac{dX_A}{dW}
+  $$
+
+* Substituting
+
+  :::{.highlight}
+  $$
+  F_{A0} \frac{dX_A}{dW} = -r'_A 
+  \Rightarrow
+  W  = F_{A0} \int_0^{X_A} \frac{dX_A}{-r'_A}
+  $$
+  :::
+:::
+ 
+
+:::
+::::
+
+## Reactor mole balance in terms of X
+
+
+::: {.columns}
+:::: {.column width="100%"}
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+:::{.extrapad}
+
+| Reactor | Differential form | Algebraic form | Integral form |
+|:--------|:------------------|:---------------|:--------------|
+| Batch | $$ N_{A0}\frac{dX}{dt} = r_AV $$|| $$ t = N_{A0}\int_0^{X} \frac{dX}{r_A V}$$|
+| CSTR | | $$V = \frac{F_{A0}X}{-r_A} $$ | |
+| PFR | $$ F_{A0}\frac{dX}{dV} = -r_A $$|| $$ V = F_{A0} \int_{0}^{X} \frac{dX}{-r_A}$$|
+| PBR | $$ F_{A0}\frac{dX}{dW} = -r'_A $$|| $$ W = F_{A0} \int_{0}^{X} \frac{dX}{-r'_A}$$|
+||||||
+
+:::
+
+::::
+:::
+
+

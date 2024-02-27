@@ -841,7 +841,7 @@ $$
    only in the axial direction, ignoring effects in the radial or
    circumferential directions. Concentration and temperature
    changes along the length of the reactor not radially.
-6. **Constant Physical Properties**
+5. **No pressure drop**;  **Constant Physical Properties**
 
 ## Mole balance: PFR
 
@@ -868,7 +868,7 @@ $$
 
 1. **Steady-State Operation**
 2. **One-Dimensional Flow**
-3. **Constant Physical Properties**
+3. **No pressure drop**;  **Constant Physical Properties**
 4. **No Back-Mixing**: The reactor operates under plug flow conditions with no
    back-mixing or axial dispersion of reactants or products. 
 5. **Constant Cross-Sectional Area**: The cross-sectional area of the PFR is
