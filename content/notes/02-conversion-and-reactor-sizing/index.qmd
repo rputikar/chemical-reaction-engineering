@@ -1,0 +1,6 @@
+--- 
+title: "Mole balances" 
+date: 2024-02-22
+resources:
+  - "./Ranjeet_Notes_Fogler_Chapter 02 - Conversion and reactor sizing.pdf"
+---

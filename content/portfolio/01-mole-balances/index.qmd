@@ -3,6 +3,7 @@ title: "Portfolio 01: Mole balances"
 date: 2024-02-22
 format:
   pdf
+draft: true
 ---
 
 Answer following questions

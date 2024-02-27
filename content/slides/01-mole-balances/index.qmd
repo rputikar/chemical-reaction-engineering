@@ -735,6 +735,35 @@ $$
 
 ## Mole balance: Batch reactor
 
+### Assumptions
+
+::::{.columns}
+
+:::{.column width=40%}
+
+![](../../../assets/images/mole_balance_batch_reactor.png){width=70%}
+
+
+:::
+:::{.column width=5%}
+:::
+
+:::{.column width=55%}
+
+1. **Perfect mixing**: The reactor contents are perfectly mixed (Ideal reactor).
+2. **Constant Volume**: The reactor volume is constant.
+4. **Constant Physical Properties**: The physical properties (density,
+   viscosity, etc.) of the reaction mixture are constant.
+5. **Single Reaction Phase**: The reaction is assumed to occur in a single
+   phase (either all gas, all liquid, or all solid).
+6. **Closed system**: No material is lost to the surroundings.
+
+:::
+::::
+
+
+## Mole balance: Batch reactor
+
 ::::{.columns}
 
 :::{.column width=40%}
@@ -749,6 +778,32 @@ $$
 :::{.column width=55%}
 
  
+:::
+::::
+
+## Mole balance: CSTR
+
+### Assumptions
+
+::::{.columns}
+:::{.column width=40%}
+
+![](../../../assets/images/mole_balance_cstr.png)
+ 
+:::
+:::{.column width=5%}
+:::
+
+:::{.column width=55%}
+
+1. **Steady-State Operation**: No accumulation of reactants or products over
+   time.
+2. **Continuous Flow**: Material continuously flows into and out of the
+   reactor.
+3. **Perfect mixing**: The composition is uniform throughout the reactor.
+4. **Constant Volume**: The volume of fluid within reactor remains constant.
+5. **Constant Physical Properties** 
+
 :::
 ::::
 
@@ -769,10 +824,60 @@ $$
 ::::
 
 
+## Mole balance: PFR
+
+### Assumptions
+
+![](../../../assets/images/mole_balance_pfr.png){width=90%}
+
+1. **Steady-State Operation**: no accumulation of materials in any section of
+   the reactor over time.
+2. **Plug Flow**: The flow through the reactor is plug flow, meaning all
+   elements of the fluid move with the same velocity and there's no
+   back-mixing. 
+3. **Constant Cross-Sectional Area**: The cross-sectional area of the PFR is
+   constant along its length.
+4. **One-Dimensional Flow**: The flow of reactants and products is considered
+   only in the axial direction, ignoring effects in the radial or
+   circumferential directions. Concentration and temperature
+   changes along the length of the reactor not radially.
+6. **Constant Physical Properties**
 
 ## Mole balance: PFR
 
 ![](../../../assets/images/mole_balance_pfr.png){width=70%}
+
+
+
+## Mole balance: PBR
+
+### Assumptions
+
+::::{.columns}
+
+:::{.column width=35%}
+
+![](../../../assets/images/mole_balance_pbr.png){width=70%}
+
+:::
+:::{.column width=5%}
+:::
+
+
+:::{.column width=60%}
+
+1. **Steady-State Operation**
+2. **One-Dimensional Flow**
+3. **Constant Physical Properties**
+4. **No Back-Mixing**: The reactor operates under plug flow conditions with no
+   back-mixing or axial dispersion of reactants or products. 
+5. **Constant Cross-Sectional Area**: The cross-sectional area of the PFR is
+   constant along its length.
+6. **Uniform Packing**: Constant surface area for reaction per unit reactor
+   volume.
+ 
+:::
+::::
 
 
 ## Mole balance: PBR
