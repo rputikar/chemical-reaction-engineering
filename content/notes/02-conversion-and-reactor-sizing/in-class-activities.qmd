@@ -1,0 +1,7 @@
+---
+title: "In class activity: Conversion and Reactor sizing"
+date: 2024-02-28
+format:
+  pdf
+---
+

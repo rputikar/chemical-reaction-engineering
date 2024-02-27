@@ -424,4 +424,119 @@ $–r_A$ are evaluated at the exit of the CSTR
 ::::
 :::
 
+## Sizing of continuous flow reactors
+
+:::{.incremental}
+
+* Sizing refers to either of
+
+  - Determining reactor volume for specified conversion
+  - Determining conversion for a specified volume 
+
+* For All irreversible reactions of order greater than 0, As we approach
+  complete conversion, the reciprocal rate approaches infinity
+
+:::
+
+:::{.fragment}
+
+::::{.columns}
+:::{.column width=50%}
+
+![](../../../assets/images/reactor-volume-rate-and-conversion-01.png){width=70%}
+
+:::
+
+:::{.column width=50%}
+
+* Irreversible reaction: 
+
+  As $X \rightarrow 1 ; -r_A \rightarrow 0$
+
+* Reversible reaction: 
+  
+  As $X \rightarrow X_e ; -r_A \rightarrow 0$
+
+$$
+\Rightarrow \frac{1}{-r_A} \rightarrow \infty \therefore V \rightarrow \infty 
+$$
+
+:::
+::::
+
+:::
+
+::: {.callout-note .fragment appearance="simple"}
+
+Infinite reactor volume is necessary to reach complete conversion
+
+:::
+
+
+## Sizing of continuous flow reactors
+
+::::{.columns}
+:::{.column .fragment width=50%}
+
+### CSTR
+
+$$
+V = \left( \frac{F_{A0}}{(-r_A)_{exit}} \right) \cdot X 
+$$
+
+
+![](../../../assets/images/levenspeil-plot-cstr.png){width=90%}
+
+
+:::{.highlight .smaller}
+CSTR volume
+
+area of rectangle bound by $X_A$ and $\frac{F_{A0}}{-r_{A, exit}}$
+:::
+
+:::
+
+:::{.column .fragment width=50%}
+
+### PFR
+
+
+$$
+V = \int_0^X \left( \frac{F_{A0}}{(-r_A)}\right) dX
+$$
+
+![](../../../assets/images/levenspeil-plot-pfr.png){width=90%}
+
+:::{.highlight .smaller}
+PFR volume
+
+area under the curve $\frac{F_{A0}}{-r_{A}} = f(X_A)$
+:::
+
+:::
+::::
+
+
+## Levenspiel Plots - Reactor Sizing
+
+:::{.incremental}
+
+* Given $–r_A$ as a function of conversion, $-r_A= f(X)$, one can size any type
+  of reactor.
+
+* We do this by constructing a Levenspiel plot.
+
+* Here we plot either $\frac{F_{A0}}{-r_A}$ or $\frac{1}{-r_A}$ as a function of $X$.
+
+:::
+
+:::{r-stack}
+
+![](../../../assets/images/cstr-levenspeil-2.png){.fragment .current-visible .absolute top=300 right=50 width=90%}
+![](../../../assets/images/pfr-levenspeil-2.png){.fragment .current-visible .absolute top=300 right=50 width=90%}
+
+:::
+
+
+
 

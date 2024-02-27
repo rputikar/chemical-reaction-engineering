@@ -1,0 +1,136 @@
+---
+title: 
+  "Workshop 02: Conversion and reactor sizing"
+date: 2024/02/28
+format: html
+---
+
+Try following problems from Fogler 5e[@fogler2016].
+
+P2-3, P2-4, P2-7, P2-10. 
+
+We will go through some of these problems in the workshop. 
+
+
+1. **P2-3**: You have two CSTRs and two PFRs, each with a volume of $1.6 m^3$ . Use [@fig-2-2b] to calculate the conversion for each of the reactors in the following arrangements.
+
+(a) Two CSTRs in series.
+(b) Two PFRs in series.
+(c) Two CSTRs in parallel with the feed, $F_{A0}$, divided equally between the two reactors.
+(d) Two PFRs in parallel with the feed divided equally between the two reactors.
+(e) A CSTR and a PFR in parallel with the flow equally divided. Calculate the overall conversion, $X_{ov}$
+
+$$
+X_{ov} = \frac{F_{A0}-F_{A,CSTR} - F_{A,PFR}}{F_{A0}}
+, \text{with }
+F_{A,CSTR} = \frac{F_{A0}}{2} - \frac{F_{A0}}{2} X_{CSTR}
+, \text{and }
+F_{A,PFR} = \frac{F_{A0}}{2} (1 -  X_{PFR})
+$$
+
+(f) A PFR followed by a CSTR.
+(g) A CSTR followed by a PFR. 
+(h) A PFR followed by two CSTRs. Is this arrangement a good arrangement or is there a better one?
+
+::: {.content-visible when-format="html"}
+
+![Figure-2-2b](../../../assets/images/fig-2-2b.png){#fig-2-2b width=70%}
+
+:::
+
+::: {.content-visible unless-format="html"}
+
+![Figure-2-2b](../../../assets/images/fig-2-2b.png){#fig-2-2b}
+
+:::
+
+
+2. **P2-4**: The exothermic reaction of stillbene (A) to form the economically
+   important trospophene (B) and methane (C), i.e.,
+
+   $$\ce{A -> B + C}$$
+
+   was carried out adiabatically and the following data recorded:
+
+| X   | $r_A (mol/dm^3 min)$ |
+|-----|------------------|
+| 0   | 1                |
+| 0.2 | 1.67             |
+| 0.4 | 5                |
+| 0.45| 5                |
+| 0.5 | 5                |
+| 0.6 | 5                |
+| 0.8 | 1.25             |
+| 0.9 | 0.91             |
+
+: Problem 2.4 rate data {#tbl-2-4}
+
+   The entering molar flow rate of A was $300 mol/min$.
+
+   (a) What are the PFR and CSTR volumes necessary to achieve 40% conversion? 
+   (b) Over what range of conversions would the CSTR and PFR reactor volumes be identical?
+   (c) What is the maximum conversion that can be achieved in a $105 dm^3$ CSTR?
+   (d) What conversion can be achieved if a $72 dm^3$ PFR is followed in series by a $24 dm^3$ CSTR?
+   (e) What conversion can be achieved if a $24 dm^3$ CSTR is followed in a series by a $72 dm^3$ PFR?
+   (f) Plot the conversion and rate of reaction as a function of PFR reactor volume up to a volume of $100 dm^3$.
+
+
+3. **P2-7**: The adiabatic exothermic irreversible gas-phase reaction
+
+   $$\ce{2A + B -> 2C}$$
+
+   is to be carried out in a ﬂow reactor for an equimolar feed of A and B. A
+   Levenspiel plot for this reaction is shown in [@fig-p-2-7b] .
+
+   (a) What PFR volume is necessary to achieve 50% conversion?
+   (b) What CSTR volume is necessary to achieve 50% conversion?
+   (c) What is the volume of a second CSTR added in series to the first CSTR
+   (Part b) necessary to achieve an overall conversion of 80%? 
+   (d) What PFR volume must be added to the first CSTR (Part b) to raise the
+   conversion to 80%?
+   (e) What conversion can be achieved in a $6 \times 10^4 m^3$ CSTR? In a 
+   $6 \times 10^4 m^3$ PFR?
+   (f) Think critically to critique the answers (numbers) to this problem.
+
+::: {.content-visible when-format="html"}
+
+![fig-p2-7b](../../../assets/images/fig-p2-7b.png){#fig-p-2-7b width=70%}
+
+:::
+
+::: {.content-visible unless-format="html"}
+
+![Figure-p2-7b](../../../assets/images/fig-p2-7b.png){#fig-p-2-7b}
+
+:::
+
+3. **P2.10**: The curve shown in [@fig-p-2-10b] is typical of a gas-solid
+   catalytic exothermic reaction carried out adiabatically.
+
+   (a) Assuming that you have a ﬂuidized CSTR and a PBR containing equal
+   weights of catalyst, how should they be arranged for this adiabatic
+   reaction? Use the smallest amount of catalyst weight to achieve 80%
+   conversion of A.
+   (b) What is the catalyst weight necessary to achieve 80% conversion in a
+   fluidized CSTR? 
+   (c) What ﬂuidized CSTR weight is necessary to achieve 40% conversion?
+   (d) What PBR weight is necessary to achieve 80% conversion?
+   (e) What PBR weight is necessary to achieve 40% conversion?
+   (f) Plot the rate of reaction and conversion as a function of PBR catalyst
+   weight, W.
+
+   Additional information: FA0 = 2 mol/s.
+
+::: {.content-visible when-format="html"}
+
+![Figure P2-10b](../../../assets/images/fig-p2-10b.png){#fig-p-2-10b width=70%}
+
+:::
+
+::: {.content-visible unless-format="html"}
+
+![Figure P2-10b](../../../assets/images/fig-p2-10b.png){#fig-p-2-10b}
+
+:::
+
+

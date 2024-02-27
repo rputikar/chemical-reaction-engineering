@@ -49,15 +49,15 @@ style="position=absolute;top: 0;left: 0;bottom: 0;right: 0;width:
 100%;min-height:600px;"></iframe>
 :::
 
+<!--
 ## Videos
-
 
 ::: {.panel-tabset}
 ## Overview of chemical reaction engineering
 {{< video https://www.youtube.com/embed/e3H5DPYlOF8 >}}
 
 :::
-
+-->
 
 ## Lecture notes
 
