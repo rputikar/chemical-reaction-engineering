@@ -1,0 +1,291 @@
+---
+title: 
+  "Solution: Workshop 01 - Mole balances"
+date: 2024/02/24
+format: pdf
+---
+
+```{python}
+import numpy as np
+from IPython.display import display, Markdown
+```
+
+## Q 1-5  
+
+What assumptions were made in the derivation of the design equation
+for:
+
+(a) The batch reactor (BR)?
+(b) The CSTR?
+(c) The plug-flow reactor (PFR)?
+(d) The packed-bed reactor (PBR)?
+(e) State in words the meanings of $–r_A$ and $–r′_A$.
+
+## Solution
+
+### Batch reactor
+
+1. **Perfect mixing**: The reactor contents are perfectly mixed (Ideal reactor).
+2. **Constant Volume**: The reactor volume is constant.
+4. **Constant Physical Properties**: The physical properties (density,
+   viscosity, etc.) of the reaction mixture are constant.
+5. **Single Reaction Phase**: The reaction is assumed to occur in a single
+   phase (either all gas, all liquid, or all solid).
+6. **Closed system**: No material is lost to the surroundings.
+
+### Continuously Stirred Tank Reactor (CSTR)
+
+1. **Steady-State Operation**: No accumulation of reactants or products over
+   time.
+2. **Continuous Flow**: Material continuously flows into and out of the
+   reactor.
+3. **Perfect mixing**: The composition is uniform throughout the reactor.
+4. **Constant Volume**: The volume of fluid within reactor remains constant.
+5. **Constant Physical Properties** 
+
+### Plug-flow reactor (PFR)
+
+1. **Steady-State Operation**: no accumulation of materials in any section of
+   the reactor over time.
+2. **Plug Flow**: The flow through the reactor is plug flow, meaning all
+   elements of the fluid move with the same velocity and there's no
+   back-mixing. 
+3. **Constant Cross-Sectional Area**: The cross-sectional area of the PFR is
+   constant along its length.
+4. **One-Dimensional Flow**: The flow of reactants and products is considered
+   only in the axial direction, ignoring effects in the radial or
+   circumferential directions. Concentration and temperature
+   changes along the length of the reactor not radially.
+5. **No pressure drop**;  **Constant Physical Properties**
+
+
+### Packed-bed reactor (PBR)
+
+1. **Steady-State Operation**
+2. **One-Dimensional Flow**
+3. **No pressure drop**;  **Constant Physical Properties**
+4. **No Back-Mixing**: The reactor operates under plug flow conditions with no
+   back-mixing or axial dispersion of reactants or products. 
+5. **Constant Cross-Sectional Area**: The cross-sectional area of the PFR is
+   constant along its length.
+6. **Uniform Packing**: Constant surface area for reaction per unit reactor
+   volume.
+ 
+### State in words the meanings of $–r_A$ and $–r′_A$.
+
+$-r_A$ is the moles of A reacted per unit volume of reactor per unit time. It
+is based on the volume of the reactor and has units of $mol/ dm^3 \ s$. Whereas,
+$-r'_A$ is the number of moles of A reacted per unit mass of catalyst per
+unit time. It based on the mass of the catalyst and has units of $mol/ kg-cat
+\ s$. $-r_A$ is used for homogeneous reactions, $-r'_A$ is used for heterogeneous
+reactions involving solid catalysts. 
+
+
+
+## Q 1-6
+
+Use the mole balance to derive an equation analogous to Equation (1-7) ($V =
+(F_j0 - F_j)/ -r_j)$ for a fluidized CSTR containing catalyst particles
+([@fig-q-1-6]) in terms of the catalyst mass, $W$, and other appropriate
+terms.
+
+::: {.content-visible when-format="html"}
+
+![fig-q1.6](../../../assets/images/fig-q1-6.png){#fig-q-1-6 width=70%}
+
+:::
+
+::: {.content-visible unless-format="html"}
+
+![fig-q1.6](../../../assets/images/fig-q1-6.png){#fig-q-1-6}
+
+:::
+
+## Solution
+
+Assumptions: 
+
+1. Steady state
+2. Completely mixed: As the catalyst particles rigorously mix within fluidized
+   bed.
+
+Since the reaction occurs on the catalyst, we take mass of catalyst as basis
+and not the volume of the fluidized bed. Thus for component $j$ the rate is
+expressed as $r'_j$ with unit $mol/ kg-cat\ s$.
+
+General mole balance: 
+
+$$
+  F_{j0} - F_j + \int^V \rho_b r'_j dV =  \frac{dN_j}{dt}
+$${#eq-mole-balance}
+
+Since the reactor is at steady state
+
+$$
+\frac{dN_j}{dt} = 0
+$${#eq-ss}
+
+completely mixed assumption means 
+$$
+\int^V \rho_b r'_j dV =  \rho_b V r'_j 
+$${#eq-mixed}
+
+The weight of catalyst $W$ can be written as 
+
+$$
+W = \rho_b V
+$${#eq-catalyst-weight}
+
+where, $\rho_b$ is the bulk density. 
+
+The mole balance equation thus becomes
+
+$$
+  F_{j0} - F_j + W r'_j = 0
+$${#eq-mole-balance}
+
+Rearranging
+$$
+  W = \frac{F_{j} - F_{j0}}{r'_j}
+$${#eq-mole-balance2}
+
+
+## P 1.4 LA Basin
+ 
+[Solution to the LA Basin problem](https://websites.umich.edu/~elements/5e/web_mod/la_basin/index.htm)
+
+
+## P 1-5
+
+The reaction $\ce{A -> B}$ is to be carried out isothermally in a
+continuous-ﬂow reactor. The entering volumetric flow rate $v_0$ is $10 dm^3/h$.
+(Note: $F_A = C_A v$. For a constant volumetric flow rate $v = v_0$ , then $F_A
+= C_A v_0$ . Also, $C_{A0} = F_{A0} ⁄ v_0 = ( [ 5 mol/h ] ⁄ [ 10 dm^3 /h ] ) =
+0.5 mol/dm^3.)$
+
+Calculate both the CSTR and PFR reactor volumes necessary to consume 99% of A
+(i.e., $C_A= 0.01 C_{A0}$) when the entering molar flow rate is $5 mol/h$,
+assuming the reaction rate $–r_A$ is
+
+a). $–r_A = k$ with $k = 0.05 mol/h \cdot dm^3$
+b). $–r_A = kC_A$ with $k = 0.0001 s^{–1}$
+c). $–r_A = kC_A^2$ with $k = 300 dm^3/ mol \cdot h$
+d). Repeat (a), (b), and/or (c) to calculate the time necessary to consume 99.9%
+    of species A in a $1000 dm^3$ constant-volume batch reactor with $C_{A0} = 0.5
+    mol/dm^3$.
+
+
+## Solution
+
+### Reaction: 
+
+$\ce{A -> B}$
+
+### Assumptions: 
+
+- Isothermal
+- Continuous flow reactor
+
+### Data: 
+
+```{python}
+# Data problem 1.5 
+pd         = {}
+pd['υ~0~ (dm^3^/h)'] = 10
+pd['C~A0~ (mol/dm^3^)'] = 0.5
+pd['X'] = 0.99
+
+for key, value in pd.items(): 
+  md = "{} = {}".format(key, value)
+  display(Markdown(md))
+
+v0 = pd['υ~0~ (dm^3^/h)']
+Ca0 = pd['C~A0~ (mol/dm^3^)']
+X = pd['X']
+one_minus_X = 1 - X
+```
+
+### Question a
+
+$-r_A = k$
+
+```{python}
+k = 0.05
+
+CA =(1-X)*Ca0
+FA0 = Ca0*v0
+FA = CA*v0
+
+V_cstr = v0 * (Ca0-CA)/k
+
+md = "k = {} mol/h dm^3^".format(k)
+display(Markdown(md))
+
+```
+
+For CSTR, 
+
+$$
+V  = \frac{F_{A0}-F_A}{-r_A}
+$${#eq-cstr}
+
+Where, $F_{A0} = C_{A0} \upsilon$
+
+$$
+F_A = C_A \upsilon 
+$$
+
+
+$F_A$  = `{python} one_minus_X` $C_{A0} \upsilon$
+
+From Data
+
+$F_{A0}$ = `{python} FA0`; $F_{A}$ = `{python} FA`
+
+$\therefore V_{CSTR}$ = `{python} V_cstr` $dm^3$. 
+
+
+For PFR, 
+
+$$
+\frac{dF_A}{dV}= r_A
+$$
+
+$$
+F_A  = C_A \upsilon_0; F_{A0}= C_{A0} \upsilon_0
+$$
+
+$$
+-r_A = k
+$$
+
+$$
+\frac{d C_A \upsilon_0}{dV} = -k
+$$
+
+$$
+\frac{\upsilon_0}{-k} \int_{C_{A0}}^{C_A} dC_A = \int_0^V dV
+$$
+
+$$
+V = \frac{\upsilon_0}{k} \left( C_{A0} - C_A \right)
+$$
+
+```{python}
+
+V_pfr = v0*(Ca0-CA)/k
+
+```
+
+$\therefore V_{PFR}$ = `{python} V_pfr` $dm^3$. 
+
+
+Other question can be solved on the same lines. 
+
+### Final answers: 
+
+b. $V_{CSTR} = 2750 dm^3$; $V_{PFR}=127.9 dm^3$
+
+c. $V_{CSTR} = 660 dm^3$; $V_{PFR}=6.6 dm^3$
+
+d. Batch reactor: 66600 h
