@@ -41,7 +41,7 @@ format:
    the food is all glucose and that the overall reaction is
 
    $$ 
-   \ce{C6H1206 + 6 O2 -> 6 CO2 + 6 H2O}, -\Delta H_r = 2816 kJ/mol 
+   \ce{C6H12O6 + 6 O2 -> 6 CO2 + 6 H2O}, -\Delta H_r = 2816 kJ/mol 
    $$
 
    Find man's metabolic rate (the rate of living, loving, and laughing) in

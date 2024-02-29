@@ -567,7 +567,7 @@ $$
 $$
 
 $$
-G_j=\lim _{\substack{n \rightarrow \infty \\ \Delta V \rightarrow 0}} \sum_{i=1}^m r_j \Delta V = \int^V r_j d V
+G_j=\lim _{\substack{n \rightarrow \infty \\ \Delta V \rightarrow 0}} \sum_{i=1}^n r_j \Delta V = \int^V r_j d V
 $$
 
 :::
