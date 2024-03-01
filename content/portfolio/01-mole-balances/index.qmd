@@ -3,7 +3,6 @@ title: "Portfolio 01: Mole balances"
 date: 2024-02-22
 format:
   pdf
-draft: true
 ---
 
 Answer following questions
@@ -12,8 +11,13 @@ Answer following questions
    goals of the course. (1 mark) 
 
 2. Roam around the campus. Identify and photograph 5 reactors. For each
-   reactor, determine the type of ideal reactor that may best describe the
-   reactor. Show photographs. (2 marks)
+   reactor, 
+   - Give one to two line description
+   - Identify what reactions take place
+   - What type of reactor is it? Single phase, multiphase, batch, semibatch,
+     continous, etc... 
+   - Determine the type of ideal reactor that may best describe the reactor. 
+   - Show photographs. (2 marks)
 
 3. For the following processes, search the web and determine the main reactions
    and the reactors used. (2 marks)
