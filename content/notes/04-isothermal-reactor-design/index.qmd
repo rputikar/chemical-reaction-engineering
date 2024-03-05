@@ -1,0 +1,21 @@
+--- 
+title: "Isothermal reactor design"
+date: 2024-03-03
+resources:
+  - "./Ranjeet_Notes_Fogler_Chapter 05 - Isothermal reaector design - Conversion.pdf"
+  - "./Ranjeet_Notes_Fogler_Chapter 06 - Isothermal reactors design.pdf"
+---
+
+
+::: {.callout-note}
+
+[Notes on Chapter 5 of Elements of Chemical Reaction Engineering
+[@fogler2016]](./Ranjeet_Notes_Fogler_Chapter 05 - Isothermal reaector design - Conversion.pdf)
+
+[Notes on Chapter 6 of Elements of Chemical Reaction Engineering
+[@fogler2016]](./Ranjeet_Notes_Fogler_Chapter 06 - Isothermal reactors design.pdf)
+
+
+:::
+
+

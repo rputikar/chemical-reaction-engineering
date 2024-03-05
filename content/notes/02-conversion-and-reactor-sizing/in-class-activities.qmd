@@ -1,7 +1,145 @@
 ---
 title: "In class activity: Conversion and Reactor sizing"
-date: 2024-02-28
+date: 2024-03-03
 format:
   pdf
 ---
+
+```{python}
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+import pandas as pd
+import scipy.interpolate as interpolate
+import scipy.integrate as integrate
+import tabulate as tab
+from IPython.display import display, Markdown
+plt.style.use('../../../assets/templates/publish.mplstyle')
+```
+
+## CSTR sizing
+
+Using the data in @tbl-problem_1, calculate $V_{CSTR}$ for $X = 0.4$, and $X = 0.8$
+
+```{python}
+#| label: tbl-problem_1
+#| tbl-cap: "Problem 1 data"
+
+data = np.array([
+    (0, 0.89), (0.1, 1.08), (0.2, 1.33), (0.4, 2.05), (0.6, 3.56),
+    (0.7, 5.06), (0.8, 8)
+], dtype=[('x', float), ('fa0_by_ra', float)])
+
+# Interpolate using cubic spline 
+data_interp = interpolate.CubicSpline(data['x'], data['fa0_by_ra'])
+
+df = {}
+df['data'] = pd.DataFrame({'X': data['x'], '$\\frac{F_{A0}}{-r_A}$': data['fa0_by_ra']})
+
+md = tab.tabulate(df['data'].T, floatfmt='.2f')
+display(Markdown(md))
+
+# data_for_table = [(row['x'], row['fa0_by_ra']) for row in data]
+# headers = ["X", "$\\frac{F_{A0}}{-r_A}$"]
+# md = tab.tabulate(data_for_table, headers=headers, floatfmt='.2f')
+# display(Markdown(md))
+```
+
+## PFR sizing
+
+Using the data in @tbl-problem_2, calculate $V_{PFR}$ for $X = 0.4$, and $X = 0.8$
+
+```{python}
+#| label: tbl-problem_2
+#| tbl-cap: "Problem 2 data"
+
+data2 = np.array([
+    (0, 0.89), (0.1, 1.08), (0.2, 1.33), (0.4, 2.05), (0.6, 3.56),
+    (0.7, 5.06), (0.8, 8)
+], dtype=[('x', float), ('fa0_by_ra', float)])
+
+# Interpolate using cubic spline 
+data2_interp = interpolate.CubicSpline(data2['x'], data2['fa0_by_ra'])
+
+df = {}
+df['data'] = pd.DataFrame({'X': data2['x'], '$\\frac{F_{A0}}{-r_A}$': data2['fa0_by_ra']})
+
+md = tab.tabulate(df['data'].T, floatfmt='.2f')
+display(Markdown(md))
+
+```
+
+## Batch reactor sizing
+
+a. Discuss how you can use Levenspeil plots to design batch reactors.
+
+
+b. We are planning to operate a batch reactor for converting A into R. This is
+a liquid phase reaction with stoichiometry $\ce{A -> R}$. How long must we react
+each batch for concentration to drop from $C_{A0}$ = 1.3 mol/l to $C_{Af}$=
+0.30 mol/l? The data of rate of reaction v/s concentration of A is given in @tbl-problem_3.
+
+
+```{python}
+#| label: tbl-problem_3
+#| tbl-cap: "Problem 3 data"
+
+x_data = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1.0, 1.3, 2.0]
+y_data = [0.1, 0.3, 0.5, 0.6, 0.5, 0.25, 0.10, 0.06, 0.05, 0.045, 0.042]
+
+data3 = np.array(list(zip(x_data, y_data)), dtype=[('CA', float), ('ra', float)])
+
+df = {}
+df['data'] = pd.DataFrame({'$C_A, mol/dm^3$': data3['CA'], '$-r_A, \\frac{mol}{l \cdot min}$': data3['ra']})
+
+md = tab.tabulate(df['data'].T, floatfmt='.3f')
+display(Markdown(md))
+
+```
+
+## An Adiabatic Liquid-Phase Isomerization
+
+The isomerization of butane
+
+$$
+\ce{n-C4H10 <=> i-C4H10}
+$$
+
+was carried out adiabatically in the liquid phase. The data for this reversible
+reaction are given in @tbl-problem_4. The reactor scheme shown below in
+@fig-02-inclass-4. Calculate the volume of each of the reactors for an entering
+molar flow rate of n-butane of 50 kmol/hr.
+
+```{python}
+#| label: tbl-problem_4
+#| tbl-cap: "Problem 4 data"
+
+
+39, 53, 59, 38, 25
+
+x_data = [0.0, 0.2, 0.4, 0.6, 0.65]
+y_data = [39, 53, 59, 38, 25]
+
+data4 = np.array(list(zip(x_data, y_data)), dtype=[('x', float), ('ra', float)])
+
+df = {}
+df['data'] = pd.DataFrame({'X': data4['x'], '$-r_A, \\frac{kmol}{m^3 \cdot h}$': data4['ra']})
+
+md = tab.tabulate(df['data'].T, floatfmt='.2f')
+display(Markdown(md))
+
+```
+
+::: {.content-visible when-format="html"}
+
+![Reactor configuration for problem 4](../../../assets/images/02-in-class-p4.png){#fig-02-inclass-4 width=70%}
+
+:::
+
+::: {.content-visible unless-format="html"}
+
+![Reactor configuration for problem 4](../../../assets/images/02-in-class-p4.png){#fig-02-inclass-4}
+
+:::
+
 

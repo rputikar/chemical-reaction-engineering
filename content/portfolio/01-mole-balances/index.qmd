@@ -10,14 +10,15 @@ Answer following questions
 1. Write a paragraph describing both the content goals and the intellectual
    goals of the course. (1 mark) 
 
-2. Roam around the campus. Identify and photograph 5 reactors. For each
-   reactor, 
+2. Roam around the campus. Identify and photograph 5 reactors. (2 marks) 
+
+   For each reactor, 
    - Give one to two line description
    - Identify what reactions take place
    - What type of reactor is it? Single phase, multiphase, batch, semibatch,
      continous, etc... 
    - Determine the type of ideal reactor that may best describe the reactor. 
-   - Show photographs. (2 marks)
+   - Show photographs. 
 
 3. For the following processes, search the web and determine the main reactions
    and the reactors used. (2 marks)

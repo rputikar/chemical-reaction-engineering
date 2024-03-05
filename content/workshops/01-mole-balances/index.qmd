@@ -3,7 +3,16 @@ title:
   "Workshop 01: mole balances"
 date: 2024/02/24
 format: html
+resources:
+  - "./workshop-1-solution-written.pdf"
 ---
+
+::: {.callout-note}
+
+Solutions to these problems are uploaded at [Workshop 1 solutions](./workshop-1-solution-written.pdf)
+
+:::
+
 
 Try following problems from Fogler 5e[@fogler2016].
 

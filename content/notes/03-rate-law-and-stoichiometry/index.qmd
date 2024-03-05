@@ -1,0 +1,7 @@
+--- 
+title: "Rate law and stoichiometry" 
+date: 2024-03-03
+resources:
+  - "./Ranjeet_Notes_Fogler_Chapter 03 - Rate law.pdf"
+  - "./Ranjeet_Notes_Fogler_Chapter 04 - Stoichiometry.pdf"
+---

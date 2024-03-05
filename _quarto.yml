@@ -89,6 +89,7 @@ website:
         contents:
           - file: ./content/lectures/01-mole-balances/index.qmd
           - file: ./content/lectures/02-conversion-and-reactor-sizing/index.qmd
+          - file: ./content/lectures/03-rate-law-and-stoichiometry/index.qmd
          #
       - section: "Workshops"
         id: workshops
@@ -105,7 +106,7 @@ website:
       - section: "Portfolio"
         id: portfolio
         contents:
-          # - file: ./content/portfolio/01-mole-balances/index.qmd
+          - file: ./content/portfolio/01-mole-balances/index.qmd
 
  #
 format:

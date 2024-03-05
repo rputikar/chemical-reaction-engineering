@@ -7,10 +7,10 @@ format: revealjs
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-import control as ctrl
-import scipy as sp
-from scipy.optimize import minimize
-from scipy import signal
+import pandas as pd
+import scipy.interpolate as interpolate
+import scipy.integrate as integrate
+import tabulate as tab
 from IPython.display import display, Markdown
 plt.style.use('../../../assets/templates/present.mpstyle')
 ```
@@ -533,10 +533,270 @@ area under the curve $\frac{F_{A0}}{-r_{A}} = f(X_A)$
 :::{r-stack}
 
 ![](../../../assets/images/cstr-levenspeil-2.png){.fragment .current-visible .absolute top=300 right=50 width=90%}
-![](../../../assets/images/pfr-levenspeil-2.png){.fragment .current-visible .absolute top=300 right=50 width=90%}
+![](../../../assets/images/pfr-levenspeil-2.png){.fragment .absolute top=300 right=50 width=90%}
 
 :::
 
+## CSTR sizing
 
+Using following data: Calculate $V_{CSTR}$ for $X = 0.4$, and $X = 0.8$
+
+```{python}
+data = np.array([
+    (0, 0.89), (0.1, 1.08), (0.2, 1.33), (0.4, 2.05), (0.6, 3.56),
+    (0.7, 5.06), (0.8, 8)
+], dtype=[('x', float), ('fa0_by_ra', float)])
+
+# Interpolate using cubic spline 
+data_interp = interpolate.CubicSpline(data['x'], data['fa0_by_ra'])
+
+df = {}
+df['data'] = pd.DataFrame({'X': data['x'], '$\\frac{F_{A0}}{-r_A}$': data['fa0_by_ra']})
+
+md = tab.tabulate(df['data'].T, floatfmt='.2f')
+display(Markdown(md))
+
+# data_for_table = [(row['x'], row['fa0_by_ra']) for row in data]
+# headers = ["X", "$\\frac{F_{A0}}{-r_A}$"]
+# md = tab.tabulate(data_for_table, headers=headers, floatfmt='.2f')
+# display(Markdown(md))
+```
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+::::{.columns}
+:::{.column width=50%}
+
+```{python}
+#| echo: false 
+#| output: true 
+
+fig,ax = plt.subplots()
+
+x = np.linspace(0, 0.8, 100)
+fa0_by_ra = data_interp(x)
+
+# calculate volumes
+
+# X = 0.4
+x_p4 = 0.4
+fa0_by_ra_p4 = data_interp(x_p4)
+v_p4 = x_p4 * fa0_by_ra_p4
+
+# X = 0.8
+x_p8 = 0.8
+fa0_by_ra_p8 = data_interp(x_p8)
+v_p8 = x_p8 * fa0_by_ra_p8
+
+ax.scatter(data['x'], data['fa0_by_ra'], marker='s', color='red')
+ax.plot(x, fa0_by_ra, color='black')
+
+# CSTR X = 0.4
+rectangle = plt.Rectangle((0, 0), x_p4, fa0_by_ra_p4, color='skyblue', alpha=0.8)
+ax.add_patch(rectangle)
+
+text_str = r"""$V_{{X={x:.2f}}}$ = {v:.2f} $m^3$""".format(x=x_p4,v=v_p4)
+ax.text(x_p4/2, 0.5, text_str, ha='center', va='bottom')
+
+# CSTR X = 0.8
+rectangle = plt.Rectangle((0, 0), x_p8, fa0_by_ra_p8, color='lightcoral', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$V_{{X={x:.2f}}}$ = {v:.2f} $m^3$""".format(x=x_p8,v=v_p8)
+ax.text(x_p8/2, 7, text_str, ha='center', va='bottom')
+
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 10)
+
+
+plt.show()
+
+```
+:::
+
+:::{.column width=50%}
+
+$$
+V = \left( \frac{F_{A0}}{(-r_A)_{exit}} \right) \cdot X 
+$$
+
+* For $X$ = `{python} x_p4`; 
+  $\frac{F_{A0}}{(-r_A)_{exit}}$ = `{python} Markdown(r"""{f:.2f} $m^3$""".format(f=fa0_by_ra_p4))`
+
+  $V$ = `{python} v_p4` $m^3$ 
+
+* For $X$ = `{python} x_p8`; 
+  $\frac{F_{A0}}{(-r_A)_{exit}}$ = `{python} Markdown(r"""{f:.2f} $m^3$""".format(f=fa0_by_ra_p8))`
+
+  $V$ = `{python} v_p8` $m^3$ 
+
+
+:::
+::::
+
+## PFR sizing
+
+Using following data: Calculate $V_{PFR}$ for $X = 0.4$, and $X = 0.8$
+
+```{python}
+data = np.array([
+    (0, 0.89), (0.1, 1.08), (0.2, 1.33), (0.4, 2.05), (0.6, 3.56),
+    (0.7, 5.06), (0.8, 8)
+], dtype=[('x', float), ('fa0_by_ra', float)])
+
+# Interpolate using cubic spline 
+data_interp = interpolate.CubicSpline(data['x'], data['fa0_by_ra'])
+
+df = {}
+df['data'] = pd.DataFrame({'X': data['x'], '$\\frac{F_{A0}}{-r_A}$': data['fa0_by_ra']})
+
+md = tab.tabulate(df['data'].T, floatfmt='.2f')
+display(Markdown(md))
+
+# data_for_table = [(row['x'], row['fa0_by_ra']) for row in data]
+# headers = ["X", "$\\frac{F_{A0}}{-r_A}$"]
+# md = tab.tabulate(data_for_table, headers=headers, floatfmt='.2f')
+# display(Markdown(md))
+```
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+::::{.columns}
+:::{.column width=50%}
+
+```{python}
+#| echo: false 
+#| output: true 
+
+fig,ax = plt.subplots()
+
+x = np.linspace(0, 0.8, 100)
+fa0_by_ra = data_interp(x)
+
+# calculate volumes
+
+# X = 0.4
+x_p4 = 0.4
+v_p4, err = integrate.quad(data_interp, 0, x_p4)
+
+# X = 0.8
+x_p8 = 0.8
+v_p8, err = integrate.quad(data_interp, 0, x_p8)
+
+ax.scatter(data['x'], data['fa0_by_ra'], marker='s', color='red')
+ax.plot(x, fa0_by_ra, color='black')
+
+# PFR X = 0.4
+# Fill the area under the curve between 0 and 0.4
+x_fill = np.linspace(0, x_p4, 100)
+y_fill = data_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='skyblue', alpha=0.8)
+
+text_str = r"""$V_{{X={x:.2f}}}$ = {v:.2f} $m^3$""".format(x=x_p4,v=v_p4)
+ax.text(x_p4/2, 0.5, text_str, ha='center', va='bottom')
+
+# PFR X = 0.8
+# Fill the area under the curve between 0 and 0.8
+x_fill = np.linspace(0, x_p8, 100)
+y_fill = data_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='lightcoral', alpha=0.4)
+
+text_str = r"""$V_{{X={x:.2f}}}$ = {v:.2f} $m^3$""".format(x=x_p8,v=v_p8)
+ax.text(0.6, 0.5, text_str, ha='center', va='bottom')
+
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 10)
+
+plt.show()
+
+```
+:::
+
+:::{.column width=50%}
+
+$$
+V = \int_0^X \left( \frac{F_{A0}}{(-r_A)}\right) dX
+$$
+
+* For $X$ = `{python} x_p4`; 
+  Numerically integrate the data
+
+  $V$ = `{python} Markdown(r"""{v:.2f} $m^3$""".format(v=v_p4))`
+
+* For $X$ = `{python} x_p8`; 
+  $\frac{F_{A0}}{(-r_A)_{exit}}$ = `{python} Markdown(r"""{f:.2f} $m^3$""".format(f=fa0_by_ra_p8))`
+
+  $V$ = `{python} Markdown(r"""{v:.2f} $m^3$""".format(v=v_p8))`
+
+
+:::
+::::
+
+
+
+## Reactors in Series
+
+:::{.incremental}
+
+* Reactors are arranged sequentially, with the output of one reactor feeding
+  directly into the next.
+
+* Advantages: 
+
+  - Achieve higher overall conversion rates
+  - Handle reactions requiring different conditions at different stages.
+  - Different reaction conditions can be optimized in each reactor. 
+  - **Staging**: Allows for the introduction of intermediates or the removal of
+    by-products between stages.
+
+* Both Continuous Stirred Tank Reactors (CSTRs) and Plug Flow Reactors (PFRs)
+  can be configured in series, either separately or in a mixed arrangement, to
+  optimize reaction conditions and efficiencies.
+
+* Key Considerations
+  - Reactor volume and design optimization
+  - Maintenance and operational complexity
+
+:::
+
+::: {.callout-note .fragment appearance="simple"}
+
+Levenspiel plots can be used to visualize and sequence reactors in series.  
+
+:::
+
+## Reactors in Series
+
+![](../../../assets/images/reactors_in_series_schematic.png){.fragment width=90%}
+
+:::{.fragment}
+
+* In absence of any side streams (inlets or outlets)
+
+  Conversion up to point $i$:
+
+  $$
+  X_i = \frac{\text{total moles of A reacted up to point } i }{\text{Moles A fed into } 1^{st} \text{ reactor}}
+  $$
+
+* Molar Flow rate of species A at point $i$:
+
+  $$
+  F_{Ai} = F_{A0} - F_{A0} X_i
+  $$
+
+:::
 
 

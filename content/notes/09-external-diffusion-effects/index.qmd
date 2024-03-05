@@ -1,0 +1,15 @@
+--- 
+title: "External diffusion effects: heterogeneous reactions"
+date: 2024-03-03
+resources:
+  - "./Ranjeet_Notes_Fogler_Chapter 14 - Mass Transfer Limitations in Reacting Systems.pdf"
+---
+
+
+::: {.callout-note}
+
+[Notes on Chapter 14 of Elements of Chemical Reaction Engineering
+[@fogler2016]](./Ranjeet_Notes_Fogler_Chapter 14 - Mass Transfer Limitations in Reacting Systems.pdf)
+
+:::
+

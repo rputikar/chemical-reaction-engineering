@@ -1,0 +1,21 @@
+---
+title: "Pre class activity: Rate law"
+date: 2024-03-03
+format:
+  pdf
+---
+
+
+- Revisit the concept of Arrhenius equation and activation energy
+
+  * Read section 3.3 from [@fogler2016]. 
+
+  * Go through [Professional reference shelf](https://websites.umich.edu/~elements/5e/03chap/prof.html) for chapter 3.
+
+  * You may find the videos below useful as well. 
+
+    [Collision Theory - Arrhenius Equation & Activation Energy - Chemical Kinetics](https://www.youtube.com/watch?v=jX4dEOFwaLQ)
+
+    [Arrhenius Equation Activation Energy and Rate Constant K Explained](https://www.youtube.com/watch?v=16fFjAcxJSc)
+
+

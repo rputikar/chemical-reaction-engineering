@@ -34,7 +34,7 @@ or window). You can also view them as pdf for printing, or later viewing.
 :::
 
 ::: {.g-col-1}
-[PDF](../../slides/02-conversion-and-reactor-sizing/01-mole-balances.pdf){target="_blank" .btn .btn-info .btn-lg role="button"}
+[PDF](../../slides/02-conversion-and-reactor-sizing/02-conversion-and-reactor-sizing.pdf){target="_blank" .btn .btn-info .btn-lg role="button"}
 
 :::
 :::

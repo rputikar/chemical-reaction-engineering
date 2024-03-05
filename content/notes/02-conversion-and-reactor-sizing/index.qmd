@@ -1,6 +1,14 @@
 --- 
-title: "Mole balances" 
-date: 2024-02-22
+title: "Conversion and reactor sizing" 
+date: 2024-02-28
 resources:
   - "./Ranjeet_Notes_Fogler_Chapter 02 - Conversion and reactor sizing.pdf"
 ---
+
+::: {.callout-note}
+
+[Notes on Chapter 2 of Elements of Chemical Reaction Engineering
+[@fogler2016]](./Ranjeet_Notes_Fogler_Chapter 02 - Conversion and reactor sizing.pdf)
+
+:::
+

@@ -1,0 +1,893 @@
+---
+title: 
+  "Workshop 02 Solution: Conversion and reactor sizing"
+date: 2024/03/03
+format: html
+resources:
+  - "./workshop-02-problem-1-data.csv"
+---
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib
+import matplotlib.pyplot as plt
+from scipy import stats
+import scipy.interpolate as interpolate
+import scipy.integrate as integrate
+from tabulate import tabulate
+from IPython.display import display, Markdown
+plt.style.use('../../../assets/templates/publish.mplstyle')
+```
+
+## Problem 1
+
+**P2-3**: You have two CSTRs and two PFRs, each with a volume of $1.6 m^3$ . Use [@fig-2-2b] to calculate the conversion for each of the reactors in the following arrangements.
+
+(a) Two CSTRs in series.
+(b) Two PFRs in series.
+(c) Two CSTRs in parallel with the feed, $F_{A0}$, divided equally between the two reactors.
+(d) Two PFRs in parallel with the feed divided equally between the two reactors.
+(e) A CSTR and a PFR in parallel with the flow equally divided. Calculate the overall conversion, $X_{ov}$
+
+$$
+X_{ov} = \frac{F_{A0}-F_{A,CSTR} - F_{A,PFR}}{F_{A0}}
+, \text{with }
+F_{A,CSTR} = \frac{F_{A0}}{2} - \frac{F_{A0}}{2} X_{CSTR}
+, \text{and }
+F_{A,PFR} = \frac{F_{A0}}{2} (1 -  X_{PFR})
+$$
+
+(f) A PFR followed by a CSTR.
+(g) A CSTR followed by a PFR. 
+(h) A PFR followed by two CSTRs. Is this arrangement a good arrangement or is there a better one?
+
+::: {.content-visible when-format="html"}
+
+![Figure-2-2b](../../../assets/images/fig-2-2b.png){#fig-2-2b width=70%}
+
+:::
+
+::: {.content-visible unless-format="html"}
+
+![Figure-2-2b](../../../assets/images/fig-2-2b.png){#fig-2-2b}
+
+:::
+
+
+**Solution**:
+
+```{python}
+
+p1_expt_file = './workshop-02-problem-1-data.csv'
+p1_fit_file = './workshop-02-problem-1-fit.csv'
+
+p1_expt_data = np.genfromtxt(p1_expt_file, delimiter=',', dtype=[('x', float), ('y', float)], skip_header=1)
+p1_fit_data = np.genfromtxt(p1_fit_file, delimiter=',', dtype=[('x', float), ('y', float)], skip_header=1)
+
+# Interpolate using cubic spline 
+p1_interp = interpolate.CubicSpline(p1_fit_data['x'], p1_fit_data['y'])
+
+# Function to calculate the conversion in a CSTR for given volume
+def CSTR_Volume_Coordinates(curve_interp, target_volume, x_start=0, x_end=1, steps=1000): 
+
+   for x in np.linspace(x_start, x_end, steps):
+
+      # Avoid division by zero
+      if x == x_start:
+         continue
+      
+      fa0_by_ra_target = target_volume/ (x-x_start)
+      fa0_by_ra_actual = curve_interp(x)
+
+      if fa0_by_ra_target <= fa0_by_ra_actual:
+         return x, fa0_by_ra_target
+
+   # If no valid volume is found within given range, return None. 
+   return None, None
+
+# Function to calculate the conversion in a PFR for a given volume
+def PFR_Volume_Coordinates(curve_interp, target_volume, x_start=0, x_end=1, steps=1000): 
+
+   for x in np.linspace(x_start, x_end, steps):
+
+      # Avoid division by zero
+      if x == x_start:
+         continue
+
+      fa0_by_ra_actual = curve_interp(x)
+      actual_volume, err = integrate.quad(curve_interp, x_start, x)
+
+      if actual_volume >= target_volume:
+         return x, fa0_by_ra_actual
+
+   # If no valid volume is found within given range, return None. 
+   return None, None
+
+
+```
+
+```{python}
+#| label: fig-problem-1
+#| fig-cap: Levenspiel plot of processed data 2 for problem 2-2b
+
+fig,ax = plt.subplots()
+
+ax.scatter(p1_expt_data['x'], p1_expt_data['y'], marker='s', color='red')
+ax.plot(p1_fit_data['x'], p1_fit_data['y'], color='black')
+
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 12)
+
+plt.show()
+
+```
+
+(a) Two CSTRs in series.
+
+```{python}
+#| label: fig-problem-1-a
+#| fig-cap: Conversion from two CSTR in series
+
+fig,ax = plt.subplots()
+
+ax.scatter(p1_expt_data['x'], p1_expt_data['y'], marker='s', color='red')
+ax.plot(p1_fit_data['x'], p1_fit_data['y'], color='black')
+
+# CSTR 1
+target_x_1, target_fa0_by_ra_1 = CSTR_Volume_Coordinates(p1_interp, 1.6, 0, 1)
+
+rectangle = plt.Rectangle((0, 0), target_x_1, target_fa0_by_ra_1, color='skyblue', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_1$ = {x:.2f}""".format(x=target_x_1)
+ax.text(target_x_1/2, 0.5, text_str, ha='center', va='bottom')
+
+# CSTR 2
+target_x_2, target_fa0_by_ra_2 = CSTR_Volume_Coordinates(p1_interp, 1.6, target_x_1, 1)
+
+rectangle = plt.Rectangle((target_x_1, 0), (target_x_2-target_x_1), target_fa0_by_ra_2, color='lightcoral', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_2$ = {x:.2f}""".format(x=target_x_2)
+ax.text((target_x_1 + target_x_2) / 2, 0.5, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 12)
+
+plt.show()
+
+```
+
+(b) Two PFRs in series.
+
+```{python}
+#| label: fig-problem-1-b
+#| fig-cap: Conversion from two PFR in series
+
+fig,ax = plt.subplots()
+
+x_interp =np.linspace(0,1,100)
+
+ax.scatter(p1_expt_data['x'], p1_expt_data['y'], marker='s', color='red')
+ax.plot(x_interp, p1_interp(x_interp), color='grey')
+ax.plot(p1_fit_data['x'], p1_fit_data['y'], color='black')
+
+# PFR 1
+target_x_1, target_fa0_by_ra_1 = PFR_Volume_Coordinates(p1_interp, 1.6, 0, 1)
+
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(0, target_x_1, 100)
+y_fill = p1_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='skyblue', alpha=0.4)
+
+text_str = r"""$X_1$ = {x:.2f}""".format(x=target_x_1)
+ax.text(target_x_1/2, 0.5, text_str, ha='center', va='bottom')
+
+# PFR 2
+target_x_2, target_fa0_by_ra_2 = PFR_Volume_Coordinates(p1_interp, 1.6, target_x_1, 1)
+
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(target_x_1, target_x_2, 100)
+y_fill = p1_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='lightcoral', alpha=0.4)
+
+text_str = r"""$X_2$ = {x:.2f}""".format(x=target_x_2)
+ax.text((target_x_1 + target_x_2) / 2, 0.5, text_str, ha='center', va='bottom')
+
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 14)
+
+plt.show()
+
+```
+
+(c) Two CSTRs in parallel with the feed, $F_{A0}$, divided equally between the two reactors.
+
+
+```{python}
+#| label: fig-problem-1-c
+#| fig-cap: Conversion from two CSTR in parallel
+
+fig,ax = plt.subplots()
+
+ax.scatter(p1_expt_data['x'], p1_expt_data['y']/2, marker='s', color='red')
+ax.plot(p1_fit_data['x'], p1_fit_data['y']/2, color='black')
+
+
+# Interpolate using cubic spline 
+p1c_interp = interpolate.CubicSpline(p1_fit_data['x'], p1_fit_data['y']/2)
+
+# CSTR 1 and 2
+target_x_1, target_fa0_by_ra_1 = CSTR_Volume_Coordinates(p1c_interp, 1.6, 0, 1)
+
+rectangle = plt.Rectangle((0, 0), target_x_1, target_fa0_by_ra_1, color='skyblue', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_1, X_2$ = {x:.2f}""".format(x=target_x_1)
+ax.text(target_x_1/2, 0.25, text_str, ha='center', va='bottom')
+ax.text(target_x_1/2, target_fa0_by_ra_1, '$V_1$, and $V_2$', ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{1}{2}\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 12/2)
+
+plt.show()
+
+```
+
+
+(d) Two PFRs in parallel with the feed divided equally between the two reactors.
+
+```{python}
+#| label: fig-problem-1-d
+#| fig-cap: Conversion from two PFR in parallel
+
+fig,ax = plt.subplots()
+
+x_interp =np.linspace(0,1,100)
+
+# Interpolate using cubic spline 
+p1d_interp = interpolate.CubicSpline(p1_fit_data['x'], p1_fit_data['y']/2)
+
+
+ax.scatter(p1_expt_data['x'], p1_expt_data['y']/2, marker='s', color='red')
+ax.plot(x_interp, p1d_interp(x_interp), color='grey')
+ax.plot(p1_fit_data['x'], p1_fit_data['y']/2, color='black')
+
+# PFR 1 and 2
+target_x_1, target_fa0_by_ra_1 = PFR_Volume_Coordinates(p1d_interp, 1.6, 0, 1)
+
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(0, target_x_1, 100)
+y_fill = p1d_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='skyblue', alpha=0.4)
+
+text_str = r"""$X_1, X_2$ = {x:.2f}""".format(x=target_x_1)
+ax.text(target_x_1/2, 0.25, text_str, ha='center', va='bottom')
+ax.text(target_x_1/2, 2, '$V_1$, and $V_2$', ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{1}{2}\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 14/2)
+
+plt.show()
+
+```
+
+
+(e) A CSTR and a PFR in parallel with the flow equally divided. Calculate the overall conversion, $X_{ov}$
+
+$$
+X_{ov} = \frac{F_{A0}-F_{A,CSTR} - F_{A,PFR}}{F_{A0}}
+, \text{with }
+F_{A,CSTR} = \frac{F_{A0}}{2} - \frac{F_{A0}}{2} X_{CSTR}
+, \text{and }
+F_{A,PFR} = \frac{F_{A0}}{2} (1 -  X_{PFR})
+$$
+
+
+```{python}
+#| label: fig-problem-1-e
+#| fig-cap: Conversion from a CSTR and a PFR in parallel
+
+fig,ax = plt.subplots()
+
+x_interp =np.linspace(0,1,100)
+
+# Interpolate using cubic spline 
+p1e_interp = interpolate.CubicSpline(p1_fit_data['x'], p1_fit_data['y']/2)
+
+
+ax.scatter(p1_expt_data['x'], p1_expt_data['y']/2, marker='s', color='red')
+ax.plot(x_interp, p1e_interp(x_interp), color='grey')
+ax.plot(p1_fit_data['x'], p1_fit_data['y']/2, color='black')
+
+# CSTR 
+target_x_1, target_fa0_by_ra_1 = CSTR_Volume_Coordinates(p1e_interp, 1.6, 0, 1)
+
+xc = target_x_1
+
+rectangle = plt.Rectangle((0, 0), target_x_1, target_fa0_by_ra_1, color='skyblue', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_C$ = {x:.2f}""".format(x=target_x_1)
+ax.text(0.2, 2.0, text_str, ha='center', va='bottom')
+
+# PFR
+target_x_1, target_fa0_by_ra_1 = PFR_Volume_Coordinates(p1e_interp, 1.6, 0, 1)
+
+xp = target_x_1
+
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(0, target_x_1, 100)
+y_fill = p1e_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='lightcoral', alpha=0.4)
+
+text_str = r"""$X_P$ = {x:.2f}""".format(x=target_x_1)
+ax.text(0.8, 0.25, text_str, ha='center', va='bottom')
+
+
+text_str = r"""Overall Conversion: $X_O = \frac{{X_C + X_P}}{{2}}$ = {x:.2f}""".format(x= (xc+xp)/2)
+ax.text(0.5, 6, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{1}{2}\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 14/2)
+
+plt.show()
+
+```
+
+(f) A PFR followed by a CSTR.
+
+```{python}
+#| label: fig-problem-1-f
+#| fig-cap: Conversion from a PFR followed by CSTR
+
+fig,ax = plt.subplots()
+
+ax.scatter(p1_expt_data['x'], p1_expt_data['y'], marker='s', color='red')
+ax.plot(x_interp, p1_interp(x_interp), color='grey')
+ax.plot(p1_fit_data['x'], p1_fit_data['y'], color='black')
+
+# PFR
+target_x_1, target_fa0_by_ra_1 = PFR_Volume_Coordinates(p1_interp, 1.6, 0, 1)
+
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(0, target_x_1, 100)
+y_fill = p1_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='lightblue', alpha=0.4)
+
+text_str = r"""$X_P$ = {x:.2f}""".format(x=target_x_1)
+ax.text(target_x_1/2, 0.5, text_str, ha='center', va='bottom')
+
+
+
+# CSTR 
+target_x_2, target_fa0_by_ra_2 = CSTR_Volume_Coordinates(p1_interp, 1.6, target_x_1, 1)
+
+rectangle = plt.Rectangle((target_x_1, 0), (target_x_2-target_x_1), target_fa0_by_ra_2, color='lightcoral', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_C$ = {x:.2f}""".format(x=target_x_2)
+ax.text((target_x_1 + target_x_2) / 2, 0.5, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 12)
+
+plt.show()
+
+```
+
+
+(g) A CSTR followed by a PFR. 
+
+
+```{python}
+#| label: fig-problem-1-g
+#| fig-cap: Conversion from a CSTR followed by PFR
+
+fig,ax = plt.subplots()
+
+ax.scatter(p1_expt_data['x'], p1_expt_data['y'], marker='s', color='red')
+ax.plot(p1_fit_data['x'], p1_fit_data['y'], color='black')
+
+# CSTR
+target_x_1, target_fa0_by_ra_1 = CSTR_Volume_Coordinates(p1_interp, 1.6, 0, 1)
+
+rectangle = plt.Rectangle((0, 0), target_x_1, target_fa0_by_ra_1, color='skyblue', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_1$ = {x:.2f}""".format(x=target_x_1)
+ax.text(target_x_1/2, 0.5, text_str, ha='center', va='bottom')
+
+# PFR
+target_x_2, target_fa0_by_ra_2 = PFR_Volume_Coordinates(p1_interp, 1.6, target_x_1, 1)
+
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(target_x_1, target_x_2, 100)
+y_fill = p1_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='lightcoral', alpha=0.4)
+
+text_str = r"""$X_2$ = {x:.2f}""".format(x=target_x_2)
+ax.text((target_x_1 + target_x_2) / 2, 0.5, text_str, ha='center', va='bottom')
+
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 12)
+
+plt.show()
+
+```
+
+
+(h) A PFR followed by two CSTRs. Is this arrangement a good arrangement or is there a better one?
+
+
+```{python}
+#| label: fig-problem-1-h
+#| fig-cap: Conversion from a PFR followed by two CSTRs
+
+fig,ax = plt.subplots()
+
+x_interp =np.linspace(0,1,100)
+
+ax.scatter(p1_expt_data['x'], p1_expt_data['y'], marker='s', color='red')
+ax.plot(x_interp, p1_interp(x_interp), color='grey')
+ax.plot(p1_fit_data['x'], p1_fit_data['y'], color='black')
+
+# PFR
+target_x_1, target_fa0_by_ra_1 = PFR_Volume_Coordinates(p1_interp, 1.6, 0, 1)
+
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(0, target_x_1, 100)
+y_fill = p1_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='lightblue', alpha=0.4)
+
+text_str = r"""$X_P$ = {x:.2f}""".format(x=target_x_1)
+ax.text(target_x_1/2, 0.5, text_str, ha='center', va='bottom')
+
+
+# CSTR 1
+target_x_2, target_fa0_by_ra_2 = CSTR_Volume_Coordinates(p1_interp, 1.6, target_x_1, 1)
+
+rectangle = plt.Rectangle((target_x_1, 0), (target_x_2-target_x_1), target_fa0_by_ra_2, color='lightcoral', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_C$ = {x:.2f}""".format(x=target_x_2)
+ax.text((target_x_1 + target_x_2) / 2, 0.5, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# CSTR 2
+target_x_3, target_fa0_by_ra_3 = CSTR_Volume_Coordinates(p1_interp, 1.6, target_x_2, 1)
+
+rectangle = plt.Rectangle((target_x_2, 0), (target_x_3-target_x_2), target_fa0_by_ra_3, color='yellowgreen', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_{{C2}}$ = {x:.2f}""".format(x=target_x_3)
+ax.text((target_x_2 + target_x_3) / 2, 2, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 20)
+
+plt.show()
+
+```
+
+## Problem 2
+
+**P2-4**: The exothermic reaction of stillbene (A) to form the economically
+important trospophene (B) and methane (C), i.e.,
+
+$$\ce{A -> B + C}$$
+
+was carried out adiabatically and the following data recorded:
+
+| X   | $r_A (mol/dm^3 min)$ |
+|-----|------------------|
+| 0   | 1                |
+| 0.2 | 1.67             |
+| 0.4 | 5                |
+| 0.45| 5                |
+| 0.5 | 5                |
+| 0.6 | 5                |
+| 0.8 | 1.25             |
+| 0.9 | 0.91             |
+
+: Problem 2.4 rate data {#tbl-2-4}
+
+   The entering molar flow rate of A was $300 mol/min$.
+
+   (a) What are the PFR and CSTR volumes necessary to achieve 40% conversion? 
+   (b) Over what range of conversions would the CSTR and PFR reactor volumes be identical?
+   (c) What is the maximum conversion that can be achieved in a $105 dm^3$ CSTR?
+   (d) What conversion can be achieved if a $72 dm^3$ PFR is followed in series by a $24 dm^3$ CSTR?
+   (e) What conversion can be achieved if a $24 dm^3$ CSTR is followed in a series by a $72 dm^3$ PFR?
+   (f) Plot the conversion and rate of reaction as a function of PFR reactor volume up to a volume of $100 dm^3$.
+
+**Solution**:
+
+```{python}
+#| label: fig-problem-2
+#| fig-cap: Levenspiel plot of processed data for problem 2-4
+
+p2_data_file = './workshop-02-problem-2.csv'
+
+data = np.genfromtxt(p2_data_file, delimiter=',', dtype=[('x', float), ('ra', float)], skip_header=1)
+
+fa0_p2 = 300
+
+ndtype = np.dtype(data.dtype.descr + [('y', float)])
+nd = np.zeros(data.shape, dtype=ndtype)
+for name in data.dtype.names:
+    nd[name] = data[name] 
+nd['y'] = fa0_p2/data['ra']
+
+p2_data = nd
+
+# Interpolate using cubic spline 
+p2_interp = interpolate.CubicSpline(p2_data['x'], p2_data['y'])
+
+fig,ax = plt.subplots()
+
+x_interp =np.linspace(0,1,100)
+
+ax.scatter(p2_data['x'], p2_data['y'], marker='s', color='red')
+ax.plot(x_interp, p2_interp(x_interp), color='grey')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+# ax.set_ylim(0, 12)
+
+plt.show()
+
+```
+
+## Problem 3
+
+**P2-7**: The adiabatic exothermic irreversible gas-phase reaction
+
+$$\ce{2A + B -> 2C}$$
+
+is to be carried out in a ﬂow reactor for an equimolar feed of A and B. A
+Levenspiel plot for this reaction is shown in [@fig-p-2-7b] .
+
+(a) What PFR volume is necessary to achieve 50% conversion?
+(b) What CSTR volume is necessary to achieve 50% conversion?
+(c) What is the volume of a second CSTR added in series to the first CSTR
+(Part b) necessary to achieve an overall conversion of 80%? 
+(d) What PFR volume must be added to the first CSTR (Part b) to raise the
+conversion to 80%?
+(e) What conversion can be achieved in a $6 \times 10^4 m^3$ CSTR? In a 
+$6 \times 10^4 m^3$ PFR?
+(f) Think critically to critique the answers (numbers) to this problem.
+
+::: {.content-visible when-format="html"}
+
+![fig-p2-7b](../../../assets/images/fig-p2-7b.png){#fig-p-2-7b width=70%}
+
+:::
+
+::: {.content-visible unless-format="html"}
+
+![Figure-p2-7b](../../../assets/images/fig-p2-7b.png){#fig-p-2-7b}
+
+:::
+
+**Solution**:
+
+
+
+## Problem 4
+
+**P2.10**: The curve shown in [@fig-p-2-10b] is typical of a gas-solid
+catalytic exothermic reaction carried out adiabatically.
+
+(a) Assuming that you have a ﬂuidized CSTR and a PBR containing equal
+weights of catalyst, how should they be arranged for this adiabatic
+reaction? Use the smallest amount of catalyst weight to achieve 80%
+conversion of A.
+(b) What is the catalyst weight necessary to achieve 80% conversion in a
+fluidized CSTR? 
+(c) What ﬂuidized CSTR weight is necessary to achieve 40% conversion?
+(d) What PBR weight is necessary to achieve 80% conversion?
+(e) What PBR weight is necessary to achieve 40% conversion?
+(f) Plot the rate of reaction and conversion as a function of PBR catalyst
+weight, W.
+
+Additional information: FA0 = 2 mol/s.
+
+::: {.content-visible when-format="html"}
+
+![Figure P2-10b](../../../assets/images/fig-p2-10b.png){#fig-p-2-10b width=70%}
+
+:::
+
+::: {.content-visible unless-format="html"}
+
+![Figure P2-10b](../../../assets/images/fig-p2-10b.png){#fig-p-2-10b}
+
+:::
+
+
+**Solution**:
+
+
+```{python}
+#| label: fig-problem-4
+#| fig-cap: Levenspiel plot for an adiabatic exothermic heterogeneous reaction.
+
+
+p4_file = './workshop-02-problem-4.csv'
+p4_data = np.genfromtxt(p4_file, delimiter=',', dtype=[('x', float), ('y', float)], skip_header=1)
+
+# Interpolate using cubic spline 
+p4_interp = interpolate.CubicSpline(p4_data['x'], p4_data['y'])
+
+fig,ax = plt.subplots()
+
+ax.plot(p4_data['x'], p4_data['y'], color='black')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r\'_A}$ (kg catalyst)')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 70)
+
+plt.show()
+
+```
+
+(a) Assuming that you have a fluidized CSTR and a PBR containing equal
+weights of catalyst, how should they be arranged for this adiabatic
+reaction? Use the smallest amount of catalyst weight to achieve 80%
+conversion of A.
+
+
+```{python}
+#| label: fig-problem-4a
+#| fig-cap: Levenspiel plot for an adiabatic exothermic heterogeneous reaction.
+
+# find conversion at which 1/-rA is minimum
+
+imin = np.argmin(p4_data['y'])
+xmin = p4_data['x'][imin]
+
+xmin = 0.42
+
+cstr_cat_weight = xmin*p4_interp(xmin)
+
+fig,ax = plt.subplots()
+
+ax.plot(p4_data['x'], p4_data['y'], color='black')
+
+# CSTR
+rectangle = plt.Rectangle((0, 0), xmin, p4_interp(xmin), color='skyblue', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$W$ = {w:.2f} kg""".format(w=cstr_cat_weight)
+ax.text(xmin/2, 0.5, text_str, ha='center', va='bottom')
+
+# PFR 
+target_x_2, target_fa0_by_ra_2 = PFR_Volume_Coordinates(p4_interp, cstr_cat_weight, xmin, 0.95)
+
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(xmin, target_x_2, 100)
+y_fill = p4_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='lightcoral', alpha=0.4)
+
+text_str = r"""$X_2$ = {x:.2f}""".format(x=target_x_2)
+ax.text((xmin + target_x_2) / 2, 0.5, text_str, ha='center', va='bottom')
+
+text_str = r"""Total Catalyst Weight: W = {w:.2f} kg""".format(w= cstr_cat_weight*2)
+ax.text(0.5, 60, text_str, ha='center', va='bottom')
+
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r\'_A}$ (kg catalyst)')
+
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 70)
+
+plt.show()
+
+```
+
+
+(b) What is the catalyst weight necessary to achieve 80% conversion in a
+fluidized CSTR? 
+
+
+```{python}
+#| label: fig-problem-4b
+#| fig-cap: Catalyst weight for 80% conversion in CSTR 
+
+
+x_cstr = 0.8
+cstr_cat_weight = x_cstr*p4_interp(x_cstr)
+
+fig,ax = plt.subplots()
+
+ax.plot(p4_data['x'], p4_data['y'], color='black')
+
+# CSTR
+rectangle = plt.Rectangle((0, 0), x_cstr, p4_interp(x_cstr), color='skyblue', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$W$ = {w:.2f} kg""".format(w=cstr_cat_weight)
+ax.text(xmin/2, 0.5, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r\'_A}$ (kg catalyst)')
+
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 70)
+
+plt.show()
+
+```
+
+
+(c) What fluidized CSTR weight is necessary to achieve 40% conversion?
+
+
+```{python}
+#| label: fig-problem-4c
+#| fig-cap: Catalyst weight for 40% conversion in CSTR 
+
+
+x_cstr = 0.4
+cstr_cat_weight = x_cstr*p4_interp(x_cstr)
+
+fig,ax = plt.subplots()
+
+ax.plot(p4_data['x'], p4_data['y'], color='black')
+
+# CSTR
+rectangle = plt.Rectangle((0, 0), x_cstr, p4_interp(x_cstr), color='skyblue', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$W$ = {w:.2f} kg""".format(w=cstr_cat_weight)
+ax.text(xmin/2, 0.5, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r\'_A}$ (kg catalyst)')
+
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 70)
+
+plt.show()
+
+```
+
+
+(d) What PBR weight is necessary to achieve 80% conversion?
+
+
+```{python}
+#| label: fig-problem-4d
+#| fig-cap: Catalyst weight for 80% conversion in PBR
+
+# find conversion at which 1/-rA is minimum
+
+xpbr = 0.8
+w_pbr, err = integrate.quad(p4_interp, 0, xpbr)
+
+fig,ax = plt.subplots()
+
+ax.plot(p4_data['x'], p4_data['y'], color='black')
+
+# PBR 
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(0, xpbr, 100)
+y_fill = p4_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='lightcoral', alpha=0.4)
+
+text_str = r"""$W_{{PBR}}$ = {w:.2f} kg""".format(w = w_pbr)
+ax.text(xpbr/2, 0.5, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r\'_A}$ (kg catalyst)')
+
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 70)
+
+plt.show()
+
+```
+
+
+(e) What PBR weight is necessary to achieve 40% conversion?
+
+
+```{python}
+#| label: fig-problem-4e
+#| fig-cap: Catalyst weight for 40% conversion in PBR
+
+# find conversion at which 1/-rA is minimum
+
+xpbr = 0.4
+w_pbr, err = integrate.quad(p4_interp, 0, xpbr)
+
+fig,ax = plt.subplots()
+
+ax.plot(p4_data['x'], p4_data['y'], color='black')
+
+# PBR 
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(0, xpbr, 100)
+y_fill = p4_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='lightcoral', alpha=0.4)
+
+text_str = r"""$W_{{PBR}}$ = {w:.2f} kg""".format(w = w_pbr)
+ax.text(xpbr/2, 0.5, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r\'_A}$ (kg catalyst)')
+
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 70)
+
+plt.show()
+
+```
+
+
+(f) Plot the rate of reaction and conversion as a function of PBR catalyst
+weight, W.
+
+
+

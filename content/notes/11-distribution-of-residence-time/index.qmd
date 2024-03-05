@@ -1,0 +1,15 @@
+--- 
+title: "Distribution of residence time"
+date: 2024-03-03
+resources:
+  - "./Ranjeet_Notes_Fogler_Chapter 16 - RTD.pdf"
+---
+
+
+::: {.callout-note}
+
+[Notes on Chapter 16 of Elements of Chemical Reaction Engineering
+[@fogler2016]](./Ranjeet_Notes_Fogler_Chapter 16 - RTD.pdf)
+
+:::
+
