@@ -17,6 +17,12 @@ from IPython.display import display, Markdown
 plt.style.use('../../../assets/templates/publish.mplstyle')
 ```
 
+## Design equations in terms of conversion
+
+* Derive design equation in terms of conversion for a CSTR
+
+* Derive design equation in terms of conversion for a PFR
+
 ## CSTR sizing
 
 Using the data in @tbl-problem_1, calculate $V_{CSTR}$ for $X = 0.4$, and $X = 0.8$
@@ -85,9 +91,6 @@ molar flow rate of n-butane of 50 kmol/hr.
 ```{python}
 #| label: tbl-problem_4
 #| tbl-cap: "Problem 4 data"
-
-
-39, 53, 59, 38, 25
 
 x_data = [0.0, 0.2, 0.4, 0.6, 0.65]
 y_data = [39, 53, 59, 38, 25]

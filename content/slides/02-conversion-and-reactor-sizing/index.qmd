@@ -83,7 +83,7 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 :::
 
 
-## Conversion, X
+## Conversion, $X$
 
 :::{.incremental}
 
@@ -110,7 +110,7 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 
 :::
 
-## Conversion, X
+## Conversion, $X$
 
 :::{.extrapad}
 Consider $\ce{A + 2B -> 2C}$, Start with 1 mole of A & 1 mole of B
@@ -207,7 +207,7 @@ $$
 
 :::
 
-## Design equation in terms of X: Batch reactor
+## Design equation in terms of $X$: Batch reactor
 
 ::::{.columns}
 
@@ -265,7 +265,7 @@ $$
 ::::
 
 
-## Design equation in terms of X: CSTR
+## Design equation in terms of $X$: CSTR
 
 ::::{.columns}
 :::{.column width=50%}
@@ -314,7 +314,7 @@ $–r_A$ are evaluated at the exit of the CSTR
 :::
 
 
-## Design equation in terms of X: PFR
+## Design equation in terms of $X$: PFR
 
 :::{.incremental}
 
@@ -350,7 +350,7 @@ $–r_A$ are evaluated at the exit of the CSTR
 :::
  
 
-## Design equation in terms of X: PBR
+## Design equation in terms of $X$: PBR
 
 
 ::::{.columns}
@@ -400,7 +400,7 @@ $–r_A$ are evaluated at the exit of the CSTR
 :::
 ::::
 
-## Reactor mole balance in terms of X
+## Reactor mole balance in terms of $X$
 
 
 ::: {.columns}
@@ -517,7 +517,7 @@ area under the curve $\frac{F_{A0}}{-r_{A}} = f(X_A)$
 ::::
 
 
-## Levenspiel Plots - Reactor Sizing
+## Levenspiel plots - reactor sizing
 
 :::{.incremental}
 
@@ -746,7 +746,7 @@ $$
 
 
 
-## Reactors in Series
+## Reactors in series
 
 :::{.incremental}
 
@@ -777,7 +777,7 @@ Levenspiel plots can be used to visualize and sequence reactors in series.
 
 :::
 
-## Reactors in Series
+## Reactors in series
 
 ![](../../../assets/images/reactors_in_series_schematic.png){.fragment width=90%}
 
@@ -799,4 +799,173 @@ Levenspiel plots can be used to visualize and sequence reactors in series.
 
 :::
 
+## Reactors in series
+
+### Example: An adiabatic liquid-phase isomerization
+
+The isomerization of butane
+
+$$
+\ce{n-C4H10 <=> i-C4H10}
+$$
+
+was carried out adiabatically in the liquid phase. The data for this reversible
+reaction are given below. Calculate the volume of each of the reactors for an entering
+molar flow rate of n-butane of 50 kmol/hr.
+
+```{python}
+#| echo: false 
+#| output: true 
+
+x_data = [0.0, 0.2, 0.4, 0.6, 0.65]
+y_data = [39, 53, 59, 38, 25]
+
+data4 = np.array(list(zip(x_data, y_data)), dtype=[('x', float), ('ra', float)])
+
+Fa0 = 50
+Fa0_by_ra = Fa0/data4['ra']
+
+data4_interp = interpolate.CubicSpline(data4['x'], Fa0_by_ra)
+
+df = {}
+df['data'] = pd.DataFrame({'X': data4['x'], '$-r_A, \\frac{kmol}{m^3 \cdot h}$': data4['ra']})
+
+md = tab.tabulate(df['data'].T, floatfmt='.2f')
+display(Markdown(md))
+
+```
+
+![](../../../assets/images/02-in-class-p4.png){width=90%}
+
+## Reactors in series
+
+### Example: An adiabatic liquid-phase isomerization
+
+```{python}
+fig,ax = plt.subplots()
+
+x = np.linspace(0, 0.8, 100)
+y = data4_interp(x)
+
+# calculate volumes
+
+# CSTR X1 = 0.2
+
+x_1 = 0.2
+v_cstr_1 = x_1 * data4_interp(x_1)
+
+# PFR X2 = 0.6
+x_2 = 0.6
+v_pfr, err = integrate.quad(data4_interp, x_1, x_2)
+
+# CSTR X3 = 0.65
+
+x_3 = 0.65
+v_cstr_2 = (x_3 - x_1) * data4_interp(x_3)
+
+ax.scatter(data4['x'], Fa0_by_ra, marker='s', color='red')
+ax.plot(x, y, color='black')
+
+# CSTR 1 X = 0.2
+rectangle = plt.Rectangle((0, 0), x_1, data4_interp(x_1), color='skyblue', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$V_{{X={x:.2f}}}$ = {v:.2f} $m^3$""".format(x=x_1,v=v_cstr_1)
+ax.text(0.2, 1.35, text_str, ha='center', va='bottom')
+ax.arrow(0.1, 1.3, 0, -0.5, head_width=0.02, head_length=0.1, fc='k')
+
+# PFR X = 0.6
+# Fill the area under the curve between 0.2 and 0.6
+x_fill = np.linspace(x_1, x_2, 100)
+y_fill = data4_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='lightcoral', alpha=0.4)
+
+text_str = r"""$V_{{X={x:.2f}}}$ = {v:.2f} $m^3$""".format(x=x_2,v=v_pfr)
+ax.text(0.4, 0.25, text_str, ha='center', va='bottom')
+
+# CSTR 2 X = 0.65
+rectangle = plt.Rectangle((x_2, 0), x_3 - x_2, data4_interp(x_3), color='forestgreen', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$V_{{X={x:.2f}}}$ = {v:.2f} $m^3$""".format(x=x_3,v=v_cstr_2)
+ax.text(0.55, 2.25, text_str, ha='center', va='bottom')
+ax.arrow(0.62, 2.2, 0, -0.2, head_width=0.01, head_length=0.05, fc='k')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 0.7)
+ax.set_ylim(0, 2.5)
+
+plt.show()
+
+```
+
+## Reactors in series
+
+
+::::{.columns}
+
+:::{.column width=45%}
+
+![](../../../assets/images/reactors_in_series_schematic_cstr_pfr.png){width=90%}
+
+:::
+:::{.column width=5%}
+:::
+
+
+:::{.column width=50%}
+
+* If $\frac{F_{A0}}{-r_A}$ monotonically increases with $X$
+
+:::{.smaller}
+  $$
+  V_{\text{one PFR}} \leq \sum_i V_{\text{PFR(i)}} + \sum_j V_{\text{CSTR(j)}} \leq V_{\text{one CSTR}} 
+  $$
+:::
+
+  for any combination of PFRs and CSTRs in series
+
+* In general
+
+  1 PFR = any number of PFRs in series
+
+	1 PFR = $\infty$ number of CSTRs in series
+
+* For large number of CSTRs in series, the total volume is 'roughly' same as
+  volume of PFR
+
+:::
+
+::::
+
+::: {.callout-note .fragment appearance="simple"}
+
+The concept of using CSTRs in series to model PFR is used in larger number of
+situations such as modeling catalyst decay in packed bed reactors, or studying
+transient heat effects in PFR. 
+
+:::
+
+
+## Space time ($\tau$)
+
+* Time necessary to process one reactor volume, also called mean residence time or holding time
+
+  $$
+  \tau = \frac{V}{\upsilon_0}
+  $$
+
+* **Space velocity (SV)**: inverse of space time, but vo may be measured under
+  different conditions than the space time
+
+  $$
+  SV = \frac{\upsilon_0}{V} = \frac{1}{\tau}
+  $$
+
+  - LHSV: Liquid hourly space velocity: $\mathrm{LHSV} =\frac{\upsilon_{0 \mid \mathrm{liquid}}}{V}$
+  - GHSV: Gas hourly space velocity: $\mathrm{GHSV}=\frac{\upsilon_{0 \mid \mathrm{STP}}}{V}$
+  - $\upsilon_{0 \mid}$ is the volumetric flow rate measured at specified condition
 

@@ -8,7 +8,7 @@ font.sans-serif: IBM Plex Sans
 # mathtext.bf: Gentium Plus:bold
 
 # Figure 
-figure.figsize: 5,5 
+figure.figsize: 4,4 
 figure.dpi: 300
 figure.facecolor: none
 
