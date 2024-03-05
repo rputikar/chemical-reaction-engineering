@@ -1,7 +1,48 @@
 ---
 title: "Pre class activity: Conversion and reactor sizing"
-date: 2024-02-28
+date: 2024-03-04
 format:
   pdf
 ---
+
+* Read chapter 2 of Elements of Chemical Reaction Engineering [@fogler2016].
+
+* In this lecture we will be using python/ jupyter to solve problems related to
+  reactor sizing. It is therefore essential that you bring a laptop for the
+  lectures/ workshops this week. 
+
+  We will be working through online jupyter notebooks hosted on Google colab.
+  You can possibly work with iPads or other tablets, but I haven't tested it so
+  you are on your own. 
+
+  If you haven't already, 
+
+  - Watch [Get started with Google Colaboratory (Coding
+    TensorFlow)](https://www.youtube.com/watch?v=inN8seMm7UI)
+
+  - Visit [Google colab](https://colab.research.google.com/). Go through the overview
+
+  - Check out following examples: 
+
+    [Overview of Colaboratory Features](https://colab.research.google.com/notebooks/basic_features_overview.ipynb)
+
+    [Markdown Guide](https://colab.research.google.com/notebooks/markdown_guide.ipynb)
+
+    [Charts in Colaboratory](https://colab.research.google.com/notebooks/charts.ipynb)
+
+* Revisit the concept of interpolation and polynomial fitting 
+
+  - We will be using `CubicSpline` interpolation function from the `scipy.interpolate` library. Go through
+    documentation for [1-D
+    interpolation](https://docs.scipy.org/doc/scipy/tutorial/interpolate/1D.html#tutorial-interpolate-1dsection)
+
+  - For curve fitting, we will use polynomial fitting function `polyfit` from
+    `numpy`. Go through the documentation for
+    [`numpy.polyfit`](https://numpy.org/doc/stable/reference/generated/numpy.polyfit.html)
+
+* Refresh numerical integration concepts such as trapezoid, Simpson's 1/3 or 5/8 rule etc. 
+
+  - We will be using general purpose `quad` function from the `scipy.integrate` library. Go through
+    documentation for [Integration (`scipy.integrate`)](https://docs.scipy.org/doc/scipy/tutorial/integrate.html)
+
 

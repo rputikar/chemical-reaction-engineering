@@ -3,6 +3,10 @@ title:
   "Workshop 02: Conversion and reactor sizing"
 date: 2024/02/28
 format: html
+resources:
+   - './workshop-02-problem-1-data.csv'
+   - './workshop-02-problem-2.csv'
+   - './workshop-02-problem-4.csv'
 ---
 
 Try following problems from Fogler 5e[@fogler2016].
@@ -20,17 +24,27 @@ We will go through some of these problems in the workshop.
 (d) Two PFRs in parallel with the feed divided equally between the two reactors.
 (e) A CSTR and a PFR in parallel with the flow equally divided. Calculate the overall conversion, $X_{ov}$
 
-$$
-X_{ov} = \frac{F_{A0}-F_{A,CSTR} - F_{A,PFR}}{F_{A0}}
-, \text{with }
-F_{A,CSTR} = \frac{F_{A0}}{2} - \frac{F_{A0}}{2} X_{CSTR}
-, \text{and }
-F_{A,PFR} = \frac{F_{A0}}{2} (1 -  X_{PFR})
-$$
+    $$
+    X_{ov} = \frac{F_{A0}-F_{A,CSTR} - F_{A,PFR}}{F_{A0}}
+    $$
+
+    with 
+
+    $$
+    F_{A,CSTR} = \frac{F_{A0}}{2} - \frac{F_{A0}}{2} X_{CSTR}
+    $$
+
+    and 
+
+    $$
+    F_{A,PFR} = \frac{F_{A0}}{2} (1 -  X_{PFR})
+    $$
 
 (f) A PFR followed by a CSTR.
 (g) A CSTR followed by a PFR. 
 (h) A PFR followed by two CSTRs. Is this arrangement a good arrangement or is there a better one?
+
+The data from @fig-2-2b is provided in file [workshop-02-problem-1-data.csv](./workshop-02-problem-1-data.csv)
 
 ::: {.content-visible when-format="html"}
 
@@ -74,6 +88,8 @@ $$
    (e) What conversion can be achieved if a $24 dm^3$ CSTR is followed in a series by a $72 dm^3$ PFR?
    (f) Plot the conversion and rate of reaction as a function of PFR reactor volume up to a volume of $100 dm^3$.
 
+
+The data from @tbl-2-4 is provided in file [workshop-02-problem-2.csv](./workshop-02-problem-2.csv)
 
 3. **P2-7**: The adiabatic exothermic irreversible gas-phase reaction
 
@@ -134,3 +150,4 @@ $$
 :::
 
 
+The data from @fig-p-2-10b is provided in file [workshop-02-problem-4.csv](./workshop-02-problem-4.csv)

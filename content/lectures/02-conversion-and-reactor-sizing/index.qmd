@@ -11,7 +11,7 @@ format: html
 
 - Go through the slides and lecture video below. 
 
-- Complete the pre-class activities/ tasks for this lecture.
+- Complete the pre-class activities/ tasks for this week before coming to lecture on Thursday.  
 
 :::{.grid}
 ::: {.g-col-5}
