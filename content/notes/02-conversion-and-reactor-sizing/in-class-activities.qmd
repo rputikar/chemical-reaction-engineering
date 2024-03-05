@@ -51,6 +51,8 @@ display(Markdown(md))
 # display(Markdown(md))
 ```
 
+[Solution notebook on Google colab](https://colab.research.google.com/drive/1AAr5GG7oqz_DY-ejujKvtJ_38yZxafQ0?usp=sharing)
+
 ## PFR sizing
 
 Using the data in @tbl-problem_2, calculate $V_{PFR}$ for $X = 0.4$, and $X = 0.8$
@@ -74,6 +76,7 @@ md = tab.tabulate(df['data'].T, floatfmt='.2f')
 display(Markdown(md))
 
 ```
+[Solution notebook on Google colab](https://colab.research.google.com/drive/1Flzwhr2dL1xtPaRtxlHnNVmnN415-VKK?usp=sharing)
 
 ## An Adiabatic Liquid-Phase Isomerization
 
@@ -116,6 +119,8 @@ display(Markdown(md))
 ![Reactor configuration for problem 4](../../../assets/images/02-in-class-p4.png){#fig-02-inclass-4}
 
 :::
+
+[Solution notebook on Google colab](https://colab.research.google.com/drive/1a3UwGitQTa-j7cU45Sw_bClEP5cHuIqf?usp=sharing)
 
 ## Batch reactor sizing
 
