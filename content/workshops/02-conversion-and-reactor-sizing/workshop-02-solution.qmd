@@ -32,7 +32,9 @@ plt.style.use('../../../assets/templates/publish.mplstyle')
 
 $$
 X_{ov} = \frac{F_{A0}-F_{A,CSTR} - F_{A,PFR}}{F_{A0}}
-, \text{with }
+$$
+with
+$$
 F_{A,CSTR} = \frac{F_{A0}}{2} - \frac{F_{A0}}{2} X_{CSTR}
 , \text{and }
 F_{A,PFR} = \frac{F_{A0}}{2} (1 -  X_{PFR})
@@ -69,7 +71,7 @@ p1_fit_data = np.genfromtxt(p1_fit_file, delimiter=',', dtype=[('x', float), ('y
 p1_interp = interpolate.CubicSpline(p1_fit_data['x'], p1_fit_data['y'])
 
 # Function to calculate the conversion in a CSTR for given volume
-def CSTR_Volume_Coordinates(curve_interp, target_volume, x_start=0, x_end=1, steps=1000): 
+def CSTR_Volume_Coordinates(curve_interp, target_volume, x_start=0, x_end=1, steps=1000, *args): 
 
    for x in np.linspace(x_start, x_end, steps):
 
@@ -78,7 +80,7 @@ def CSTR_Volume_Coordinates(curve_interp, target_volume, x_start=0, x_end=1, ste
          continue
       
       fa0_by_ra_target = target_volume/ (x-x_start)
-      fa0_by_ra_actual = curve_interp(x)
+      fa0_by_ra_actual = curve_interp(x, *args)
 
       if fa0_by_ra_target <= fa0_by_ra_actual:
          return x, fa0_by_ra_target
@@ -87,7 +89,7 @@ def CSTR_Volume_Coordinates(curve_interp, target_volume, x_start=0, x_end=1, ste
    return None, None
 
 # Function to calculate the conversion in a PFR for a given volume
-def PFR_Volume_Coordinates(curve_interp, target_volume, x_start=0, x_end=1, steps=1000): 
+def PFR_Volume_Coordinates(curve_interp, target_volume, x_start=0, x_end=1, steps=1000, *args): 
 
    for x in np.linspace(x_start, x_end, steps):
 
@@ -95,8 +97,8 @@ def PFR_Volume_Coordinates(curve_interp, target_volume, x_start=0, x_end=1, step
       if x == x_start:
          continue
 
-      fa0_by_ra_actual = curve_interp(x)
-      actual_volume, err = integrate.quad(curve_interp, x_start, x)
+      fa0_by_ra_actual = curve_interp(x, *args)
+      actual_volume, err = integrate.quad(curve_interp, x_start, x, args=args)
 
       if actual_volume >= target_volume:
          return x, fa0_by_ra_actual
@@ -128,7 +130,7 @@ plt.show()
 
 ```
 
-(a) Two CSTRs in series.
+(a) Two CSTRs in series (@fig-problem-1-a). 
 
 ```{python}
 #| label: fig-problem-1-a
@@ -168,7 +170,7 @@ plt.show()
 
 ```
 
-(b) Two PFRs in series.
+(b) Two PFRs in series (@fig-problem-1-b).
 
 ```{python}
 #| label: fig-problem-1-b
@@ -216,7 +218,7 @@ plt.show()
 
 ```
 
-(c) Two CSTRs in parallel with the feed, $F_{A0}$, divided equally between the two reactors.
+(c) Two CSTRs in parallel with the feed, $F_{A0}$, divided equally between the two reactors (@fig-problem-1-c).
 
 
 ```{python}
@@ -254,7 +256,7 @@ plt.show()
 ```
 
 
-(d) Two PFRs in parallel with the feed divided equally between the two reactors.
+(d) Two PFRs in parallel with the feed divided equally between the two reactors (@fig-problem-1-d).
 
 ```{python}
 #| label: fig-problem-1-d
@@ -296,16 +298,8 @@ plt.show()
 ```
 
 
-(e) A CSTR and a PFR in parallel with the flow equally divided. Calculate the overall conversion, $X_{ov}$
-
-$$
-X_{ov} = \frac{F_{A0}-F_{A,CSTR} - F_{A,PFR}}{F_{A0}}
-, \text{with }
-F_{A,CSTR} = \frac{F_{A0}}{2} - \frac{F_{A0}}{2} X_{CSTR}
-, \text{and }
-F_{A,PFR} = \frac{F_{A0}}{2} (1 -  X_{PFR})
-$$
-
+(e) A CSTR and a PFR in parallel with the flow equally divided. Calculate the
+    overall conversion, $X_{ov}$ (@fig-problem-1-e)
 
 ```{python}
 #| label: fig-problem-1-e
@@ -362,7 +356,7 @@ plt.show()
 
 ```
 
-(f) A PFR followed by a CSTR.
+(f) A PFR followed by a CSTR (@fig-problem-1-f).
 
 ```{python}
 #| label: fig-problem-1-f
@@ -408,7 +402,7 @@ plt.show()
 ```
 
 
-(g) A CSTR followed by a PFR. 
+(g) A CSTR followed by a PFR (@fig-problem-1-g). 
 
 
 ```{python}
@@ -453,8 +447,7 @@ plt.show()
 ```
 
 
-(h) A PFR followed by two CSTRs. Is this arrangement a good arrangement or is there a better one?
-
+(h) A PFR followed by two CSTRs (@fig-problem-1-h). Is this arrangement a good arrangement or is there a better one?
 
 ```{python}
 #| label: fig-problem-1-h
@@ -513,6 +506,122 @@ plt.show()
 
 ```
 
+
+```{python}
+#| label: fig-problem-1-h2
+#| fig-cap: Conversion from two CSTRs followed by a PFR
+
+fig,ax = plt.subplots()
+
+x_interp =np.linspace(0,1,100)
+
+ax.scatter(p1_expt_data['x'], p1_expt_data['y'], marker='s', color='red')
+ax.plot(x_interp, p1_interp(x_interp), color='grey')
+ax.plot(p1_fit_data['x'], p1_fit_data['y'], color='black')
+
+# CSTR 1
+target_x_1, target_fa0_by_ra_1 = CSTR_Volume_Coordinates(p1_interp, 1.6, 0, 1)
+
+rectangle = plt.Rectangle((0,0), target_x_1, target_fa0_by_ra_1, color='lightcoral', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_C$ = {x:.2f}""".format(x=target_x_1)
+ax.text(target_x_1 / 2, 0.5, text_str, ha='center', va='bottom')
+
+# CSTR 2
+target_x_2, target_fa0_by_ra_2 = CSTR_Volume_Coordinates(p1_interp, 1.6, target_x_1, 1)
+
+rectangle = plt.Rectangle((target_x_1, 0), (target_x_2-target_x_1), target_fa0_by_ra_2, color='yellowgreen', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_{{C2}}$ = {x:.2f}""".format(x=target_x_2)
+ax.text((target_x_2 + target_x_1) / 2, 2, text_str, ha='center', va='bottom')
+
+# PFR
+target_x_3, target_fa0_by_ra_3 = PFR_Volume_Coordinates(p1_interp, 1.6, target_x_2, 1)
+
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(target_x_2, target_x_3, 100)
+y_fill = p1_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='lightblue', alpha=0.4)
+
+text_str = r"""$X_P$ = {x:.2f}""".format(x=target_x_3)
+ax.text((target_x_3+target_x_2)/2, 0.5, text_str, ha='center', va='bottom')
+
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 20)
+
+plt.show()
+
+```
+Two CSTRs followed by a PFR (@fig-problem-1-h2) yield final conversion of $X_3$
+= `{python} "{x:.2f}".format(x=target_x_3)`.
+
+```{python}
+#| label: fig-problem-1-h3
+#| fig-cap: Conversion from two PFRs followed by a CSTR
+
+fig,ax = plt.subplots()
+
+x_interp =np.linspace(0,1,100)
+
+ax.scatter(p1_expt_data['x'], p1_expt_data['y'], marker='s', color='red')
+ax.plot(x_interp, p1_interp(x_interp), color='grey')
+ax.plot(p1_fit_data['x'], p1_fit_data['y'], color='black')
+
+# PFR
+target_x_1, target_fa0_by_ra_1 = PFR_Volume_Coordinates(p1_interp, 1.6, 0, 1)
+
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(0, target_x_1, 100)
+y_fill = p1_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='lightblue', alpha=0.4)
+
+text_str = r"""$X_P$ = {x:.2f}""".format(x=target_x_1)
+ax.text(target_x_1/2, 0.5, text_str, ha='center', va='bottom')
+
+
+# PFR 2
+target_x_2, target_fa0_by_ra_2 = PFR_Volume_Coordinates(p1_interp, 1.6, target_x_1, 1)
+
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(target_x_1, target_x_2, 100)
+y_fill = p1_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='lightblue', alpha=0.4)
+
+text_str = r"""$X_P$ = {x:.2f}""".format(x=target_x_2)
+ax.text((target_x_1+target_x_2)/2, 0.5, text_str, ha='center', va='bottom')
+
+# CSTR 2
+target_x_3, target_fa0_by_ra_3 = CSTR_Volume_Coordinates(p1_interp, 1.6, target_x_2, 1)
+
+rectangle = plt.Rectangle((target_x_2, 0), (target_x_3-target_x_2), target_fa0_by_ra_3, color='yellowgreen', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_{{C2}}$ = {x:.2f}""".format(x=target_x_3)
+ax.text((target_x_2 + target_x_3) / 2, 2, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 30)
+
+plt.show()
+
+```
+
+Two PFRs followed by a CSTR (@fig-problem-1-h3) yield final conversion of $X_3$
+= `{python} "{x:.2f}".format(x=target_x_3)`.
+
+
 ## Problem 2
 
 **P2-4**: The exothermic reaction of stillbene (A) to form the economically
@@ -522,7 +631,7 @@ $$\ce{A -> B + C}$$
 
 was carried out adiabatically and the following data recorded:
 
-| X   | $r_A (mol/dm^3 min)$ |
+| X   | $-r_A (mol/dm^3 min)$ |
 |-----|------------------|
 | 0   | 1                |
 | 0.2 | 1.67             |
@@ -546,41 +655,389 @@ was carried out adiabatically and the following data recorded:
 
 **Solution**:
 
+The rate data ($-r_A$) is given. We need $F_{A0}/-r_A$. Dividing $F_{A0} = 300$ by $-r_A$ we get:
+
+```{python}
+#| echo: false
+#| label: tbl-problem-2
+#| tbl-cap: Processed data for problem 2
+
+p2_data_file = './workshop-02-problem-2.csv'
+
+data = np.genfromtxt(p2_data_file, delimiter=',', dtype=[('x', float), ('minus_ra', float)], skip_header=1)
+
+fa0_p2 = 300
+
+ndtype = np.dtype(data.dtype.descr + [('fa0_by_minus_ra', float)])
+nd = np.zeros(data.shape, dtype=ndtype)
+for name in data.dtype.names:
+    nd[name] = data[name] 
+nd['fa0_by_minus_ra'] = fa0_p2/data['minus_ra']
+
+p2_data = nd
+
+# Calculate slopes of the segments
+# For segment 1 (0 to 0.4)
+k1 = (p2_data['fa0_by_minus_ra'][2] - p2_data['fa0_by_minus_ra'][0]) / (p2_data['x'][2] - p2_data['x'][0])
+
+# For segment 2 (0.4 to 0.6)
+k2 = 0 
+
+# For segment 3 (0.6 to 0.9)
+k3 = (p2_data['fa0_by_minus_ra'][7] - p2_data['fa0_by_minus_ra'][5]) / (p2_data['x'][7] - p2_data['x'][5])
+
+bending_point = [
+    (p2_data['x'][2], p2_data['fa0_by_minus_ra'][2]),  # Point between segment 1 and 2
+    (p2_data['x'][5], p2_data['fa0_by_minus_ra'][5])   # Point between segment 2 and 3
+]
+
+x0_1, y0_1 = bending_point[0]
+x0_2, y0_2 = bending_point[1]
+x0 =[x0_1, x0_2]
+y0 = [y0_1, y0_2]
+
+# Function arguments
+args = (x0, y0, k1, k2, k3)
+
+p2_df = pd.DataFrame(p2_data)
+p2_df.columns = ['$X$', '$-r_A$', '$F_{A0}/-r_A$']
+
+# Convert the DataFrame to a markdown table string
+markdown_table = p2_df.to_markdown(index=False)
+
+Markdown(markdown_table)
+```
+
 ```{python}
 #| label: fig-problem-2
 #| fig-cap: Levenspiel plot of processed data for problem 2-4
 
-p2_data_file = './workshop-02-problem-2.csv'
-
-data = np.genfromtxt(p2_data_file, delimiter=',', dtype=[('x', float), ('ra', float)], skip_header=1)
-
-fa0_p2 = 300
-
-ndtype = np.dtype(data.dtype.descr + [('y', float)])
-nd = np.zeros(data.shape, dtype=ndtype)
-for name in data.dtype.names:
-    nd[name] = data[name] 
-nd['y'] = fa0_p2/data['ra']
-
-p2_data = nd
-
 # Interpolate using cubic spline 
-p2_interp = interpolate.CubicSpline(p2_data['x'], p2_data['y'])
+p2_interp = interpolate.CubicSpline(p2_data['x'], p2_data['fa0_by_minus_ra'])
 
 fig,ax = plt.subplots()
 
 x_interp =np.linspace(0,1,100)
 
-ax.scatter(p2_data['x'], p2_data['y'], marker='s', color='red')
+ax.scatter(p2_data['x'], p2_data['fa0_by_minus_ra'], marker='s', color='red')
 ax.plot(x_interp, p2_interp(x_interp), color='grey')
 
 ax.set_xlabel('Conversion X')
-ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (dm^3)$')
 
 # Setting x and y axis limits
 ax.set_xlim(0, 1)
-# ax.set_ylim(0, 12)
+ax.set_ylim(0, 450)
 
+plt.show()
+
+```
+
+Trying to fit a single cubic spline or a polynomial doesn't work well due to
+the nature of the data (@fig-problem-2). The data consists of three liniear
+segments. Therefore, we fit a piecewise linear function using
+[`numpy.piecewise`](https://numpy.org/doc/stable/reference/generated/numpy.piecewise.html). 
+We also use [`lambda`](https://www.w3schools.com/python/python_lambda.asp)
+functions to define the linear segments. 
+
+```python
+def piecewise_linear_fit(x, x0, y0, k1, k2, k3):
+    """
+    Piecewise linear function defined by slopes and a constant part.
+    x0, y0: Coordinates of the piecewise function's bending points.
+    k1, k2, k3: Slopes of the first, second, and third parts.
+
+    Note that in this problem, 
+    k1 = `{python} k1`
+    k2 = `{python} k2` 
+    k3 = `{python} k3` 
+
+    x0 = `{python} x0`
+    y0 = `{python} y0`
+
+    We can call this function as
+    piecewise_linear_fit(x, *args)
+    
+    args = `{python} args`
+    """
+
+    return np.piecewise(x, 
+                        [x < x0[0], (x >= x0[0]) & (x <= x0[1]), x > x0[1]], 
+                        [lambda x: k1*x + y0[0] - k1*x0[0], 
+                         lambda x: y0[1], 
+                         lambda x: k3*x + y0[1] - k3*x0[1]])
+```
+
+```{python}
+def piecewise_linear_fit(x, x0, y0, k1, k2, k3):
+    """
+    Piecewise linear function defined by slopes and a constant part.
+    x0, y0: Coordinates of the piecewise function's bending points.
+    k1, k2, k3: Slopes of the first, second, and third parts.
+    """
+
+    return np.piecewise(x, 
+                        [x < x0[0], (x >= x0[0]) & (x <= x0[1]), x > x0[1]], 
+                        [lambda x: k1*x + y0[0] - k1*x0[0], 
+                         lambda x: y0[1], 
+                         lambda x: k3*x + y0[1] - k3*x0[1]])
+
+
+```
+
+```{python}
+#| label: fig-problem-2-linfit
+#| fig-cap: Piecewise linear fit processed data for problem 2-4
+
+fig,ax = plt.subplots()
+
+x_plf =np.linspace(0,1,100)
+
+ax.scatter(p2_data['x'], p2_data['fa0_by_minus_ra'], marker='s', color='red')
+ax.plot(x_plf, piecewise_linear_fit(x_plf, *args), color='grey')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (dm^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 450)
+
+plt.show()
+
+```
+
+(a) What are the PFR and CSTR volumes necessary to achieve 40% conversion? 
+
+```{python}
+#| label: fig-problem-2a
+#| fig-cap: Reactor volume for CSTR to achieve X = 0.4
+
+fig,ax = plt.subplots()
+
+x_plf =np.linspace(0,1,100)
+
+ax.scatter(p2_data['x'], p2_data['fa0_by_minus_ra'], marker='s', color='red')
+ax.plot(x_plf, piecewise_linear_fit(x_plf, *args), color='grey')
+
+# CSTR
+fa0_by_minus_ra_1 = piecewise_linear_fit(0.4, *args)
+v_cstr = 0.4 * fa0_by_minus_ra_1
+rectangle = plt.Rectangle((0, 0), 0.4, fa0_by_minus_ra_1, color='skyblue', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$V_{{CSTR}}$ = {v:.2f}""".format(v=v_cstr)
+ax.text(0.2, 10, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (dm^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 450)
+
+plt.show()
+```
+    From @fig-problem-2a, $V_{CSTR}$ = `{python} r"""{v:.2f} $dm^3$""".format(v=v_cstr)`.
+
+(b) Over what range of conversions would the CSTR and PFR reactor volumes be identical?
+
+    As the slope of $F_{A0}/-r_A vs.\ X$ line is 0 between 0.4 and 0.6, the
+    CSTR and PFR volumes over this range would be identical.
+
+
+(c) What is the maximum conversion that can be achieved in a $105 dm^3$ CSTR?
+
+```{python}
+#| label: fig-problem-2c
+#| fig-cap: Reactor conversion for CSTR with volume = 105 $dm^3$ 
+
+fig,ax = plt.subplots()
+
+x_plf =np.linspace(0,1,100)
+
+ax.scatter(p2_data['x'], p2_data['fa0_by_minus_ra'], marker='s', color='red')
+ax.plot(x_plf, piecewise_linear_fit(x_plf, *args), color='grey')
+
+# CSTR
+target_x_1, target_fa0_by_ra_1 = CSTR_Volume_Coordinates(piecewise_linear_fit, 105, 0, 1, 1000, *args)
+rectangle = plt.Rectangle((0,0), target_x_1, target_fa0_by_ra_1, color='lightcoral', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_C$ = {x:.2f}""".format(x=target_x_1)
+ax.text(target_x_1 / 2, 10, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (dm^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 450)
+
+plt.show()
+```
+
+From @fig-problem-2c, $X$ = `{python} r"""{x:.2f}""".format(x=target_x_1)`.
+
+
+(d) What conversion can be achieved if a $72 dm^3$ PFR is followed in series by a $24 dm^3$ CSTR?
+
+```{python}
+#| label: fig-problem-2d
+#| fig-cap: Reactor conversion for PFR followed by CSTR
+
+fig,ax = plt.subplots()
+
+x_plf =np.linspace(0,1,100)
+
+ax.scatter(p2_data['x'], p2_data['fa0_by_minus_ra'], marker='s', color='red')
+ax.plot(x_plf, piecewise_linear_fit(x_plf, *args), color='grey')
+
+# PFR 
+
+target_x_1, target_fa0_by_ra_1 = PFR_Volume_Coordinates(piecewise_linear_fit, 72, 0, 1, 1000, *args)
+
+# Fill the area under the curve between 0 and target_x_1
+x_fill = np.linspace(0, target_x_1, 100)
+y_fill = piecewise_linear_fit(x_fill,*args)
+ax.fill_between(x_fill, y_fill, color='lightblue', alpha=0.4)
+
+text_str = r"""$X_P$ = {x:.2f}""".format(x=target_x_1)
+ax.text(target_x_1/2, 10, text_str, ha='center', va='bottom')
+
+# CSTR
+target_x_2, target_fa0_by_ra_2 = CSTR_Volume_Coordinates(piecewise_linear_fit, 24, target_x_1, 1, 1000, *args)
+rectangle = plt.Rectangle((target_x_1,0), target_x_2-target_x_1, target_fa0_by_ra_2, color='lightcoral', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_C$ = {x:.2f}""".format(x=target_x_2)
+ax.text((target_x_1 + target_x_2) / 2, 10, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (dm^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 450)
+
+plt.show()
+```
+
+From @fig-problem-2d, $X_{PFR}$ = `{python} r"""{x:.2f}""".format(x=target_x_1)` and 
+$X_{CSTR}$ = `{python} r"""{x:.2f}""".format(x=target_x_2)`. 
+
+
+(e) What conversion can be achieved if a $24 dm^3$ CSTR is followed in a series by a $72 dm^3$ PFR?
+
+```{python}
+#| label: fig-problem-2e
+#| fig-cap: Reactor conversion for CSTR followed by PFR
+
+fig,ax = plt.subplots()
+
+x_plf =np.linspace(0,1,100)
+
+ax.scatter(p2_data['x'], p2_data['fa0_by_minus_ra'], marker='s', color='red')
+ax.plot(x_plf, piecewise_linear_fit(x_plf, *args), color='grey')
+
+# CSTR
+target_x_1 = 0.4
+target_fa0_by_ra_1 = piecewise_linear_fit(target_x_1, *args)
+v_cstr = target_x_1 * target_fa0_by_ra_1
+rectangle = plt.Rectangle((0, 0), target_x_1, target_fa0_by_ra_1, color='lightcoral', alpha=0.4)
+ax.add_patch(rectangle)
+
+text_str = r"""$X_C$ = {x:.2f}""".format(x=target_x_1)
+ax.text(0.2, 10, text_str, ha='center', va='bottom')
+
+# PFR 
+
+target_x_2, target_fa0_by_ra_2 = PFR_Volume_Coordinates(piecewise_linear_fit, 72, target_x_1, 1, 1000, *args)
+
+# Fill the area under the curve between target_x_1 and target_x_2
+x_fill = np.linspace(target_x_1, target_x_2, 100)
+y_fill = piecewise_linear_fit(x_fill, *args)
+ax.fill_between(x_fill, y_fill, color='lightblue', alpha=0.4)
+
+text_str = r"""$X_P$ = {x:.2f}""".format(x=target_x_2)
+ax.text((target_x_1 + target_x_2)/2, 10, text_str, ha='center', va='bottom')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (dm^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 450)
+
+plt.show()
+```
+
+From @fig-problem-2e, $X_{CSTR}$ = `{python} r"""{x:.2f}""".format(x=target_x_1)` and 
+$X_{PFR}$ = `{python} r"""{x:.2f}""".format(x=target_x_2)`. 
+
+
+(f) Plot the conversion and rate of reaction as a function of PFR reactor volume up to a volume of $100 dm^3$.
+
+To create this plot (@fig-problem-2f), we will need to calculate the volume first for all $X$ as 
+
+$$
+V = \int_0^x \frac{F_{A0}{-r_A}} dX
+$$
+
+This data is given in @tbl-problem-2f
+
+```{python}
+#| echo: false
+#| label: tbl-problem-2f
+#| tbl-cap: Reactor conversion and rate as function fo volume
+
+X = p2_data['x']
+ra = p2_data['minus_ra']
+fa0_by_ra = p2_data['fa0_by_minus_ra']
+
+V = np.zeros_like(X)
+
+for i, x in enumerate(X):
+   v, err = integrate.quad(piecewise_linear_fit, 0, x, args=args)
+   V[i]=v
+
+
+p2_df = pd.DataFrame({'V': V, 'X': X, 'RA': ra})
+p2_df.columns = ['$V (dm^3)$', '$X$', '$-r_A$']
+
+# Convert the DataFrame to a markdown table string
+markdown_table = p2_df.to_markdown(index=False)
+
+Markdown(markdown_table)
+
+```
+
+```{python}
+#| label: fig-problem-2f
+#| fig-cap: Reactor conversion and rate as function fo volume
+
+# Plotting
+plt.figure(figsize=(10, 5))
+
+# Plot X vs. V
+plt.subplot(1, 2, 1)
+plt.plot(V, X, 'o-', label='X vs. V')
+plt.xlabel('V $dm^3$')
+plt.ylabel('X')
+plt.title('X vs. V')
+plt.grid(True)
+plt.xlim(0,100)
+
+# Plot ra vs. V
+plt.subplot(1, 2, 2)
+plt.plot(V, ra, 'o-', color='r', label='$-r_A$ vs. V')
+plt.xlabel('V $dm^3$')
+plt.ylabel('$-r_A$')
+plt.title('$-r_A$ vs. V')
+plt.grid(True)
+plt.xlim(0,100)
+
+plt.tight_layout()
 plt.show()
 
 ```
@@ -654,6 +1111,7 @@ Additional information: FA0 = 2 mol/s.
 
 **Solution**:
 
+Digitized graph: (@fig-problem-4) 
 
 ```{python}
 #| label: fig-problem-4
@@ -684,7 +1142,7 @@ plt.show()
 (a) Assuming that you have a fluidized CSTR and a PBR containing equal
 weights of catalyst, how should they be arranged for this adiabatic
 reaction? Use the smallest amount of catalyst weight to achieve 80%
-conversion of A.
+conversion of A. (@fig-problem-4a)
 
 
 ```{python}
@@ -740,7 +1198,7 @@ plt.show()
 
 
 (b) What is the catalyst weight necessary to achieve 80% conversion in a
-fluidized CSTR? 
+fluidized CSTR? (@fig-problem-4b)
 
 
 ```{python}
@@ -775,7 +1233,7 @@ plt.show()
 ```
 
 
-(c) What fluidized CSTR weight is necessary to achieve 40% conversion?
+(c) What fluidized CSTR weight is necessary to achieve 40% conversion? (@fig-problem-4c)
 
 
 ```{python}
@@ -810,7 +1268,7 @@ plt.show()
 ```
 
 
-(d) What PBR weight is necessary to achieve 80% conversion?
+(d) What PBR weight is necessary to achieve 80% conversion? (@fig-problem-4d)
 
 
 ```{python}
@@ -848,7 +1306,7 @@ plt.show()
 ```
 
 
-(e) What PBR weight is necessary to achieve 40% conversion?
+(e) What PBR weight is necessary to achieve 40% conversion? (@fig-problem-4e)
 
 
 ```{python}
@@ -887,7 +1345,58 @@ plt.show()
 
 
 (f) Plot the rate of reaction and conversion as a function of PBR catalyst
-weight, W.
+weight, W. (Data table: @tbl-problem-4f; Plots: @fig-problem-4f)
+
+```{python}
+#| label: tbl-problem-4f
+#| tbl-cap: Reactor conversion and rate as function fo volume
 
 
+p4X = p4_data['x']
+p4fa0_by_ra = p4_data['y']
+p4ra = 2/p4fa0_by_ra
 
+V = np.zeros_like(p4X)
+
+for i, x in enumerate(p4X):
+   v, err = integrate.quad(p4_interp,0, x)
+   V[i]=v
+
+p4_df = pd.DataFrame({'V': V[::5], 'X': p4X[::5], 'RA': p4ra[::5]})
+p4_df.columns = ['$V (dm^3)$', '$X$', '$-r_A$']
+
+# Convert the DataFrame to a markdown table string
+markdown_table = p4_df.to_markdown(index=False)
+
+Markdown(markdown_table)
+
+```
+
+```{python}
+#| label: fig-problem-4f
+#| fig-cap: Reactor conversion and rate as function fo volume
+
+# Plotting
+plt.figure(figsize=(10, 5))
+
+# Plot X vs. V
+plt.subplot(1, 2, 1)
+plt.plot(V, p4X, '-', label='X vs. V')
+plt.xlabel('V $dm^3$')
+plt.ylabel('X')
+plt.title('X vs. V')
+plt.grid(True)
+
+# Plot ra vs. V
+plt.subplot(1, 2, 2)
+plt.plot(V, p4ra, '-', color='r', label='$-r_A$ vs. V')
+plt.xlabel('V $dm^3$')
+plt.ylabel('$-r_A$')
+plt.title('$-r_A$ vs. V')
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
+
+
+```
