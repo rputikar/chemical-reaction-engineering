@@ -59,6 +59,72 @@ $$
 
 **Solution**:
 
+To read the CSV file use the
+[`genfromtxt`](https://numpy.org/doc/stable/reference/generated/numpy.genfromtxt.html)
+function from `numpy` 
+
+```python
+import numpy as np
+
+p1_expt_file = './workshop-02-problem-1-data.csv'
+p1_expt_data = np.genfromtxt(p1_expt_file, delimiter=',', dtype=[('x', float), ('fa0_by_ra', float)], skip_header=1)
+```
+
+To interpolate the data, use
+[`CubicSpline`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicSpline.html#scipy.interpolate.CubicSpline)
+function from [`scipy.interpolate`](https://docs.scipy.org/doc/scipy/reference/interpolate.html).
+
+```python
+import scipy.interpolate as interpolate
+
+p1_interp = interpolate.CubicSpline(p1_expt_data['x'], p1_expt_data_data['fa0_by_ra'])
+```
+
+Data plotting using [`matplotlib.pyplot`](https://matplotlib.org/stable/api/pyplot_summary.html)
+
+```python
+import matplotlib.pyplot as plt
+
+fig,ax = plt.subplots()
+
+ax.scatter(p1_expt_data['x'], p1_expt_data['fa0_by_ra'], marker='s', color='red')
+
+ax.set_xlabel('Conversion X')
+ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
+
+# Setting x and y axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 12)
+
+plt.show()
+```
+
+Add fit line to the plot
+
+```python
+x_interp =np.linspace(0,1,100)
+ax.plot(x_interp, p1_interp(x_interp), color='grey')
+```
+
+Add rectangle to the plot
+
+```python
+
+# Adds rectangle from (0,0) with a width of x1 and height of y1
+rectangle = plt.Rectangle((0, 0), x1, y1, color='skyblue', alpha=0.4)
+ax.add_patch(rectangle)
+```
+
+Color area under the curve
+
+```python
+
+ Fill the area under the curve between x1 and x2
+x_fill = np.linspace(x1, x2, 100)
+y_fill = p1_interp(x_fill)
+ax.fill_between(x_fill, y_fill, color='skyblue', alpha=0.4)
+```
+
 ```{python}
 
 p1_expt_file = './workshop-02-problem-1-data.csv'
