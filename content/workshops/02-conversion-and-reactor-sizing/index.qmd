@@ -15,7 +15,8 @@ P2-3, P2-4, P2-7, P2-10.
 
 We will go through some of these problems in the workshop. 
 
-::: {.callout-note}
+::: {.callout-tip}
+## Specimen code
 
 A collab notebook that contains specimen code can be obtained by clicking on link below.
 
