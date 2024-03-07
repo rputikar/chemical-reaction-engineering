@@ -15,6 +15,15 @@ P2-3, P2-4, P2-7, P2-10.
 
 We will go through some of these problems in the workshop. 
 
+::: {.callout-note}
+
+A collab notebook that contains specimen code can be obtained by clicking on link below.
+
+[Workshop 02 Levenspeil Plots and Reactor sizing -
+Help](https://colab.research.google.com/drive/17FFl73Sc5i0zqnpP46mFLSTk2YDEM9hB?usp=sharing)
+
+:::
+
 
 1. **P2-3**: You have two CSTRs and two PFRs, each with a volume of $1.6 m^3$ . Use [@fig-2-2b] to calculate the conversion for each of the reactors in the following arrangements.
 
