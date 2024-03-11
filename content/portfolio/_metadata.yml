@@ -47,5 +47,6 @@ format:
         \usepackage{float}
         \usepackage{gensymb}
         \usepackage{unicode-math}
+
 filters:
   - latex-environment

@@ -66,12 +66,12 @@ You can browse them by
 clicking on the link below. 
 
 :::{.grid}
-::: {.g-col-4}
+::: {.g-col-5}
 [Lecture Notes - Rate law](../../notes/03-rate-law-and-stoichiometry/Ranjeet_Notes_Fogler_Chapter 03 - Rate law.pdf){.btn .btn-success .btn-lg role="button"}
 
 :::
 
-::: {.g-col-4}
+::: {.g-col-5}
 [Lecture Notes - Stoichiometry](../../notes/03-rate-law-and-stoichiometry/Ranjeet_Notes_Fogler_Chapter 04 - Stoichiometry.pdf){.btn .btn-success .btn-lg role="button"}
 
 :::

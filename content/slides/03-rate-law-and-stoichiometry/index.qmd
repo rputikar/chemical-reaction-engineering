@@ -1,0 +1,243 @@
+---
+title: "Rate law and stoichiometry"
+format: revealjs
+---
+
+```{python}
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+import pandas as pd
+import scipy.interpolate as interpolate
+import scipy.integrate as integrate
+import tabulate as tab
+from IPython.display import display, Markdown
+plt.style.use('../../../assets/templates/present.mpstyle')
+```
+
+# Rate law
+
+## Reactor mole balance in terms of $X$
+
+
+:::: {.columns}
+::: {.column width="30%"}
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+:::{.extrapad}
+
+| Reactor | Mole balance |
+|:--------|:------------------|
+| Batch | $$ N_{A0}\frac{dX}{dt} = r_AV $$|
+| CSTR | $$V = \frac{F_{A0}X}{-r_A} $$  |
+| PFR | $$ F_{A0}\frac{dX}{dV} = -r_A $$|
+| PBR | $$ F_{A0}\frac{dX}{dW} = -r'_A $$|
+|||
+
+:::
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="65%"}
+
+:::{.incremental}
+
+* ### Rate law
+
+  The algebraic expression for the reaction rate equation, $r_j$.
+
+  :::{.smaller}
+  $$
+  -r_A = f \left[ \begin{array}{c} \text{temperature} \\ \text{dependent} \\ \text{terms} \end{array} , 
+                \begin{array}{c} \text{concentration} \\ \text{dependent} \\ \text{terms} \end{array} 
+         \right]
+     = f(T, C)]
+  $$
+  :::
+
+* How to derive an equation for $–r_A$ in terms of $X_A$
+
+  - Relate all $r_j$ to $C_j$ [$\Rightarrow$ Rate law]{.magenta}
+
+  - Relate all $C_j$ to $V$ or $\upsilon$ [$\Rightarrow$ Stoichiometry]{.magenta}
+
+  - Relate $V$ or $\upsilon$ to $X_A$ [$\Rightarrow$ Stoichiometry]{.magenta}
+
+  - Put together
+
+    :::{.highlight}
+    $$
+    r_A = f(T, X_A)
+    $$
+    :::
+
+:::
+:::
+
+::::
+
+## Basic definitions
+
+:::{.incremental}
+
+* **Homogeneous reaction**: involves only one phase.
+
+* **Heterogeneous reaction**: involves more than one phase. Reaction usually
+  occurs at the interface.
+
+* **Irreversible reaction**: proceeds in only one direction. Continues until
+  one of the reactants is exhausted.
+
+* **Reversible reaction**: proceeds in either direction. Continues until
+  equilibrium concentration is reached.
+
+  :::{.callout-note appearance="simple"}
+
+  No reaction is completely irreversible. For irreversible reactions
+  equilibrium point lies far to the product side. 
+
+  :::
+
+* **Reaction rate**
+  - **Rate laws**: are the algebraic equations that apply to a given reaction
+
+  - **Relative rates**: how fast one species appears or disappears relative to
+    the other species in a given reaction.
+
+  - **Net rate of formation of a given species (e.g., A)**: is the sum of the
+    rate of the reactions of A for all the reactions in which A is either a
+    reactant or product.  
+
+:::
+
+
+##  Molecularity of reaction
+
+:::{.incremental}
+
+* Number of atoms, ions, or molecules involved (colliding) in a reaction step
+
+* **Unimolecular**: One molecule colliding in one reaction step 
+
+  - radioactive decay
+    $$\ce{ _{92}U^{238} -> _{90}Th^{234} + _{2}He^{4} }$$
+  - rate of disappearance of U $\Rightarrow -r_U = kC_U$
+
+* **Bimolecular**: Two molecule colliding in one reaction step 
+
+  - Only true bimolecular reactions are those involving collision with free
+    radicals 
+    $$\ce{ Br. C2H6 -> HBr + C2H5.}$$
+  - $-r_{\ce{Br.}} = kC_{\ce{Br.}}C_{\ce{C2H6}}$
+
+* **Trimolecular**: Three molecule colliding in one reaction step 
+
+  - The probability of trimolecular reaction is almost non-existent
+
+  - In most instances the reaction pathway follows a series of bimolecular
+    reactions.
+
+:::
+
+## Relative rates of reaction
+
+:::{.incremental}
+* How fast one species appears or disappears relative to the other species in a
+  given reaction.
+
+* Can be obtained from the ratio of stoichiometric coefficients
+
+* Consider a reaction
+
+  $$ \ce{aA + bB -> cC + dD} $$
+
+* For every mole of A consumed $\frac{c}{a}$ moles of C appear
+
+  :::{.smaller}
+  $$
+  r_C = \left[ \begin{array}{c} \text{rate of} \\ \text{formation of C}\end{array} \right] 
+      = \frac{c}{a} \left[ \begin{array}{c} \text{rate of} \\ \text{disappearance of A}\end{array} \right]
+      = \frac{c}{a} (-r_A)
+  $$
+  :::
+ 
+  $r_C = \frac{-c}{a} r_A$ Similarly, $r_C = \frac{c}{d} r_D$
+
+:::
+
+:::{.fragment .highlight}
+
+$$
+\begin{array}{c} \ce{ A + \frac{b}{a} B -> \frac{c}{a} C + \frac{d}{a} D} \\
+\\
+\frac{-r_A}{a} = \frac{-r_B}{b} = \frac{r_C}{c} = \frac{r_D}{d} \end{array}
+$$
+ 
+:::
+
+## Rate law
+
+* The rate of reaction depends on collision frequency of the molecules. 
+
+* Concentration and temperature
+
+  - Molecular collision frequency $\propto$ concentration
+
+    $\Rightarrow$ Rate of reaction $\propto$ concentration. $-r_A = f(C_A, C_B, ...) \quad \text{for const. T}$
+
+  - As temperature increases, collision frequency increases
+
+    $\Rightarrow$ Rate of reaction $\propto$ temperature.  $-r_A = f([T],[C_A, C_B, ...])$
+
+* For many reactions
+
+  $$
+  -r_A = k_A(T) f(C_A, C_B, ...)
+  $$
+
+* [Specific rate of reaction (rate constant), $k_A(T)$]{.highlight}
+
+  - Proportionality constant in the rate equation
+
+  - Depends on the temperature (following the Arrhenius equation), the presence
+    of a catalyst, and other environmental conditions but is independent of the
+    reactant concentrations.
+
+
+## Power law model
+
+## Order of reaction
+
+## Elementary reaction
+
+## Overall stoichiometric equations
+
+## Heterogeneous reactions
+
+## Reversible reaction
+
+## The reaction rate constant ($k_A$)
+
+## Arrhenius equation
+
+## Activation energy
+
+## Determining activation energy
+
+# Stoichiometry
+
+## Stoichiometric table
+
+## Batch systems
+
+## Flow systems
+
+## Gas phase reactions
+
+## Flow reactor with variable volumetric flow rate
+

@@ -1,5 +1,5 @@
 ---
-title: "Pre class activity: Rate law"
+title: "Pre class activity: Rate law and stoichiometry"
 date: 2024-03-03
 format:
   pdf
@@ -18,4 +18,4 @@ format:
 
     [Arrhenius Equation Activation Energy and Rate Constant K Explained](https://www.youtube.com/watch?v=16fFjAcxJSc)
 
-
+- Read chapter 4 from [@fogler2016].

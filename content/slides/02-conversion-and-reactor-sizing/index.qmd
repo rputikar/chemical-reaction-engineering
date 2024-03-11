@@ -289,7 +289,7 @@ $$
 
 * :::{.highlight}
   $$
-  V = \frac{- F_{A0} X_A}{-r_A}
+  V = \frac{F_{A0} X_A}{-r_A}
   $$
   :::
 

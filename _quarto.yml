@@ -96,7 +96,11 @@ website:
         contents:
           - file: ./content/workshops/index.qmd
           - file: ./content/workshops/01-mole-balances/index.qmd
+            text: Mole balances
           - file: ./content/workshops/02-conversion-and-reactor-sizing/index.qmd
+            text: Conversion and reactor sizing
+          - file: ./content/workshops/03-rate-law-and-stoichiometry/index.qmd
+            text: Rate law and stoichiometry
      #
       - section: "Labs"
         id: labs

@@ -1,7 +1,144 @@
 ---
-title: "In class activity: Rate law"
+title: "In class activity: Rate law and stoichiometry"
 date: 2024-03-03
 format:
   pdf
 ---
+
+## Relative rates
+
+1. For the reaction $\ce{2A + B -> 3C}$, calculate rates of reaction of B and C
+   if $-r_A = 10 mol/(dm^3 s)$
+
+2. $\ce{NO2}$ is being formed at a rate of 4 $mol/(m^3 s)$ in the reaction
+   $\ce{2NO + O2 <=> 2NO2}$. Calculate the rate of consumption of $\ce{NO}$,
+   and $\ce{O2}$. 
+
+
+## Rate law
+
+Determine the rate law for the reaction described in each of the cases below involving
+species A, B, and C. The rate laws should be elementary as written for reactions that are
+either of the form $\ce{A -> B}$ or $\ce{A + B -> C}$.
+
+1. The units of the specific reaction rate are $k = \left[\frac{dm^3}{mol \ h} \right]$.
+2. The units of the specific reaction rate are  $k = \left[\frac{mol}{kg-cat \ h \ (atm)^2} \right]$.
+3. The units of the specific reaction rate are $k = \left[\frac{1}{h} \right]$.
+4. The units of a nonelementary reaction rate are $k = \left[\frac{mol}{dm^3 \ h} \right]$.
+
+
+## Rate law for reversible reaction
+
+For the reaction 
+$$ 
+\ce{C6H6 <=>[{k_B}][{k_{-B}}] C6H4 + H2} (\ce{B <=> D + H2})
+$$
+
+determine the rate expression for disappearance of benzene ($-r_B$). Assume
+both the forward and reverse reactions are elementary. 
+
+## Calculate the activation energy 
+
+The decomposition of benzene diazonium chloride to give chlorobenzene and nitrogen 
+
+$$
+\ce{C6H5N2Cl -> C6H5Cl + N2}
+$$
+
+follows first order kinetics. The rate constant data at different temperatures
+is given in @tbl-ae. Calculate the activation energy.
+
+
+| |  |  |  |  |  |
+|- |-  |-  |-  |-  |-  |
+|$k (s^{-1})$ | 0.00043 | 0.00103 | 0.00180 | 0.00355 | 0.00717 |
+| $T (K)$ | 313.0 | 319.0 | 323.0 | 328.0 | 333.0 |
+
+: Rate constant data {#tbl-ae}
+
+
+## Calculate the equilibrium conversion for gas phase reaction, $X_e$
+
+Consider the following elementary reaction with $K_C$ = 20 $dm^3/mol$ and
+$C_{A0}$ = 0.2 $mol/dm^3$. Find $X_e$ for both a batch reactor.
+
+Reaction: $\ce{2A <=> B}$
+
+Rate law: $-r_A = k_A \left[ C_A^2 - \frac{C_B}{K_C} \right]$
+
+## Repeat the calculations above for a flow reactor
+
+
+## Saponification reaction
+
+The saponification for the formation of soap is:
+
+$$
+\ce{3NaOH + (C17H35COO)3C3H5 -> 3C17H35COONa + C3H5(OH)3}
+$$
+
+Letting X represent the conversion of NaOH set up a stoichiometric table
+expressing the concentration of each species in terms of the initial
+concentration of NaOH and the conversion of X.
+
+## Determining $C_j = h_j(X)$ for a Gas-Phase Reaction
+
+A mixture Of 28% $\ce{SO2}$ and 72% air is charged to a flow reactor in which
+$\ce{SO2}$ is oxidized.
+
+$$
+\ce{2SO2 + O2 -> 2 SO3}
+$$
+
+1. First, set up a stoichiometric table using only the symbols (i.e., $\Theta_i, F_i$).
+   
+2. Next, prepare a second table evaluating the species concentrations as a
+   function of conversion for the case when the total pressure is 1485 kPa
+   (14.7 atm) and the temperature is constant at 227 &deg;C.
+
+3. Evaluate the parameters and make a plot of each of the concentrations $\ce{SO2}$,
+   $\ce{SO3}$, $\ce{N2}$ as a function of conversion
+
+##  Liquid phase first order reaction
+
+*Orthonitroanaline* (an important intermediate in dyes—called _fast orange_) is
+formed from the reaction of *orthonitrochlorobenzene* (ONCB) and aqueous
+ammonia. The liquid-phase reaction is first order in both ONCB and ammonia with
+$k = 0.0017 \ m^3 /kmol \cdot min$ at $188 \ ^{\circ}C$ with $E = 11273 \  cal/mol$.
+The initial entering concentrations of ONCB and ammonia are $1.8 \ kmol/m^3$ and
+$6.6 \ kmol/m^3$, respectively.
+
+$$
+\ce{C6H4ClNO2 + 2 NH3 -> C6H6N2O2 + NH4Cl}
+$$
+
+(a) Set up a stoichiometric table for this reaction for a flow system.
+(b) Write the rate law for the rate of disappearance of ONCB in terms of concentration.
+(c) Explain how parts (a) and (b) would be different for a batch system.
+(d) Write $-r_A$ solely as a function of conversion. $-r_A$ = ______
+
+(e) What is the initial rate of reaction (X = 0)
+
+    at $188 \ ^{\circ}C$? $-r_A$ = ______
+
+    at $25 \ ^{\circ}C$? $-r_A$ = ______
+
+    at $288 \ ^{\circ}C$? $-r_A$ = ______
+
+(f) What is the rate of reaction when X = 0.90
+
+    at $188 \ ^{\circ}C$? $-r_A$ = ______
+
+    at $25 \ ^{\circ}C$? $-r_A$ = ______
+
+    at $288 \ ^{\circ}C$? $-r_A$ = ______
+
+(g) What would be the corresponding CSTR reactor volume at $25 \ ^{\circ}C$ to
+    achieve 90% conversion and at $288 \ ^{\circ}C$ for a feed rate of $2 \
+    dm^3 /min$
+
+    at $25 \ ^{\circ}C$? V = ______
+
+    at $25 \ ^{\circ}C$? V = ______
+
 
