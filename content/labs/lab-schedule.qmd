@@ -1,0 +1,215 @@
+---
+title: Laboratory Schedule
+subtitle: CHEN3010/ CHEN5040 - Chemical Reaction Engineering - S1 2024
+author: ""
+format:
+  pdf
+---
+
+: List of experiments Experiments
+
+| Experiment No. | Title                                                       |
+| -              | -----                                                       |
+| 1              | Batch saponification reaction of Et(Ac) and NaOH            |
+| 2              | Reaction rate constant using a tubular reactor              |
+| 3              | Study of sucrose inversion using catalytic reactor                                  |
+| 4              | Effect of throughput on conversion using tubular reactor    |
+| 5              | Determination of the residence time in a CSTR |
+
+: List of Sessions
+
+| Session Number | Day      | Time          |
+| -              | -        | -             |
+| 1	| Monday	| 09:00 - 12:00 | 
+| 2	| Monday	| 13:00 - 16:00 | 
+| 3	| Monday	| 13:00 - 16:00 | 
+| 4	| Tuesday	| 09:00 - 12:00 |
+| 5	| Tuesday	| 09:00 - 12:00 |
+| 6	| Tuesday	| 13:00 - 16:00 | 
+
+: List of Demonstrators
+
+| Name                    | Initials |
+| -                       | -        |
+| Eathan Adam             | EA       |
+| Himanshu Patel          | HP       |
+| Mitch Craig             | MC       |
+| Paria Sadeghi           | PS       |
+| Ruturaj Sawant          | RS       |
+
+{{< pagebreak >}}
+\KOMAoptions{paper=landscape, DIV=15}
+\recalctypearea
+
+: Lab schedule session 1
+
+| Session | Group | Students                             | Week 12 18-Mar | Week 13 25-Mar | Week 14 1-Apr | Week 15 8-Apr | Week 16 15-Apr | Week 17 22-Apr | Week 18 29-Apr | Week 19 6-May | Week 20 13-May |
+|---------|-------|--------------------------------------|----------------|----------------|---------------|---------------|----------------|----------------|----------------|---------------|----------------|
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 1       | 1-1   | Sandra Jo                            | Exp. 1         |                |               |   Exp. 2      |                |                |    Exp. 3      |               |                |
+|         |       | Yeonhui Kim                          |                |                |               |               |                |                |                |               |                |
+|         |       | Fahad Rahman Kuttukkanakath          |                |                |               |               |                |                |                |               |                |
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 1       | 1-2   | Catherine Lee                        | Exp. 4         |                |               |   Exp. 5      |                |                |    Exp. 1      |               |                |
+|         |       | Chamara Sampath Mahadurage           |                |                |               |               |                |                |                |               |                |
+|         |       | Regina Markhabullina                 |                |                |               |               |                |                |                |               |                |
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 1       | 1-3   | Yash Meghani                         | Exp. 2         |                |               |   Exp. 3      |                |                |    Exp. 4      |               |                |
+|         |       | Similoluwa Oladehinde                |                |                |               |               |                |                |                |               |                |
+|         |       | Vedant Rajeshkumar Patel             |                |                |               |               |                |                |                |               |                |
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 1       | 1-4   | Camilo Picon Prada                   | Exp. 5         |                |               |   Exp. 1      |                |                |    Exp. 2      |               |                |
+|         |       | Ashwin Thampi Saratchandran Rajitha   |               |                |               |               |                |                |                |               |                |
+|         |       | Marah Faye Martinez                  |                |                |               |               |                |                |                |               |                |
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 1       | 1-5   | Florian Mitteregger                  | Exp. 3         |                |               |   Exp. 4      |                |                |    Exp. 5      |               |                |
+|         |       | Dhan Kumar Rai                       |                |                |               |               |                |                |                |               |                |
+|         |       | Xingjian Xie                         |                |                |               |               |                |                |                |               |                |
+
+Demonstrators: EA, PS, RS
+
+{{< pagebreak >}}
+: Lab schedule session 2
+
+| Session | Group | Students                             | Week 12 18-Mar | Week 13 25-Mar | Week 14 1-Apr | Week 15 8-Apr | Week 16 15-Apr | Week 17 22-Apr | Week 18 29-Apr | Week 19 6-May | Week 20 13-May |
+|---------|-------|--------------------------------------|----------------|----------------|---------------|---------------|----------------|----------------|----------------|---------------|----------------|
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 2       | 2-1   | Maverick Cake                        | Exp. 1         |                |               | Exp. 2        |                |                | Exp. 3         |               |                |
+|         |       | Jake Carpenter                       |                |                |               |               |                |                |                |               |                |
+|         |       | Sharon Wan Pei Chua                  |                |                |               |               |                |                |                |               |                |
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 2       | 2-2   | Hannah Finlay                        | Exp. 4         |                |               | Exp. 5        |                |                | Exp. 1         |               |                |
+|         |       | Tim Giraudo                          |                |                |               |               |                |                |                |               |                |
+|         |       | Lorali Graesslin                     |                |                |               |               |                |                |                |               |                |
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 2       | 2-3   | Sara Kenawy                          | Exp. 2         |                |               | Exp. 3        |                |                | Exp. 4         |               |                |
+|         |       | Jerome Leung                         |                |                |               |               |                |                |                |               |                |
+|         |       | Kai Liew                             |                |                |               |               |                |                |                |               |                |
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 2       | 2-4   | Anna Luong                           | Exp. 5         |                |               | Exp. 1        |                |                | Exp. 2         |               |                |
+|         |       | Lily Luu                             |                |                |               |               |                |                |                |               |                |
+|         |       | Matthew Pereira                      |                |                |               |               |                |                |                |               |                |
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 2       | 2-5   | Marcus Poh                           | Exp. 3         |                |               | Exp. 4        |                |                | Exp. 5         |               |                |
+|         |       | Eloise Thompson Fanciulli            |                |                |               |               |                |                |                |               |                |
+|         |       | Matthew Sisson                       |                |                |               |               |                |                |                |               |                |
+
+
+Demonstrators: HP, MC, PS
+
+{{< pagebreak >}}
+: Lab schedule session 3
+
+| Session | Group | Students                                      | Week 12 18-Mar | Week 13 25-Mar | Week 14 1-Apr | Week 15 8-Apr | Week 16 15-Apr | Week 17 22-Apr | Week 18 29-Apr | Week 19 6-May | Week 20 13-May |
+|---------|-------|-----------------------------------------------|----------------|----------------|---------------|---------------|----------------|----------------|----------------|---------------|----------------|
+|         |       |                                               |                |                |               |               |                |                |                |               |                |
+| 3       | 3-1   | Sadana Rasmin Karunarathne Aturugiriyage Don  |                |   Exp. 1       |               |               |                |   Exp. 2       |                |   Exp. 3      |                |
+|         |       | Willem Di Prinzio                             |                |                |               |               |                |                |                |               |                |
+|         |       | Mark Lu                                       |                |                |               |               |                |                |                |               |                |
+|         |       |                                               |                |                |               |               |                |                |                |               |                |
+| 3       | 3-2   | Yusuph Mtafuni                                |                |   Exp. 4       |               |               |                |   Exp. 5       |                |   Exp. 1      |                |
+|         |       | Anita Mukasa                                  |                |                |               |               |                |                |                |               |                |
+|         |       | Jordan Rowe                                   |                |                |               |               |                |                |                |               |                |
+|         |       |                                               |                |                |               |               |                |                |                |               |                |
+| 3       | 3-3   | Leah Sidaway                                  |                |   Exp. 2       |               |               |                |   Exp. 3       |                |   Exp. 4      |                |
+|         |       | Dinuka Induwara Ariyawansa                    |                |                |               |               |                |                |                |               |                |
+|         |       | Alex Foster                                   |                |                |               |               |                |                |                |               |                |
+|         |       |                                               |                |                |               |               |                |                |                |               |                |
+| 3       | 3-4   | Sheanesu Praise Fungura                       |                |   Exp. 5       |               |               |                |   Exp. 1       |                |   Exp. 2      |                |
+|         |       | Joseph Kron                                   |                |                |               |               |                |                |                |               |                |
+|         |       | Fang-Tzu Lin                                  |                |                |               |               |                |                |                |               |                |
+|         |       |                                               |                |                |               |               |                |                |                |               |                |
+| 3       | 3-5   | Yuchen Zheng                                  |                |   Exp. 3       |               |               |                |   Exp. 4       |                |   Exp. 5      |                |
+|         |       | Sara Kambarji                                 |                |                |               |               |                |                |                |               |                |
+|         |       | Blake Hillier                                 |                |                |               |               |                |                |                |               |                |
+
+
+Demonstrators: HP, MC, PS
+
+{{< pagebreak >}}
+: Lab schedule session 4
+
+| Session | Group | Students                             | Week 12 18-Mar | Week 13 25-Mar | Week 14 1-Apr | Week 15 8-Apr | Week 16 15-Apr | Week 17 22-Apr | Week 18 29-Apr | Week 19 6-May | Week 20 13-May |
+|---------|-------|--------------------------------------|----------------|----------------|---------------|---------------|----------------|----------------|----------------|---------------|----------------|
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 4       | 4-1   | Cosima Biagioni                      |   Exp. 1       |                |               |   Exp. 2      |                |                |   Exp. 3       |               |                |
+|         |       | Jeanelle Canada                      |                |                |               |               |                |                |                |               |                |
+|         |       | Brice Chapman                        |                |                |               |               |                |                |                |               |                |
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 4       | 4-2   | Savannah Frame                       |   Exp. 4       |                |               |   Exp. 5      |                |                |   Exp. 1       |               |                |
+|         |       | Liam Fu                              |                |                |               |               |                |                |                |               |                |
+|         |       | Thien Phuc Khuong                    |                |                |               |               |                |                |                |               |                |
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 4       | 4-3   | Lucille Lobo                         |   Exp. 2       |                |               |   Exp. 3      |                |                |   Exp. 4       |               |                |
+|         |       | Praveen Nagarajan                    |                |                |               |               |                |                |                |               |                |
+|         |       | Tahni Rowe                           |                |                |               |               |                |                |                |               |                |
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 4       | 4-4   | Alexander Santoro                    |   Exp. 5       |                |               |   Exp. 1      |                |                |   Exp. 2       |               |                |
+|         |       | Vesakhan Ratna Satkunabalan          |                |                |               |               |                |                |                |               |                |
+|         |       | William Staykov                      |                |                |               |               |                |                |                |               |                |
+|         |       |                                      |                |                |               |               |                |                |                |               |                |
+| 4       | 4-5   | Jayden Tang                          |   Exp. 3       |                |               |   Exp. 4      |                |                |   Exp. 5       |               |                |
+|         |       | Thanh Tu Thai                        |                |                |               |               |                |                |                |               |                |
+|         |       | Mitchell Tsapazi                     |                |                |               |               |                |                |                |               |                |
+
+Demonstrators: EA, HP, PS
+
+{{< pagebreak >}}
+: Lab schedule session 5
+
+| Session | Group | Students             | Week 12 18-Mar | Week 13 25-Mar | Week 14 1-Apr | Week 15 8-Apr | Week 16 15-Apr | Week 17 22-Apr | Week 18 29-Apr | Week 19 6-May | Week 20 13-May |
+|---------|-------|--------------------------------------|----------------|----------------|---------------|---------------|----------------|----------------|----------------|---------------|----------------|
+|         |       |                      |                |                |               |               |                |                |                |               |                |
+| 5       | 5-1   | Neve Annett          |                |   Exp. 1       |               |               |                |   Exp. 2       |                |   Exp. 3      |                |
+|         |       | Hudson Campbell      |                |                |               |               |                |                |                |               |                |
+|         |       | Joshua Carriera      |                |                |               |               |                |                |                |               |                |
+|         |       |                      |                |                |               |               |                |                |                |               |                |
+| 5       | 5-2   | Joshua Farrow        |                |   Exp. 4       |               |               |                |   Exp. 5       |                |   Exp. 1      |                |
+|         |       | Cameron Frost        |                |                |               |               |                |                |                |               |                |
+|         |       | Justin Harrison      |                |                |               |               |                |                |                |               |                |
+|         |       |                      |                |                |               |               |                |                |                |               |                |
+| 5       | 5-3   | Andile Juru          |                |   Exp. 2       |               |               |                |   Exp. 3       |                |   Exp. 4      |                |
+|         |       | Samuel Pearce        |                |                |               |               |                |                |                |               |                |
+|         |       | James Rex            |                |                |               |               |                |                |                |               |                |
+|         |       |                      |                |                |               |               |                |                |                |               |                |
+| 5       | 5-4   | Tom Smith            |                |   Exp. 5       |               |               |                |   Exp. 1       |                |   Exp. 2      |                |
+|         |       | Zachary Smith        |                |                |               |               |                |                |                |               |                |
+|         |       | Ryan Stojanovski     |                |                |               |               |                |                |                |               |                |
+|         |       |                      |                |                |               |               |                |                |                |               |                |
+| 5       | 5-5   | Christopher Thomas   |                |   Exp. 3       |               |               |                |   Exp. 4       |                |   Exp. 5      |                |
+|         |       | Adriano Todoro       |                |                |               |               |                |                |                |               |                |
+|         |       | Lam Phuc Khang Tran  |                |                |               |               |                |                |                |               |                |
+
+Demonstrators: EA, HP, PS
+
+{{< pagebreak >}}
+: Lab schedule session 6
+
+| Session | Group | Students          | Week 12 18-Mar | Week 13 25-Mar | Week 14 1-Apr | Week 15 8-Apr | Week 16 15-Apr | Week 17 22-Apr | Week 18 29-Apr | Week 19 6-May | Week 20 13-May |
+|---------|-------|--------------------------------------|----------------|----------------|---------------|---------------|----------------|----------------|----------------|---------------|----------------|
+|         |       |                   |                |                |               |               |                |                |                |               |                |
+| 6       | 6-1   | Blake Batten      |   Exp. 1       |                |               |   Exp. 2      |                |                |   Exp. 3       |               |                |
+|         |       | Janina Bauer      |                |                |               |               |                |                |                |               |                |
+|         |       | Khanh Van Diep    |                |                |               |               |                |                |                |               |                |
+|         |       |                   |                |                |               |               |                |                |                |               |                |
+| 6       | 6-2   | Jesse Graham      |   Exp. 4       |                |               |   Exp. 5      |                |                |   Exp. 1       |               |                |
+|         |       | Vanessa Khoo      |                |                |               |               |                |                |                |               |                |
+|         |       | Samantha Macfarlane|               |                |               |               |                |                |                |               |                |
+|         |       |                   |                |                |               |               |                |                |                |               |                |
+| 6       | 6-3   | Kimberly Mapeto   |   Exp. 2       |                |               |   Exp. 3      |                |                |   Exp. 4       |               |                |
+|         |       | Manya Nayak       |                |                |               |               |                |                |                |               |                |
+|         |       | Mihir Pareek      |                |                |               |               |                |                |                |               |                |
+|         |       |                   |                |                |               |               |                |                |                |               |                |
+| 6       | 6-4   | Tara Parker       |   Exp. 5       |                |               |   Exp. 1      |                |                |   Exp. 2       |               |                |
+|         |       | Cale Tierney      |                |                |               |               |                |                |                |               |                |
+|         |       | Thi Truong        |                |                |               |               |                |                |                |               |                |
+|         |       |                   |                |                |               |               |                |                |                |               |                |
+| 6       | 6-5   | Jack Willis       |   Exp. 3       |                |               |   Exp. 4      |                |                |   Exp. 5       |               |                |
+|         |       | Abdiaziz Ahmed    |                |                |               |               |                |                |                |               |                |
+|         |       | Ben Mumme         |                |                |               |               |                |                |                |               |                |
+
+Demonstrators: HP, MC, RS
+
+{{< pagebreak >}}
+\KOMAoptions{paper=portrait, DIV=15}
+\recalctypearea

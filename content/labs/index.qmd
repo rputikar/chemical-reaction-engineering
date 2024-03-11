@@ -1,0 +1,153 @@
+---
+title: Labratory sessions
+subtitle: CHEN3010/ CHEN5040 - Chemical Reaction Engineering - S1 2024
+author: ""
+# listing:
+#   contents: "./*/index.qmd"
+#   fields: [title]
+---
+
+## Preamble
+
+These experiments give students an opportunity to have a hands-on experience in
+applying theoretical concepts and developing scientific skills. Commencing in
+week 4, students will work in small groups conducting experiments on one piece
+of equipment, then rotate to another experiement on subsequent weeks.
+
+We will use 4 different experimental setups to carry out the experiments. These
+four pieces of equipment are:
+
+- Batch reactor ([Armfield Transparent Batch Reactor
+  CEB-MKIII](./Experiment-01-Batch-Saponification-Reaction-of-EtAc-and-NaOH/CEB-MKIII-Issue-3-Instruction-Manual.pdf)).
+  See [pre lab module: Tubular
+  Reactor](https://storage.net-fs.com/hosting/6412700/21/) for more
+  information.
+- Catalytic reactor ([Armfield Catalytic Reactor
+  (CEU)](./Experiment-03-Study-of-Sucrose-Inversion/PC-0054962-Armfield-Manual-CEU-Issue
+  13.pdf)). See [pre lab module: Catalytic
+  Reactor](https://storage.net-fs.com/hosting/6412700/23/) for more
+  information.  
+- Tubular reactor ([Armfield Tubular Reactor
+  CET-MKII](./Experiment-02-Reaction-rate-constant-using-a-tubular-reactor/CET-MKII
+  Issue 21 Instruction Manual.pdf)). 
+- Continous stirred reactor ([Armfield Continuous Stirred Tank Reactor
+  CEM-MKII](./Experiment-05-Determination-of-the-residence-time-in-a-CSTR/PC-0055760-Armfield-Manual-CEM-MKII-Issue
+  21.pdf))
+
+## Pre-lab modules
+
+Pre-laboratory modules have been developed for 2 of the experiments
+specifically designed to ensure you understand:
+
+- the purpose of the experiment
+- the underpinning theoretical concepts
+- the equipment setup
+- how to carry out the procedure
+
+We invite you to provide feedback on the pre-lab modules to help inform the
+development for the remaining experiments.
+
+Explore the below virtual tours and complete the quiz questions. 
+
+* [Batch Reactor](https://storage.net-fs.com/hosting/6412700/21/)
+
+* [Catalytic Reactor](https://storage.net-fs.com/hosting/6412700/23/)
+
+
+## Things to do before labs begin
+
+* Check lab schedule: Lab schedule: 2024 S1
+
+* Familiarize yourself with lab instructions on the experiments you are performing.
+* Go through lab safety presentation available on blackboard.
+* Take a virtual tour of lab equipment.
+* **Important**: Complete the following documents You won’t be able to perform
+  the experiments if you haven’t completed these. You will need to upload the
+  documents to blackboard. Document templates and MSDS are made available on
+  blackboard. 
+  - Health and Safety Risk Assessment: The lab demonstrator will deny
+    access to the lab if this document is not completed before the lab starts.
+* **Important**: Make sure that you have appropriate clothing and PPE for the
+  labs. You won’t be allowed to enter the laboratory if you do not have
+  compliant attire.
+
+## Performing experiments and marking
+
+Each experiment has three steps for completion
+
+1. Pre-experiment memo: \hfill  (10 marks)
+   
+   *This is Individual activity*
+
+   - Each person in the group should independently complete health and safety
+     risk assessment (only once, before start of first experiment).
+
+   - Watch and complete pre-lab modules (if available).
+
+   - Prepare a half- to one- page memo about the aims and experimental set up
+     for the experiment you will be performing. Also include details of when
+     you completed the pre-lab activity. Bring your memo to the lab on the
+     experimental day and give it to the lab demonstrator. 
+
+2. Conducting the experiment: \hfill (30 marks)
+
+   The experiments will be conducted in a group of 3. You need to participate
+   fully in the experimental activity. You will be assessed by your
+   demonstrator on your conduct in the laboratory during experimental session. 
+
+3. Final report: \hfill (60 marks)
+
+   Each group will submit a single report through blackboard. The format of
+   report is prescribed in @sec-report.
+
+   - Maximum length of your report should be 12 A4 pages (excluding coversheet and references).
+   - The submission will be through blackboard. Your group typically will have
+     two weeks to submit the report. Exact submission dates are available on blackboard. 
+
+### Report format {#sec-report}
+
+* **Cover page**: 
+
+  The cover page should contain following information
+
+  - Group name: (e.g. 1-1)
+  - Title: (e.g. Experiment 2: Reaction rate constant using a tubular reactor)
+  - Lab demonstrator: Name
+  - Experiment date:	dd/mm/yyyy
+  - Report submission date: dd/mm/yyyy
+  - Group member: 
+
+		- Name 1, Student ID number
+
+		- Name 2, Student ID number
+
+		- Name 3, Student ID number
+
+* **Contents**: 
+
+  1.  Introduction \hfill (Section 1-4: 20 marks)
+  2.  Objectives
+  3.  Experimental setup
+  4.  Experimental procedure
+  5.  Data analysis – calculation \hfill (20 marks)
+
+      This may also involve answering some theory questions posed in tasks
+      section of the experiment description. 
+  6.  Results and critical analysis \hfill (Section 7-9: 20 marks)
+  7.  Conclusions
+  8.  References
+  9.  Appendix
+
+* **Critical analysis**: 
+
+  While discussing the results, provide a critical analysis of the experiments.
+  Some guiding questions include:	
+
+  - What was the purpose of the experiment?	
+  - What were the major findings?	
+  - Did the model adequately represent the data obtained?	
+  - What explanation can you think of for the findings?	
+  - How could this experiment be improved or extended?	
+  - How do you ensure the accuracy of the measurements, and analysis?
+
+

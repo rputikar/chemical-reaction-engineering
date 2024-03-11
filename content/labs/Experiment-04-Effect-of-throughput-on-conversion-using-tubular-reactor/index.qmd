@@ -1,0 +1,140 @@
+---
+title: | 
+  | Experiment 4
+  | Effect of throughput on conversion using tubular reactor
+subtitle: CHEN3010/ CHEN5040 - Chemical Reaction Engineering - S1 2024
+author: ""
+format:
+  pdf
+resources:
+  - "./CET-MKII Issue 21 Instruction Manual.pdf"
+---
+
+## Objective {#sec-1}
+
+To investigate the effect of throughput on conversion
+
+The saponification reaction of sodium hydroxide and ethyl acetate
+
+$$\ce{NaOH + CH3COOC2H5 -> CH3COONa + C2H5OH}$${#eq-rxn}
+
+$$\text{Sodium Hydroxide}  + \text{Ethyl Acetate} \longrightarrow \text{Sodium
+Acetate} + \text{Ethyl Alcohol}$$ 
+
+is elementary as written. The rate equation is given by $-r_A = k C_A
+C_B$, Where, A is \ce{NaOH}, and B is \ce{CH3COOC2H5}. We would like to
+determine the rate constant $k$ using a continuous plug flow reactor system.
+
+## Experimental procedure
+
+The experiment will be carried out in a tubular flow reactor ([Armfield Limited,
+model: CET-MKII](./CET-MKII Issue 21 Instruction Manual.pdf)). The Armfield
+Continuous Tubular Flow Reactor is designed to demonstrate the mechanism of a
+chemical reaction in such a reactor as well as the effects of varying the
+process conditions such as reaction temperature, reactant concentration, feed
+rate etc. Refer to the instruction manual for the reactor setup to understand
+more about the experimental setup. A [virtual
+tour](https://storage.net-fs.com/hosting/6412700/21/) is also provided that
+describes the setup in detail.
+
+For this experiment, Reactions are monitored by conductivity probe as the
+conductivity of the solution changes with conversion of the reactants to
+product. The reaction eventually reaches steady state when a certain amount of
+conversion of the starting reagents has taken place. This experiment will be
+repeated at various reactant flow rates to investigate the relationship between
+the specific rate constant and the residence time. Please refer to equipment
+manual exercise C for further details.
+
+### Steps
+
+1. Make up 2.5 litre batches of 0.1M sodium hydroxide and 2.5 L of 0.1M ethyl
+acetate.
+
+2. Remove the lids of the feed bottles and carefully fill with the reagents.
+Refit the lids and fit the silicone pipe from the pumps.
+
+3. The experiments involve the collection and storage of conductivity data. The
+USB port located at the front of the Service Unit must be connected to the
+computer. This will enable data logging of the conductivity, flow rates and
+temperature sensors at selected time intervals over a selected period of time.
+
+4. Ensure the conductivity probe and temperature sensor has been installed in
+accordance with the Installation section.
+
+5. Start the software using the option of the experiment with heater.
+
+6. It has been determined that the degree of conversion of the reagents affects
+the conductivity of the reactor contents so that recording the conductivity
+with respect to time using the Armfield data logger can be used to calculate
+the amount of conversion.
+
+7. Prior to priming the hot water circulating system, fill the reactor with
+water. Fill the vessel to a level above the overflow (return to the
+circulator), just below the reactor lid, using a suitable hose from a domestic
+supply through the temperature sensor gland in the lid. A non-return valve
+prevents water flowing out of the reactor via the inlet. Ensure the
+thermocouple is re-fitted and the gland tightened securely by hand before
+releasing the outlet tubing.
+
+8. Set PID controller loop according to the settings for an Experiment with
+Heater described in operation section.
+
+9. Adjust the set point of the PID to 30 $^{\circ}$C.
+
+10. Change PID ‘mode of operation’ to ‘Automatic’.
+
+11. Switch on the Hot Water Circulator by clicking ‘Hot Water Circulator’ and
+then ‘Power On’. The temperature of the water in the reactor vessel will begin
+to rise and within 10-15 min will be automatically maintained at the desired
+set-point (30 $^{\circ}$C in this instance).
+
+12. When temperature reactor is steady type in the value of the concentration
+of both solutions on the software.
+
+13. Switch on the pumps by typing the flow rate in the software and instigate
+the data logger program (or begin taking readings if no computer is being
+used).
+
+14. Reactants will flow from both feed bottles and enter the reactor through
+the connections in the lid. Each reactant passes through pre-heat coils
+submerged in the water in which they are individually brought up to the
+reaction temperature. At the base of the tubular reactor coil, the reactants
+are mixed together in a "T" connection and begin to pass through the coil. The
+reacting solution will emerge from the coil through connector in the lid where
+a probe senses continuously the conductivity which is related to degree of
+conversion. For an accurate conductivity reading, no bubbles are allowed in the
+reactant pipe.
+
+15. Collection of data will be until a steady state condition is reached in the
+reactor and this takes approximately 30 minutes. It is advisable to set the
+data collection period to 45 minutes.
+
+## Data analysis
+
+Having recorded the conductivity of the contents of the reactor over the period
+of the reaction, the conductivity measurements must now be translated into
+degree of conversion of the constituents. Both sodium hydroxide and sodium
+acetate contribute conductance to the reaction solution whilst ethyl acetate
+and ethyl alcohol do not. The conductivity of a sodium hydroxide solution at a
+given concentration and temperature however, is not the same as that of a
+sodium acetate solution at the same molarity and temperature and a relationship
+has been established allowing conversion to be inferred from conductivity.
+
+On conclusion of the experiment, the set of readings of conductivity with time
+are obtained. The calculations required for converting the conductivity data
+into concentration are given in the instruction manual "CET-MKII Issue 21
+Instruction Manual.pdf"
+
+## Tasks
+
+Prepare a report based on your interpretation of experimental data.
+The report should consider the following:
+
+1. Starting from first principles, derive an expression for the conversion in
+   PFR in terms of residence time. List the assumptions made                                       
+
+2. **Data analysis**: For the experimental data obtained, perform data analysis
+   in Excel to analyze the data for three different reactant flow rates.
+   Based on the analysis, report the reaction rate constants at three different
+   reactant flow rates, and the activation energy for the reaction.
+   Present relevant graphs for all the data sets.                                                                                                 

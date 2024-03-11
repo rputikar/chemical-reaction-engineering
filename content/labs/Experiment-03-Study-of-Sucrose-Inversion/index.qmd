@@ -1,0 +1,93 @@
+---
+title: | 
+  | Experiment 3
+  | Study of Sucrose Inversion using catalytic reactor
+subtitle: CHEN3010/ CHEN5040 - Chemical Reaction Engineering - S1 2024
+author: ""
+format:
+  pdf
+resources:
+  - "./PC-0054962-Armfield-Manual-CEU-Issue 13.pdf"
+---
+
+## Objective {#sec-1}
+
+The aim of this experiment is to demonstrate the principles of packed bed
+catalysis. We will study the sucrose inversion reaction using two different
+catalyts. For each catalyst, conversion and effectiveness factor will be
+reported.
+
+## Theory {#sec-2}
+
+The hydrolysis reaction results in fructose and glucose as products.
+
+$$ \ce{ C12H22O11 + H2O <=> C6H12O6 + C6H12O6 } $$ {#eq-rxn}
+
+$$ \ce{Sucrose + water <=> fructose + glucose}$$
+
+The sucrose inversion reaction is acid catalysed. Homogeneous catalysis in an
+aqueous solution of sucrose would ultimately require the separation of the
+products of the reaction from the acid catalyst. A more practical way of
+conducting this reaction is by “immobilisation” of the catalyst. A cationic
+exchange resin in the protonated form is in fact no more than an immobilised
+acid, where the anion is covalently bonded to the 3-D structure of the resin
+and the cation H+ is ionically bonded to this group.
+
+Sucrose inversion is a reaction with very high activation energy, approx. 15950
+cal/mol (66.67 kJ/mol) for Amberlite IR 120 particles with an average diameter
+of 0.715mm [^1]. This reaction is therefore very sensitive to temperature. The
+reaction is controlled by the transport kinetics (diffusional control), i.e. by
+the diffusion of sucrose inside the particle and of the products towards the
+outside.
+
+[^1]: Reed, E. and J. Dranoff; "Ion Exchange Resin Catalysis of Sucrose
+Inversion in Fixed Beds", I&EC Fundamentals, 3, pg.304-307 (1964).
+
+The reaction will be carried out in a fixed bed catalytic reactor. Two
+catalysts are proposed: a strong cationic exchange resin and an immobilised
+enzyme, invertase, the activity of which is specific to the catalysis of this
+reaction. The reactors’ steady state conversion is followed either manually or
+by an automated analytical technique known as FIA (Flow Injection Analysis).
+The accompanying laboratory manual ("PC-0054962-Armfield-Manual-CEU-Issue
+13.pdf") details experimental data analysis, and procedure to obtain
+conversion, and effectiveness factor from the absorbance data.
+
+## Experimental procedure
+
+The experiment will be carried out in the [Armfield CEU catalytic
+reactor](./PC-0054962-Armfield-Manual-CEU-Issue 13.pdf).
+
+Begin by familiarising yourself with the experimental set-up. Explanation of
+the workings of the reactor and product analysis is given in the Operation
+section of the laboratory manual[^2]. A [virtual
+tour](https://storage.net-fs.com/hosting/6412700/23/) is also provided that
+describes the setup in detail. Follow the experimental procedure given on page
+56-57 of the laboratory manual.
+
+[^2]: Laboratory manual ["PC-0054962-Armfield-Manual-CEU-Issue
+  13.pdf"](./PC-0054962-Armfield-Manual-CEU-Issue 13.pdf)
+
+## Data analysis
+
+Having recorded the absorbance of the contents of the reactor over the period
+of the reaction, the absorbance measurements must now be translated into
+concentration. The calculations required for converting the absorbance data
+into concentration are given in the instruction manual.
+
+## Tasks
+
+Prepare a report based on your interpretation of experimental data. The report
+should consider the following:
+
+1. For catalysts with spherical symmetry and first order kinetics, show that
+   the effectiveness factor, $\eta$ is given by 
+   $$ 
+   \eta = \frac{3}{\phi}\left[ \frac{1}{tanh \phi} - \frac{1}{\phi}\right]
+   $$   
+
+2. **Data analysis**: Prepare a calibration curve (linking absorbance to
+   concentration) using the data obtained for standards. Calculate the
+   conversion in both the columns For the two datasets given, perform data
+   analysis in Excel to calculate the effectiveness factors for the two
+   columns. Present relevant calculations.                                                                                       
+

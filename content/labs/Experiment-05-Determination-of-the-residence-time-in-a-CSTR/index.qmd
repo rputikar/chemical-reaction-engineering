@@ -1,0 +1,72 @@
+---
+title: | 
+  | Experiment 5
+  | Determination of the residence time using tracer techniques
+subtitle: CHEN3010/ CHEN5040 - Chemical Reaction Engineering - S1 2024
+author: ""
+format:
+  pdf
+resources:
+  - "./PC-0055760-Armfield-Manual-CEM-MKII-Issue 21.pdf"
+---
+
+## Objective {#sec-1}
+
+Determination of the residence time using tracer techniques
+
+In this experiment we would like to measure the residence time distribution
+in a stirred tank reactor by using a step input technique. We will use
+\ce{KCl} as a tracer.
+
+## Experimental procedure
+
+The experiment will be carried out in a stirred tank reactor ([Armfield Limited,
+model: CEM-MKII](./PC-0055760-Armfield-Manual-CEM-MKII-Issue 21.pdf)). 
+
+The continuous stirred tank reactor in the form of either a single tank or
+(more often) tanks in series, is used widely and is particularly suitable for
+liquid phase reactions. It is particularly used in the organic chemicals
+industry. Advantages include consistent product quality, straightforward
+automatic control and low manpower requirements. 
+
+The Armfield CEM-MKII Continuous Stirred Tank Reactor is specially designed to
+allow detailed study of this important process. Reactions are monitored by
+conductivity probe as the conductivity of the solution changes with conversion
+of the reactants to product and by temperature.
+
+Please refer to equipment manual exercise C for further details.
+
+### Steps
+1. Make up 2.5 litres of a solution of 0.1M KCL and fill one of the feed
+   bottles. Fill the other feed bottle with demineralised water.
+2. Using the Armfield data logger, initiate the program.
+3. Set the reactor stirrer to a speed of '50%' and press ‘Power on’ button to
+   start it up. The experiment can be carried out at room temperature
+   initially. If other reactor temperatures are required this is achieved using
+   the hot water circulator and setting the PID temperature controller in the
+   software as detailed in previous experiments.
+4. Start the water feed pump by setting the pump speed control to maximum in
+   order to fill the reactor to the overflow as quickly as possible. When the
+   reactor is full, stop the feed pump.
+5. Start the KCL solution feed pump by setting the pump speed to 100 ml/min.
+6. The conductivity of the reactor contents will begin to increase and, after a
+   period of approximately 45 minutes to 1 hour, will approach the conductivity
+   of the feed solution and will reach the steady state.
+7. On conclusion of the experiment using the Armfield data logger, a set of
+   readings of conductivity with time among other calculations will be stored
+   in the computer.
+
+## Data analysis
+
+Please refer to equipment manual exercise C for detailed data analysis.
+
+## Tasks
+
+Prepare a report based on your interpretation of experimental data.
+The report should consider the following:
+
+1. Describe the charectristics of the RTD
+
+2. **Data analysis**: Perform data analysis in Excel to analyze the data
+   obtained. Based on the analysis, report the mean residence time Present
+   relevant graphs for all the data sets.

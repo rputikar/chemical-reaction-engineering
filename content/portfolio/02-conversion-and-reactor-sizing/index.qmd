@@ -164,7 +164,10 @@ fa0_by_minus_ra = fa0/minus_ra
 data_interp = interpolate.CubicSpline(x, fa0_by_minus_ra)
 ```
 In order to aid reactor design, laboratory experiments were performed to
-determine reaction rate at various ethylene conversions. 
+determine reaction rate at various ethylene conversions. The reaction rate vs.
+conversion data (@tbl-1) is also provided in csv file
+[ethylene_oxide_rate_vs_conversion.csv](./ethylene_oxide_rate_vs_conversion.csv).
+The data is plotted in @fig-1. 
 
 ```{python}
 #| echo: false
@@ -185,7 +188,8 @@ Markdown(markdown_table)
 ## Skeleton code
 
 Skeleton code useful for solving the questions in this portolio is provided in
-a [Google colaboratory notebook](https://colab.research.google.com/drive/1dTV_NMAOV225pwqtCur-x2OFHCutsiTs?usp=sharing)
+a [Google colaboratory
+notebook](https://colab.research.google.com/drive/1dTV_NMAOV225pwqtCur-x2OFHCutsiTs?usp=sharing)
 
 :::
 
@@ -194,10 +198,8 @@ a [Google colaboratory notebook](https://colab.research.google.com/drive/1dTV_NM
 
 ## Question 1 \hfill (5 marks)
 
-The reaction rate vs. conversion data is provided in csv file
-[ethylene_oxide_rate_vs_conversion.csv](./ethylene_oxide_rate_vs_conversion.csv).
-The data is plotted in @fig-1. We want to achieve 60% conversion of ethylene.
-What kind of reactor would you suggest? Why? 
+We want to achieve 60% conversion of ethylene. What kind of reactor would you
+suggest? Why? 
 
 ```{python}
 #| label: fig-1
