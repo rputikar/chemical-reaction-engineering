@@ -843,4 +843,6 @@ $$
 $$
 :::
 
+## Summary
 
+![](../../../assets/images/conc_as_function_of_conversion_fig4.3.png){width=50%}
