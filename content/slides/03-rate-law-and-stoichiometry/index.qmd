@@ -697,9 +697,150 @@ of different species to each other.
 * $\Theta_{i0}= F_{i_0}/F_{A_0} =  C_{i_0}/C_{A_0}$.
 
 * $$C_B = C_{A_0}(\Theta_B-(b/a)X)$$ 
-
+  
+  For liquid phase systems ($\upsilon = \upsilon_0$)
+  
 
 ## Gas phase reactions
 
+* Volumetric flow rate changes during the course of reaction
+
+  - Changes in total number of moles
+  
+  - Changes in pressure and temperature
+
+* Variable flow rate
+
+  Gas phase reactions that do not have equal number of product and reactant
+  moles
+
+  e.g. $\ce{N2 + 3H2 <=> 2NH3}$
+
+  - 4 mole reactant give 2 mole products
+
+* Stoichiometric tables
+
+  - No assumptions made reagarding volume
+
+  - The tables are exactly same for constant volume (constant density) and
+    variable volume (variable density) systems
+
+[$\Rightarrow$ Only for concentration expressed in terms of conversion density/
+volume comes into play.]{.magenta}
+
 ## Flow reactor with variable volumetric flow rate
+
+* We will use relationships for total concentration
+
+  $$
+  C_T = \frac{F_T}{\upsilon} \qquad ... \qquad \frac{\text{total molar flow rate}}{\text{volumetric flow rate}}
+  $$
+
+* For gases
+
+  $$
+  C_T = \frac{P}{zRT} \qquad z: \text{compressibility factor (=1 for ideal gas)}
+  $$
+
+* At the entrance of the reactor
+
+  $$
+  C_{T_0} = \frac{P_0}{z_0RT_0}
+  $$
+
+* Assuming negligible change in $z$ ($z = z_0$)
+
+  $$
+  \upsilon = \upsilon_0 \left( \frac{F_T}{F_{T_0}} \right)
+                        \left( \frac{P_0}{P} \right) 
+                        \left( \frac{T}{T_0} \right)
+ $$
+
+
+## Flow reactor with variable volumetric flow rate
+
+* We can now express $C_j (=F_j/\upsilon)$ in terms of $F, P, and \ T$
+
+  $$
+  C_j = C_{T_0} \left( \frac{F_j}{F_T} \right)
+                \left( \frac{P_0}{P} \right) 
+                \left( \frac{T}{T_0} \right)
+  $$
+
+* $F_T = \sum_{j=1}^{n} F_j = F_A + F_B + F_C + F_D + F_I$
+
+  $F_j$ is found by solving mole balance equations
+
+* Concentration in terms of conversion:
+  $F_T = F_{T0} + F_{A0} \delta X$
+
+* Dividing by $F_{T0}$ and defining $\epsilon = y_{A0} \delta$, where $y_{A0}$
+  is the mole fraction of A at inlet
+ 
+  $\frac{F_T}{F_{T0}} = 1 + \epsilon X$
+
+:::{.highlight}
+$$
+\epsilon = \frac{ \text{change in total no. of moles for complete conversion}}
+                { \text{total moles fed}}
+$$
+:::
+
+## Flow reactor with variable volumetric flow rate
+
+::::{.columns}
+:::{.column width=48%}
+
+* Equation for volumetric flow rate
+  $$
+  \upsilon = \upsilon_0 (1 + \epsilon X)
+                        \left( \frac{P_0}{P} \right) 
+                        \left( \frac{T}{T_0} \right)
+  $$
+
+* Molar flow rate
+  $$ F_j = F_{A0} (\Theta_j + \nu_j X) $$
+
+* Concentration ($C_j = F_j /\upsilon$)
+
+  $$
+  C_j = \frac{F_{A0} (\Theta_j + \nu_j X)}
+            {\upsilon_0 (1 + \epsilon X)
+                        \left( \frac{P_0}{P} \right) 
+                        \left( \frac{T}{T_0} \right)
+            }
+  $$
+
+:::
+
+:::{.column width=4%}
+:::
+
+:::{.column width=48%}
+
+* Stoichiometric coefficient ($\nu_j$)
+
+$$
+\ce{ A + \frac{b}{a} B -> \frac{c}{a} C + \frac{d}{a} D}
+$$
+
+* -ve for reactant
+
+  $\nu_A = -1$; $\nu_B = -b/a$
+
+* +ve for products
+
+  $\nu_C = c/a$; $\nu_D = -d/a$
+:::
+::::
+
+:::{.highlight}
+$$
+  C_j = \frac{C_{A0} (\Theta_j + \nu_j X)}
+            {\upsilon_0 (1 + \epsilon X)}
+            \left( \frac{P}{P_0} \right) 
+            \left( \frac{T_0}{T} \right)
+$$
+:::
+
 
