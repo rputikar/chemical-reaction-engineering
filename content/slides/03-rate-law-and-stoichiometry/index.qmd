@@ -211,31 +211,493 @@ $$
 
 ## Power law model
 
+:::{.incremental}
+
+* Dependence of $-r_A$ on concentration of species present ($f(C_j)$) is almost
+  always determined by experimental observations. 
+
+* Functional dependence on concentration may be postulated by theory
+  
+  $\Rightarrow$ Experiments are required to confirm the proposed form
+
+* Power law model is most common general forms of the rate law
+
+  :::{.highlight}
+
+  $$
+  -r_A = k_A C_A^\alpha C_B^\beta
+  $$
+
+  :::
+
+* Order of reaction: the powers to which the concentrations are raised
+
+  - The reaction is $\alpha$ order with respect to A and $\beta$ order with respect to B.
+  - Overall order of reaction $n = \alpha + \beta$.
+
+* $k_A$: Specific reaction rate
+
+  $$
+  \text{Units of } k_A = \frac{\text{(conc)}^{1-n}}{\text{time}}
+  $$
+
+:::
+
 ## Order of reaction
+
+$$
+\ce{A -> Products}
+$$
+
+| Reaction order | Rate equation | Units of $k_A$|
+|-|-|-|
+| $0^{th}$ order | $$-r_A = k_A$$ | $$\{k\} = \frac{mol}{volume \ s}$$|
+| $1^{st}$ order | $$-r_A = k_A C_A$$ | $$\{k\} = \frac{1}{s}$$|
+| $2^{nd}$ order | $$-r_A = k_A C_A^2 $$ | $$\{k\} = \frac{volume}{mol \ s}$$|
+| $3^{rd}$ order | $$-r_A = k_A C_A^3 $$ | $$\{k\} = \frac{(volume/mol)^2}{s}$$|
+||||
+
 
 ## Elementary reaction
 
-## Overall stoichiometric equations
+* A reaction involving single step is called an elementary reaction.
+
+* Stoichiometric coefficients in the reaction are equal to the powers in the
+  rate law. 
+
+  :::{style="margin-bottom: 40px;"}
+  :::
+
+
+  ![](../../../assets/images/elementary_reaction.png){width=70%}
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+::::{.columns .fragment}
+:::{.column width=50%}
+
+* $\ce{2NO + O2 -> 2NO2}$
+
+  This reaction is not elementary, but under some conditions it follows an
+  elementary rate law
+
+  $-r_{NO} = k_{NO} C_{NO}^2 C_{O_2}$
+
+  [$\Rightarrow$ Elementary as written]{.magenta}
+:::
+
+:::{.column width=50%}
+
+* $\ce{CO + Cl2 -> COCl2}$
+
+  This reaction is non-elementary
+
+  $-r_{CO} = k_{CO} C_{CO} C_{Cl_2}^{3/2}$
+
+  $1^{st}$ order with respect to $\ce{CO}$ and 3/2 order with resect to
+  $\ce{Cl2}$ (5/2 order overall)
+
+  [$\Rightarrow$ Non-elementary reaction]{.magenta}
+:::
+
+::::
+
+## Complex rate expression
+
+:::{.highlight}
+$$
+\ce{2N2O -> 2N2 + O2} \qquad -r_{N_2O} = \frac{ k_{N_2O} C_{N2O}}{1 + k' C_{O_2}}
+$$
+:::
+
+:::{.incremental}
+
+* Rate expression cannot be separated into solely temperature dependent and
+  concentration dependent terms. 
+
+* Overall reaction order cannot be stated
+
+* Only undrer limiting circumstances we can speak of reaction order
+
+  - for $1 >> k'C_{O_2}; -r_{N_2O} = k_{N_2O} C_{N_2O}$ 
+    $\Rightarrow$ 'Apparent' first order reaction 
+
+  - for $1 << k'C_{O_2}; -r_{N_2O} = k_{N_2O} \frac{C_{N_2O}}{C_{O_2}}$ 
+    $\Rightarrow$ 'Apparent' $0^{th}$ order reaction 
+    
+    Reaction is $-1^{th}$ order with $\ce{O2}$ and $1^{st}$ order with $\ce{N2O}$. 
+
+:::
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+:::{.fragment .callout-note appearance=simple}
+
+This kind of rate expression is common for liquid and gaseous reactions
+promoted by solid catalysts. 
+
+:::
+
 
 ## Heterogeneous reactions
 
+:::{.incremental}
+
+* Historically for many gas-solid catalyzed reactions it is customary to write
+  rate laws in terms of partial pressures rather than concentrations. 
+
+* Weight of catalyst is important rather than reactor volume ([$\Rightarrow -r'_A$]{.magenta})
+
+* Hydromethylation of toluene
+
+  $$
+  \ce{C6H5CH3 + H2 ->[{cat}] C6H6 + CH4}
+  $$
+
+  $$
+  -r'_T = \frac{k P_{H_2} P_T}{1 + K_B P_B + K_T P_T}
+  $$
+
+  :::{.smaller}
+  - ' (prime): indicates typical units are in /g-cat
+  - $P$: partial pressures ($kPa$ or $atm$)
+  - $K$: adsorption constant ($1/kPa$ or $atm^{-1}$)
+  - $[K] = \frac{mol \ toluene}{kg\ cat \cdot s \cdot kPa^2}$
+  :::
+  
+* Use ideal gas law to express the reaction in terms of concentrations: $P_i = C_i RT$
+
+:::
+
 ## Reversible reaction
+
+* All rate laws must reduce to thermodynamic relationships relating the
+  reacting species concentrations at equilibrium
+
+* At equilibrium rate of reaction is zero for all the species ($-r_A \equiv 0$)
+
+* For a reaction $\ce{aA + bB <=> cC + dD}$
+
+  $$
+  K_c = \frac{C_{C_e}^c C_{D_e}^d}{C_{A_e}^a C_{B_e}^b}
+  \qquad
+  [K_c] = \left(\frac{mol}{volume}\right)^{c +d -a -b}
+  $$
+
+* For elementary reaction $\ce{A <=>[{k_f}][{k_r}] B}$
+
+  $$
+  -r_A = k \left( C_A - \frac{C_B}{K_c} \right); K_c = \frac{k_f}{k_r}
+  $$
+
+## Equilibrium constant
+
+### van't Hoff equation
+
+When there is no change in number of moles and heat capacity term $\Delta C_p = 0$ 
+
+$$
+K_c(T) = K_c(T_1) exp \left[ \frac{\Delta H_{Rx}^\circ}{R} \left( \frac{1}{T_1} - \frac{1}{T} \right)\right]
+$$
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+:::{.fragment}
+
+![](../../../assets/images/equilibrium_constant.png){width=90%}
+
+:::
 
 ## The reaction rate constant ($k_A$)
 
-## Arrhenius equation
+[$\Rightarrow$ Not a constant]{.magenta}. Just independent of concentration
+
+::::{.columns}
+:::{.column width=50%}
+
+* [Arrhenius equation]{.highlight}
+
+  $$
+  k_A(T) = A e^{\frac{-E}{RT}} \Rightarrow k_0 e^{-E/RT}
+  $$
+
+  - $k_0, A$: Preexponential factor/ frequency factor
+  - $E$: Activation energy (J/mol) or (cal/mol)
+  - $R$: Gas constant (= 8.314 J/mol K)
+  - $T$: Absolute temperature (K)
+
+* Empirically varified over a large temperature range
+
+:::
+
+:::{.column width=50%}
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+![](../../../assets/images/rate_constant.png){width=90%}
+
+:::
+
+::::
+
 
 ## Activation energy
 
+::::{.columns}
+:::{.column width=30%}
+
+* Barrier to energy transfer (from kinetic energy to potential energy) between
+  reacting molecules that must must be overcome.
+
+* Minimum increase in potential energy of the reactants that must be provided
+  to transform the reactants into products
+
+:::
+
+:::{.column width=70%}
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+![](../../../assets/images/activation_energy.png){width=90%}
+
+:::
+
+::::
+
 ## Determining activation energy
+
+::::{.columns}
+:::{.column width=35%}
+
+* Experimentally measuring reaction rate at different temperatures 
+
+* $k_A(T) = A e^{-E/RT}$
+
+  Taking natural log
+
+  :::{.highlight}
+  $$
+  \ln k_A = \ln A -\frac{E}{R} \left( \frac{1}{T} \right)
+  $$
+  :::
+
+$$
+k(T) = k(T_0) e^{\frac{E}{R} \left( \frac{1}{T_0} - \frac{1}{T} \right)}
+$$
+ 
+* **Rule of thumb**: Reaction rate doubles every 10 &deg;C rise in temperature 
+
+:::
+:::{.column width=5%}
+:::
+
+:::{.fragment .column width=60%}
+
+### Arrhenius plot
+
+![](../../../assets/images/arrhenius_plot.png){width=90%}
+
+:::
+
+::::
 
 # Stoichiometry
 
+If the rate law depends on more than ne species, we must  relate concentrations
+of different species to each other.
+
 ## Stoichiometric table
+
+* Represents stoichiometric relationships between reacting molecules for a
+  single reaction
+
+* How many molecules of one species will be formed during a chemical reaction
+  given a number of molecules of another species disappear.
+
+* Let us consider general reaction
+
+  $$
+  \ce{aA +bB -> cC + dD}
+  $$
+
+* relative rates
+
+  $$
+  \frac{-r_A}{a} = \frac{-r_B}{b} = \frac{r_C}{c} = \frac{-r_D}{d}
+  $$
+
+* Basis of calculation: Species A
+
+  $$
+  \ce{A +\frac{b}{a}B -> \frac{c}{a}C + \frac{d}{a}D}
+  $$
+
 
 ## Batch systems
 
+::::{.columns}
+
+:::{.column width=50%}
+
+![](../../../assets/images/batch_reactor_stoichiometry.png){width=90%}
+
+:::
+:::{.column width=5%}
+:::
+
+
+:::{.column width=45%}
+
+* Mole balance
+
+  $$\frac{dN_A}{dt}=r_A V$$
+
+* $N_{A_0}$ : No. of moles of A initially present
+
+* $X$ : Conversion at time t
+
+* $N_{A_0}X$ : No. of moles of A consumed at time t
+
+* $N_{A}$ : No. of moles of A in system at time t
+
+* $N_{A} = N_{A_0}-N_{A_0}X = N_{A_0}(1-X)$
+
+:::
+
+::::
+
+## Stoichiometric table: batch systems
+
+* Moles of B reacted
+
+  $$
+  moles\ of\ B\ reacted = \frac{mol\ B\ reacted}{mol\ A\ reacted} \times mol\ A\ reacted
+  = \frac{b}{a} N_{A_0} X
+  $$
+
+
+| Species   | Initially (mol)    | Change (mol)     | Remaining (mol)                           |
+| :-------- | :----------------- | :--------------- | :---------------------------------------- |
+| A         | $N_{A_0}$          | $-N_{A_0}X$      | $N_A = N_{A_0} - N_{A_0}X$                |
+| B         | $N_{B_0}$          | $-(b/a)N_{A_0}X$ | $N_B = N_{B_0} -(b/a)N_{A_0}X$            |
+| C         | $N_{C_0}$          | $(c/a)N_{A_0}X$  | $N_C = N_{C_0} +(c/a)N_{A_0}X$            |
+| D         | $N_{D_0}$          | $(d/a)N_{A_0}X$  | $N_D = N_{D_0} +(d/a)N_{A_0}X$            |
+| I         | $N_{I_0}$          | 0                | $N_I = N_{I_0}$                           |
+| **Total** | $\mathbf{N_{T_0}}$ |                  | $\mathbf{N_T = N_{T_0} + \delta N_{A_0}X}$ |
+
+
+* $\delta = +\frac{d}{a}+\frac{c}{a}-\frac{b}{a}-1$ 
+  
+  Change in  total number of moles per mole A reacted
+
+## Equations for the concentration
+
+::::{.columns}
+
+:::{.column width=50%}
+
+
+* $$C_A = \frac{N_A}{V} = \frac{N_{A_0}(1-X)}{V}$$
+* $$C_B = \frac{N_B}{V} = \frac{N_{B_0}-(b/a)N_{A_0}X}{V}$$
+* $$C_C = \frac{N_C}{V} = \frac{N_{C_0}+(c/a)N_{A_0}X}{V}$$ 
+* $$C_D = \frac{N_D}{V} = \frac{N_{D_0}+(d/a)N_{A_0}X}{V}$$ 
+
+* For a constant volume batch reactor, $V = V_0$.
+
+* Let $\Theta_i= N_{i_0}/N_{A_0} =  C_{i_0}/C_{A_0}$.
+
+:::
+:::{.column width=5%}
+:::
+:::{.column width=45%}
+
+* $$C_A = C_{A_0}(1-X)$$ 
+* $$C_B = C_{A_0}(\Theta_B-(b/a)X)$$ 
+* $$C_C = C_{A_0}(\Theta_C+(c/a)X)$$ 
+* $$C_D = C_{A_0}(\Theta_D+(d/a)X)$$ 
+
+
+:::{.smaller .highlight}
+* $$
+  \Theta_i= \frac{\text{Moles of species 'i' initially}}{\text{Moles of species A initially}}
+  $$
+:::
+
+  Equimolar: $\Theta_B = 1$
+
+  Stoichiometric: $\Theta_B = b/a$
+
+:::
+::::
+
+## Rate expression
+
+* $$ -r_A = k C_A C_B $$ 
+* [$$ -r_A = k  C_{A_0}^2 (1-X) (\phi_B-(b/a)X)$$]{.magenta}
+
+* For $C_{A_0}= C_{B_0}$, and $b/a = 1$
+  
+  $$ -r_A = k  C_{A_0}^2 (1-X)^2 $$
+
+* Mole balance 
+
+  $$\frac{dC_A}{dt}=-k C_{A_0}^2 (1-X)^2$$
+
+  as $C_A = C_{A_0}(1-X)$; $dC_A = -C_{A_0} dX$
+
+* The mole balance can then be written as
+
+  $$\frac{dX}{(1-X)^2}=k C_{A_0} dt$$ 
+
+
 ## Flow systems
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+![](../../../assets/images/flow_systems_stoichiometry.png){width=80%}
+
+:::{style="margin-bottom: 80px;"}
+:::
+
+* Form of stoichiometric table is virtually identical to batch systems
+
+* Replace $N_{j0}$ by $F_{j0}$
+
+* Replace $N_{j}$ by $F_{j}$
+
+
+## Stoichiometric table: flow systems
+
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+| Species   | Feed rate to reactor (mol/time)    | Change within reactor (mol/time)     | Effluent rate from reactor (mol/time) |
+| :-------- | :----------------- | :--------------- | :---------------------------------------- |
+| A         | $F_{A_0}$          | $-F_{A_0}X$      | $F_A = F_{A_0} - F_{A_0}X$                |
+| B         | $F_{B_0}$          | $-(b/a)F_{A_0}X$ | $F_B = F_{B_0} -(b/a)N_{F_0}X$            |
+| C         | $F_{C_0}$          | $(c/a)F_{A_0}X$  | $F_C = F_{C_0} +(c/a)N_{F_0}X$            |
+| D         | $F_{D_0}$          | $(d/a)F_{A_0}X$  | $F_D = F_{D_0} +(d/a)N_{F_0}X$            |
+| I         | $F_{I_0}$          | 0                | $F_I = F_{I_0}$                           |
+| **Total** | $\mathbf{F_{T_0}}$ |                  | $\mathbf{F_T = F_{T_0} + \delta F_{A_0}X}$ |
+
+
+* $\delta = +\frac{d}{a}+\frac{c}{a}-\frac{b}{a}-1$ 
+  
+* $\Theta_{i0}= F_{i_0}/F_{A_0} =  C_{i_0}/C_{A_0}$.
+
+* $$C_B = C_{A_0}(\Theta_B-(b/a)X)$$ 
+
 
 ## Gas phase reactions
 
