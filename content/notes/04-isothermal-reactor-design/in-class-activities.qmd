@@ -1,0 +1,13 @@
+---
+title: "In class activity: Isothermal reactor design"
+date: 2024-03-13
+format:
+  pdf
+---
+
+## Apply reaction engineering algorithm
+
+1. Derive the equation for batch time as a function of conversion for a second order reaction $-r_A = k_2C_A^2$
+
+2. Derive equation for conversion in a liquid phase PFR for second order
+   reaction $\ce{2A -> products}; -r_A = kC_A^2$ in terms of Damköhler number $Da_2 = \tau k C_{A0}$ 

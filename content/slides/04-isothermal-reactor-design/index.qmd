@@ -1,0 +1,108 @@
+---
+title: "Isothermal reactor design"
+format: revealjs
+---
+
+```{python}
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+import pandas as pd
+import scipy.interpolate as interpolate
+import scipy.integrate as integrate
+import tabulate as tab
+from IPython.display import display, Markdown
+plt.style.use('../../../assets/templates/present.mpstyle')
+```
+
+
+## Design structure for isothemal reactors
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+![](../../../assets/images/isothermal_reactor_design_algorithm.png){width=90%}
+
+:::{.fragment .callout-note appearance=simple}
+
+Use algorithm rather than memorizing equations
+
+:::
+
+## Algorithm
+
+::::{.columns}
+:::{.column width=30%}
+
+![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
+
+:::
+
+:::{.column width=70%}
+
+:::{.incremental}
+
+1. Mole balance
+
+   :::{.smaller}
+   $$
+   F_{A0} - F_A = \int^V r_A dV = \frac{dN_A}{dt}
+   $$
+   :::
+
+2. Rate law
+
+   If $-r_A$ is given as $f(X)$ $\rightarrow$ directly solve the design equations
+
+3. Stoichiometry
+   
+   If $-r_A = g(C)$ $\rightarrow$ use stoichiometry to write $-r_A = f(X)$
+
+4. Combine
+
+   Gather all equations  to obtain a system of equations that must be solved. 
+
+5. Evaluate
+
+   The system of equation scan be solved analytically, graphically,
+   numerically, or using software
+
+:::
+
+:::
+
+::::
+
+## Algorithm
+
+![](../../../assets/images/algorithm_for_isothermal_reactors.png){width=40%}
+
+## Batch reactor
+
+* Usually we are interested in calculating batch reaction time for a given $X$
+  or $X$ for a given batch time
+
+* Batch cycle time: time between batches
+
+* Batch reaction time ($t_R$) is just one component in batch cycle time
+
+  | | Activity || Time (h)|
+  |-|-|-|-|
+  |1 | Charge feed | $t_f$| 0.5 - 2|
+  |2 | Heat to reaction temperature| $t_e$| 0.5 - 2|
+  |3 | Reaction | $t_R$| varies |
+  |4 | Empty and clean reactor | $t_c$| 1.5 - 3|
+  | | Total|| (2.5h - 7h) + $t_R$|
+
+:::{.callout-note }
+## Activity: Batch time for second order reaction
+
+Using the algorithm, derive equation for batch time as a function of conversion
+for a second order reaction $-r_A = k_2 C_A^2$
+
+:::
+
+
+## CSTR
+
+

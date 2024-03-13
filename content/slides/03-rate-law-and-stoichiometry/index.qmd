@@ -132,7 +132,7 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 
   - Only true bimolecular reactions are those involving collision with free
     radicals 
-    $$\ce{ Br. C2H6 -> HBr + C2H5.}$$
+    $$\ce{ Br. + C2H6 -> HBr + C2H5.}$$
   - $-r_{\ce{Br.}} = kC_{\ce{Br.}}C_{\ce{C2H6}}$
 
 * **Trimolecular**: Three molecule colliding in one reaction step 

@@ -1,0 +1,33 @@
+---
+title: "Pre class activity: Rate law and stoichiometry"
+date: 2024-03-03
+format:
+  pdf
+---
+
+
+- Read Chapter 5 from @fogler2016.
+
+* Revise numerical solution of ordinary differential equations
+
+  - We will be using `solve_ivp` interpolation function from the `scipy.interpolate` library. Go through
+    documentation for
+    [scipy.integrate.solve_ivp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html#scipy.integrate.solve_ivp)
+
+  - Also look at [Python ODE solvers](https://pythonnumericalmethods.berkeley.edu/notebooks/chapter22.06-Python-ODE-Solvers.html)
+
+* For design equations in terms of conversion, many a times it is possible to
+  obtain an analytical solution by integration. It is possible to obtain a
+  solution to these integrals using symbolic mathematics. 
+  
+  - [SymPy](https://www.sympy.org/) is a Python library for symbolic
+    mathematics. Go through [SymPY
+    documentation](https://docs.sympy.org/latest/index.html), particularly the
+    section on
+    [Integrals](https://docs.sympy.org/latest/modules/integrals/integrals.html)
+    to learn more. 
+
+  - [Online Integral Calculator with
+    Wolfram|Alpha](https://www.wolframalpha.com/calculators/integral-calculator/)
+    - 
+

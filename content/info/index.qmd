@@ -15,20 +15,21 @@ We will use excel for calculations and data analysis
   applications. [Excel Training for
   Engineers](https://www.youtube.com/playlist?list=PLUQP7hTI4zC8-7mTTotSiNt1hma7irN_M).
 
-### Jupyter notebook
+### Python and Jupyter notebook
 
 We will also use python (and Jupyter notebooks) for computationally demanding
 tasks (such as solving ordinary differential equations). Course specific
 instructions will be provided as we go along. There are several options for
 using Jupyter notebooks. Here are a few pointers for using Jupyter notebooks. 
 
+- [Python Programming And Numerical Methods: A Guide For Engineers And
+  Scientists](https://pythonnumericalmethods.berkeley.edu/notebooks/Index.html)
 - [Jupyter Notebook Tutorial for Beginners with
   Python](https://www.youtube.com/watch?v=2WL-XTl2QYI)
 - [Jupyter Notebook Complete Beginner Guide - From Jupyter to Jupyterlab,
   Google Colab and Kaggle!](https://www.youtube.com/watch?v=5pf0_bpNbkw) 
 - [Get started with Jupyter Notebooks in less than 4 minutes](https://www.youtube.com/watch?v=h1sAzPojKMg)
 - [Jupyter Notebooks in VS Code Walkthrough](https://www.youtube.com/watch?v=DA6ZAHBPF1U)
-
 
 ## Attendance and participation
 

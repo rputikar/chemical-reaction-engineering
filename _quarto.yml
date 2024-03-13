@@ -90,6 +90,7 @@ website:
           - file: ./content/lectures/01-mole-balances/index.qmd
           - file: ./content/lectures/02-conversion-and-reactor-sizing/index.qmd
           - file: ./content/lectures/03-rate-law-and-stoichiometry/index.qmd
+          - file: ./content/lectures/04-isothermal-reactor-design/index.qmd
          #
       - section: "Workshops"
         id: workshops
