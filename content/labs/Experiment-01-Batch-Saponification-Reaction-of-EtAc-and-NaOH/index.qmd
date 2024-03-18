@@ -8,7 +8,15 @@ format:
   pdf
 resources:
   - "./CEB-MKIII-Issue-3-Instruction-Manual.pdf"
+  - "../prelab/Batch_Reactor/"
 ---
+
+:::{.callout-important}
+## Prelab Module
+
+Prelab module for experiment 1 Can be accessed [here](../prelab/Batch_Reactor/index.htm).
+
+:::
 
 ## Objective {#sec-1}
 
@@ -30,8 +38,9 @@ rate constant $k$ using a batch system.
 The experiment will be carried out in a transparent batch reactor ([Armfield
 Limited, model: CEB-MKIII](./CEB-MKIII-Issue-3-Instruction-Manual.pdf)). Refer
 to the instruction manual for the reactor setup to understand more about the
-experimental setup. A video is also provided
-that describes the setup in detail.
+experimental setup.
+A [virtual tour](../prelab/Batch_Reactor/index.htm) is also provided that
+describes the setup in detail.
 
 For this experiment, Reactions are monitored by conductivity probe as the
 conductivity of the solution changes with conversion of the reactants to

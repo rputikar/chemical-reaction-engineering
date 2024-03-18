@@ -19,25 +19,29 @@ four pieces of equipment are:
 
 - Batch reactor ([Armfield Transparent Batch Reactor
   CEB-MKIII](./Experiment-01-Batch-Saponification-Reaction-of-EtAc-and-NaOH/CEB-MKIII-Issue-3-Instruction-Manual.pdf)).
-  See [pre lab module: Tubular
-  Reactor](https://storage.net-fs.com/hosting/6412700/21/) for more
+  See [pre lab module: Batch 
+  Reactor](./prelab/Batch_Reactor/index.htm) for more
   information.
 - Catalytic reactor ([Armfield Catalytic Reactor
   (CEU)](./Experiment-03-Study-of-Sucrose-Inversion/PC-0054962-Armfield-Manual-CEU-Issue
   13.pdf)). See [pre lab module: Catalytic
-  Reactor](https://storage.net-fs.com/hosting/6412700/23/) for more
+  Reactor](./prelab/Catalytic_Reactor/index.htm) for more
   information.  
 - Tubular reactor ([Armfield Tubular Reactor
   CET-MKII](./Experiment-02-Reaction-rate-constant-using-a-tubular-reactor/CET-MKII
-  Issue 21 Instruction Manual.pdf)). 
+  Issue 21 Instruction Manual.pdf)). See [pre lab module: Tubular
+  Reactor](./prelab/Tubular_Reactor/index.htm) for more
+  information. 
 - Continous stirred reactor ([Armfield Continuous Stirred Tank Reactor
   CEM-MKII](./Experiment-05-Determination-of-the-residence-time-in-a-CSTR/PC-0055760-Armfield-Manual-CEM-MKII-Issue
-  21.pdf))
+  21.pdf)). See [pre lab module: CSTR](./prelab/CSTR/index.htm) for more
+  information. 
+
 
 ## Pre-lab modules
 
-Pre-laboratory modules have been developed for 2 of the experiments
-specifically designed to ensure you understand:
+Pre-laboratory modules have been specifically developed for the four
+experimental setups to ensure you understand:
 
 - the purpose of the experiment
 - the underpinning theoretical concepts
@@ -49,10 +53,13 @@ development for the remaining experiments.
 
 Explore the below virtual tours and complete the quiz questions. 
 
-* [Batch Reactor](https://storage.net-fs.com/hosting/6412700/21/)
+* [Batch Reactor](./prelab/Batch_Reactor/index.htm)
 
-* [Catalytic Reactor](https://storage.net-fs.com/hosting/6412700/23/)
+* [Catalytic Reactor](./prelab/Catalytic_Reactor/index.htm)
 
+* [Tubular Reactor](./prelab/Tubular_Reactor/index.htm)
+
+* [CSTR](./prelab/CSTR/index.htm)
 
 ## Things to do before labs begin
 

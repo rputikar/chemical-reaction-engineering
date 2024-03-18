@@ -8,7 +8,16 @@ format:
   pdf
 resources:
   - "./PC-0054962-Armfield-Manual-CEU-Issue 13.pdf"
+  - "../prelab/Catalytic_Reactor/"
 ---
+
+:::{.callout-important}
+## Prelab Module
+
+Prelab module for experiment 2 Can be accessed [here](../prelab/Catalytic_Reactor/index.htm).
+
+:::
+
 
 ## Objective {#sec-1}
 
@@ -60,7 +69,7 @@ reactor](./PC-0054962-Armfield-Manual-CEU-Issue 13.pdf).
 Begin by familiarising yourself with the experimental set-up. Explanation of
 the workings of the reactor and product analysis is given in the Operation
 section of the laboratory manual[^2]. A [virtual
-tour](https://storage.net-fs.com/hosting/6412700/23/) is also provided that
+tour](../prelab/Catalytic_Reactor/index.htm) is also provided that
 describes the setup in detail. Follow the experimental procedure given on page
 56-57 of the laboratory manual.
 

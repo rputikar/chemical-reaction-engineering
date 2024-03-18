@@ -8,7 +8,16 @@ format:
   pdf
 resources:
   - "./CET-MKII Issue 21 Instruction Manual.pdf"
+  - "../prelab/Tubular_Reactor/"
 ---
+
+:::{.callout-important}
+## Prelab Module
+
+Prelab module for experiment 2 Can be accessed [here](../prelab/Tubular_Reactor/index.htm).
+
+:::
+
 
 ## Objective {#sec-1}
 
@@ -33,8 +42,9 @@ Continuous Tubular Flow Reactor is designed to demonstrate the mechanism of a
 chemical reaction in such a reactor as well as the effects of varying the
 process conditions such as reaction temperature, reactant concentration, feed
 rate etc. Refer to the instruction manual for the reactor setup to understand
-more about the experimental setup. A [virtual
-tour](https://storage.net-fs.com/hosting/6412700/21/) is also provided that
+more about the experimental setup. 
+A [virtual
+tour](../prelab/Tubular_Reactor/index.htm) is also provided that
 describes the setup in detail.
 
 For this experiment, Reactions are monitored by conductivity probe as the

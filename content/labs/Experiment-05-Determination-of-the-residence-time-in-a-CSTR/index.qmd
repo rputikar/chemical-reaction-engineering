@@ -8,7 +8,16 @@ format:
   pdf
 resources:
   - "./PC-0055760-Armfield-Manual-CEM-MKII-Issue 21.pdf"
+  - "../prelab/CSTR/"
 ---
+
+:::{.callout-important}
+## Prelab Module
+
+Prelab module for experiment 2 Can be accessed [here](../prelab/CSTR/index.htm).
+
+:::
+
 
 ## Objective {#sec-1}
 
@@ -22,6 +31,10 @@ in a stirred tank reactor by using a step input technique. We will use
 
 The experiment will be carried out in a stirred tank reactor ([Armfield Limited,
 model: CEM-MKII](./PC-0055760-Armfield-Manual-CEM-MKII-Issue 21.pdf)). 
+A [virtual
+tour](../prelab/CSTR/index.htm) is also provided that
+describes the setup in detail.
+
 
 The continuous stirred tank reactor in the form of either a single tank or
 (more often) tanks in series, is used widely and is particularly suitable for
