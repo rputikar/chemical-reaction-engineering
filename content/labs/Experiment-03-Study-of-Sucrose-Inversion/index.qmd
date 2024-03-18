@@ -14,7 +14,7 @@ resources:
 :::{.callout-important}
 ## Prelab Module
 
-Prelab module for experiment 2 Can be accessed [here](../prelab/Catalytic_Reactor/index.htm).
+Prelab module for experiment 3 Can be accessed [here](../prelab/Catalytic_Reactor/index.htm).
 
 :::
 

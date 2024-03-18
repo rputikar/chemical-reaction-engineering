@@ -14,7 +14,7 @@ resources:
 :::{.callout-important}
 ## Prelab Module
 
-Prelab module for experiment 2 Can be accessed [here](../prelab/CSTR/index.htm).
+Prelab module for experiment 5 Can be accessed [here](../prelab/CSTR/index.htm).
 
 :::
 
