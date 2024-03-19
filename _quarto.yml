@@ -102,6 +102,8 @@ website:
             text: Conversion and reactor sizing
           - file: ./content/workshops/03-rate-law-and-stoichiometry/index.qmd
             text: Rate law and stoichiometry
+          - file: ./content/workshops/04-isothermal-reactor-design/index.qmd
+            text: Isothermal reactor design
      #
       - section: "Labs"
         id: labs
