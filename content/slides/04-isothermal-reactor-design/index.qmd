@@ -143,7 +143,7 @@ $$
 :::{.highlight}
 $$
   C_j = \frac{C_{A0} (\Theta_j + \nu_j X)}
-            {\upsilon_0 (1 + \epsilon X)}
+            {(1 + \epsilon X)}
             \left( \frac{P}{P_0} \right) 
             \left( \frac{T_0}{T} \right)
 $$
@@ -779,6 +779,361 @@ all the reactant were fed into one big reactor of volume V
 
 :::{.fragment .callout-note appearance="simple"}
 Derive equation for conversion in a liquid phase PFR for second order reaction
+:::
+
+:::
+
+::::
+
+## Isobaric, isothermal, ideal reactions in tubular reactors
+
+* Gas-phase reactions are usually carried out in tubular reactors (PFRs & PBRs)
+
+  - Plug flow: no radial variations in concentration, temperature, & ∴ $-r_A$
+  - No stirring element $\Rightarrow$ flow must be turbulent
+
+![](../../../assets/images/pfr_schematic.png){width=70%}
+
+* Gas phase
+
+$$
+  C_j = \frac{C_{A0} (\Theta_j + \nu_j X)}
+            {(1 + \epsilon X)}
+            \underset{\color{red}{1}}{\cancel{\left( \frac{P}{P_0} \right)}} 
+            \underset{\color{red}{1}}{\cancel{\left( \frac{T_0}{T} \right)}}
+            \underset{\color{red}{1}}{\cancel{\left( \frac{Z_0}{Z} \right)}}
+$$
+
+$$
+  C_j = \frac{C_{A0} (\Theta_j + \nu_j X)}
+            {(1 + \epsilon X)}
+$$
+
+## Isobaric, isothermal, ideal reactions in PFR
+### Second order reaction
+
+::::{.columns}
+:::{.column width=30%}
+
+![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
+
+:::
+
+:::{.column width=30%}
+
+:::{.incremental .smaller}
+
+1. Mole balance
+
+   $$
+   \frac{dX_A}{dV} = \frac{-r_A}{F_{A0}} 
+   $$
+
+2. Rate law
+
+   $$
+   -r_A = kC_A^2
+   $$
+
+
+3. Stoichiometry
+  $$
+   C_A = \frac{C_{A0} (1 + X)}
+            {(1 + \epsilon X)}
+  $$
+
+4. Combine: Put $F_{A0}$ in terms of $C_{A0}$
+
+   $$
+   \frac{dX}{dV} = \frac{k C_{A0}^2 (1 - X_A)^2}{(1 + \epsilon X)^2 C_{A0} \upsilon_0} 
+   $$
+
+5. Evaluate
+
+   $$
+   V = \frac{\upsilon_0}{k C_{A0}}
+       \int_0^X \frac{(1 + \epsilon X)^2 }{(1 - X_A)^2} dX_A 
+   $$
+:::
+
+:::
+
+:::{.column width=5%}
+:::
+
+:::{.column .fragment .smaller width=35%}
+
+$$
+\int_0^X \frac{(1 + \epsilon x)^2}{(1 - x)^2} dx = 2\epsilon (1 + \epsilon) \ln(1 - X) + \\
+\frac{\epsilon X + (1 + \epsilon)^2 X^2}{1 - X}
+$$
+
+
+* Evaluating integral using sympy
+
+  ```python
+  from sympy import symbols, integrate, pprint
+
+  # Define the symbols
+  epsilon, x = symbols('epsilon x', real=True)
+  X = symbols('X', real=True, positive=True)
+
+  integrand = (1 + epsilon * x)**2 / (1 - x)**2
+  integral_result = integrate(integrand,(x))
+
+  pprint(integral_result)
+  ```
+
+  ```{python}
+  #| echo = true
+
+  from sympy import symbols, integrate, pprint
+
+  # Define the symbols
+  epsilon, x = symbols('epsilon x', real=True)
+  X = symbols('X', real=True, positive=True)
+
+  integrand = (1 + epsilon * x)**2 / (1 - x)**2
+  integral_result = integrate(integrand,(x))
+
+  pprint(integral_result)
+  ```
+
+$$
+V = \frac{\upsilon_0}{k (C_{A0})} [ 2\epsilon(1 + \epsilon) \ln(1 - X_A) +  \\
+  \epsilon^2 X_A + \frac{(1 + \epsilon)^2 X_A^2}{1 - X_A} ]
+$$
+
+:::
+::::
+
+## Effect of $\epsilon$ on $\upsilon$ and $X_A$
+
+::::{.columns}
+:::{.column .incremental .smaller width=45%}
+
+$$
+\epsilon = \frac{N_{Tf} - N_{T0}}{N_{T0}}
+  = \frac{\text{Change in total moles at } X_A = 1}{\text{total moles fed}}
+$$
+
+* $\epsilon$: expansion factor- fraction of change in $V$ per mole A reacted
+
+* $\epsilon = 0$: $\upsilon = \upsilon_0$: Constant volumetric flow rate as
+  $X_A$ increases
+
+* $\epsilon < 0$: $\upsilon < \upsilon_0$: volumetric flow rate decreases as
+  $X_A$ increases
+
+  - Longer residence time than when $\upsilon = \upsilon_0$
+  - Higher conversion per volume of reactor (weight of catalyst) than if
+    $\upsilon = \upsilon_0$
+
+* $\epsilon > 0$: $\upsilon > \upsilon_0$: volumetric flow rate increases as
+  $X_A$ increases
+
+  - Shorter residence time than when $\upsilon = \upsilon_0$
+  - Lower conversion per volume of reactor (weight of catalyst) than if
+    $\upsilon = \upsilon_0$
+
+:::
+
+:::{.column width=5%}
+:::
+
+:::{.column width=50%}
+
+![](../../../assets/images/change_in_volumetric_flowrate.png)
+
+:::
+::::
+
+## Pressure drop in tubular reactors
+
+* Gas phase
+
+  $$
+   C_j = \frac{C_{A0} (\Theta_j + \nu_j X)}
+             {(1 + \epsilon X)}
+             \left( \frac{P}{P_0} \right)
+             \left( \frac{T_0}{T} \right)
+  $$
+
+* Concentration is a function of P so pressure drop is important in gas phase
+  reactions 
+
+* First order reaction
+
+  $$
+   -r'_A = k \frac{C_{A0} (\Theta_j + \nu_j X)}
+             {(1 + \epsilon X)}
+             \left( \frac{\color{red}{P}}{P_0} \right)
+             \left( \frac{T_0}{T} \right)
+  $$
+
+  If P drops during the reaction, $P/P_0$ is less than one, so $C_A$ ↓ & the reaction rate ↓
+
+* Use the differential forms of the design equations to address pressure drop
+
+:::{.callout-note appearance="simple"}
+Pressure drops are especially common in reactions run in PBRs
+:::
+
+## Isothermal reactions in PBR with pressure drop
+### Second order reaction
+
+::::{.columns}
+:::{.column width=40%}
+
+![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
+
+:::
+
+:::{.column width=60%}
+
+:::{.incremental .smaller}
+
+1. Mole balance
+
+   $$
+   \frac{dX_A}{dW} = \frac{-r'_A}{F_{A0}} 
+   $$
+
+2. Rate law
+
+   $$
+   -r'_A = kC_A^2
+   $$
+
+
+3. Stoichiometry
+  $$
+   C_A = \frac{C_{A0} (1 + X)}
+            {(1 + \epsilon X)}
+            \left( \frac{P}{P_0} \right)
+  $$
+
+4. Combine: Put $F_{A0}$ in terms of $C_{A0}$
+
+   $$
+   \frac{dX}{dV} = \frac{k C_{A0}^2 (1 - X_A)^2}{(1 + \epsilon X)^2 C_{A0} \upsilon_0} 
+            \left( \frac{P}{P_0} \right)^2
+   $$
+
+5. Evaluate
+
+   $$
+   \frac{dX}{dV} = \frac{k C_{A0}}{\upsilon_0} 
+            \frac{(1 - X_A)^2}{(1 + \epsilon X)^2} 
+            \left( \frac{P}{P_0} \right)^2
+   $$
+
+
+
+:::
+
+:::
+
+::::
+
+## Isothermal reactions in PBR with pressure drop
+### Second order reaction
+
+* Evaluate
+
+   $$
+   \frac{dX}{dV} = \frac{k C_{A0}}{\upsilon_0} 
+            \frac{(1 - X_A)^2}{(1 + \epsilon X)^2} 
+            \underbrace{\left( \frac{P}{P_0} \right)^2}_{\text{Need to relate }
+            P/P_0 \text{ to } W}
+   $$
+
+* This equation needs to be solved simultaneously with an equation that
+  describes how the pressure drops as the reactant moves down the reactor
+
+* **Ergun equation**
+
+  $$
+  \frac{d P}{d z}=-\frac{G}{\rho g_{\mathrm{c}}
+  D_{\mathrm{P}}}\left(\frac{1-\phi}{\phi^3}\right) \left[\frac{150(1-\phi)
+  \mu}{D_{\mathrm{P}}} + 1.75 G \right]
+  $$
+
+  For single reactions: 
+  $\frac{dP}{dW} = -\frac{\alpha}{2p} \left( \frac{T}{T_0} \right) (1 + \epsilon X_A)$
+
+  where, $p=\frac{P_0}{P}$
+
+
+## Isothermal reactor design: molar flow rates 
+
+* In many instances it is easier to work with molar flow rates/ no. of moles
+  than conversion
+
+  - Reactors with external mass transfer (such as membrane reactors)
+  - Multiple reactions in gas phase
+
+* We *must* write a mole balance for each and every species as opposed to just
+  one species 
+
+* Usually this leads to a system of (simultaneous or) ordinary differential
+  equations
+
+* Solve the combined set of equations using ODE solver (such as
+  `scipy.integrate.solve_ivp`)
+
+
+## Isothermal reactions in PBR: molar flow rates
+### Second order reaction $\ce{aA + bB -> cC + dD}$
+
+::::{.columns}
+:::{.column width=40%}
+
+![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
+
+:::
+
+:::{.column width=60%}
+
+:::{.incremental .smaller}
+
+1. Mole balance: Write balance for each species $i = 1 to N$
+
+   $$
+   \frac{dF_i}{dW} = r'_i
+   $$
+
+2. Rate law
+
+   $$
+   -r'_A = kC_A^\alpha C_B^\beta; \qquad
+   \frac{r'_A}{-a} =
+   \frac{r'_B}{-b} =
+   \frac{r'_C}{c} =
+   \frac{r'_D}{d}
+   $$
+
+3. Stoichiometry
+   $$
+   C_i = \frac{C_{A0} (\Theta_i + \nu_i X)}
+             {(1 + \epsilon X)}
+             \left( \frac{P}{P_0} \right) 
+             \left( \frac{T_0}{T} \right)
+   $$
+
+   Pressure: 
+   $\frac{dP}{dW} = -\frac{\alpha}{2p} \left( \frac{T}{T_0} \right) \frac{F_T}{F_{T0}}$
+
+   Total molar flow rate: $F_T = \sum_{i=1}^N F_i$
+
+4. Combine: 
+
+   Collate all equations from steps 1 to 3 to yield a system of equations
+
+5. Evaluate:
+   
+   Use ODE solver to solve the system of equations obtained in step 4.
+
 :::
 
 :::

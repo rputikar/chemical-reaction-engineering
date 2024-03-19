@@ -837,7 +837,7 @@ $$
 :::{.highlight}
 $$
   C_j = \frac{C_{A0} (\Theta_j + \nu_j X)}
-            {\upsilon_0 (1 + \epsilon X)}
+            {(1 + \epsilon X)}
             \left( \frac{P}{P_0} \right) 
             \left( \frac{T_0}{T} \right)
 $$
