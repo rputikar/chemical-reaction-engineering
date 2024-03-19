@@ -121,6 +121,7 @@ website:
         id: portfolio
         contents:
           - file: ./content/portfolio/01-mole-balances/index.qmd
+          - file: ./content/portfolio/02-conversion-and-reactor-sizing/index.qmd
 
  #
 format:

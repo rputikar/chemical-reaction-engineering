@@ -7,7 +7,70 @@ format:
 
 ## Apply reaction engineering algorithm
 
-1. Derive the equation for batch time as a function of conversion for a second order reaction $-r_A = k_2C_A^2$
+1. Derive the **equation for batch time** as a function of conversion for a second order reaction $-r_A = k_2C_A^2$
 
-2. Derive equation for conversion in a liquid phase PFR for second order
-   reaction $\ce{2A -> products}; -r_A = kC_A^2$ in terms of Damköhler number $Da_2 = \tau k C_{A0}$ 
+2. **Determining k from Batch Data**
+
+   It is desired to design a CSTR to produce 200 million pounds of ethylene
+   glycol per year by hydrolyzing ethylene oxide. However, before the design
+   can be carried out, it is necessary to perform and analyze a batch-reactor
+   experiment to determine the specific reaction-rate constant, $k$. Because
+   the reaction will be carried out isothermally, the specific reaction rate
+   will need to be determined only at the reaction temperature of the CSTR. At
+   temperatures above $80^\circ C$, there is a significant by-product
+   formation, while at temperatures below $40^\circ C$, the reaction does not
+   proceed at a significant rate; consequently, a temperature of $55^\circ C$
+   has been chosen. Because water is present in excess, its concentration (55.5
+   $mol/dm^3$) may be considered constant during the course of the reaction.
+   The reaction is first-order in ethylene oxide.
+
+   $$
+    \ce{C2H4O + H2O ->[H2SO4] (CH2-OH)2}
+   $$
+
+   $$
+    \ce{A  + B ->[catalyst] C}
+   $$
+
+   In the laboratory experiment, 500 mL of a 2 M solution (2 $kmol/m^3$) of
+   ethylene oxide (A) in water was mixed with 500 mL of water (B) containing
+   0.9 wt% sulfuric acid, which is a catalyst. The temperature was maintained
+   at $55^\circ C$. The concentration of ethylene glycol (C) was recorded as a
+   function of time (@tbl-problem_1).
+
+   #. Derive an equation for the concentration of ethylene glycol as a function
+   of time.
+
+   #. Rearrange the equation derived in (a) to obtain a linear plot of a
+   function concentration versus time.
+
+   #. Using the data in (@tbl-problem_1), determine the specific reaction rate at
+   $55^\circ C$.
+
+```{python}
+#| label: tbl-problem_1
+#| tbl-cap: "Concentration-Time Data"
+#| echo: false
+
+
+import pandas as pd
+import tabulate as tab
+from IPython.display import display, Markdown
+
+# Data
+data = {
+  'Time (min)': [0.0, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 10.0],
+  'Concentration of Ethylene Glycol (C) ($kmol/m^3$)': [0.000, 0.145, 0.270, 0.376, 0.467, 0.610, 0.715, 0.848, 0.957]
+}
+df = {}
+df['data'] = pd.DataFrame(data)
+
+md = tab.tabulate(df['data'].T, floatfmt='.2f')
+display(Markdown(md))
+```
+
+3. Derive **equation for conversion in a liquid phase PFR** for second order
+   reaction $\ce{2A -> products}; -r_A = kC_A^2$ in terms of Damköhler number
+   $Da_2 = \tau k C_{A0}$ 
+
+

@@ -15,6 +15,140 @@ from IPython.display import display, Markdown
 plt.style.use('../../../assets/templates/present.mpstyle')
 ```
 
+## Power law model
+
+* Dependence of $-r_A$ on concentration of species present ($f(C_j)$) is almost
+  always determined by experimental observations. 
+
+* Functional dependence on concentration may be postulated by theory
+  
+  $\Rightarrow$ Experiments are required to confirm the proposed form
+
+* Power law model is most common general forms of the rate law
+
+  :::{.highlight}
+
+  $$
+  -r_A = k_A C_A^\alpha C_B^\beta
+  $$
+
+  :::
+
+* Order of reaction: the powers to which the concentrations are raised
+
+  - The reaction is $\alpha$ order with respect to A and $\beta$ order with respect to B.
+  - Overall order of reaction $n = \alpha + \beta$.
+
+* $k_A$: Specific reaction rate
+
+  $$
+  \text{Units of } k_A = \frac{\text{(conc)}^{1-n}}{\text{time}}
+  $$
+
+
+
+## Flow systems
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+![](../../../assets/images/flow_systems_stoichiometry.png){width=80%}
+
+:::{style="margin-bottom: 80px;"}
+:::
+
+* Form of stoichiometric table is virtually identical to batch systems
+
+* Replace $N_{j0}$ by $F_{j0}$
+
+* Replace $N_{j}$ by $F_{j}$
+
+
+## Stoichiometric table: flow systems
+
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+| Species   | Feed rate to reactor (mol/time)    | Change within reactor (mol/time)     | Effluent rate from reactor (mol/time) |
+| :-------- | :----------------- | :--------------- | :---------------------------------------- |
+| A         | $F_{A0}$          | $-F_{A0}X$      | $F_A = F_{A0} - F_{A0}X$                |
+| B         | $F_{B_0}$          | $-(b/a)F_{A0}X$ | $F_B = F_{B_0} -(b/a)N_{F_0}X$            |
+| C         | $F_{C_0}$          | $(c/a)F_{A0}X$  | $F_C = F_{C_0} +(c/a)N_{F_0}X$            |
+| D         | $F_{D_0}$          | $(d/a)F_{A0}X$  | $F_D = F_{D_0} +(d/a)N_{F_0}X$            |
+| I         | $F_{I_0}$          | 0                | $F_I = F_{I_0}$                           |
+| **Total** | $\mathbf{F_{T_0}}$ |                  | $\mathbf{F_T = F_{T_0} + \delta F_{A0}X}$ |
+
+
+* $\delta = +\frac{d}{a}+\frac{c}{a}-\frac{b}{a}-1$ 
+  
+* $\Theta_{i0}= F_{i_0}/F_{A0} =  C_{i_0}/C_{A0}$.
+
+* $$C_B = C_{A0}(\Theta_B-(b/a)X)$$ 
+  
+  For liquid phase systems ($\upsilon = \upsilon_0$)
+  
+
+
+## Flow reactor with variable volumetric flow rate
+
+::::{.columns}
+:::{.column width=48%}
+
+* Equation for volumetric flow rate
+  $$
+  \upsilon = \upsilon_0 (1 + \epsilon X)
+                        \left( \frac{P_0}{P} \right) 
+                        \left( \frac{T}{T_0} \right)
+  $$
+
+* Molar flow rate
+  $$ F_j = F_{A0} (\Theta_j + \nu_j X) $$
+
+* Concentration ($C_j = F_j /\upsilon$)
+
+  $$
+  C_j = \frac{F_{A0} (\Theta_j + \nu_j X)}
+            {\upsilon_0 (1 + \epsilon X)
+                        \left( \frac{P_0}{P} \right) 
+                        \left( \frac{T}{T_0} \right)
+            }
+  $$
+
+:::
+
+:::{.column width=4%}
+:::
+
+:::{.column width=48%}
+
+* Stoichiometric coefficient ($\nu_j$)
+
+$$
+\ce{ A + \frac{b}{a} B -> \frac{c}{a} C + \frac{d}{a} D}
+$$
+
+* -ve for reactant
+
+  $\nu_A = -1$; $\nu_B = -b/a$
+
+* +ve for products
+
+  $\nu_C = c/a$; $\nu_D = -d/a$
+:::
+::::
+
+:::{.highlight}
+$$
+  C_j = \frac{C_{A0} (\Theta_j + \nu_j X)}
+            {\upsilon_0 (1 + \epsilon X)}
+            \left( \frac{P}{P_0} \right) 
+            \left( \frac{T_0}{T} \right)
+$$
+:::
+
 
 ## Design structure for isothemal reactors
 
@@ -79,6 +213,136 @@ Use algorithm rather than memorizing equations
 
 ## Batch reactor
 
+### First order reaction $\quad \ce{A -> B}$
+
+
+::::{.columns}
+:::{.column width=30%}
+
+![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
+
+:::
+
+:::{.column width=70%}
+
+:::{.incremental}
+
+1. Mole balance
+
+   :::{.smaller}
+   $$
+   N_{A0} \frac{dX_A}{dt} = -r_A V
+   $$
+   :::
+
+2. Rate law
+
+   :::{.smaller}
+   $$
+   -r_A = kC_A
+   $$
+   :::
+
+
+3. Stoichiometry
+
+   :::{.smaller}
+   $$
+   C_A = C_{A0}(1-X_A)
+   $$
+   :::
+
+4. Combine
+
+   :::{.smaller}
+   $$
+   N_{A0} \frac{dX_A}{dt} = k C_{A0} (1 - X_A) V
+   $$
+   :::
+
+5. Evaluate
+
+   For constant batch volume $V = V_0$ solve
+
+   :::{.smaller}
+   $$
+   N_{A0} \frac{dX_A}{dt} = k C_{A0} (1 - X_A) V_0
+   $$
+   :::
+
+
+:::
+
+:::
+
+::::
+
+## Batch reactor
+
+### First order reaction $\quad \ce{A -> B}$
+
+::::{.columns}
+
+:::{.column .smaller width=40%}
+
+$$
+N_{A0} \frac{dX_A}{dt} = k C_{A0} (1 - X_A) V_0
+$$
+
+$$
+\frac{dX_A}{dt} = k C_{A0} (1 - X_A) \frac{V_0}{N_{A0}}
+$$
+
+$$
+\frac{dX_A}{dt} = k \cancel{C_{A0}} (1 - X_A) \frac{1}{\cancel{C_{A0}}}
+$$
+
+$$
+\frac{dX_A}{dt} = k (1 - X_A) 
+$$
+
+$$
+\frac{1}{k}\frac{dX_A}{(1 - X_A)} = dt
+$$
+
+Integrate:
+$$
+\frac{1}{k} \int_0^X \frac{dX_A}{(1 - X_A)} = \int_0^t dt
+$$
+
+:::
+:::{.column .smaller width=60%}
+
+Integrate:
+$$
+\frac{1}{k} \int_0^X \frac{dX_A}{(1 - X_A)} = \int_0^t dt
+$$
+
+$$
+\frac{1}{k} \left[ - \ln (1 - X_A) \right]_0^{X} = t - 0
+$$
+
+$$
+\frac{1}{k} \left[ (- \ln (1 - X)) - (- \cancel{\ln (1 - 0)} ) \right] = t
+$$
+
+$$
+\frac{1}{k} \ln \left( \frac{1}{1 - X} \right) = t ; \quad  -ln(a) = \ln \frac{1}{a} 
+$$
+
+
+:::
+::::
+
+:::{.highlight .fragment}
+$$
+\frac{1}{k} \ln \frac{1}{(1 - X_A)} = t
+$$
+:::
+
+
+## Batch reactor
+
 * Usually we are interested in calculating batch reaction time for a given $X$
   or $X$ for a given batch time
 
@@ -102,7 +366,423 @@ for a second order reaction $-r_A = k_2 C_A^2$
 
 :::
 
+## Batch reactor summary
+
+
+|               | First-Order                                 | | Second-Order                                     |
+|---------------|:--------------------------------------------:|:--:|:------------------------------------------------:|
+| Mole Balance  | |$$\frac{dX}{dt_R} = \frac{-r_A V}{N_{A0}}$$ ||
+| Rate Law      | $$-r_A = k_1 C_A$$                           || $$-r_A = k_2 C_A^2$$                             |
+| Stoichiometry | |$$C_A = \frac{N_A}{V_0} = C_{A0}(1 - X)$$   | |
+| Combine       | $$\frac{dX}{dt_R} = k_1(1 - X)$$            || $$\frac{dX}{dt_R} = k_2 C_{A0}(1 - X)^2$$       |
+| Evaluate      | $$t_R = \frac{1}{k_1} \ln\left(\frac{1}{1 - X}\right)$$ || $$t_R = \frac{X}{k_2 C_{A0}(1 - X)}$$ |
 
 ## CSTR
+
+### Liquid phase first order reaction $\quad \ce{A -> B}$
+
+
+::::{.columns}
+:::{.column width=30%}
+
+![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
+
+:::
+
+:::{.column width=70%}
+
+:::{.incremental}
+
+1. Mole balance
+
+   :::{.smaller}
+   $$
+   V = \frac{F_{A0} X_A}{-r_A} 
+   $$
+   :::
+
+2. Rate law
+
+   :::{.smaller}
+   $$
+   -r_A = kC_A
+   $$
+   :::
+
+
+3. Stoichiometry
+
+   :::{.smaller}
+   $$
+   C_A = C_{A0}(1-X_A)
+   $$
+   :::
+
+4. Combine: Put $F_{A0}$ in terms of $C_{A0}$
+
+   :::{.smaller}
+   $$
+   V = \frac{\cancel{C_{A0}} \upsilon_0 X_A}{k \cancel{C_{A0}} (1-X_A)} 
+   $$
+   :::
+
+5. Evaluate
+
+   :::{.smaller .highlight}
+   $$
+   V = \frac{\upsilon_0 X}{k (1-X)} 
+   $$
+   :::
+
+:::
+
+:::
+
+::::
+
+## Scale up 
+
+:::{.incremental}
+
+* If one knows the volume of a laboratory or pilot-scale reactor required to
+  achieve $X_A$, how is this information used to achieve $X_A$ in a larger
+  reactor?
+
+* For first order irreversible liquid phase reaction
+
+  $$
+  \text{known: } V_{small} = \frac{\upsilon_0 X_A}{1-X_A}; \quad 
+  \text{want: } V_{bigger} = \frac{\upsilon_0 X_A}{1-X_A}; 
+  $$
+
+* Want $X_A$ in the big reactor to be the same as $X_A$ in the small reactor
+
+  - $k$ in the small reactor is the same as $k$ in the bigger reactor
+  - $\upsilon_0$ in the small reactor must be different from $\upsilon_0$ in
+    the bigger reactor
+
+* The reactor volume $V$ must be proportional to the volumetric flow rate
+  $\upsilon_0$
+
+
+   $$
+   \underbrace{\frac{V}{\upsilon_0}}_{\text{variables we will vary}} =
+   \underbrace{\frac{X_A}{k (1 - X_A)}}_{\text{variables that are constant}}
+   $$
+
+:::
+
+## Scale up
+
+$$
+   \tau = \frac{V}{\upsilon_0} 
+        = \frac{X_A}{k (1 - X_A)}
+$$
+
+* So if you know the spacetime $\tau$ required to get a conversion of $X_A$ in
+  a CSTR, you can use that to achieve the same $X_A$ in a different size CSTR
+
+* What $\tau$ is required to achieve a specific $X_A$?
+
+  $$
+   \tau = \frac{X_A}{k (1 - X_A)} \Rightarrow \tau k = X_A (1 + \tau k)
+  $$
+
+*
+:::{.highlight}
+  $$
+   X_A = \frac{\tau k}{1 + \tau k}
+  $$
+:::
+
+  CSTR relationship between $\tau$ and $X_A$ for first order liquid-phase reaction 
+  (isothermal and $\upsilon = \upsilon_0$)
+
+
+## Damköhler number
+
+:::{.highlight}
+  $$
+   Da = \frac{-r_{A0}V}{F_{A0}} 
+      = \frac{\text{reaction rate at entrance}}{\text{entering flow rate of A}} 
+      = \frac{\text{reaction rate}}{\text{conection rate}}
+  $$
+:::
+
+* Estimates the degree of conversion that can be obtained in a flow reactor
+
+* First order irreversible reaction 
+
+  $$ Da  = \frac{-r_{A0}V}{F_{A0}} = \frac{ k C_{A0} V}{C_{A0}\upsilon_0} = \frac{kV}{\upsilon_0} = k \tau $$
+
+* Second order irreversible reaction 
+
+  $$ Da  = \frac{-r_{A0}V}{F_{A0}} = \frac{ k C_{A0}^2 V}{C_{A0}\upsilon_0} = \frac{k C_{A0} V}{\upsilon_0} = k C_{A0} \tau $$
+
+
+* Relationship between $Da$ and $X_A$ for first order liquid-phase reaction
+  
+  $$ X_A  = \frac{Da_1}{1 + Da_1} $$
+  
+## Damköhler number
+
+* Da gives a quick estimate of degree of conversion tha can be obtained in a continuous flow reactor
+
+  For first order irreversible reaction
+  $$ X_A  = \frac{Da_1}{1 + Da_1} $$
+
+* $Da < 0.1$
+
+  $$
+  X_A = \frac{Da_1}{1 + Da_1} 
+      = \frac{0.1}{1 + 0.1}  = 0.091
+  $$
+
+* $Da > 10$
+
+  $$
+  X_A = \frac{Da_1}{1 + Da_1} 
+      = \frac{10}{1 + 10}  = 0.91
+  $$
+
+:::{.highlight}
+$$
+\text{If } Da < 0.1 \text{ then } X_A < 0.1  \\
+\text{If } Da > 10 \text{ then } X_A  > 0.9
+$$
+:::
+
+## CSTR
+
+### Liquid phase second order reaction
+
+
+::::{.columns}
+:::{.column width=30%}
+
+![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
+
+:::
+
+:::{.column width=70%}
+
+:::{.incremental .smaller}
+
+1. Mole balance
+
+   $$
+   V = \frac{F_{A0} X_A}{-r_A} 
+   $$
+
+2. Rate law
+
+   $$
+   -r_A = kC_A^2
+   $$
+
+
+3. Stoichiometry
+
+   $$
+   C_A = C_{A0}(1-X_A)
+   $$
+
+4. Combine: Put $F_{A0}$ in terms of $C_{A0}$
+
+   $$
+   V = \frac{C_{A0} \upsilon_0 X_A}{k C_{A0}^2 (1-X_A)^2} 
+   $$
+
+5. Evaluate
+
+   $$
+   \tau = \frac{X}{k C_{A0}(1-X)^2}; \quad 
+   X_A=\frac{(1 + 2 \tau k C_{A0}) - \sqrt{1 + 4 \tau k C_{A0}}}{2 \tau k C_{A0}}
+   $$
+
+   $$
+   X_A=\frac{(1 + 2 Da_2) - \sqrt{1 + 4 Da_2}}{2 Da_2}; \quad
+   Da_2 = \tau k C_{A0}
+   $$
+:::
+
+:::
+
+::::
+
+## CSTRs in series
+
+![](../../../assets/images/CSTR_in_series_schematic.png){width=70%}
+
+* A first order reaction is carried out isothermally using 2 CSTRs that are the
+  same size, and $\upsilon$ and $k$ are the same in both reactors ($\tau_1 =
+  \tau_2 = \tau; k_1 = k_2 = k$).
+
+* Effluent of reactor 1 is input for reactor 2, no change in $\upsilon$
+
+* For the first CSTR, $C_{A1} = \frac{C_{A0}}{1 + \tau k} = k$
+
+* For second CSTR apply the algorithm
+
+:::{.callout-note }
+## Activity: Exit concentration for CSTR in series 
+
+Using the algorithm, obtain $C_{A2}$ in terms of $C_{A0}$ and $Da$
+:::
+
+
+## CSTRs in series
+
+::::{.columns}
+:::{.column width=45%}
+
+* For $n$ identical CSTRs
+
+  $$
+  C_{An} = \frac{C_{A0}}{(1 + \tau k)^n}
+  $$
+
+* Rate of disappearance in the $n^{th}$ reactor
+
+  $$
+  -r_{An} = k C_{An} = \frac{k C_{A0}}{(1 + \tau k)^n}
+  $$
+
+  $$
+  \therefore \cancel{k} \cancel{C_{A0}}(1 - X_{An}) = \frac{\cancel{k} \cancel{C_{A0}}}{(1 + \tau k)^n}
+  $$
+
+:::
+
+:::{.column width=5%}
+:::
+
+:::{.column width=50%}
+
+![](../../../assets/images/cstr_in_series_Da.png){width=90%}
+
+:::
+::::
+
+:::{.highlight}
+$$
+X_{An} = 1 - \frac{1}{(1 + Da)^n}
+$$
+
+Conversion will be higher than a single reactor of volume $V = n V_i$. 
+:::
+
+## CSTRs in parallel
+
+::::{.columns}
+:::{.column width=40%}
+
+![](../../../assets/images/CSTR_in_parallel_schematic.png){width=90%}
+
+:::{.smaller}
+* Volume of each CSTR
+
+  $$
+  V_i = \frac{V}{n}
+      = \frac{\text{total volume of all CSTRs}}{\text{no. of CSTRs}}
+  $$
+
+* Molar flow rate of each CSTR
+  $$
+  F_{A0,i} = \frac{F_{A0}}{n}
+     = \frac{\text{total molar flow rate}}{\text{no. of CSTRs}}
+  $$
+:::
+:::
+
+:::{.column width=5%}
+:::
+:::{.column width=55%}
+
+* Mole balance
+
+  $$
+  V_i = F_{A0,i} \left( \frac{X_{Ai}}{-r_{Ai}}\right)
+  $$
+
+* Same $T, V, \upsilon$
+
+  $$
+  \begin{align*}
+   F_{A0,1} & = F_{A0,2} = \cdots = F_{A0,n} \\
+   \therefore X_{A1}   & = X_{A2} = \cdots = X_{A} \\
+   \therefore -r_{A1}  & = -r_{A2} = \cdots = -r_{A}
+  \end{align*}
+  $$
+
+$$
+\frac{V}{\cancel{n}} = \frac{F_{A0}}{\cancel{n}} \left( \frac{X_{Ai}}{-r_{Ai}}\right); 
+V = F_{A0} \left( \frac{X_{A}}{-r_{A}}\right)
+$$
+
+:::
+
+::::
+
+:::{.highlight}
+Conversion achieved by any one of the reactors in parallel is the same as if
+all the reactant were fed into one big reactor of volume V
+:::
+
+## Liquid Phase Reaction in PFR
+
+### First order reaction
+
+::::{.columns}
+:::{.column width=30%}
+
+![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
+
+:::
+
+:::{.column width=70%}
+
+:::{.incremental .smaller}
+
+1. Mole balance
+
+   $$
+   \frac{dX_A}{dV} = \frac{-r_A}{F_{A0}} 
+   $$
+
+2. Rate law
+
+   $$
+   -r_A = kC_A
+   $$
+
+
+3. Stoichiometry
+
+   $$
+   C_A = C_{A0}(1-X_A)
+   $$
+
+4. Combine: Put $F_{A0}$ in terms of $C_{A0}$
+
+   $$
+   \frac{dX}{dV} = \frac{k C_{A0} (1 - X_A)}{C_{A0} \upsilon_0} 
+   $$
+
+5. Evaluate
+
+   $$
+   \frac{\upsilon_0}{k} \int_0^X \frac{dX_A}{(1 - X_A)} = \int_0^V dV ;\quad 
+   V = \frac{\upsilon_0}{k} \frac{1}{(1 - X)} 
+   $$
+:::
+
+:::{.fragment .callout-note appearance="simple"}
+Derive equation for conversion in a liquid phase PFR for second order reaction
+:::
+
+:::
+
+::::
 
 
