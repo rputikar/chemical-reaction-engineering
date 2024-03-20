@@ -5,6 +5,14 @@ date: 2024/03/10
 format: html
 ---
 
+::: {.callout-note}
+## Solutions
+
+Solutions to these problems are uploaded at [Workshop 3 solutions](./solutions.qmd)
+
+:::
+
+
 Try following problems from Fogler 5e[@fogler2016].
 
 P3-5, P3-10, P3-11, P3-12, P 4-6, P 4-8, P 4-11
