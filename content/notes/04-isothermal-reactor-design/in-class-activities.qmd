@@ -5,9 +5,84 @@ format:
   pdf
 ---
 
+```{python}
+import matplotlib.pyplot as plt
+from IPython.display import display, Markdown
+plt.style.use('../../../assets/templates/publish.mplstyle')
+```
+
+
 ## Apply reaction engineering algorithm
 
-1. Derive the **equation for batch time** as a function of conversion for a second order reaction $-r_A = k_2C_A^2$
+1. Derive the **equation for batch time** as a function of conversion for a
+   second order reaction $-r_A = k_2C_A^2$
+
+:::{.callout-tip collapse="true"}
+## Solution
+
+1. Mole balance
+
+   $$
+   N_{A0} \frac{dX_A}{dt} = -r_A V
+   $$
+
+2. Rate law
+
+   $$
+   -r_A = kC_A^2
+   $$
+
+
+3. Stoichiometry
+
+   $$
+   C_A = C_{A0}(1-X_A)
+   $$
+
+4. Combine
+
+   $$
+   N_{A0} \frac{dX_A}{dt} = k C_{A0}^2 (1 - X_A)^2 V
+   $$
+
+5. Evaluate
+
+   For constant batch volume $V = V_0$ solve
+
+   $$
+   N_{A0} \frac{dX_A}{dt} = k C_{A0}^2 (1 - X_A)^2 V_0
+   $$
+
+   $$
+   \frac{dX_A}{dt} = k C_{A0} (1 - X_A)^2 
+   $$
+
+   Integrate:
+   $$
+   \frac{1}{k C_{A0}} \int_0^X \frac{dX_A}{(1 - X_A)^2} = \int_0^t dt
+   $$
+
+```{python}
+#| echo: true
+
+from sympy import symbols, integrate, simplify, pprint
+
+k, CA0, X, XA = symbols('k CA0 X XA')
+
+expression = 1/ (1 - XA)**2 
+integral_result = integrate(expression,(XA,0,X))
+simplified_integral = simplify(integral_result)
+
+t = (1 / (k * CA0)) * simplified_integral
+
+pprint(t)
+```
+
+$$
+t = \frac{1}{k C_{A0}}\frac{X}{1-X}
+$$
+
+:::
 
 2. **Determining k from Batch Data**
 
@@ -52,7 +127,6 @@ format:
 #| tbl-cap: "Concentration-Time Data"
 #| echo: false
 
-
 import pandas as pd
 import tabulate as tab
 from IPython.display import display, Markdown
@@ -69,14 +143,155 @@ md = tab.tabulate(df['data'].T, floatfmt='.2f')
 display(Markdown(md))
 ```
 
-3. Exit concentration for CSTR in series 
-   Using the algorithm, obtain $C_{A2}$ in terms of $C_{A0}$ and $Da$ for two
+
+:::{.callout-tip collapse="true"}
+## Solution
+
+1. See [slides 9 and 10](https://cre.smilelab.dev/content/slides/04-isothermal-reactor-design/#/batch-reactor). 
+
+2. 
+$$
+\ln \frac{C_{A0}}{C_A} = kt
+$$
+
+Concentration of ethylene oxide (A)
+$$
+C_A = C_{A0} e^{-kt}
+$$
+
+Concentration of ethylene oxide (C)
+$$
+C_C = C_A0 - C_A = C_{A0}(1 - e^{-kt})
+$${#eq-1}
+
+
+3.  Rearranging @eq-1 we get
+
+$$
+\ln \frac{C_A0 - C_C}{C_A0} = t
+$$
+
+The plot of $\ln [(C_A0 - C_C)/C_A0]$ vs. $t$ will be a straight line with slope $-k$. 
+
+```{python}
+#| echo: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import linregress
+
+time = np.array([0.0, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 10.0])
+conc_C = np.array([0.000, 0.145, 0.270, 0.376, 0.467, 0.610, 0.715, 0.848, 0.957])
+
+conc_A0 = 1.0 # kmol/m^3 
+
+lhs = np.log((conc_A0 - conc_C)/conc_A0)
+
+slope, intercept, r_value, p_value, std_err = linregress(time, lhs)
+line = slope * time + intercept
+
+k = -slope
+
+# Plot 
+plt.scatter(time, lhs, color='blue', label='Data points')
+plt.plot(time, line, color='red', label='Fit line')
+
+# Labels and title
+plt.xlabel('t (min)')
+plt.ylabel('$\ln[(C_{A0}-C_C)/C_{A0}]$')
+plt.title('Linear Fit of $\ln[(C_{A0}-C_C)/C_{A0}]$ vs t')
+plt.legend()
+
+k_text = f'k: {k:.3f} $min^{{-1}}$'
+plt.annotate(f'{k_text}', xy=(0.05, 0.20), xycoords='axes fraction', verticalalignment='top')
+
+# Show plot
+plt.show()
+
+```
+
+:::
+
+3. Exit concentration for CSTR in series using the algorithm: 
+
+   Obtain $C_{A2}$ in terms of $C_{A0}$ and $Da$ for two
    CSTRs operating in series. The reaction is first order isothermal liquid
    phase reaction.  
+
+:::{.callout-tip collapse="true"}
+## Solution
+
+Relate $C_{A2}$ to $k$ & $t$
+
+$$
+C_{A2} = \frac{C_{A1}}{1 + \tau k}; 
+C_{A1} = \frac{C_{A0}}{1 + \tau k} 
+$$
+
+Substitute:
+$$
+C_{A2} = \frac{C_{A0}}{1 + \tau k} 
+         \frac{1}{1 + \tau k} 
+$$
+
+$$
+C_{A2} = \frac{C_{A0}}{(1 + \tau k)^2} 
+$$
+
+
+:::
 
 
 4. Derive **equation for conversion in a liquid phase PFR** for second order
    reaction $\ce{2A -> products}; -r_A = kC_A^2$ in terms of Damköhler number
    $Da_2 = \tau k C_{A0}$ 
+
+:::{.callout-tip collapse="true"}
+## Solution
+
+1. Mole balance
+
+   $$
+   F_{A0} \frac{dX_A}{dV} = -r_A 
+   $$
+
+2. Rate law
+
+   $$
+   -r_A = kC_A^2
+   $$
+
+
+3. Stoichiometry
+
+   $$
+   C_A = C_{A0}(1-X_A)
+   $$
+
+4. Combine
+
+   $$
+   F_{A0} \frac{dX_A}{dV} = k C_{A0}^2 (1 - X_A)^2 
+   $$
+
+5. Evaluate
+
+   $$
+   V = \frac{\upsilon_0}{k C_{A0}} \int_0^X \frac{dX_A}{(1 - X_A)^2} 
+   $$
+
+   $$
+   V = \frac{\upsilon_0}{k C_{A0}}\frac{X}{1-X}
+   $$
+
+   $$
+   Da_2 = \tau k C_{A0} = \frac{X}{1-X} 
+   $$
+
+   $$
+   X = \frac{Da_2}{1+ Da_2} 
+   $$
+
+:::
 
 

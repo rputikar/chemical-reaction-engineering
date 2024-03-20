@@ -17,7 +17,7 @@ plt.style.use('../../../assets/templates/publish.mplstyle')
 1. For the reaction $\ce{2A + B -> 3C}$, calculate rates of reaction of B and C
    if $-r_A = 10 mol/(dm^3 s)$
 
-   ::: {.callout-tip}
+   ::: {.callout-tip collapse="true"}
    ## Solution
 
    $$
@@ -37,7 +37,7 @@ plt.style.use('../../../assets/templates/publish.mplstyle')
    $\ce{2NO + O2 <=> 2NO2}$. Calculate the rate of consumption of $\ce{NO}$,
    and $\ce{O2}$. 
 
-   ::: {.callout-tip}
+   ::: {.callout-tip collapse="true"}
    ## Solution
 
    $$
@@ -66,7 +66,7 @@ either of the form $\ce{A -> B}$ or $\ce{A + B -> C}$.
 3. The units of the specific reaction rate are $k = \left[\frac{1}{h} \right]$.
 4. The units of a nonelementary reaction rate are $k = \left[\frac{mol}{dm^3 \ h} \right]$.
 
-::: {.callout-tip}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 1. Second order reaction: $-r_A = kC_AC_B$
@@ -90,7 +90,7 @@ $$
 determine the rate expression for disappearance of benzene ($-r_B$). Assume
 both the forward and reverse reactions are elementary. 
 
-::: {.callout-tip}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 We can write the reactions as two elementary reactions
@@ -138,7 +138,7 @@ is given in @tbl-ae. Calculate the activation energy.
 : Rate constant data {#tbl-ae}
 
 
-::: {.callout-tip}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 $$ 
@@ -205,7 +205,7 @@ Reaction: $\ce{2A <=> B}$
 
 Rate law: $-r_A = k_A \left[ C_A^2 - \frac{C_B}{K_C} \right]$
 
-::: {.callout-tip}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 
@@ -267,7 +267,7 @@ Equilibrium conversion: $X_e = 0.7$
 
 ## Repeat the calculations above for a flow reactor
 
-::: {.callout-tip}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 With the flow reactor, we will need to consider changes in molar flow rate as
@@ -352,7 +352,7 @@ Letting X represent the conversion of NaOH set up a stoichiometric table
 expressing the concentration of each species in terms of the initial
 concentration of NaOH and the conversion of X.
 
-::: {.callout-tip}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 $$
@@ -401,7 +401,7 @@ $$
 3. Evaluate the parameters and make a plot of each of the concentrations $\ce{SO2}$,
    $\ce{SO3}$, $\ce{N2}$ as a function of conversion
 
-::: {.callout-tip}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 $$
@@ -417,7 +417,7 @@ $$
 Stoichiometric table
 
 
-| Species | Symbol | Initially | Change | Remaining |
+| Species | Symbol | Entering | Change | Leaving |
 |---------|--------|-----------|--------|-----------|
 | $SO_2$ | A | $$ F_{A0} $$ | $$ -F_{A0}X $$ | $$ F_A = F_{A0}(1 - X) $$ |
 | $O_2$ | B | $$ F_{B0} = \Theta_B F_{A0} $$ | $$ -\frac{F_{A0}X}{2} $$ | $$ F_B = F_{A0}\left(\Theta_B - \frac{1}{2}X\right) $$ |
@@ -546,6 +546,8 @@ plt.legend()
 plt.grid(True)
 plt.show()
 ```
+Note that Concentration of $N_2$ (C_I)$ changes with conversion even though
+nitrogen does not participate in the reaction. 
 
 :::
 
@@ -589,11 +591,110 @@ $$
 
     at $25 \ ^{\circ}C$? V = ______
 
-    at $25 \ ^{\circ}C$? V = ______
+    at $288 \ ^{\circ}C$? V = ______
 
-::: {.callout-tip}
+::: {.callout-tip collapse="true"}
 ## Solution
 
+$$
+\ce{C6H4ClNO2 + 2 NH3 -> C6H6N2O2 + NH4Cl}
+$$
+
+$$
+\ce{A + 2 B -> C + D}; -r_A = k C_A C_B
+$$
+
+| | | 
+|-|-|
+| k | 0.0017 $m^3/kmol min$ $at \ 188 ^\circ C$ |
+| E | 11273 $cal/mol$ |
+| $C_A | 1.8 $kmol/m^3$ |
+| $C_B | 6.6 $kmol/m^3$ |
+
+: Problem data
+
+
+a) Stoichiometric table for flow reactor 
+
+| Species | Entering | Change | Exiting |
+|-|-|-|-|
+| A | $F_{A0}$ | $-F_{A0}X$ | $F_A = F_{A0}(1 - X)$ | 
+| B | $F_{B0} = \Theta_B F_{A0}$ | $-2 F_{A0}X$ | $F_B = F_{A0}(\Theta_B - 2X)$ | 
+| C | 0 | $F_{A0}X$ | $F_C = F_{A0} X$ | 
+| D | 0 | $F_{A0}X$ | $F_D = F_{A0} X$ | 
+
+$\Theta_B = \frac{6.6}{1.8} = 3.67$
+
+b) $-r_A = k C_A C_B$
+
+c) For batch system
+
+$$
+C_A = \frac{N_A}{V}
+$$
+
+The stoichiometric table needs to be set up in terms of N instead of F. The
+reaction rate expression would remain same. 
+
+d) $-r_A$ as a function of conversion
+
+$-r_A = k C_A C_B$
+
+$C_A = C_{A0}(1-X)$
+
+$C_B = C_{A0}(\Theta_B - 2X)$
+
+$-r_A = k C_{A0}(1-X) C_{A0}(\Theta_B - 2X)$
+
+$-r_A = k C_{A0}^2 (1-X)(\Theta_B - 2X)$
+
+e) Initial rates of reaction
+
+k at different temperatures
+
+$$
+k = k_0 exp \left[ \frac{E}{R} \left( \frac{1}{T_0} - \frac{1}{T} \right)\right]
+$$
+
+| T (&deg;C) | k $(m^3/kmol min)$|
+|-|-|
+| 25 (298K) | $2.03 \times 10^{-6}$ | 
+| 188 (461K) | 0.0017 | 
+| 288 (561K) | 0.152 | 
+
+1. At 188 &deg;C 
+
+$-r_A = k C_{A0}^2 \Theta_B = 0.0017 \times (1.8)^2 \times 3.67 = 0.0202 \ kmol/m^3 min$
+
+2. At 25 &deg;C: $2.41 \times 10^{-5} \ kmol/m^3 min$
+
+3. At 288 &deg;C: 0.1806 $kmol/m^3 min$
+
+f) rates of reaction at $X = 0.9$
+
+$-r_A = k C_{A0}^2 (1 - X)(\Theta_B - 2X)$
+
+1. At 188 &deg;C: 0.00103 $kmol/m^3 min$
+
+2. At 25 &deg;C: $1.23 \times 10^{-6}$  $kmol/m^3 min$
+
+3. At 288 &deg;C: 0.0092 $kmol/m^3 min$
+
+g) CSTR Volume
+
+$X = 90% = 0.9; \upsilon_0 = 2 dm^3/min$
+
+$F_{A0} = C_{A0} \upsilon_0 = 3.6 mol/min$
+
+1. V at 25 &deg;C
+
+   $$
+   V = \frac{F_{A0}X}{-r_A|_{exit}}
+   $$
+
+   V = 2634.1 $m^3$
+
+2. V at 288 &deg;C: 352 $m^3$
 
 :::
 

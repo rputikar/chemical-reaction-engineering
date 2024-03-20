@@ -1097,7 +1097,7 @@ Pressure drops are especially common in reactions run in PBRs
 
 :::{.incremental .smaller}
 
-1. Mole balance: Write balance for each species $i = 1 to N$
+1. Mole balance: Write balance for each species $i = 1 \ to \ N$
 
    $$
    \frac{dF_i}{dW} = r'_i
