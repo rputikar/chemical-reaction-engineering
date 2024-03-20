@@ -317,15 +317,190 @@ $k=0.07 dm^3/mol \cdot min$ at 300 K and E = 20 kcal/mol.
 
 : Concentrations in a variable-volume gas flow system {#tbl-4-3}
 
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 [Hand written solution](./Problem-5-9.pdf)
 
+1. recommended reactor and conditions
+
+```{python}
+#| echo: true
+
+import numpy as np
+from scipy.integrate import quad
+from scipy.optimize import fsolve
+
+# Data
+
+k_300 = 0.07 # dm^3/mol min
+E = 20*1000  # cal/mol
+R = 1.987    # cal/mol K
+
+V_CSTR = 200 # dm^3
+V_PFR = 800  # dm^3
+
+v_0A = 5     # dm^3/min
+v_0B = 5     # dm^3/min
+
+v_0 = v_0A + v_0B
+
+C_Ain = 2    # mol/dm^3
+C_Bin = 2    # mol/dm^3
+
+F_A0 = C_Ain * v_0A
+F_B0 = C_Bin * v_0B
+
+C_A0 = F_A0/v_0 
+C_B0 = F_B0/v_0 
+
+# Calculate k at 77 degC (350 K)
+
+k_350 = k_300 * np.exp( (E/R) * ((1/300) - (1/350)) )
+k_273 = k_300 * np.exp( (E/R) * ((1/300) - (1/273)) )
+
+# CSTR conversion
+
+# Calculate concentrations and rate
+CA = lambda x: C_A0 * (1 - x)
+CB = lambda x: C_B0 * (1 - x)
+
+rA = lambda x,k: k * CA(x) * CB(x)
+
+# Function to find the root of
+def func(x, *args):
+    v, fa0, k = args
+    rate = rA(x,k)
+    return x - v * rate/ fa0
+
+x_guess = 0  
+
+x_cstr = fsolve(func, x2_guess, args=(V_CSTR, F_A0, k_350))
+
+```
+
+$X_{CSTR}$ at 350 K =`{python} f'{x_cstr[0]:.3f}'`. 
+
+To calculate the PFR conversion we solve
+
+$$
+\frac{dX}{dV} = \frac{-r_A}{F_{A0}}
+$$
+
+using similar approach from problem P 5-8.
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+# PFR conversion
+
+def find_x(x1, *args):
+    v, k, fa0 = args
+    result, _ = quad(lambda x: 1 / rA(x,k), 0, x1)
+    return fa0 * result - v
+
+x_guess = 0
+x_pfr = fsolve(find_x, x_guess, args=(V_PFR, k_300, F_A0))
+```
+
+$X_{PFR}$ at 300 K =`{python} f'{x_pfr[0]:.3f}'`.
+
+As the PFR conversion is lower than CSTR conversion, use of CSTR operating at
+350 K is recommended. 
+
+2. Batch time
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+# Batch time 
+
+v = 200 # dm^3
+N_A0 = 200  # moles
+N_B0 = 200   # moles
+X = 0.9
+
+batch_time, _ = quad(lambda x: N_A0 / (rA(x, k_350) * v), 0, X) 
+```
+Batch time at 350 K =`{python} f'{batch_time:.3f}'` min.
+
+3. Batch time at 273 K 
+
+```{python}
+#| echo: true
+
+batch_time, _ = quad(lambda x: N_A0 / (rA(x, k_273) * v), 0, X) 
+```
+Batch time at 273 K =`{python} f'{batch_time:.3f}'` min (`{python} f'{batch_time/(60*24):.1f}'` days).
+
+4. CSTR / PFR connected in series
+
+```{python}
+#| echo: true
+#| warning: false
+
+# Function to find the root of
+def func(x, *args):
+    v, fa0, k = args
+    rate = rA(x,k)
+    return x - v * rate/ fa0
+
+x_guess = 0  
+
+x_cstr_1 = fsolve(func, x2_guess, args=(V_CSTR, F_A0, k_300))
+
+def find_x(x2, *args):
+    x1, v, k, fa0 = args
+    result, _ = quad(lambda x: 1 / rA(x,k), x1, x2)
+    return fa0 * result - v
+
+x_guess = x_cstr_1
+x_pfr_2 = fsolve(find_x, x_guess, args=(x_cstr_1, V_PFR, k_300, F_A0))
+
+```
+
+$X_{1, CSTR}$ at 300 K =`{python} f'{x_cstr_1[0]:.3f}'`. 
+
+$X_{2, PFR}$ at 300 K =`{python} f'{x_pfr_2[0]:.3f}'`.
+
+
+5. CSTR and PFR connected in parallel
+
+```{python}
+#| echo: true
+#| warning: false
+
+# Function to find the root of
+def func(x, *args):
+    v, fa0, k = args
+    rate = rA(x,k)
+    return x - v * rate/ fa0
+
+x_guess = 0  
+
+x_cstr_1 = fsolve(func, x2_guess, args=(V_CSTR, F_A0/2, k_300))
+
+def find_x(x2, *args):
+    x1, v, k, fa0 = args
+    result, _ = quad(lambda x: 1 / rA(x,k), x1, x2)
+    return fa0 * result - v
+
+x_guess = 0
+x_pfr_2 = fsolve(find_x, x_guess, args=(0, V_PFR, k_300, F_A0/2))
+
+```
+$X_{1, CSTR}$ at 300 K =`{python} f'{x_cstr_1[0]:.3f}'`. 
+
+$X_{2, PFR}$ at 300 K =`{python} f'{x_pfr_2[0]:.3f}'`.
+
+$X_{Final}$ =`{python} f'{(x_cstr_1[0] + x_pfr_2[0])/2:.3f}'`.
 
 
 :::
-
 
 ## P 5-11
 
