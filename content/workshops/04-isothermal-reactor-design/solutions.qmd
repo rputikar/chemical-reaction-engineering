@@ -1,0 +1,508 @@
+---
+title: 
+  "Solutions to workshop 04: Isothermal reactor design"
+date: 2024/03/19
+format: html
+resources:
+  - "./Problem-5-9.pdf"
+  - "./Problem-5-11.pdf"
+  - "./Problem-5-24.pdf"
+  - "./Problem-6-4.pdf"
+  - "./Problem-6-6.pdf"
+  - "./Problem-6-7.pdf"
+---
+
+Try following problems from Fogler 5e[@fogler2016].
+
+P 5-7,
+P 5-8,
+P 5-9,
+P 5-11,
+P 5-24,
+P 6-4,
+P 6-6,
+P 6-7
+
+We will go through some of these problems in the workshop. 
+
+## P 5-7
+
+The gas-phase reaction
+
+$$
+\ce{A -> B + C} 
+$$
+
+follows an elementary rate law and is to be carried out first in a PFR and then
+in a separate experiment in a CSTR. When pure A is fed to a 10 dm^3^ PFR at 300
+K and a volumetric flow rate of 5 dm^3^/s, the conversion is 80%. When a
+mixture of 50% A and 50% inert (I) is fed to a 10 dm^3^ CSTR at 320 K and a
+volumetric flow rate of 5 dm^3^/s, the conversion is also 80%. What is the
+activation energy in cal/mol?
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+Gas phase elementary reaction
+
+$$ \ce{A -> B + C} $$
+
+Data: 
+
+PFR: $V = 10 dm^3; V_0 = 5 dm^3/s; T = 300K; X = 0.8$
+
+CSTR: $V = 10 dm^3; V_0 = 5 dm^3/s; T = 320K; X = 0.8; y_{A0} = 0.5; y_{I0} = 0.5$
+
+Rate: $-r_A = k C_A = k_0 e^{-E/RT} C_{A0} (1 - X)$
+
+For PFR: 
+
+$$
+\frac{dX}{dV} = \frac{-r_A}{F_{A0}}
+$$
+
+$$
+\frac{dX}{dV} = \frac{k C_{A0} (1-X)}{C_{A0} \upsilon_0 (1 + \epsilon X)}
+$$
+
+$$
+\therefore k \tau = \int_0^{0.8} \frac{(1 + \epsilon X)}{(1 - X)} dX 
+$$
+
+$$ \epsilon = y_{A0} \delta = 1 + (1 + 1 - 1) = 1 $$
+
+
+```{python}
+#| echo: true
+
+import numpy as np
+from scipy.integrate import quad
+
+def RHS(X, epsilon):
+    return (1 + epsilon * X) / (1 - X)
+
+epsilon = 1 
+volume = 10
+v_0 = 5
+tau = volume/ v_0
+X = 0.8
+
+result, _ = quad(RHS, 0, X, args=(epsilon,))
+
+k_pfr = result / tau
+```
+
+k from PFR experiment = `{python} f'{k_pfr:.3f}'` at 300 K
+
+
+For CSTR: 
+
+$$
+V = \frac{F_{A0} X}{-r_A |_{exit}}
+$$
+
+$$
+V = \frac{\upsilon_0 C_{A0} X}{k C_{A0} \frac{(1-X)}{(1 + \epsilon X)}}  
+  = \frac{\upsilon_0 X (1 + \epsilon X)} {k (1-X)}
+$$
+
+$$
+\epsilon = \frac{1}{2}(1 + 1 - 1) = 0.5
+$$
+
+$$ \tau = \frac{10}{2} = 2 s $$
+
+$$
+k = \frac{X (1 + \epsilon X)} {\tau (1 - X)}
+$$
+
+
+```{python}
+#| echo: true
+
+epsilon = 0.5 
+tau = 2
+X = 0.8
+
+k_cstr = (X * (1 + epsilon * X))/ (tau * (1 - X)) 
+```
+
+k from CSTR experiment = `{python} f'{k_cstr:.3f}'` at 320 K
+
+$$
+\ln \frac{k_2}{k_1} = \frac{E}{R} \left[ \frac{1}{T_1} - \frac{1}{T_2} \right]
+$$
+
+```{python}
+#| echo: true
+
+R = 1.987 
+activation_energy =  np.log(k_cstr/k_pfr) * R /((1/300) - (1/320))
+```
+
+Activation energy = `{python} f'{activation_energy:.2f}'` cal/mol
+
+:::
+
+## P 5-8
+
+The elementary gas-phase reaction
+
+$$
+\ce{A -> B}
+$$
+
+takes place isobarically and isothermally in a PFR where 63.2% conversion is
+achieved. The feed is pure A.
+
+It is proposed to put a CSTR of equal volume upstream of the PFR. Based on the
+entering molar flow rate to A to the first reactor, what will be the
+intermediate from the CSTR, X~1~ , and exit conversion from the PFR, X~2~ ,
+based on the feed to first reactor?
+
+The entering flow rates and all other variables remain the same as that for the
+single PFR.
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+![](../../../assets/images/problem_p5.8.png)
+
+Gas phase reaction $\ce{A -> B}$. Isothermal, isobaric PFR
+
+$X = 0.632$
+
+Base case: PFR
+
+$\frac{dX}{dV} = -r_A$
+
+$-r_A = k C_A$
+
+$C_A = C_{A0} (1 - X)$
+
+$\tau k = \int_0^X \frac{1}{1-X} dX$
+
+```{python}
+#| echo: true
+
+import numpy as np
+from scipy.integrate import quad
+
+RHS = lambda x: 1 / (1 - x)
+Xf = 0.632
+tk, _ = quad(RHS, 0, Xf)
+```
+
+$\tau k$ = `{python} f'{tk:.2f}'`. 
+
+CSTR added upstream of PFR. $\rightarrow$ equal volume. Therefore $\tau k$ =
+`{python} f'{tk:.2f}'`. 
+
+$$
+V = \frac{F_{A0} X}{k C_{A0} (1-X)} \Rightarrow  \tau k =  \frac{X}{1 - X}
+$$
+
+$$
+1 = \frac{X}{1 - X} \Rightarrow X_{1} = 0.5
+$$
+
+For $X_2$
+
+$$
+\tau k = \int_{X_1}^{X_2} \frac{dX}{1-X}
+$$
+
+This integral can be easily solved by analytical method
+
+$$
+1 = \ln \frac{1}{1-X_2} - \ln \frac{1}{1-X_1}
+$$
+
+$$ 
+1 - \ln 2 = \ln \frac{1}{1-X_2}  \Rightarrow X_2 = 0.82
+$$
+
+Here's alternative numerical way to solve it. 
+
+To calculate $X_2$ from a given $X_1$ and $\tau k$, where $\tau k$ is the
+result of the definite integral from $X_1$ to $X_2$ of $\frac{dX}{1-X}$, you'll
+need to perform the inverse operation. Essentially, you need to solve for $X_2$
+in the equation $\tau k = \int_{X_1}^{X_2} \frac{dX}{1-X}$.
+
+This operation is not straightforward because it requires finding the roots of
+a function, which is an iterative numerical process. Python's `scipy` library
+has methods such as `fsolve` for root finding.
+
+
+```{python}
+#| echo: true
+
+import numpy as np
+from scipy.integrate import quad
+from scipy.optimize import fsolve
+
+# Function to perform the integral
+def integral(x2, x1, tau_k):
+    result, _ = quad(lambda x: 1 / (1 - x), x1, x2)
+    return result - tau_k
+
+x1 = 0.5 
+tau_k = 1 
+
+# Function to find the root of
+def func(x2, *args):
+    x1, tau_k = args
+    return integral(x2, x1, tau_k)
+
+# provide a good initial guess for x2
+x2_guess = x1 + 0.1  
+
+# Solve for x2
+x2 = fsolve(func, x2_guess, args=(x1, tau_k))
+
+```
+
+$X_2$ =`{python} f'{x2[0]:.3f}'`. 
+
+:::
+
+
+## P 5-9
+
+The liquid-phase reaction
+
+$$
+\ce{A + B -> C}
+$$
+
+follows an elementary rate law and is carried out isothermally in a flow system.
+The concentrations of the A and B feed streams are 2 M before mixing.
+The volumetric flow rate of each stream is 5 dm^3^/min, and the entering temperature is 300 K.
+The streams are mixed immediately before entering.
+Two reactors are available.
+One is a gray, 200.0 dm^3^ CSTR that can be heated to 77 $^{\circ}$C or cooled
+to 0 $^{\circ}$C, and the other is a white, 800.0 dm^3^ PFR operated at 300 K
+that cannot be heated or cooled but can be painted red or black. Note that
+$k=0.07 dm^3/mol \cdot min$ at 300 K and E = 20 kcal/mol.
+
+- Which reactor and what conditions do you recommend?
+  Explain the reason for your choice (e.g., color, cost, space available,
+  weather conditions). Back up your reasoning with the appropriate
+  calculations.
+
+- How long would it take to achieve 90% conversion in a 200 dm^3^ batch reactor
+  with C~A0~ = C~B0~ = 1 M after mixing at a temperature of 77$^{\circ}$C?
+
+- What would your answer to part (b) be if the reactor were cooled to
+  0$^{\circ}$C?
+
+- What conversion would be obtained if the CSTR and PFR were operated at 300 K
+  and connected in series? In parallel with 5 mol/min to each?
+
+- Keeping @tbl-4-3 in mind, what batch reactor volume would be necessary to
+  process the same amount of species A per day as the flow reactors, while
+  achieving 90% conversion?
+
+||||
+|:-|:-|:-|
+| $$C_A=\frac{F_A}{v} = \frac{F_{A0}(1 - X)}{v}$$ | $$= \frac{F_{A0}(1 - X)}{v_0(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ | $$= C_{A0} \frac{(1 - X)}{(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ |
+||||
+| $$C_B=\frac{F_B}{v} = \frac{F_{A0}\Theta_B - (b/a)X}{v}$$ | $$= \frac{F_{A0}(\Theta_B - (b/a)X)}{v_0(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ | $$= C_{A0} \frac{(\Theta_B - (b/a)X)}{(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ |
+||||
+| $$C_C=\frac{F_C}{v} = \frac{F_{A0}\Theta_C + (c/a)X}{v}$$ | $$= \frac{F_{A0}(\Theta_C + (c/a)X)}{v_0(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ | $$= C_{A0} \frac{(\Theta_C + (c/a)X)}{(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ |
+||||
+| $$C_D=\frac{F_D}{v} = \frac{F_{A0}\Theta_D + (d/a)X}{v}$$ | $$= \frac{F_{A0}(\Theta_D + (d/a)X)}{v_0(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ | $$= C_{A0} \frac{(\Theta_D + (d/a)X)}{(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ |
+||||
+| $$C_1=\frac{F_1}{v} = \frac{F_{A0}\Theta_1}{v}$$ | $$= \frac{F_{A0}\Theta_1}{v_0(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ | $$= C_{A0}\Theta_1 \frac{1}{(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ |
+
+: Concentrations in a variable-volume gas flow system {#tbl-4-3}
+
+::: {.callout-tip collapse="false"}
+## Solution
+
+[Hand written solution](./Problem-5-9.pdf)
+
+
+
+:::
+
+
+## P 5-11
+
+The irreversible elementary gas-phase reaction
+
+$$
+\ce{A + B ->  C + D}
+$$
+
+is carried out isothermally at 305 K in a packed-bed reactor with 100 kg of catalyst.
+
+The entering pressure was 20 atm and the exit pressure is 2 atm.
+The feed is equal molar in A and B and the flow is in the turbulent flow
+regime, with F~A0~ = 10 mol/min and C~A0~ = 0.4 mol/dm^3^. Currently 80%
+conversion is achieved.
+What would be the conversion if the catalyst particle size were doubled and
+everything else remained the same?
+
+![Packed bed reactor](../../../assets/images/fig_p5.11.png){#fig:p5-11}
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+[Hand written solution](./Problem-5-11.pdf)
+
+
+
+:::
+
+
+## P 5-24
+
+The gas-phase reaction
+
+$$
+\ce{A + B -> C + D}
+$$
+
+takes place isothermally at 300 K in a packed-bed reactor in which the feed is
+equal molar in A and B with C~A0~ = 0.1 mol/dm^3^. The reaction is second order
+in A and zero order in B.
+Currently, 50% conversion is achieved in a reactor with 100 kg of catalysts for
+a volumetric flow rate 100 dm^3^/min. The pressure-drop parameter, $\alpha$, is
+$\alpha$ = 0.0099 kg^–1^.
+If the activation energy is 10,000 cal/mol, what is the specific reaction rate
+constant at 400 K?
+
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+[Hand written solution](./Problem-5-24.pdf)
+
+
+
+:::
+
+
+## P 6-4
+
+The elementary gas-phase reaction
+
+$$
+\ce{(CH3)3COOC(CH3)3 -> C2H6  + 2 CH3COCH3}
+$$
+
+$$
+\ce{A -> B + 2 C}
+$$
+
+is carried out isothermally at 400 K in a flow reactor with no pressure drop.
+The specific reaction rate at 50$^{\circ}$C is 10^-4^ min^-1^ (from pericosity
+data) and the activation energy is 85 kJ/mol.
+Pure *di-tert-*butyl peroxide enters the reactor at 10 atm and 127$^{\circ}$C
+and a molar flow rate of 2.5 mol/min, i.e., F~A~ = 2.5 mol/min.
+
+- Use the algorithm for molar flow rates to formulate and solve the problem.
+  Plot F~A~, F~B~, F~C~, and then X as a function of plug-flow reactor volume
+  and space time to achieve 90% conversion.
+
+- Calculate the plug-flow volume and space time for a CSTR for 90% conversion.
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+[Hand written solution](./Problem-6-4.pdf)
+:::
+
+
+## P 6-6
+*(Membrane reactor)* The first-order, gas-phase, reversible reaction
+
+$$
+\ce{ A <=> B + 2 C }
+$$
+
+is taking place in a membrane reactor.
+Pure A enters the reactor, and B diffuses out through the membrane.
+Unfortunately, a small amount of the reactant A also diffuses through the
+membrane.
+
+- Plot and analyze the flow rates of A, B, and C and the conversion X down the
+  reactor, as well as the flow rates of A and B through the membrane.
+
+- Next, compare the conversion profiles in a conventional PFR with those of a
+  membrane reactor from part (a). What generalizations can you make?
+
+- Would the conversion of A be greater or smaller if C were diffusing out
+  instead of B?
+
+- Discuss qualitatively how your curves would change if the temperature were
+  increased significantly or decreased significantly for an exothermic
+  reaction. Repeat the discussion for an endothermic reaction.
+
+Additional information:
+
+-------------------------   ---------------------------
+k = 10 min^-1^              F~A0~ =  100 mol/min
+K~C~ = 0.01 mol/dm^3^       $v_0$ = 100 dm^3^/min
+k~CA~= 1 min^-1^            V~reactor~ = 20 dm^3^
+k~CB~ = 40 min^-1^
+-------------------------   ---------------------------
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+[Hand written solution](./Problem-6-6.pdf)
+:::
+
+
+## P 6-7
+
+**Fuel Cells Rationale.**
+With the focus on alternative clean-energy sources, we are moving toward an
+increased use of fuel cells to operate appliances ranging from computers to
+automobiles. For example, the hydrogen/oxygen fuel cell produces clean energy
+as the products are water and electricity, which may lead to a hydrogen-based
+economy instead of a petroleum-based economy.
+A large component in the processing train for fuel cells is the water-gas shift
+membrane reactor. (M. Gummala, N. Gupla, B. Olsomer, and Z. Dardas, *Paper
+103c*, 2003, AIChE National Meeting, New Orleans, LA.)
+
+$$
+\ce{CO + H2O <=> CO2 + H2}
+$$
+
+Here, CO and water are fed to the membrane reactor containing the catalyst.
+Hydrogen can diffuse out the sides of the membrane, while $\ce{CO}$,
+$\ce{H2O}$, and $\ce{CO2}$ cannot. Based on the following information, plot the
+concentrations and molar flow rates of each of the reacting species down the
+length of the membrane reactor.
+
+Assume the following: The volumetric feed is 10 dm^3^/min at 10 atm, and the
+equimolar feed of CO and water vapor with C~T0~ = 0.4 mol/dm^3^. The
+equilibrium constant is K~e~ = 1.44, with k = 1.37 $dm^6/ \text{mol kg-cat}
+\cdot \text{min}$, and the mass transfer coefficient $k_{H_2}$ = 0.1 $dm^3/
+\text{kg-cat} \cdot \text{min}$
+
+(Hint: First calculate the entering molar flow rate of CO and then relate F~A~
+and X.)
+
+- What is the membrane reactor volume necessary to achieve 85% conversion of CO?
+
+- Sophia wants you to compare the MR with a conventional PFR. What will you
+  tell her?
+
+- For that same membrane reactor volume, Nicolas wants to know what would be
+  the conversion of CO if the feed rate were doubled?
+
+![Fuel cell](../../../assets/images/fig_p6.7.png){#fig:p6-7}
+
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+[Hand written solution](./Problem-6-7.pdf)
+:::
+
+
+## References
