@@ -17,6 +17,7 @@ package-lock.json
 /_freeze/
 /_output/
 /_*.local
+.tmp
 
 # Mac OS 
 .DS_Store

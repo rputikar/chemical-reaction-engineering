@@ -462,6 +462,90 @@ $$
 \epsilon = y_{A0} \delta = 0.28 \times ( 1 - 1 - \frac{1}{2}) = -0.14
 $$
 
+Initially, 72% of the total number of moles is air containing 21% $\ce{O2}$ and 79% $\ce{N2}$,
+along with 28% $\ce{SO2}$.
+
+$$
+F_{A0} = (0.28)(F_{T0})
+$$
+
+$$
+F_{B0} = (0.72)(0.21)(F_{T0})
+$$
+
+$$
+\Theta_B = \frac{F_{B0}}{F_{A0}} = \frac{(0.72)(0.21)}{0.28} = 0.54
+$$
+
+
+$$
+\Theta_1 = \frac{F_{I0}}{F_{A0}} = \frac{(0.72)(0.79)}{0.28} = 2.03
+$$
+
+Substituting for $C_{A0} and $\epsilon$ in the species concentrations:
+
+$$
+SO_{2}: \quad C_A = C_{A0} \left( \frac{1 - X}{1 + \epsilon X} \right) 
+= 0.1 \left( \frac{1 - X}{1 - 0.14X} \right) \quad \text{mol/dm}^3
+$$
+
+$$
+O_2: \quad C_B = C_{A0} \left( \frac{\Theta_B - \frac{1}{2}X}{1 + \epsilon X} \right) 
+= 0.1 \left( \frac{0.54 - 0.5X}{1 - 0.14X} \right) \quad \text{mol/dm}^3
+$$
+
+$$
+SO_3: \quad C_C = \frac{C_{A0}X}{1 + \epsilon X} = \frac{0.1X}{1 - 0.14X} \quad \text{mol/dm}^3
+$$
+
+$$
+N_2: \quad C_I = \frac{C_{A0}\Theta_1}{1 + \epsilon X} = \frac{(0.1)(2.03)}{1 - 0.14X} \quad \text{mol/dm}^3
+$$
+
+```{python}
+#| echo: true
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+C_A0 = 0.1  # mol/dm^3
+epsilon = -0.14  # unitless
+Theta_B = 0.54  # unitless
+Theta_I = 2.03  # unitless
+
+# Conversion range from 0 to 1 with 0.25 interval
+X_values = np.arange(0, 1.01, 0.25)
+
+# Concentration calculations
+def calculate_concentrations(X, C_A0, epsilon, Theta_B, Theta_I):
+    C_A = C_A0 * ((1 - X)/(1 - epsilon * X))
+    C_B = C_A0 * ((Theta_B - 0.5 * X) / (1 + epsilon * X))
+    C_C = C_A0 * X / (1 + epsilon * X)
+    C_I = C_A0 * Theta_I / (1 + epsilon * X)
+    return C_A, C_B, C_C, C_I
+
+# Calculate concentrations for each X value
+C_A_values, C_B_values, C_C_values, C_I_values = [], [], [], []
+for X in X_values:
+    C_A, C_B, C_C, C_I = calculate_concentrations(X, C_A0, epsilon, Theta_B, Theta_I)
+    C_A_values.append(C_A)
+    C_B_values.append(C_B)
+    C_C_values.append(C_C)
+    C_I_values.append(C_I)
+
+# Plotting the results
+plt.plot(X_values, C_A_values, marker='o', label=r'$C_A$')
+plt.plot(X_values, C_B_values, marker='o', label=r'$C_B$')
+plt.plot(X_values, C_C_values, marker='s', label=r'$C_C$')
+plt.plot(X_values, C_I_values, marker='^', label=r'$C_I$')
+
+plt.xlabel('Conversion, $X$')
+plt.ylabel('Concentration ($mol/dm^3$)')
+plt.title('Concentration as a Function of Conversion')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
 
 :::
 
