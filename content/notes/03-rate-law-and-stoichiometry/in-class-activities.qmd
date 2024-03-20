@@ -5,14 +5,54 @@ format:
   pdf
 ---
 
+```{python}
+import matplotlib.pyplot as plt
+from IPython.display import display, Markdown
+plt.style.use('../../../assets/templates/publish.mplstyle')
+```
+
+
 ## Relative rates
 
 1. For the reaction $\ce{2A + B -> 3C}$, calculate rates of reaction of B and C
    if $-r_A = 10 mol/(dm^3 s)$
 
+   ::: {.callout-tip}
+   ## Solution
+
+   $$
+    \frac{r_A}{-a} = 
+    \frac{r_B}{-b} = 
+    \frac{r_C}{c}  
+   $$
+
+   Rate of disappearance of B = $-r_B = \frac{10}{2}$ = 5 $mol/(dm^3 s)$
+
+   Rate of production of C = $r_C = \frac{10 \times 3}{2}$ = 15 $mol/(dm^3 s)$
+
+   :::
+
+
 2. $\ce{NO2}$ is being formed at a rate of 4 $mol/(m^3 s)$ in the reaction
    $\ce{2NO + O2 <=> 2NO2}$. Calculate the rate of consumption of $\ce{NO}$,
    and $\ce{O2}$. 
+
+   ::: {.callout-tip}
+   ## Solution
+
+   $$
+    \frac{r_{NO}}{-2} = 
+    \frac{r_{O_2}}{-1} = 
+    \frac{r_{NO_2}}{2} 
+   $$
+
+   Rate of disappearance of $\ce{NO}$ = $-r_{NO} = \frac{4 \times 2}{2}$ = 4 $mol/(m^3 s)$
+
+   Rate of disappearance of $\ce{O2}$ = $-r_{O_2} = \frac{4}{2}$ = 2 $mol/(m^3 s)$
+
+
+   :::
+
 
 
 ## Rate law
@@ -26,6 +66,19 @@ either of the form $\ce{A -> B}$ or $\ce{A + B -> C}$.
 3. The units of the specific reaction rate are $k = \left[\frac{1}{h} \right]$.
 4. The units of a nonelementary reaction rate are $k = \left[\frac{mol}{dm^3 \ h} \right]$.
 
+::: {.callout-tip}
+## Solution
+
+1. Second order reaction: $-r_A = kC_AC_B$
+
+2. Second order gas phase reaction $-r'_A = kP_AP_B$
+
+3. First order reaction: $-r_A = kC_A$
+
+4. Second order non elementary reaction $-r_A = kC_A^2$
+
+:::
+
 
 ## Rate law for reversible reaction
 
@@ -36,6 +89,34 @@ $$
 
 determine the rate expression for disappearance of benzene ($-r_B$). Assume
 both the forward and reverse reactions are elementary. 
+
+::: {.callout-tip}
+## Solution
+
+We can write the reactions as two elementary reactions
+
+$$
+\ce{B -> D + H2} \cdots (1); \qquad \ce{D + H2 -> B} \cdots (2)
+$$
+
+Net rate
+$$
+r_B = -r_{B,1} + r_{B,2}
+$$
+
+$$
+-r_B = k_B C_B - k_{-B} C_D C_{H_2} 
+$$
+
+$$
+K = \frac{k_B}{k_{-B}}
+$$
+
+$$
+\therefore -r_B = k_B \left( C_B - \frac{C_D C_{H_2}}{K} \right) 
+$$
+:::
+
 
 ## Calculate the activation energy 
 
@@ -57,6 +138,64 @@ is given in @tbl-ae. Calculate the activation energy.
 : Rate constant data {#tbl-ae}
 
 
+::: {.callout-tip}
+## Solution
+
+$$ 
+k = A e^{\frac{-E}{RT}}
+$$
+
+Linearize by taking log on both sides
+
+$$ 
+\ln k = \ln A - \left( \frac{E}{R} \right) \left( \frac{1}{T} \right)
+$$
+
+The plot of $\ln(k)$ vs. $1/T$ is linear with a slope of $-E/R$
+
+```{python}
+#| echo: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import linregress
+
+k = np.array([0.00043, 0.00103, 0.00180, 0.00355, 0.00717])
+T = np.array([313.0, 319.0, 323.0, 328.0, 333.0])
+
+R = 8.314 # J/mol K
+
+ln_k = np.log(k)
+inv_T = 1 / T
+
+slope, intercept, r_value, p_value, std_err = linregress(inv_T, ln_k)
+line = slope * inv_T + intercept
+
+activation_energy = -slope*R/1000 # (kJ/mol)
+
+# Plot 
+plt.scatter(inv_T, ln_k, color='blue', label='Data points')
+plt.plot(inv_T, line, color='red', label='Fit line')
+
+# Labels and title
+plt.xlabel('1/T (1/K)')
+plt.ylabel('ln(k)')
+plt.title('Linear Fit of ln(k) vs 1/T')
+plt.legend()
+
+slope_text = f'Slope: {slope:.5e}'
+intercept_text = f'Intercept: {intercept:.5e}'
+e_text = f'Activation Energy: {activation_energy:.2f} kJ/mol'
+plt.annotate(f'{slope_text}\n{intercept_text}\n{e_text}', xy=(0.05, 0.20), xycoords='axes fraction', verticalalignment='top')
+
+# Show plot
+plt.show()
+
+```
+
+:::
+
+
 ## Calculate the equilibrium conversion for gas phase reaction, $X_e$
 
 Consider the following elementary reaction with $K_C$ = 20 $dm^3/mol$ and
@@ -66,7 +205,139 @@ Reaction: $\ce{2A <=> B}$
 
 Rate law: $-r_A = k_A \left[ C_A^2 - \frac{C_B}{K_C} \right]$
 
+::: {.callout-tip}
+## Solution
+
+
+Rate law: $-r_A = k_A \left[ C_A^2 - \frac{C_B}{K_C} \right]$
+
+At equilibrium
+$$
+-r_A  \equiv 0 \equiv k_A \left[ C_A^2 - \frac{C_B}{K_C} \right]
+$$
+
+$$
+K_c = \frac{C_{Be}}{C_{Ae}^2}
+$$
+
+stoichiometry: 
+
+$$
+\ce{A -> 1/2B}
+$$
+
+Setting up stoichiometric table
+
+| Species | Initial | Change | Remaining |
+|-|-|-|-|
+| A | $N_{A0}$ | $-N_{A0}X$ | $N_A = N_{A0}(1 - X)$ | 
+| B | 0 | $+N_{A0}X/2$ | $N_B = N_{A0} X/2$ | 
+| Total | $N_{T0} = N_{A0}$ |  | $N_T = N_{A0} - N_{A0}X/2$ | 
+
+Constant Volume: $V = V_0$
+
+$$
+C_A = \frac{N_A}{V} = C_{A0}(1-X)
+$$
+
+$$
+C_B = \frac{N_B}{V} = \frac{C_{A0}X}{2}
+$$
+
+$$
+K_c = \frac{C_{Be}}{C_{Ae}^2}
+    = \frac{C_{A0}\frac{X_e}{2}}
+           {C_{A0}^2(1-X)^2}
+$$
+
+$$
+2 K_c C_{A0}= \frac{X_e}{(1-X)^2}
+$$
+
+$$
+2 \times 20 \times 0.2 = \frac{X_e}{(1-X)^2}; \qquad 8 X_e^2 - 17 X_e + 8 = 0
+$$
+
+Solving: 
+
+Equilibrium conversion: $X_e = 0.7$
+
+
+:::
+
 ## Repeat the calculations above for a flow reactor
+
+::: {.callout-tip}
+## Solution
+
+With the flow reactor, we will need to consider changes in molar flow rate as
+this is a gas phase reaction.
+
+Rate law: $-r_A = k_A \left[ C_A^2 - \frac{C_B}{K_C} \right]$
+
+At equilibrium
+$$
+-r_A  \equiv 0 \equiv k_A \left[ C_A^2 - \frac{C_B}{K_C} \right]
+$$
+
+$$
+K_c = \frac{C_{Be}}{C_{Ae}^2}
+$$
+
+stoichiometry: 
+
+$$
+\ce{A -> 1/2B}
+$$
+
+Stoichiometric table is same as the batch system with moles replaced by molar
+flow rates. 
+
+| Species | Entering | Change | Exiting |
+|-|-|-|-|
+| A | $F_{A0}$ | $-F_{A0}X$ | $F_A = F_{A0}(1 - X)$ | 
+| B | 0 | $+F_{A0}X/2$ | $F_B = F_{A0} X/2$ | 
+| Total | $F_{T0} = F_{A0}$ |  | $F_T = F_{A0} - F_{A0}X/2$ | 
+
+
+$$
+C_{Ae} = \frac{C_{A0}(1-X_e)}{(1 + \epsilon X_e)}
+$$
+
+$$
+C_{Be} = \frac{C_{A0}X_e}{2(1 + \epsilon X_e)}
+$$
+
+$$
+K_{C} = \frac{\frac{C_{A0}X_{e}}{2(1+\epsilon X_{e})}}
+{\left[\frac{C_{A0}(1-X_{e})}{(1+\epsilon X_{e})}\right]^{2}}
+= \frac{X_{e}(1+\epsilon X_{e})}
+{2C_{A0}(1-X_{e})^{2}}
+$$
+
+$$
+K_c = \frac{C_{Be}}{C_{Ae}^2}
+    = \frac{X_e (1 + \epsilon X_e)}{2 C_{A0}(1-X_e)^2}
+$$
+
+$$
+2 K_c C_{A0}= \frac{X_e + \epsilon X_e^2)}{(1-2 X_e + X_e^2)} = 8
+$$
+
+$$
+\epsilon = y_{A0} \delta = 1 \left( \frac{1}{2} - 1 \right) = - \frac{1}{2}
+$$
+
+$$
+8 = \frac{X_e + 0.5 X_e^2)}{(1-2 X_e + X_e^2)}
+$$
+
+Solving for $X_e$:  
+
+Equilibrium conversion: $X_e = 0.757$
+
+:::
+
 
 
 ## Saponification reaction
@@ -80,6 +351,37 @@ $$
 Letting X represent the conversion of NaOH set up a stoichiometric table
 expressing the concentration of each species in terms of the initial
 concentration of NaOH and the conversion of X.
+
+::: {.callout-tip}
+## Solution
+
+$$
+\ce{3NaOH + (C17H35COO)3C3H5 -> 3C17H35COONa + C3H5(OH)3}
+$$
+
+$$
+\ce{A + 1/3 B -> C + 1/3 D}
+$$
+
+$$
+C_A = \frac{N_A}{V} = \frac{N_A}{V_0} = N_{A0}(1 - X) = C_{A0}(1 - X)
+$$
+
+$$
+\Theta_B = \frac{C_{B0}}{C_{A0}}, \quad \Theta_C = \frac{C_{C0}}{C_{A0}}, \quad \Theta_D = \frac{C_{D0}}{C_{A0}}
+$$
+
+| Species | Symbol | Initially | Change | Remaining | Concentration |
+|---------|--------|-----------|--------|-----------|---------------|
+| NaOH | A | $$ N_{A0} $$ | $$ -N_{A0}X $$ | $$ N_{A0}(1 - X) $$ | $$ C_{A0}(1 - X) $$ |
+| $$ (C_{17}H_{35}COO)_3C_3H_5 $$ | B | $$ N_{B0} $$ | $$ -\frac{1}{3}N_{A0}X $$ | $$ N_{A0}\left(\Theta_B - \frac{X}{3}\right) $$ | $$ C_{A0}\left(\Theta_B - \frac{X}{3}\right) $$ |
+| $$ C_{17}H_{35}COONa $$ | C | $$ N_{C0} $$ | $$ N_{A0}X $$ | $$ N_{A0}(\Theta_C + X) $$ | $$ C_{A0}(\Theta_C + X) $$ |
+| $$ C_3H_5(OH)_3 $$ | D | $$ N_{D0} $$ | $$ \frac{1}{3}N_{A0}X $$ | $$ N_{A0}\left(\Theta_D + \frac{X}{3}\right) $$ | $$ C_{A0}\left(\Theta_D + \frac{X}{3}\right) $$ |
+| Water (inert) | I | $$ N_{I0} $$ | — | $$ N_{I0} $$ | $$ C_{I0} $$ |
+| Totals | | $$ N_{T0} $$ | 0 | $$ N_T = N_{T0} $$ | |
+
+
+:::
 
 ## Determining $C_j = h_j(X)$ for a Gas-Phase Reaction
 
@@ -98,6 +400,70 @@ $$
 
 3. Evaluate the parameters and make a plot of each of the concentrations $\ce{SO2}$,
    $\ce{SO3}$, $\ce{N2}$ as a function of conversion
+
+::: {.callout-tip}
+## Solution
+
+$$
+\ce{2SO2 + O2 -> 2 SO3}
+$$
+
+Take $\ce{SO2}$ as basis of calculation
+
+$$
+\ce{SO2 + 1/2 O2 -> SO3}
+$$
+
+Stoichiometric table
+
+
+| Species | Symbol | Initially | Change | Remaining |
+|---------|--------|-----------|--------|-----------|
+| $SO_2$ | A | $$ F_{A0} $$ | $$ -F_{A0}X $$ | $$ F_A = F_{A0}(1 - X) $$ |
+| $O_2$ | B | $$ F_{B0} = \Theta_B F_{A0} $$ | $$ -\frac{F_{A0}X}{2} $$ | $$ F_B = F_{A0}\left(\Theta_B - \frac{1}{2}X\right) $$ |
+| $SO_3$ | C | 0 | $$ +F_{A0}X $$ | $$ F_C = F_{A0}X $$ |
+| $N_2$ | I | $$ F_{I0} = \Theta_I F_{A0} $$ | — | $$ F_I = F_{I0} = \Theta_I F_{A0} $$ |
+| Totals | | $$ F_{T0} $$ | $$ -\frac{F_{A0}X}{2} $$ | $$ F_T = F_{T0} - \frac{F_{A0}X}{2} $$ |
+
+Concentration: 
+
+$$
+C_A = \frac{F_A}{\upsilon} = \frac{F_{A0}(1 - X)}{\upsilon}
+$$
+
+volumetric flow rate: 
+
+$$
+\upsilon = \upsilon_0(1 + \epsilon X) \left( \frac{P_0}{P} \right) \left( \frac{T}{T_0} \right)
+$$
+
+Neglecting pressure drop in the reaction, and for isothermal reactions: 
+
+$$
+\upsilon = \upsilon_0(1 + \epsilon X)
+$$
+
+$$
+C_A = \frac{F_{A0}(1 - X)}{\upsilon_0(1 + \epsilon X)} = C_{A0} \frac{1 - X}{1 + \epsilon X}
+$$
+
+Similarly for B
+
+$$
+C_B = C_{A0} \frac{\left( \Theta_B - \frac{b}{a}X \right)}{1 + \epsilon X} 
+= \frac{C_{A0}\left(\Theta_B - \frac{1}{2}X\right)}{1 + \epsilon X}
+$$
+
+$$
+C_T = C_{T0} = \frac{P_0}{RT_0} = \frac{1485}{8.314 \times 500} = 0.357 \frac{mol}{dm^3}
+$$
+
+$$
+\epsilon = y_{A0} \delta = 0.28 \times ( 1 - 1 - \frac{1}{2}) = -0.14
+$$
+
+
+:::
 
 ##  Liquid phase first order reaction
 
@@ -140,5 +506,11 @@ $$
     at $25 \ ^{\circ}C$? V = ______
 
     at $25 \ ^{\circ}C$? V = ______
+
+::: {.callout-tip}
+## Solution
+
+
+:::
 
 

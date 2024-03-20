@@ -168,7 +168,7 @@ Use algorithm rather than memorizing equations
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
 
 :::
 
@@ -219,7 +219,7 @@ Use algorithm rather than memorizing equations
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
 
 :::
 
@@ -385,7 +385,7 @@ for a second order reaction $-r_A = k_2 C_A^2$
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
 
 :::
 
@@ -560,7 +560,7 @@ $$
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
 
 :::
 
@@ -736,7 +736,7 @@ all the reactant were fed into one big reactor of volume V
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
 
 :::
 
