@@ -12,6 +12,12 @@ resources:
   - "./Problem-6-7.pdf"
 ---
 
+```{python}
+import matplotlib.pyplot as plt
+from IPython.display import display, Markdown
+plt.style.use('../../../assets/templates/publish.mplstyle')
+```
+
 Try following problems from Fogler 5e[@fogler2016].
 
 P 5-7,
@@ -256,7 +262,7 @@ x2 = fsolve(func, x2_guess, args=(x1, tau_k))
 
 ```
 
-$X_2$ =`{python} f'{x2[0]:.3f}'`. 
+$X_2$ = `{python} f'{x2[0]:.3f}'`. 
 
 :::
 
@@ -373,7 +379,7 @@ x_cstr = fsolve(func, x2_guess, args=(V_CSTR, F_A0, k_350))
 
 ```
 
-$X_{CSTR}$ at 350 K =`{python} f'{x_cstr[0]:.3f}'`. 
+$X_{CSTR}$ at 350 K = `{python} f'{x_cstr[0]:.3f}'`. 
 
 To calculate the PFR conversion we solve
 
@@ -399,7 +405,7 @@ x_guess = 0
 x_pfr = fsolve(find_x, x_guess, args=(V_PFR, k_300, F_A0))
 ```
 
-$X_{PFR}$ at 300 K =`{python} f'{x_pfr[0]:.3f}'`.
+$X_{PFR}$ at 300 K = `{python} f'{x_pfr[0]:.3f}'`.
 
 As the PFR conversion is lower than CSTR conversion, use of CSTR operating at
 350 K is recommended. 
@@ -420,7 +426,7 @@ X = 0.9
 
 batch_time, _ = quad(lambda x: N_A0 / (rA(x, k_350) * v), 0, X) 
 ```
-Batch time at 350 K =`{python} f'{batch_time:.3f}'` min.
+Batch time at 350 K = `{python} f'{batch_time:.3f}'` min.
 
 3. Batch time at 273 K 
 
@@ -429,7 +435,7 @@ Batch time at 350 K =`{python} f'{batch_time:.3f}'` min.
 
 batch_time, _ = quad(lambda x: N_A0 / (rA(x, k_273) * v), 0, X) 
 ```
-Batch time at 273 K =`{python} f'{batch_time:.3f}'` min (`{python} f'{batch_time/(60*24):.1f}'` days).
+Batch time at 273 K = `{python} f'{batch_time:.3f}'` min (`{python} f'{batch_time/(60*24):.1f}'` days).
 
 4. CSTR / PFR connected in series
 
@@ -457,9 +463,9 @@ x_pfr_2 = fsolve(find_x, x_guess, args=(x_cstr_1, V_PFR, k_300, F_A0))
 
 ```
 
-$X_{1, CSTR}$ at 300 K =`{python} f'{x_cstr_1[0]:.3f}'`. 
+$X_{1, CSTR}$ at 300 K = `{python} f'{x_cstr_1[0]:.3f}'`. 
 
-$X_{2, PFR}$ at 300 K =`{python} f'{x_pfr_2[0]:.3f}'`.
+$X_{2, PFR}$ at 300 K  = `{python} f'{x_pfr_2[0]:.3f}'`.
 
 
 5. CSTR and PFR connected in parallel
@@ -487,11 +493,11 @@ x_guess = 0
 x_pfr_2 = fsolve(find_x, x_guess, args=(0, V_PFR, k_300, F_A0/2))
 
 ```
-$X_{1, CSTR}$ at 300 K =`{python} f'{x_cstr_1[0]:.3f}'`. 
+$X_{1, CSTR}$ at 300 K = `{python} f'{x_cstr_1[0]:.3f}'`. 
 
-$X_{2, PFR}$ at 300 K =`{python} f'{x_pfr_2[0]:.3f}'`.
+$X_{2, PFR}$ at 300 K  = `{python} f'{x_pfr_2[0]:.3f}'`.
 
-$X_{Final}$ =`{python} f'{(x_cstr_1[0] + x_pfr_2[0])/2:.3f}'`.
+$X_{Final}$ = `{python} f'{(x_cstr_1[0] + x_pfr_2[0])/2:.3f}'`.
 
 
 :::
@@ -520,8 +526,135 @@ everything else remained the same?
 
 [Hand written solution](./Problem-5-11.pdf)
 
+Elementary reaction
+
+$$
+\ce{A + B -> C + D}
+$$
+
+From the initial conversion data given, we will determine rate constant. And
+use this rate constant to calculate coversion when catalyst particle size is dubbled.  
+
+Isothermal reaction
+
+$$
+C_A = C_{A0}(1-X) \frac{P}{P_0}
+$$
+
+let $P/P_0 = y$. For single isothermal reactions with $\epsilon = 0$, $y^2 = 1
+- \alpha w$ 
+
+Equimolar flow of A and B. Therefore, $C_A = C_B$
+
+$$
+-r'_A = k C_A C_B = k C_A^2 = k C_{A0}^2 (1-X)^2 y^2
+$${#eq-5-9-1}
+
+$$
+\frac{dX}{dW} = \frac{-r'_A}{F_{A0}}
+$${#eq-5-9-2}
+
+$$
+\frac{dy}{dW} = - \frac{\alpha}{2p}
+$${#eq-5-9-3}
 
 
+$$
+\frac{dX}{dW} = \frac{k C_{A0}^2 (1-X)^2 y^2 }{F_{A0}}
+$$
+
+$$
+\frac{dX}{(1 - X)^2} = \frac{k C_{A0}^2} {F_{A0}} (1 - \alpha w)^2 dW
+$$
+
+$$
+\int_0^X \frac{dX}{(1 - X)^2} = \frac{k C_{A0}^2} {F_{A0}} \int_0^W (1 - \alpha w)^2 dW
+$$
+
+$$
+\frac{X}{(1 - X)} = \frac{k C_{A0}^2} {F_{A0}} \left[ W - \frac{\alpha W^2}{2} \right]
+$${#eq-5-9-4}
+
+$y = 2/20 = 0.1$, $y^2 = 1 - \alpha W$. Therefore, $\alpha = (1 -
+(0.1)^2)/(100) = 9.9 \times 10^{-3} 1/kg$
+
+Substituting in @eq-5-9-4 we get $k = 4.95 dm^6/(kg-cat \ mol \ min)$. 
+
+For Turbulent flow, $\alpha \approx 1/Dp$. Therefore, as the particle size doubles,
+$\alpha$ will be halved. $\alpha = 4.95 \times 10^{-3}$ 
+
+Substituting in @eq-5-9-4: $X = 0.86$
+
+**Alternate approach**
+
+We can solve @eq-5-9-1, @eq-5-9-2, and @eq-5-9-3 simultaneously to obtain
+conversion and pressure as a function of weight. 
+
+As we do not know $k$ value, we will use root finding to find the value of k
+that satisfies the condition where X reaches $X_{final}$ at $W_{final}$. 
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+from scipy.integrate import solve_ivp
+from scipy.optimize import root_scalar
+
+T = 305 # K
+W = 100 # kg
+F_A0 = 10 # mol/min
+C_A0 = 0.4 # mol/dm^3
+X_final = 0.8
+P_0 = 20 # atm
+P = 2    # atm
+
+# Calculate alpha using pressure drop data
+
+y = P/P_0
+alpha_1 = (1 - y**2)/W
+
+
+# System of differential equations
+def system(W, y, *args):
+    X, p = y
+    k, ca0, fa0, alpha = args
+
+    rate = k * ca0**2 * (1-X)**2 * p**2 
+    dX_dW = rate / fa0
+    dp_dW = -alpha / (2*p)
+    return [dX_dW, dp_dW]
+
+# initial conditions
+# at start of reactor, conversion is 0 and p is 1
+y0 = [0, 1]
+
+# Function to integrate over W
+def solve_k(k):
+    system_args = (k, C_A0, F_A0, alpha_1)
+    sol = solve_ivp(system, [0, W], y0, args=system_args, dense_output=True)
+    X = sol.sol(W)[0]
+    return X - X_final
+
+# Use root finding to solve for k
+# since we don't know the value of k we provide a very large search space
+
+result = root_scalar(solve_k, bracket=[1e-4, 1e4], method='bisect')
+k = result.root
+
+# Now alpha is alpha/2
+alpha_2 = alpha_1/2
+
+# Calculate the final conversion with this new alpha value
+system_args = (k, C_A0, F_A0, alpha_2)
+sol = solve_ivp(system, [0, W], y0, args=system_args, dense_output=True)
+X = sol.sol(W)[0]
+
+```
+
+$k$ = `{python} f'{k:.3f}'`. 
+
+$X$ (for $\alpha$ = `{python} f'{alpha_2:.3f}'`) = `{python} f'{X:.3f}'`. 
 :::
 
 
@@ -548,6 +681,62 @@ constant at 400 K?
 
 [Hand written solution](./Problem-5-24.pdf)
 
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+from scipy.integrate import solve_ivp
+from scipy.optimize import root_scalar
+
+T = 300 # K
+W = 100 # kg
+v_0 = 100 # dm^3/min
+C_A0 = 0.1 # mol/dm^3
+F_A0 = C_A0 * v_0 # mol/min
+X_final = 0.5
+alpha_1 = 0.0099 # 1/kg
+
+# System of differential equations
+def system(W, y, *args):
+    X, p = y
+    k, ca0, fa0, alpha = args
+
+    rate = k * ca0**2 * (1-X)**2 * p**2 
+    dX_dW = rate / fa0
+    dp_dW = -alpha / (2*p)
+    return [dX_dW, dp_dW]
+
+# initial conditions
+# at start of reactor, conversion is 0 and p is 1
+y0 = [0, 1]
+
+# Function to integrate over W
+def solve_k(k):
+    system_args = (k, C_A0, F_A0, alpha_1)
+    sol = solve_ivp(system, [0, W], y0, args=system_args, dense_output=True)
+    X = sol.sol(W)[0]
+    return X - X_final
+
+# Use root finding to solve for k
+# since we don't know the value of k we provide a very large search space
+
+result = root_scalar(solve_k, bracket=[1e-4, 1e4], method='bisect')
+k = result.root
+
+EA = 10000 # cal/mol
+T2 = 400
+R = 1.987
+
+ln_k2k1 = (EA/R)*((1/T) - (1/T2))
+
+k2 = k*np.exp(ln_k2k1)
+
+```
+
+$k$ at 300 K = `{python} f'{k:.3f}'` $dm^6/(kg-cat \ mol \ min)$. 
+
+$k$ at 400 K = `{python} f'{k2:.3f}'` $dm^6/(kg-cat \ mol \ min)$. 
 
 
 :::
@@ -581,6 +770,117 @@ and a molar flow rate of 2.5 mol/min, i.e., F~A~ = 2.5 mol/min.
 ## Solution
 
 [Hand written solution](./Problem-6-4.pdf)
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+from scipy.integrate import quad
+import matplotlib.pyplot as plt
+
+T_ref = 273.15 
+R = 0.0821
+
+T0 = 127 + T_ref # K
+EA = 85000 # J/mol
+P0 = 10 # atm
+yA0 = 1
+
+F_A0 = 2.5 # mol/min
+
+C_A0 = yA0 * P0/(R * T0)
+
+delta =  1 + 2 -1 
+epsilon = yA0 * delta
+
+k_50 = 1e-4 # 1/min
+k_127 = k_50* np.exp( (EA/8.314) * (1/(50 + T_ref) - (1/T0)) )
+
+CA = lambda x: C_A0 * (1 - x) / (1 + epsilon * x)
+rA = lambda k, x: k * CA(x)
+
+# Molar flow rates
+FA = lambda x: F_A0 * (1 - x) 
+FB = lambda x: F_A0 * (x)
+FC = lambda x: F_A0 * (2 * x)
+
+def integral(x, *args):
+    fa0, k = args 
+    return fa0/ rA(k, x)
+
+system_args = (F_A0, k_127)
+X_range = np.linspace(0, 0.9, 100)
+V = []
+
+# Calculate volume for each X
+for X in X_range:
+    v, _ = quad(integral, 0, X, args=system_args)
+    V.append(v)
+
+plt.plot(V, X_range, label='X vs. Volume')
+
+plt.xlabel('Volume ($dm^3$)')
+plt.ylabel('Conversion (X)')
+plt.title('Conversion X as a Function of Reactor Volume')
+
+plt.legend()
+plt.grid(True)
+plt.ylim(0,1)
+plt.xlim(0,1000)
+
+plt.show()
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+
+FA_v = FA(X_range)
+FB_v = FB(X_range)
+FC_v = FC(X_range)
+
+plt.plot(V, FA_v, label='FA')
+plt.plot(V, FB_v, label='FB')
+plt.plot(V, FC_v, label='FC')
+
+plt.xlabel('Volume ($dm^3$)')
+plt.ylabel('Molar Flow Rate (mol/min)')
+plt.title('Molar Flow Rates of A, B, and C as Functions of Reactor Volume')
+
+plt.legend()
+plt.grid(True)
+plt.xlim(0, 1000)
+
+plt.show()
+```
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+x_final = 0.9 
+
+system_args = (F_A0, k_127)
+V_PFR, _ = quad(integral, 0, x_final, args=system_args)
+V_CSTR = F_A0 * x_final / rA(k_127, x_final) 
+
+v0 = F_A0/ C_A0
+v = v0 *(1 + epsilon * x_final)
+tau = V_CSTR/v
+
+
+```
+
+$V_{PFR}$ for X = `{python} f'{x_final:.2f}'` at 127 &deg;C = `{python} f'{V_PFR:.3f}'` $dm^3$.
+
+$V_{CSTR}$ for X = `{python} f'{x_final:.2f}'` at 127 &deg;C = `{python} f'{V_CSTR:.3f}'` $dm^3$.
+
+$\tau_{CSTR}$ for X = `{python} f'{x_final:.2f}'` at 127 &deg;C = `{python} f'{tau:.3f}'` $min$.
+
 :::
 
 
@@ -622,6 +922,103 @@ k~CB~ = 40 min^-1^
 ## Solution
 
 [Hand written solution](./Problem-6-6.pdf)
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
+
+
+# Data
+k = 10       # 1/min
+K_eq = 0.01  # mol/dm^3^     
+k_CA = 1     # min^-1^      
+k_CB = 40    # min^-1^
+
+F_A0 =  100    # mol/min
+v_0  = 100     # dm^3^/min
+V_reactor = 20 # dm^3^
+
+C_T0 = F_A0/v_0
+
+r_A = lambda ca, cb, cc: - k * (ca - cb * cc**2/ K_eq ) 
+r_B = lambda ca, cb, cc: - r_A(ca, cb, cc)
+r_C = lambda ca, cb, cc: - r_A(ca, cb, cc)/2
+
+r_diff_A = lambda ca: k_CA * ca
+r_diff_B = lambda cb: k_CB * cb
+
+C = lambda f, ft: C_T0 * f/ft
+
+# System of differential equations for membrane reactor
+def membrane_reactor(V, y, *args):
+    FA, FB, FC = y
+
+    FT = FA + FB + FC
+    CA = C(FA, FT)
+    CB = C(FB, FT)
+    CC = C(FC, FT)
+
+    dFA_dV = r_A(CA, CB, CC) - r_diff_A(CA)
+    dFB_dV = r_B(CA, CB, CC) - r_diff_B(CB)
+    dFC_dV = r_C(CA, CB, CC) 
+
+    return [dFA_dV, dFB_dV, dFC_dV]
+
+# System of differential equations for pfr
+def pfr(V, y, *args):
+    FA, FB, FC = y
+
+    FT = FA + FB + FC
+    CA = C(FA, FT)
+    CB = C(FB, FT)
+    CC = C(FC, FT)
+
+    dFA_dV = r_A(CA, CB, CC) 
+    dFB_dV = r_B(CA, CB, CC) 
+    dFC_dV = r_C(CA, CB, CC) 
+
+    return [dFA_dV, dFB_dV, dFC_dV]
+
+# initial conditions
+# at start of reactor, conversion is 0 and p is 1
+y0 = [F_A0, 0, 0]
+
+sol_membrane = solve_ivp(membrane_reactor, [0, V_reactor], y0, dense_output=True)
+sol_pfr = solve_ivp(pfr, [0, V_reactor], y0, dense_output=True)
+
+# Generating data for plotting
+V = np.linspace(0, V_reactor, 100)
+FA_m, FB_m, FC_m = sol_membrane.sol(V)
+FA_p, FB_p, FC_p = sol_pfr.sol(V)
+
+# Plotting
+plt.plot(V, FA_m, 'b', label='$F_Am$')
+plt.plot(V, FB_m, 'g', label='$F_Bm$')
+plt.plot(V, FC_m, 'r', label='$F_Cm$')
+
+plt.plot(V, FA_p, 'b--', label='$F_Ap$')
+plt.plot(V, FB_p, 'g--', label='$F_Bp$')
+plt.plot(V, FC_p, 'r--', label='$F_Cp$')
+
+
+plt.xlabel('Volume (dm$^3$)')
+plt.ylabel('Molar Flow Rate (mol/min)')
+plt.title('Molar Flow Rates of A, B, and C in the Reactor')
+
+plt.legend()
+plt.grid(True)
+plt.xlim(0, 20)
+
+plt.show()
+
+
+```
+
 :::
 
 
@@ -667,10 +1064,107 @@ and X.)
 ![Fuel cell](../../../assets/images/fig_p6.7.png){#fig:p6-7}
 
 
-::: {.callout-tip collapse="true"}
+::: {.callout-tip collapse="false"}
 ## Solution
 
 [Hand written solution](./Problem-6-7.pdf)
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
+
+
+# Data
+k = 1.37        
+K_eq = 1.44  
+k_H2 = 0.1   
+
+v_0  = 10 
+p = 10 
+C_T0 = 0.4
+
+F_A0 = C_T0* v_0/2
+F_B0 = C_T0* v_0/2
+F_C0 = 0
+F_D0 = 0
+
+
+# A, B, C, D --> CO, H2O, CO2, H2
+
+# System of differential equations for membrane reactor
+def fuel_cell(V, y, *args):
+    FA, FB, FC, FD = y
+
+    FT = FA + FB + FC + FD
+
+    CA = C_T0 * FA / FT
+    CB = C_T0 * FB / FT
+    CC = C_T0 * FC / FT
+    CD = C_T0 * FD / FT
+
+    rate = -k * (CA * CB - CC * CD/ K_eq)
+
+    rA = rate
+    rB = rate
+    rC = -rate
+    rD = -rate
+
+    rH2 = k_H2 * CD
+
+    dFA_dV = rA
+    dFB_dV = rB
+    dFC_dV = rC
+    dFD_dV = rD - rH2
+
+    return [dFA_dV, dFB_dV, dFC_dV, dFD_dV]
+
+# initial conditions
+# at start of reactor, conversion is 0 and p is 1
+y0 = [F_A0, F_B0, F_C0, F_D0]
+
+V_reactor = 500
+sol_fuel_cell = solve_ivp(fuel_cell, [0, V_reactor], y0, dense_output=True)
+
+
+def target(V):
+    FA = sol_fuel_cell.sol(V)[0]  # Get FA at V
+    return FA - F_A0*(1-0.85) 
+
+result = root_scalar(target, bracket=[0, V_reactor], method='bisect')
+v_x85 =  result.root
+
+
+# Generating data for plotting
+V = np.linspace(0, V_reactor, 100)
+FA, FB, FC, FD = sol_fuel_cell.sol(V)
+
+# Plotting
+plt.plot(V, FA, 'b', label='$F_A$')
+plt.plot(V, FB, 'g', label='$F_B$')
+plt.plot(V, FC, 'r', label='$F_C$')
+plt.plot(V, FD, 'm', label='$F_D$')
+
+plt.xlabel('Volume (dm$^3$)')
+plt.ylabel('Molar Flow Rate (mol/min)')
+plt.title('Molar Flow Rates of A, B, C, and D in the Reactor')
+
+plt.legend()
+plt.grid(True)
+plt.xlim(0, V_reactor)
+
+plt.show()
+
+
+```
+
+Volume of reacctor to achieve X = 0.85: `{python} f'{v_x85:.2f}'` $dm^3$.
+
+
+
 :::
 
 

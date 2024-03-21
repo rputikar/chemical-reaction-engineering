@@ -886,20 +886,20 @@ $$
   ```
 -->
 
-  ```{python}
-  #| echo: true
+```{python}
+#| echo: true
 
-  from sympy import symbols, integrate, pprint
+from sympy import symbols, integrate, pprint
 
-  # Define the symbols
-  epsilon, x = symbols('epsilon x', real=True)
-  X = symbols('X', real=True, positive=True)
+# Define the symbols
+epsilon, x = symbols('epsilon x', real=True)
+X = symbols('X', real=True, positive=True)
 
-  integrand = (1 + epsilon * x)**2 / (1 - x)**2
-  integral_result = integrate(integrand,(x))
+integrand = (1 + epsilon * x)**2 / (1 - x)**2
+integral_result = integrate(integrand,(x))
 
-  pprint(integral_result)
-  ```
+pprint(integral_result)
+```
 
 $$
 V = \frac{\upsilon_0}{k (C_{A0})} [ 2\epsilon(1 + \epsilon) \ln(1 - X_A) +  \\
@@ -1062,10 +1062,36 @@ Pressure drops are especially common in reactions run in PBRs
   $$
 
   For single reactions: 
-  $\frac{dP}{dW} = -\frac{\alpha}{2p} \left( \frac{T}{T_0} \right) (1 + \epsilon X_A)$
+  $\frac{dp}{dW} = -\frac{\alpha}{2p} \left( \frac{T}{T_0} \right) (1 + \epsilon X_A)$
 
-  where, $p=\frac{P_0}{P}$
+  where, $p=\frac{P}{P_0}$
 
+## Pressure drop for single reactions
+### Analytical solution
+
+$$
+\frac{dp}{dW} = -\frac{\alpha}{2p} \left( \frac{T}{T_0} \right) (1 + \epsilon X_A)
+$$
+
+* If $\epsilon = 0 \ or \ 1 \gg \epsilon$, and for isothermal operations
+
+$$
+\frac{dp}{dW} = -\frac{\alpha}{2p} \Rightarrow 
+\frac{2pdp}{dW} = -\alpha \color{red}{ \Rightarrow } 
+\frac{dp^2}{dW} = -\alpha
+$$
+
+* Intgrating wtih $p = 1 (P = P_0) \ at \ W =0$ yields
+
+$$ 
+p^2 = (1 - \alpha W) \quad ; \quad p = \frac{P}{P_0} = (1 - \alpha W)^{1/2} 
+$$
+
+:::{.fragment .callout-note appearance=simple}
+
+Do not use this equation if $\epsilon \neq 0$ or if the reaction is not carried
+out isothermally 
+:::
 
 ## Isothermal reactor design: molar flow rates 
 
