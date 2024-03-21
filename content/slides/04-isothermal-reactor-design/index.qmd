@@ -112,8 +112,8 @@ plt.style.use('../../../assets/templates/present.mpstyle')
   $$
   C_j = \frac{F_{A0} (\Theta_j + \nu_j X)}
             {\upsilon_0 (1 + \epsilon X)
-                        \left( \frac{P}{P_0} \right) 
-                        \left( \frac{T_0}{T} \right)
+                        \left( \frac{P_0}{P} \right) 
+                        \left( \frac{T}{T_0} \right)
             }
   $$
 
@@ -871,6 +871,7 @@ $$
 
 * Evaluating integral using sympy
 
+<!--
   ```python
   from sympy import symbols, integrate, pprint
 
@@ -883,9 +884,10 @@ $$
 
   pprint(integral_result)
   ```
+-->
 
   ```{python}
-  #| echo = true
+  #| echo: true
 
   from sympy import symbols, integrate, pprint
 

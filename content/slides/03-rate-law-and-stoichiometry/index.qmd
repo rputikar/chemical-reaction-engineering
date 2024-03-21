@@ -559,15 +559,15 @@ of different species to each other.
 
   $$\frac{dN_A}{dt}=r_A V$$
 
-* $N_{A_0}$ : No. of moles of A initially present
+* $N_{A0}$ : No. of moles of A initially present
 
 * $X$ : Conversion at time t
 
-* $N_{A_0}X$ : No. of moles of A consumed at time t
+* $N_{A0}X$ : No. of moles of A consumed at time t
 
 * $N_{A}$ : No. of moles of A in system at time t
 
-* $N_{A} = N_{A_0}-N_{A_0}X = N_{A_0}(1-X)$
+* $N_{A} = N_{A0}-N_{A0}X = N_{A0}(1-X)$
 
 :::
 
@@ -579,18 +579,18 @@ of different species to each other.
 
   $$
   moles\ of\ B\ reacted = \frac{mol\ B\ reacted}{mol\ A\ reacted} \times mol\ A\ reacted
-  = \frac{b}{a} N_{A_0} X
+  = \frac{b}{a} N_{A0} X
   $$
 
 
 | Species   | Initially (mol)    | Change (mol)     | Remaining (mol)                           |
 | :-------- | :----------------- | :--------------- | :---------------------------------------- |
-| A         | $N_{A_0}$          | $-N_{A_0}X$      | $N_A = N_{A_0} - N_{A_0}X$                |
-| B         | $N_{B_0}$          | $-(b/a)N_{A_0}X$ | $N_B = N_{B_0} -(b/a)N_{A_0}X$            |
-| C         | $N_{C_0}$          | $(c/a)N_{A_0}X$  | $N_C = N_{C_0} +(c/a)N_{A_0}X$            |
-| D         | $N_{D_0}$          | $(d/a)N_{A_0}X$  | $N_D = N_{D_0} +(d/a)N_{A_0}X$            |
-| I         | $N_{I_0}$          | 0                | $N_I = N_{I_0}$                           |
-| **Total** | $\mathbf{N_{T_0}}$ |                  | $\mathbf{N_T = N_{T_0} + \delta N_{A_0}X}$ |
+| A         | $N_{A0}$          | $-N_{A0}X$      | $N_A = N_{A0} - N_{A0}X$                |
+| B         | $N_{B0}$          | $-(b/a)N_{A0}X$ | $N_B = N_{B0} -(b/a)N_{A0}X$            |
+| C         | $N_{C0}$          | $(c/a)N_{A0}X$  | $N_C = N_{C0} +(c/a)N_{A0}X$            |
+| D         | $N_{D0}$          | $(d/a)N_{A0}X$  | $N_D = N_{D0} +(d/a)N_{A0}X$            |
+| I         | $N_{I0}$          | 0                | $N_I = N_{I0}$                           |
+| **Total** | $\mathbf{N_{T0}}$ |                  | $\mathbf{N_T = N_{T0} + \delta N_{A0}X}$ |
 
 
 * $\delta = +\frac{d}{a}+\frac{c}{a}-\frac{b}{a}-1$ 
@@ -604,24 +604,24 @@ of different species to each other.
 :::{.column width=50%}
 
 
-* $$C_A = \frac{N_A}{V} = \frac{N_{A_0}(1-X)}{V}$$
-* $$C_B = \frac{N_B}{V} = \frac{N_{B_0}-(b/a)N_{A_0}X}{V}$$
-* $$C_C = \frac{N_C}{V} = \frac{N_{C_0}+(c/a)N_{A_0}X}{V}$$ 
-* $$C_D = \frac{N_D}{V} = \frac{N_{D_0}+(d/a)N_{A_0}X}{V}$$ 
+* $$C_A = \frac{N_A}{V} = \frac{N_{A0}(1-X)}{V}$$
+* $$C_B = \frac{N_B}{V} = \frac{N_{B0}-(b/a)N_{A0}X}{V}$$
+* $$C_C = \frac{N_C}{V} = \frac{N_{C0}+(c/a)N_{A0}X}{V}$$ 
+* $$C_D = \frac{N_D}{V} = \frac{N_{D0}+(d/a)N_{A0}X}{V}$$ 
 
 * For a constant volume batch reactor, $V = V_0$.
 
-* Let $\Theta_i= N_{i_0}/N_{A_0} =  C_{i_0}/C_{A_0}$.
+* Let $\Theta_i= N_{i0}/N_{A0} =  C_{i0}/C_{A0}$.
 
 :::
 :::{.column width=5%}
 :::
 :::{.column width=45%}
 
-* $$C_A = C_{A_0}(1-X)$$ 
-* $$C_B = C_{A_0}(\Theta_B-(b/a)X)$$ 
-* $$C_C = C_{A_0}(\Theta_C+(c/a)X)$$ 
-* $$C_D = C_{A_0}(\Theta_D+(d/a)X)$$ 
+* $$C_A = C_{A0}(1-X)$$ 
+* $$C_B = C_{A0}(\Theta_B-(b/a)X)$$ 
+* $$C_C = C_{A0}(\Theta_C+(c/a)X)$$ 
+* $$C_D = C_{A0}(\Theta_D+(d/a)X)$$ 
 
 
 :::{.smaller .highlight}
@@ -640,21 +640,21 @@ of different species to each other.
 ## Rate expression
 
 * $$ -r_A = k C_A C_B $$ 
-* [$$ -r_A = k  C_{A_0}^2 (1-X) (\phi_B-(b/a)X)$$]{.magenta}
+* [$$ -r_A = k  C_{A0}^2 (1-X) (\phi_B-(b/a)X)$$]{.magenta}
 
-* For $C_{A_0}= C_{B_0}$, and $b/a = 1$
+* For $C_{A0}= C_{B0}$, and $b/a = 1$
   
-  $$ -r_A = k  C_{A_0}^2 (1-X)^2 $$
+  $$ -r_A = k  C_{A0}^2 (1-X)^2 $$
 
 * Mole balance 
 
-  $$\frac{dC_A}{dt}=-k C_{A_0}^2 (1-X)^2$$
+  $$\frac{dC_A}{dt}=-k C_{A0}^2 (1-X)^2$$
 
-  as $C_A = C_{A_0}(1-X)$; $dC_A = -C_{A_0} dX$
+  as $C_A = C_{A0}(1-X)$; $dC_A = -C_{A0} dX$
 
 * The mole balance can then be written as
 
-  $$\frac{dX}{(1-X)^2}=k C_{A_0} dt$$ 
+  $$\frac{dX}{(1-X)^2}=k C_{A0} dt$$ 
 
 
 ## Flow systems
@@ -684,19 +684,19 @@ of different species to each other.
 
 | Species   | Feed rate to reactor (mol/time)    | Change within reactor (mol/time)     | Effluent rate from reactor (mol/time) |
 | :-------- | :----------------- | :--------------- | :---------------------------------------- |
-| A         | $F_{A_0}$          | $-F_{A_0}X$      | $F_A = F_{A_0} - F_{A_0}X$                |
-| B         | $F_{B_0}$          | $-(b/a)F_{A_0}X$ | $F_B = F_{B_0} -(b/a)N_{F_0}X$            |
-| C         | $F_{C_0}$          | $(c/a)F_{A_0}X$  | $F_C = F_{C_0} +(c/a)N_{F_0}X$            |
-| D         | $F_{D_0}$          | $(d/a)F_{A_0}X$  | $F_D = F_{D_0} +(d/a)N_{F_0}X$            |
-| I         | $F_{I_0}$          | 0                | $F_I = F_{I_0}$                           |
-| **Total** | $\mathbf{F_{T_0}}$ |                  | $\mathbf{F_T = F_{T_0} + \delta F_{A_0}X}$ |
+| A         | $F_{A0}$          | $-F_{A0}X$      | $F_A = F_{A0} - F_{A0}X$                |
+| B         | $F_{B0}$          | $-(b/a)F_{A0}X$ | $F_B = F_{B0} -(b/a)F_{A0}X$            |
+| C         | $F_{C0}$          | $(c/a)F_{A0}X$  | $F_C = F_{C0} +(c/a)F_{A0}X$            |
+| D         | $F_{D0}$          | $(d/a)F_{A0}X$  | $F_D = F_{D0} +(d/a)F_{A0}X$            |
+| I         | $F_{I0}$          | 0                | $F_I = F_{I0}$                           |
+| **Total** | $\mathbf{F_{T0}}$ |                  | $\mathbf{F_T = F_{T0} + \delta F_{A0}X}$ |
 
 
 * $\delta = +\frac{d}{a}+\frac{c}{a}-\frac{b}{a}-1$ 
   
-* $\Theta_{i0}= F_{i_0}/F_{A_0} =  C_{i_0}/C_{A_0}$.
+* $\Theta_{i0}= F_{i0}/F_{A0} =  C_{i0}/C_{A0}$.
 
-* $$C_B = C_{A_0}(\Theta_B-(b/a)X)$$ 
+* $$C_B = C_{A0}(\Theta_B-(b/a)X)$$ 
   
   For liquid phase systems ($\upsilon = \upsilon_0$)
   
@@ -745,7 +745,7 @@ volume comes into play.]{.magenta}
 * At the entrance of the reactor
 
   $$
-  C_{T_0} = \frac{P_0}{z_0RT_0}
+  C_{T0} = \frac{P_0}{z_0RT_0}
   $$
 
 * Assuming negligible change in $z$ ($z = z_0$)
@@ -762,7 +762,7 @@ volume comes into play.]{.magenta}
 * We can now express $C_j (=F_j/\upsilon)$ in terms of $F, P, and \ T$
 
   $$
-  C_j = C_{T_0} \left( \frac{F_j}{F_T} \right)
+  C_j = C_{T0} \left( \frac{F_j}{F_T} \right)
                 \left( \frac{P}{P_0} \right) 
                 \left( \frac{T_0}{T} \right)
   $$
@@ -806,8 +806,8 @@ $$
   $$
   C_j = \frac{F_{A0} (\Theta_j + \nu_j X)}
             {\upsilon_0 (1 + \epsilon X)
-                        \left( \frac{P}{P_0} \right) 
-                        \left( \frac{T_0}{T} \right)
+                        \left( \frac{P_0}{P} \right) 
+                        \left( \frac{T}{T_0} \right)
             }
   $$
 
@@ -838,8 +838,8 @@ $$
 $$
   C_j = \frac{C_{A0} (\Theta_j + \nu_j X)}
             {(1 + \epsilon X)}
-            \left( \frac{P_0}{P} \right) 
-            \left( \frac{T}{T_0} \right)
+            \left( \frac{P}{P_0} \right) 
+            \left( \frac{T_0}{T} \right)
 $$
 :::
 

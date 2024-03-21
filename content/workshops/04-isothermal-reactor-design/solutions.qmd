@@ -241,18 +241,12 @@ import numpy as np
 from scipy.integrate import quad
 from scipy.optimize import fsolve
 
-# Function to perform the integral
-def integral(x2, x1, tau_k):
+def func(x2, x1, tau_k):
     result, _ = quad(lambda x: 1 / (1 - x), x1, x2)
     return result - tau_k
 
 x1 = 0.5 
 tau_k = 1 
-
-# Function to find the root of
-def func(x2, *args):
-    x1, tau_k = args
-    return integral(x2, x1, tau_k)
 
 # provide a good initial guess for x2
 x2_guess = x1 + 0.1  
