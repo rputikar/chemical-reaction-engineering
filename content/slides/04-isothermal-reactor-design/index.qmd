@@ -75,16 +75,16 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 | Species   | Feed rate to reactor (mol/time)    | Change within reactor (mol/time)     | Effluent rate from reactor (mol/time) |
 | :-------- | :----------------- | :--------------- | :---------------------------------------- |
 | A         | $F_{A0}$          | $-F_{A0}X$      | $F_A = F_{A0} - F_{A0}X$                |
-| B         | $F_{B_0}$          | $-(b/a)F_{A0}X$ | $F_B = F_{B_0} -(b/a)N_{F_0}X$            |
-| C         | $F_{C_0}$          | $(c/a)F_{A0}X$  | $F_C = F_{C_0} +(c/a)N_{F_0}X$            |
-| D         | $F_{D_0}$          | $(d/a)F_{A0}X$  | $F_D = F_{D_0} +(d/a)N_{F_0}X$            |
-| I         | $F_{I_0}$          | 0                | $F_I = F_{I_0}$                           |
-| **Total** | $\mathbf{F_{T_0}}$ |                  | $\mathbf{F_T = F_{T_0} + \delta F_{A0}X}$ |
+| B         | $F_{B0}$          | $-(b/a)F_{A0}X$ | $F_B = F_{B0} -(b/a)F_{A0}X$            |
+| C         | $F_{C0}$          | $(c/a)F_{A0}X$  | $F_C = F_{C0} +(c/a)F_{A0}X$            |
+| D         | $F_{D0}$          | $(d/a)F_{A0}X$  | $F_D = F_{D0} +(d/a)F_{A0}X$            |
+| I         | $F_{I0}$          | 0                | $F_I = F_{I0}$                           |
+| **Total** | $\mathbf{F_{T0}}$ |                  | $\mathbf{F_T = F_{T0} + \delta F_{A0}X}$ |
 
 
 * $\delta = +\frac{d}{a}+\frac{c}{a}-\frac{b}{a}-1$ 
   
-* $\Theta_{i0}= F_{i_0}/F_{A0} =  C_{i_0}/C_{A0}$.
+* $\Theta_{i0}= F_{i0}/F_{A0} =  C_{i0}/C_{A0}$.
 
 * $$C_B = C_{A0}(\Theta_B-(b/a)X)$$ 
   
@@ -112,8 +112,8 @@ plt.style.use('../../../assets/templates/present.mpstyle')
   $$
   C_j = \frac{F_{A0} (\Theta_j + \nu_j X)}
             {\upsilon_0 (1 + \epsilon X)
-                        \left( \frac{P_0}{P} \right) 
-                        \left( \frac{T}{T_0} \right)
+                        \left( \frac{P}{P_0} \right) 
+                        \left( \frac{T_0}{T} \right)
             }
   $$
 
@@ -136,7 +136,7 @@ $$
 
 * +ve for products
 
-  $\nu_C = c/a$; $\nu_D = -d/a$
+  $\nu_C = c/a$; $\nu_D = d/a$
 :::
 ::::
 

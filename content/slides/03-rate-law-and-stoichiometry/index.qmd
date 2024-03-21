@@ -763,8 +763,8 @@ volume comes into play.]{.magenta}
 
   $$
   C_j = C_{T_0} \left( \frac{F_j}{F_T} \right)
-                \left( \frac{P_0}{P} \right) 
-                \left( \frac{T}{T_0} \right)
+                \left( \frac{P}{P_0} \right) 
+                \left( \frac{T_0}{T} \right)
   $$
 
 * $F_T = \sum_{j=1}^{n} F_j = F_A + F_B + F_C + F_D + F_I$
@@ -806,8 +806,8 @@ $$
   $$
   C_j = \frac{F_{A0} (\Theta_j + \nu_j X)}
             {\upsilon_0 (1 + \epsilon X)
-                        \left( \frac{P_0}{P} \right) 
-                        \left( \frac{T}{T_0} \right)
+                        \left( \frac{P}{P_0} \right) 
+                        \left( \frac{T_0}{T} \right)
             }
   $$
 
@@ -838,8 +838,8 @@ $$
 $$
   C_j = \frac{C_{A0} (\Theta_j + \nu_j X)}
             {(1 + \epsilon X)}
-            \left( \frac{P}{P_0} \right) 
-            \left( \frac{T_0}{T} \right)
+            \left( \frac{P_0}{P} \right) 
+            \left( \frac{T}{T_0} \right)
 $$
 :::
 

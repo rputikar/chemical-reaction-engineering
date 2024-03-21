@@ -482,7 +482,7 @@ $$
 \Theta_1 = \frac{F_{I0}}{F_{A0}} = \frac{(0.72)(0.79)}{0.28} = 2.03
 $$
 
-Substituting for $C_{A0} and $\epsilon$ in the species concentrations:
+Substituting for $C_{A0}$ and $\epsilon$ in the species concentrations:
 
 $$
 SO_{2}: \quad C_A = C_{A0} \left( \frac{1 - X}{1 + \epsilon X} \right) 
