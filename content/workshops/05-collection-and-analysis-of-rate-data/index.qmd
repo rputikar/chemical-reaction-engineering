@@ -1,9 +1,17 @@
 ---
 title: 
   "Workshop 05: Collection and analysis of rate data"
-date: 2024/03/19
+date: 2024/03/24
 format: html
 ---
+
+::: {.callout-tip}
+## Solutions
+
+Solutions to these problems are uploaded at [Workshop 5 solutions](./solutions.qmd)
+
+:::
+
 
 
 Try following problems from Fogler 5e [@fogler2016].
