@@ -1,0 +1,678 @@
+---
+title: "Collection and analysis of rate data"
+format: revealjs
+---
+
+```{python}
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+import pandas as pd
+import scipy.interpolate as interpolate
+import scipy.integrate as integrate
+import tabulate as tab
+from IPython.display import display, Markdown
+plt.style.use('../../../assets/templates/present.mpstyle')
+```
+
+# Rate data analysis
+
+* Isothermal reactor design algorithm
+
+## Isothermal reactor design algorithm
+
+::::{.columns}
+:::{.column width=40%}
+
+![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
+
+:::
+
+:::{.column width=60%}
+
+:::{.incremental}
+
+1. Mole balance
+
+   :::{.smaller}
+   $$
+   F_{A0} - F_A = \int^V r_A dV = \frac{dN_A}{dt}
+   $$
+   :::
+
+2. Rate law
+
+   If $-r_A$ is given as $f(X)$ $\rightarrow$ directly solve the design equations
+
+3. Stoichiometry
+   
+   If $-r_A = g(C)$ $\rightarrow$ use stoichiometry to write $-r_A = f(X)$
+
+4. Combine
+
+   Gather all equations  to obtain a system of equations that must be solved. 
+
+5. Evaluate
+
+   The system of equation scan be solved analytically, graphically,
+   numerically, or using software
+
+:::
+
+:::
+
+::::
+
+## Isothermal reactor design: molar flow rates 
+
+* In many instances it is easier to work with molar flow rates/ no. of moles
+  than conversion
+
+  - Reactors with external mass transfer (such as membrane reactors)
+  - Multiple reactions in gas phase
+
+* We *must* write a mole balance for each and every species as opposed to just
+  one species 
+
+* Usually this leads to a system of (simultaneous or) ordinary differential
+  equations
+
+* Solve the combined set of equations using ODE solver (such as
+  `scipy.integrate.solve_ivp`)
+
+
+## Isothermal reactions in PBR: molar flow rates
+### Second order reaction $\ce{aA + bB -> cC + dD}$
+
+::::{.columns}
+:::{.column width=40%}
+
+![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
+
+:::
+
+:::{.column width=60%}
+
+:::{.incremental .smaller}
+
+1. Mole balance: Write balance for each species $i = 1 \ to \ N$
+
+   $$
+   \frac{dF_i}{dW} = r'_i
+   $$
+
+2. Rate law
+
+   $$
+   -r'_A = kC_A^\alpha C_B^\beta; \qquad
+   \frac{r'_A}{-a} =
+   \frac{r'_B}{-b} =
+   \frac{r'_C}{c} =
+   \frac{r'_D}{d}
+   $$
+
+3. Stoichiometry
+   $$
+   C_i = \frac{C_{A0} (\Theta_i + \nu_i X)}
+             {(1 + \epsilon X)}
+             \left( \frac{P}{P_0} \right) 
+             \left( \frac{T_0}{T} \right)
+   $$
+
+   Pressure: 
+   $\frac{dP}{dW} = -\frac{\alpha}{2p} \left( \frac{T}{T_0} \right) \frac{F_T}{F_{T0}}$
+
+   Total molar flow rate: $F_T = \sum_{i=1}^N F_i$
+
+4. Combine: 
+
+   Collate all equations from steps 1 to 3 to yield a system of equations
+
+5. Evaluate:
+   
+   Use ODE solver to solve the system of equations obtained in step 4.
+
+:::
+
+:::
+
+::::
+
+## Reactor design problem
+
+:::{.incremental}
+* ![](../../../assets/images/kinetics-reactor-design-problem-volume-highight.png)
+
+
+* In practice, collection and analysis of rate data is the most time consuming
+  task in reactor design
+
+* ![](../../../assets/images/kinetics-reactor-design-problem-kinetics.png)
+
+
+* Data collection is done in the lab, where we can simplify mole balance,
+  stoichiometry, and fluid dynamic considerations
+
+:::
+
+## Rate law
+
+* Algebraic equation that relates $-r_A$ to species concentration
+
+  $$
+  -r_A = k_A(T) f(C_A, C_B, ...)
+  $$
+
+* Power law model
+
+  - Most common general forms of the rate law
+
+  :::{.highlight}
+
+  $$
+  -r_A = k_A C_A^\alpha C_B^\beta
+  $$
+
+  :::
+
+* Order of reaction: the powers to which the concentrations are raised
+
+  - The reaction is $\alpha$ order with respect to A and $\beta$ order with respect to B.
+  - Overall order of reaction $n = \alpha + \beta$.
+
+* $k_A$: Specific reaction rate
+  - Depends on the temperature 
+
+* ### Need to determine $k$, $\alpha$, and $\beta$
+
+
+## Collection and analysis of rate data
+
+:::{.incremental}
+
+* ### Goal
+  - Determine reaction order, $\alpha$, and specific reaction rate constant,
+    $k$, in the rate law
+  - Want ideal conditions $\rightarrow$ well-mixed (data is easiest to
+    interpret) $\rightarrow$ Select a simple reactor
+
+* ### Constant-volume batch reactor
+  - For homogenous reactions 
+  - Concentration vs. time measurements
+  - Measurement during the unsteady-state operation
+
+* ### Differential reactor
+  - For solid-fluid reactions
+  - Measurement during steady state operation
+  - Product concentration is usually monitored for different feed conditions
+
+:::
+
+## Algorithm for rate data analysis
+
+:::{style="margin-bottom: 50px;"}
+:::
+
+![](../../../assets/images/algorithm-for-rate-data-analysis.png)
+
+
+## Determination of rate law for homogenous reactions
+
+:::{.incremental}
+
+* Most often batch reactors are used
+
+  :::{.callout-note appearance="simple"}
+
+  Type of reactor chosen will not affect rate of reaction
+  :::
+
+::::{.columns .fragment}
+:::{.column width=50%}
+
+* Batch reactor
+
+  - Simple operations, low cost
+  - Ease of sampling, easy clean up, limited waste
+  - Uniform concentration can be obtained
+
+* Mole balance: constant volume
+  $$-\frac{dC_A}{dt} = -r_A$$
+
+
+:::
+
+:::{.column width=50%}
+
+![](../../../assets/images/batch_reactor_stoichiometry.png){width=70%}
+
+:::
+
+::::
+
+* Typical measurements
+  - Concentration
+    Pressure
+  - Temperature: Many times batch reactions are carried out isothermally. 
+  - Development of heat during reaction: Reaction calorimetry
+
+:::
+
+## Method of excess
+
+:::{.incremental}
+
+::::{.columns .fragment}
+:::{.column width=50%}
+
+* Given concentration vs. time profile in a batch experiment, determine the
+  reaction order and rate constant. 
+
+* $$ \ce{A + B -> C + D} $$
+  - Rate law: $-r_A = k C_A^\alpha C_B^\beta$
+  - Need to determine: $k$, $\alpha$, and $\beta$
+
+:::
+
+:::{.column width=50%}
+
+![](../../../assets/images/method-of-excess.png){width=70%}
+
+:::
+
+::::
+
+* Determining reaction orders: $\alpha$, and $\beta$
+
+  - Common simplification: One of the reactants is in excess 
+
+  - Two separarate experiments
+
+    - Excess B $\Rightarrow$ $C_B \gg C_A$, $C_B$ can be assumed constant.
+      $\Rightarrow$ determine $\alpha$.
+
+    - Excess A $\Rightarrow$ $C_A \gg C_B$, $C_A$ can be assumed constant.
+      $\Rightarrow$ determine $\beta$.
+    
+* Determining $k$: Measuring rate at known concentrations of A, and B.
+
+
+:::
+
+# Analysis methods
+
+* Differential analysis
+* Integral analysis
+* Nonlinear regression
+* Method of half life
+* Initial rates method
+* Differential reactor
+
+## Differential analysis 
+
+
+* Irreversible reaction
+* The rate is essentially a function of the concentration of _only one_ reactant.
+  
+  $\ce{A -> products}; -r_A = k C_A^\alpha$
+
+::::{.columns .fragment}
+:::{.column width=50%}
+
+* Isothermal, constant volume batch reactor
+
+* Mole balance: constant volume
+  $$-\frac{dC_A}{dt} = -r_A; -r_A = k C_A^\alpha$$
+
+* Taking natural logarithm
+
+:::{.highlight}
+  $$
+  \ln \left( \frac{-dC_A}{dt} \right) = 
+    \ln k + \alpha \ln C_A
+  $$
+:::
+
+:::
+
+:::{.column width=50%}
+
+![](../../../assets/images/differential-analysis.png){width=90%}
+
+:::
+
+::::
+
+:::{.fragment}
+
+* Slope of plot of $\ln[ -dC_A/dt ] \ \text{vs.} \ln C_A$ is the reaction order
+
+* Specific reaction rate can be determined using a specific point $p$: 
+  $k = \frac{(-dC_A/dt)_p}{(C_A)_p^\alpha}$
+  
+:::
+
+## Evaluating $\frac{-dC_A}{dt}$
+
+::::{.columns}
+:::{.column width=60%}
+
+* Graphical diffrentiation
+
+  - Very old method
+  - Equal area graphical diffrentiation
+  - Disparities in the data are easily seen
+
+* Numerical diffrentiation
+  
+  - Finite difference 
+  - Independent variable (time) is equally spaced
+
+* Diffrentiation of a polynomial fit to the data
+
+  - Fit a polynomial to $C_A \ \text{vs.} \ t$ data
+  
+  - [e.g. $C_A = f(t) = a_0 + a_1 t + a_2 t^2 + a_3 t^3 + a_4 t^4$]{.smaller}
+
+  - Analytical derivative
+
+    [$\frac{dC_A}{dt} = f'(t) = a_1 + a_2 t + a_3 t^2 + a_4 t^3$]{.smaller}
+
+:::
+
+:::{.column width=40%}
+
+![](../../../assets/images/graphical-differentiation.png){width=90%}
+
+<!-- {{< video https://www.youtube.com/watch?v=EFJkXtOs4uc >}} -->
+
+:::
+::::
+* Determine reaction order and specific rate from plot of $\ln[ -dC_A/dt ] \
+\text{vs.} \ln C_A$
+
+## Integral analysis
+
+* Quickest method to determine if the order is 0, 1, or 2. 
+
+  [$\Rightarrow$ Used when reaction order can be guessed or is known.]{.magenta}
+
+#. Guess reaction order 
+
+#. Integate the differential equation to obtain concentration as a function of
+time
+
+#. If the guessed order is correct, appropriate plot (determined from
+integration) should be linear. 
+
+:::{.fragment}
+
+[Mole balance: $-dC_A/dt = -r_A$]{.magenta}
+
+::::{.columns}
+
+:::{.column .fragment width=33%}
+
+* Zero order reaction
+
+   $-r_A = k$
+
+[$C_A = C_{A0} - kt$]{.highlight}
+
+:::
+
+
+:::{.column .fragment width=33%}
+
+* First order reaction
+
+   $-r_A = k C_A$
+
+[$\ln \frac{C_{A0}}{C_A} = kt$]{.highlight}
+
+
+:::
+
+
+:::{.column .fragment width=34%}
+
+* Second order reaction
+
+   $-r_A = k C_A^2$
+
+[$\frac{1}{C_A} = \frac{1}{C_{A0}} + kt$]{.highlight}
+
+:::
+
+
+::::
+
+:::{.callout-note .fragment appearance=simple}
+
+Need to know appropriate function of concentration corresponding to a rate law
+that is linear with time. 
+
+:::
+
+:::
+
+## Integral analysis
+
+::::{.columns}
+
+:::{.column .fragment width=50%}
+
+![](../../../assets/images/integral-method-0-order.png){width=70%}
+:::
+
+
+:::{.column .fragment width=50%}
+
+
+![](../../../assets/images/integral-method-1st-order.png){width=70%}
+
+:::
+::::
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+::::{.columns}
+
+:::{.column .fragment width=50%}
+
+![](../../../assets/images/integral-method-2nd-order.png){width=70%}
+:::
+
+
+:::{.column .fragment width=50%}
+
+
+![](../../../assets/images/integral-method-not-2nd-order.png){width=70%}
+
+:::
+::::
+
+## Nonlinear regression
+
+::::{.columns .fragment}
+:::{.column width=40%}
+
+* Search for parameter values that minimize the sum of squares of the
+difference between the measured values and calculated values for all data
+points. 
+
+* Best estimate of parameter values
+
+* Discriminate between different rate law models
+
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=58%}
+
+![](../../../assets/images/nonlinear-regression-procedure.png){width=90%}
+
+:::
+
+::::
+
+:::{.fragment .incremental}
+
+* [Godness of fit]{.magenta}
+
+  - Root Mean Squared Error (RMSE) and Mean Absolute Error (MAE)
+   
+    :::{.smaller}
+    Lower values indicate a better fit. RMSE is sensitive to outliers, while
+    MAE provides a more robust error metric.
+    :::
+
+  - P-value of the F-test in ANOVA (Analysis of Variance)
+
+    :::{.smaller}
+    A p-value smaller than the significance level (commonly 0.05) indicates
+    that there is a statistically significant relationship. 
+    :::
+
+  - Residual Plots
+
+    :::{.smaller}
+    Ideally, the residuals should be randomly scattered around 0 across the
+    range of fitted values. Patterns in the residual plot can indicate problems
+    with the model 
+    :::
+
+:::
+
+## Method of half life
+
+::::{.columns .fragment}
+:::{.column width=40%}
+
+* **Half life ($t_{1/2}$)**: Time taken for the concentration of reactant to
+fall to half of its initial value. 
+
+* Determine half life as a function of initial concentration
+
+* Requires several experiments
+
+Reaction: $\ce{A -> products}$
+
+Rate law: $-r_A = k C_A^\alpha$
+
+Mole balance: $$ -\frac{dC_A}{dt} = k C_A^\alpha $$
+
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=58%}
+
+- Integration: $C_A = C_{A0}$ at $t = 0$
+
+$$
+t = \frac{1}{k C_{A0}^{\alpha -1} (\alpha -1)} 
+    \left[ \left( \frac{C_{A0}}{C_A} \right)^{\alpha -1} -1 \right]
+$$
+
+- Integration: $C_A = \frac{1}{2} C_{A0}$ at $t = t_{1/2}$
+
+$$
+t_{1/2} = \frac{1}{k C_{A0}^{\alpha -1} (\alpha -1)} 
+    \left[ 2^{\alpha -1} -1 \right]
+$$
+
+- In general: 
+
+$$
+t_{1/n} = \frac{n^{\alpha -1} -1 }{k (\alpha -1)} 
+    \left[ \frac{1}{C_{A0}^{\alpha -1}}\right]
+$$
+
+
+:::
+
+::::
+
+## Method of half life
+
+::::{.columns}
+:::{.column width=48%}
+
+$$
+t_{1/2} = \frac{1}{k C_{A0}^{\alpha -1} (\alpha -1)} 
+    \left[ 2^{\alpha -1} -1 \right]
+$$
+
+Taking log
+
+:::{.highlight}
+$$
+\ln t_{1/2} = \ln \frac{2^{\alpha - 1} - 1}{(\alpha -1) k} + (1-\alpha) \ln C_{A0}
+$$
+:::
+
+* Multiple experiments are performed varying initial concentration and
+$t_{1/2}$ is recorded.
+
+* The plot of $\ln t_{1/2}$ vs. $\ln C_{A0}$ is linear with a slope of $(1 - \alpha)$
+
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=50%}
+
+![](../../../assets/images/half-life-method-n-order.png){width=90%}
+
+:::
+
+::::
+
+
+
+## Method of initial rates
+
+::::{.columns .fragment}
+:::{.column width=50%}
+
+* Perform a series of experiments at different initial concentrations $C_{A0}$
+
+* Determine initial rate of reaction $-r_{A0}$
+
+* Determine rate law parameters by relating $-r_{A0}$ to $C_{A0}$
+
+Reaction: $\ce{A -> products}$
+
+Rate law: $-r_A = k C_A^\alpha$
+
+Mole balance: $-\frac{dC_A}{dt} = k C_A^\alpha$
+
+Initial rate: $-r_{A0} = \left( \frac{-dC_A}{dt}\right)_0 = k C_{A0}^\alpha$
+
+* Taking log
+
+:::{.highlight}
+$\ln \left( \frac{-dC_A}{dt}\right)_0 = \ln k + \alpha \ln C_{A0}$
+:::
+
+:::
+
+:::{.column width=2%}
+:::
+
+:::{.column width=48%}
+
+![](../../../assets/images/method-of-initial-rates.png){width=90%}
+
+
+:::
+
+::::
+

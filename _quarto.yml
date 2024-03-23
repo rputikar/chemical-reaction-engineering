@@ -91,6 +91,7 @@ website:
           - file: ./content/lectures/02-conversion-and-reactor-sizing/index.qmd
           - file: ./content/lectures/03-rate-law-and-stoichiometry/index.qmd
           - file: ./content/lectures/04-isothermal-reactor-design/index.qmd
+          - file: ./content/lectures/05-collection-and-analysis-of-rate-data/index.qmd
          #
       - section: "Workshops"
         id: workshops
@@ -104,7 +105,9 @@ website:
             text: Rate law and stoichiometry
           - file: ./content/workshops/04-isothermal-reactor-design/index.qmd
             text: Isothermal reactor design
-     #
+          - file: ./content/workshops/05-collection-and-analysis-of-rate-data/index.qmd
+            text: Collection and analysis of rate data
+      #
       - section: "Labs"
         id: labs
         contents:
@@ -118,14 +121,14 @@ website:
             text: Experiment 4
           - file: ./content/labs/Experiment-05-Determination-of-the-residence-time-in-a-CSTR/index.qmd
             text: Experiment 5
-     #  
+      #  
       - section: "Portfolio"
         id: portfolio
         contents:
           - file: ./content/portfolio/01-mole-balances/index.qmd
           - file: ./content/portfolio/02-conversion-and-reactor-sizing/index.qmd
 
- #
+#
 format:
   html:
     theme:

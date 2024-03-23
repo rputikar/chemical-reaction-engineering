@@ -1064,7 +1064,7 @@ and X.)
 ![Fuel cell](../../../assets/images/fig_p6.7.png){#fig:p6-7}
 
 
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 [Hand written solution](./Problem-6-7.pdf)
@@ -1075,6 +1075,7 @@ and X.)
 
 import numpy as np
 from scipy.integrate import solve_ivp
+from scipy.optimize import root_scalar
 import matplotlib.pyplot as plt
 
 

@@ -1,12 +1,11 @@
 ---
-title: "Pre class activity: Rate law and stoichiometry"
+title: "Pre class activity: Collection and Analysis of Rate Data"
 date: 2024-03-03
 format:
   pdf
 ---
 
-
-- Read Chapter 5 from @fogler2016.
+- Read Chapter 5, and 6 from @fogler2016.
 
 * Revise numerical solution of ordinary differential equations
 
@@ -29,5 +28,5 @@ format:
 
   - [Online Integral Calculator with
     Wolfram|Alpha](https://www.wolframalpha.com/calculators/integral-calculator/)
-    - 
+
 

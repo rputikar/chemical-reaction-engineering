@@ -1,0 +1,17 @@
+---
+title: "Pre class activity: Collection and Analysis of Rate Data"
+date: 2024-03-20
+format:
+  pdf
+---
+
+- Read Chapter 7 from @fogler2016.
+
+* Read on linear regression in scipy using stats package
+  ([scipy.stats.linregress](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html))
+
+* Read on polynomial fitting in python
+  ([numpy.polyfit](https://numpy.org/doc/stable/reference/generated/numpy.polyfit.html))
+
+
+

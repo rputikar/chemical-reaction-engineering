@@ -61,7 +61,7 @@ style="position=absolute;top: 0;left: 0;bottom: 0;right: 0;width:
 
 ## Lecture notes
 
-Detailed lcture notes are available for this lecture. 
+Detailed lecture notes are available for this lecture. 
 You can browse them by
 clicking on the link below. 
 

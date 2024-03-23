@@ -5,7 +5,15 @@ date: 2024/03/19
 format: html
 ---
 
-Try following problems from Fogler 5e[@fogler2016].
+::: {.callout-tip}
+## Solutions
+
+Solutions to these problems are uploaded at [Workshop 4 solutions](./solutions.qmd)
+
+:::
+
+
+Try following problems from Fogler 5e [@fogler2016].
 
 P 5-7,
 P 5-8,

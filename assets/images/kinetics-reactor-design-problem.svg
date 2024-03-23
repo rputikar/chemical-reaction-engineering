@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="kinetics-reactor-design-problem.svg"
+   inkscape:export-filename="kinetics-reactor-design-problem-volume.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="2"
+     inkscape:cx="131"
+     inkscape:cy="175.5"
+     inkscape:window-width="2729"
+     inkscape:window-height="2088"
+     inkscape:window-x="1358"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer2">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="0.26458333"
+       spacingy="0.26458334"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect87"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,1,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect85"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.79374982,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.7937449,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect83"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,1,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect81"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.79374982,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.7937449,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect79"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,1,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1 @ F,0,0,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect56"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,1,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect54"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.79374982,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.7937449,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect52"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,1,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect50"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.79374982,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.7937449,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect48"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,1,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1 @ F,0,0,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect18"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,1,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1 @ F,0,0,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect16"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.79374982,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.7937449,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect13"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,1,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect9"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,1,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,1.8025573,0,1 @ F,0,1,1,0,1.8025573,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect7"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.79374982,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.7937449,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect5"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.79374982,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.7937449,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+  </defs>
+  <g
+     inkscape:label="Dark-Color-Pellette"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <rect
+       style="fill:#000000;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect1"
+       width="13.229166"
+       height="14.552083"
+       x="0.43676892"
+       y="-16.536459" />
+    <rect
+       style="fill:#65489d;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect2"
+       width="13.229166"
+       height="14.552083"
+       x="13.961318"
+       y="-16.536459" />
+    <rect
+       style="fill:#388ecc;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect3"
+       width="13.229166"
+       height="14.552083"
+       x="27.485868"
+       y="-16.536459" />
+    <rect
+       style="fill:#105e5d;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect4"
+       width="13.229166"
+       height="14.552083"
+       x="41.010414"
+       y="-16.536459" />
+    <rect
+       style="fill:#9f1d54;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect5"
+       width="13.229166"
+       height="14.552083"
+       x="54.534966"
+       y="-16.536459" />
+    <rect
+       style="fill:#4d1013;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect6"
+       width="13.229166"
+       height="14.552083"
+       x="68.059517"
+       y="-16.536459" />
+    <rect
+       style="fill:#f04e58;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect7"
+       width="13.229166"
+       height="14.552083"
+       x="81.584061"
+       y="-16.536459" />
+    <rect
+       style="fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect8"
+       width="13.229166"
+       height="14.552083"
+       x="95.108612"
+       y="-16.536459" />
+    <rect
+       style="fill:#c9c5c5;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect23"
+       width="13.229166"
+       height="14.552083"
+       x="108.63316"
+       y="-16.536459" />
+    <rect
+       style="fill:#f6f7f8;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect24"
+       width="13.229166"
+       height="14.552083"
+       x="122.50208"
+       y="-16.536459" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Drawing">
+    <g
+       id="g60"
+       transform="translate(0.38684845,0.22224203)"
+       inkscape:export-filename="kinetics-reactor-design-problem-volume.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300">
+      <path
+         id="path16"
+         style="fill:#f6f7f8;fill-opacity:1;stroke-width:0.264583;paint-order:markers fill stroke"
+         d="m 13.708807,48.947918 h 19.678218 a 1.8025573,1.8025573 45 0 1 1.802557,1.802557 l 0,17.561552 a 1.8025573,1.8025573 135 0 1 -1.802557,1.802557 H 13.708807 A 1.8025573,1.8025573 45 0 1 11.90625,68.312027 V 50.750475 a 1.8025573,1.8025573 135 0 1 1.802557,-1.802557 z"
+         sodipodi:nodetypes="ccccc"
+         inkscape:path-effect="#path-effect18"
+         inkscape:original-d="M 11.90625,48.947918 H 35.189582 V 70.114584 H 11.90625 Z"
+         transform="translate(72.109012,-43.874265)" />
+      <path
+         style="fill:none;stroke:#148040;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 52.387493,15.081251 0.529167,0 a 0.79374982,0.79374982 45 0 1 0.79375,0.79375 V 23.8125 L 55.033326,24.60625 53.71041,25.4 v 7.937505 a 0.7937449,0.7937449 135 0 1 -0.793745,0.793745 h -0.529172"
+         id="path15"
+         sodipodi:nodetypes="ccccccc"
+         inkscape:path-effect="#path-effect16"
+         inkscape:original-d="M 52.387493,15.081251 H 53.71041 V 23.8125 L 55.033326,24.60625 53.71041,25.4 v 8.73125 h -1.322917"
+         transform="translate(28.188184,-8.949264)" />
+      <path
+         id="path12"
+         style="fill:#f6f7f8;fill-opacity:1;stroke-width:0.264583;paint-order:markers fill stroke"
+         d="m 6.300474,48.947918 h 44.019884 a 1.8025573,1.8025573 45 0 1 1.802557,1.802557 l 0,7.45786 1.5875,1.322916 -1.5875,1.322917 v 7.457859 a 1.8025573,1.8025573 135 0 1 -1.802557,1.802557 l -44.019884,0 A 1.8025573,1.8025573 45 0 1 4.4979167,68.312027 V 50.750475 A 1.8025573,1.8025573 135 0 1 6.300474,48.947918 Z"
+         sodipodi:nodetypes="cccccccc"
+         inkscape:path-effect="#path-effect13"
+         inkscape:original-d="M 4.4979167,48.947918 H 52.122915 v 9.260417 l 1.5875,1.322916 -1.5875,1.322917 v 9.260416 H 4.4979167 Z"
+         transform="translate(29.511092,-43.874265)" />
+      <path
+         style="fill:none;stroke:#148040;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 52.387493,15.081251 0.529167,0 a 0.79374982,0.79374982 45 0 1 0.79375,0.79375 V 23.8125 L 55.033326,24.60625 53.71041,25.4 v 7.937505 a 0.7937449,0.7937449 135 0 1 -0.793745,0.793745 h -0.529172"
+         id="path6"
+         sodipodi:nodetypes="ccccccc"
+         inkscape:path-effect="#path-effect7"
+         inkscape:original-d="M 52.387493,15.081251 H 53.71041 V 23.8125 L 55.033326,24.60625 53.71041,25.4 v 8.73125 h -1.322917"
+         transform="translate(-22.082654,-8.949264)" />
+      <path
+         id="rect9"
+         style="fill:#f6f7f8;fill-opacity:1;stroke-width:0.264583;paint-order:markers fill stroke"
+         d="m 24.29214,48.947918 h 20.207385 a 1.8025573,1.8025573 45 0 1 1.802557,1.802557 v 7.45786 l 1.5875,1.322916 -1.5875,1.322917 v 7.457859 a 1.8025573,1.8025573 135 0 1 -1.802557,1.802557 H 24.29214 A 1.8025573,1.8025573 45 0 1 22.489583,68.312027 V 50.750475 a 1.8025573,1.8025573 135 0 1 1.802557,-1.802557 z"
+         sodipodi:nodetypes="cccccccc"
+         inkscape:path-effect="#path-effect9"
+         inkscape:original-d="m 22.489583,48.947918 h 23.812499 v 9.260417 l 1.5875,1.322916 -1.5875,1.322917 v 9.260416 H 22.489583 Z"
+         transform="translate(-14.938907,-43.874265)" />
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+         x="10.196485"
+         y="11.419425"
+         id="text12"><tspan
+           sodipodi:role="line"
+           id="tspan10"
+           style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.264583"
+           x="10.196485"
+           y="11.419425">Reactor</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.264583"
+           x="10.196485"
+           y="16.711086"
+           id="tspan11">design</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.264583"
+           x="10.196485"
+           y="22.00275"
+           id="tspan12">problem</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+         x="103.50232"
+         y="14.463187"
+         id="text20"><tspan
+           sodipodi:role="line"
+           style="fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="103.50232"
+           y="14.463187"
+           id="tspan20">Reactor</tspan><tspan
+           sodipodi:role="line"
+           style="fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="103.50232"
+           y="19.754848"
+           id="tspan22">volume</tspan></text>
+      <g
+         id="g29"
+         transform="translate(-7.0014063,-43.100366)">
+        <g
+           id="g26">
+          <text
+             xml:space="preserve"
+             style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#65489d;fill-opacity:1;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+             x="79.374466"
+             y="53.635021"
+             id="text13"><tspan
+               sodipodi:role="line"
+               id="tspan13"
+               style="fill:#65489d;fill-opacity:1;stroke-width:0.264583"
+               x="79.374466"
+               y="53.635021">Mole balance</tspan></text>
+          <g
+             id="g23"
+             transform="matrix(0.79568919,0,0,0.79568919,7.6665023,-14.22163)">
+            <ellipse
+               style="fill:#ffffff;fill-opacity:1;stroke:#65489d;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+               id="path22"
+               cx="50.270832"
+               cy="83.34375"
+               rx="2.5294101"
+               ry="2.3812528" />
+            <text
+               xml:space="preserve"
+               style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#65489d;fill-opacity:1;stroke:none;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+               x="51.545067"
+               y="84.821182"
+               id="text23"><tspan
+                 sodipodi:role="line"
+                 id="tspan23"
+                 style="fill:#65489d;fill-opacity:1;stroke-width:2"
+                 x="51.545067"
+                 y="84.821182">1</tspan></text>
+          </g>
+        </g>
+        <g
+           id="g28"
+           transform="translate(0,-0.52916699)">
+          <text
+             xml:space="preserve"
+             style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#388ecc;fill-opacity:1;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+             x="70.501404"
+             y="60.82745"
+             id="text14"><tspan
+               sodipodi:role="line"
+               id="tspan14"
+               style="fill:#388ecc;fill-opacity:1;stroke-width:0.264583"
+               x="70.501404"
+               y="60.82745">Rate law</tspan></text>
+          <g
+             id="g24"
+             transform="matrix(0.79568919,0,0,0.79568919,7.6665043,-7.0292023)">
+            <ellipse
+               style="fill:#ffffff;fill-opacity:1;stroke:#388ecc;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+               id="ellipse24"
+               cx="50.270832"
+               cy="83.34375"
+               rx="2.5294101"
+               ry="2.3812528" />
+            <text
+               xml:space="preserve"
+               style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#388ecc;fill-opacity:1;stroke:none;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+               x="51.545067"
+               y="84.821182"
+               id="text24"><tspan
+                 sodipodi:role="line"
+                 id="tspan24"
+                 style="fill:#388ecc;fill-opacity:1;stroke-width:2"
+                 x="51.545067"
+                 y="84.821182">2</tspan></text>
+          </g>
+        </g>
+        <g
+           id="g27"
+           transform="translate(0,-1.0583333)">
+          <text
+             xml:space="preserve"
+             style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#105e5d;fill-opacity:1;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+             x="80.881531"
+             y="67.621948"
+             id="text15"><tspan
+               sodipodi:role="line"
+               id="tspan15"
+               style="fill:#105e5d;fill-opacity:1;stroke-width:0.264583"
+               x="80.881531"
+               y="67.621948">Stoichiometry</tspan></text>
+          <g
+             id="g25"
+             transform="matrix(0.79568919,0,0,0.79568919,7.6665052,0.16322472)">
+            <ellipse
+               style="fill:#ffffff;fill-opacity:1;stroke:#105e5d;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+               id="ellipse25"
+               cx="50.270832"
+               cy="83.34375"
+               rx="2.5294101"
+               ry="2.3812528" />
+            <text
+               xml:space="preserve"
+               style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#105e5d;fill-opacity:1;stroke:none;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+               x="51.545067"
+               y="84.821182"
+               id="text25"><tspan
+                 sodipodi:role="line"
+                 id="tspan25"
+                 style="fill:#105e5d;fill-opacity:1;stroke-width:2"
+                 x="51.545067"
+                 y="84.821182">3</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g59"
+       inkscape:export-filename="kinetics-reactor-design-problem-kinetics.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"
+       transform="translate(-2.2589853,-0.04234146)">
+      <g
+         id="g61"
+         transform="translate(2.4426267,28.754917)">
+        <path
+           id="path30"
+           style="fill:#f6f7f8;fill-opacity:1;stroke-width:0.264583;paint-order:markers fill stroke"
+           d="m 13.708807,48.947918 h 19.678218 a 1.8025573,1.8025573 45 0 1 1.802557,1.802557 l 0,17.561552 a 1.8025573,1.8025573 135 0 1 -1.802557,1.802557 H 13.708807 A 1.8025573,1.8025573 45 0 1 11.90625,68.312027 V 50.750475 a 1.8025573,1.8025573 135 0 1 1.802557,-1.802557 z"
+           sodipodi:nodetypes="ccccc"
+           inkscape:path-effect="#path-effect48"
+           inkscape:original-d="M 11.90625,48.947918 H 35.189582 V 70.114584 H 11.90625 Z"
+           transform="translate(72.312218,-11.775013)" />
+        <path
+           style="fill:none;stroke:#148040;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+           d="m 52.387493,15.081251 0.529167,0 a 0.79374982,0.79374982 45 0 1 0.79375,0.79375 V 23.8125 L 55.033326,24.60625 53.71041,25.4 v 7.937505 a 0.7937449,0.7937449 135 0 1 -0.793745,0.793745 h -0.529172"
+           id="path31"
+           sodipodi:nodetypes="ccccccc"
+           inkscape:path-effect="#path-effect50"
+           inkscape:original-d="M 52.387493,15.081251 H 53.71041 V 23.8125 L 55.033326,24.60625 53.71041,25.4 v 8.73125 h -1.322917"
+           transform="translate(28.39139,23.149988)" />
+        <path
+           id="path32"
+           style="fill:#f6f7f8;fill-opacity:1;stroke-width:0.264583;paint-order:markers fill stroke"
+           d="m 6.300474,48.947918 h 44.019884 a 1.8025573,1.8025573 45 0 1 1.802557,1.802557 l 0,7.45786 1.5875,1.322916 -1.5875,1.322917 v 7.457859 a 1.8025573,1.8025573 135 0 1 -1.802557,1.802557 l -44.019884,0 A 1.8025573,1.8025573 45 0 1 4.4979167,68.312027 V 50.750475 A 1.8025573,1.8025573 135 0 1 6.300474,48.947918 Z"
+           sodipodi:nodetypes="cccccccc"
+           inkscape:path-effect="#path-effect52"
+           inkscape:original-d="M 4.4979167,48.947918 H 52.122915 v 9.260417 l 1.5875,1.322916 -1.5875,1.322917 v 9.260416 H 4.4979167 Z"
+           transform="translate(29.714298,-11.775013)" />
+        <path
+           style="fill:none;stroke:#148040;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+           d="m 52.387493,15.081251 0.529167,0 a 0.79374982,0.79374982 45 0 1 0.79375,0.79375 V 23.8125 L 55.033326,24.60625 53.71041,25.4 v 7.937505 a 0.7937449,0.7937449 135 0 1 -0.793745,0.793745 h -0.529172"
+           id="path33"
+           sodipodi:nodetypes="ccccccc"
+           inkscape:path-effect="#path-effect54"
+           inkscape:original-d="M 52.387493,15.081251 H 53.71041 V 23.8125 L 55.033326,24.60625 53.71041,25.4 v 8.73125 h -1.322917"
+           transform="translate(-21.879448,23.149988)" />
+        <path
+           id="path34"
+           style="fill:#f6f7f8;fill-opacity:1;stroke-width:0.264583;paint-order:markers fill stroke"
+           d="m 24.29214,48.947918 h 20.207385 a 1.8025573,1.8025573 45 0 1 1.802557,1.802557 v 7.45786 l 1.5875,1.322916 -1.5875,1.322917 v 7.457859 a 1.8025573,1.8025573 135 0 1 -1.802557,1.802557 H 24.29214 A 1.8025573,1.8025573 45 0 1 22.489583,68.312027 V 50.750475 a 1.8025573,1.8025573 135 0 1 1.802557,-1.802557 z"
+           sodipodi:nodetypes="cccccccc"
+           inkscape:path-effect="#path-effect56"
+           inkscape:original-d="m 22.489583,48.947918 h 23.812499 v 9.260417 l 1.5875,1.322916 -1.5875,1.322917 v 9.260416 H 22.489583 Z"
+           transform="translate(-14.7357,-11.775013)" />
+        <text
+           xml:space="preserve"
+           style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+           x="10.196485"
+           y="43.518677"
+           id="text36"><tspan
+             sodipodi:role="line"
+             style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.264583"
+             x="10.196485"
+             y="43.518677"
+             id="tspan36">Before</tspan><tspan
+             sodipodi:role="line"
+             style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.264583"
+             x="10.196485"
+             y="48.810341"
+             id="tspan57">reactor</tspan><tspan
+             sodipodi:role="line"
+             style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.264583"
+             x="10.196485"
+             y="54.102001"
+             id="tspan58">design</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+           x="103.70552"
+           y="46.562439"
+           id="text38"><tspan
+             sodipodi:role="line"
+             style="fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583"
+             x="103.70552"
+             y="46.562439"
+             id="tspan38">Reaction</tspan><tspan
+             sodipodi:role="line"
+             style="fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583"
+             x="103.70552"
+             y="51.854103"
+             id="tspan59">kinetics</tspan></text>
+        <g
+           id="g46"
+           transform="translate(-6.7981997,-11.001114)">
+          <g
+             id="g41">
+            <text
+               xml:space="preserve"
+               style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#65489d;fill-opacity:1;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+               x="79.374466"
+               y="53.635021"
+               id="text39"><tspan
+                 sodipodi:role="line"
+                 id="tspan39"
+                 style="fill:#65489d;fill-opacity:1;stroke-width:0.264583"
+                 x="79.374466"
+                 y="53.635021">Mole balance</tspan></text>
+            <g
+               id="g40"
+               transform="matrix(0.79568919,0,0,0.79568919,7.6665023,-14.22163)">
+              <ellipse
+                 style="fill:#ffffff;fill-opacity:1;stroke:#65489d;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+                 id="ellipse39"
+                 cx="50.270832"
+                 cy="83.34375"
+                 rx="2.5294101"
+                 ry="2.3812528" />
+              <text
+                 xml:space="preserve"
+                 style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#65489d;fill-opacity:1;stroke:none;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+                 x="51.545067"
+                 y="84.821182"
+                 id="text40"><tspan
+                   sodipodi:role="line"
+                   id="tspan40"
+                   style="fill:#65489d;fill-opacity:1;stroke-width:2"
+                   x="51.545067"
+                   y="84.821182">1</tspan></text>
+            </g>
+          </g>
+          <g
+             id="g43"
+             transform="translate(0,-0.52916699)">
+            <text
+               xml:space="preserve"
+               style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#388ecc;fill-opacity:1;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+               x="70.501404"
+               y="60.82745"
+               id="text41"><tspan
+                 sodipodi:role="line"
+                 id="tspan41"
+                 style="fill:#388ecc;fill-opacity:1;stroke-width:0.264583"
+                 x="70.501404"
+                 y="60.82745">Rate law</tspan></text>
+            <g
+               id="g42"
+               transform="matrix(0.79568919,0,0,0.79568919,7.6665043,-7.0292023)">
+              <ellipse
+                 style="fill:#ffffff;fill-opacity:1;stroke:#388ecc;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+                 id="ellipse41"
+                 cx="50.270832"
+                 cy="83.34375"
+                 rx="2.5294101"
+                 ry="2.3812528" />
+              <text
+                 xml:space="preserve"
+                 style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#388ecc;fill-opacity:1;stroke:none;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+                 x="51.545067"
+                 y="84.821182"
+                 id="text42"><tspan
+                   sodipodi:role="line"
+                   id="tspan42"
+                   style="fill:#388ecc;fill-opacity:1;stroke-width:2"
+                   x="51.545067"
+                   y="84.821182">2</tspan></text>
+            </g>
+          </g>
+          <g
+             id="g45"
+             transform="translate(0,-1.0583333)">
+            <text
+               xml:space="preserve"
+               style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#105e5d;fill-opacity:1;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+               x="80.881531"
+               y="67.621948"
+               id="text43"><tspan
+                 sodipodi:role="line"
+                 id="tspan43"
+                 style="fill:#105e5d;fill-opacity:1;stroke-width:0.264583"
+                 x="80.881531"
+                 y="67.621948">Stoichiometry</tspan></text>
+            <g
+               id="g44"
+               transform="matrix(0.79568919,0,0,0.79568919,7.6665052,0.16322472)">
+              <ellipse
+                 style="fill:#ffffff;fill-opacity:1;stroke:#105e5d;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+                 id="ellipse43"
+                 cx="50.270832"
+                 cy="83.34375"
+                 rx="2.5294101"
+                 ry="2.3812528" />
+              <text
+                 xml:space="preserve"
+                 style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#105e5d;fill-opacity:1;stroke:none;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+                 x="51.545067"
+                 y="84.821182"
+                 id="text44"><tspan
+                   sodipodi:role="line"
+                   id="tspan44"
+                   style="fill:#105e5d;fill-opacity:1;stroke-width:2"
+                   x="51.545067"
+                   y="84.821182">3</tspan></text>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g87"
+       inkscape:export-filename="kinetics-reactor-design-problem-volume-highight.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"
+       transform="translate(-1.1392745,-0.13123757)">
+      <path
+         id="path61"
+         style="fill:#f6f7f8;fill-opacity:1;stroke-width:0.264583;paint-order:markers fill stroke"
+         d="m 13.708807,48.947918 h 19.678218 a 1.8025573,1.8025573 45 0 1 1.802557,1.802557 l 0,17.561552 a 1.8025573,1.8025573 135 0 1 -1.802557,1.802557 H 13.708807 A 1.8025573,1.8025573 45 0 1 11.90625,68.312027 V 50.750475 a 1.8025573,1.8025573 135 0 1 1.802557,-1.802557 z"
+         sodipodi:nodetypes="ccccc"
+         inkscape:path-effect="#path-effect79"
+         inkscape:original-d="M 11.90625,48.947918 H 35.189582 V 70.114584 H 11.90625 Z"
+         transform="translate(73.635135,-14.420846)" />
+      <path
+         style="fill:none;stroke:#148040;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 52.387493,15.081251 0.529167,0 a 0.79374982,0.79374982 45 0 1 0.79375,0.79375 V 23.8125 L 55.033326,24.60625 53.71041,25.4 v 7.937505 a 0.7937449,0.7937449 135 0 1 -0.793745,0.793745 h -0.529172"
+         id="path62"
+         sodipodi:nodetypes="ccccccc"
+         inkscape:path-effect="#path-effect81"
+         inkscape:original-d="M 52.387493,15.081251 H 53.71041 V 23.8125 L 55.033326,24.60625 53.71041,25.4 v 8.73125 h -1.322917"
+         transform="translate(29.714307,20.504155)" />
+      <path
+         id="path63"
+         style="fill:#f6f7f8;fill-opacity:1;stroke-width:0.264583;paint-order:markers fill stroke"
+         d="m 6.300474,48.947918 h 44.019884 a 1.8025573,1.8025573 45 0 1 1.802557,1.802557 l 0,7.45786 1.5875,1.322916 -1.5875,1.322917 v 7.457859 a 1.8025573,1.8025573 135 0 1 -1.802557,1.802557 l -44.019884,0 A 1.8025573,1.8025573 45 0 1 4.4979167,68.312027 V 50.750475 A 1.8025573,1.8025573 135 0 1 6.300474,48.947918 Z"
+         sodipodi:nodetypes="cccccccc"
+         inkscape:path-effect="#path-effect83"
+         inkscape:original-d="M 4.4979167,48.947918 H 52.122915 v 9.260417 l 1.5875,1.322916 -1.5875,1.322917 v 9.260416 H 4.4979167 Z"
+         transform="translate(31.037215,-14.420846)" />
+      <path
+         style="fill:none;stroke:#148040;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 52.387493,15.081251 0.529167,0 a 0.79374982,0.79374982 45 0 1 0.79375,0.79375 V 23.8125 L 55.033326,24.60625 53.71041,25.4 v 7.937505 a 0.7937449,0.7937449 135 0 1 -0.793745,0.793745 h -0.529172"
+         id="path64"
+         sodipodi:nodetypes="ccccccc"
+         inkscape:path-effect="#path-effect85"
+         inkscape:original-d="M 52.387493,15.081251 H 53.71041 V 23.8125 L 55.033326,24.60625 53.71041,25.4 v 8.73125 h -1.322917"
+         transform="translate(-20.556531,20.504155)" />
+      <path
+         id="path65"
+         style="fill:#f6f7f8;fill-opacity:1;stroke-width:0.264583;paint-order:markers fill stroke"
+         d="m 24.29214,48.947918 h 20.207385 a 1.8025573,1.8025573 45 0 1 1.802557,1.802557 v 7.45786 l 1.5875,1.322916 -1.5875,1.322917 v 7.457859 a 1.8025573,1.8025573 135 0 1 -1.802557,1.802557 H 24.29214 A 1.8025573,1.8025573 45 0 1 22.489583,68.312027 V 50.750475 a 1.8025573,1.8025573 135 0 1 1.802557,-1.802557 z"
+         sodipodi:nodetypes="cccccccc"
+         inkscape:path-effect="#path-effect87"
+         inkscape:original-d="m 22.489583,48.947918 h 23.812499 v 9.260417 l 1.5875,1.322916 -1.5875,1.322917 v 9.260416 H 22.489583 Z"
+         transform="translate(-13.412784,-14.420846)" />
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+         x="11.722608"
+         y="40.872845"
+         id="text67"><tspan
+           sodipodi:role="line"
+           id="tspan65"
+           style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.264583"
+           x="11.722608"
+           y="40.872845">Reactor</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.264583"
+           x="11.722608"
+           y="46.164505"
+           id="tspan66">design</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.264583"
+           x="11.722608"
+           y="51.456169"
+           id="tspan67">problem</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+         x="105.02844"
+         y="43.916607"
+         id="text69"><tspan
+           sodipodi:role="line"
+           style="fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="105.02844"
+           y="43.916607"
+           id="tspan68">Reactor</tspan><tspan
+           sodipodi:role="line"
+           style="fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           x="105.02844"
+           y="49.208267"
+           id="tspan69">volume</tspan></text>
+      <rect
+         style="fill:#fddc69;fill-opacity:0.5;stroke:none;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         id="rect87"
+         width="40.624619"
+         height="7.0400562"
+         x="38.750374"
+         y="41.907864" />
+      <g
+         id="g77"
+         transform="translate(-5.4752831,-13.646947)">
+        <g
+           id="g72">
+          <text
+             xml:space="preserve"
+             style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#65489d;fill-opacity:1;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+             x="79.374466"
+             y="53.635021"
+             id="text70"><tspan
+               sodipodi:role="line"
+               id="tspan70"
+               style="fill:#65489d;fill-opacity:1;stroke-width:0.264583"
+               x="79.374466"
+               y="53.635021">Mole balance</tspan></text>
+          <g
+             id="g71"
+             transform="matrix(0.79568919,0,0,0.79568919,7.6665023,-14.22163)">
+            <ellipse
+               style="fill:#ffffff;fill-opacity:1;stroke:#65489d;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+               id="ellipse70"
+               cx="50.270832"
+               cy="83.34375"
+               rx="2.5294101"
+               ry="2.3812528" />
+            <text
+               xml:space="preserve"
+               style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#65489d;fill-opacity:1;stroke:none;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+               x="51.545067"
+               y="84.821182"
+               id="text71"><tspan
+                 sodipodi:role="line"
+                 id="tspan71"
+                 style="fill:#65489d;fill-opacity:1;stroke-width:2"
+                 x="51.545067"
+                 y="84.821182">1</tspan></text>
+          </g>
+        </g>
+        <g
+           id="g74"
+           transform="translate(0,-0.52916699)">
+          <text
+             xml:space="preserve"
+             style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#388ecc;fill-opacity:1;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+             x="70.501404"
+             y="60.82745"
+             id="text72"><tspan
+               sodipodi:role="line"
+               id="tspan72"
+               style="fill:#388ecc;fill-opacity:1;stroke-width:0.264583"
+               x="70.501404"
+               y="60.82745">Rate law</tspan></text>
+          <g
+             id="g73"
+             transform="matrix(0.79568919,0,0,0.79568919,7.6665043,-7.0292023)">
+            <ellipse
+               style="fill:#ffffff;fill-opacity:1;stroke:#388ecc;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+               id="ellipse72"
+               cx="50.270832"
+               cy="83.34375"
+               rx="2.5294101"
+               ry="2.3812528" />
+            <text
+               xml:space="preserve"
+               style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#388ecc;fill-opacity:1;stroke:none;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+               x="51.545067"
+               y="84.821182"
+               id="text73"><tspan
+                 sodipodi:role="line"
+                 id="tspan73"
+                 style="fill:#388ecc;fill-opacity:1;stroke-width:2"
+                 x="51.545067"
+                 y="84.821182">2</tspan></text>
+          </g>
+        </g>
+        <g
+           id="g76"
+           transform="translate(0,-1.0583333)">
+          <text
+             xml:space="preserve"
+             style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#105e5d;fill-opacity:1;stroke:none;stroke-width:0.264583;paint-order:markers fill stroke"
+             x="80.881531"
+             y="67.621948"
+             id="text74"><tspan
+               sodipodi:role="line"
+               id="tspan74"
+               style="fill:#105e5d;fill-opacity:1;stroke-width:0.264583"
+               x="80.881531"
+               y="67.621948">Stoichiometry</tspan></text>
+          <g
+             id="g75"
+             transform="matrix(0.79568919,0,0,0.79568919,7.6665052,0.16322472)">
+            <ellipse
+               style="fill:#ffffff;fill-opacity:1;stroke:#105e5d;stroke-width:0.264583;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+               id="ellipse74"
+               cx="50.270832"
+               cy="83.34375"
+               rx="2.5294101"
+               ry="2.3812528" />
+            <text
+               xml:space="preserve"
+               style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#105e5d;fill-opacity:1;stroke:none;stroke-width:2;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+               x="51.545067"
+               y="84.821182"
+               id="text75"><tspan
+                 sodipodi:role="line"
+                 id="tspan75"
+                 style="fill:#105e5d;fill-opacity:1;stroke-width:2"
+                 x="51.545067"
+                 y="84.821182">3</tspan></text>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,168 @@
+---
+title: 
+  "Workshop 05: Collection and analysis of rate data"
+date: 2024/03/19
+format: html
+---
+
+
+Try following problems from Fogler 5e [@fogler2016].
+P 7-4,
+P 7-5,
+P 7-6,
+P 7-7,
+P 7-10
+
+We will go through some of these problems in the workshop.
+
+## P 7-4
+When arterial blood enters a tissue capillary, it exchanges oxygen and carbon
+dioxide with its environment, as shown in this diagram.
+
+![](../../../assets/images/fig_p7.4.png)
+
+The kinetics of this deoxygenation of hemoglobin in blood was studied with the
+aid of a **tubular reactor** by Nakamura and Staub (*J. Physiol.*, 173, 161).
+
+$$
+\ce{HbO2 <=>[ $k_1$ ][ $k_{-1}$ ] Hb + O2}
+$$
+
+Although this is a reversible reaction, measurements were made in the initial
+phases of the decomposition so that the reverse reaction could be neglected.
+Consider a system similar to the one used by Nakamura and Staub: the solution
+enters a tubular reactor (0.158 cm in diameter) that has oxygen electrodes
+placed at 5-cm intervals down the tube.
+The solution flow rate into the reactor is 19.6 cm^3^/s with C~A0~ = 2.33 ×
+10^–6^ mol/cm^3^.
+
+------------------------------------ ------ ------ ------ ------ ------ ------ -------
+       Electrode position               1      2      3      4      5      6       7
+ Percent decomposition of $\ce{HbO2}$   0.00   1.93   3.82   5.68   7.48   9.25   11.00
+------------------------------------ ------ ------ ------ ------ ------ ------ -------
+
+(a) Using the method of differential analysis of rate data, determine the
+reaction order and the forward specific reaction-rate constant k~1~ for the
+deoxygenation of hemoglobin.
+
+(b) Repeat using regression.
+
+## P 7-5
+The liquid-phase irreversible reaction
+
+$$
+\ce{A -> B + C}
+$$
+is carried out in a CSTR.
+To learn the rate law, the volumetric flow rate, $v_0$ , (hence $\tau = V /
+v_0$ ) is varied and the effluent concentrations of species A are recorded as a
+function of the space time t. 
+Pure A enters the reactor at a concentration of 2 mol/ dm^3^.
+Steady-state conditions exist when the measurements are recorded.
+
+------------------ ----- ------ ----- ------ ------
+       Run           1     2      3     4      5
+   $\tau$ (min)      15    38    100   300    1200
+ C~A~ (mol/dm^3^)   1.5   1.25   1.0   0.75   0.5
+------------------ ----- ------ ----- ------ ------
+
+(a) Determine the reaction order and specific reaction-rate constant.
+
+(b) If you were to repeat this experiment to determine the kinetics, what would
+you do differently? Would you run at a higher, lower, or the same temperature?
+If you were to take more data, where would you place the measurements (e.g., $\tau$ )?
+
+(c) It is believed that the technician may have made a dilution factor-of-10
+error in one of the concentration measurements. What do you think?
+How do your answers compare using regression (Polymath or other software) with
+those obtained by graphical methods?
+
+Note: All measurements were taken at steady-state conditions.
+
+
+## P 7-6
+The reaction
+
+$$
+\ce{ A -> B + C }
+$$
+
+was carried out in a constant-volume batch reactor where the following
+concentration measurements were recorded as a function of time.
+
+------------------ --- ----- ------ ----- ------ ------ ------ ------
+     t (min)        0    5     9      15    22     30     40     60
+ C~A~ (mol/dm^3^)   2   1.6   1.35   1.1   0.87   0.70   0.53   0.35
+------------------ --- ----- ------ ----- ------ ------ ------ ------
+
+(a) Use nonlinear least squares (i.e., regression) and one other method to
+determine the reaction order, $\alpha$, and the specific reaction rate, k.
+
+(b) Nicolas Bellini wants to know, if you were to take more data, where would
+you place the points? Why?
+
+(c) Prof. Dr. Sven Köttlov from Jofostan University always asks his students,
+if you were to repeat this experiment to determine the kinetics, what would you
+do differently? Would you run at a higher, lower, or the same temperature?
+Take different data points?
+Explain.
+
+(d) It is believed that the technician made a dilution error in the
+concentration measured at 60 min.
+
+What do you think?
+How do your answers compare using regression (Polymath or other software) with
+those obtained by graphical methods?
+
+
+
+## P 7-7
+
+The following data were reported [from C. N. Hinshelwood and P. J. Ackey,
+*Proc. R. Soc. (Lond)., A115*, 215] for a gas-phase constant-volume
+decomposition of dimethyl ether at 504$^{\circ}$C in a batch reactor.
+Initially, only $\ce{(CH3)2O}$ was present.
+
+----------------------- ----- ----- ------ ------ ----------
+        Time (s)         390   777   1195   3155   $\infty$
+ Total Pressure (mmHg)   408   488   562    799    931
+----------------------- ----- ----- ------ ------ ----------
+
+(a) Why do you think the total pressure measurement at t = 0 is missing? Can
+you estimate it?
+
+(b) Assuming that the reaction
+
+$$
+\ce{(CH3)2O -> CH4 + H2 + CO}
+$$
+
+is irreversible and goes virtually to completion, determine the reaction order
+and specific reaction rate k.
+
+(c) What experimental conditions would you suggest if you were to obtain more
+data?
+
+(d) How would the data and your answers change if the reaction were run at a
+higher temperature? A lower temperature?
+
+## P 7-10
+
+Tests were run on a small experimental reactor used for decomposing nitrogen
+oxides in an automobile exhaust stream. In one series of tests, a nitrogen
+stream containing various concentrations of $\ce{NO2}$ was fed to a reactor,
+and the kinetic data obtained are shown in Figure P7-10.
+Each point represents one complete run.
+The reactor operates essentially as an isothermal backmix reactor (CSTR). What
+can you deduce about the apparent order of the reaction over the temperature
+range studied?
+
+![Figure P7-10 - Auto exhaust data.](../../../assets/images/fig_p7.10.png){#fig-p7-10}
+
+The plot gives the fractional decomposition of $\ce{NO2}$ fed versus the ratio
+of reactor volume V (in cm^3^) to the NO~2~ feed rate, $F_{NO_{2,0}}$ (g
+mol/h), at different feed concentrations of $\ce{NO2}$ (in parts per million by
+weight). Determine as many rate law parameters as you can.
+
+
+## References

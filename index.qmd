@@ -67,14 +67,12 @@ Failure twice may lead to the termination from that course.
 
 ## Learning Outcomes
 
-- Apply a range of advanced control techniques to chemical, mineral and
-  petrochemical processes.
-- Explain multi-loop control design, including pairing and decoupling of
-  chemical processes.
-- Apply a range of advanced model formulation and solution techniques to
-  chemical processes.
-- Demonstrate the effective use of software, such as MATLAB for process
-  modeling and for control system design.
+- Evaluate and apply principles and concepts of chemical reactions mechanisms
+  and kinetics in order to design reactors
+- Evaluate and apply the principles and modes of operation of different
+  reactors in order to design reactors
+- Design different types of industrial reactors for homogeneous and
+  heterogeneous systems
 
 ## Teaching Staff
 

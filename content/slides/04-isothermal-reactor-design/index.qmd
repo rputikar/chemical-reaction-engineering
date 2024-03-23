@@ -168,7 +168,7 @@ Use algorithm rather than memorizing equations
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
 
 :::
 
@@ -219,7 +219,7 @@ Use algorithm rather than memorizing equations
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
 
 :::
 
@@ -385,7 +385,7 @@ for a second order reaction $-r_A = k_2 C_A^2$
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
 
 :::
 
@@ -560,7 +560,7 @@ $$
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
 
 :::
 
@@ -729,14 +729,14 @@ Conversion achieved by any one of the reactors in parallel is the same as if
 all the reactant were fed into one big reactor of volume V
 :::
 
-## Liquid Phase Reaction in PFR
+## Liquid phase reaction in PFR
 
 ### First order reaction
 
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
 
 :::
 
@@ -773,17 +773,18 @@ all the reactant were fed into one big reactor of volume V
 
    $$
    \frac{\upsilon_0}{k} \int_0^X \frac{dX_A}{(1 - X_A)} = \int_0^V dV ;\quad 
-   V = \frac{\upsilon_0}{k} \frac{1}{(1 - X)} 
+   V = \frac{\upsilon_0}{k} \ln \left( \frac{1}{1 - X} \right) 
    $$
-:::
-
-:::{.fragment .callout-note appearance="simple"}
-Derive equation for conversion in a liquid phase PFR for second order reaction
 :::
 
 :::
 
 ::::
+
+:::{.fragment .callout-note appearance="simple"}
+Derive equation for conversion in a liquid phase PFR for second order reaction
+:::
+
 
 ## Isobaric, isothermal, ideal reactions in tubular reactors
 
@@ -838,7 +839,7 @@ $$
 
 3. Stoichiometry
   $$
-   C_A = \frac{C_{A0} (1 + X)}
+   C_A = \frac{C_{A0} (1 - X)}
             {(1 + \epsilon X)}
   $$
 
@@ -987,7 +988,7 @@ Pressure drops are especially common in reactions run in PBRs
 ::::{.columns}
 :::{.column width=40%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
 
 :::
 
@@ -1010,7 +1011,7 @@ Pressure drops are especially common in reactions run in PBRs
 
 3. Stoichiometry
   $$
-   C_A = \frac{C_{A0} (1 + X)}
+   C_A = \frac{C_{A0} (1 - X)}
             {(1 + \epsilon X)}
             \left( \frac{P}{P_0} \right)
   $$
@@ -1018,14 +1019,14 @@ Pressure drops are especially common in reactions run in PBRs
 4. Combine: Put $F_{A0}$ in terms of $C_{A0}$
 
    $$
-   \frac{dX}{dV} = \frac{k C_{A0}^2 (1 - X_A)^2}{(1 + \epsilon X)^2 C_{A0} \upsilon_0} 
+   \frac{dX}{dW} = \frac{k C_{A0}^2 (1 - X_A)^2}{(1 + \epsilon X)^2 C_{A0} \upsilon_0} 
             \left( \frac{P}{P_0} \right)^2
    $$
 
 5. Evaluate
 
    $$
-   \frac{dX}{dV} = \frac{k C_{A0}}{\upsilon_0} 
+   \frac{dX}{dW} = \frac{k C_{A0}}{\upsilon_0} 
             \frac{(1 - X_A)^2}{(1 + \epsilon X)^2} 
             \left( \frac{P}{P_0} \right)^2
    $$
@@ -1044,7 +1045,7 @@ Pressure drops are especially common in reactions run in PBRs
 * Evaluate
 
    $$
-   \frac{dX}{dV} = \frac{k C_{A0}}{\upsilon_0} 
+   \frac{dX}{dW} = \frac{k C_{A0}}{\upsilon_0} 
             \frac{(1 - X_A)^2}{(1 + \epsilon X)^2} 
             \underbrace{\left( \frac{P}{P_0} \right)^2}_{\text{Need to relate }
             P/P_0 \text{ to } W}
@@ -1117,7 +1118,7 @@ out isothermally
 ::::{.columns}
 :::{.column width=40%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=60%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
 
 :::
 
