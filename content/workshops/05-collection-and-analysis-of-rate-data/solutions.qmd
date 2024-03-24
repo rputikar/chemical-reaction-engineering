@@ -480,7 +480,7 @@ data?
 (d) How would the data and your answers change if the reaction were run at a
 higher temperature? A lower temperature?
 
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 * constant volume batch reactor
