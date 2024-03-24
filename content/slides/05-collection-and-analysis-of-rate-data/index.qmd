@@ -676,3 +676,79 @@ $\ln \left( \frac{-dC_A}{dt}\right)_0 = \ln k + \alpha \ln C_{A0}$
 
 ::::
 
+## Rate data from differential reactors
+
+* For heterogeneous reactions mostly packed bed reactors (PBRs) are used.
+
+* **Differential reactor**: The conversion of the reactants in the bed is
+extremely small, as is the change in reactant concentration through the bed
+
+* Reactant concentration through the reactor is essentially constant (i.e. the
+  reactor is considered to be gradient-less)
+
+* Can treat the mole balance like a CSTR 
+
+* Rate of reaction determined for a
+  specified number of pre-determined initial or entering reactant concentrations
+
+*  Determine rate of reaction as a function concentration or partial pressure
+
+* Operate isothermally
+ 
+![](../../../assets/images/diffrential-reactor-schematic.png){width=70%}
+
+## Differential reactor
+
+::::{.columns .fragment}
+:::{.column width=48%}
+
+![](../../../assets/images/differential-reactor-balance.png){width=90%}
+
+* [Assumptions]{.magenta}
+
+  :::{.smaller}
+  - No concentration and temperature gradient (gradientless reactor)
+  - High volumetric flow rate
+  - Small catalyst particles (No mass transfer limitation)
+  - Very low conversion
+  - Low/ negligible heat release (isothermal)
+  - No bypassing/ channeling (uniform flow across catalyst layer)
+  :::
+:::
+
+:::{.column width=4%}
+:::
+
+:::{.column width=48%}
+
+* Mole balance: 
+
+  [in - out + generation = accumulation]{.magenta}
+
+$$
+F_{A0} - F_{Ae} + r'_A \Delta W = 0
+$$
+
+$$
+-r'_A = \frac{F_{A0} - F_{Ae}}{\Delta W} 
+  = \frac{\upsilon_0 C_{A0} - \upsilon C_{Ae}}{\Delta W}  
+$$
+
+* For constant flow rate $\upsilon = \upsilon_0$
+
+:::{.highlight}
+$$
+-r'_A = \frac{\upsilon_0 C_{A0} X}{\Delta W}  
+      = \frac{\upsilon_0 C_{P}}{\Delta W}
+$$
+:::
+
+$\rightarrow$ For small conversion $-r'_A$ can be expressed as a function of
+$C_{A0}$
+
+
+:::
+
+::::
+
+

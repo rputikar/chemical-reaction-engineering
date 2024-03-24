@@ -16,7 +16,7 @@ plt.style.use('../../../assets/templates/publish.mplstyle')
 The liquid-phase reaction of triphenyl methyl chloride (trityl) (A) and
 methanol (B)
 
-$$
+$^\alpha$
 \ce{(C6H5)3CCl + CH3OH -> (C6H5)3COCH3 + HCl}
 $$
 
@@ -257,7 +257,7 @@ As the plot of $1/C_A$ vs. t is linear, the reaction is second order with respec
 
 Use polynomial regression to estimate rate equation. Assume the reaction order is not 1. 
 
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 
 ## Solution
 
@@ -348,6 +348,81 @@ Reaction order is = `{python} f'{n:.2f}'`, and $k$ is `{python} f'{k:.3e}'`.
 
 Optimized value of 
 Reaction order is = `{python} f'{n_opt:.2f}'`, and $k$ is `{python} f'{k_opt/C_B0:.3e}'`.
+
+:::
+
+## Method of initial rates
+
+The dissolution of dolomite using hydrochloric acid:
+
+$$
+\ce{4HCl + CaMg(CO3)2 -> Mg^2+ + Ca^2+ + 4Cl- + 2CO2 + 2H2O}
+$$
+
+Concentration of HCl at various times was determined from atomic absorption
+spectrophotometer measurements of the $\ce{Ca^2+}$ and $\ce{Mg^2+}$ ions
+(@tbl-initial-rates). Determine the rate constant and order of reaction.
+
+
+| $C_{HCl,0}$ (N) | Initial reaction rate $-r_{HCl,0}$ ($mol/cm^2 s \times 10^7$) |
+|--------------------------|-------------------------------------------------------------|
+| 1                        | 1.2                                                          |
+| 4                        | 2.0                                                          |
+| 2                        | 1.36                                                         |
+| 0.1                      | 0.36                                                         |
+| 0.5                      | 0.74                                                         |
+
+: HCL concentration {#tbl-initial-rates} 
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+The mole balance for constant V batch reactor at t = 0:
+
+$$
+\left( \frac{-dC_{HCl}}{dt}\right)_0 = -(r_{HCl})_0 = k C_{HCl,0}^\alpha
+$$
+
+Taking log
+$$
+\ln \left( \frac{-dC_{HCl}}{dt}\right)_0 = \ln k \alpha \ln C_{HCl,0}
+$$
+
+```{python}
+#| echo: true
+import numpy as np
+from scipy.stats import linregress
+import matplotlib.pyplot as plt
+
+ca0 = np.array([1, 4, 2, 0.1, 0.5])
+ra0 = np.array([1.2, 2.0, 1.36, 0.36, 0.74]) * 1e-7
+
+ln_ca0 = np.log(ca0)
+ln_ra0 = np.log(ra0)
+
+# fit line
+res = linregress(ln_ca0, ln_ra0)
+line = res.slope * ln_ca0 + res.intercept
+
+plt.plot(ln_ca0, ln_ra0, 'o', label='initial rates analysis')
+plt.plot(ln_ca0, line, '-', label='fitted line')
+
+plt.annotate(f'Slope = {res.slope:.2f}\nIntercept = {res.intercept:.2f}\n$R^2$ = {res.rvalue**2:.3f}',
+             xy=(0.5, 0.15), xycoords='axes fraction', fontsize=12)
+
+plt.xlabel('$\ln C_A$')
+plt.ylabel('$\ln(-r_{A0})$')
+
+plt.legend()
+plt.grid(True)
+
+plt.show()
+
+order = res.slope
+k = np.exp(res.intercept)
+
+```
+Reaction order is = `{python} f'{order:.2f}'`, and $k$ is `{python} f'{k:.3e}'`.
 
 :::
 
