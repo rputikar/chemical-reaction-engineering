@@ -11,287 +11,343 @@ from IPython.display import display, Markdown
 plt.style.use('../../../assets/templates/publish.mplstyle')
 ```
 
+## Determining the Rate Law
 
-## Apply reaction engineering algorithm
+The liquid-phase reaction of triphenyl methyl chloride (trityl) (A) and
+methanol (B)
 
-1. Derive the **equation for batch time** as a function of conversion for a
-   second order reaction $-r_A = k_2C_A^2$
+$$
+\ce{(C6H5)3CCl + CH3OH -> (C6H5)3COCH3 + HCl}
+$$
 
-:::{.callout-tip collapse="true"}
+$$
+\ce{A + B -> C + D}
+$$
+
+was carried out in a batch reactor at 25°C in a solution of benzene and
+pyridine in an excess of methanol $C_{B0} = 0.5 \frac{mol}{dm^3}$. (We need to
+point out that this batch reactor was purchased at the Sunday market in
+Rijca, Jofostan.) Pyridine reacts with HCl, which then precipitates as pyridine
+hydro-chloride thereby making the reaction irreversible. The reaction is first
+order in methanol. The concentration of triphenyl methyl chloride (A) was
+measured as a function of time and is shown below (@tbl-example1)
+
+
+| \( t \) (min) | \( C_A \) (mol/dm^3) |
+| --- | --- |
+| 0 | 0.05 |
+| 50 | 0.038 |
+| 100 | 0.0306 |
+| 150 | 0.0256 |
+| 200 | 0.0222 |
+| 250 | 0.0195 |
+| 300 | 0.0174 |
+
+:Raw data {#tbl-example1}
+
+#. Determine the reaction order with respect to triphenyl methyl chloride.
+
+#. In a separate set of experiments, the reaction order wrt methanol was found
+to be first order. Determine the specific reaction-rate constant.
+
+
+::: {.callout-tip collapse="true"}
 ## Solution
 
-1. Mole balance
+Part (1) Find the reaction order with respect to trityl.
 
-   $$
-   N_{A0} \frac{dX_A}{dt} = -r_A V
-   $$
+**Step 1** Postulate a rate law.
 
-2. Rate law
+$$
+-r_A = k C_A^\alpha C_B^\beta
+$${#eq-1}
 
-   $$
-   -r_A = kC_A^2
-   $$
+**Step 2** Process your data in terms of the measured variable, which in this
+case is $C_A$.
 
+**Step 3** Look for simplifications. Because the concentration of methanol is
+10 times the initial concentration of triphenyl methyl chloride, its
+concentration is essentially constant
 
-3. Stoichiometry
+$$
+C_B \approx C_{B0}
+$$
 
-   $$
-   C_A = C_{A0}(1-X_A)
-   $$
+Substituting for $C_B$ in @eq-1 
 
-4. Combine
+$$
+-r_A = k C_{B0}^\beta C_A^\alpha = k' C_A^\alpha
+$$
 
-   $$
-   N_{A0} \frac{dX_A}{dt} = k C_{A0}^2 (1 - X_A)^2 V
-   $$
+**Step 4** Apply the CRE algorithm.
 
-5. Evaluate
+Mole Balance
 
-   For constant batch volume $V = V_0$ solve
+$$
+\frac{dN_A}{dt} = r_A V
+$$
 
-   $$
-   N_{A0} \frac{dX_A}{dt} = k C_{A0}^2 (1 - X_A)^2 V_0
-   $$
+Rate Law:
 
-   $$
-   \frac{dX_A}{dt} = k C_{A0} (1 - X_A)^2 
-   $$
+$$
+-r_A = k' C_A^\alpha
+$$
 
-   Integrate:
-   $$
-   \frac{1}{k C_{A0}} \int_0^X \frac{dX_A}{(1 - X_A)^2} = \int_0^t dt
-   $$
+Stoichiometry: Liquid $V = V_0$
+
+$$
+C_A = \frac{N_A}{V_0}
+$$
+
+Combine: Mole balance, rate law, and stoichiometry
+
+$$
+-\frac{dC_A}{dt} = k' C_A^\alpha
+$${#eq-2}
+
+Evaluate: Taking the natural log of both sides of @eq-2
+
+$$
+\ln \left[ -\frac{dC_A}{dt} \right] = \ln k' + \alpha \ln C_A
+$$
+
+The slope of a plot of $\ln [-dC_A/dt]$ versus $\ln C_A$ will yield the
+reaction order α with respect to triphenyl methyl chloride (A)
+
+```{python}
+#| echo: true
+import numpy as np
+from scipy.stats import linregress
+import matplotlib.pyplot as plt
+
+# Data
+C_B0 = 0.5  # mol/dm^3
+
+t = np.array([0, 50, 100, 150, 200, 250, 300])
+C_A = np.array([0.05, 0.038, 0.0306, 0.0256, 0.0222, 0.0195, 0.0174])
+
+C_A0 = C_A[0]
+
+# fit polynomial to the data
+coefficients = np.polyfit(t, C_A, deg=4)
+polynomial = np.poly1d(coefficients)
+
+t_fit = np.linspace(t.min(), t.max(), 100)
+ca_fit = polynomial(t_fit)
+
+plt.plot(t, C_A, 'o', label='Experimental data')
+plt.plot(t_fit, ca_fit , '-', label='Polynomial fit')
+plt.xlabel('time (min)')
+plt.ylabel('Concentration')
+plt.title('Raw data')
+
+plt.legend()
+plt.grid(True)
+plt.xlim(0,300)
+
+plt.show()
+
+```
+
 
 ```{python}
 #| echo: true
 
-from sympy import symbols, integrate, simplify, pprint
+# calculate the derivative of the polynomial
+dca_dt = np.polyder(polynomial)
 
-k, CA0, X, XA = symbols('k CA0 X XA')
+ln_ca = np.log(C_A)
+ln_dca_dt = np.log(-dca_dt(t))
 
-expression = 1/ (1 - XA)**2 
-integral_result = integrate(expression,(XA,0,X))
-simplified_integral = simplify(integral_result)
+# fit line
+res = linregress(ln_ca, ln_dca_dt)
+line = res.slope * ln_ca + res.intercept
 
-t = (1 / (k * CA0)) * simplified_integral
+plt.plot(ln_ca, ln_dca_dt, 'o', label='Differential analysis')
+plt.plot(ln_ca, line, '-', label='fitted line')
 
-pprint(t)
+plt.annotate(f'Slope = {res.slope:.2e}\nIntercept = {res.intercept:.2f}\n$R^2$ = {res.rvalue**2:.3f}',
+             xy=(0.5, 0.15), xycoords='axes fraction', fontsize=12)
+
+plt.xlabel('$\ln C_A$')
+plt.ylabel('$\ln(\\frac{-dC_A}{dt})$')
+
+plt.legend()
+plt.grid(True)
+
+plt.show()
+
+# pick the closest round order
+order = round(res.slope)
+a = np.exp(res.intercept)
+k = a /C_B0
+
 ```
+Reaction order is = `{python} f'{order}'`, and $k$ is `{python} f'{k:.3f}'` $(dm^3/mol)^2/min$.
 
-$$
-t = \frac{1}{k C_{A0}}\frac{X}{1-X}
-$$
+Rate law is $-r_A =$ `{python} f'{k:.3f}'` $C_A^{`{python} f'{order}'`} C_B$
 
 :::
 
-2. **Determining k from Batch Data**
+## Integral analysis
 
-   It is desired to design a CSTR to produce 200 million pounds of ethylene
-   glycol per year by hydrolyzing ethylene oxide. However, before the design
-   can be carried out, it is necessary to perform and analyze a batch-reactor
-   experiment to determine the specific reaction-rate constant, $k$. Because
-   the reaction will be carried out isothermally, the specific reaction rate
-   will need to be determined only at the reaction temperature of the CSTR. At
-   temperatures above $80^\circ C$, there is a significant by-product
-   formation, while at temperatures below $40^\circ C$, the reaction does not
-   proceed at a significant rate; consequently, a temperature of $55^\circ C$
-   has been chosen. Because water is present in excess, its concentration (55.5
-   $mol/dm^3$) may be considered constant during the course of the reaction.
-   The reaction is first-order in ethylene oxide.
-
-   $$
-    \ce{C2H4O + H2O ->[H2SO4] (CH2-OH)2}
-   $$
-
-   $$
-    \ce{A  + B ->[catalyst] C}
-   $$
-
-   In the laboratory experiment, 500 mL of a 2 M solution (2 $kmol/m^3$) of
-   ethylene oxide (A) in water was mixed with 500 mL of water (B) containing
-   0.9 wt% sulfuric acid, which is a catalyst. The temperature was maintained
-   at $55^\circ C$. The concentration of ethylene glycol (C) was recorded as a
-   function of time (@tbl-problem_1).
-
-   #. Derive an equation for the concentration of ethylene glycol as a function
-   of time.
-
-   #. Rearrange the equation derived in (a) to obtain a linear plot of a
-   function concentration versus time.
-
-   #. Using the data in (@tbl-problem_1), determine the specific reaction rate at
-   $55^\circ C$.
-
-```{python}
-#| label: tbl-problem_1
-#| tbl-cap: "Concentration-Time Data"
-#| echo: false
-
-import pandas as pd
-import tabulate as tab
-from IPython.display import display, Markdown
-
-# Data
-data = {
-  'Time (min)': [0.0, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 10.0],
-  'Concentration of Ethylene Glycol (C) ($kmol/m^3$)': [0.000, 0.145, 0.270, 0.376, 0.467, 0.610, 0.715, 0.848, 0.957]
-}
-df = {}
-df['data'] = pd.DataFrame(data)
-
-md = tab.tabulate(df['data'].T, floatfmt='.2f')
-display(Markdown(md))
-```
+Use the integral method to confirm that the reaction is second order with
+regard to triphenyl methyl chloride
 
 
-:::{.callout-tip collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
-1. See [slides 9 and 10](https://cre.smilelab.dev/content/slides/04-isothermal-reactor-design/#/batch-reactor). 
-
-2. 
-$$
-\ln \frac{C_{A0}}{C_A} = kt
-$$
-
-Concentration of ethylene oxide (A)
-$$
-C_A = C_{A0} e^{-kt}
-$$
-
-Concentration of ethylene oxide (C)
-$$
-C_C = C_A0 - C_A = C_{A0}(1 - e^{-kt})
-$${#eq-1}
-
-
-3.  Rearranging @eq-1 we get
-
-$$
-\ln \frac{C_A0 - C_C}{C_A0} = t
-$$
-
-The plot of $\ln [(C_A0 - C_C)/C_A0]$ vs. $t$ will be a straight line with slope $-k$. 
 
 ```{python}
 #| echo: true
 
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.stats import linregress
+import matplotlib.pyplot as plt
 
-time = np.array([0.0, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 6.0, 10.0])
-conc_C = np.array([0.000, 0.145, 0.270, 0.376, 0.467, 0.610, 0.715, 0.848, 0.957])
+# Data
+C_B0 = 0.5  # mol/dm^3
 
-conc_A0 = 1.0 # kmol/m^3 
+t = np.array([0, 50, 100, 150, 200, 250, 300])
+C_A = np.array([0.05, 0.038, 0.0306, 0.0256, 0.0222, 0.0195, 0.0174])
 
-lhs = np.log((conc_A0 - conc_C)/conc_A0)
+C_A0 = C_A[0]
 
-slope, intercept, r_value, p_value, std_err = linregress(time, lhs)
-line = slope * time + intercept
+ln_ca0_by_ca = np.log(C_A0/C_A)
+one_by_ca = 1/C_A
 
-k = -slope
+# Plotting
 
-# Plot 
-plt.scatter(time, lhs, color='blue', label='Data points')
-plt.plot(time, line, color='red', label='Fit line')
+# C_A vs t
+plt.plot(t, C_A, 'bo-')
+plt.title('0th order test: Concentration of A vs. Time')
+plt.xlabel('Time (min)')
+plt.ylabel('Concentration of A ($mol/dm^3$)')
 
-# Labels and title
-plt.xlabel('t (min)')
-plt.ylabel('$\ln[(C_{A0}-C_C)/C_{A0}]$')
-plt.title('Linear Fit of $\ln[(C_{A0}-C_C)/C_{A0}]$ vs t')
-plt.legend()
+plt.xlim(0,300)
+plt.show()
 
-k_text = f'k: {k:.3f} $min^{{-1}}$'
-plt.annotate(f'{k_text}', xy=(0.05, 0.20), xycoords='axes fraction', verticalalignment='top')
+# ln(C_A0/C_A) vs t
+plt.plot(t, ln_ca0_by_ca, 'ro-')
+plt.title('1st order test: $\ln(C_A0/C_A)$ vs. Time')
+plt.xlabel('Time (min)')
+plt.ylabel('$\ln(C_A0/C_A)$')
 
-# Show plot
+plt.xlim(0,300)
+plt.show()
+
+# 1/C_A vs t
+plt.plot(t, one_by_ca, 'go-')
+plt.title('2nd order test: $1/C_A$ vs. Time')
+plt.xlabel('Time (min)')
+plt.ylabel('$1/C_A (dm^3/mol)$')
+
+plt.xlim(0,300)
 plt.show()
 
 ```
 
+As the plot of $1/C_A$ vs. t is linear, the reaction is second order with respect to A. 
+
 :::
 
-3. Exit concentration for CSTR in series using the algorithm: 
 
-   Obtain $C_{A2}$ in terms of $C_{A0}$ and $Da$ for two
-   CSTRs operating in series. The reaction is first order isothermal liquid
-   phase reaction.  
+## Use of Regression to Find the Rate-Law Parameters
 
-:::{.callout-tip collapse="true"}
+Use polynomial regression to estimate rate equation. Assume the reaction order is not 1. 
+
+::: {.callout-tip collapse="false"}
+
 ## Solution
 
-Relate $C_{A2}$ to $k$ & $t$
+For constant volume batch reactor,
+
 
 $$
-C_{A2} = \frac{C_{A1}}{1 + \tau k}; 
-C_{A1} = \frac{C_{A0}}{1 + \tau k} 
+\frac{dC_A}{dt} = -k' C_A^\alpha
 $$
 
-Substitute:
-$$
-C_{A2} = \frac{C_{A0}}{1 + \tau k} 
-         \frac{1}{1 + \tau k} 
-$$
+and integrating with the initial condition when $t = 0$ and $C_A = C_{A0}$ for
+$\alpha \neq 1.0$ gives us:
 
 $$
-C_{A2} = \frac{C_{A0}}{(1 + \tau k)^2} 
+t = \frac{1}{k'} \left[ \frac{C_{A0}^{(1-\alpha)} - C_A^{(1-\alpha)}}{1-\alpha} \right]
 $$
 
+We want to minimize $s^2$ to give $\alpha$ and $k'$.
+
+$$
+s^2 = \sum_{i=1}^{N} (t_{im} - t_{ic})^2 
+$$
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import minimize
+
+# Data
+C_B0 = 0.5  # mol/dm^3
+
+t = np.array([0, 50, 100, 150, 200, 250, 300])
+C_A = np.array([0.05, 0.038, 0.0306, 0.0256, 0.0222, 0.0195, 0.0174])
+
+C_A0 = C_A[0]
+
+# Initial guesses of k and n
+
+# here k is the clubbed constant k * C_B0
+k = 1 
+n = 0
+
+# Objective function to minimize: the difference between t (experimental) and t (model)
+
+def objective(params):
+   k, n = params
+
+   # Calculate t model
+
+   t_model = (1/k) * (C_A0**(1-n) - C_A**(1-n))/ (1-n)
+   ssr = np.sum((t - t_model)**2)  # Sum of squared residuals
+   return ssr
+
+# Minimize the objective function
+result = minimize(objective, [k,n], bounds=[(1e-4, 1e4), (0, 5)])
+
+# Extract the results
+k_opt, n_opt = result.x
+success = result.success
+
+# Check if the solution was successful
+if not success:
+    print("Optimization was not successful. Try different initial guesses or methods.")
+
+# final evaluation
+t_model = (1/k_opt) * (C_A0**(1-n_opt) - C_A**(1-n_opt))/ (1-n_opt)
+
+# plot the data
+plt.plot(t, C_A, 'o', label='Experiment')
+plt.plot(t_model, C_A, '-', label='model')
+plt.xlabel('$t (min)$')
+plt.ylabel('$C_A (mol/dm^3)$')
+
+plt.legend()
+plt.grid(True)
+plt.xlim(min(t),max(t))
+
+plt.show()
+
+
+```
+Initial guess for 
+Reaction order is = `{python} f'{n:.2f}'`, and $k$ is `{python} f'{k:.3e}'`.
+
+Optimized value of 
+Reaction order is = `{python} f'{n_opt:.2f}'`, and $k$ is `{python} f'{k_opt/C_B0:.3e}'`.
 
 :::
-
-
-4. Derive **equation for conversion in a liquid phase PFR** for second order
-   reaction $\ce{2A -> products}; -r_A = kC_A^2$ in terms of Damköhler number
-   $Da_2 = \tau k C_{A0}$ 
-
-:::{.callout-tip collapse="true"}
-## Solution
-
-1. Mole balance
-
-   $$
-   F_{A0} \frac{dX_A}{dV} = -r_A 
-   $$
-
-2. Rate law
-
-   $$
-   -r_A = kC_A^2
-   $$
-
-
-3. Stoichiometry
-
-   $$
-   C_A = C_{A0}(1-X_A)
-   $$
-
-4. Combine
-
-   $$
-   F_{A0} \frac{dX_A}{dV} = k C_{A0}^2 (1 - X_A)^2 
-   $$
-
-5. Evaluate
-
-   $$
-   V = \frac{\upsilon_0}{k C_{A0}} \int_0^X \frac{dX_A}{(1 - X_A)^2} 
-   $$
-
-   $$
-   V = \frac{\upsilon_0}{k C_{A0}}\frac{X}{1-X}
-   $$
-
-   $$
-   Da_2 = \tau k C_{A0} = \frac{X}{1-X} 
-   $$
-
-   $$
-   X = \frac{Da_2}{1+ Da_2} 
-   $$
-
-:::
-
 

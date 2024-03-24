@@ -613,11 +613,12 @@ final_solution = solve_ivp(
   dense_output=True    # Generate a continuous solution
 )
 
-P_model = final_solution.sol(t)[0] 
+t_plot = np.linspace(t.min(), t.max(),100) 
+P_model = final_solution.sol(t_plot)[0] 
 
 # plot the data
 plt.plot(t, P, 'o', label='Experiment')
-plt.plot(t, P_model, '-', label='model')
+plt.plot(t_plot, P_model, '-', label='model')
 plt.xlabel('$t (s)$')
 plt.ylabel('P (mmHg)')
 
