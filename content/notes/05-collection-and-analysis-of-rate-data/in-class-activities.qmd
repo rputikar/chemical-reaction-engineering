@@ -16,7 +16,7 @@ plt.style.use('../../../assets/templates/publish.mplstyle')
 The liquid-phase reaction of triphenyl methyl chloride (trityl) (A) and
 methanol (B)
 
-$^\alpha$
+$$
 \ce{(C6H5)3CCl + CH3OH -> (C6H5)3COCH3 + HCl}
 $$
 
@@ -426,3 +426,325 @@ Reaction order is = `{python} f'{order:.2f}'`, and $k$ is `{python} f'{k:.3e}'`.
 
 :::
 
+## Using a Differential Reactor to Obtain Catalytic Rate Data
+
+The formation of methane from carbon monoxide and hydrogen using a nickel
+catalyst was studied by Pursley. The reaction 
+
+$$
+\ce{3H2 + CO ->[Ni] CH4 + H2O}
+$$
+
+was carried out at 5008F in a differential reactor where the effluent concentration of
+methane was measured. The raw data is shown in @tbl-diff-reactor
+
+| Run | $P_{CO}$ (atm) | $P_{H_2}$ (atm) | $C_{CH_4}$ $(mol/dm^3) \times 10^{4}$ |
+|-|-|-|-|
+| 1   | 1                 | 1.0                | 1.73 |
+| 2   | 1.8               | 1.0                | 4.40 |
+| 3   | 4.08              | 1.0                | 10.0 |
+| 4   | 1.0               | 0.1                | 1.65 |
+| 5   | 1.0               | 0.5                | 2.47 |
+| 6   | 1.0               | 4.0                | 1.75 |
+
+: Raw data {#tbl-diff-reactor}
+
+The exit volumetric flow rate from a differential packed bed containing 10 g of
+catalyst was maintained at 300 $dm^3/min$ for each run. The partial pressures
+of $\ce{H2}$ and $\ce{CO}$ were determined at the entrance to the reactor, and
+the methane concentration was measured at the reactor exit. Determine the rate
+law and rate law parameters.
+
+::: {.callout-tip collapse="false"}
+## Solution
+
+- Reaction temperature: 500°F (isothermal reaction)
+- Weight of catalyst : ΔW = 10 g
+- Exit volumetric flow rate v = 300 $dm^3/min$
+
+The reaction-rate law is assumed to be the product of a function of the partial
+pressure of $\ce{CO}$ and a function of the partial pressure of $\ce{H2}$,
+
+$$
+r'_{CH_4} = f(CO) \times g(H_2)
+$$
+
+For the first 3 experiments, $P_{H_2}$ is constant. We use this data to
+determine the dependence on $P_{CO}$. 
+
+For the experiments 1, 4, 5, 6, $P_{CO}$ is constant. We use this data to
+determine the dependence on $P_{H_2}$
+
+The rate in a differential reactor is given by 
+
+$$
+-r'_A = \frac{F_p}{\Delta W}
+$$
+
+$$
+-r'_{CO} = r'_{CH_4} = \frac{F_{CH_4}}{\Delta W}
+$$
+
+For constant $H_2$ partial pressure,
+
+$$
+r'_{CH_4} = k' P_{CO}^\alpha
+$$
+
+Taking log
+$$
+\ln (r'_{CH_4}) = \ln k' + \alpha \ln P_{CO}
+$$
+
+For constant $CO$ partial pressure,
+
+$$
+r'_{CH_4} = g(H_2)
+$$
+
+From the data: 
+
+At low $H_2$ partial pressures, where $r'_{CH_4}$ increases as $P_{H_2}$
+increases, the rate law may be of the form 
+
+$$
+r'_{CH_4} \propto P_{H_2}^{\beta_1}
+$${#eq-r1}
+
+At high $H_2$ partial pressures,where $r'_{CH_4}$ decreases as $P_{H_2}$
+increases, the rate law may be of the form 
+
+$$
+r'_{CH_4} \propto \frac{1}{P_{H_2}^{\beta_2}}
+$${#eq-r2}
+
+Combining @eq-r1, and @eq-r2 we can write
+
+$$
+r'_{CH_4} \propto \frac{P_{H_2}^{\beta_1}}{1 + b P_{H_2}^{\beta_2}}
+$${#eq-r3}
+
+And the overall rate equation becomes: 
+
+$$
+r'_{CH_4} = \frac{a P_{CO}^\alpha P_{H_2}^{\beta_1}}{1 + b P_{H_2}^{\beta_2}}
+$${#eq-r3}
+
+We can use regression to calculate estimate $\beta_1$, $\beta_2$, and constants a, and b. 
+
+```{python}
+#| echo: true
+import numpy as np
+from numpy.lib import recfunctions as rfn
+from scipy.stats import linregress
+import matplotlib.pyplot as plt
+
+Temperature = 500  # deg. F
+DeltaW = 10 # g
+V_0 = 300   # dm^3/min
+
+dtype = [('Run', int), ('P_CO', float), ('P_H2', float), ('C_CH4', float)]
+data = np.array([
+    (1, 1.0, 1.0, 1.73e-4),
+    (2, 1.8, 1.0, 4.40e-4),
+    (3, 4.08, 1.0, 10.0e-4),
+    (4, 1.0, 0.1, 1.65e-4),
+    (5, 1.0, 0.5, 2.47e-4),
+    (6, 1.0, 4.0, 1.75e-4)
+], dtype=dtype)
+
+pco = data["P_CO"]
+ph2 = data["P_H2"]
+cch4 = data["C_CH4"]
+
+rate = V_0 * cch4 / DeltaW 
+
+data = rfn.append_fields(data, 'Rate', rate, usemask=False)
+
+# Use first three points to estimate alpha
+
+pco_a = pco[:3]
+rate_a = rate[:3]
+
+ln_pco_a = np.log(pco_a)
+ln_rate_a= np.log(rate_a)
+
+# fit line
+res = linregress(ln_pco_a, ln_rate_a)
+line = res.slope * ln_pco_a + res.intercept
+
+alpha = res.slope
+
+plt.loglog(pco_a, rate_a, 'bo', label='Experimental Rate')  # Original data on log-log scale
+plt.loglog(pco_a, np.exp(line), 'r-', label='Fitted Line')  # Convert the log of the fitted line back with exp
+
+plt.xlabel('$P_{CO}$')
+plt.ylabel('$r\'_{CH_4}$')
+plt.title('Log-Log Plot of Rate vs $P_{CO}$')
+plt.legend()
+plt.grid(True)
+plt.xlim(0.1, 10)
+
+plt.annotate(f'Order = {alpha:.2f}', xy=(0.05, 0.8), xycoords='axes fraction', fontsize=12)
+
+plt.show()
+
+```
+Reaction order with respect to $CO$ is $\alpha =$ `{python} f'{alpha:.2f}'`.
+
+Had we included more points, we would have found that the reaction is essentially
+first order.
+
+We now use data from all the runs to estimate other parameters of the rate expression
+
+$$
+r'_{CH_4} = \frac{a P_{CO} P_{H_2}^{\beta_1}}{1 + b P_{H_2}^{\beta_2}}
+$${#eq-r3}
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import least_squares
+
+# Objective function to minimize: the difference between rate (experimental) and rate (calculated)
+def objective(params, *args):
+
+   a, b, beta_1, beta_2  = params
+   pco, ph2,rate_obs = args
+
+   # calculate rate
+   rate_c = (a * pco * ph2**beta_1)/ (1 + b * ph2**beta_2)
+   return rate_obs - rate_c
+
+# Initial guesses
+a = 1 
+b = 1
+beta_1 = 1 
+beta_2 = 1
+
+guess = np.array([a,b,beta_1,beta_2])
+bounds = (
+   [1e-3, 1e-3, 0, 0],  # lower bound
+   [1e3, 1e3, 3, 3]     # upper bound
+)
+args = (pco, ph2, rate)
+
+# Minimize the objective function
+result = least_squares(objective, guess, args=args, bounds=bounds)
+
+# Extract the results
+# Results from Fogler 5e
+# a_opt = 0.0252715
+# b_opt = 2.4872569
+# beta_1_opt = 0.616542
+# beta_2_opt = 1.0262047
+
+a_opt, b_opt, beta_1_opt, beta_2_opt = result.x
+rate_c = (a_opt * pco * ph2**beta_1_opt)/ (1 + b_opt * ph2**beta_2_opt)
+
+# plot the data
+plt.plot(data["Run"], rate, 'o', label='Experimental rate')
+plt.plot(data["Run"], rate_c, 'x', label='Fitted rate')
+
+plt.annotate(
+    f'a= {a_opt:.4f}\n'\
+    f'b = {b_opt:.4f}\n'\
+    f'$\\beta_1$ = {beta_1_opt:.2f}\n'\
+    f'$\\beta_2$ = {beta_2_opt:.2f}',
+    xy=(0.7, 0.5), 
+    xycoords='axes fraction',
+    fontsize=12
+)
+
+plt.xlabel('Run')
+plt.ylabel('Rate')
+
+plt.legend()
+
+plt.show()
+
+```
+The final constants are: 
+
+a = `{python} f'{a_opt:.4f}'`
+
+b = `{python} f'{b_opt:.4f}'`
+
+$\beta_1$ = `{python} f'{beta_1_opt:.2f}'`
+
+$\beta_2$ = `{python} f'{beta_2_opt:.2f}'`
+
+If we assume hydrogen undergoes dissociative adsorption on the catalyst
+surface, we would expect a dependence on the partial pressure of hydrogen to be
+to the $1/2$ power. Because 0.61 is close to 0.5, we are going to regress the data
+again, setting $\beta_1 = 1/2$ and $\beta_2$ = 1.0. 
+
+```{python}
+#| echo: true
+#| warning: false
+
+# Objective function to minimize: the difference between rate (experimental) and rate (calculated)
+def objective2(params, *args):
+
+   a, b = params
+   pco, ph2,rate_obs = args
+
+   # calculate rate
+   rate_c = (a * pco * ph2**0.5)/ (1 + b * ph2)
+   return rate_obs - rate_c
+
+# Initial guesses
+a = 1 
+b = 1
+
+guess = np.array([a,b])
+bounds = (
+   [1e-3, 1e-3],  # lower bound
+   [1e3, 1e3]     # upper bound
+)
+args = (pco, ph2, rate)
+
+# Minimize the objective function
+result = least_squares(objective2, guess, args=args, bounds=bounds)
+
+# Extract the results
+# Results from Fogler 5e
+# a_opt = 0.018
+# b_opt = 1.49
+
+a_opt, b_opt = result.x
+rate_c = (a_opt * pco * ph2**0.5)/ (1 + b_opt * ph2)
+
+lin_e = pco*ph2**0.5/rate
+lin_c = pco*ph2**0.5/rate_c
+
+# plot the data
+plt.plot(ph2, lin_e, 'o', label='Experimental rate')
+plt.plot(ph2, lin_c, '-', label='Fitted rate')
+
+plt.annotate(
+    f'a= {a_opt:.4f}\n'\
+    f'b = {b_opt:.4f}',
+    xy=(0.7, 0.5), 
+    xycoords='axes fraction',
+    fontsize=12
+)
+
+plt.xlabel('$P_{H_2}$ (atm)')
+plt.ylabel('$\\frac{P_{CO} P_{H_2}^0.5}{r\'_{CH_4}}$')
+
+plt.legend()
+
+plt.show()
+
+```
+The final constants are: 
+
+a = `{python} f'{a_opt:.4f}'`
+
+b = `{python} f'{b_opt:.4f}'`
+
+:::
