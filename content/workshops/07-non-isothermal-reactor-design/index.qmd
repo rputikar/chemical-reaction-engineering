@@ -1,0 +1,14 @@
+---
+title: 
+  "Workshop 07: Non-isothermal reactor design"
+date: 2024/03/24
+format: html
+---
+
+::: {.callout-tip}
+## Solutions
+
+Solutions to these problems are uploaded at [Workshop 7 solutions](./solutions.qmd)
+
+:::
+

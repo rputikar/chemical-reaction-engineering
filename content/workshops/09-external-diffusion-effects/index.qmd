@@ -1,0 +1,14 @@
+---
+title: 
+  "Workshop 09: External diffusion effects"
+date: 2024/03/24
+format: html
+---
+
+::: {.callout-tip}
+## Solutions
+
+Solutions to these problems are uploaded at [Workshop 9 solutions](./solutions.qmd)
+
+:::
+

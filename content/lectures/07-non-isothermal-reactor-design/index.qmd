@@ -1,0 +1,91 @@
+---
+title: 
+  Non-isothermal reactor design
+date: 2024-03-25
+format: html
+---
+
+## Pre Class Activities
+
+- Revisit the lectures so far. 
+
+- Read Chapter 8 from @fogler2016.
+
+- Go through the slides below. 
+
+
+<!--
+:::{.grid}
+::: {.g-col-5}
+
+[pre-class activities](../../notes/07-non-isothermal-reactor-design/pre-class-activities.qmd){.btn .btn-success .btn-lg role="button"}
+
+:::
+:::
+-->
+
+## Slides
+
+The slides for this lecture are provided as interactive document online. Click
+on the button below to view them in fullscreen (The link will open in a new tab
+or window). You can also view them as pdf for printing, or later viewing.  
+
+:::{.grid}
+::: {.g-col-1}
+[Slides](../../slides/07-non-isothermal-reactor-design/index.qmd){target="_blank" .btn .btn-success .btn-lg role="button"}
+
+:::
+
+::: {.g-col-1}
+[PDF](../../slides/07-non-isothermal-reactor-design/07-non-isothermal-reactor-design.pdf){target="_blank" .btn .btn-info .btn-lg role="button"}
+
+:::
+:::
+
+The slides are also placed below for your reference. Use your keypad's
+{{< fa arrow-left >}} and {{< fa arrow-right >}} to navigate the slides.
+
+::: {.container style="position: relative;overflow: hidden;width:
+100%;min-height:600px;"}
+<iframe src="../../slides/07-non-isothermal-reactor-design/"
+style="position=absolute;top: 0;left: 0;bottom: 0;right: 0;width:
+100%;min-height:600px;"></iframe>
+:::
+
+<!--
+## Videos
+
+::: {.panel-tabset}
+## Overview of chemical reaction engineering
+{{< video https://www.youtube.com/embed/e3H5DPYlOF8 >}}
+
+:::
+
+
+## Lecture notes
+
+Detailed lecture notes are available for this lecture. 
+You can browse them by
+clicking on the link below. 
+
+:::{.grid}
+::: {.g-col-5}
+[Lecture Notes - Chapter 8](../../notes/07-non-isothermal-reactor-design/Ranjeet_Notes_Fogler_Chapter 08 - Multiple Reactions.pdf){.btn .btn-success .btn-lg role="button"}
+
+:::
+:::
+-->
+
+## In-Class Resources
+
+The in-class activities/ tasks for this lecture are at:
+
+:::{.grid}
+::: {.g-col-5}
+
+[in-class activities](../../notes/07-non-isothermal-reactor-design/in-class-activities.qmd){.btn .btn-success .btn-lg role="button"}
+
+:::
+:::
+
+

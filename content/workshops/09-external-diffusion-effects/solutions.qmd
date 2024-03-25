@@ -1,0 +1,7 @@
+---
+title: 
+  "Workshop 09: External diffusion effects"
+date: 2024/03/24
+format: html
+---
+

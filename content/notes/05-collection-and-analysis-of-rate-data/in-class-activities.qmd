@@ -33,7 +33,7 @@ order in methanol. The concentration of triphenyl methyl chloride (A) was
 measured as a function of time and is shown below (@tbl-example1)
 
 
-| \( t \) (min) | \( C_A \) (mol/dm^3) |
+| $t$ (min) | $C_A$ $(mol/dm^3)$ |
 | --- | --- |
 | 0 | 0.05 |
 | 50 | 0.038 |
@@ -455,7 +455,7 @@ of $\ce{H2}$ and $\ce{CO}$ were determined at the entrance to the reactor, and
 the methane concentration was measured at the reactor exit. Determine the rate
 law and rate law parameters.
 
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 - Reaction temperature: 500°F (isothermal reaction)

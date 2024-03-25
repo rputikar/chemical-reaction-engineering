@@ -1,0 +1,14 @@
+---
+title: 
+  "Workshop 08: Reaction mechanisms and catalysis"
+date: 2024/03/24
+format: html
+---
+
+::: {.callout-tip}
+## Solutions
+
+Solutions to these problems are uploaded at [Workshop 8 solutions](./solutions.qmd)
+
+:::
+
