@@ -180,7 +180,7 @@ Use algorithm rather than memorizing equations
 
    :::{.smaller}
    $$
-   F_{A0} - F_A = \int^V r_A dV = \frac{dN_A}{dt}
+   F_{A0} - F_A + \int^V r_A dV = \frac{dN_A}{dt}
    $$
    :::
 

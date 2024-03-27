@@ -155,6 +155,11 @@ h1.title {
   color: $magenta;
 }
 
+.reveal .box {
+  border: 2px solid $magenta;
+  padding: 10px;
+  display: inline-block;
+}
 
 .reveal .smaller {
   font-size: 70%;

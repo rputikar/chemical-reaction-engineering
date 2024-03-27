@@ -15,3 +15,391 @@ from IPython.display import display, Markdown
 plt.style.use('../../../assets/templates/present.mpstyle')
 ```
 
+## Introduction
+
+* Usually, more than one reaction occurs within a chemical reactor
+* Minimization of undesired side reactions that occur with the desired reaction
+  contributes to the economic success of a chemical plant
+* [Goal]{.magenta}: determine the reactor conditions and configuration that
+  maximizes product formation
+* Reactor design for multiple reactions
+  - Parallel reactions
+  - Series reactions
+  - Independent reactions
+  - More complex reactions
+* Use of selectivity factor to select the proper reactor that minimizes
+  unwanted side reactions 
+
+:::{.callout-note appearance="simple"}
+
+With multiple reactions, either molar flow or number of moles must be used in
+setting up the balance equations (no conversion!)
+
+:::
+
+
+## Isothermal reactions in PBR: molar flow rates
+### Second order reaction $\ce{aA + bB -> cC + dD}$
+
+::::{.columns}
+:::{.column width=40%}
+
+![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
+
+:::
+
+:::{.column width=60%}
+
+:::{.incremental .smaller}
+
+1. Mole balance: Write balance for each species $i = 1 \ to \ N$
+
+   $$
+   \frac{dF_i}{dW} = r'_i
+   $$
+
+2. Rate law
+
+   $$
+   -r'_A = kC_A^\alpha C_B^\beta; \qquad
+   \frac{r'_A}{-a} =
+   \frac{r'_B}{-b} =
+   \frac{r'_C}{c} =
+   \frac{r'_D}{d}
+   $$
+
+3. Stoichiometry
+   $$
+   C_i = \frac{C_{A0} (\Theta_i + \nu_i X)}
+             {(1 + \epsilon X)}
+             \left( \frac{P}{P_0} \right) 
+             \left( \frac{T_0}{T} \right)
+   $$
+
+   Pressure: 
+   $\frac{dP}{dW} = -\frac{\alpha}{2p} \left( \frac{T}{T_0} \right) \frac{F_T}{F_{T0}}$
+
+   Total molar flow rate: $F_T = \sum_{i=1}^N F_i$
+
+4. Combine: 
+
+   Collate all equations from steps 1 to 3 to yield a system of equations
+
+5. Evaluate:
+   
+   Use ODE solver to solve the system of equations obtained in step 4.
+
+:::
+
+:::
+
+::::
+
+
+## Parallel reactions
+
+* Competing reactions
+* Reactant is consumed by two different pathways to form different products
+
+  $$ \ce{A ->[k_1] D} \\
+     \ce{A ->[k_2] U} $$
+
+* Examples
+
+  - Ethylene oxidation
+
+    $$
+    \begin{align*}
+    \ce{C2H4 + O2} & \ce{-> C2H4O} && \text{ethylene oxide} \\
+    \\
+    \ce{C2H4 + O2 } & \ce{-> 2 CO2 + 2 H2O} && \text{complete combustion}
+    \end{align*}
+    $$
+
+  - Fischer Tropsch synthesis
+
+    $$
+    \begin{align*}
+    \ce{CO + 3 H2  } & \ce{->[k_1] CH4 + H2O} \\
+    \\
+    \ce{CO + 2 H2  } & \ce{->[k_2] [C_nH_{2n}]_n + H2O}
+    \end{align*}
+    $$
+
+## Series reactions
+
+* Consecutive reactions
+* Reactions where reactant forms an intermediate product, which reacts further
+  to form another product. 
+
+  $$ 
+  \ce{A ->[k_1] D ->[k_2] U} \qquad
+  $$
+
+* Example
+  
+  - Ethylene oxide (EO) + Ammonia
+
+  $$
+  \begin{align*}
+     \ce{C2H4O + NH3} & \ce{-> (HOCH2CH2)NH2} && \text{(mono ethanolamine)}\\
+     \\
+     \ce{(HOCH2CH2)NH2 + C2H4O} & \ce{->} \underset{\text{desired product}}{\ce{(HOCH2CH2)2NH}} && \text{(di ethanolamine)} \\
+     \\
+     \ce{(HOCH2CH2)2NH + C2H4O} & \ce{-> (HOCH2CH2)3N} && \text{(tri ethanolamine)}
+  \end{align*}
+  $$
+
+## Independent reactions
+
+* Reactions that occur at the same time
+* Neither the products nor the reactants react with themselves or one another
+
+  $$ \ce{A ->[k_1] D} \\
+     \ce{C ->[k_2] U} 
+  $$
+
+
+* Example: Cracking of crude oil
+
+  Hundreds of reactions
+
+  $$
+  \begin{align*}
+     \ce{C15H32} & \ce{-> C12H26 + C3H6 }\\
+     \\
+     \ce{C8H18} & \ce{-> C6H14 + C2H2 }
+  \end{align*}
+  $$
+
+## Complex reactions
+
+* Multiple reactions involving a combination of series, parallel, and/or independent reactions
+
+  $$ \ce{A + B ->[k_1] C + D} \\
+     \ce{A + C ->[k_2] E} \\ 
+     \ce{E ->[k_3] G} 
+  $$
+
+* Example: Formation of butadiene from ethanol
+
+  $$
+  \begin{align*}
+     \ce{C2H5OH} & \ce{-> C2H4 + H2O }\\
+     \\
+     \ce{C2H5OH} & \ce{-> CH3CHO + H2 }\\
+     \\
+     \ce{C2H4 + CH3CHO} & \ce{-> C4H6 + H2O }
+  \end{align*}
+  $$
+
+
+## Desired and undesired reactions
+
+::::{.columns}
+:::{.column width=60%}
+
+
+* Parallel reactions 
+  $$
+  \begin{align*}
+    \ce{A} & \ce{-> D } && \leftarrow \text{desired product}\\
+    \\
+    \ce{A} & \ce{-> u } && \leftarrow \text{undesired byproduct}\\
+  \end{align*}
+  $$
+
+* Series reactions
+  $$
+  \ce{A ->} \underset{\text{desired product}}{\ce{B}} \ce{-> U}
+  $$
+
+* Minimize formation of U and maximize formation of D
+
+:::
+
+:::{.column width=40%}
+
+![](../../../assets/images/reactor-separator.png){width=90%}
+
+:::
+
+::::
+
+:::{.callout-note appearance="simple"}
+
+Greater the ammount of U $\leftarrow$ lower production of desired product,
+higher cost of separation $\leftarrow$ lower profits
+
+:::
+
+## Instantaneous selectivity ($S$)
+
+
+* Instantaneous selectivity of D with respect to U is the ratio of the rate of
+formation of D to the rate of formation of U
+ 
+:::{style="margin-bottom: 40px;"}
+:::
+
+:::{.box .center}
+$$
+S_{D/U} = \frac{r_D}{r_U} = \frac{ \text{rate of formation of D}}{ \text{rate
+of formation of U}}
+$$
+:::
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+* Instantaneous selectivitis give insights in choosing reactors, operating
+  conditions, and reaction schemes that will maximize profit.
+
+
+## Overall selectivity ($\bar{S}$)
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+:::{.box .center}
+  $$
+  \bar{S}_{D/U} = \frac{F_D}{F_U} = \frac{ \text{Exit molar flow rate of D}}{
+  \text{Exit molar flow rate of U}} 
+  $$
+:::
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+* For CSTR: 
+  
+  $F_D = r_D V$
+
+  $F_U = r_U V$
+
+  $\therefore F_D/F_U = r_D/r_U = S_{D/U} = \bar{S}_{D/U}$
+
+* For batch reactor: 
+
+  $\bar{S}_{D/U} = N_D/N_U$
+
+  $N_D, N_U$: Number of moles of D and U at the end of the reaction.
+
+
+## Yield (Y)
+
+### Instantaneous yield ($Y_D$)
+
+  Ratio of the reaction rate of a given product to the reaction rate of key
+  reactant A
+
+:::{.box .center}
+  $$
+  Y_D = \frac{r_D}{-r_A} = \frac{ \text{Rate of formation of D}}{
+  \text{Rate of consumption of A}} 
+  $$
+:::
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+### Overall yield ($\bar{Y}_D$)
+
+  Ratio of moles of product formed at the end of the reaction to the number of
+  moles of the key reactant A, that have been consumed. 
+
+:::{.box .center}
+  $$
+  \bar{Y}_{D} = \underset{\text{For CSTR}}{\frac{F_D}{F_{A0} - F_A}} 
+              = \underset{\text{For batch reactor}}{\frac{N_D}{N_{A0} - N_A}} 
+  $$
+:::
+
+* Overall selectivities ($\bar{S}$) and yields ($\bar{Y}$) are important in determining profits
+
+
+## Conversion ($X$)
+
+* Gives insight into problem
+
+* Often conflicts with selelctivity
+
+  - Ideal world $\Rightarrow$ make as much D as possible simultaneously minimize U
+
+  - Practical experiece $\Rightarrow$ Greater the conversion, more the undesired product
+
+* [Not used in solving multiple reaction problems, but calculated later for analysis]{.highlight}
+
+* For species A
+  $$
+  X_A = \underset{\text{Flow system}}{\frac{F_{A0} - F_A}{F_{A0}}} \qquad
+  X_A = \underset{\text{Batch system}}{\frac{N_{A0} - N_A}{N_{A0}}}
+  $$
+
+* For species B
+  $$
+  X_B = \underset{\text{Flow system}}{\frac{F_{B0} - F_B}{F_{B0}}} \qquad
+  X_B = \underset{\text{Batch system}}{\frac{N_{B0} - N_B}{N_{B0}}}
+  $$
+
+:::{.callout-note appearance="simple"}
+Derive expression for conversion for a semibatch system where B is fed to A
+:::
+
+## Algorithm for multiple reactions
+
+::::{.columns}
+:::{.column width=40%}
+
+![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
+
+:::
+
+:::{.column width=60%}
+
+:::{.incremental .smaller}
+
+1. Number each and every reaction separately. 
+
+2. Mole balance on each and every species.
+
+   $$
+   F_{j0} - F_j + \int^V r_j dV = \frac{dN_j}{dt}
+   $$
+ 
+3. For every reaction write rate law. Calculate the net rate of reaction and
+   relative rates
+
+   For component $j$: $r_j = \sum_{i=1}^N r_{i,j}$
+
+4. Stoichiometry
+
+5. Combine: 
+
+   Collate all equations from steps 2 to 4 to yield a system of equations
+
+5. Evaluate:
+   
+   Use ODE solver to solve the system of equations obtained in step 4.
+
+* Can be applied to parallel, series, independent, and complex reactions.
+
+* For liquid systems concentration is usually preferred variable for mole
+balance. 
+
+:::
+
+:::
+
+::::
+
+
+## Parallel reactions: Selectivity
+
+
+
+## Reactions in series
+
+  
