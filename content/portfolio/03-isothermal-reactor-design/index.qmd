@@ -37,7 +37,8 @@ plt.style.use('../../../assets/templates/publish.mplstyle')
     understood and practiced the relevant content, it should take you around 2
     to 3 hours at the most.
 7.  You are required to upload the portolio answers on to blackboard: 
-    - Save your report as a **pdf** file. 
+    - Save your report as a **pdf** file (_Miri students should save it as a
+      word file_). 
     - Rename the file as STUDENTID_Portfolio_x.pdf (Where STUDENTID is your
       student ID, and x is the portfolio number) and 
     - Upload it using assessment submission link on blackboard. 
@@ -116,9 +117,9 @@ kJ/mol.
 
 1. Isobaric reactor \hfill (10 marks)
 
-   Using the mole balances developed in portfolio 02, determine The weight of
+   Using the mole balances developed in portfolio 02, determine the weight of
    catalyst required to achieve 60% conversion in a PBR. Show your working by
-   following the reaction engineering algorithm. 
+   following the reaction engineering algorithm. State your assumptions if any.
 
 2. Effect of pressure drop \hfill (20 marks)
 
@@ -126,7 +127,7 @@ kJ/mol.
    pressure drop. The properties of the reacting fluid are to be considered
    identical to those of air at this temperature and pressure. The density of the
    6.35 mm catalyst particles is 1925 $kg/m^3$, the bed void fraction is 0.45,
-   jand the gas density is 16 $kg/m^3$. For these catalyst properties, the pressure
+   and the gas density is 16 $kg/m^3$. For these catalyst properties, the pressure
    drop parameter $\alpha$ is 0.0367 $1/kg$ 
 
    a. How will the equations change when you consider pressure drop?

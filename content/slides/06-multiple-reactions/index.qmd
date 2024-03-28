@@ -228,7 +228,7 @@ setting up the balance equations (no conversion!)
 
 :::{.callout-note appearance="simple"}
 
-Greater the ammount of U $\leftarrow$ lower production of desired product,
+Greater the amount of U $\leftarrow$ lower production of desired product,
 higher cost of separation $\leftarrow$ lower profits
 
 :::
@@ -252,9 +252,11 @@ $$
 :::{style="margin-bottom: 40px;"}
 :::
 
-* Instantaneous selectivitis give insights in choosing reactors, operating
+* Gives insights in choosing reactors, operating
   conditions, and reaction schemes that will maximize profit.
-
+* Used to guide initial selection of reactor system.
+* Final selection is made after calculating the overall selelctivity for the
+  reactor and operating conditions chosen. 
 
 ## Overall selectivity ($\bar{S}$)
 
@@ -395,11 +397,366 @@ balance.
 
 ::::
 
+## Reactor configurations
+
+::::{.columns .center}
+
+:::{.column width=25%}
+![Batch reactor](../../../assets/images/reactor-configuration-batch.png){.img-height-300}
+:::
+
+:::{.column width=25%}
+![CSTR](../../../assets/images/reactor-configuration-CSTR.png){.img-height-300}
+:::
+
+:::{.column width=25%}
+![PFR/ PBR](../../../assets/images/reactor-configuration-pfr-pbr.png){.img-height-300}
+:::
+
+:::{.column width=25%}
+![CSTR with recycle](../../../assets/images/reactor-configuration-CSTR-with-recycle.png){.img-height-300}
+:::
+
+::::
+
+::::{.columns .center}
+:::{.column width=33%}
+![PFR with recycle](../../../assets/images/reactor-configuration-pfr-with-recycle.png){.img-height-300}
+:::
+
+:::{.column width=33%}
+![CSTRs in series](../../../assets/images/reactor-configuration-CSTR-in-series.png){.img-height-300}
+:::
+
+:::{.column width=34%}
+![PFR with side stream](../../../assets/images/reactor-configuration-pfr-with-side-stream.png){.img-height-300}
+:::
+
+::::
+
 
 ## Parallel reactions: Selectivity
 
+* Consider two competing reactions
+
+  $$ 
+  \begin{align*}  
+  \ce{A -> D}  & \text{(desired)} \qquad  && r_D = k_D C_A^{\alpha_1}\\
+  \\
+  \ce{A -> U}  & \text{(undesired)} \qquad && r_U = k_U C_A^{\alpha_2}
+  \end{align*}
+  $$
+
+
+* Net rate of disappearance of A
+
+  $$ 
+  -r_A = r_D + r_U=  k_D C_A^{\alpha_1} + k_U C_A^{\alpha_2}
+  $$
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+:::{.box .center}
+$$
+S_{D/U} = \frac{r_D}{r_U} = \frac{k_D}{k_U} C_A^{\alpha_1 - \alpha_2}
+$$
+:::
+
+  $\alpha_1$, $\alpha_2$ are positive orders
+
+## Case 1: $\alpha_1 > \alpha_2$
+
+::::{.columns .center}
+
+:::{.column width=50%}
+
+* $\alpha_1 - \alpha_2  = a$
+
+* $S_{D/U} = \frac{k_D}{k_U} C_A^{a}$
+
+* To maximize selectivity we wan to carry out the reaction in a manner that
+  will keep $C_A$ as high as possible during the reaction. 
+
+* [Use PFR or batch reactor]{.highlight}
+
+* Gas phase: Use high pressure, run without inerts
+* Liquid phase: minimize diluent
+
+
+:::
+
+:::{.column width=50%}
+
+![Batch reactor](../../../assets/images/reactor-configuration-batch.png){.img-height-300}
+
+![PFR/ PBR](../../../assets/images/reactor-configuration-pfr-pbr.png){.img-height-300}
+
+:::
+
+::::
+
+
+## Case 2: $\alpha_1 < \alpha_2$
+
+::::{.columns .center}
+
+:::{.column width=50%}
+
+* $\alpha_2 - \alpha_1  = b$
+
+* $S_{D/U} = \frac{k_D}{k_U} \frac{1}{C_A^{b}}$
+
+* To maximize selectivity we wan to carry out the reaction in a manner that
+  will keep $C_A$ as low as possible during the reaction. 
+
+* [Use CSTR or dilute feed stream]{.highlight}
+
+* Recycle reactor
+  - Product stream can act as a diluent
+
+:::
+
+:::{.column width=50%}
+
+![CSTR](../../../assets/images/reactor-configuration-CSTR.png){.img-height-300}
+
+![CSTR with recycle](../../../assets/images/reactor-configuration-CSTR-with-recycle.png){.img-height-300}
+
+:::
+
+::::
+
+## Effect of temperature
+
+* Need information on activation energy
+
+* Sensitivity to temperature for fixed concentrations ($C_A^a$ is constant)
+
+:::{.box .center}
+$$
+S_{D/U} \approx \frac{k_D}{k_U} = \frac{A_D}{A_U} e^{-[(E_D - E_U)/RT]}
+$$
+:::
+
+* $E_D > E_U$
+  
+  - $k_D$ increases more rapidly than $k_U$ with increase in temperature
+  - Perform the reaction at highest possible temperature
+
+* $E_D < E_U$
+
+  - $k_U$ increases more rapidly than $k_D$ with increase in temperature
+  - Reaction should be carried out at lower temperature to maximize $S_{D/U}$
+
+  - The temperature should not be very low as it might affect reaction extent.
+    Reaction may not proceed at low temperature. 
+
+
+## Two simultaneous reactions and two reactants
+
+* Consider two competing parallel reactions
+
+  $$ 
+  \begin{align*}  
+  \ce{A + B -> D}  & \text{(desired)} \qquad  && r_D = k_D C_A^{\alpha_1} C_B^{\beta_1}\\
+  \\
+  \ce{A + B -> U}  & \text{(undesired)} \qquad && r_U = k_U C_A^{\alpha_2} C_B^{\beta_2}
+  \end{align*}
+  $$
+
+
+* Net rate of disappearance of A
+
+  $$ 
+  -r_A = r_D + r_U=  k_D C_A^{\alpha_1} C_B^{\beta_1} + k_U C_A^{\alpha_2} C_B^{\beta_2}
+  $$
+
+* Selectivity
+
+:::{.box .center}
+$$
+S_{D/U} = \frac{r_D}{r_U} = \frac{k_D}{k_U} C_A^{\alpha_1 - \alpha_2} C_B^{\beta_1 - \beta_2}
+$$
+:::
+
+* Selectivity depends on the orders $\alpha_1$, $\alpha_2$, $\beta_1$, $\beta_2$ 
+* Several reactor combinations exist
+
+
+## Two simultaneous reactions and two reactants
+
+$\alpha_1 - \alpha_2 = a; \beta_1 - \beta_2 = b$
+
+::::{.columns}
+
+:::{.column width=50%}
+
+### $\alpha_1 > \alpha_2$; $\beta_1 > \beta_2$ 
+
+[$S_{D/U} \propto C_A^{a} C_B^{b}$]{.box}
+
+* Use high $C_A, C_B$ 
+
+* [Configurations:]{.magenta}
+  - Tubular reactor
+  - Batch reactor
+  - High pressure (gas phase)
+  - Reduce inerts 
+
+:::
+
+:::{.column width=50%}
+
+### $\alpha_1 > \alpha_2$; $\beta_1 < \beta_2$ 
+
+[$S_{D/U} \propto \frac{C_A^{a}}{C_B^{b}}$]{.box}
+
+* Use high $C_A$, low $C_B$ 
+
+* [Configurations:]{.magenta}
+  - Semi batch reactor with B fed slowly into large amt of A
+  - Membrane / tubular reactor with side stream of B continually fed into the reactor
+  - Series of small CSTRs (A is fed only to the first reactor, B is fed to each reactor)
+
+:::
+
+::::
+
+## Two simultaneous reactions and two reactants
+
+$\alpha_1 - \alpha_2 = a; \beta_1 - \beta_2 = b$
+
+::::{.columns}
+
+:::{.column width=50%}
+
+### $\alpha_1 < \alpha_2$; $\beta_1 > \beta_2$ 
+
+[$S_{D/U} \propto C_B^{b} C_A^{a}$]{.box}
+
+* Use high $C_B$, low $C_A$ 
+
+* [Configurations:]{.magenta}
+  - Semi batch reactor with A fed slowly into large amt of B
+  - Membrane / tubular reactor with side stream of A continually fed into the reactor
+  - Series of small CSTRs (B is fed only to the first reactor, A is fed to each reactor)
+
+:::
+
+:::{.column width=50%}
+
+### $\alpha_1 < \alpha_2$; $\beta_1 < \beta_2$ 
+
+[$S_{D/U} \propto \frac{1}{C_A^{a} C_B^{b}}$]{.box}
+
+* Use low $C_A, C_B$ 
+
+* [Configurations:]{.magenta}
+  - CSTR
+  - Feed diluted streams with inerts
+  - Low pressure (gas phase)
+  - Tubular reactor with large recycle ratio
+    
+    :::{.smaller}
+    Can be used for highly exothermic reactions. The recycle stream is cooled
+    and returned to the reactor to dilute and cool inlet stream.  
+    Such configuration helps in avoiding hotspots and runaway reactions. 
+    :::
+
+:::
+
+::::
 
 
 ## Reactions in series
 
+::::{.columns}
+
+:::{.column width=50%}
+
+* The most important variable is time
+  - Batch time (real time)
+  - Space time (continuous reactor)
+
+* Consider: $\ce{A ->[k_1] B ->[k_2] C}$. 
   
+  B is the desired product
+
+* If $k_1 \ll k_2$: First reaction is slow
+  - Extremely difficult to produce significant amount of B. 
+
+* If $k_1 \gg k_2$: First reaction is fast
+  - Large yield of B can be achieved. 
+
+:::
+
+:::{.column width=50%}
+
+![](../../../assets/images/reactions-in-series-concentration-profile.png){width=90%}
+
+:::
+
+::::
+
+:::{.callout-note appearance="simple"}
+
+If reaction is allowed to proceed for a long time, desired product B will be converted to undesired product C. 
+
+Accuracy of prediction for time required to carry out the reaction is vital. 
+:::
+
+## Reactions in series
+
+::::{.columns}
+
+:::{.column width=50%}
+
+* Consider the reaction 
+
+  $\ce{A ->[k_1] B ->[k_2] C}$. 
+  
+  B is the desired product, C is waste product. 
+
+* We are interested in 
+  - Concentration vs. time profile
+  - Maximum concentration of B
+  - Quench time (time to stop when $C_B$ is maximum)
+  - Overall selectivity and yield. 
+
+* Number of reactions
+
+  The series reaction can be written as two reactions
+
+  $\ce{A -> B}; -r_{1A} = k_1 C_A$. 
+
+  $\ce{B -> C}; -r_{2B} = k_2 C_B$. 
+  
+:::
+
+:::{.column width=50%}
+
+* Mole balance $\frac{dN_i}{dt} = r_i V$
+
+* For constant volume batch reactor
+
+$$
+\frac{dC_A}{dt} = r_A = -k_1 C_A
+$${#eq-series-1}
+
+$$
+\frac{dC_B}{dt} = r_B = k_1 C_A - k_2 C_B
+$${#eq-series-2}
+
+$$
+\frac{dC_C}{dt} = r_C = k_2 C_C
+$${#eq-series-3}
+
+* Solve @eq-series-1, @eq-series-2, and @eq-series-3 simultaneously to
+  obtain concentration profile.
+
+:::
+
+::::
+
+

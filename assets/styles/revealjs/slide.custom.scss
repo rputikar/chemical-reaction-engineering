@@ -172,6 +172,11 @@ h1.title {
   width: 90%;
 }
 
+.reveal .img-height-300 {
+  height: 300px; /* Adjust this value as needed */
+  object-fit: contain; /* Keeps the aspect ratio */
+}
+
 .reveal table {
   font-size: 70%;
 }

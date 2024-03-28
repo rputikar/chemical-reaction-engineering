@@ -62,21 +62,25 @@ starting point for preparing such a note.
 
 ### Design of SMR reactor
 
-Consider all the major reactions occuring within the SMR process. Detailed
-kinetics of the reactions occuring is given by @hou2001cej. 
-Using appropriate assumptions, follow the reaction engineering algorithm to
-develop (mass and energy) balance equations for both the reforming section and
-furnace section[^1]. Use literature to obtain all the data required for
-completing your design. 
+Design the SMR reactor to be operated at constant temperature. Consider all the
+major reactions occuring within the SMR process. Detailed kinetics of the
+reactions occuring is given by @hou2001cej. Using appropriate assumptions,
+follow the reaction engineering algorithm to develop (mass and energy) balance
+equations for both the reforming section and furnace section[^1]. Use
+literature to obtain all the data required for completing your design. 
 
 [^1]: Essentially, you are designing two reactors. These two reactors have
 different reactions taking place within them. You may also choose to model
 these two reactors as two different types (e.g. the reformer as a PBR, and the
 furnace as a CSTR)
 
-Once your design is finalized, using the data you obtain from your simulations,
-explore possibilities for optimization and comment on safety, and control of
-the reactor. 
+Once your design is finalized, conduct a sensitivity study to assess the effect
+of various operating and design parameters (such as temperature, flow rate,
+etc.) on the hydrogen production.  You can use the reactor model to perform these studies.  
+
+Explore possibilities for optimization (such as adjusting the conversion so
+that optimal amount of fuel gas is available to heat the SMR reactor) and
+comment on safety, and control of the reactor. 
 
 The project is deliberately set to be open‐ended. You are expected to do some
 self‐directed study of material outside of what has been covered in the unit. 
