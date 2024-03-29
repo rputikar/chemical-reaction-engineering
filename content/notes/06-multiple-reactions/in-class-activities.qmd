@@ -6,8 +6,645 @@ format:
 ---
 
 ```{python}
+import numpy as np
+{{< include ../../../assets/partials/_mplinclude.py >}}
+```
+## Reactor selection and operating conditions
+
+For each of the following sets of reactions, describe your reactor system and conditions to maximize the selectivity to D.
+Make sketches where necessary to support your choices.
+The rates are in ($mol/dm^3 \cdot s$), and concentrations are in ($mol/dm^3$).
+
+(a) (1) $\ce{ A + B -> D } \qquad -r_{1A} = 10 \exp(-8000 K/T) C_A C_B$
+
+    (2) $\ce{ A + B -> U } \qquad -r_{2A} = 100 \exp(-1000 K/T) C_A^{1/2} C_B^{3/2}$
+
+(b) (1) $\ce{ A + B -> D } \qquad -r_{1A} = 100 \exp(-1000 K/T) C_A C_B$
+
+    (2) $\ce{ A + B -> U } \qquad -r_{2A} = 10^6 \exp(-8000 K/T) C_A C_B$
+
+(c) (1) $\ce{ A + B -> D } \qquad -r_{1A} = 10 \exp(-1000 K/T) C_A C_B$
+
+    (2) $\ce{ B + D -> U } \qquad -r_{2B} = 10^9 \exp(-10000 K/T) C_B C_D$
+
+(d) (1) $\ce{ A -> D } \qquad -r_{1A} = 4280 \exp(-12000 K/T) C_A$
+
+    (2) $\ce{ D -> U1 } \qquad -r_{2D} = 10100 \exp(-15000 K/T) C_D$
+
+    (3) $\ce{ A -> U2 } \qquad -r_{3A} = 26 \exp(-18800 K/T) C_A$
+
+(e) (1) $\ce{ A + B -> D } \qquad -r_{1A} = 10^9 \exp(-10000 K/T) C_A C_B$
+
+    (2) $\ce{ D -> A + B } \qquad -r_{2D} = 20 \exp(-2000 K/T) C_D$
+
+    (3) $\ce{ A + B -> U } \qquad -r_{3A} = 10^3 \exp(-3000 K/T) C_A C_B$
+
+(f) (1) $\ce{ A + B -> D } \qquad -r_{1A} = 800 \exp(-8000 K/T) C_A^{0.5} C_B$
+
+    (2) $\ce{ A + B -> U1 } \qquad -r_{2B} = 10 \exp(-300 K/T) C_A C_B$
+
+    (3) $\ce{ D + B -> U2 } \qquad -r_{3D} = 10^6 \exp(-8000 K/T) C_D C_B$
+
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+(a) (1) $\ce{ A + B -> D } \qquad -r_{1A} = 10 \exp(-8000 K/T) C_A C_B$
+
+    (2) $\ce{ A + B -> U } \qquad -r_{2A} = 100 \exp(-1000 K/T) C_A^{1/2} C_B^{3/2}$
+
+
+**(a) $\ce{ A + B -> D }$; $\ce{ A + B -> U }$**
+
+$$
+r_D = -r_{1A} = 10 \exp(-8000 K/T) C_A C_B
+$$
+
+$$
+r_U = -r_{2A} = 100 \exp(-1000 K/T) C_A^{1/2} C_B^{3/2}
+$$
+
+$$
+  S_{D/U} = \frac{r_D}{r_U} 
+  = \frac{
+      10 \exp(-8000 K/T) C_A C_B
+    }{
+      100 \exp(-1000 K/T) C_A^{1/2} C_B^{3/2}
+    } 
+$$
+
+$$
+  S_{D/U} = \frac{r_D}{r_U} 
+  = \frac{
+      \exp(-8000 K/T) C_A^{1/2}
+    }{
+      10 \exp(-1000 K/T) C_B^{1/2}
+    } 
+$$
+
+To maximize $S_{D/U}$ operate at:
+
+* High concentration of A
+* Low concentration of B
+
+* Reactors: 
+  - Semibatch: B is fed slowly into large amt of A
+  - Tubular: Sidestream of B
+  - Series of small CSTRs: A is fed to the first reactor, B is fed into all
+    reactors
+
+```{python}
+  
+er_1 = 8000
+er_2 = 1000
+k0_1 = 10
+k0_2 = 100
+
+k1_300 = k0_1 * np.exp(- er_1/300)
+k2_300 = k0_2 * np.exp(- er_2/300)
+
+k1_1000 = k0_1 * np.exp(- er_1/1000)
+k2_1000 = k0_2 * np.exp(- er_2/1000)
+```
+At 300 K: 
+$k_1$ = `{python} f'{k1_300:.3e}'`; 
+$k_2$ = `{python} f'{k2_300:.3e}'`;
+$k_1/k_2$ = `{python} f'{k1_300/k2_300:.3e}'`
+
+
+At 1000 K: 
+$k_1$ = `{python} f'{k1_1000:.3e}'`; 
+$k_2$ = `{python} f'{k2_1000:.3e}'`
+$k_1/k_2$ = `{python} f'{k1_1000/k2_1000:.3e}'`
+
+* $E_D > E_U$: specific rate for D increases much more rapidly than U with temperature
+
+* $S_{D/U}$ is very low ($E_D > E_U$): Operate at highest possible T
+
+* Need to keep $(C_A/C_B)^{1/2} > 10^{6}$: Drop by drop addition of B
+
+
+(b) (1) $\ce{ A + B -> D } \qquad -r_{1A} = 100 \exp(-1000 K/T) C_A C_B$
+
+    (2) $\ce{ A + B -> U } \qquad -r_{2A} = 10^6 \exp(-8000 K/T) C_A C_B$
+
+
+**(b) $\ce{ A + B -> D }$; $\ce{ A + B -> U }$**
+
+$$
+-r_{1A} = 100 \exp(-1000 K/T) C_A C_B
+$$
+
+$$
+-r_{2A} = 10^6 \exp(-8000 K/T) C_A C_B
+$$
+
+$$
+  S_{D/U} = \frac{r_D}{r_U} 
+  = \frac{
+      100 \exp(-1000 K/T) C_A C_B
+    }{
+      10^6 \exp(-8000 K/T) C_A C_B
+    } 
+$$
+
+$$
+  S_{D/U} = \frac{r_D}{r_U} 
+  = \frac{
+      \exp(-1000 K/T)
+    }{
+      10^4 \exp(-8000 K/T)
+    } 
+$$
+
+$S_{D/U}$ does not depend on concentration. 
+
+```{python}
+  
+er_1 = 1000
+er_2 = 8000
+k0_1 = 100
+k0_2 = 1e6
+
+k1_300 = k0_1 * np.exp(- er_1/300)
+k2_300 = k0_2 * np.exp(- er_2/300)
+
+k1_1000 = k0_1 * np.exp(- er_1/1000)
+k2_1000 = k0_2 * np.exp(- er_2/1000)
+```
+At 300 K: 
+$k_1$ = `{python} f'{k1_300:.3e}'`; 
+$k_2$ = `{python} f'{k2_300:.3e}'`;
+$S_{D/U} = k_1/k_2$ = `{python} f'{k1_300/k2_300:.3e}'`
+
+
+At 1000 K: 
+$k_1$ = `{python} f'{k1_1000:.3e}'`; 
+$k_2$ = `{python} f'{k2_1000:.3e}'`
+$S_{D/U} = k_1/k_2$ = `{python} f'{k1_1000/k2_1000:.3e}'`
+
+* $E_D < E_U$: specific rate for U increases much more rapidly than D with temperature
+
+* Operate at as low temperature as possible 
+
+
+(c) (1) $\ce{ A + B -> D } \qquad -r_{1A} = 10 \exp(-1000 K/T) C_A C_B$
+
+    (2) $\ce{ B + D -> U } \qquad -r_{2B} = 10^9 \exp(-10000 K/T) C_B C_D$
+
+
+**(c) $\ce{ A + B -> D }$; $\ce{ B + D -> U }$**
+
+$$
+-r_{1A} = 10 \exp(-1000 K/T) C_A C_B
+$$
+
+$$
+-r_{2B} = 10^9 \exp(-10000 K/T) C_B C_D
+$$
+
+$$
+  S_{D/U} = \frac{r_D}{r_U} 
+  = \frac{
+      10 \exp(-1000 K/T) C_A C_B
+    }{
+      10^9 \exp(-10000 K/T) C_B C_D
+    } 
+$$
+
+$$
+  S_{D/U} = \frac{r_D}{r_U} 
+  = \frac{
+      \exp(-1000 K/T) C_A
+    }{
+      10^8 \exp(-10000 K/T) C_D
+    } 
+$$
+
+$S_{D/U} \propto \frac{C_A}{C_D}$  
+
+To maximize $S_{D/U}$ operate at:
+
+* High concentration of A
+* Low concentration of D
+
+* Reactors: 
+  - Membrane reactor: D is removed as it is formed
+  - Reactive distillation. 
+
+```{python}
+  
+er_1 = 1000
+er_2 = 10000
+k0_1 = 10
+k0_2 = 1e9
+
+k1_300 = k0_1 * np.exp(- er_1/300)
+k2_300 = k0_2 * np.exp(- er_2/300)
+
+k1_1000 = k0_1 * np.exp(- er_1/1000)
+k2_1000 = k0_2 * np.exp(- er_2/1000)
+```
+At 300 K: 
+$k_1$ = `{python} f'{k1_300:.3e}'`; 
+$k_2$ = `{python} f'{k2_300:.3e}'`;
+$k_1/k_2$ = `{python} f'{k1_300/k2_300:.3e}'`
+
+
+At 1000 K: 
+$k_1$ = `{python} f'{k1_1000:.3e}'`; 
+$k_2$ = `{python} f'{k2_1000:.3e}'`
+$k_1/k_2$ = `{python} f'{k1_1000/k2_1000:.3e}'`
+
+* $E_D < E_U$: specific rate for U increases much more rapidly than D with temperature
+
+* Operate at as low temperature as possible 
+
+
+
+(d) (1) $\ce{ A -> D } \qquad -r_{1A} = 4280 \exp(-12000 K/T) C_A$
+
+    (2) $\ce{ D -> U1 } \qquad -r_{2D} = 10100 \exp(-15000 K/T) C_D$
+
+    (3) $\ce{ A -> U2 } \qquad -r_{3A} = 26 \exp(-18800 K/T) C_A$
+
+
+**(d) $\ce{ A -> D }; \ce{ D -> U1 }; \ce{ A -> U2 }$**
+
+$$
+-r_{1A} = 4280 \exp(-12000 K/T) C_A
+$$
+
+$$
+-r_{2D} = 10100 \exp(-15000 K/T) C_D
+$$
+
+$$
+-r_{3A} = 26 \exp(-18800 K/T) C_A
+$$
+
+$$
+  S_{D/U} = \frac{r_D}{r_{U_1} + r_{U_2}} 
+  = \frac{
+      4280 \exp(-12000 K/T) C_A
+    - 10100 \exp(-15000 K/T) C_D
+    }{
+      10100 \exp(-15000 K/T) C_D
+    + 26 \exp(-18800 K/T) C_A
+    } 
+$$
+
+```{python}
+  
+er_1 = 12000
+er_2 = 15000 
+er_3 = 18800
+k0_1 = 4280
+k0_2 = 10100
+k0_3 = 26
+
+k1_300 = k0_1 * np.exp(- er_1/300)
+k2_300 = k0_2 * np.exp(- er_2/300)
+k3_300 = k0_3 * np.exp(- er_3/300)
+
+k1_1000 = k0_1 * np.exp(- er_1/1000)
+k2_1000 = k0_2 * np.exp(- er_2/1000)
+k3_1000 = k0_3 * np.exp(- er_3/1000)
+```
+At 300 K: 
+$k_1$ = `{python} f'{k1_300:.3e}'`; 
+$k_2$ = `{python} f'{k2_300:.3e}'`;
+$k_3$ = `{python} f'{k3_300:.3e}'`.
+
+$C_A \gg C_D$: $S_{D/U} = k_1/k_3$ = `{python} f'{k1_300/k3_300:.3e}'`
+
+$C_A \sim C_D$: $S_{D/U} = (k_1 - k_2)/(k2 + k_3)$ = `{python} f'{(k1_300- k2_300)/(k2_300 + k3_300):.3e}'`
+
+At 1000 K: 
+$k_1$ = `{python} f'{k1_1000:.3e}'`; 
+$k_2$ = `{python} f'{k2_1000:.3e}'`;
+$k_3$ = `{python} f'{k3_1000:.3e}'`.
+
+$C_A \gg C_D$: $S_{D/U} = k_1/k_3$ = `{python} f'{k1_1000/k3_1000:.3e}'`
+
+$C_A \sim C_D$: $S_{D/U} = (k_1 - k_2)/(k2 + k_3)$ = `{python} f'{(k1_1000- k2_1000)/(k2_1000 + k3_1000):.3e}'`
+
+* High selectivity is achieved at low temperature and $C_A \gg C_D$
+
+* Operate at as low as possible temperature
+
+* Reactors: 
+  - Membrane : Remove D as it is formed
+  - Reactive distillation
+
+(e) (1) $\ce{ A + B -> D } \qquad -r_{1A} = 10^9 \exp(-10000 K/T) C_A C_B$
+
+    (2) $\ce{ D -> A + B } \qquad -r_{2D} = 20 \exp(-2000 K/T) C_D$
+
+    (3) $\ce{ A + B -> U } \qquad -r_{3A} = 10^3 \exp(-3000 K/T) C_A C_B$
+
+**(e) $\ce{ A + B -> D }; \ce{  D -> A + B }; \ce{ A + B -> U}$**
+
+$$
+-r_{1A} = 10^9 \exp(-10000 K/T) C_A C_B
+$$
+
+$$
+-r_{2D} = 20 \exp(-2000 K/T) C_D
+$$
+
+$$
+-r_{3A} = 10^3 \exp(-3000 K/T) C_A C_B
+$$
+
+$$
+  S_{D/U} = \frac{r_D}{r_{U}} 
+  = \frac{
+      10^9 \exp(-10000 K/T) C_A C_B
+    - 20 \exp(-2000 K/T) C_D
+    }{
+      10^3 \exp(-3000 K/T) C_A C_B
+    } 
+$$
+
+```{python}
+  
+er_1 = 10000
+er_2 = 2000 
+er_3 = 3000
+k0_1 = 1e9
+k0_2 = 20
+k0_3 = 1e3 
+
+k1_300 = k0_1 * np.exp(- er_1/300)
+k2_300 = k0_2 * np.exp(- er_2/300)
+k3_300 = k0_3 * np.exp(- er_3/300)
+
+k1_1000 = k0_1 * np.exp(- er_1/1000)
+k2_1000 = k0_2 * np.exp(- er_2/1000)
+k3_1000 = k0_3 * np.exp(- er_3/1000)
+```
+At 300 K: 
+$k_1$ = `{python} f'{k1_300:.3e}'`; 
+$k_2$ = `{python} f'{k2_300:.3e}'`;
+$k_3$ = `{python} f'{k3_300:.3e}'`.
+
+$C_A C_B \gg C_D$: $S_{D/U} = k_1/k_3$ = `{python} f'{k1_300/k3_300:.3e}'`
+
+$C_A C_B \sim C_D$: $S_{D/U} = (k_1 - k_2)/(k_3)$ = `{python} f'{(k1_300- k2_300)/(k3_300):.3e}'`
+
+At 1000 K: 
+$k_1$ = `{python} f'{k1_1000:.3e}'`; 
+$k_2$ = `{python} f'{k2_1000:.3e}'`;
+$k_3$ = `{python} f'{k3_1000:.3e}'`.
+
+$C_A C_B \gg C_D$: $S_{D/U} = k_1/k_3$ = `{python} f'{k1_1000/k3_1000:.3e}'`
+
+$C_A C_B \sim C_D$: $S_{D/U} = (k_1 - k_2)/(k_3)$ = `{python} f'{(k1_1000- k2_1000)/(k3_1000):.3e}'`
+
+* High selectivity is achieved at high temperature and $C_A C_B \gg C_D$
+
+* Operate at as high as possible temperature
+
+* Reactors: 
+  - Membrane : Remove D as it is formed
+  - Reactive distillation
+
+
+(f) (1) $\ce{ A + B -> D } \qquad -r_{1A} = 800 \exp(-8000 K/T) C_A^{0.5} C_B$
+
+    (2) $\ce{ A + B -> U1 } \qquad -r_{2B} = 10 \exp(-300 K/T) C_A C_B$
+
+    (3) $\ce{ D + B -> U2 } \qquad -r_{3D} = 10^6 \exp(-8000 K/T) C_D C_B$
+
+**(f) $\ce{ A + B -> D }; \ce{ A + B -> U1 }; \ce{ D + B -> U2 }$**
+
+$$
+-r_{1A} = 800 \exp(-8000 K/T) C_A^{0.5} C_B
+$$
+
+$$
+-r_{2B} = 10 \exp(-300 K/T) C_A C_B
+$$
+
+$$
+-r_{3D} = 10^6 \exp(-8000 K/T) C_D C_B
+$$
+
+$$
+  S_{D/U} = \frac{r_D}{r_{U_1} + r_{U_2}} 
+  = \frac{
+    800 \exp(-8000 K/T) C_A^{0.5} C_B
+  - 10^6 \exp(-8000 K/T) C_D C_B
+    }{
+    10 \exp(-300 K/T) C_A C_B
+  + 10^6 \exp(-8000 K/T) C_D C_B
+    } 
+$$
+
+$$
+  S_{D/U} = \frac{r_D}{r_{U_1} + r_{U_2}} 
+  = \frac{
+    800 \exp(-8000 K/T) C_A^{0.5}
+  - 10^6 \exp(-8000 K/T) C_D
+    }{
+    10 \exp(-300 K/T) C_A 
+  + 10^6 \exp(-8000 K/T) C_D 
+    } 
+$$
+
+* Selectivity is independent of concentration of B.
+
+
+```{python}
+  
+er_1 = 8000
+er_2 = 300 
+er_3 = 8000
+k0_1 = 800
+k0_2 = 10
+k0_3 = 1e6
+
+k1_300 = k0_1 * np.exp(- er_1/300)
+k2_300 = k0_2 * np.exp(- er_2/300)
+k3_300 = k0_3 * np.exp(- er_3/300)
+
+k1_1000 = k0_1 * np.exp(- er_1/1000)
+k2_1000 = k0_2 * np.exp(- er_2/1000)
+k3_1000 = k0_3 * np.exp(- er_3/1000)
+```
+At 300 K: 
+$k_1$ = `{python} f'{k1_300:.3e}'`; 
+$k_2$ = `{python} f'{k2_300:.3e}'`;
+$k_3$ = `{python} f'{k3_300:.3e}'`.
+
+$C_A^{0.5} \gg C_D$: $S_{D/U} = k_1/k_2$ = `{python} f'{k1_300/k2_300:.3e}'`
+
+$C_A^{0.5} \sim C_D$: $S_{D/U} = (k_1 - k_3)/(k2 + k_3)$ = `{python} f'{(k1_300- k3_300)/(k2_300 + k3_300):.3e}'`
+
+$\rightarrow$ Negative selectivity: $C_A^{0.5}/ C_D$ must be maintained above `{python} f'{k3_300/k1_300:.3e}'`
+
+
+At 1000 K: 
+$k_1$ = `{python} f'{k1_1000:.3e}'`; 
+$k_2$ = `{python} f'{k2_1000:.3e}'`;
+$k_3$ = `{python} f'{k3_1000:.3e}'`.
+
+$C_A^{0.5} \gg C_D$: $S_{D/U} = k_1/k_2$ = `{python} f'{k1_1000/k2_1000:.3e}'`
+
+$C_A^{0.5} \sim C_D$: $S_{D/U} = (k_1 - k_3)/(k2 + k_3)$ = `{python} f'{(k1_1000- k3_1000)/(k2_1000 + k3_1000):.3e}'`
+
+$\rightarrow$ Negative selectivity: $C_A^{0.5}/ C_D$ must be maintained above `{python} f'{k3_1000/k1_1000:.3e}'`
+
+* At any condition, selectivity is very low. 
+
+* Desired product can be obtained at high temperature and $C_A \gg C_D$, $C_A^{0.5}/ C_D >$ 
+  `{python} f'{k3_1000/k1_1000:.3e}'`
+
+* Reactors: 
+  - Membrane : Remove D as it is formed
+  - Reactive distillation
+
+
+:::
+
+## Series Reactions in a Batch Reactor
+
+The elementary liquid-phase series reaction
+
+$$
+\ce{A ->[k_1] B ->[k_2] C}
+$$
+
+is carried out in a batch reactor. The reaction is heated very rapidly to the
+reaction temperature, where it is held at this temperature until the time it is
+quenched.
+
+(a) Plot and analyze the concentrations of species A, B, and C as a function of
+    time.
+
+(b) Calculate the time to quench the reaction when the concentration of B will
+    be a maximum.
+
+(c) What are the overall selectivity and yields at this quench time?
+
+*Additional Information*: 
+
+$C_{A0} = 2M, k_1 = 0.5 \ h^{-1}, k_2 = 0.2 \ h^{-1}$
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+* Mole balance- constant volume batch reactor
+ 
+$$
+\begin{aligned}
+\text{Component A:}  \qquad & \frac{dC_A}{dt} = r_A \\
+\text{Component B:}   \qquad & \frac{dC_B}{dt} = r_B \\
+\text{Component C:}  \qquad & \frac{dC_C}{dt} = r_C \\
+\end{aligned}
+$${#eq-series-1}
+
+* Rate law
+
+$$
+\begin{aligned}
+\ce{ A ->[k_1] B} \qquad & -r_{1A} = k_1 C_A \\
+\ce{ B ->[k_2] C} \qquad & -r_{2B} = k_2 C_B \\
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+r_A & = & r_{1A} & = & - k_1 C_A \\
+r_B & = & r_{1B} + r_{2B} & = & k_1 C_A - k_2 C_B  \\
+r_C & = & r_{2B} & = & k_2 C_B \\
+\end{aligned}
+$${#eq-series-2}
+
+* combine
+
+Solve system of equations comprising of @eq-series-1, and @eq-series-2. 
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
-from IPython.display import display, Markdown
-plt.style.use('../../../assets/templates/publish.mplstyle')
+
+def batch_reactor(t, y, *args):
+  ca, cb, cc = y
+  k1, k2 = args
+
+  r1a = k1 * ca
+  r2b = k2 * cb
+
+  dcadt = - r1a
+  dcbdt = r1a - r2b
+  dccdt = r2b
+
+  return [dcadt, dcbdt, dccdt]
+
+k1 = 0.5
+k2 = 0.2
+
+ca0 = 2
+
+# initial conditions
+y0 = [ca0, 0, 0]
+args = (k1, k2)
+t_final = 6
+
+sol = solve_ivp(batch_reactor, [0, t_final], y0, args=args, dense_output=True)
+
+t = np.linspace(0,t_final, 1000)
+ca, cb, cc = sol.sol(t)
 ```
 
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-conc-profile
+#| fig-cap: Concentration profile
+
+plt.plot(t, ca, label='$C_A$')
+plt.plot(t, cb, label='$C_B$')
+plt.plot(t, cc, label='$C_C$')
+
+plt.xlabel('time (h)')
+plt.ylabel('Concentration (M)')
+
+# Setting x and y axis limits
+plt.xlim(0, t_final)
+plt.ylim(0, ca0)
+
+plt.legend()
+plt.show()
+```
+
+```{python}
+#| echo: true
+#| warning: false
+
+cbmax_idx = np.argmax(cb)
+tmax = t[cbmax_idx]
+
+# selectivity and yield at quench time
+# S = CB/CC
+# Y = CB/(CA0 - CA)
+
+caq = ca[cbmax_idx]
+cbmax = cb[cbmax_idx]
+ccq = cc[cbmax_idx]
+
+sel = cbmax/ccq
+yld = cbmax/(ca0 - caq)
+
+```
+* Quench time, $t_{max}$ = `{python} f'{tmax:.2f}'` h
+* Overall selectivity at $t_{max}$,  S = `{python} f'{sel:.2f}'`
+* Overall yield at $t_{max}$, Y = `{python} f'{yld:.2f}'`
+
+:::

@@ -90,43 +90,6 @@ What should be the volume of the first reactor?
 What temperature would you recommend for a single CSTR with a space time of 10 min and an entering concentration of A of 0.1 mol/dm^3^ ?
 
 
-## P 8-7
-
-(**Reactor selection and operating conditions**)
-For each of the following sets of reactions, describe your reactor system and conditions to maximize the selectivity to D.
-Make sketches where necessary to support your choices.
-The rates are in ($mol/dm^3 \cdot s$), and concentrations are in ($mol/dm^3$).
-
-(a) (1) $\ce{ A + B -> D } \qquad r_{1A} = 10 \exp(-8000 K/T) C_A C_B$
-
-    (2) $\ce{ A + B -> U } \qquad r_{2A} = 100 \exp(-1000 K/T) C_A^{1/2} C_B^{3/2}$
-
-(b) (1) $\ce{ A + B -> D } \qquad r_{1A} = 100 \exp(-1000 K/T) C_A C_B$
-
-    (2) $\ce{ A + B -> U } \qquad r_{2A} = 10^6 \exp(-8000 K/T) C_A C_B$
-
-(c) (1) $\ce{ A + B -> D } \qquad r_{1A} = 10 \exp(-1000 K/T) C_A C_B$
-
-    (2) $\ce{ B + D -> U } \qquad r_{2B} = 10^9 \exp(-10000 K/T) C_B C_D$
-
-(d) (1) $\ce{ A -> D } \qquad r_{1A} = 4280 \exp(-12000 K/T) C_A$
-
-    (2) $\ce{ D -> U1 } \qquad r_{2D} = 10100 \exp(-15000 K/T) C_D$
-
-    (3) $\ce{ A -> U2 } \qquad r_{3A} = 26 \exp(-18800 K/T) C_A$
-
-(e) (1) $\ce{ A + B -> D } \qquad r_{1A} = 10^9 \exp(-10000 K/T) C_A C_B$
-
-    (2) $\ce{ D -> A + B } \qquad r_{2D} = 20 \exp(-2000 K/T) C_D$
-
-    (3) $\ce{ A + B -> U } \qquad r_{3A} = 10^3 \exp(-3000 K/T) C_A C_B$
-
-(f) (1) $\ce{ A + B -> D } \qquad r_{1A} = 800 \exp(-8000 K/T) C_A^{0.5} C_B$
-
-    (2) $\ce{ A + B -> U1 } \qquad r_{2B} = 10 \exp(-300 K/T) C_A C_B$
-
-    (3) $\ce{ D + B -> U2 } \qquad r_{3D} = 10^6 \exp(-8000 K/T) C_D C_B$
-
 ## P 8-9
 
 The elementary liquid-phase series reaction
