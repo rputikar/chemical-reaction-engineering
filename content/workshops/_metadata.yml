@@ -43,6 +43,7 @@ format:
       - linktoc=all
     include-in-header:
       text: |
+        \usepackage{amsmath}
         \usepackage{mhchem}
         \usepackage{float}
         \usepackage{gensymb}

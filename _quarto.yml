@@ -92,6 +92,7 @@ website:
           - file: ./content/lectures/03-rate-law-and-stoichiometry/index.qmd
           - file: ./content/lectures/04-isothermal-reactor-design/index.qmd
           - file: ./content/lectures/05-collection-and-analysis-of-rate-data/index.qmd
+          - file: ./content/lectures/06-multiple-reactions/index.qmd
          #
       - section: "Workshops"
         id: workshops
@@ -107,6 +108,8 @@ website:
             text: Isothermal reactor design
           - file: ./content/workshops/05-collection-and-analysis-of-rate-data/index.qmd
             text: Collection and analysis of rate data
+          - file: ./content/workshops/06-multiple-reactions/index.qmd
+            text: Multiple reactions
       #
       - section: "Labs"
         id: labs
@@ -126,8 +129,11 @@ website:
         id: portfolio
         contents:
           - file: ./content/portfolio/01-mole-balances/index.qmd
+            text: Mole balances
           - file: ./content/portfolio/02-conversion-and-reactor-sizing/index.qmd
-
+            text: Conversion and reactor sizing
+          - file: ./content/portfolio/03-isothermal-reactor-design/index.qmd
+            text: Isothermal reactor design
 #
 format:
   html:

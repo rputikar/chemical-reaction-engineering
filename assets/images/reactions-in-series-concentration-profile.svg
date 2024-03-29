@@ -182,7 +182,7 @@
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;fill-opacity:1;stroke:#388ecc;stroke-width:0.529167;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       d="m 29.104167,85.76328 c 5.241616,-2.691997 7.452566,-17.390603 14.552082,-20.940361 2.645833,-1.322917 5.462057,0.321468 9.260416,7.9375 3.79836,7.616032 8.708958,10.847245 18.520833,13.229167"
+       d="m 29.104167,85.76328 c 5.241616,-2.691997 7.937499,-19.617445 14.552082,-20.940361 2.900686,-0.580138 7.937499,3.96875 9.260416,4.7625 1.322917,0.79375 8.232884,5.059093 18.520833,4.7625"
        id="path1"
        sodipodi:nodetypes="cszc" />
     <path
@@ -219,14 +219,14 @@
     <text
        xml:space="preserve"
        style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#388ecc;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-dasharray:none;paint-order:markers fill stroke"
-       x="47.625"
-       y="62.177086"
+       x="76.910774"
+       y="75.096977"
        id="text7"><tspan
          sodipodi:role="line"
          id="tspan7"
-         style="fill:#388ecc;stroke:none;stroke-width:0.529167;fill-opacity:1"
-         x="47.625"
-         y="62.177086">C<tspan
+         style="fill:#388ecc;fill-opacity:1;stroke:none;stroke-width:0.529167"
+         x="76.910774"
+         y="75.096977">C<tspan
    style="font-size:65%;baseline-shift:sub;fill:#388ecc;fill-opacity:1"
    id="tspan6">B</tspan></tspan></text>
   </g>

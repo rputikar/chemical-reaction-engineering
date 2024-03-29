@@ -12,3 +12,142 @@ Solutions to these problems are uploaded at [Workshop 6 solutions](./solutions.q
 
 :::
 
+Try following problems from Fogler 5e [@fogler2016].
+P 8-3,
+P 8-4,
+P 8-7,
+P 8-9
+
+We will go through some of these problems in the workshop.
+
+## P 8-3
+
+The following reactions
+
+$$
+\ce{A <=>[ k1 ] D} \qquad -r_{1A} = k_1 \left[ C_A - C_D/K_{1A}\right]
+$$
+
+$$
+\ce{A <=>[ k2 ] U} \qquad -r_{2A} = k_2 \left[ C_A - C_U/K_{2A}\right]
+$$
+
+take place in a batch reactor.
+
+Additional information:
+
+$k_1$ = 1.0 min^–1^;
+$K_{1A}$= 10
+
+$k_2$ = 100 min^–1^;
+$K_{2A}$ = 1.5
+
+$C_{A0}$ = 1 mol/dm^3^
+
+(a) Plot and analyze conversion and the concentrations of A, D, and U as a function of time.
+When would you stop the reaction to maximize the concentration of D?
+Describe what you find.
+
+(b) When does the maximum concentration of U occur?
+(Ans.: t = 0.31 min)
+
+(c) What are the equilibrium concentrations of A, D, and U?
+
+(d) What would be the exit concentrations from a CSTR with a space time of 1.0 min?
+Of 10.0 min?
+Of 100 min?
+
+## P 8-4
+
+Consider the following system of gas-phase reactions:
+
+$$
+\begin{aligned}
+\ce{A -> X} & \quad r_X = k_1 C_A^{1/2} & \quad k_1 &= 0.004 \ \left(mol/dm^3\right)^{1/2} \cdot min^{-1} \\
+\ce{A -> B} & \quad r_B = k_2 C_A & \quad k_2 &= 0.3 \ min^{-1} \\
+\ce{A -> Y} & \quad r_Y = k_3 C_A^{2} & \quad k_3 &= 0.25 \ dm^3/mol \cdot min^{-1} \\
+\end{aligned}
+$$
+
+B is the desired product, and X and Y are foul pollutants that are expensive to get rid of.
+The specific reaction rates are at 27 $^{\circ}$C.
+The reaction system is to be operated at 27 $^{\circ}$C and 4 atm.
+Pure A enters the system at a volumetric flow rate of 10 dm^3^/min.
+
+(a) Sketch the instantaneous selectivities
+$(S_{B/X}, S_{B/Y}, \text{and} \, S_{B/XY} = r_B /(r_X + r_Y))$ as a function of the concentration of C~A~.
+
+(b) Consider a series of reactors.
+What should be the volume of the first reactor?
+
+(c) What are the effluent concentrations of A, B, X, and Y from the first reactor?
+
+(d) What is the conversion of A in the first reactor?
+
+(e) If 99% conversion of A is desired, what reaction scheme and reactor sizes should you use to maximize $S_{B/XY}$?
+
+(f) Suppose that E~1~ = 20,000 cal/mol, E~2~=10,000 cal/mol, and E~3~=30,000 cal/mol.
+What temperature would you recommend for a single CSTR with a space time of 10 min and an entering concentration of A of 0.1 mol/dm^3^ ?
+
+
+## P 8-7
+
+(**Reactor selection and operating conditions**)
+For each of the following sets of reactions, describe your reactor system and conditions to maximize the selectivity to D.
+Make sketches where necessary to support your choices.
+The rates are in ($mol/dm^3 \cdot s$), and concentrations are in ($mol/dm^3$).
+
+(a) (1) $\ce{ A + B -> D } \qquad r_{1A} = 10 \exp(-8000 K/T) C_A C_B$
+
+    (2) $\ce{ A + B -> U } \qquad r_{2A} = 100 \exp(-1000 K/T) C_A^{1/2} C_B^{3/2}$
+
+(b) (1) $\ce{ A + B -> D } \qquad r_{1A} = 100 \exp(-1000 K/T) C_A C_B$
+
+    (2) $\ce{ A + B -> U } \qquad r_{2A} = 10^6 \exp(-8000 K/T) C_A C_B$
+
+(c) (1) $\ce{ A + B -> D } \qquad r_{1A} = 10 \exp(-1000 K/T) C_A C_B$
+
+    (2) $\ce{ B + D -> U } \qquad r_{2B} = 10^9 \exp(-10000 K/T) C_B C_D$
+
+(d) (1) $\ce{ A -> D } \qquad r_{1A} = 4280 \exp(-12000 K/T) C_A$
+
+    (2) $\ce{ D -> U1 } \qquad r_{2D} = 10100 \exp(-15000 K/T) C_D$
+
+    (3) $\ce{ A -> U2 } \qquad r_{3A} = 26 \exp(-18800 K/T) C_A$
+
+(e) (1) $\ce{ A + B -> D } \qquad r_{1A} = 10^9 \exp(-10000 K/T) C_A C_B$
+
+    (2) $\ce{ D -> A + B } \qquad r_{2D} = 20 \exp(-2000 K/T) C_D$
+
+    (3) $\ce{ A + B -> U } \qquad r_{3A} = 10^3 \exp(-3000 K/T) C_A C_B$
+
+(f) (1) $\ce{ A + B -> D } \qquad r_{1A} = 800 \exp(-8000 K/T) C_A^{0.5} C_B$
+
+    (2) $\ce{ A + B -> U1 } \qquad r_{2B} = 10 \exp(-300 K/T) C_A C_B$
+
+    (3) $\ce{ D + B -> U2 } \qquad r_{3D} = 10^6 \exp(-8000 K/T) C_D C_B$
+
+## P 8-9
+
+The elementary liquid-phase series reaction
+
+$$\ce{A ->[ k1 ] B ->[ k2 ] C}$$
+
+is carried out in a 500-dm^3^ batch reactor.
+The initial concentration of A is 1.6 mol/dm^3^.
+The desired product is B, and separation of the undesired product C is very difficult and costly.
+Because the reaction is carried out at a relatively high temperature, the reaction is easily quenched.
+
+(a) Plot and analyze the concentrations of A, B, and C as a function of time.
+Assume that each reaction is irreversible, with $k_1 = 0.4 \, h^{-1}$ and $k_2 = 0.01 \, h^{-1}$.
+
+(b) Plot and analyze the concentrations of A, B, and C as a function of time when the first reaction is reversible, with $k_{-1} = 0.3 \, h^{-1}$.
+
+(c) Plot and analyze the concentrations of A, B, and C as a function of time for the case where both reactions are reversible, with $k_{-2} = 0.005 \, h^{-1}$.
+
+(d) Compare (a), (b), and (c) and describe what you find.
+
+(e) Vary $k_1, k_2, k_{-1}, \text{and} \, k_{-2}$.
+Explain the consequence of $k_1 > 100$ and $k_2 < 0.1$ and with $k_{-1} = k_{-2} = 0$ and with $k_{-2}= 1, k_{-1} = 0$, and $k_{-2} = 0.25$.
+
+## References

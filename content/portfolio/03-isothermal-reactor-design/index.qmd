@@ -2,8 +2,6 @@
 title: "Portfolio 03: Isothermal reactor design"
 format:
   pdf
-resources:
-   - "./ethylene_oxide_rate_vs_conversion.csv"
 ---
 
 ```{python}
@@ -94,8 +92,8 @@ risk of runaway reactions. The process typically involves a recovery stage to
 separate EO from water and other byproducts.
 
 We want to design a reactor achieve a desired conversion of ethylene. Ethylene
-and oxygen are fed in stoichiometric proportions to a packed-bed reactor
-operated isothermally at 260 $^\circ C$.
+and oxygen (as air) are fed in stoichiometric proportions to a packed-bed reactor
+operated isothermally at 280 $^\circ C$.
 
 Ethylene and oxygen are fed in stoichiometric proportions to a packed-bed
 reactor operated isothermally at 280 $^\circ C$. Ethylene is fed at a rate of
@@ -132,11 +130,11 @@ kJ/mol.
 
    a. How will the equations change when you consider pressure drop?
 
-   b. Draw the profiles of conversion, volumetric flow rate ratio
-      ($\upsilon/\upsilon_0$), and pressure ratio ($P/P_0$) as a function of
-      catalyst weight. 
+   b. Draw the profiles of concentrations of reactants and products,
+      conversion, volumetric flow rate ratio ($\upsilon/\upsilon_0$), and
+      pressure ratio ($P/P_0$) as a function of catalyst weight. 
 
-   b. Estimate the catalyst weight required to achieve 60% conversion
+   c. Estimate the catalyst weight required to achieve 60% conversion
       considering pressure drop. Compare the results with those obtained in
       question 1. 
 

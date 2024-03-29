@@ -1,96 +1,54 @@
 ---
-title: "Portfolio 02: Conversion and reactor sizing"
+title: "Portfolio 03: Isothermal reactor design"
 format:
   pdf
-resources:
-   - "./ethylene_oxide_rate_vs_conversion.csv"
+draft: true
 ---
 
 ```{python}
-import numpy as np
-import pandas as pd
-import matplotlib
-from matplotlib.ticker import AutoMinorLocator
 import matplotlib.pyplot as plt
-from scipy import stats
-import scipy.interpolate as interpolate
-import scipy.integrate as integrate
-from tabulate import tabulate
-from IPython.display import display, Markdown
+from cycler import cycler
 plt.style.use('../../../assets/templates/publish.mplstyle')
+
+custom_colors = [
+    "#65489d",
+    "#388ecc",
+    "#105e5d",
+    "#9f1d54",
+    "#4d1013",
+    "#f04e58",
+    "#148040"
+]
+
+# Define a list of line styles
+line_styles = ['-', '--', '-.', ':']
+# plt.rc('axes', prop_cycle=(plt.cycler('color', custom_colors)))
+# plt.rc('axes', prop_cycle=(cycler('color', custom_colors) * cycler('linestyle', line_styles)))
+
+combined_cycle = (cycler(color=custom_colors[:len(line_styles)]) + cycler(linestyle=line_styles))
+plt.rc('axes', prop_cycle=combined_cycle)
+
 ```
 
-```{python}
-# Function to calculate the volume of CSTR for given conversion
-def CSTR_volume_from_conversion(f, x_start=0, x_end=0.99, *args):
-  fa0_by_ra_exit = f(x_end,*args)
-  v = (x_end - x_start)*fa0_by_ra_exit
-  return v
-
-# Function to calculate the volume of PFR for given conversion
-def PFR_volume_from_conversion(f, x_start=0, x_end=0.99,*args):
-  v, _ = integrate.quad(f, x_start, x_end,args=args)
-  return v
-
-# Function to calculate the conversion in a CSTR for given volume
-def CSTR_conversion_from_volume(f, v, x_start=0, x_end=1, steps=1000,*args):
-   for x in np.linspace(x_start, x_end, steps):
-      # Avoid division by zero
-      if x == x_start:
-         continue
-
-      fa0_by_ra_target = v/ (x-x_start)
-      fa0_by_ra_actual = f(x,*args)
-
-      if fa0_by_ra_target <= fa0_by_ra_actual:
-         return x, fa0_by_ra_target
-
-   # If no valid volume is found within given range, return None.
-   return None, None
-
-# Function to calculate the conversion in a PFR for a given volume
-def PFR_conversion_from_volume(f, v, x_start=0, x_end=1, steps=1000,*args):
-
-   for x in np.linspace(x_start, x_end, steps):
-
-      # Avoid division by zero
-      if x == x_start:
-         continue
-
-      fa0_by_ra_actual = f(x,*args)
-      actual_volume, err = integrate.quad(f, x_start, x,args=args)
-
-      if actual_volume >= v:
-         return x, fa0_by_ra_actual
-
-   # If no valid volume is found within given range, return None.
-   return None, None
-```
-## General Instructions for in class Portfolios
+## General Instructions for take home Portfolios
 
 1.  The portolio is an open-book task.
-2.  You can use textbooks, the resources provided during class/ workshop etc.
+2.  It is expected that you will complete the portfolio assessment on your own.
+    You can use textbooks, the resources provided during class/ workshop etc.
     to answer the questions. 
-3.  The portfolio task is made available in both pdf format and as a print. 
 4.  You are free to choose a solution technique. It is **not** required that
     you use the provided python code to answer the questions. You can use any
     tool (pen and paper, excel, ... ) and any technique (graphical, numerical,
-    analytical) that you are comfortable with. 
-5.  Irrespective of your solution method, you are expected to write your
-    answers on to the printed question paper provided. **This is what gets
-    marked.**
-6.  The portfolio will take place during designated timeslot communicated
-    earlier by the unit coordinator. Please refer to the portfolio schedule on
-    blackboard for the portolio dates and topics. 
-7.  The tasks will be a mix of theory questions, short calculation type and
+    analytical) that you are comfortable with. However, some of the tasks will
+    require use of coding/ computer. 
+5.  The tasks will be a mix of theory questions, short calculation type and
     long numerical examples.
-8.  You have **30 minutes** to complete the tasks in the portfolio. 
-9.  The portolios will be marked immediately after completion by your peers
-    using a provided marking rubric.
-10. The portfolios will be collected by the instructors to verify peer marking
-    and record the marks. You will receive your portolio back within a week. 
-11. When you are required to upload the portolio answers on to blackboard: 
-    - Save your report as a pdf file. 
+6.  The portfolio tasks are not meant to take a lot of time. If you have
+    understood and practiced the relevant content, it should take you around 2
+    to 3 hours at the most.
+7.  You are required to upload the portolio answers on to blackboard: 
+    - Save your report as a **pdf** file (_Miri students should save it as a
+      word file_). 
     - Rename the file as STUDENTID_Portfolio_x.pdf (Where STUDENTID is your
       student ID, and x is the portfolio number) and 
     - Upload it using assessment submission link on blackboard. 
@@ -146,263 +104,446 @@ risk of runaway reactions. The process typically involves a recovery stage to
 separate EO from water and other byproducts.
 
 We want to design a reactor achieve a desired conversion of ethylene. Ethylene
-and oxygen are fed in stoichiometric proportions to a packed-bed reactor
-operated isothermally at 260 $^\circ C$.
-
-```{python}
-
-rate_file = './ethylene_oxide_rate_vs_conversion.csv'
-rate_data = np.genfromtxt(rate_file, delimiter=',', dtype=[('x', float), ('ra', float)], skip_header=1)
-
-x = rate_data['x']
-minus_ra = rate_data['ra']
-
-fa0 = 0.1362
-
-fa0_by_minus_ra = fa0/minus_ra
-
-data_interp = interpolate.CubicSpline(x, fa0_by_minus_ra)
-```
-In order to aid reactor design, laboratory experiments were performed to
-determine reaction rate at various ethylene conversions. 
-
-```{python}
-#| echo: false
-#| label: tbl-1
-#| tbl-cap: Reaction rate vs. conversion data
-
-df = pd.DataFrame({'X': x, 'RA': minus_ra})
-df.columns = ['$X$', '$-r_A (mol/ kg-cat \ s)$']
-
-# Convert the DataFrame to a markdown table string
-markdown_table = df.to_markdown(index=False)
-
-Markdown(markdown_table)
-
-```
-
-:::{.callout-note}
-## Skeleton code
-
-Skeleton code useful for solving the questions in this portolio is provided in
-a [Google colaboratory notebook](https://colab.research.google.com/drive/1dTV_NMAOV225pwqtCur-x2OFHCutsiTs?usp=sharing)
-
-:::
-
-
-{{< pagebreak >}}
-
-## Question 1 \hfill (5 marks)
-
-The reaction rate vs. conversion data is provided in csv file
-[ethylene_oxide_rate_vs_conversion.csv](./ethylene_oxide_rate_vs_conversion.csv).
-The data is plotted in @fig-1. We want to achieve 60% conversion of ethylene.
-What kind of reactor would you suggest? Why? 
-
-```{python}
-#| label: fig-1
-#| fig-cap: Rate data for oxidation of ethylene
-
-fig,ax = plt.subplots()
-
-ax.scatter(x, minus_ra, marker='s', color='red')
-
-ax.set_xlabel('Conversion X')
-ax.set_ylabel('$-r_A \\left(\\frac{mol}{kg-cat \cdot s} \\right)$')
-
-# Setting x and y axis limits
-# ax.set_xlim(0, 1)
-# ax.set_ylim(0, 0.007)
-
-plt.show()
-
-```
-
-### Answer
-
-Since this is a gas phase catalytic reaction a packed bed reactor would be ideal. 
-\hfill (2 marks)
-
-The $-r'_A vs. X$ graph is monotonously decreasing with conversion. Hence
-$(1/-r'_A) vs. X$ increases monotonically with conversion. 
-
-The amount of catalyst required is the area under the curve for a PBR and the
-area of rectangle with a width of $X_{exit}$ and height of $(F_{A0}/(-r'_A))_{exit}$.
-
-For a monotonously increasing curve, catalyst weight using CSTR will always be
-higher than a PBR. Therefore PBR is preferred. \hfill (3 marks)
-
-{{< pagebreak >}}
-
-## Question 2 \hfill (5 marks)
-
-Write correct mole balance equation(s) for flow reactors in terms of conversion of
-ethylene.  
-
-### Answer
-
-We write mole balance equations for the two flow reactors: CSTR, and PBR
-
-
-1. CSTR 
-   $$W = \frac{F_{A0}X}{-r'_A} $$ \hfill (2 marks)
-
-
-2. PBR 
-
-   $$ F_{A0}\frac{dX}{dW} = -r'_A $$ \hfill (2 marks)
-
-   and 
-
-   $$ W = \int_{F_{A0}}^{F_A} \frac{dN_A}{r'_A} $$ \hfill (1 mark)
-
-
-{{< pagebreak >}}
-
-## Question 3 \hfill (10 marks)
+and oxygen (as air) are fed in stoichiometric proportions to a packed-bed reactor
+operated isothermally at 280 $^\circ C$.
 
 Ethylene and oxygen are fed in stoichiometric proportions to a packed-bed
-reactor operated isothermally at 260 $^\circ C$. Ethylene is fed at a rate of
-136.21 mol/s at a pressure of 10 atm (1013 kPa). It is proposed to use 10 banks
+reactor operated isothermally at 280 $^\circ C$. Ethylene is fed at a rate of
+200 mol/s at a pressure of 10 atm (1013 kPa). It is proposed to use 10 banks
 of 25.4 mm diameter schedule 40 tubes packed with catalyst with 100 tubes per bank.
-Consequently, the molar flow rate to each tube is to be 0.1362 mol/s. 
+Consequently, the molar flow rate to each tube is to be 0.2 mol/s. 
 
-The properties of the reacting fluid are to be considered identical to those of
-air at this temperature and pressure. The density of the 6.35 mm catalyst
-particles is 1925 $kg/m^3$, the bed void fraction is 0.45, and the gas density
-is 16 $kg/m^3$. 
+The rate law for the reaction is
 
-Determine the weight of catalyst required to achieve 60% conversion.
+$$
+-r'_A = k P_A^{1/3} P_B^{2/3}
+$$
+
+with k = 0.00392 $\frac{mol}{atm \ kg-cat\ s}$ at 260 $^\circ C$. The heat of
+reaction, $\Delta H$ is -106.7 kJ/mol and the activation energy, E is 69.49
+kJ/mol.
+
+## Questions
+
+1. Isobaric reactor \hfill (10 marks)
+
+   Using the mole balances developed in portfolio 02, determine the weight of
+   catalyst required to achieve 60% conversion in a PBR. Show your working by
+   following the reaction engineering algorithm. State your assumptions if any.
 
 ### Answer
 
+* Mole balance \hfill (1 mark)
+
+  $$
+  F_{A0}\frac{dX}{dW} = -r'_A
+  $${#eq-1}
+
+* Rate law \hfill (1 mark)
+
+  $$
+  -r'_A = k P_A^{1/3} P_B^{2/3} 
+  $${#eq-2}
+
+  Where, $P_i = C_i RT_0$
+
+  $$
+  k(T) = k(T_0) e^{\frac{E}{R} \left( \frac{1}{T_0} - \frac{1}{T} \right)}
+  $$
+
+* Stoichiometry \hfill (1 mark)
+
+  For isothermal, isobaric reactors
+  $$
+  C_j = \frac{C_{A0} (\Theta_j + \nu_j X)}
+            {(1 + \epsilon X)}
+  $${#eq-3}
+
+  Reaction: 
+  $$
+  \begin{aligned}
+  \ce{C2H4 + 1/2 O2} & \ce{-> C2H4O} \\
+  \ce{A + 1/2 B } & \ce{-> C}
+  \end{aligned}
+  $$
+
+* Combine \hfill (1 mark)
+
+  Solve equations [-eq-1], [-@eq-2], and [-@eq-3] to obtain conversion as a function
+  of catalyst weight.
+
+* Evaluate \hfill (6 mark)
+
 
 ```{python}
+#| echo: true
+#| warning: false
 
-v_pfr = PFR_volume_from_conversion(data_interp, 0, 0.6)
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
 
-plt.figure(figsize=(5,5))
-ax = plt.gca()
+T = 280 + 273.15  # K
+T0 = 260 + 273.15 # K
+P0 = 10 # atm
 
-xf = np.linspace(0,0.65,100)
-yf = data_interp(xf)
+k0 = 0.00392 #  mol/ (atm kg-cat s)
 
-ax.scatter(x, fa0_by_minus_ra, marker='s', color='red')
-ax.plot(xf,yf)
+R = 0.082    # atm dm^3/ (mol K)
+E = 69490    # J/mol
 
-ax.set_xlabel('Conversion X')
-ax.set_ylabel('$\\frac{F_{A0}}{-r\'_A} (kg)$')
+k = k0 * np.exp((E/8.314) * ((1/T0) - (1/T)))
 
-x_fill = np.linspace(0,0.6, 100)
-y_fill = data_interp(x_fill)
-ax.fill_between(x_fill, y_fill, color='lightcoral', alpha=0.4)
+fa0 = 0.2
+fb0 = 0.5 * fa0
+fc0 = 0 
+fi0 = fb0 * (79/21)
 
-text_str = r"""$W$ = {v:.2f} kg""".format(v=v_pfr)
-ax.text(0.65/2, 15, text_str, ha='center', va='bottom')
+ft0 = fa0 + fb0 + fc0 + fi0
 
-# Display major and minor gridlines
-ax.grid(which='major', linestyle='-', linewidth='0.5', color='black')
-ax.grid(which='minor', linestyle=':', linewidth='0.5', color='gray')
+thetaA = fa0/fa0
+thetaB = fb0/fa0
+thetaC = fc0/fa0
+thetaI = fi0/fa0
 
-# Enable minor ticks to display minor gridlines
-ax.minorticks_on()
+ya0 = fa0/ft0
+delta = -0.5
+epsilon = ya0 * delta
 
-ax.xaxis.set_minor_locator(AutoMinorLocator(10))
-ax.yaxis.set_minor_locator(AutoMinorLocator(10))
+pa0 = ya0 * P0
+ca0 = pa0/(R * T)
+
+```
+
+* $k$ at 280 $^\circ C$
+
+  k = 0.00392 $\frac{mol}{atm \ kg-cat\ s}$ at 260 $^\circ C$.
+
+  $$
+  k(T) = k(T_0) e^{\frac{E}{R} \left( \frac{1}{T_0} - \frac{1}{T} \right)}
+  $$
+  
+  k at 280 $^\circ C$ 
+  = `{python} f'{k:.5f}'`  $\frac{mol}{atm \ kg-cat\ s}$ 
+
+$\nu_A = -1; \nu_B = -1/2; \nu_C = 1$
+
+Ethylene and oxygen are fed in stoichiometric proportions to a packed-bed.
+The oxygen is fed as air (21% O~2~ and 79% N~2~ (Inert)). 
+
+$F_{A0}$ = `{python} f'{fa0:.2f}'` mol/s
+
+$F_{B0} = 0.5 F_{A0}$ = `{python} f'{fb0:.2f}'` mol/s
+
+$F_{C0}$ = `{python} f'{fc0:.2f}'` mol/s
+
+$F_{I0} = 0.5 \times (79/21)$ = `{python} f'{fi0:.2f}'` mol/s
+
+$F_{T0}$ = `{python} f'{ft0:.2f}'` mol/s
+
+$\Theta_i = F_{i0}/F_{A0}$:
+$\Theta_A$ = `{python} f'{thetaA:.2f}'` , 
+$\Theta_B$ = `{python} f'{thetaB:.2f}'` , 
+$\Theta_C$ = `{python} f'{thetaC:.2f}'` , 
+$\Theta_I$ = `{python} f'{thetaI:.2f}'` mol/s.
+
+$\delta = 1 - 1 - \frac{1}{2} = -\frac{1}{2}$
+
+$y_{A0} = F_{A0}/ (F_{A0} + F_{B0})$ 
+= `{python} f'{ya0:.2f}'`.
+
+$\epsilon = y_{A0} \delta$
+= `{python} f'{epsilon:.2f}'`.
+
+$P_{A0} = y_{A0} P_0$
+= `{python} f'{pa0:.2f}'` atm
+
+$C_{A0} = P_{A0} RT$
+= `{python} f'{ca0:.2f}'` $mol/dm^3$.
+
+```{python}
+#| echo: true
+#| warning: false
+
+
+def pbr(W, y, *args):
+  X = y[0]
+
+  fa0, ca0, thetaA, thetaB, nu_A, nu_B, epsilon, k = args
+
+  ca = ca0 * (thetaA + nu_A * X)/ ( 1 + epsilon * X) 
+  cb = ca0 * (thetaB + nu_B * X)/ ( 1 + epsilon * X) 
+
+  pa = ca *(R * T) 
+  pb = cb *(R * T)  
+
+  rate = k * pa**(1/3) * pb**(2/3)
+
+  dXdW = rate/ fa0
+
+  return [dXdW]
+
+nu_A = -1
+nu_B = -0.5
+
+# Solve the pbr model
+W = 25 # kg
+
+# initial conditions
+y0 = [0]
+
+system_args = (fa0, ca0, thetaA, thetaB, nu_A, nu_B, epsilon, k)
+
+sol = solve_ivp(pbr, [0, W], y0, args=system_args, dense_output=True)
+
+w = np.linspace(0,W, 1000)
+X = sol.sol(w)[0]
+
+x_final = X[X > 0.6][0]
+w_final = w[X > 0.6][0]
+```
+
+Weight of catalyst required to achieve a conversion of 60%, 
+W = `{python} f'{w_final:.2f}'` kg. 
+The final conversion is 
+X = `{python} f'{x_final:.2f}'`. 
+
+2. Effect of pressure drop \hfill (20 marks)
+
+   As this is a gas phase reaction carried out in a PBR, there is a significant
+   pressure drop. The properties of the reacting fluid are to be considered
+   identical to those of air at this temperature and pressure. The density of the
+   6.35 mm catalyst particles is 1925 $kg/m^3$, the bed void fraction is 0.45,
+   and the gas density is 16 $kg/m^3$. For these catalyst properties, the pressure
+   drop parameter $\alpha$ is 0.0367 $1/kg$ 
+
+   a. How will the equations change when you consider pressure drop?
+
+   b. Draw the profiles of concentrations of reactants and products,
+      conversion, volumetric flow rate ratio ($\upsilon/\upsilon_0$), and
+      pressure ratio ($P/P_0$) as a function of catalyst weight. 
+
+   c. Estimate the catalyst weight required to achieve 60% conversion
+      considering pressure drop. Compare the results with those obtained in
+      question 1. 
+
+### Answer
+
+**a. How will the equations change when you consider pressure drop?** 
+
+* Mole balance \hfill (1 mark)
+
+  No change
+
+  $$
+  F_{A0}\frac{dX}{dW} = -r'_A
+  $${#eq-4}
+
+* Rate law \hfill (1 mark)
+
+  No change
+
+  $$
+  -r'_A = k P_A^{1/3} P_B^{2/3} 
+  $${#eq-5}
+
+  Where, $P_i = C_i RT_0$
+
+  $$
+  k(T) = k(T_0) e^{\frac{E}{R} \left( \frac{1}{T_0} - \frac{1}{T} \right)}
+  $$
+
+* Stoichiometry \hfill (1 mark)
+
+  The reator is no more isobaric
+
+  For isothermal reactors
+
+  $$
+  \frac{\upsilon}{\upsilon_0} = (1 + \epsilon X) \left( \frac{P_0}{P}\right)
+  $$
+
+  $$
+  C_j = \frac{C_{A0} (\Theta_j + \nu_j X)}
+            {(1 + \epsilon X)}
+            \left( \frac{P}{P_0} \right)
+  $${#eq-6}
+
+
+  Reaction: 
+  $$
+  \begin{aligned}
+  \ce{C2H4 + 1/2 O2} & \ce{-> C2H4O} \\
+  \ce{A + 1/2 B } & \ce{-> C}
+  \end{aligned}
+  $$
+
+* Pressure drop \hfill (1 mark) 
+
+  $$
+  \frac{dp}{dW} = -\frac{\alpha}{2p} \left( 1 + \epsilon X \right)
+  $${#eq-7}
+
+  Where: $p = P/P_0$
+
+* Combine 
+
+  Solve equations [-@eq-4], [-@eq-5], [-@eq-6], and [-@eq-7] to obtain
+  conversion as a function of catalyst weight.
+
+* Evaluate  \hfill (6 marks)
+
+```{python}
+#| echo: true
+#| warning: false
+
+def pbr_with_pressure_drop(W, y, *args):
+  
+  X,p = y
+  fa0, ca0, thetaA, thetaB, nu_A, nu_B, epsilon, k, alpha = args
+  
+  ca = ca0 * (thetaA + nu_A * X)/ ( 1 + epsilon * X) * p 
+  cb = ca0 * (thetaB + nu_B * X)/ ( 1 + epsilon * X) * p
+
+  pa = ca * R * T 
+  pb = cb * R * T  
+
+  rate = k * pa**(1/3) * pb**(2/3)
+  
+  # k2 = k * pa0 * 0.5**(2/3)
+  # rate = k2 * (1-X) * p / (1 + epsilon * X)
+
+  dXdW = rate/ fa0
+  
+  dpdW = - alpha * (1 + epsilon * X) / (2 * p)
+
+  return [dXdW, dpdW]
+
+nu_A = -1
+nu_B = -0.5
+nu_C = 1
+nu_I = 0
+
+# Solve the pbr model
+W = 25 # kg
+
+# initial conditions
+# at W = 0 , X = 0; p = 1
+y0 = [0, 1]
+
+alpha = 0.0367
+system_args = (fa0, ca0, thetaA, thetaB, nu_A, nu_B, epsilon, k, alpha)
+
+sol = solve_ivp(
+    pbr_with_pressure_drop, 
+    [0, W], 
+    y0, 
+    args=system_args, 
+    dense_output=True
+)
+
+w = np.linspace(0,W, 1000)
+X = sol.sol(w)[0]
+p = sol.sol(w)[1]
+
+x_final_2 = X[X > 0.6][0]
+w_final_2 = w[X > 0.6][0]
+```
+
+**b. Draw the profiles**
+
+```{python}
+#| echo: true
+#| warning: false
+
+# Concentrations
+# C_j = C_A0 * (Theta_j + nu_j * X) * p/ (1 + epsilon *X)
+ca = lambda X, p: ca0 * (thetaA + nu_A * X) * p / (1 + epsilon * X)
+cb = lambda X, p: ca0 * (thetaB + nu_B * X) * p / (1 + epsilon * X)
+cc = lambda X, p: ca0 * (thetaC + nu_C * X) * p / (1 + epsilon * X)
+ci = lambda X, p: ca0 * (thetaI + nu_I * X) * p / (1 + epsilon * X)
+
+# volumetric flow rate ratio
+# v/v0 = (1 + epsilon * X) * P_0/P = (1 + epsilon * X)/p
+vv0 = lambda X, p: (1 + epsilon * X)/p
+
+# Set up graph
+
+x_p = X[X < 0.6]
+p_p = p[X < 0.6]
+w_p = w[X < 0.6]
+
+ca_p = ca(x_p, p_p)
+cb_p = cb(x_p, p_p)
+cc_p = cc(x_p, p_p)
+ci_p = ci(x_p, p_p)
+
+vv0_p = vv0(x_p, p_p)
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-conc-profile
+#| fig-cap: Concentration profile (2 marks)
+
+plt.plot(w_p, ca_p, label='$C_A$')
+plt.plot(w_p, cb_p, label='$C_B$')
+plt.plot(w_p, cc_p, label='$C_C$')
+plt.plot(w_p, ci_p, label='$C_I$')
+
+plt.xlabel('Catalyst weight (kg)')
+plt.ylabel('Concentration $mol/dm^3$')
 
 # Setting x and y axis limits
-ax.set_xlim(0, 0.7)
-ax.set_ylim(0, 250)
+plt.xlim(0, np.ceil(w_final_2))
+plt.ylim(0, 0.14)
+
+plt.legend(loc='upper right')
 
 plt.show()
 
 ```
 
-**Steps**
-
-1. Correctly calculates $\frac{F_{A0}}{-r'_A}$ ($F_{A0} = 0.1362 mol/s$). \hfill (2 marks)
-2. A plot of $\frac{F_{A0}}{-r'_A}$ is drawn correctly. \hfill (2 marks)
-3. X and Y axis labels and units are correct. \hfill (2 marks)
-4. PBR catalyst weight is denoted (shaded area under curve). \hfill (2 marks)
-5. Correct catalyst weight is reported. \hfill (2 marks for W around `{python} "{v:.2f}".format(v=v_pfr)` kg)
-
-* half marks for essentially correct procedure but wrong answers. 
-
-{{< pagebreak >}}
-
-## Question 4 \hfill (10 marks)
-
-To improve temperature control, the suggestion is to conduct the reaction using
-two equally sized Continuous Stirred Tank Reactors (CSTRs) rather than a Packed
-Bed Reactor (PBR).
-
-To achieve this, we equally divide the catalyst weight obtained in question 3
-in to two CSTRs and join the CSTRs in series. 
-
-Calcualte the conversion attained at the end of second CSTR.  
-
-### Answer
-
 ```{python}
+#| echo: true
+#| warning: false
+#| label: fig-profiles
+#| fig-cap: Conversion, volumetric flow ratio, pressure ratio profile (4 marks)
 
-v_cstr = v_pfr/2
+plt.plot(w_p, x_p, label='conversion')
+plt.plot(w_p, vv0_p, label='$\\upsilon/\\upsilon_0$')
+plt.plot(w_p, p_p, label='$P/P_0$')
 
-plt.figure(figsize=(5,5))
-ax = plt.gca()
-
-xf = np.linspace(0,0.65,100)
-yf = data_interp(xf)
-
-ax.scatter(x, fa0_by_minus_ra, marker='s', color='red')
-ax.plot(xf,yf)
-
-ax.set_xlabel('Conversion X')
-ax.set_ylabel('$\\frac{F_{A0}}{-r\'_A} (kg)$')
-
-x1, fa0_by_minus_ra1 = CSTR_conversion_from_volume(data_interp, v_cstr, 0, 1)
-x2, fa0_by_minus_ra2 = CSTR_conversion_from_volume(data_interp, v_cstr, x1, 1)
-
-rectangle = plt.Rectangle((0, 0), x1, fa0_by_minus_ra1, color='skyblue', alpha=0.4)
-ax.add_patch(rectangle)
-
-text_str = r"""$X_1$ = {x:.2f}""".format(x=x1)
-ax.text(x1/2, 15, text_str, ha='center', va='bottom')
-
-rectangle = plt.Rectangle((x1, 0), (x2-x1), fa0_by_minus_ra2, color='lightcoral', alpha=0.4)
-ax.add_patch(rectangle)
-
-text_str = r"""$X_2$ = {x:.2f}""".format(x=x2)
-ax.text((x1+x2)/2, 15, text_str, ha='center', va='bottom')
-
-text_str = r"""$W$ = {v:.2f} kg""".format(v=v_cstr)
-ax.text(0.7/2, 225, text_str, ha='center', va='bottom')
-
-
-# Display major and minor gridlines
-ax.grid(which='major', linestyle='-', linewidth='0.5', color='black')
-ax.grid(which='minor', linestyle=':', linewidth='0.5', color='gray')
-
-# Enable minor ticks to display minor gridlines
-ax.minorticks_on()
-
-ax.xaxis.set_minor_locator(AutoMinorLocator(10))
-ax.yaxis.set_minor_locator(AutoMinorLocator(10))
+plt.xlabel('Catalyst weight (kg)')
+plt.ylabel('')
 
 # Setting x and y axis limits
-ax.set_xlim(0, 0.7)
-ax.set_ylim(0, 250)
+plt.xlim(0, np.ceil(w_final_2))
+# plt.ylim(0, 1)
+
+plt.legend()
 
 plt.show()
 
 ```
-**Steps**
 
-1. A plot of $\frac{F_{A0}}{-r'_A}$ is drawn and labelled correctly. \hfill (2 marks)
-2. CSTR catalyst weight per reactor (`{python} "{v:.2f}".format(v=v_cstr)` kg) is determined. \hfill (2 marks)
-3. CSTR catalyst weight is denoted (shaded area of rectangle for reactor 1 and 2). \hfill (2 marks)
-4. Correct conversion is reported for reactor 1. \hfill (2 marks for X around `{python} "{x:.2f}".format(x=x1)`)
-5. Correct conversion is reported for reactor 2. \hfill (2 marks for X around `{python} "{x:.2f}".format(x=x2)`)
+**c. Estimate the catalyst weight required to achieve 60% conversion** 
 
-* half marks for essentially correct procedure but wrong answers. 
+Weight of catalyst required to achieve a conversion of 60%, 
+W = `{python} f'{w_final_2:.2f}'` kg. 
+The final conversion is 
+X = `{python} f'{x_final_2:.2f}'`. \hfill (2 marks) 
+
+As the presesure decreases within the reactor, the cocentration (and
+consequently the rate) decreases. This results into lower conversion for the
+same catalyst weight. 
+
+For the isobaric case, to achieve a conversion of `{python} f'{x_final:.2f}'`,
+we needed `{python} f'{w_final:.2f}'` kg catalyst. If we used this catalyst
+weight to manufacture our reactor, the real life conversion would have been
+`{python} f'{X[w < w_final][-1]:.2f}'` and our reactor would severely
+underperform.  \hfill (2 marks)
+
 
 

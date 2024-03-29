@@ -245,7 +245,7 @@ We write mole balance equations for the two flow reactors: CSTR, and PBR
 
 
 1. CSTR 
-   $$W = \frac{F_{A0}X}{-r'_A} $$ \hfill (2 marks)
+   $$ W = \frac{F_{A0}X}{-r'_A} $$ \hfill (2 marks)
 
 
 2. PBR 
@@ -254,7 +254,11 @@ We write mole balance equations for the two flow reactors: CSTR, and PBR
 
    and 
 
-   $$ W = \int_{F_{A0}}^{F_A} \frac{dN_A}{r'_A} $$ \hfill (1 mark)
+   $$ W = \int_{F_{A0}}^{F_A} \frac{dF_A}{r'_A} $$ \hfill (1 mark)
+
+   or 
+
+   $$ W = F_{A0} \int_{0}^{X} \frac{dX}{r'_A} $$ 
 
 
 {{< pagebreak >}}

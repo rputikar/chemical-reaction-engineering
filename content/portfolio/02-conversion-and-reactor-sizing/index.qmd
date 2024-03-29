@@ -66,6 +66,15 @@ def PFR_conversion_from_volume(f, v, x_start=0, x_end=1, steps=1000,*args):
    # If no valid volume is found within given range, return None.
    return None, None
 ```
+
+::: {.callout-note}
+## Solutions
+
+Answers to the portfolio questions are uploaded at [Portfolio 2 answers](./portfolio-02-answers.qmd)
+
+:::
+
+
 ## General Instructions for in class Portfolios
 
 1.  The portolio is an open-book task.
