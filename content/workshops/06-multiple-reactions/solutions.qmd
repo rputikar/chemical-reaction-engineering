@@ -3,7 +3,15 @@ title:
   "Workshop 06: Multiple reactions"
 date: 2024/03/24
 format: html
+resources:
+  - ./problem-p-8-3.pdf
+  - ./problem-p-8-4.pdf
+  - ./problem-p-8-9.pdf
 ---
+
+```{python}
+{{< include ../../../assets/partials/_mplinclude.py >}}
+```
 
 Try following problems from Fogler 5e [@fogler2016].
 P 8-3,
@@ -42,7 +50,7 @@ When would you stop the reaction to maximize the concentration of D?
 Describe what you find.
 
 (b) When does the maximum concentration of U occur?
-(Ans.: t = 0.31 min)
+(Ans.: t = 0.04 min)
 
 (c) What are the equilibrium concentrations of A, D, and U?
 
@@ -50,8 +58,145 @@ Describe what you find.
 Of 10.0 min?
 Of 100 min?
 
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
+
+[Hand written solution](./problem-p-8-3.pdf)
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+from scipy.integrate import solve_ivp
+from scipy.optimize import fsolve
+import matplotlib.pyplot as plt
+from IPython.display import display, Markdown
+
+def batch_reactor(t, y, *args):
+  ca, cd, cu = y
+  k1, k2, k1A, k2A = args
+
+  r1a = k1 * (ca - cd/k1A)
+  r2a = k2 * (ca - cu/k2A)
+
+  dcadt = -r1a -r2a
+  dcddt = r1a
+  dcudt = r2a
+
+  return [dcadt, dcddt, dcudt]
+
+k1 = 1.0 # 1/min 
+k2 = 100 # 1/min 
+k1A = 10.0
+k2A = 1.5
+
+ca0 = 1.0
+
+# initial conditions
+y0 = [ca0, 0, 0]
+args = (k1, k2, k1A, k2A)
+t_final = 12 
+
+sol = solve_ivp(batch_reactor, [0, t_final], y0, args=args, dense_output=True)
+
+t = np.linspace(0,t_final, 1000)
+ca, cd, cu = sol.sol(t)
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-conc-profile
+#| fig-cap: Concentration profile
+
+plt.plot(t, ca, label='$C_A$')
+plt.plot(t, cd, label='$C_D$')
+plt.plot(t, cu, label='$C_U$')
+
+plt.xlabel('time (min)')
+plt.ylabel('Concentration ($mol/dm^3$)')
+
+# Setting x and y axis limits
+plt.xlim(0, t_final)
+plt.ylim(0, ca0)
+
+plt.legend()
+plt.show()
+```
+
+```{python}
+#| echo: true
+#| warning: false
+
+cumax_idx = np.argmax(cu)
+tumax = t[cumax_idx]
+cumax = cu[cumax_idx]
+
+```
+* Maximum concentration of U, $C_U$ = 
+  $C_{Umax}$ = `{python} f'{cumax:.2f}'` $mol/dm^3$ 
+  occurs at 
+  $t_{Umax}$ = `{python} f'{tumax:.2f}'` min
+
+* As $C_D$ keeps on increasing with time until the equilibrium is reached, To
+  maximize $C_D$, stop the reaction after equilibrium is reached. 
+
+```{python}
+#| echo: true
+#| warning: false
+
+cae = ca[-1]
+cde = cd[-1]
+cue = cu[-1]
+
+```
+* Equilibrium concentrations 
+
+  $C_{Ae}$ = `{python} f'{cae:.2f}'` $mol/dm^3$ 
+
+  $C_{De}$ = `{python} f'{cde:.2f}'` $mol/dm^3$ 
+
+  $C_{Ue}$ = `{python} f'{cue:.2f}'` $mol/dm^3$ 
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+def cstr(vars, *args):
+  ca, cd, cu = vars
+  t, k1, k2, k1A, k2A = args
+
+  r1a = k1 * (ca - cd/k1A)
+  r2a = k2 * (ca - cu/k2A)
+
+  eq1 = ca0 - ca - t * (r1a + r2a)
+  eq2 = -cd + t * r1a
+  eq3 = -cu + t * r2a
+
+  return [eq1, eq2, eq3]
+
+
+initial_guess = [ca0, 0, 0]
+times = [1, 10, 100]
+
+md = ""
+
+for tau in times:
+  args = (tau, k1, k2, k1A, k2A)
+  ca, cd, cu = fsolve(cstr, initial_guess, args=args)
+
+  md += (
+    f"At $\\tau$ = {tau:.2f} min.:\n"
+    f"$C_A$ = {ca:.2f} $mol/dm^3$,\n"
+    f"$C_D$ = {cd:.2f} $mol/dm^3$,\n"
+    f"$C_U$ = {cu:.2f} $mol/dm^3$ \n\n"
+  )
+
+display(Markdown(md))
+```
 
 :::
 
@@ -89,8 +234,296 @@ What should be the volume of the first reactor?
 What temperature would you recommend for a single CSTR with a space time of 10 min and an entering concentration of A of 0.1 mol/dm^3^ ?
 
 
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
+
+[Hand written solution](./problem-p-8-4.pdf)
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+from scipy.integrate import solve_ivp
+from scipy.optimize import fsolve
+from scipy.optimize import minimize_scalar
+from scipy.integrate import quad
+import matplotlib.pyplot as plt
+from IPython.display import display, Markdown
+
+
+rx = lambda ca: 0.004 * ca**0.5
+rb = lambda ca: 0.3 * ca
+ry = lambda ca: 0.25 * ca**2
+
+sbx = lambda ca: rb(ca)/rx(ca)
+sby = lambda ca: rb(ca)/ry(ca)
+sbxy = lambda ca: rb(ca)/(rx(ca) + ry(ca))
+
+ca = np.linspace(1e-4,1,100)
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-sbx
+#| fig-cap: $S_{B/X}$
+
+plt.plot(ca,sbx(ca))
+
+plt.xlabel('$C_A$ ($mol/dm^3$)')
+plt.ylabel('$S_{B/X}$')
+
+# Setting x and y axis limits
+plt.xlim(0, ca[-1])
+plt.ylim(0, np.ceil(sbx(ca[-1])))
+
+plt.show()
+
+```
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-sby
+#| fig-cap: $S_{B/Y}$
+
+plt.plot(ca,sby(ca))
+
+plt.xlabel('$C_A$ ($mol/dm^3$)')
+plt.ylabel('$S_{B/Y}$')
+
+# Setting x and y axis limits
+plt.xlim(0, ca[-1])
+plt.ylim(0, 20)
+
+plt.show()
+
+```
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-sbxy
+#| fig-cap: $S_{B/XY}$
+
+plt.plot(ca,sbxy(ca))
+
+plt.xlabel('$C_A$ ($mol/dm^3$)')
+plt.ylabel('$S_{B/XY}$')
+
+# Setting x and y axis limits
+plt.xlim(0, ca[-1])
+plt.ylim(0, 12)
+
+plt.show()
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+
+# Maximize S_B/XY
+bounds=(1e-4, 1)
+# Maximize the selectivity by minimizing the negative of the selectivity function
+result = minimize_scalar(lambda ca: -sbxy(ca), method='bounded', bounds=bounds)
+
+camax = result.x
+sbxy_max = sbxy(camax)
+
+```
+* Maximum concentration of A, $C_{Amax}$ = 
+  `{python} f'{camax:.2f}'` $mol/dm^3$ 
+
+  Maximum selectivity = `{python} f'{sbxy_max:.2f}'`
+
+* The CSTR operates at exit concentration of 
+  `{python} f'{camax:.2f}'` $mol/dm^3$ 
+
+```{python}
+#| echo: true
+#| warning: false
+
+T = 27 + 273.15 # K
+v0 = 10 # dm^3/min
+P = 4 # atm
+ya0 = 1 # pure A
+R = 0.082
+
+ca0 = ya0 * P /(R * T)
+
+rate = rx(camax) + rb(camax) + ry(camax)
+v_cstr = v0 * (ca0 - camax)/ rate
+
+```
+* $C_{A0}$ = `{python} f'{ca0:.3f}'` $mol/dm^3$ 
+* $V_{CSTR}$ = `{python} f'{v_cstr:.2f}'` $dm^3$ 
+
+```{python}
+#| echo: true
+#| warning: false
+
+tau_cstr = v_cstr/v0
+
+cb_cstr = tau_cstr* rb(camax)
+cx_cstr = tau_cstr* rx(camax)
+cy_cstr = tau_cstr* ry(camax)
+
+```
+Exit concentration of CSTR 
+
+* $C_{B}$ = `{python} f'{cb_cstr:.3e}'` $mol/dm^3$ 
+* $C_{X}$ = `{python} f'{cx_cstr:.3e}'` $mol/dm^3$ 
+* $C_{Y}$ = `{python} f'{cy_cstr:.3e}'` $mol/dm^3$ 
+
+```{python}
+#| echo: true
+#| warning: false
+
+x_cstr = (ca0 - camax)/ca0
+
+```
+Conversion in first reactor = 
+`{python} f'{x_cstr:.2f}'`
+
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-levenspeil
+#| fig-cap: Levenspeil plot
+
+
+fa0 = ca0*v0
+fa0_by_ra = fa0/(rb(ca) + rx(ca) + ry(ca))
+x = (ca0 - ca)/ca0
+plt.plot(x,fa0_by_ra)
+
+plt.xlabel('$X$')
+plt.ylabel('$F_{A0}/-r_A$')
+
+# Setting x and y axis limits
+plt.xlim(0, 1)
+# plt.ylim(0, 10000)
+
+plt.show()
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-cbmax
+#| fig-cap: Concentration of B $C_B$ with T
+
+def pfr(x, *args):
+  fa0 = args[0]
+
+  ca = ca0 * (1 - x)
+  return fa0/(rb(ca) + rx(ca) + ry(ca))
+
+x_start = x_cstr
+x_end = 0.99  
+
+v_pfr, _ = quad(pfr, x_start, x_end, args=(fa0))
+
+```
+
+PFR volume required to achieve final conversion of 
+`{python} f'{x_end:.2f}'` = 
+`{python} f'{v_pfr:.2f}'` $dm^3$
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+e1 = 20000
+e2 = 10000
+e3 = 30000
+
+k1 = lambda T: 0.004 * np.exp((e1/1.98) * ((1/T) - (1/300)))
+k2 = lambda T: 0.3   * np.exp((e2/1.98) * ((1/T) - (1/300)))
+k3 = lambda T: 0.25  * np.exp((e3/1.98) * ((1/T) - (1/300)))
+
+rxt = lambda ca,T: k1(T) * ca**0.5
+rbt = lambda ca,T: k2(T) * ca
+ryt = lambda ca,T: k3(T) * ca**2
+
+sbxt = lambda ca,T: rbt(ca,T)/rxt(ca,T)
+sbyt = lambda ca,T: rbt(ca,T)/ryt(ca,T)
+sbxyt = lambda ca,T: rbt(ca,T)/(rxt(ca,T) + ryt(ca,T))
+
+tau = 10 
+ca0 = 0.1
+
+initial_guess = [ca0, 0, 0, 0]
+
+def cstr_btx(vars, *args):
+  ca, cx, cb, cy = vars
+  tau, T = args
+  
+  r1 = rxt(ca,T)
+  r2 = rbt(ca,T)
+  r3 = ryt(ca,T)
+
+  eq1 = ca0 - ca - tau * (r1 + r2 + r3)
+  eq2 = -cx + tau * r1
+  eq3 = -cb + tau * r2
+  eq4 = -cy + tau * r3
+
+  return [eq1, eq2, eq3, eq4]
+
+# Function to solve the CSTR equations for a given temperature
+def maximize_cb(T):
+    args = (tau, T)
+    ca, cx, cb, cy = fsolve(cstr_btx, initial_guess, args=args)
+    return -cb
+
+result = minimize_scalar(maximize_cb, bounds=(275, 400), method='bounded')
+
+optimal_temp = result.x
+max_cb = -result.fun
+
+
+temps = np.linspace(275,400,100)
+cb_values = []
+
+for temp in temps:
+  args = (tau, temp)
+  ca, cx, cb, cy = fsolve(cstr_btx, initial_guess, args=args)
+  cb_values.append(cb)
+
+cb_values = np.array(cb_values)
+temps = np.array(temps)
+
+max_cb_index = np.argmax(cb_values)
+max_cb_temp = temps[max_cb_index]
+max_cb = cb_values[max_cb_index]
+
+plt.plot(temps, cb_values)
+plt.scatter([max_cb_temp], [max_cb], zorder=5)
+
+# plt.axvline(x=max_cb_temp, color='gray', linestyle='--', lw=1)
+# plt.axhline(y=max_cb, color='gray', linestyle='--', lw=1)
+
+plt.plot([max_cb_temp, max_cb_temp], [0, max_cb], color='gray', linestyle='--', lw=1)  # Vertical line to curve
+plt.plot([min(temps), max_cb_temp], [max_cb, max_cb], color='gray', linestyle='--', lw=1)  # Horizontal line to curve
+
+plt.xlabel('Temperature (K)')
+plt.ylabel('Concentration of B ($mol/dm^3$)')
+
+# Setting x and y axis limits
+plt.xlim(275, 400)
+plt.ylim(0, 0.08)
+
+plt.show()
+
+```
+
+* Optimal temperature for maximizing $C_B$  = 
+`{python} f'{optimal_temp:.2f}'` K. 
+Maximum $C_B$= `{python} f'{max_cb:.2f}'` 
+
 
 :::
 
@@ -118,8 +551,304 @@ Assume that each reaction is irreversible, with $k_1 = 0.4 \, h^{-1}$ and $k_2 =
 (e) Vary $k_1, k_2, k_{-1}, \text{and} \, k_{-2}$.
 Explain the consequence of $k_1 > 100$ and $k_2 < 0.1$ and with $k_{-1} = k_{-2} = 0$ and with $k_{-2}= 1, k_{-1} = 0$, and $k_{-2} = 0.25$.
 
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
+
+[Hand written solution](./problem-p-8-9.pdf)
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
+
+def batch_reactor_a(t, y, *args):
+  ca, cb, cc = y
+  k1, k2 = args
+
+  r1a = k1 * ca
+  r2b = k2 * cb
+
+  dcadt = - r1a
+  dcbdt = r1a - r2b
+  dccdt = r2b
+
+  return [dcadt, dcbdt, dccdt]
+
+k1 = 0.4 # 1/h
+k2 = 0.01
+
+ca0 = 1.6
+
+# initial conditions
+y0 = [ca0, 0, 0]
+args = (k1, k2)
+t_final = 50
+
+sol = solve_ivp(batch_reactor_a, [0, t_final], y0, args=args, dense_output=True)
+
+t = np.linspace(0,t_final, 1000)
+ca, cb, cc = sol.sol(t)
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-conc-profile-batch-a
+#| fig-cap: Concentration profile case A
+
+plt.plot(t, ca, label='$C_A$')
+plt.plot(t, cb, label='$C_B$')
+plt.plot(t, cc, label='$C_C$')
+
+plt.xlabel('time (h)')
+plt.ylabel('Concentration ($mol/dm^3$)')
+
+# Setting x and y axis limits
+plt.xlim(0, t_final)
+plt.ylim(0, ca0)
+
+plt.legend()
+plt.show()
+```
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+def batch_reactor_b(t, y, *args):
+  ca, cb, cc = y
+  k1, k2, km1 = args
+
+  r1a = k1 * ca
+  r1b = km1 * cb
+  r2b = k2 * cb
+
+  dcadt = - r1a + r1b
+  dcbdt = r1a -r1b - r2b
+  dccdt = r2b
+
+  return [dcadt, dcbdt, dccdt]
+
+km1 = 0.3
+
+# initial conditions
+y0 = [ca0, 0, 0]
+args = (k1, k2, km1)
+t_final = 50
+
+sol = solve_ivp(batch_reactor_b, [0, t_final], y0, args=args, dense_output=True)
+
+t = np.linspace(0,t_final, 1000)
+ca, cb, cc = sol.sol(t)
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-conc-profile-batch-b
+#| fig-cap: Concentration profile case B
+
+plt.plot(t, ca, label='$C_A$')
+plt.plot(t, cb, label='$C_B$')
+plt.plot(t, cc, label='$C_C$')
+
+plt.xlabel('time (h)')
+plt.ylabel('Concentration ($mol/dm^3$)')
+
+# Setting x and y axis limits
+plt.xlim(0, t_final)
+plt.ylim(0, ca0)
+
+plt.legend()
+plt.show()
+```
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+def batch_reactor_c(t, y, *args):
+  ca, cb, cc = y
+  k1, k2, km1, km2 = args
+
+  r1a = k1 * ca
+  r1b = km1 * cb
+  r2b = k2 * cb
+  r2c = km2 * cc
+
+  dcadt = - r1a + r1b
+  dcbdt = r1a -r1b - r2b + r2c
+  dccdt = r2b - r2c
+
+  return [dcadt, dcbdt, dccdt]
+
+km1 = 0.3
+km2 = 0.005
+
+# initial conditions
+y0 = [ca0, 0, 0]
+args = (k1, k2, km1, km2)
+t_final = 50
+
+sol = solve_ivp(batch_reactor_c, [0, t_final], y0, args=args, dense_output=True)
+
+t = np.linspace(0,t_final, 1000)
+ca, cb, cc = sol.sol(t)
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-conc-profile-batch-c
+#| fig-cap: Concentration profile case C
+
+plt.plot(t, ca, label='$C_A$')
+plt.plot(t, cb, label='$C_B$')
+plt.plot(t, cc, label='$C_C$')
+
+plt.xlabel('time (h)')
+plt.ylabel('Concentration ($mol/dm^3$)')
+
+# Setting x and y axis limits
+plt.xlim(0, t_final)
+plt.ylim(0, ca0)
+
+plt.legend()
+plt.show()
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-conc-profile-batch-e1
+#| fig-cap: Concentration profile case C, $k_1$ = 100, $k_2$ = 1, $k_{-1}$= 0, $k_{-2}$ = 0
+
+k1 = 100
+k2 = 1
+km1 = 0
+km2 = 0
+
+# initial conditions
+y0 = [ca0, 0, 0]
+args = (k1, k2, km1, km2)
+t_final = 10
+
+sol = solve_ivp(batch_reactor_c, [0, t_final], y0, args=args, dense_output=True)
+
+t = np.linspace(0,t_final, 1000)
+ca, cb, cc = sol.sol(t)
+
+plt.plot(t, ca, label='$C_A$')
+plt.plot(t, cb, label='$C_B$')
+plt.plot(t, cc, label='$C_C$')
+
+plt.xlabel('time (h)')
+plt.ylabel('Concentration ($mol/dm^3$)')
+
+# Setting x and y axis limits
+plt.xlim(0, t_final)
+plt.ylim(0, ca0)
+
+plt.legend()
+plt.show()
+```
+When $k_1$ > 100, the first reaction is very fast.
+Therefore, all A is immediately converted to B and the concentration of B
+immediately reaches close to $C_{A0}$.
+
+As $k_2$ < 0.1, the second reaction is much slower. Since both the reactions
+are irreversible ($k_{-1}$, and $k_{-2}$ both are zero), B gets slowly
+converted to C. Given sufficient time, all B is converted to C.  
+
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-conc-profile-batch-e2
+#| fig-cap: Concentration profile case C, $k_1$ = 100, $k_2$ = 1, $k_{-1}$= 0, $k_{-2}$ = 1
+
+k1 = 100
+k2 = 1
+km1 = 0
+km2 = 1
+
+# initial conditions
+y0 = [ca0, 0, 0]
+args = (k1, k2, km1, km2)
+t_final = 10
+
+sol = solve_ivp(batch_reactor_c, [0, t_final], y0, args=args, dense_output=True)
+
+t = np.linspace(0,t_final, 1000)
+ca, cb, cc = sol.sol(t)
+
+plt.plot(t, ca, label='$C_A$')
+plt.plot(t, cb, label='$C_B$')
+plt.plot(t, cc, label='$C_C$')
+
+plt.xlabel('time (h)')
+plt.ylabel('Concentration ($mol/dm^3$)')
+
+# Setting x and y axis limits
+plt.xlim(0, t_final)
+plt.ylim(0, ca0)
+
+plt.legend()
+plt.show()
+```
+Since second reaction is reversible and $K_{eq,2} = k_{2}/ k_{-2} = 1$, a steady
+state (equilibrium) is achieved where $C_B = C_C$
+
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-conc-profile-batch-e3
+#| fig-cap: Concentration profile case C, $k_1$ = 100, $k_2$ = 1, $k_{-1}= 0, $k_{-2}$ = 0.25 
+
+k1 = 100
+k2 = 1
+km1 = 0
+km2 = 0.25
+
+# initial conditions
+y0 = [ca0, 0, 0]
+args = (k1, k2, km1, km2)
+t_final = 10
+
+sol = solve_ivp(batch_reactor_c, [0, t_final], y0, args=args, dense_output=True)
+
+t = np.linspace(0,t_final, 1000)
+ca, cb, cc = sol.sol(t)
+
+plt.plot(t, ca, label='$C_A$')
+plt.plot(t, cb, label='$C_B$')
+plt.plot(t, cc, label='$C_C$')
+
+plt.xlabel('time (h)')
+plt.ylabel('Concentration ($mol/dm^3$)')
+
+# Setting x and y axis limits
+plt.xlim(0, t_final)
+plt.ylim(0, ca0)
+
+plt.legend()
+plt.show()
+
+```
+
+$K_{eq} = k_{2}/ k_{-2} = 1/0.25 = 4$, Therefore at equilibrium 
+is achieved where $C_C = 4 C_B$
+
+At equilibrium
+$C_B$ = `{python} f'{cb[-1]:.2f}'` $mol/dm^3$,
+$C_C$ = `{python} f'{cc[-1]:.2f}'` $mol/dm^3$
+
 
 :::
 

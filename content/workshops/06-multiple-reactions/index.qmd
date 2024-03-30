@@ -49,7 +49,7 @@ When would you stop the reaction to maximize the concentration of D?
 Describe what you find.
 
 (b) When does the maximum concentration of U occur?
-(Ans.: t = 0.31 min)
+(Ans.: t = 0.04 min)
 
 (c) What are the equilibrium concentrations of A, D, and U?
 
