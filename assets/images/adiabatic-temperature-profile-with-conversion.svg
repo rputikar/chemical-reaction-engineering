@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="adiabatic-temperature-profile-with-conversion.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="4"
+     inkscape:cx="184.125"
+     inkscape:cy="250.5"
+     inkscape:window-width="2729"
+     inkscape:window-height="2088"
+     inkscape:window-x="1358"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg1">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="0.26458333"
+       spacingy="0.26458334"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <marker
+       style="overflow:visible"
+       id="marker15"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="0.89999998"
+       markerHeight="0.60000002"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="none">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path15" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Dark-Color-Pellette"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <rect
+       style="fill:#000000;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect1"
+       width="13.229166"
+       height="14.552083"
+       x="0.43676892"
+       y="-16.536459" />
+    <rect
+       style="fill:#65489d;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect2"
+       width="13.229166"
+       height="14.552083"
+       x="13.961318"
+       y="-16.536459" />
+    <rect
+       style="fill:#388ecc;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect3"
+       width="13.229166"
+       height="14.552083"
+       x="-69.616676"
+       y="-16.901552"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#105e5d;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect4"
+       width="13.229166"
+       height="14.552083"
+       x="41.010414"
+       y="-16.536459" />
+    <rect
+       style="fill:#9f1d54;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect5"
+       width="13.229166"
+       height="14.552083"
+       x="54.534966"
+       y="-16.536459" />
+    <rect
+       style="fill:#4d1013;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect6"
+       width="13.229166"
+       height="14.552083"
+       x="68.059517"
+       y="-16.536459" />
+    <rect
+       style="fill:#f04e58;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect7"
+       width="13.229166"
+       height="14.552083"
+       x="81.584061"
+       y="-16.536459" />
+    <rect
+       style="fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect8"
+       width="13.229166"
+       height="14.552083"
+       x="95.108612"
+       y="-16.536459" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Drawing" />
+  <path
+     style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-dasharray:none;paint-order:markers fill stroke;marker-end:url(#marker15);marker-start:url(#marker15)"
+     d="m 29.104166,42.597918 v 43.391667 l 44.714582,10e-7"
+     id="path13"
+     sodipodi:nodetypes="ccc"
+     inkscape:export-filename="integral-method-0-order.png"
+     inkscape:export-xdpi="300"
+     inkscape:export-ydpi="300" />
+  <text
+     xml:space="preserve"
+     style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-dasharray:none;paint-order:markers fill stroke"
+     x="52.103863"
+     y="91.28125"
+     id="text13"><tspan
+       sodipodi:role="line"
+       id="tspan13"
+       style="fill:#000000;stroke:none;stroke-width:0.529167"
+       x="52.103863"
+       y="91.28125">T</tspan></text>
+  <path
+     style="fill:none;fill-opacity:1;stroke:#388ecc;stroke-width:0.529167;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+     d="m 65.047639,46.097477 -29.104164,39.6875"
+     id="path23"
+     sodipodi:nodetypes="cc" />
+  <text
+     xml:space="preserve"
+     style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-dasharray:none;paint-order:markers fill stroke"
+     x="38.587925"
+     y="91.28125"
+     id="text1"><tspan
+       sodipodi:role="line"
+       id="tspan1"
+       style="fill:#000000;stroke:none;stroke-width:0.529167"
+       x="38.587925"
+       y="91.28125">T<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan2">0</tspan></tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-dasharray:none;paint-order:markers fill stroke"
+     x="26.43054"
+     y="64.990837"
+     id="text3"><tspan
+       sodipodi:role="line"
+       id="tspan3"
+       style="fill:#000000;stroke:none;stroke-width:0.529167"
+       x="26.43054"
+       y="64.990837">X<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan4">EB</tspan></tspan></text>
+  <g
+     id="g5">
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-dasharray:none;paint-order:markers fill stroke"
+       x="42.587334"
+       y="47.574207"
+       id="text31"><tspan
+         sodipodi:role="line"
+         id="tspan31"
+         style="fill:#000000;stroke:none;stroke-width:0.529167"
+         x="42.587334"
+         y="47.574207">Q = 0</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;stroke:none;stroke-width:0.529167"
+         x="42.587334"
+         y="52.865868"
+         id="tspan5">W =0</tspan></text>
+    <circle
+       style="fill:#000000;stroke:#000000;stroke-width:0.166667;paint-order:markers fill stroke;fill-opacity:1;stroke-opacity:1"
+       id="path5"
+       cx="34.033333"
+       cy="43.920834"
+       r="0.16666666" />
+    <circle
+       style="fill:#000000;stroke:#000000;stroke-width:0.166667;paint-order:markers fill stroke;fill-opacity:1;stroke-opacity:1"
+       id="circle5"
+       cx="34.644913"
+       cy="49.310417"
+       r="0.16666666" />
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-dasharray:none;paint-order:markers fill stroke"
+     x="64.577385"
+     y="67.828583"
+     id="text6"><tspan
+       sodipodi:role="line"
+       id="tspan6"
+       style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.529167"
+       x="64.577385"
+       y="67.828583">CSTR</tspan><tspan
+       sodipodi:role="line"
+       style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.529167"
+       x="64.577385"
+       y="73.120247"
+       id="tspan7">PFR</tspan><tspan
+       sodipodi:role="line"
+       style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.529167"
+       x="64.577385"
+       y="78.411911"
+       id="tspan8">PBR</tspan><tspan
+       sodipodi:role="line"
+       style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.529167"
+       x="64.577385"
+       y="83.703568"
+       id="tspan9">Batch</tspan></text>
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#525252;stroke-width:0.26458333;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker15);stroke-dasharray:none"
+     d="M 63.499997,66.145835 C 59.639367,65.698753 56.750493,64.71586 54.504165,62.441669"
+     id="path9"
+     sodipodi:nodetypes="cc" />
+</svg>

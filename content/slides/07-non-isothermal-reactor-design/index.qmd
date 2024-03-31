@@ -210,7 +210,7 @@ $$
 $$
 \frac{d \hat{E}_{sys}}{dt} = 
    \dot Q 
- - \dot W
+ - \dot W_s
  + \left. \sum_{i=1}^{N} F_i (E_i + P \tilde V_i) \right|_{in} 
  - \left. \sum_{i=1}^{N} F_i (E_i + P \tilde V_i) \right|_{out} 
 $$
@@ -235,7 +235,7 @@ $$
 $$
 \frac{d \hat{E}_{sys}}{dt} = 
    \dot Q 
- - \dot W
+ - \dot W_s
  + \left. \sum_{i=1}^{N} F_i (U_i + P \tilde V_i) \right|_{in} 
  - \left. \sum_{i=1}^{N} F_i (U_i + P \tilde V_i) \right|_{out} 
 $$
@@ -246,25 +246,315 @@ $$
 :::{.highlight .center}
 $$
 \frac{d \hat{E}_{sys}}{dt} = 
-   \dot Q 
- - \dot W
+   \dot Q  
+ - \dot W_s
  + \sum_{i=1}^{N} F_{i0} H_{i0}
  - \sum_{i=1}^{N} F_{i} H_{i} 
 $$
 :::
 
-## Total energy balance: conversion
+## Steady state energy balance: conversion
+
+::::{.columns}
+
+:::{.column width=50%}
+
+* Consider reaction  
+  
+  $\ce{aA + bB -> cC + dD}$
+
+  $\ce{A + \frac{b}{a} B -> \frac{c}{a} C + \frac{d}{a} D}$
+
+* $F_i = F_{A0}(\Theta_i + \nu_i X)$
+
+  $\Theta_i = \frac{F_{i0}}{F_{A0}}$
+
+  $\nu_i$: Stoichiometric coefficient
+
+:::
+
+:::{.column width=50%}
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+$F_A = F_{A0}(1 - X)$
+
+$F_B = F_{A0}(\Theta_B - \frac{b}{a} X)$
+
+$F_C = F_{A0}(\Theta_C + \frac{c}{a} X)$
+
+$F_D = F_{A0}(\Theta_D + \frac{d}{a} X)$
+
+$F_I = F_{A0}(\Theta_I)$
+
+:::
+
+::::
+
+* Steady state reaction
+
+$$
+   \dot Q 
+ - \dot W_s
+ + \sum_{i=1}^{N} F_{i0} H_{i0}
+ - \sum_{i=1}^{N} F_{i} H_{i} 
+ = 0
+$$
+
+* Lets evaluate
+
+  $\sum_{i=1}^{N} F_{i0} H_{i0} - \sum_{i=1}^{N} F_{i} H_{i}$
+
+## Steady state energy balance: conversion
+
+$$
+\begin{aligned}
+\sum_{i=1}^{N} F_{i0} H_{i0} - \sum_{i=1}^{N} F_{i} H_{i}
+= & \;\; F_{A0}\left[ 
+     (H_{A0} - H_A)
+   + (H_{B0} - H_B) \Theta_B
+   \right. \\
+   & \left. + (H_{C0} - H_C) \Theta_C
+   + (H_{D0} - H_D) \Theta_D
+   + (H_{I0} - H_I) \Theta_I
+   \right] \\
+   &\;\; - \underbrace{
+   \color{red}{
+   \left[
+      \frac{d}{a} H_D
+    + \frac{c}{a} H_C
+    - \frac{b}{a} H_B
+    -  H_A
+   \right] 
+   }}_{\Delta H_{Rx} \text{at temperature T}} F_{A0} X \\
+=  &\;\;
+   F_{A0} \sum_{i=1}^{N} (H_{i0} - H_i)
+   - \Delta H_{Rx} F_{A0} X
+\end{aligned}
+$$
+
+:::{.highlight .center}
+$$
+   \dot Q 
+ - \dot W_s
+ +  F_{A0} \sum_{i=1}^{N} \Theta_i (H_{i0} - H_i)
+   - \Delta H_{Rx} F_{A0} X
+ = 0
+$$
+:::
+
+* Use this equation when enthalpies are available. 
+* If there is a phase change, we **must** use this equation for energy balance. 
+* In most cases, the work done $\dot W_s$ is zero
+
+## Specific enthalpy $H_i$
+
+*  Specific enthalpy of species $i$ at a particular temperature and pressure is given by
+
+   $$H_i = H_i^\circ(T_R) + \Delta H_{Qi}$$
+  
+   - Ignoring enthalpy of mixing
+
+   - $H_i^\circ(T_R)$: Enthalpy of formation of species $i$ at reference temperature $T_R$
+
+   - $\Delta H_{Qi}$: the change in enthalpy that results when the temperature
+      is raised from $T_R$, to some temperature $T$
+
+* In absence of phase change, $\Delta H_{Qi} = \int_{T_1}^{T_2} C_{P_i} dT$
+
+* The heat capacity at temperature $T$ is frequently expressed as a quadratic
+  function of temperature
+
+  $C_{P_i} = \alpha_i + \beta_i T + \gamma_i T^2$
+
+::: {.highlight}
+$$H_i = H_i^\circ(T_R) + \int_{T_1}^{T_2} C_{P_i} dT$$
+:::
+
+## Steady state energy balance
+### Constant heat capacity
+
+* Consider constant heat capacity: 
+  $\qquad$ $\int_{T_{i0}}^{T} C_{P_i} dT = C_{P_i} \left[ T - T_{i0}\right]$
+
+* $H_{i0} = H_i^\circ(T_R) + C_{P_i} \left[ T_{i0} - T_{R} \right]$
+
+* $H_{i} = H_i^\circ(T_R) + C_{P_i} \left[ T_{i} - T_{R} \right]$
+
+$$
+H_{i0} - H_i 
+   = \left( \cancel{H_i^\circ(T_R)} + C_{P_i} \left[ T_{i0} - \cancel{T_{R}}\right] \right) 
+   - \left( \cancel{H_i^\circ(T_R)} + C_{P_i} \left[ T_{i} - \cancel{T_{R}}\right] \right)
+$$
+
+$$
+H_{i0} - H_i =   C_{P_i} \left[ T_{i0} - T_{i}\right]
+             = - C_{P_i} \left[ T_{i} - T_{i0}\right]
+$$
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+:::{.box .center}
+$$
+   \dot Q 
+ - \dot W_s
+ -  F_{A0} \sum_{i=1}^{N}  \Theta_i C_{P_i} \left[ T_{i} - T_{i0}\right]
+   - \Delta H_{Rx} F_{A0} X
+ = 0
+$$
+:::
+
+## Heat of reaction, $\Delta H_{Rx}(T)$
+
+* For reaction: 
+  $\ce{aA + bB -> cC + dD}$
+
+* Heat of reaction: 
+
+$\Delta H_{Rx}(T) = 
+      \frac{d}{a} H_D (T)
+    + \frac{c}{a} H_C (T)
+    - \frac{b}{a} H_B (T)
+    -  H_A (T)$
+
+* Specific enthalpy of each species 
+
+$H_i = C_{P_i} \left[ T  - T_{R}\right]$
+
+* Substituting 
+
+:::{.smaller}
+$$
+\begin{aligned}
+\Delta H_{Rx}(T) = & & 
+   \left[
+   \underbrace{
+      \frac{d}{a} H_D^\circ (T_R)
+    + \frac{c}{a} H_C^\circ (T_R)
+    - \frac{b}{a} H_B^\circ (T_R)
+    -  H_A^\circ (T_R)
+   }_{\color{red}{\Delta H_{Rx}^\circ \text{ at } T_R}}
+   \right]
+   & + & \left[
+   \underbrace{
+      \frac{d}{a} C_{P_D}
+    + \frac{c}{a} C_{P_C}
+    - \frac{b}{a} C_{P_B}
+    -  C_{P_A}
+   }_{\color{red}{\Delta C_{P}}}
+   \right] \left(T - T_R \right)
+\end{aligned}
+$$
+:::
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+:::{.box .center}
+$$
+\Delta H_{Rx}(T) =  \Delta H_{Rx}^\circ(T_R)  + \Delta C_{P}(T - T_R)
+$$
+:::
 
 
-## What is ($H_{i0} – H_i$)?
+## Steady state energy balance
+### Constant heat capacity, adiabatic system
 
-## What is $\Delta H_{RX}(T)$?
+$$
+   \dot Q 
+ - \dot W_s
+ -  F_{A0} \sum_{i=1}^{N}  \Theta_i C_{P_i} \left[ T_{i} - T_{i0}\right]
+   - \left[ \Delta H_{Rx}^\circ(T_R)  + \Delta C_{P}(T - T_R) \right] F_{A0} X
+ = 0
+$$
 
-## $Q$ and $H_i$ in Terms of $T$
+* Adiabatic system: $\dot Q$ = 0, Neglecting shaft work $\dot W_s$ and assuming
+  $T_{i0} = T_0$ 
 
-## Adiabatic reactors
+$$
+ -  F_{A0} \sum \Theta_i C_{P_i} \left[ T_{i} - T_{0}\right]
+   - \left[ \Delta H_{Rx}^\circ(T_R)  + \Delta C_{P}(T - T_R) \right] F_{A0} X
+ = 0
+$$
 
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+:::{.box .center}
+$$
+ X_{EB} = \frac { \sum \Theta_i C_{P_i} \left[ T_{i} - T_{0}\right] }
+    {- \Delta H_{Rx}^\circ (T_R)  + \Delta C_{P}(T - T_R) } 
+$$
+:::
+
+## Steady state energy balance
+### Constant heat capacity, adiabatic system
+
+::::{.columns}
+
+:::{.column width=52%}
+$$
+ X_{EB} = \frac { \sum \Theta_i C_{P_i} \left[ T_{i} - T_{0}\right] }
+    {- \Delta H_{Rx}^\circ (T_R)  + \Delta C_{P}(T - T_R) } 
+$$
+
+* In many instances, the $\Delta C_{P}(T - T_R)$ term in the denominator is
+  negligible with respect to the $\Delta H_{Rx}^\circ (T_R)$ term, 
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+:::{.box .center}
 $$
 T = T_0 + \frac{ \left( -\Delta H^\circ_{Rx} \right) X_{EB}}{\sum \Theta_i C_{Pi}}
 $$
+:::
+
+:::
+:::{.column width=4%}
+:::
+:::{.column width=44%}
+
+:::{style="margin-bottom: 80px;"}
+:::
+
+
+![](../../../assets/images/adiabatic-temperature-profile-with-conversion.png){width=90%}
+:::
+::::
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+:::{.callout-note appearance="simple"}
+This equation applies to CSTR, PFR, PBR, and Batch reactors. It gives us the
+explicit relationship between $X$ and $T$ needed to be used in conjunction with
+the mole balance to solve a large variety of chemical reaction engineering problems.
+:::
+
+## Adiabatic equilibrium conversion
+
+## Reactor staging
+
+## Optimum feed temperature
+
+## Steady-state tubular reactor with heat exchange
+
+## Balance on the heat-transfer fluid
+
+## Algorithm for PFR/PBR design with heat effects
+
+## CSTR with heat effects
+
+## Multiple steady states
+
+## Nonisothermal multiple chemical reactions
+
+## Safety
+
+## 
+
 
