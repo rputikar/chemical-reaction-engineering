@@ -1,5 +1,5 @@
-subtitle: "CHEN3010: Chemical Reaction Engineering"
-footer: "CHEN3010: Chemical Reaction Engineering"
+subtitle: "Chemical Reaction Engineering"
+footer: "Chemical Reaction Engineering"
 
 format:
   revealjs:
@@ -20,12 +20,10 @@ format:
       - text: |
           <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/mhchem.min.js" integrity="sha384-ifpG+NlgMq0kvOSGqGQxW1mJKpjjMDmZdpKGq3tbvD3WPhyshCEEYClriK/wRVU0"  crossorigin="anonymous"></script>
 
-
     pointer:
       # set pointer configuration options here
       - color: "#d02670"
       - pointerSize: 20
-
 
 revealjs-plugins:
   - pointer

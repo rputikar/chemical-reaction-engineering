@@ -9,7 +9,7 @@ format: html
 
 - Revisit the lectures so far. 
 
-- Read Chapter 8 from @fogler2016.
+- Read Chapters 11, 12 from @fogler2016.
 
 - Go through the slides below. 
 

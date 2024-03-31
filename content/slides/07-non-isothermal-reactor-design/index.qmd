@@ -3,15 +3,268 @@ title: "Non-isothermal reactor design"
 format: revealjs
 ---
 
-```{python}
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-import pandas as pd
-import scipy.interpolate as interpolate
-import scipy.integrate as integrate
-import tabulate as tab
-from IPython.display import display, Markdown
-plt.style.use('../../../assets/templates/present.mpstyle')
-```
+## Need for energy balance
+
+* Consider a liquid phase PFR for a first-order exothermic reaction.
+
+::::{.columns}
+:::{.column width=40%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
+:::
+
+:::{.column width=60%}
+
+:::{.incremental .smaller}
+
+1. Mole balance
+
+   $$
+   \frac{dX_A}{dV} = \frac{-r_A}{F_{A0}} 
+   $$
+
+2. Rate law
+
+   $$
+   -r_A = kC_A = -k_0 \exp \left[ \frac{E}{R} \left( \frac{1}{T_1} - \frac{1}{T} \right)\right] C_A
+   $$
+
+3. Stoichiometry
+
+   $$
+   C_A = C_{A0}(1-X_A)
+   $$
+
+4. Combine: Put $F_{A0}$ in terms of $C_{A0}$
+
+   $$
+   \frac{dX}{dV} = 
+   -k_0 \exp \left[ \frac{E}{R} \left( \frac{1}{T_1} - \frac{1}{T} \right)\right] 
+   \frac{(1 - X_A)}{\upsilon_0} 
+   $$
+
+5. Evaluate
+
+   We cannot solve this equation because both $X$, and $T$ vary with $V$ and we
+   don’t have $X$ either as a function of  $V$ or $T$. We need one more equation
+
+:::
+
+   [$\Rightarrow$ The energy balance]{.fragment .highlight}
+
+:::
+::::
+
+## Thermodynamics in a closed system
+
+### First law of thermodynamics
+
+::::{.columns}
+
+:::{.column width=50%}
+
+* System
+
+  [A system is any bounded portion of the universe, moving or stationary,
+   which is chosen for the application of the various thermodynamic
+   equations.]{.smaller}
+
+
+* Closed system: no mass crosses boundaries
+
+:::{.smaller}
+$$
+\begin{aligned}
+\text{Change in}
+&  & \text{Heat flow} 
+&  & \text{Work done by}
+\\
+\text{total energy}
+&\;\; = & \text{to} \qquad
+&\;\; - & \text{by the system}
+\\
+\text{of the system}
+&  & \text{the system} 
+&  & \text{on the surroundings} 
+\end{aligned}
+$$
+:::
+
+:::
+
+:::{.column width=50%}
+
+![](../../../assets/images/closed-system.png){width=60%}
+
+:::
+
+::::
+
+:::{style="margin-bottom: 50px;"}
+:::
+
+
+::::{.columns .fragment}
+
+:::{.column width=40%}
+
+:::{.box}
+$$
+d \hat{E} = \delta Q - \delta W
+$$
+:::
+
+:::
+
+:::{.column width=60%}
+
+* $\hat{E}$:  Change in total energy of the system
+* $\delta Q$: Heat flow to the system
+* $\delta$ :  Work done by system on the surroundings
+
+:::
+
+::::
+
+
+
+
+## Thermodynamics in an open system
+
+::::{.columns}
+
+:::{.column width=50%}
+
+* Open system: continuous flow system, mass crosses the system’s boundaries
+* Mass flow can add or remove energy
+* System volume is well mixed
+* $N$ species each entering and leaving at molar flow rate of $F_i$ and has
+  internal energy of $E_i$
+
+:::
+
+:::{.column width=50%}
+
+![](../../../assets/images/open-system.png){width=90%}
+
+:::
+
+::::
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+:::{.smaller}
+$$
+\begin{aligned}
+\text{Rate of accumulation}
+&  &
+&  & \text{Work done}
+&  & \text{Energy added}
+&  & \text{Energy leaving}
+\\
+\text{of energy}
+&\;\; = & \text{Heat in} 
+&\;\; - & \text{by} \qquad
+&\;\; + & \text{to the system} 
+&\;\; - & \text{the system by}
+\\
+\text{in the system}
+&  & 
+&  & \text{the system} 
+&  & \text{by mass flow in}
+&  & \text{mass flow out}
+\end{aligned}
+$$
+:::
+
+:::{.box .center .fragment}
+
+$$
+\frac{d \hat{E}_{sys}}{dt} = 
+   \dot Q 
+ - \dot W
+ + \left. \sum_{i=1}^{N} E_i F_i \right|_{in} 
+ - \left. \sum_{i=1}^{N} E_i F_i \right|_{out} 
+$$
+:::
+
+## The work term, $\dot W$
+
+* $\dot W$: Rate of work done by the system on the surroundings
+   - Flow work: work required to get the mass into and out of system
+   - Other work (shaft work, $\dot W_s$): work produced by stirrer or turbine
+
+$$
+\dot{W} =\overbrace{
+   -\left.\sum_{i=1}^n F_i P \tilde V_i \right|_{in}
+   +\left.\sum_{i=1}^n F_i P \tilde V_i \right|_{out}}^{\color{red}{\text{flow work}}}
+   +\underbrace{\dot W_s}_{\color{red}{\text{shaft work}}}
+$$
+
+* $P$: Pressure; $\tilde V_i$: Specific molar volume of species $i$
+
+* In most instances, the flow-work term is combined with those terms in the
+  energy balance that represent the energy exchange by mass flow across the
+  system boundaries.
+
+$$
+\frac{d \hat{E}_{sys}}{dt} = 
+   \dot Q 
+ - \dot W
+ + \left. \sum_{i=1}^{N} F_i (E_i + P \tilde V_i) \right|_{in} 
+ - \left. \sum_{i=1}^{N} F_i (E_i + P \tilde V_i) \right|_{out} 
+$$
+
+
+## The energy term, $E_i$
+
+* The energy $E_i$ is the sum of the internal energy, the kinetic energy, the
+  potential energy, and any other energies, such as electric or magnetic energy
+  or light
+
+$$
+E_i = U_i + \frac {u_i^2} {2} + g z_i + \text{other}
+$$
+
+* Generally in chemical reactors, 
+  $U_i \gg {u_i^2}/{2} + g z_i + \text{other}$
+
+  $E_i \approx U_i$: Internal energy is major contributor to energy term.
+
+:::{.smaller}
+$$
+\frac{d \hat{E}_{sys}}{dt} = 
+   \dot Q 
+ - \dot W
+ + \left. \sum_{i=1}^{N} F_i (U_i + P \tilde V_i) \right|_{in} 
+ - \left. \sum_{i=1}^{N} F_i (U_i + P \tilde V_i) \right|_{out} 
+$$
+:::
+
+* Enthalpy $H_i$ is defined as $H_i = U_i + P \tilde V_i$
+
+:::{.highlight .center}
+$$
+\frac{d \hat{E}_{sys}}{dt} = 
+   \dot Q 
+ - \dot W
+ + \sum_{i=1}^{N} F_{i0} H_{i0}
+ - \sum_{i=1}^{N} F_{i} H_{i} 
+$$
+:::
+
+## Total energy balance: conversion
+
+
+## What is ($H_{i0} – H_i$)?
+
+## What is $\Delta H_{RX}(T)$?
+
+## $Q$ and $H_i$ in Terms of $T$
+
+## Adiabatic reactors
+
+$$
+T = T_0 + \frac{ \left( -\Delta H^\circ_{Rx} \right) X_{EB}}{\sum \Theta_i C_{Pi}}
+$$
 

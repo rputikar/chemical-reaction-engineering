@@ -5,7 +5,6 @@ format: revealjs
 
 ```{python}
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 import scipy.interpolate as interpolate
@@ -113,7 +112,7 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 ## Conversion, $X$
 
 :::{.extrapad}
-Consider $\ce{A + 2B -> 2C}$, Start with 1 mole of A & 1 mole of B
+Consider $\ce{A + 2B -> 2C}$, Start with 1 mole of A, and 1 mole of B
 :::
 
 ::::{.columns}
@@ -475,6 +474,9 @@ Infinite reactor volume is necessary to reach complete conversion
 
 ## Sizing of continuous flow reactors
 
+<!-- TODO: replace CSTR image by consistently drawn ones.  -->
+<!-- TODO: replace PFR image by consistently drawn ones.  -->
+
 ::::{.columns}
 :::{.column .fragment width=50%}
 
@@ -518,6 +520,10 @@ area under the curve $\frac{F_{A0}}{-r_{A}} = f(X_A)$
 
 
 ## Levenspiel plots - reactor sizing
+
+<!-- TODO: replace cstr-levenspeil-2.png by consistently drawn one.  -->
+<!-- TODO: replace pfr-levenspeil-2.png by consistently drawn one.  -->
+
 
 :::{.incremental}
 
@@ -888,7 +894,7 @@ rectangle = plt.Rectangle((x_2, 0), x_3 - x_2, data4_interp(x_3), color='forestg
 ax.add_patch(rectangle)
 
 text_str = r"""$V_{{X={x:.2f}}}$ = {v:.2f} $m^3$""".format(x=x_3,v=v_cstr_2)
-ax.text(0.55, 2.25, text_str, ha='center', va='bottom')
+ax.text(0.50, 2.25, text_str, ha='center', va='bottom')
 ax.arrow(0.62, 2.2, 0, -0.2, head_width=0.01, head_length=0.05, fc='k')
 
 ax.set_xlabel('Conversion X')
