@@ -1,19 +1,9 @@
 ---
 title: "Rate law and stoichiometry"
 format: revealjs
+revealjs-plugins:
+  - attribution
 ---
-
-```{python}
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-import pandas as pd
-import scipy.interpolate as interpolate
-import scipy.integrate as integrate
-import tabulate as tab
-from IPython.display import display, Markdown
-plt.style.use('../../../assets/templates/present.mpstyle')
-```
 
 # Rate law
 
@@ -34,7 +24,6 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 | CSTR | $$V = \frac{F_{A0}X}{-r_A} $$  |
 | PFR | $$ F_{A0}\frac{dX}{dV} = -r_A $$|
 | PBR | $$ F_{A0}\frac{dX}{dW} = -r'_A $$|
-|||
 
 :::
 
@@ -170,12 +159,17 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 
 :::
 
-:::{.fragment .highlight}
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+:::{.fragment .highlight .center}
 
 $$
-\begin{array}{c} \ce{ A + \frac{b}{a} B -> \frac{c}{a} C + \frac{d}{a} D} \\
-\\
-\frac{-r_A}{a} = \frac{-r_B}{b} = \frac{r_C}{c} = \frac{r_D}{d} \end{array}
+\begin{align*}
+\ce{A}   & \quad + \quad & \ce{\frac{b}{a} B} &\quad \ce{->} \quad & \ce{\frac{c}{a} C} &\quad + \quad & \ce{\frac{d}{a} D} \\
+\frac{-r_A}{a} & \quad = \quad & \frac{-r_B}{b} & \quad = \quad & \frac{r_C}{c} & \quad = \quad & \frac{r_D}{d}
+\end{align*}
 $$
  
 :::
@@ -251,11 +245,10 @@ $$
 
 | Reaction order | Rate equation | Units of $k_A$|
 |-|-|-|
-| $0^{th}$ order | $$-r_A = k_A$$ | $$\{k\} = \frac{mol}{volume \ s}$$|
-| $1^{st}$ order | $$-r_A = k_A C_A$$ | $$\{k\} = \frac{1}{s}$$|
-| $2^{nd}$ order | $$-r_A = k_A C_A^2 $$ | $$\{k\} = \frac{volume}{mol \ s}$$|
-| $3^{rd}$ order | $$-r_A = k_A C_A^3 $$ | $$\{k\} = \frac{(volume/mol)^2}{s}$$|
-||||
+| $0^{th}$ order | $-r_A = k_A$ | $$\{k\} = \frac{mol}{volume \ s}$$|
+| $1^{st}$ order | $-r_A = k_A C_A$ | $$\{k\} = \frac{1}{s}$$|
+| $2^{nd}$ order | $-r_A = k_A C_A^2$ | $$\{k\} = \frac{volume}{mol \ s}$$|
+| $3^{rd}$ order | $-r_A = k_A C_A^3$ | $$\{k\} = \frac{(volume/mol)^2}{s}$$|
 
 
 ## Elementary reaction
@@ -593,6 +586,9 @@ of different species to each other.
 | **Total** | $\mathbf{N_{T0}}$ |                  | $\mathbf{N_T = N_{T0} + \delta N_{A0}X}$ |
 
 
+:::{style="margin-bottom: 40px;"}
+:::
+
 * $\delta = +\frac{d}{a}+\frac{c}{a}-\frac{b}{a}-1$ 
   
   Change in  total number of moles per mole A reacted
@@ -624,10 +620,10 @@ of different species to each other.
 * $$C_D = C_{A0}(\Theta_D+(d/a)X)$$ 
 
 
-:::{.smaller .highlight}
-* $$
+:::{.smaller .center .highlight}
+$$
   \Theta_i= \frac{\text{Moles of species 'i' initially}}{\text{Moles of species A initially}}
-  $$
+$$
 :::
 
   Equimolar: $\Theta_B = 1$
@@ -677,7 +673,6 @@ of different species to each other.
 
 ## Stoichiometric table: flow systems
 
-
 :::{style="margin-bottom: 40px;"}
 :::
 
@@ -691,6 +686,9 @@ of different species to each other.
 | I         | $F_{I0}$          | 0                | $F_I = F_{I0}$                           |
 | **Total** | $\mathbf{F_{T0}}$ |                  | $\mathbf{F_T = F_{T0} + \delta F_{A0}X}$ |
 
+
+:::{style="margin-bottom: 40px;"}
+:::
 
 * $\delta = +\frac{d}{a}+\frac{c}{a}-\frac{b}{a}-1$ 
   
@@ -759,7 +757,7 @@ volume comes into play.]{.magenta}
 
 ## Flow reactor with variable volumetric flow rate
 
-* We can now express $C_j (=F_j/\upsilon)$ in terms of $F, P, and \ T$
+* We can now express $C_j (=F_j/\upsilon)$ in terms of $F$, $P$, and $T$
 
   $$
   C_j = C_{T0} \left( \frac{F_j}{F_T} \right)
@@ -779,7 +777,7 @@ volume comes into play.]{.magenta}
  
   $\frac{F_T}{F_{T0}} = 1 + \epsilon X$
 
-:::{.highlight}
+:::{.highlight .center}
 $$
 \epsilon = \frac{ \text{change in total no. of moles for complete conversion}}
                 { \text{total moles fed}}
@@ -845,4 +843,12 @@ $$
 
 ## Summary
 
+<!-- TODO: Replace figure -->
+
 ![](../../../assets/images/conc_as_function_of_conversion_fig4.3.png){width=50%}
+
+::: attribution
+Fogler, H. Scott. 2016. Elements of Chemical Reaction Engineering. Fifth edition
+:::
+
+

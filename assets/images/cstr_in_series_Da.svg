@@ -24,12 +24,12 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="true"
-     inkscape:zoom="1.6792579"
-     inkscape:cx="230.75669"
-     inkscape:cy="369.80621"
+     inkscape:zoom="2.3748293"
+     inkscape:cx="246.96512"
+     inkscape:cy="225.70043"
      inkscape:window-width="2729"
      inkscape:window-height="2088"
-     inkscape:window-x="1351"
+     inkscape:window-x="1358"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1">
@@ -122,304 +122,362 @@
          style="baseline-shift:baseline;stroke:none;stroke-width:0.7"
          x="124.35416"
          y="47.625004" /></text>
-    <g
-       id="g54"
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;marker-start:url(#RoundedArrow);marker-end:url(#marker2);paint-order:markers fill stroke"
+       d="M 23.700513,11.875645 V 78.522959 H 85.434054"
+       id="path1"
        inkscape:export-filename="cstr_in_series_Da.png"
        inkscape:export-xdpi="300"
-       inkscape:export-ydpi="300">
-      <path
-         style="fill:none;stroke:#000000;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;marker-start:url(#RoundedArrow);marker-end:url(#marker2);paint-order:markers fill stroke"
-         d="M 36.490333,53.791266 V 120.43858 H 98.223874"
-         id="path1"
-         inkscape:export-filename="cstr_first_order_reaction.png"
-         inkscape:export-xdpi="300"
-         inkscape:export-ydpi="300" />
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
-         x="32.920517"
-         y="54.548615"
-         id="text1"><tspan
-           sodipodi:role="line"
-           id="tspan1"
-           style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
-           x="32.920517"
-           y="54.548615">X</tspan></text>
-      <path
-         style="fill:none;stroke:#eb6200;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="M 36.490333,120.43858 C 41.010415,88.635419 36.037951,63.184883 93.927081,63.500002"
-         id="path6"
-         sodipodi:nodetypes="cc" />
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#4d5358;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         x="32.692303"
-         y="61.071285"
-         id="text15"><tspan
-           sodipodi:role="line"
-           id="tspan15"
-           style="stroke-width:0.7;fill:#4d5358"
-           x="32.692303"
-           y="61.071285"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4d5358"
-             id="tspan13">1.0</tspan></tspan></text>
-      <path
-         style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="m 35.983332,59.531252 h -1.5875"
-         id="path29-2"
-         sodipodi:nodetypes="cc" />
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#4d5358;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         x="32.662277"
-         y="73.130096"
-         id="text12"><tspan
-           sodipodi:role="line"
-           id="tspan12"
-           style="stroke-width:0.7;fill:#4d5358"
-           x="32.662277"
-           y="73.130096"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4d5358"
-             id="tspan11">0.8</tspan></tspan></text>
-      <path
-         style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="m 35.961775,71.652665 h -1.5875"
-         id="path41"
-         sodipodi:nodetypes="cc" />
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#4d5358;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         x="32.700378"
-         y="85.188911"
-         id="text10"><tspan
-           sodipodi:role="line"
-           id="tspan10"
-           style="stroke-width:0.7;fill:#4d5358"
-           x="32.700378"
-           y="85.188911"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4d5358"
-             id="tspan9">0.6</tspan></tspan></text>
-      <path
-         style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="m 35.961775,83.774075 h -1.5875"
-         id="path42"
-         sodipodi:nodetypes="cc" />
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#4d5358;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         x="32.603012"
-         y="97.247719"
-         id="text8"><tspan
-           sodipodi:role="line"
-           id="tspan8"
-           style="stroke-width:0.7;fill:#4d5358"
-           x="32.603012"
-           y="97.247719"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4d5358"
-             id="tspan7">0.4</tspan></tspan></text>
-      <path
-         style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="m 35.961775,95.895492 h -1.5875"
-         id="path43"
-         sodipodi:nodetypes="cc" />
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#4d5358;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         x="32.700378"
-         y="109.30653"
-         id="text6"><tspan
-           sodipodi:role="line"
-           id="tspan6"
-           style="stroke-width:0.7;fill:#4d5358"
-           x="32.700378"
-           y="109.30653"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4d5358"
-             id="tspan5">0.2</tspan></tspan></text>
-      <path
-         style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="m 35.961775,108.01691 h -1.5875"
-         id="path44"
-         sodipodi:nodetypes="cc" />
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#4d5358;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         x="32.670746"
-         y="121.36535"
-         id="text3"><tspan
-           sodipodi:role="line"
-           id="tspan3"
-           style="stroke-width:0.7;fill:#4d5358"
-           x="32.670746"
-           y="121.36535"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4d5358"
-             id="tspan4">0.0</tspan></tspan></text>
-      <path
-         style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="m 35.961775,120.13832 h -1.5875"
-         id="path45"
-         sodipodi:nodetypes="cc" />
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#4d5358;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         x="45.188896"
-         y="127.87538"
-         id="text17"><tspan
-           sodipodi:role="line"
-           id="tspan17"
-           style="stroke-width:0.7;fill:#4d5358"
-           x="45.188896"
-           y="127.87538"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4d5358"
-             id="tspan16">2</tspan></tspan></text>
-      <path
-         style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="m 43.923128,121.02604 v 1.5875"
-         id="path29"
-         sodipodi:nodetypes="cc" />
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#4d5358;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         x="54.687328"
-         y="127.87538"
-         id="text19"><tspan
-           sodipodi:role="line"
-           id="tspan19"
-           style="stroke-width:0.7;fill:#4d5358"
-           x="54.687328"
-           y="127.87538"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4d5358"
-             id="tspan18">4</tspan></tspan></text>
-      <path
-         style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="m 53.404629,121.02604 v 1.5875"
-         id="path30"
-         sodipodi:nodetypes="cc" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#4d5358;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         x="64.092636"
-         y="127.83305"
-         id="text21"><tspan
-           sodipodi:role="line"
-           id="tspan21"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.7;fill:#4d5358"
-           x="64.092636"
-           y="127.83305">6<tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4d5358"
+       inkscape:export-ydpi="300" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#000000;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
+       x="20.130697"
+       y="12.632994"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-size:4.23333px;fill:#000000;stroke:none;stroke-width:0.2;fill-opacity:1"
+         x="20.130697"
+         y="12.632994">X</tspan></text>
+    <path
+       style="fill:none;stroke:#65489d;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;paint-order:markers fill stroke;stroke-opacity:1"
+       d="M 23.700513,78.522959 C 28.220595,46.719798 23.248131,21.269262 81.137261,21.584381"
+       id="path6"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1"
+       x="19.902483"
+       y="19.155664"
+       id="text15"><tspan
+         sodipodi:role="line"
+         id="tspan15"
+         style="fill:#6f6f6f;stroke-width:0.7;fill-opacity:1"
+         x="19.902483"
+         y="19.155664"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#6f6f6f;fill-opacity:1"
+           id="tspan13">1.0</tspan></tspan></text>
+    <path
+       style="fill:#6f6f6f;stroke:#6f6f6f;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1;stroke-opacity:1"
+       d="m 23.193512,17.615631 h -1.5875"
+       id="path29-2"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1"
+       x="19.872458"
+       y="31.214476"
+       id="text12"><tspan
+         sodipodi:role="line"
+         id="tspan12"
+         style="fill:#6f6f6f;stroke-width:0.7;fill-opacity:1"
+         x="19.872458"
+         y="31.214476"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#6f6f6f;fill-opacity:1"
+           id="tspan11">0.8</tspan></tspan></text>
+    <path
+       style="fill:#6f6f6f;stroke:#6f6f6f;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1;stroke-opacity:1"
+       d="m 23.171955,29.737044 h -1.5875"
+       id="path41"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1"
+       x="19.910559"
+       y="43.273289"
+       id="text10"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         style="fill:#6f6f6f;stroke-width:0.7;fill-opacity:1"
+         x="19.910559"
+         y="43.273289"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#6f6f6f;fill-opacity:1"
+           id="tspan9">0.6</tspan></tspan></text>
+    <path
+       style="fill:#6f6f6f;stroke:#6f6f6f;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1;stroke-opacity:1"
+       d="m 23.171955,41.858454 h -1.5875"
+       id="path42"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1"
+       x="19.813192"
+       y="55.332096"
+       id="text8"><tspan
+         sodipodi:role="line"
+         id="tspan8"
+         style="fill:#6f6f6f;stroke-width:0.7;fill-opacity:1"
+         x="19.813192"
+         y="55.332096"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#6f6f6f;fill-opacity:1"
+           id="tspan7">0.4</tspan></tspan></text>
+    <path
+       style="fill:#6f6f6f;stroke:#6f6f6f;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1;stroke-opacity:1"
+       d="m 23.171955,53.979871 h -1.5875"
+       id="path43"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1"
+       x="19.910559"
+       y="67.390915"
+       id="text6"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         style="fill:#6f6f6f;stroke-width:0.7;fill-opacity:1"
+         x="19.910559"
+         y="67.390915"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#6f6f6f;fill-opacity:1"
+           id="tspan5">0.2</tspan></tspan></text>
+    <path
+       style="fill:#6f6f6f;stroke:#6f6f6f;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1;stroke-opacity:1"
+       d="m 23.171955,66.101289 h -1.5875"
+       id="path44"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1"
+       x="19.880926"
+       y="79.44973"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="fill:#6f6f6f;stroke-width:0.7;fill-opacity:1"
+         x="19.880926"
+         y="79.44973"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#6f6f6f;fill-opacity:1"
+           id="tspan4">0.0</tspan></tspan></text>
+    <path
+       style="fill:#6f6f6f;stroke:#6f6f6f;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1;stroke-opacity:1"
+       d="m 23.171955,78.222699 h -1.5875"
+       id="path45"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1"
+       x="32.399075"
+       y="85.959763"
+       id="text17"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         style="fill:#6f6f6f;stroke-width:0.7;fill-opacity:1"
+         x="32.399075"
+         y="85.959763"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#6f6f6f;fill-opacity:1"
+           id="tspan16">2</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#6f6f6f;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;stroke-opacity:1"
+       d="m 31.133308,79.110419 v 1.5875"
+       id="path29"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1"
+       x="41.897507"
+       y="85.959763"
+       id="text19"><tspan
+         sodipodi:role="line"
+         id="tspan19"
+         style="fill:#6f6f6f;stroke-width:0.7;fill-opacity:1"
+         x="41.897507"
+         y="85.959763"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#6f6f6f;fill-opacity:1"
+           id="tspan18">4</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#6f6f6f;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;stroke-opacity:1"
+       d="m 40.614809,79.110419 v 1.5875"
+       id="path30"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1"
+       x="51.302814"
+       y="85.917435"
+       id="text21"><tspan
+         sodipodi:role="line"
+         id="tspan21"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#6f6f6f;stroke-width:0.7;fill-opacity:1"
+         x="51.302814"
+         y="85.917435">6<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#6f6f6f;fill-opacity:1"
    id="tspan20" /></tspan></text>
-      <path
-         style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="m 62.898832,121.02604 v 1.5875"
-         id="path31"
-         sodipodi:nodetypes="cc" />
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#4d5358;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         x="73.591072"
-         y="127.82458"
-         id="text23"><tspan
-           sodipodi:role="line"
-           id="tspan23"
-           style="stroke-width:0.7;fill:#4d5358"
-           x="73.591072"
-           y="127.82458"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4d5358"
-             id="tspan22">8</tspan></tspan></text>
-      <path
-         style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="m 72.321068,121.02604 v 1.5875"
-         id="path32"
-         sodipodi:nodetypes="cc" />
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#4d5358;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         x="85.612572"
-         y="127.82458"
-         id="text25"><tspan
-           sodipodi:role="line"
-           id="tspan25"
-           style="stroke-width:0.7;fill:#4d5358"
-           x="85.612572"
-           y="127.82458"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4d5358"
-             id="tspan24">10</tspan></tspan></text>
-      <path
-         style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="m 83.053521,121.02604 v 1.5875"
-         id="path34"
-         sodipodi:nodetypes="cc" />
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#4d5358;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         x="97.62561"
-         y="127.87538"
-         id="text27"><tspan
-           sodipodi:role="line"
-           id="tspan27"
-           style="stroke-width:0.7;fill:#4d5358"
-           x="97.62561"
-           y="127.87538"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4d5358"
-             id="tspan26">12</tspan></tspan></text>
-      <path
-         style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="m 95.05174,121.02604 v 1.5875"
-         id="path35"
-         sodipodi:nodetypes="cc" />
-      <path
-         style="fill:none;stroke:#0f62fe;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="M 36.490333,120.43858 C 44.905261,98.582021 50.270832,68.791669 93.927081,63.500002"
-         id="path50"
-         sodipodi:nodetypes="cc" />
-      <path
-         style="fill:none;stroke:#ee5396;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
-         d="M 36.490333,120.43858 C 58.208332,103.1875 64.822915,97.895836 93.927081,89.958336"
-         id="path51"
-         sodipodi:nodetypes="cc" />
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#eb6200;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
-         x="94.489113"
-         y="61.020485"
-         id="text51"><tspan
-           sodipodi:role="line"
-           id="tspan51"
-           style="font-size:4.23333px;fill:#eb6200;stroke:none;stroke-width:0.2"
-           x="94.489113"
-           y="61.020485">Da = 1</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
-         x="94.561081"
-         y="71.251862"
-         id="text52"><tspan
-           sodipodi:role="line"
-           id="tspan52"
-           style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
-           x="94.561081"
-           y="71.251862">Da = 0.5</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#ee5396;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
-         x="94.489113"
-         y="87.622406"
-         id="text53"><tspan
-           sodipodi:role="line"
-           id="tspan53"
-           style="font-size:4.23333px;fill:#ee5396;stroke:none;stroke-width:0.2"
-           x="94.489113"
-           y="87.622406">Da = 0.1</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
-         x="76.000984"
-         y="134.99823"
-         id="text54"><tspan
-           sodipodi:role="line"
-           id="tspan54"
-           style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
-           x="76.000984"
-           y="134.99823">No. of CSTRs</tspan></text>
-    </g>
+    <path
+       style="fill:none;stroke:#6f6f6f;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;stroke-opacity:1"
+       d="m 50.109012,79.110419 v 1.5875"
+       id="path31"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1"
+       x="60.80125"
+       y="85.908958"
+       id="text23"><tspan
+         sodipodi:role="line"
+         id="tspan23"
+         style="fill:#6f6f6f;stroke-width:0.7;fill-opacity:1"
+         x="60.80125"
+         y="85.908958"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#6f6f6f;fill-opacity:1"
+           id="tspan22">8</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#6f6f6f;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;stroke-opacity:1"
+       d="m 59.531248,79.110419 v 1.5875"
+       id="path32"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1"
+       x="72.822754"
+       y="85.908958"
+       id="text25"><tspan
+         sodipodi:role="line"
+         id="tspan25"
+         style="fill:#6f6f6f;stroke-width:0.7;fill-opacity:1"
+         x="72.822754"
+         y="85.908958"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#6f6f6f;fill-opacity:1"
+           id="tspan24">10</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#6f6f6f;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;stroke-opacity:1"
+       d="m 70.263701,79.110419 v 1.5875"
+       id="path34"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-position:sub;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:none;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;fill-opacity:1"
+       x="84.835793"
+       y="85.959763"
+       id="text27"><tspan
+         sodipodi:role="line"
+         id="tspan27"
+         style="fill:#6f6f6f;stroke-width:0.7;fill-opacity:1"
+         x="84.835793"
+         y="85.959763"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#6f6f6f;fill-opacity:1"
+           id="tspan26">12</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#6f6f6f;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0.340157;paint-order:markers fill stroke;stroke-opacity:1"
+       d="m 82.26192,79.110419 v 1.5875"
+       id="path35"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#388ecc;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;paint-order:markers fill stroke;stroke-opacity:1"
+       d="M 23.700513,78.522959 C 32.115441,56.6664 37.481012,26.876048 81.137261,21.584381"
+       id="path50"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#105e5d;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;paint-order:markers fill stroke;stroke-opacity:1"
+       d="M 23.700513,78.522959 C 45.418512,61.271879 52.033095,55.980215 81.137261,48.042715"
+       id="path51"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#65489d;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
+       x="81.699295"
+       y="19.104864"
+       id="text51"><tspan
+         sodipodi:role="line"
+         id="tspan51"
+         style="font-size:4.23333px;fill:#65489d;stroke:none;stroke-width:0.2;fill-opacity:1"
+         x="81.699295"
+         y="19.104864">Da = 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#388ecc;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
+       x="81.771263"
+       y="29.336241"
+       id="text52"><tspan
+         sodipodi:role="line"
+         id="tspan52"
+         style="font-size:4.23333px;fill:#388ecc;stroke:none;stroke-width:0.2;fill-opacity:1"
+         x="81.771263"
+         y="29.336241">Da = 0.5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#105e5d;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
+       x="81.699295"
+       y="45.706783"
+       id="text53"><tspan
+         sodipodi:role="line"
+         id="tspan53"
+         style="font-size:4.23333px;fill:#105e5d;stroke:none;stroke-width:0.2;fill-opacity:1"
+         x="81.699295"
+         y="45.706783">Da = 0.1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#000000;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
+       x="63.211163"
+       y="93.082611"
+       id="text54"><tspan
+         sodipodi:role="line"
+         id="tspan54"
+         style="font-size:4.23333px;fill:#000000;stroke:none;stroke-width:0.2;fill-opacity:1"
+         x="63.211163"
+         y="93.082611">No. of CSTRs</tspan></text>
+    <rect
+       style="display:inline;fill:#000000;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect1-3"
+       width="13.229166"
+       height="14.552083"
+       x="0.14139906"
+       y="-16.536457" />
+    <rect
+       style="display:inline;fill:#65489d;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect2"
+       width="13.229166"
+       height="14.552083"
+       x="13.665951"
+       y="-16.536457" />
+    <rect
+       style="display:inline;fill:#388ecc;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect3"
+       width="13.229166"
+       height="14.552083"
+       x="-40.419651"
+       y="-16.536457"
+       transform="scale(-1,1)" />
+    <rect
+       style="display:inline;fill:#105e5d;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect4"
+       width="13.229166"
+       height="14.552083"
+       x="40.715031"
+       y="-16.536457" />
+    <rect
+       style="display:inline;fill:#9f1d54;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect5"
+       width="13.229166"
+       height="14.552083"
+       x="54.239582"
+       y="-16.536457" />
+    <rect
+       style="display:inline;fill:#4d1013;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect6"
+       width="13.229166"
+       height="14.552083"
+       x="67.764145"
+       y="-16.536457" />
+    <rect
+       style="display:inline;fill:#f04e58;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect7"
+       width="13.229166"
+       height="14.552083"
+       x="81.288681"
+       y="-16.536457" />
+    <rect
+       style="display:inline;fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect8"
+       width="13.229166"
+       height="14.552083"
+       x="94.813232"
+       y="-16.536457" />
+    <rect
+       style="display:inline;fill:#6f6f6f;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect9"
+       width="13.229166"
+       height="14.552083"
+       x="108.47917"
+       y="-16.536457" />
   </g>
 </svg>

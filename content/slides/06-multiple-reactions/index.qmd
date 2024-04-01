@@ -3,18 +3,6 @@ title: "Multiple reactions"
 format: revealjs
 ---
 
-```{python}
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-import pandas as pd
-import scipy.interpolate as interpolate
-import scipy.integrate as integrate
-import tabulate as tab
-from IPython.display import display, Markdown
-plt.style.use('../../../assets/templates/present.mpstyle')
-```
-
 ## Introduction
 
 * Usually, more than one reaction occurs within a chemical reactor
@@ -238,7 +226,6 @@ higher cost of separation $\leftarrow$ lower profits
 
 ## Instantaneous selectivity ($S$)
 
-
 * Instantaneous selectivity of D with respect to U is the ratio of the rate of
 formation of D to the rate of formation of U
  
@@ -275,7 +262,6 @@ $$
 
 :::{style="margin-bottom: 40px;"}
 :::
-
 
 * For CSTR: 
   

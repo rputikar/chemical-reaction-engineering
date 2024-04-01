@@ -149,7 +149,10 @@ h1.title {
 
 .reveal .highlight {
   // padding: 1px;
+  padding: 0.1em;
   background-color: $yellow;
+  border-radius: 5px;
+  display: inline-block;
 }
 
 .reveal .magenta{
@@ -158,7 +161,7 @@ h1.title {
 
 .reveal .box {
   border: 2px solid $magenta;
-  padding: 10px;
+  padding: 0.1em;
   display: inline-block;
 }
 
@@ -190,6 +193,50 @@ h1.title {
   margin-bottom: 30px !important;
 }
 
+//
+// .center,
+// .center p,
+// .columns .column .center p{
+//   text-align: center;  /* This centers the text within the child div */
+// }
+
+// tables
+
+.reveal table {
+  // height: auto; /* Adjust table width to fit content up to the available slide space */
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 0.8em;
+}
+
+.reveal table th,
+.reveal table td {
+  border: none; /* Remove internal row lines */
+  padding: .23em; /* Adjust padding as needed */
+  text-align: left; /* Adjust text alignment as needed */
+  font-weight: lighter; /* Lighter font weight for main table text */
+}
+
+/* Adds a bottom border to the table header row for distinction */
+.reveal table thead th,
+// .reveal .slides table tr:last-child td,
+.reveal .slides table {
+  border-bottom: 2px solid $gray; /* Dark grey color for the bottom border */
+  border-top: 2px solid $gray; /* Dark grey color for the top border */
+}
+
+/* Make column headers bold */
+.reveal table thead th {
+  font-weight: bold;
+}
+
+/* Styling table captions */
+.reveal table caption {
+  color: $magenta; /* Dark grey color for the caption */
+  font-variant: small-caps; /* Use small caps for the caption text */
+}
+
 .fragment.hide {
   transition: all 0s !important;
   # display: none !important;
@@ -207,9 +254,8 @@ h1.title {
   padding: 10px;
 }
 
-//
-// .center,
-// .center p,
-// .columns .column .center p{
-//   text-align: center;  /* This centers the text within the child div */
-// }
+.reveal .katex {
+  font-family: IBM Plex Sans;
+  font-size: 1.1em;
+}
+

@@ -25,8 +25,8 @@
      inkscape:document-units="mm"
      showgrid="true"
      inkscape:zoom="1.6792579"
-     inkscape:cx="11.612272"
-     inkscape:cy="372.78372"
+     inkscape:cx="12.803275"
+     inkscape:cy="373.37922"
      inkscape:window-width="2729"
      inkscape:window-height="2088"
      inkscape:window-x="1358"
@@ -107,44 +107,105 @@
          x="81.617218"
          y="127.73782" /></text>
     <g
-       id="g2"
+       id="g1"
        inkscape:export-filename="rate_constant.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300">
-      <g
-         id="g1">
-        <path
-           style="fill:none;stroke:#000000;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;marker-start:url(#RoundedArrow);marker-end:url(#marker2);paint-order:markers fill stroke"
-           d="M 19.027828,53.791266 V 120.43858 H 80.761369"
-           id="path1" />
-        <path
-           style="fill:none;stroke:#0f62fe;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
-           d="m 19.027828,120.43858 c 0.815921,-0.0532 19.336754,-5.44146 39.180504,-23.252517 19.843749,-17.81106 19.843749,-41.623561 19.843749,-41.623561"
-           id="path3"
-           sodipodi:nodetypes="czc" />
-      </g>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;marker-start:url(#RoundedArrow);marker-end:url(#marker2);paint-order:markers fill stroke"
+         d="M 19.027828,53.791266 V 120.43858 H 80.761369"
+         id="path1" />
+      <path
+         style="fill:none;stroke:#65489d;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;stroke-opacity:1"
+         d="m 19.027828,120.43858 c 0.815921,-0.0532 19.336754,-5.44146 39.180504,-23.252517 19.843749,-17.81106 19.843749,-41.623561 19.843749,-41.623561"
+         id="path3"
+         sodipodi:nodetypes="czc" />
       <text
          xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#000000;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
          x="14.653895"
          y="54.548615"
          id="text9"><tspan
            sodipodi:role="line"
            id="tspan9"
-           style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
+           style="font-size:4.23333px;fill:#000000;stroke:none;stroke-width:0.2;fill-opacity:1"
            x="14.653895"
            y="54.548615">k</tspan></text>
       <text
          xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#000000;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
          x="54.670589"
          y="126.9492"
          id="text1"><tspan
            sodipodi:role="line"
            id="tspan1"
-           style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
+           style="font-size:4.23333px;fill:#000000;stroke:none;stroke-width:0.2;fill-opacity:1"
            x="54.670589"
            y="126.9492">T(K)</tspan></text>
     </g>
+    <rect
+       style="display:inline;fill:#000000;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect1-3"
+       width="13.229166"
+       height="14.552083"
+       x="0.57815653"
+       y="-16.536459" />
+    <rect
+       style="display:inline;fill:#65489d;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect2"
+       width="13.229166"
+       height="14.552083"
+       x="14.102708"
+       y="-16.536459" />
+    <rect
+       style="display:inline;fill:#388ecc;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect3"
+       width="13.229166"
+       height="14.552083"
+       x="-40.856415"
+       y="-16.536459"
+       transform="scale(-1,1)" />
+    <rect
+       style="display:inline;fill:#105e5d;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect4"
+       width="13.229166"
+       height="14.552083"
+       x="41.151794"
+       y="-16.536459" />
+    <rect
+       style="display:inline;fill:#9f1d54;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect5"
+       width="13.229166"
+       height="14.552083"
+       x="54.676346"
+       y="-16.536459" />
+    <rect
+       style="display:inline;fill:#4d1013;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect6"
+       width="13.229166"
+       height="14.552083"
+       x="68.200905"
+       y="-16.536459" />
+    <rect
+       style="display:inline;fill:#f04e58;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect7"
+       width="13.229166"
+       height="14.552083"
+       x="81.725441"
+       y="-16.536459" />
+    <rect
+       style="display:inline;fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect8"
+       width="13.229166"
+       height="14.552083"
+       x="95.25"
+       y="-16.536459" />
+    <rect
+       style="display:inline;fill:#6f6f6f;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect9"
+       width="13.229166"
+       height="14.552083"
+       x="108.91594"
+       y="-16.536459" />
   </g>
 </svg>

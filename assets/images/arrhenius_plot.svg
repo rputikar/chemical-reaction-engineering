@@ -25,11 +25,11 @@
      inkscape:document-units="mm"
      showgrid="true"
      inkscape:zoom="2.3748293"
-     inkscape:cx="304.23239"
-     inkscape:cy="359.18371"
+     inkscape:cx="256.22894"
+     inkscape:cy="193.27705"
      inkscape:window-width="2729"
      inkscape:window-height="2088"
-     inkscape:window-x="1351"
+     inkscape:window-x="1358"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1">
@@ -115,150 +115,214 @@
        inkscape:export-ydpi="300" />
     <text
        xml:space="preserve"
-       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#000000;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
        x="31.851606"
        y="52.732861"
        id="text9"><tspan
          sodipodi:role="line"
          id="tspan9"
-         style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
+         style="font-size:4.23333px;fill:#000000;stroke:none;stroke-width:0.2;fill-opacity:1"
          x="31.851606"
          y="52.732861">k</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#000000;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
        x="76.296577"
        y="126.9492"
        id="text1"><tspan
          sodipodi:role="line"
          id="tspan1"
-         style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
+         style="font-size:4.23333px;fill:#000000;stroke:none;stroke-width:0.2;fill-opacity:1"
          x="76.296577"
          y="126.9492">1/T(1/K)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
        x="32.183922"
        y="91.28125"
        id="text2"><tspan
          sodipodi:role="line"
          id="tspan2"
-         style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
+         style="font-size:4.23333px;fill:#6f6f6f;stroke:none;stroke-width:0.2;fill-opacity:1"
          x="32.183922"
          y="91.28125">10</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
        x="32.183922"
        y="76.703766"
        id="text3"><tspan
          sodipodi:role="line"
          id="tspan3"
-         style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
+         style="font-size:4.23333px;fill:#6f6f6f;stroke:none;stroke-width:0.2;fill-opacity:1"
          x="32.183922"
          y="76.703766">100</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
        x="32.154289"
        y="105.80794"
        id="text4"><tspan
          sodipodi:role="line"
          id="tspan4"
-         style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
+         style="font-size:4.23333px;fill:#6f6f6f;stroke:none;stroke-width:0.2;fill-opacity:1"
          x="32.154289"
          y="105.80794">1</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
        x="32.154289"
        y="120.33462"
        id="text5"><tspan
          sodipodi:role="line"
          id="tspan5"
-         style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
+         style="font-size:4.23333px;fill:#6f6f6f;stroke:none;stroke-width:0.2;fill-opacity:1"
          x="32.154289"
          y="120.33462">0.1</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#6f6f6f;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
        x="32.183922"
        y="62.126286"
        id="text6"><tspan
          sodipodi:role="line"
          id="tspan6"
-         style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
+         style="font-size:4.23333px;fill:#6f6f6f;stroke:none;stroke-width:0.2;fill-opacity:1"
          x="32.183922"
          y="62.126286">1000</tspan></text>
     <path
-       style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
+       style="fill:none;stroke:#388ecc;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;paint-order:markers fill stroke;stroke-opacity:1"
        d="M 48.947913,58.208335 87.312496,111.125"
        id="path6" />
     <path
-       style="fill:none;stroke:#eb6200;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
+       style="fill:none;stroke:#65489d;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;paint-order:markers fill stroke;stroke-opacity:1"
        d="m 58.20833,58.208335 11.90625,56.885415 v 0"
        id="path7" />
     <path
-       style="fill:none;stroke:#ee5396;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;paint-order:markers fill stroke"
+       style="fill:none;stroke:#105e5d;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;paint-order:markers fill stroke;stroke-opacity:1"
        d="m 46.30208,99.218751 43.65625,5.291669 v 0"
        id="path9" />
     <text
        xml:space="preserve"
-       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#4d5358;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#388ecc;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
        x="108.75856"
        y="75.686707"
        id="text10"><tspan
          sodipodi:role="line"
          id="tspan10"
-         style="font-size:4.23333px;fill:#4d5358;stroke:none;stroke-width:0.2"
+         style="font-size:4.23333px;fill:#388ecc;stroke:none;stroke-width:0.2;fill-opacity:1"
          x="108.75856"
          y="75.686707">slope = (-E/R)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#ee5396;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#105e5d;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
        x="108.47916"
        y="94.352539"
        id="text11"><tspan
          sodipodi:role="line"
          id="tspan11"
-         style="font-size:4.23333px;fill:#ee5396;stroke:none;stroke-width:0.2"
+         style="font-size:4.23333px;fill:#105e5d;stroke:none;stroke-width:0.2;fill-opacity:1"
          x="108.47916"
          y="94.352539">low activation</tspan><tspan
          sodipodi:role="line"
-         style="font-size:4.23333px;fill:#ee5396;stroke:none;stroke-width:0.2"
+         style="font-size:4.23333px;fill:#105e5d;stroke:none;stroke-width:0.2;fill-opacity:1"
          x="108.47916"
          y="99.644203"
          id="tspan12">energy</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#eb6200;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+       style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#65489d;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
        x="108.47916"
        y="51.59375"
        id="text15"><tspan
          sodipodi:role="line"
          id="tspan13"
-         style="font-size:4.23333px;fill:#eb6200;stroke:none;stroke-width:0.2"
+         style="font-size:4.23333px;fill:#65489d;stroke:none;stroke-width:0.2;fill-opacity:1"
          x="108.47916"
          y="51.59375">high activation</tspan><tspan
          sodipodi:role="line"
-         style="font-size:4.23333px;fill:#eb6200;stroke:none;stroke-width:0.2"
+         style="font-size:4.23333px;fill:#65489d;stroke:none;stroke-width:0.2;fill-opacity:1"
          x="108.47916"
          y="56.885414"
          id="tspan15">energy</tspan></text>
     <path
-       style="fill:none;stroke:#4d5358;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;marker-end:url(#RoundedArrow);paint-order:markers fill stroke"
-       d="m 79.602814,74.501374 c -4.954263,0.928379 -7.754768,3.807799 -10.523293,6.716189"
+       style="fill:none;stroke:#388ecc;stroke-width:0.264583;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;stroke-opacity:1;marker-end:url(#RoundedArrow);paint-order:markers fill stroke"
+       d="m 79.602814,74.501374 c -4.954263,0.928379 -8.042624,4.611072 -10.811149,7.519462"
        id="path15"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#eb6200;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;marker-end:url(#RoundedArrow);paint-order:markers fill stroke"
-       d="M 78.052081,50.270835 C 73.097818,51.199214 65.570523,57.740463 62.801998,60.648853"
+       style="fill:none;stroke:#65489d;stroke-width:0.264583;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;stroke-opacity:1;marker-end:url(#RoundedArrow);paint-order:markers fill stroke"
+       d="M 78.052081,50.270835 C 73.097818,51.199214 63.62269,59.906909 60.854165,62.815299"
        id="path16"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#ee5396;stroke-width:0.7;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;marker-end:url(#RoundedArrow);paint-order:markers fill stroke"
-       d="m 80.011291,93.262403 c -2.50194,0.91444 -4.482351,3.04796 -7.250876,5.95635"
+       style="fill:none;stroke:#105e5d;stroke-width:0.264583;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0.340157;marker-end:url(#RoundedArrow);paint-order:markers fill stroke;stroke-opacity:1"
+       d="m 80.011291,93.262403 c -2.50194,0.91444 -5.805268,4.370877 -8.573793,7.279267"
        id="path17"
        sodipodi:nodetypes="cc" />
+    <rect
+       style="display:inline;fill:#000000;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect1"
+       width="13.229166"
+       height="14.552083"
+       x="0.14138868"
+       y="-15.874999" />
+    <rect
+       style="display:inline;fill:#65489d;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect2"
+       width="13.229166"
+       height="14.552083"
+       x="13.66594"
+       y="-15.874999" />
+    <rect
+       style="display:inline;fill:#388ecc;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect3"
+       width="13.229166"
+       height="14.552083"
+       x="-40.419655"
+       y="-15.874999"
+       transform="scale(-1,1)" />
+    <rect
+       style="display:inline;fill:#105e5d;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect4"
+       width="13.229166"
+       height="14.552083"
+       x="40.715034"
+       y="-15.874999" />
+    <rect
+       style="display:inline;fill:#9f1d54;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect5"
+       width="13.229166"
+       height="14.552083"
+       x="54.239582"
+       y="-15.874999" />
+    <rect
+       style="display:inline;fill:#4d1013;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect6"
+       width="13.229166"
+       height="14.552083"
+       x="67.764137"
+       y="-15.874999" />
+    <rect
+       style="display:inline;fill:#f04e58;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect7"
+       width="13.229166"
+       height="14.552083"
+       x="81.288681"
+       y="-15.874999" />
+    <rect
+       style="display:inline;fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect8"
+       width="13.229166"
+       height="14.552083"
+       x="94.813232"
+       y="-15.874999" />
+    <rect
+       style="display:inline;fill:#6f6f6f;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect9"
+       width="13.229166"
+       height="14.552083"
+       x="108.47916"
+       y="-15.875" />
   </g>
 </svg>

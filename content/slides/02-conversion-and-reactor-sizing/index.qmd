@@ -74,7 +74,6 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 | CSTR | | $$V = \frac{F_{A0} - F_A}{-r_A} $$ | |
 | PFR | $$ \frac{dF_A}{dV} = r_A $$|| $$ V = \int_{F_{A0}}^{F_A} \frac{dF_A}{r_A}$$|
 | PBR | $$ \frac{dF_A}{dW} = r'_A $$|| $$ W = \int_{F_{A0}}^{F_A} \frac{dN_A}{r'_A}$$|
-||||||
 
 :::
 
@@ -547,6 +546,10 @@ area under the curve $\frac{F_{A0}}{-r_{A}} = f(X_A)$
 
 Using following data: Calculate $V_{CSTR}$ for $X = 0.4$, and $X = 0.8$
 
+:::{style="margin-bottom: 40px;"}
+:::
+
+
 ```{python}
 data = np.array([
     (0, 0.89), (0.1, 1.08), (0.2, 1.33), (0.4, 2.05), (0.6, 3.56),
@@ -633,12 +636,14 @@ V = \left( \frac{F_{A0}}{(-r_A)_{exit}} \right) \cdot X
 $$
 
 * For $X$ = `{python} x_p4`; 
-  $\frac{F_{A0}}{(-r_A)_{exit}}$ = `{python} Markdown(r"""{f:.2f} $m^3$""".format(f=fa0_by_ra_p4))`
+  $\frac{F_{A0}}{(-r_A)_{exit}}$ = 
+  `{python} f'{fa0_by_ra_p4:.2f}'` $m^3$
 
   $V$ = `{python} v_p4` $m^3$ 
 
 * For $X$ = `{python} x_p8`; 
-  $\frac{F_{A0}}{(-r_A)_{exit}}$ = `{python} Markdown(r"""{f:.2f} $m^3$""".format(f=fa0_by_ra_p8))`
+  $\frac{F_{A0}}{(-r_A)_{exit}}$ = 
+  `{python} f"{fa0_by_ra_p8:.2f}"` $m^3$
 
   $V$ = `{python} v_p8` $m^3$ 
 
@@ -649,6 +654,9 @@ $$
 ## PFR sizing
 
 Using following data: Calculate $V_{PFR}$ for $X = 0.4$, and $X = 0.8$
+
+:::{style="margin-bottom: 40px;"}
+:::
 
 ```{python}
 data = np.array([
@@ -739,13 +747,13 @@ $$
 * For $X$ = `{python} x_p4`; 
   Numerically integrate the data
 
-  $V$ = `{python} Markdown(r"""{v:.2f} $m^3$""".format(v=v_p4))`
+  $V$ = `{python} f'{v_p4:.2f}'` $m^3$
 
 * For $X$ = `{python} x_p8`; 
-  $\frac{F_{A0}}{(-r_A)_{exit}}$ = `{python} Markdown(r"""{f:.2f} $m^3$""".format(f=fa0_by_ra_p8))`
+  $\frac{F_{A0}}{(-r_A)_{exit}}$ = 
+  `{python} f'{fa0_by_ra_p8:.2f}'` $m^3$
 
-  $V$ = `{python} Markdown(r"""{v:.2f} $m^3$""".format(v=v_p8))`
-
+  $V$ = `{python} f'{v_p8:.2f}'` $m^3$
 
 :::
 ::::
@@ -785,7 +793,7 @@ Levenspiel plots can be used to visualize and sequence reactors in series.
 
 ## Reactors in series
 
-![](../../../assets/images/reactors_in_series_schematic.png){.fragment width=90%}
+![](../../../assets/images/reactors_in_series_schematic.png){width=90%}
 
 :::{.fragment}
 
@@ -794,7 +802,8 @@ Levenspiel plots can be used to visualize and sequence reactors in series.
   Conversion up to point $i$:
 
   $$
-  X_i = \frac{\text{total moles of A reacted up to point } i }{\text{Moles A fed into } 1^{st} \text{ reactor}}
+  X_i = \frac{\text{total moles of A reacted up to point } i }{\text{Moles A
+  fed into } 1^{st} \text{ reactor}} 
   $$
 
 * Molar Flow rate of species A at point $i$:
@@ -819,6 +828,9 @@ was carried out adiabatically in the liquid phase. The data for this reversible
 reaction are given below. Calculate the volume of each of the reactors for an entering
 molar flow rate of n-butane of 50 kmol/hr.
 
+:::{style="margin-bottom: 30px;"}
+:::
+
 ```{python}
 #| echo: false 
 #| output: true 
@@ -840,6 +852,9 @@ md = tab.tabulate(df['data'].T, floatfmt='.2f')
 display(Markdown(md))
 
 ```
+
+:::{style="margin-bottom: 30px;"}
+:::
 
 ![](../../../assets/images/02-in-class-p4.png){width=90%}
 

@@ -3,18 +3,6 @@ title: "Collection and analysis of rate data"
 format: revealjs
 ---
 
-```{python}
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-import pandas as pd
-import scipy.interpolate as interpolate
-import scipy.integrate as integrate
-import tabulate as tab
-from IPython.display import display, Markdown
-plt.style.use('../../../assets/templates/present.mpstyle')
-```
-
 # Rate data analysis
 
 * Isothermal reactor design algorithm
@@ -670,7 +658,6 @@ $\ln \left( \frac{-dC_A}{dt}\right)_0 = \ln k + \alpha \ln C_{A0}$
 :::{.column width=48%}
 
 ![](../../../assets/images/method-of-initial-rates.png){width=90%}
-
 
 :::
 

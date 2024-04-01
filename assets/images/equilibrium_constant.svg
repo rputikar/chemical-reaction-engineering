@@ -25,8 +25,8 @@
      inkscape:document-units="mm"
      showgrid="true"
      inkscape:zoom="1.6792579"
-     inkscape:cx="360.8737"
-     inkscape:cy="459.13139"
+     inkscape:cx="389.7555"
+     inkscape:cy="297.75057"
      inkscape:window-width="2729"
      inkscape:window-height="2088"
      inkscape:window-x="1358"
@@ -96,141 +96,192 @@
      inkscape:groupmode="layer"
      id="layer1">
     <g
-       id="g28"
+       id="g1"
        inkscape:export-filename="equilibrium_constant.png"
        inkscape:export-xdpi="300"
        inkscape:export-ydpi="300">
       <text
          xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#65489d;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
          x="62.187569"
          y="55.051956"
          id="text6"><tspan
            sodipodi:role="line"
            id="tspan6"
-           style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
+           style="font-size:4.23333px;fill:#65489d;stroke:none;stroke-width:0.2;fill-opacity:1"
            x="62.187569"
            y="55.051956">Exothermic</tspan></text>
       <text
          xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#388ecc;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
          x="159.47803"
          y="55.051956"
          id="text8"><tspan
            sodipodi:role="line"
            id="tspan8"
-           style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
+           style="font-size:4.23333px;fill:#388ecc;stroke:none;stroke-width:0.2;fill-opacity:1"
            x="159.47803"
            y="55.051956">Endothermic</tspan></text>
-      <g
-         id="g20">
-        <g
-           id="g7">
-          <path
-             style="fill:none;stroke:#000000;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;marker-start:url(#RoundedArrow);marker-end:url(#marker2);paint-order:markers fill stroke"
-             d="M 19.027828,53.791266 V 120.43858 H 80.761369"
-             id="path1" />
-          <path
-             style="fill:none;stroke:#0f62fe;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
-             d="m 19.027828,65.552558 c 0,0 19.811869,1.504405 27.437124,7.84086 8.723587,7.249152 8.276228,24.353571 17.14821,31.363442 4.795262,3.7888 17.148207,3.92043 17.148207,3.92043"
-             id="path3"
-             sodipodi:nodetypes="cssc" />
-        </g>
-        <text
-           xml:space="preserve"
-           style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
-           x="14.653895"
-           y="54.548615"
-           id="text9"><tspan
-             sodipodi:role="line"
-             id="tspan9"
-             style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
-             x="14.653895"
-             y="54.548615">K<tspan
-   style="font-size:65%;baseline-shift:sub"
-   id="tspan11">C</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-position:sub;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#0f62fe;stroke:none;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
-           x="81.088051"
-           y="127.73782"
-           id="text14"><tspan
-             sodipodi:role="line"
-             id="tspan14"
-             style="stroke-width:0.2"
-             x="81.088051"
-             y="127.73782">T</tspan></text>
-      </g>
-      <g
-         id="g21">
-        <g
-           id="g8"
-           transform="translate(0,0.24644)">
-          <path
-             style="fill:none;stroke:#000000;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;marker-start:url(#RoundedArrow);marker-end:url(#marker2);paint-order:markers fill stroke"
-             d="M 114.16466,53.544826 V 120.19214 H 175.8982"
-             id="path6" />
-          <path
-             style="fill:none;stroke:#0f62fe;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
-             d="m 114.16466,108.4136 c 0,0 19.81187,-1.50441 27.43713,-7.84086 8.72358,-7.249156 8.27622,-24.353575 17.14821,-31.363446 4.79526,-3.7888 17.1482,-3.92043 17.1482,-3.92043"
-             id="path7"
-             sodipodi:nodetypes="cssc" />
-        </g>
-        <text
-           xml:space="preserve"
-           style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
-           x="110.69063"
-           y="54.548615"
-           id="text13"><tspan
-             sodipodi:role="line"
-             id="tspan13"
-             style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
-             x="110.69063"
-             y="54.548615">K<tspan
-   style="font-size:65%;baseline-shift:sub"
-   id="tspan12">C</tspan></tspan></text>
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-position:sub;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#0f62fe;stroke:none;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
-           x="176.01067"
-           y="127.73782"
-           id="text15"><tspan
-             sodipodi:role="line"
-             id="tspan15"
-             style="stroke-width:0.2"
-             x="176.01067"
-             y="127.73782">T</tspan></text>
-      </g>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;marker-start:url(#RoundedArrow);marker-end:url(#marker2);paint-order:markers fill stroke"
+         d="M 19.027828,53.791266 V 120.43858 H 80.761369"
+         id="path1" />
+      <path
+         style="fill:none;stroke:#65489d;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;stroke-opacity:1"
+         d="m 19.027828,65.552558 c 0,0 19.811869,1.504405 27.437124,7.84086 8.723587,7.249152 8.276228,24.353571 17.14821,31.363442 4.795262,3.7888 17.148207,3.92043 17.148207,3.92043"
+         id="path3"
+         sodipodi:nodetypes="cssc" />
       <text
          xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#000000;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
+         x="14.653895"
+         y="54.548615"
+         id="text9"><tspan
+           sodipodi:role="line"
+           id="tspan9"
+           style="font-size:4.23333px;fill:#000000;stroke:none;stroke-width:0.2;fill-opacity:1"
+           x="14.653895"
+           y="54.548615">K<tspan
+   style="font-size:65%;baseline-shift:sub;fill:#000000;fill-opacity:1"
+   id="tspan11">C</tspan></tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-position:sub;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#000000;stroke:none;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
+         x="81.088051"
+         y="127.73782"
+         id="text14"><tspan
+           sodipodi:role="line"
+           id="tspan14"
+           style="stroke-width:0.2;fill:#000000;fill-opacity:1"
+           x="81.088051"
+           y="127.73782">T</tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;marker-start:url(#RoundedArrow);marker-end:url(#marker2);paint-order:markers fill stroke"
+         d="M 114.16466,53.791266 V 120.43858 H 175.8982"
+         id="path6" />
+      <path
+         style="fill:none;stroke:#388ecc;stroke-width:0.554356;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;stroke-opacity:1"
+         d="m 114.16466,108.66004 c 0,0 19.81187,-1.50441 27.43713,-7.84086 8.72358,-7.249156 8.27622,-24.353575 17.14821,-31.363446 4.79526,-3.7888 17.1482,-3.92043 17.1482,-3.92043"
+         id="path7"
+         sodipodi:nodetypes="cssc" />
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#000000;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
+         x="110.69063"
+         y="54.548615"
+         id="text13"><tspan
+           sodipodi:role="line"
+           id="tspan13"
+           style="font-size:4.23333px;fill:#000000;stroke:none;stroke-width:0.2;fill-opacity:1"
+           x="110.69063"
+           y="54.548615">K<tspan
+   style="font-size:65%;baseline-shift:sub;fill:#000000;fill-opacity:1"
+   id="tspan12">C</tspan></tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:normal;font-family:Sans;-inkscape-font-specification:'Sans, Normal';font-variant-ligatures:normal;font-variant-position:sub;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#000000;stroke:none;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
+         x="176.01067"
+         y="127.73782"
+         id="text15"><tspan
+           sodipodi:role="line"
+           id="tspan15"
+           style="stroke-width:0.2;fill:#000000;fill-opacity:1"
+           x="176.01067"
+           y="127.73782">T</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#65489d;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
          x="80.697914"
          y="116.41667"
          id="text17"><tspan
            sodipodi:role="line"
            id="tspan17"
-           style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
+           style="font-size:4.23333px;fill:#65489d;stroke:none;stroke-width:0.2;fill-opacity:1"
            x="80.697914"
            y="116.41667">K<tspan
-   style="font-size:65%;baseline-shift:sub"
+   style="font-size:65%;baseline-shift:sub;fill:#65489d;fill-opacity:1"
    id="tspan16">C<tspan
-   style="baseline-shift:baseline"
+   style="baseline-shift:baseline;fill:#65489d;fill-opacity:1"
    id="tspan18"> </tspan></tspan>decreases with temperature</tspan></text>
       <text
          xml:space="preserve"
-         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:none;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke"
+         style="font-size:4.23333px;line-height:normal;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;text-anchor:end;fill:#388ecc;stroke:#0f62fe;stroke-width:0.2;stroke-linecap:square;stroke-linejoin:round;-inkscape-stroke:none;paint-order:markers fill stroke;fill-opacity:1"
          x="175.94791"
          y="116.41667"
          id="text23"><tspan
            sodipodi:role="line"
            id="tspan23"
-           style="font-size:4.23333px;fill:#0f62fe;stroke:none;stroke-width:0.2"
+           style="font-size:4.23333px;fill:#388ecc;stroke:none;stroke-width:0.2;fill-opacity:1"
            x="175.94791"
            y="116.41667">K<tspan
-   style="font-size:65%;baseline-shift:sub"
+   style="font-size:65%;baseline-shift:sub;fill:#388ecc;fill-opacity:1"
    id="tspan22">C<tspan
-   style="baseline-shift:baseline"
+   style="baseline-shift:baseline;fill:#388ecc;fill-opacity:1"
    id="tspan21"> </tspan></tspan>increases with temperature</tspan></text>
     </g>
+    <rect
+       style="display:inline;fill:#000000;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect1-3"
+       width="13.229166"
+       height="14.552083"
+       x="0.1413925"
+       y="-15.875001" />
+    <rect
+       style="display:inline;fill:#65489d;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect2"
+       width="13.229166"
+       height="14.552083"
+       x="13.665944"
+       y="-15.875001" />
+    <rect
+       style="display:inline;fill:#388ecc;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect3"
+       width="13.229166"
+       height="14.552083"
+       x="-40.419651"
+       y="-15.875001"
+       transform="scale(-1,1)" />
+    <rect
+       style="display:inline;fill:#105e5d;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect4"
+       width="13.229166"
+       height="14.552083"
+       x="40.715031"
+       y="-15.875001" />
+    <rect
+       style="display:inline;fill:#9f1d54;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect5"
+       width="13.229166"
+       height="14.552083"
+       x="54.239582"
+       y="-15.875001" />
+    <rect
+       style="display:inline;fill:#4d1013;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect6"
+       width="13.229166"
+       height="14.552083"
+       x="67.764145"
+       y="-15.875001" />
+    <rect
+       style="display:inline;fill:#f04e58;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect7"
+       width="13.229166"
+       height="14.552083"
+       x="81.288681"
+       y="-15.875001" />
+    <rect
+       style="display:inline;fill:#148040;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect8"
+       width="13.229166"
+       height="14.552083"
+       x="94.813232"
+       y="-15.875001" />
+    <rect
+       style="display:inline;fill:#6f6f6f;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+       id="rect9"
+       width="13.229166"
+       height="14.552083"
+       x="108.47917"
+       y="-15.875001" />
   </g>
 </svg>

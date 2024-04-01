@@ -20,4 +20,20 @@ axes.facecolor: none
 # Lines
 lines.linewidth: 2.0
 
-# axes.prop_cycle: cycler('color', ['#65489d', '#388ecc', '#105e5d', '#9f1d54', '#4d1013'])
+axes.prop_cycle: cycler('color', [
+  '#65489d', 
+  '#388ecc', 
+  '#105e5d', 
+  '#9f1d54', 
+  '#4d1013'
+  '#fa4d56',
+  '#570408',
+  '#198038',
+  '#002d9c',
+  '#ee538b',
+  '#b28600',
+  '#009d9a',
+  '#012749',
+  '#8a3800',
+  '#a56eff',
+])

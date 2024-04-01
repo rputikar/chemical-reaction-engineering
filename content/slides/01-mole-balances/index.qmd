@@ -3,17 +3,6 @@ title: "Mole balances"
 format: revealjs
 ---
 
-```{python}
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-import control as ctrl
-import scipy as sp
-from scipy.optimize import minimize
-from scipy import signal
-from IPython.display import display, Markdown
-plt.style.use('../../../assets/templates/present.mpstyle')
-```
 
 # Introduction
 
@@ -544,7 +533,7 @@ $$
 :::
 :::{.fragment}
 
-:::{.highlight}
+:::{.highlight .center}
 
 $$
 F_{j0} \qquad - \qquad F_j \qquad + \qquad r_j V \qquad = \qquad  \frac{dN_j}{dt}
@@ -561,7 +550,6 @@ $$
 
 :::{.fragment}
 
-
 $$
  G_j = \sum_{i=1}^{n} r_{ji} \Delta V_i
 $$
@@ -573,7 +561,7 @@ $$
 :::
 :::{.fragment}
 
-:::{.highlight}
+:::{.highlight .center}
 
 $$
 F_{j0} \qquad - \qquad F_j \qquad + \qquad \int^V r_j dV \qquad = \qquad  \frac{dN_j}{dt}

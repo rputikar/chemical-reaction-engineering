@@ -147,6 +147,7 @@ The cases are as follows:
 - Case 4: Countercurrent heat exchange with $T_{a0} = 1250$ K.
 
 Additional information:
+
 - For acetone (A): $\Delta H^{\circ}_{R}(T_R) = -216.67$ kJ/mol, $C_{p,A}
 = 163$ J/mol·K
 - For ketene (B): $\Delta H^{\circ}_{R}(T_R) = -61.09$ kJ/mol, $C_{p,B} =
@@ -154,4 +155,4 @@ Additional information:
 - For methane (C): $\Delta H^{\circ}_{R}(T_R) = -74.81$ kJ/mol, $C_{p,C}
 = 71$ J/mol·K
 
-The overall heat transfer coefficient $Ua = 110$ J/s·m³·K.
+The overall heat transfer coefficient $Ua = 110$ $J/s \cdot m^3 \cdot K$.

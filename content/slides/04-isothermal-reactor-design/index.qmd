@@ -1,19 +1,9 @@
 ---
 title: "Isothermal reactor design"
 format: revealjs
+revealjs-plugins:
+  - attribution
 ---
-
-```{python}
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-import pandas as pd
-import scipy.interpolate as interpolate
-import scipy.integrate as integrate
-import tabulate as tab
-from IPython.display import display, Markdown
-plt.style.use('../../../assets/templates/present.mpstyle')
-```
 
 ## Power law model
 
@@ -210,6 +200,10 @@ Use algorithm rather than memorizing equations
 ## Algorithm
 
 ![](../../../assets/images/algorithm_for_isothermal_reactors.png){width=40%}
+
+::: attribution
+Fogler, H. Scott. 2016. Elements of Chemical Reaction Engineering. Fifth edition
+:::
 
 ## Batch reactor
 
@@ -607,7 +601,6 @@ $$
 :::
 
 :::
-
 ::::
 
 ## CSTRs in series
@@ -871,21 +864,6 @@ $$
 
 
 * Evaluating integral using sympy
-
-<!--
-  ```python
-  from sympy import symbols, integrate, pprint
-
-  # Define the symbols
-  epsilon, x = symbols('epsilon x', real=True)
-  X = symbols('X', real=True, positive=True)
-
-  integrand = (1 + epsilon * x)**2 / (1 - x)**2
-  integral_result = integrate(integrand,(x))
-
-  pprint(integral_result)
-  ```
--->
 
 ```{python}
 #| echo: true
@@ -1168,5 +1146,4 @@ out isothermally
 :::
 
 ::::
-
 
