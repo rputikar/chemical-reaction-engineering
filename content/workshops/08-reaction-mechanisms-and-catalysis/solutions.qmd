@@ -9,3 +9,238 @@ format:
       output-ext: "pdf"
 ---
 
+
+Try following problems from Fogler 5e (@fogler2016)
+
+We will go through some of these problems in the workshop.
+
+P 9-4,
+P 9-5,
+P 9-6,
+P 10-3,
+P 10-14,
+P 10-19,
+P 14-9
+
+
+## P 9-4
+
+The pyrolysis of acetaldehyde is believed to take place according to the
+following sequence:
+
+$\ce{ CH3CHO ->[ k1 ] CH3. + CHO. }$
+
+$\ce{ CH3. + CH3CHO ->[ k2 ] CH3. + CO + H2 }$
+
+$\ce{ CHO. + CH3CHO ->[ k3 ] CH3. + 2 CO + H2 }$
+
+$\ce{ 2 CH3. ->[ k4 ] C2H6 }$
+
+(a) Derive the rate expression for the rate of disappearance of acetaldehyde, $r_{Ac}$.
+
+(b) Under what conditions does it reduce to the equation at the beginning of Section 9.1 on page 334?
+$(-r_{CH_3CHO} = k C_{CH_3CHO}^{3/2})$
+
+(c) Sketch a reaction pathway diagram for this reaction.
+
+## P 9-5
+
+For each of the reactions in parts (a), (b), and (c), suggest a mechanism and apply the PSSH to learn if the mechanism is consistent with the rate law.
+
+(a) The gas-phase homogeneous oxidation of nitrogen monoxide ($\ce{NO}$) to dioxide ($\ce{NO2}$)
+
+    $\ce{ 2 NO + O2 ->[ k ] 2 NO2 }$
+
+    is known to have a form of third-order kinetics, which suggests that the reaction is elementary as written, at least for low partial pressures of the nitrogen oxides.
+    However, the rate constant k actually decreases with increasing absolute temperature, indicating an apparently negative activation energy.
+    Because the activation energy of any elementary reaction must be positive, some explanation is in order.
+
+    Provide an explanation, starting from the fact that an active intermediate species, NO 3 , is a participant in some other known reactions that involve oxides of nitrogen.
+    Draw the reaction pathway.
+
+(b) The rate law for formation of phosgene, $\ce{COCl2}$, from chlorine,
+    $\ce{Cl2}$, and carbon monoxide, $\ce{CO}$, has the rate law
+
+    $$ r_{COCl_2} = k C_{CO} C_{Cl_2}^{3/2} $$
+
+    Suggest a mechanism for this reaction that is consistent with this rate law and draw the reaction pathway.
+    Hint: Cl formed from the dissociation of $\ce{Cl2}$ is one of the two active intermediates.
+
+(c) Suggest an active intermediate(s) and mechanism for the reaction $\ce{ H2 + Br2 -> 2 HBr }$.
+Use the PSSH to show whether or not your mechanism is consistent with the rate law
+
+    $$ r_{HBr} = \frac{k C_{H_2} C_{Br}^{3/2}}{C_{HBr} + k_2 C_{Br_2}} $$
+
+## P 9-6
+
+(Tribology) **Why you change your motor oil**?
+One of the major reasons for engine-oil degradation is the oxidation of the motor oil.
+To retard the degradation process, most oils contain an antioxidant [see Ind. Eng. Chem. 26, 902 (1987)].
+Without an inhibitor to oxidation present, the suggested mechanism at low temperatures is
+
+$\ce{ I2 ->[ k0 ] 2 I. }$
+
+$\ce{ I. + RH ->[ k_i ] R. + HI }$
+
+$\ce{ R. + O2 ->[ k_{p1} ] RO2. }$
+
+$\ce{ RO2. + RH ->[ k_{p2} ] ROOH + R. }$
+
+$\ce{ 2 RO2. ->[ k_t ] inactive }$
+
+where $\ce{I2}$ is an initiator and RH is the hydrocarbon in the oil.
+
+When an antioxidant is added to retard degradation at low temperatures, the following additional termination steps occur:
+
+$\ce{ RO2. + AH ->[ k_{A1} ] ROOH + A. }$
+
+$\ce{ A. + RO2. ->[ k_{A2} ] inactive }$
+
+![](../../../assets/images/fig_p9.6.png){ width=50% }
+
+(a) Derive a rate law for the degradation of the motor oil in the absence of an antioxidant at low temperatures.
+
+(b) Derive a rate law for the rate of degradation of the motor oil in the presence of an antioxidant for low temperatures.
+
+(c) How would your answer to part (a) change if the radicals $\ce{I.}$ were produced at a constant rate in the engine and then found their way into the oil?
+
+(d) Sketch a reaction pathway diagram for both high and low temperatures, with and without antioxidant.
+
+
+## P 10-3
+
+t-Butyl alcohol (TBA) is an important octane enhancer that is used to replace lead additives in gasoline [Ind. Eng. Chem. Res., 27, 2224 (1988)].
+TBA was produced by the liquid-phase hydration (W) of isobutene (I) over an Amberlyst-15 catalyst.
+The system is normally a multiphase mixture of hydrocarbon, water, and solid catalysts.
+However, the use of cosolvents or excess TBA can achieve reasonable miscibility.
+
+The reaction mechanism is believed to be
+
+$\ce{ I + S <=> I.S }$
+
+$\ce{ W + S <=> W.S }$
+
+$\ce{ W.S + I.S <=> TBA.S + S }$
+
+$\ce{ TBA.S <=> TBA + S }$
+
+Derive a rate law assuming:
+
+(a) The surface reaction is rate-limiting.
+
+(b) The adsorption of isobutene is limiting.
+
+(c) The reaction follows Eley–Rideal kinetics
+
+    $\ce{ I.S + W -> TBA.S }$
+
+    and the surface reaction is limiting.
+
+(d) Isobutene (I) and water (W) are adsorbed on different sites.
+
+    $\ce{ I + S1 <=> I.S1 }$
+
+    $\ce{W + S2 <=> W.S2 }$
+
+    TBA is not on the surface, and the surface reaction is rate-limiting.
+
+(e) What generalization can you make by comparing the rate laws derived in parts (a) through (d)?
+
+## P 10-14
+
+Vanadium oxides are of interest for various sensor applications, owing to the sharp metal–insulator transitions they undergo as a function of temperature, pressure, or stress.
+Vanadium triisopropoxide (VTIPO) was used to grow vanadium oxide films by chemical vapor deposition [J. Electrochem. Soc., 136, 897 (1989)].
+The deposition rate as a function of VTIPO pressure for two different temperatures follows.
+
+T = 120 $^{\circ}$C:
+
+|                        |       |       |       |      |       |      |       |     |     |
+| :--------------------- | :---- | :---- | :---- | :--- | :---- | :--- | :---- | :-- | :-- |
+| Growth Rate ($\mu$m/h) | 0.004 | 0.015 | 0.025 | 0.04 | 0.068 | 0.08 | 0.095 | 0.1 |
+| VTIPO Pressure (torr)  | 0.1   | 0.2   | 0.3   | 0.5  | 0.8   | 1.0  | 1.5   | 2.0 |
+
+T = 200 $^{\circ}$C:
+
+|                        |       |      |     |     |     |
+| :--------------------- | :---- | :--- | :-- | :-- | :-- |
+| Growth Rate ($\mu$m/h) | 0.028 | 0.45 | 1.8 | 2.8 | 7.2 |
+| VTIPO Pressure (torr)  | 0.05  | 0.2  | 0.4 | 0.5 | 0.8 |
+
+In light of the material presented in this chapter, analyze the data and describe your results.
+Specify where additional data should be taken.
+
+
+## P 10-19
+
+With the increasing demand for xylene in the petrochemical industry, the production of xylene from toluene disproportionation has gained attention in recent years [Ind. Eng. Chem. Res., 26, 1854 (1987)]. This reaction,
+
+$\ce { 2 Toluene -> Benzene + Xylene }$
+
+$\ce { 2 T -> B + X }$
+
+was studied over a hydrogen mordenite catalyst that decays with time.
+As a first approximation, assume that the catalyst follows second-order decay
+
+$$ r_d = k_d a^2 $$
+
+and the rate law for low conversions is
+
+$$-r_T' = k_T P_T a$$
+
+with $k_T = 20 g \, mol/h \cdot kg-cat \cdot atm$ and $k_d = 1.6 h^{-1}$ at $735 K$.
+
+(a) Compare the conversion-time curves in a batch reactor containing 5 kg-cat at different initial partial pressures (1 atm, 10 atm, etc.).
+The reaction volume containing pure toluene initially is 1 $dm^3$ and the temperature is 735 K.
+
+(b) What conversion can be achieved in a moving-bed reactor containing 50 kg of catalyst with a catalyst feed rate of 2 kg/h?
+Toluene is fed at a pressure of 2 atm and a rate of 10 mol/min.
+
+(c) Explore the effect of catalyst feed rate on conversion.
+
+(d) Suppose that $E_T =  25 kcal/mol$ and $E_d =10 kcal/mol$.
+What would the temperature–time trajectory look like for a CSTR? What if $E_T =10 kcal/mol$ and $E_d =25 kcal/mol$?
+
+(e) The decay law more closely follows the equation
+
+    $$ r_d = k_d P^2_T a^2 $$
+
+    with $k_d =0.2 atm^{-2} h^{-1}$.
+    Redo parts (b) and (c) for these conditions.
+
+## P 14-9
+
+The irreversible gas-phase reaction
+
+$\ce{ A ->[ cat ] B}$
+
+is carried out adiabatically over a packed bed of solid catalyst particles.
+The reaction is first order in the concentration of A on the catalyst surface
+
+$$-r_{As}' = k' C_{As} $$
+
+The feed consists of 50% (mole) A and 50% inerts, and enters the bed at a temperature of 300 K.
+The entering volumetric flow rate is 10 dm^3^/s (i.e., 10,000 cm^3^/s).
+The relationship between the Sherwood number and the Reynolds number is
+
+$$ Sh = 100 Re^{1/2}$$
+
+As a first approximation, one may neglect pressure drop.
+The entering concentration of A is 1.0 M.
+Calculate the catalyst weight necessary to achieve 60% conversion of A for
+
+(a) isothermal operation.
+
+(b) adiabatic operation.
+
+Additional information:
+
+- Kinematic viscosity: $\mu/\rho =  0.02 cm^2/s$
+- Particle diameter: $d_p = 0.1 cm$ 
+- Superficial velocity: $U =10 cm/s$
+- Catalyst surface area/mass of catalyst bed: $a= 60 cm^2/g-cat$ 
+- Diffusivity of A: $D_e =  10^{-2} cm^2/s$
+- Heat of reaction: $\Delta H_{Rx}^{\circ} = 10,000 cal/g mol A$ 
+- Heat capacities: $C_{pA} =  C_{pB} =  25 cal/g mol \cdot K, C_{pS}\, \text{(solvent)} =  75 cal/g mol \cdot K$
+- $k' (300 K) = 0.01 cm^3 /s \cdot g-cat \; \text{with}\; E = 4000 cal/mol$
+
+## References

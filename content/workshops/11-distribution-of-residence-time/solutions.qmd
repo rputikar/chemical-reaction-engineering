@@ -9,3 +9,85 @@ format:
       output-ext: "pdf"
 ---
 
+
+
+Try following problems from Fogler 5e (@fogler2016)
+P 16-3,
+P 16-6,
+P 16-11
+
+We will go through some of these problems in the workshop.
+
+## P 16-3
+
+Consider the $E(t)$ curve below.
+
+![](../../../assets/images/fig_p16.3.png){width=50%}
+
+Mathematically this hemi circle is described by these equations:
+
+For $2\tau >= t >= 0$, then $E(t) = \sqrt{\tau^2 - (t - \tau)^2}$ min^–1^ (hemi circle)
+
+For $t > 2\tau$, then $E(t) = 0$
+
+(a) What is the mean residence time?
+
+(b) What is the variance?
+
+## P 16-6
+
+An RTD experiment was carried out in a nonideal reactor that gave the following results:
+
+|                          |     |                      |
+| ------------------------ | --- | -------------------- |
+| $E(t) = 0$               | for | $t < 1 \, min$       |
+| $E(t) = 1.0 \, min^{-1}$ | for | $1 <= t <= 2 \, min$ |
+| $E(t) = 0$               | for | $t > 2 \, min$       |
+
+(a) What are the mean residence time, $t_m$, and variance $\sigma^2$?
+
+(b) What is the fraction of the fluid that spends a time 1.5 minutes or longer in the reactor?
+
+(c) What fraction of fluid spends 2 minutes or less in the reactor?
+
+(d) What fraction of fluid spends between 1.5 and 2 minutes in the reactor?
+
+## P 16-11
+
+The volumetric flow rate through a reactor is 10 dm^3^/min.
+A pulse test gave the following concentration measurements at the outlet:
+
+| t (min) | $c \times 10^5$ | t (min) | $c \times 10^5$ |
+| ------- | --------------- | ------- | --------------- |
+| 0       | 0               | 15      | 238             |
+| 0.4     | 329             | 20      | 136             |
+| 1.0     | 622             | 25      | 77              |
+| 2       | 812             | 30      | 44              |
+| 3       | 831             | 35      | 25              |
+| 4       | 785             | 40      | 14              |
+| 5       | 720             | 45      | 8               |
+| 6       | 650             | 50      | 5               |
+| 8       | 523             | 60      | 1               |
+| 10      | 418             |         |                 |
+
+(a) Plot the external-age distribution $E(t)$ as a function of time.
+
+(b) Plot the external-age cumulative distribution $F(t)$ as a function of time.
+
+(c) What are the mean residence time $t_m$ and the variance, $\sigma^2$ ?
+
+(d) What fraction of the material spends between 2 and 4 minutes in the reactor?
+
+(e) What fraction of the material spends longer than 6 minutes in the reactor?
+
+(f) What fraction of the material spends less than 3 minutes in the reactor?
+
+(g) Plot the normalized distributions $E(\Phi)$ and $F(\Phi)$ as a function of $(\Phi)$.
+
+(h) What is the reactor volume?
+
+(i) Plot the internal-age distribution $I(t)$ as a function of time.
+
+(j) What is the mean internal age $\alpha_m$ ?
+
+## References

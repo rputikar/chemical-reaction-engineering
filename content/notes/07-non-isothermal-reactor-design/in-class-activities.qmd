@@ -14,4 +14,98 @@ import numpy as np
 ```
 
  
+## Heat of reaction
 
+Calculate the heat of reaction for the synthesis of ammonia from hydrogen and
+nitrogen at 150 &deg;C in kcal/mol of N~2~ reacted and also in kJ/mol of H~2~
+reacted.
+
+$$
+\ce{N2 + 3H2 -> 2NH3}
+$$
+
+The enthalpy of formation of ammonia at 25 &deg;C is $H_{NH_3}^\circ (T_R) =
+-11020 \ cal/(mol\ \ce{NH3})$
+
+
+## Adiabatic Liquid-Phase Isomerization of Normal Butane
+
+Normal butane, $C_4H_{10}$, is to be isomerized to isobutane in a plug-flow
+reactor. Isobutane is a valuable product that is used in the manufacture of
+gasoline additives. For example, isooctane can be further reacted to form
+iso-octane. The 2014 selling price of n-butane was \$1.5/gal, while the trading
+price of isobutane was \$1.75/gal.
+
+This elementary reversible reaction is to be carried out adiabatically in the
+liquid phase under high pressure using essentially trace amounts of a liquid
+catalyst that gives a specific reaction rate of $31.1 \, \text{h}^{-1}$ at $360
+\, K$. The feed enters at $330 \, K$.
+
+(a) Calculate the PFR volume necessary to process $100,000 \, \text{gal/day}$
+($163 \, \text{kmol/h}$) at $70\%$ conversion of a mixture $90 \, \text{mol \%}
+\, n$-butane and $10 \, \text{mol \%} \, i$-pentane, which is considered an
+inert.
+
+(b) Plot and analyze $X$, $X_e$, $T_r$, and $-r_A$ down the length of the
+reactor.
+
+(c) Calculate the CSTR volume for $40\%$ conversion.
+
+**Additional information**:
+
+$\Delta H^{\circ}_{Rx} = -6900 \, \text{J/mol} \, n$-butane, 
+
+Activation energy = $65.7 \, \text{kJ/mol}$ 
+
+$K_c = 3.03$ at $60°C$, 
+
+$C_{A0} = 9.3 \, \text{mol/dm}^3 = 9.3 \, \text{kmol/m}^3$
+
+Butane: 
+$C_{P_{n-B}} = 141 \, J/mol \cdot K$; 
+$C_{P_{i-B}} = 141 \, J/mol \cdot K$
+
+i-Pentane: 
+$C_{P_{i-P}} = 161 \, J/mol \cdot K$
+
+
+## Adiabatic Equilibrium Temperature
+
+For the elementary liquid-phase reaction
+
+$\ce{A <=> B}$
+
+Make a plot of equilibrium conversion as a function of temperature.
+
+(a) Combine the rate law and stoichiometric table to write $-r_A$ as a
+function of $k$, $C_{A0}$, $X$, and $X_e$.
+
+(b) Determine the adiabatic equilibrium temperature and conversion when pure A
+is fed to the reactor at a temperature of 300 K.
+
+(c) What is the CSTR volume to achieve 90% of the adiabatic equilibrium
+conversion for $\dot{v}_0 = 5 \, \text{dm}^3/\text{min}$?
+
+Additional information:†
+
+$H_A^\circ(298 \, K) = -40,000 \, \text{cal/mol}$
+
+$H_B^\circ(298 \, K) = -60,000 \, \text{cal/mol}$
+
+$C_{P,A} = 50 \, cal/mol \cdot K$
+
+$C_{P,B} = 50 \, cal/mol \cdot K$
+
+$K_c = 100,000 $ at 298 K, 
+$k = 10^{-3} \exp \left( \frac{E}{R} \left( \frac{1}{298} - \frac{1}{T} \right)
+\right) \text{min}^{-1}$
+with $E = 10,000 \, \text{cal/mol}$
+
+
+## Interstage Cooling for Highly Exothermic Reactions
+
+What conversion could be achieved in the previous example if two interstage
+coolers that had the capacity to cool the exit stream to 350 K were available?
+Also, determine the heat duty of each exchanger for a molar feed rate of A of
+40 mol/s. Assume that 95% of the equilibrium conversion is achieved in each
+reactor. The feed temperature to the first reactor is 300 K.
