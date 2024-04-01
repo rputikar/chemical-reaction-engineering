@@ -109,3 +109,49 @@ coolers that had the capacity to cool the exit stream to 350 K were available?
 Also, determine the heat duty of each exchanger for a molar feed rate of A of
 40 mol/s. Assume that 95% of the equilibrium conversion is achieved in each
 reactor. The feed temperature to the first reactor is 300 K.
+
+## Production of Acetic Anhydride
+
+Jeffreys, in a treatment of the design of an acetic anhydride manufacturing
+facility, states that one of the key steps is the endothermic vapor-phase
+cracking of acetone to ketene and methane.
+
+The reaction is as follows:
+$$ \ce{ CH3COCH3 ->  CH2CO + CH4}$$
+
+He states further that this reaction is first-order with respect to acetone and
+that the specific reaction rate can be expressed by
+
+$$\ln k = 34.34 - \frac{34,222}{T}$$
+
+where $k$ is in reciprocal seconds and $T$ is in Kelvin. In this design
+it is desired to feed 7850 kg of acetone per hour to a tubular reactor. The
+reactor consists of a bank of 1000 one-inch schedule 40 tubes. We shall
+consider four cases of heat exchanger operation. The inlet temperature and
+pressure are the same for all cases at 1035 K and 162 kPa (1.6 atm) and the
+entering heating-fluid temperature available is 1250 K.
+
+A bank of 1000 one-inch, schedule 40 tubes 1.79 m in length corresponds to 1.0
+m³ (0.001 m³/tube = 1.0 dm³/tube) and gives 20% conversion. Ketene is unstable
+and tends to explode, which is a good reason to keep the conversion low.
+However, the pipe material and schedule size should be checked to learn if they
+are suitable for these temperatures and pressures. The heat-exchange fluid has
+a flow rate, $\dot{m}_c$, of 0.111 mol/s, with a heat capacity of 34.5
+J/mol·K.
+
+The cases are as follows:
+
+- Case 1: The reactor is operated adiabatically.
+- Case 2: Constant heat-exchange fluid temperature $T_a = 1250$ K.
+- Case 3: Co-current heat exchange with $T_{a0} = 1250$ K.
+- Case 4: Countercurrent heat exchange with $T_{a0} = 1250$ K.
+
+Additional information:
+- For acetone (A): $\Delta H^{\circ}_{R}(T_R) = -216.67$ kJ/mol, $C_{p,A}
+= 163$ J/mol·K
+- For ketene (B): $\Delta H^{\circ}_{R}(T_R) = -61.09$ kJ/mol, $C_{p,B} =
+83$ J/mol·K
+- For methane (C): $\Delta H^{\circ}_{R}(T_R) = -74.81$ kJ/mol, $C_{p,C}
+= 71$ J/mol·K
+
+The overall heat transfer coefficient $Ua = 110$ J/s·m³·K.
