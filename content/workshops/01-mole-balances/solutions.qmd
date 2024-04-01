@@ -1,14 +1,27 @@
 ---
 title: 
-  "Solution: Workshop 01 - Mole balances"
+  "Solution to Workshop 01 - Mole balances"
 date: 2024/02/24
-format: pdf
+format:
+   html: default
+   pdf:
+      output-file: "solution-to-workshop-01-mole-balances"
+      output-ext: "pdf"
+resources:
+  - "./workshop-1-solution-written.pdf"
 ---
 
 ```{python}
 import numpy as np
 from IPython.display import display, Markdown
 ```
+
+::: {.callout-note}
+
+Handwritten solutions to these problems are uploaded at [Workshop 1 solutions](./workshop-1-solution-written.pdf)
+
+:::
+
 
 ## Q 1-5  
 
@@ -236,13 +249,13 @@ F_A = C_A \upsilon
 $$
 
 
-$F_A$  = `{python} one_minus_X` $C_{A0} \upsilon$
+$F_A$  = `{python} f'{one_minus_X:.2f}'` $C_{A0} \upsilon$
 
 From Data
 
-$F_{A0}$ = `{python} FA0`; $F_{A}$ = `{python} FA`
+$F_{A0}$ = `{python} f'{FA0:.2f}'` mol/h; $F_{A}$ = `{python} f'{FA:.2f}'` mol/h
 
-$\therefore V_{CSTR}$ = `{python} V_cstr` $dm^3$. 
+$\therefore V_{CSTR}$ = `{python} f'{V_cstr:.2f}'` $dm^3$. 
 
 
 For PFR, 
@@ -277,15 +290,15 @@ V_pfr = v0*(Ca0-CA)/k
 
 ```
 
-$\therefore V_{PFR}$ = `{python} V_pfr` $dm^3$. 
+$\therefore V_{PFR}$ = `{python} f'{V_pfr:.2f}'` $dm^3$. 
 
 
 Other question can be solved on the same lines. 
 
 ### Final answers: 
 
-b. $V_{CSTR} = 2750 dm^3$; $V_{PFR}=127.9 dm^3$
+b. $V_{CSTR} = 2750 \ dm^3$; $V_{PFR}=127.9 \ dm^3$
 
-c. $V_{CSTR} = 660 dm^3$; $V_{PFR}=6.6 dm^3$
+c. $V_{CSTR} = 660 \ dm^3$; $V_{PFR}=6.6 \ dm^3$
 
 d. Batch reactor: 66600 h

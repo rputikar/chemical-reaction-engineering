@@ -1,8 +1,11 @@
 ---
 title: "In class activity: Multiple reactions"
 date: 2024-03-23
-format:
-  pdf
+format: 
+   html: default
+   pdf:
+      output-file: "in-class-activity-multiple-reactions"
+      output-ext: "pdf"
 ---
 
 ```{python}

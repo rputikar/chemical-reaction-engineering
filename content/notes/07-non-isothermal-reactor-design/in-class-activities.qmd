@@ -1,13 +1,17 @@
 ---
 title: "In class activity: Non-isothermal reactor design"
-date: 2024-03-23
-format:
-  pdf
+date: 2024-04-01 
+format: 
+   html: default
+   pdf:
+      output-file: "in-class-activity-non-isothermal-reactor-design"
+      output-ext: "pdf"
 ---
 
 ```{python}
-import matplotlib.pyplot as plt
-from IPython.display import display, Markdown
-plt.style.use('../../../assets/templates/publish.mplstyle')
+import numpy as np
+{{< include ../../../assets/partials/_mplinclude.py >}}
 ```
+
+ 
 
