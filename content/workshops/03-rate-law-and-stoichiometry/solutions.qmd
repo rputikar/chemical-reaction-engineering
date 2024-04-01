@@ -2,7 +2,11 @@
 title: 
   "Solutions to workshop 03: Rate law and stoichiometry"
 date: 2024/03/10
-format: html
+format: 
+   html: default
+   pdf:
+      output-file: "solutions-to-workshop-03-rate-law-and-stoichiometry"
+      output-ext: "pdf"
 ---
 
 ```{python}

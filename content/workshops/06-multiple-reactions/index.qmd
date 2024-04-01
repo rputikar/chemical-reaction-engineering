@@ -2,7 +2,11 @@
 title: 
   "Workshop 06: Multiple reactions"
 date: 2024/03/24
-format: html
+format: 
+   html: default
+   pdf:
+      output-file: "workshop-06-multiple-reactions"
+      output-ext: "pdf"
 ---
 
 ::: {.callout-tip}

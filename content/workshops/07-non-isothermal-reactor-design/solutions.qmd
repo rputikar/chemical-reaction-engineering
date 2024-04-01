@@ -1,7 +1,11 @@
 ---
 title: 
-  "Workshop 07: Non-isothermal reactor design"
+  "Solutions to workshop 07: Non-isothermal reactor design"
 date: 2024/03/24
-format: html
+format: 
+   html: default
+   pdf:
+      output-file: "solutions-to-workshop-07-non-isothermal-reactor-design"
+      output-ext: "pdf"
 ---
 

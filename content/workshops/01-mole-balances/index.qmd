@@ -5,6 +5,10 @@ date: 2024/02/24
 format: html
 resources:
   - "./workshop-1-solution-written.pdf"
+format:
+   pdf:
+      output-file: "workshop-01-mole-balances"
+      output-ext: "pdf"
 ---
 
 ::: {.callout-note}

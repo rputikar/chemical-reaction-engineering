@@ -1,7 +1,23 @@
 --- 
 title: "Rate law and stoichiometry" 
 date: 2024-03-03
+format:
+  html: default
+  pdf:
+    output-file: "rate-law-and-stoichiometry"
+    output-ext: "pdf"
 resources:
   - "./Ranjeet_Notes_Fogler_Chapter 03 - Rate law.pdf"
   - "./Ranjeet_Notes_Fogler_Chapter 04 - Stoichiometry.pdf"
 ---
+
+
+[Notes on Chapter 3 of Elements of Chemical Reaction Engineering
+[@fogler2016]](./Ranjeet_Notes_Fogler_Chapter 03 - Rate law.pdf)
+
+
+[Notes on Chapter v of Elements of Chemical Reaction Engineering
+[@fogler2016]](./Ranjeet_Notes_Fogler_Chapter 04 - Stoichiometry.pdf)
+
+
+

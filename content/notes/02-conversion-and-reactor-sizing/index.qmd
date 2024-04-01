@@ -3,6 +3,11 @@ title: "Conversion and reactor sizing"
 date: 2024-02-28
 resources:
   - "./Ranjeet_Notes_Fogler_Chapter 02 - Conversion and reactor sizing.pdf"
+format:
+  html: default
+  pdf:
+    output-file: "conversion-and-reactor-sizing"
+    output-ext: "pdf"
 ---
 
 ::: {.callout-note}

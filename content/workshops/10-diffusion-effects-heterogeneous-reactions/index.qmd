@@ -2,7 +2,11 @@
 title: 
   "Workshop 10: Diffusion effects heterogeneous reactions"
 date: 2024/03/24
-format: html
+format: 
+   html: default
+   pdf:
+      output-file: "workshop-10-diffusion-effects-heterogeneous-reactions"
+      output-ext: "pdf"
 ---
 
 ::: {.callout-tip}

@@ -1,8 +1,11 @@
 ---
 title: "Problem sets"
 date: 2024-02-22
-format:
-  pdf
+format: 
+   html: default
+   pdf:
+      output-file: "problem-sets"
+      output-ext: "pdf"
 ---
 
 

@@ -2,7 +2,11 @@
 title: 
   "Workshop 05: Collection and analysis of rate data"
 date: 2024/03/24
-format: html
+format: 
+   html: default
+   pdf:
+      output-file: "workshop-05-collection-and-analysis-of-rate-data"
+      output-ext: "pdf"
 ---
 
 ::: {.callout-tip}

@@ -2,7 +2,11 @@
 title: 
   "Solutions to workshop 05: Collection and analysis of rate data"
 date: 2024/03/23
-format: html
+format: 
+   html: default
+   pdf:
+      output-file: "solutions-to-workshop-05-collection-and-analysis-of-rate-data"
+      output-ext: "pdf"
 ---
 
 ```{python}

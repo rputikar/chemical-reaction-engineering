@@ -1,7 +1,11 @@
 ---
 title: 
-  "Workshop 11: Distribution of residence time"
+  "Solutions to workshop 11: Distribution of residence time"
 date: 2024/03/24
-format: html
+format: 
+   html: default
+   pdf:
+      output-file: "solutions-to-workshop-11-distribution-of-residence-time"
+      output-ext: "pdf"
 ---
 

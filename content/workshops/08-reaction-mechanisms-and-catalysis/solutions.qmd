@@ -1,7 +1,11 @@
 ---
 title: 
-  "Workshop 08: Reaction mechanisms and catalysis"
-date: 2024/03/24
-format: html
+  "Solutions to workshop 08: Reaction mechanisms and catalysis"
+date: 2024-04-01 
+format: 
+   html: default
+   pdf:
+      output-file: "solutions-to-workshop-08-reaction-mechanisms-and-catalysis"
+      output-ext: "pdf"
 ---
 

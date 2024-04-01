@@ -1,7 +1,11 @@
 ---
 title: 
-  "Workshop 09: External diffusion effects"
+  "Solutions to workshop 09: External diffusion effects"
 date: 2024/03/24
-format: html
+format: 
+   html: default
+   pdf:
+      output-file: "solutions-to-workshop-09-external-diffusion-effects"
+      output-ext: "pdf"
 ---
 

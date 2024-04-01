@@ -3,4 +3,9 @@ title: "Mole balances"
 date: 2024-02-22
 resources:
   - "./Ranjeet_Notes_Fogler_Chapter 01 - Mole balances.pdf"
+format:
+  html: default
+  pdf:
+    output-file: "mole-balances"
+    output-ext: "pdf"
 ---

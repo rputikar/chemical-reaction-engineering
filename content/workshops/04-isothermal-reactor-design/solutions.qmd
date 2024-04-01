@@ -2,7 +2,11 @@
 title: 
   "Solutions to workshop 04: Isothermal reactor design"
 date: 2024/03/19
-format: html
+format: 
+   html: default
+   pdf:
+      output-file: "solutions-to-workshop-04-isothermal-reactor-design"
+      output-ext: "pdf"
 resources:
   - "./Problem-5-9.pdf"
   - "./Problem-5-11.pdf"

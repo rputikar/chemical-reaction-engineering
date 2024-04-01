@@ -2,7 +2,11 @@
 title: 
   "Workshop 02 Solution: Conversion and reactor sizing"
 date: 2024/03/03
-format: html
+format: 
+   html: default
+   pdf:
+      output-file: "workshop-02-solution-conversion-and-reactor-sizing"
+      output-ext: "pdf"
 resources:
   - "./workshop-02-problem-1-data.csv"
 ---

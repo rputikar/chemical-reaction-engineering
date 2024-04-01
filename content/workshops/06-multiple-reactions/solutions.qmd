@@ -1,8 +1,12 @@
 ---
 title: 
-  "Workshop 06: Multiple reactions"
+  "Solutions to workshop 06: Multiple reactions"
 date: 2024/03/24
-format: html
+format: 
+   html: default
+   pdf:
+      output-file: "solutions-to-workshop-06-multiple-reactions"
+      output-ext: "pdf"
 resources:
   - ./problem-p-8-3.pdf
   - ./problem-p-8-4.pdf
