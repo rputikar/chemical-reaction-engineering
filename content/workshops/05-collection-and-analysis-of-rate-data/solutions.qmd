@@ -10,12 +10,8 @@ format:
 ---
 
 ```{python}
-import matplotlib.pyplot as plt
-from IPython.display import display, Markdown
-plt.style.use('../../../assets/templates/publish.mplstyle')
+{{< include ../../../assets/partials/_mplinclude.py >}}
 ```
-
-
 
 Try following problems from Fogler 5e [@fogler2016].
 P 7-4,
@@ -155,8 +151,12 @@ line = res.slope * ln_1_minus_x + res.intercept
 plt.plot(ln_1_minus_x, ln_dxdz, 'o', label='Differential analysis')
 plt.plot(ln_1_minus_x, line, '-', label='fitted line')
 
-plt.annotate(f'Slope = {res.slope:.2e}\nIntercept = {res.intercept:.2f}\n$R^2$ = {res.rvalue**2:.3f}',
-             xy=(0.5, 0.15), xycoords='axes fraction', fontsize=12)
+plt.annotate(
+  f'Slope = {res.slope:.2e}\nIntercept = {res.intercept:.2f}\n$R^2$ = {res.rvalue**2:.3f}',
+  xy=(0.5, 0.15),
+  xycoords='axes fraction',
+  fontsize=12
+)
 
 plt.xlabel('$\ln (1-X)$')
 plt.ylabel('$\ln(\\frac{dX}{dZ})$')
@@ -276,8 +276,12 @@ line = res.slope * ln_ca + res.intercept
 plt.plot(ln_ca, ln_ca_by_tau, 'o', label='Differential analysis')
 plt.plot(ln_ca, line, '-', label='fitted line')
 
-plt.annotate(f'Slope = {res.slope:.2e}\nIntercept = {res.intercept:.2f}\n$R^2$ = {res.rvalue**2:.3f}',
-             xy=(0.5, 0.15), xycoords='axes fraction', fontsize=12)
+plt.annotate(
+  f'Slope = {res.slope:.2e}\nIntercept = {res.intercept:.2f}\n$R^2$ = {res.rvalue**2:.3f}',
+  xy=(0.5, 0.15),
+  xycoords='axes fraction',
+  fontsize=12
+)
 
 plt.xlabel('$\ln (C_A)$')
 plt.ylabel('$\ln(\\frac{C_{A0}-C_A}{\\tau})$')

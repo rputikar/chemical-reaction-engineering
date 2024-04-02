@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono|JetBrains+Mono&display=swap");
+// @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 //@import "_carbon_colors";
 
 $black: #000000 !default;
@@ -254,8 +255,16 @@ h1.title {
   padding: 10px;
 }
 
-.reveal .katex {
-  font-family: IBM Plex Sans;
-  font-size: 1.1em;
-}
+// .reveal .katex .mathnormal, .mathit, .mathrm, .text, .textit, .textup, .rm, .textrm, .mathtt, .tt, .textmd, .textnormal {
+//   font-family: Noto Sans;
+//   font-size: 1em;
+// }
 
+katex-inline.keepfont {
+    .katex, .mathnormal, .mathit, .mathrm {
+        font-family: inherit;
+    }
+    .katex {
+        font-size: 1em;
+    }
+}
