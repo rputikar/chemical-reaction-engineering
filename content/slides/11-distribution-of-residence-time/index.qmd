@@ -1,6 +1,7 @@
 ---
 title: "Distribution of residence time"
 format: revealjs
+last-modified: 2024-04-02
 ---
 
 ```{python}
@@ -14,6 +15,3 @@ import tabulate as tab
 from IPython.display import display, Markdown
 plt.style.use('../../../assets/templates/present.mpstyle')
 ```
-
-last-modified: 2024-04-02
-last-modified: 2024-04-02

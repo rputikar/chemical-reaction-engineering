@@ -9,6 +9,7 @@ format:
 resources:
   - "./PC-0054962-Armfield-Manual-CEU-Issue 13.pdf"
   - "../prelab/Catalytic_Reactor/"
+last-modified: 2024-04-02
 ---
 
 :::{.callout-important}
@@ -100,5 +101,3 @@ should consider the following:
    analysis in Excel to calculate the effectiveness factors for the two
    columns. Present relevant calculations.                                                                                       
 
-last-modified: 2024-04-02
-last-modified: 2024-04-02

@@ -2,6 +2,7 @@
 title: Experimental program for CHEN5040
 format:
   pdf
+last-modified: 2024-04-02
 ---
 
 ## Experimental program
@@ -134,5 +135,3 @@ prepare a report that answers the tasks outlined in the experiment instructions.
 | 3 | 7 May 2024 | Follow week 9 submission link |
 
 
-last-modified: 2024-04-02
-last-modified: 2024-04-02

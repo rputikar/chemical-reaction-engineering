@@ -1,6 +1,7 @@
 ---
 title: "Rate law and stoichiometry"
 format: revealjs
+last-modified: 2024-04-02
 revealjs-plugins:
   - attribution
 ---
@@ -852,5 +853,3 @@ Fogler, H. Scott. 2016. Elements of Chemical Reaction Engineering. Fifth edition
 :::
 
 
-last-modified: 2024-04-02
-last-modified: 2024-04-02

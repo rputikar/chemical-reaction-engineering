@@ -13,4 +13,3 @@ resources:
 [@fogler2016]](./Ranjeet_Notes_Fogler_Chapter 14 - Mass Transfer Limitations in Reacting Systems.pdf)
 
 :::
-

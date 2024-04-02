@@ -1,6 +1,7 @@
 ---
 title: Laboratory Schedule
 subtitle: CHEN3010/ CHEN5040 - Chemical Reaction Engineering - S1 2024
+last-modified: 2024-04-02
 author: ""
 format:
   pdf
@@ -213,5 +214,3 @@ Demonstrators: HP, MC, RS
 {{< pagebreak >}}
 \KOMAoptions{paper=portrait, DIV=15}
 \recalctypearea
-last-modified: 2024-04-02
-last-modified: 2024-04-02

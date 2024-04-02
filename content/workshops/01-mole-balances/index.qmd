@@ -128,4 +128,3 @@ We will go through some of these problems in the workshop.
 ![Penicillium chrysogenum](../../../assets/images/penicillium.png){#fig-penicillium}
 
 :::
-

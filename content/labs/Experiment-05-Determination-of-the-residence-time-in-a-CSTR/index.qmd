@@ -9,6 +9,7 @@ format:
 resources:
   - "./PC-0055760-Armfield-Manual-CEM-MKII-Issue 21.pdf"
   - "../prelab/CSTR/"
+last-modified: 2024-04-02
 ---
 
 :::{.callout-important}
@@ -83,5 +84,3 @@ The report should consider the following:
 2. **Data analysis**: Perform data analysis in Excel to analyze the data
    obtained. Based on the analysis, report the mean residence time Present
    relevant graphs for all the data sets.
-last-modified: 2024-04-02
-last-modified: 2024-04-02

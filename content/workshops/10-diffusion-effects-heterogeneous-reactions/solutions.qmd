@@ -9,4 +9,3 @@ format:
       output-file: "solutions-to-workshop-10-diffusion-effects-heterogeneous-reactions"
       output-ext: "pdf"
 ---
-

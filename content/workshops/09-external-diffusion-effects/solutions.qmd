@@ -9,4 +9,3 @@ format:
       output-file: "solutions-to-workshop-09-external-diffusion-effects"
       output-ext: "pdf"
 ---
-

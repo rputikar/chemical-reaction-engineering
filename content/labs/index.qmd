@@ -5,6 +5,8 @@ author: ""
 # listing:
 #   contents: "./*/index.qmd"
 #   fields: [title]
+
+last-modified: 2024-04-02
 ---
 
 ## Preamble
@@ -158,5 +160,3 @@ Each experiment has three steps for completion
   - How do you ensure the accuracy of the measurements, and analysis?
 
 
-last-modified: 2024-04-02
-last-modified: 2024-04-02

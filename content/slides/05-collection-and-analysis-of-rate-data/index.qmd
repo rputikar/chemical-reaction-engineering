@@ -1,6 +1,7 @@
 ---
 title: "Collection and analysis of rate data"
 format: revealjs
+last-modified: 2024-04-02
 ---
 
 # Rate data analysis
@@ -739,5 +740,3 @@ $C_{A0}$
 ::::
 
 
-last-modified: 2024-04-02
-last-modified: 2024-04-02

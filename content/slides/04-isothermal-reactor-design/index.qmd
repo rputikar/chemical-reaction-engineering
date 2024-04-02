@@ -1,6 +1,7 @@
 ---
 title: "Isothermal reactor design"
 format: revealjs
+last-modified: 2024-04-02
 revealjs-plugins:
   - attribution
 ---
@@ -1147,5 +1148,3 @@ out isothermally
 
 ::::
 
-last-modified: 2024-04-02
-last-modified: 2024-04-02

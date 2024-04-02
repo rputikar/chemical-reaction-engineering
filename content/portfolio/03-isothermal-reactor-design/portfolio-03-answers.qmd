@@ -3,6 +3,7 @@ title: "Portfolio 03: Isothermal reactor design"
 format:
   pdf
 draft: true
+last-modified: 2024-04-02
 ---
 
 ```{python}
@@ -525,5 +526,3 @@ underperform.  \hfill (2 marks)
 
 
 
-last-modified: 2024-04-02
-last-modified: 2024-04-02

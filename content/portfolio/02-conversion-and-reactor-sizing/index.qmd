@@ -4,6 +4,7 @@ format:
   pdf
 resources:
    - "./ethylene_oxide_rate_vs_conversion.csv"
+last-modified: 2024-04-02
 ---
 
 ```{python}
@@ -313,5 +314,3 @@ plt.show()
 
 ```
 {{< pagebreak >}}
-last-modified: 2024-04-02
-last-modified: 2024-04-02
