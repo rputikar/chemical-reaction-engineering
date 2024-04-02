@@ -15,50 +15,52 @@ $qmdFiles = Get-ChildItem -Path $pathToFiles -Filter *.qmd -Recurse
 foreach ($file in $qmdFiles)
 {
   $content = Get-Content $file.FullName
+  $updated = $false
     
-  $dateLineIndex = $content | Select-String -Pattern "^date:" | Select-Object -ExpandProperty LineNumber | ForEach-Object { $_ - 1 }
-  if ($dateLineIndex -ne $null)
+  # Get file's last write time, only considering the date part
+  $fileLastWriteTime = (Get-Item $file.FullName).LastWriteTime.Date
+
+  # Attempt to find and parse the last-updated date from the file
+  $lastUpdatedLine = $content | Where-Object { $_ -match '^last-modified: (.*)$' }
+  $fileNeedsUpdate = $true
+
+  if ($lastUpdatedLine)
   {
-    # Capture the current date from the 'date' line and reformat
-    $currentDateMatch = $content[$dateLineIndex] -match "^date: (.*)$"
-    if ($currentDateMatch)
+    $lastUpdatedDateStr = $lastUpdatedLine -replace '^last-modified: (.*)$', '$1'
+    try
     {
-      $currentDateStr = $matches[1]
-      try
+      $lastUpdatedDate = [DateTime]::ParseExact($lastUpdatedDateStr, "yyyy-MM-dd", $null)
+
+      if ($fileLastWriteTime -le $lastUpdatedDate)
       {
-        $currentDate = [DateTime]::Parse($currentDateStr)
-        $newDateStr = $currentDate.ToString("yyyy-MM-dd")
-        $content[$dateLineIndex] = "date: $newDateStr"
-      } catch
-      {
-        Write-Warning "Could not parse the date in file $($file.FullName)"
+        $fileNeedsUpdate = $false
       }
+    } catch
+    {
+      Write-Warning "Failed to parse last-modified date for $($file.FullName)"
     }
   }
 
-  # Get the last modified date and format it
-  $lastModifiedDate = (Get-Item $file.FullName).LastWriteTime.ToString("yyyy-MM-dd")
-  $lastModifiedLine = "last-modified: $lastModifiedDate"
-
-  # Check if 'last-modified' exists
-  $lastModifiedExists = $content -match '^last-modified:'
-    
-  if ($lastModifiedExists)
+  if ($fileNeedsUpdate)
   {
-    # If 'last-modified' exists, update it
-    $content = $content -replace "(?<=^last-modified: ).*","$lastModifiedDate"
-  } elseif ($dateLineIndex -ne $null)
-  {
-    # If 'date' exists but 'last-modified' doesn't, add it right after 'date'
-    $content = $content[0..$dateLineIndex] + $lastModifiedLine + $content[($dateLineIndex + 1)..($content.Length - 1)]
-  } else
-  {
-    # If 'date' doesn't exist, append 'last-modified' at the end
-    $content += $lastModifiedLine
+    # Your update logic goes here. Make sure to set $updated = $true if changes are made.
+        
+    # Example: Updating the last-updated field
+    $lastUpdatedIndex = [array]::IndexOf($content, $lastUpdatedLine)
+    if ($lastUpdatedIndex -ne -1)
+    {
+      $content[$lastUpdatedIndex] = "last-modified: " + $fileLastWriteTime.ToString("yyyy-MM-dd")
+      $updated = $true
+    } else
+    {
+      $content += "last-modified: " + $fileLastWriteTime.ToString("yyyy-MM-dd")
+      $updated = $true
+    }
+        
+    if ($updated)
+    {
+      $content | Set-Content $file.FullName
+      Write-Output "Updated file: $($file.FullName)"
+    }
   }
-
-  # Write the updated content back to the file
-  $content | Set-Content $file.FullName
-  Write-Output "Updated file: $($file.FullName)"
 }
-

@@ -18,6 +18,8 @@ format:
     - ./assets/partials/home/title-block.html
 metadata-files:
   - metadata.yml
+
+last-modified: 2024-04-02
 ---
 
 ## Course Overview
@@ -209,6 +211,3 @@ Best way to contact is via email. I hope to respond within 24-36 hours. If you w
 
 :::
 
-
-last-modified: 2024-04-02
-last-modified: 2024-04-02
