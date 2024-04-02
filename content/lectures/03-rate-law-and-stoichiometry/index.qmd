@@ -2,6 +2,7 @@
 title: 
   Rate law and stoichiometry
 date: 2024-03-03
+last-modified: 2024-04-02
 format: html
 ---
 

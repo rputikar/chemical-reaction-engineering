@@ -1,6 +1,7 @@
 ---
 title: "Pre class activity: Mole balances"
 date: 2024-02-22
+last-modified: 2024-04-02
 format:
   pdf
 ---

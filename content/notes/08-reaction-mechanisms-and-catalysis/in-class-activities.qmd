@@ -1,6 +1,7 @@
 ---
 title: "In class activity: Reaction mechanisms and catalysis"
 date: 2024-03-23
+last-modified: 2024-04-02
 format:
   pdf
 ---

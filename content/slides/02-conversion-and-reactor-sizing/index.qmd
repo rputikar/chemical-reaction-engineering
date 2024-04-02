@@ -990,3 +990,5 @@ transient heat effects in PFR.
   - GHSV: Gas hourly space velocity: $\mathrm{GHSV}=\frac{\upsilon_{0 \mid \mathrm{STP}}}{V}$
   - $\upsilon_{0 \mid}$ is the volumetric flow rate measured at specified condition
 
+last-modified: 2024-04-02
+last-modified: 2024-04-02
