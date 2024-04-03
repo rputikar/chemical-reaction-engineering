@@ -4,6 +4,16 @@ format: revealjs
 last-modified: 2024-04-02
 ---
 
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.integrate import solve_ivp
+plt.style.use('../../../assets/templates/present.mpstyle')
+
+def set_yticks(nbins=None):
+    plt.locator_params(axis='y', nbins=nbins)
+
+```
 ## Need for energy balance
 
 * Consider a liquid phase PFR for a first-order exothermic reaction.
@@ -538,9 +548,308 @@ the mole balance to solve a large variety of chemical reaction engineering probl
 
 ## Adiabatic equilibrium conversion
 
+::::{.columns}
+:::{.column width=50%}
+### Exothermic reactions
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+![](../../../assets/images/equilibrium-and-energy-balance-exothermic-reactions.png){width=90%}
+
+:::
+:::{.column width=50%}
+### Endothermic reactions
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+![](../../../assets/images/equilibrium-and-energy-balance-endothermic-reactions.png){width=90%}
+
+
+:::
+::::
+
+:::{.callout-note appearance="simple"}
+
+The highest conversion that can be achieved in reversible reactions is the
+equilibrium conversion. For endothermic reactions, the equilibrium conversion
+increases with increasing temperature up to a maximum of 1.0. For exothermic
+reactions, the equilibrium conversion decreases with increasing temperature.
+
+:::
+
 ## Reactor staging
 
+::::{.columns}
+:::{.column width=50%}
+### Exothermic reactions
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+![](../../../assets/images/reactor-staging-exothermic-reactions.png){width=90%}
+
+:::
+:::{.column width=50%}
+### Endothermic reactions
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+![](../../../assets/images/reactor-staging-endothermic-reactions.png){width=90%}
+
+
+:::
+::::
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+![](../../../assets/images/reactors-with-interstage-cooling-schematic.png){width=90%}
+
 ## Optimum feed temperature
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+![](../../../assets/images/equilibrium-conversion-for-different-feed-temperatures.png){width=90%}
+
+## Optimum feed temperature
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+```{python}
+# Constants
+K0 = 31.1 # 1/h
+T_K0 = 360 # K
+
+KC0 = 3.3
+T_KC0 = 60 + 273.15 # K
+
+E = 65700 # J/mol 
+R = 8.314 # J/mol K
+
+DELTAHR = -6900 # J/mol
+
+def adiabatic_pfr( V, y, *args ):
+
+  X = y[0]
+  (fa0,ca0, T0, theta, cp) = args
+
+  sum_cp =  np.sum(theta * cp)
+
+  T = T0 + (-DELTAHR) * X / sum_cp
+
+  k = K0 * np.exp((E/R) * (1/T_K0 - 1/T))
+  Kc = KC0 * np.exp((DELTAHR/R) * (1/T_KC0 - 1/T))
+
+  ca = ca0 * ( 1 - X )
+  cb = ca0 * X
+
+  rate = k * (ca - cb/Kc)
+
+  dXdV = rate/fa0
+
+  return dXdV
+
+# Problem data
+ya0 = 0.9
+yi0 = 0.1
+fa = 163.0 # kmol/h
+fa0 = ya0 * fa 
+ca0 = 9.3   # kmol/m3
+
+
+# n-butane = comp 1; i-butane = comp 2; i-Pentane = component 3
+
+theta = np.array([1, 0, yi0/ya0])
+cp = np.array([141, 141, 161])
+``` 
+
+```{python}
+# Initial condition
+T01 = 350 # K
+y0 = [0]
+args = (fa0, ca0, T01, theta, cp)
+v_final = 5 
+sol = solve_ivp(adiabatic_pfr, [0, v_final], y0, args=args, dense_output=True)
+
+v1 = np.linspace(0,v_final, 1000)
+x1 = sol.sol(v1)[0]
+
+# recalculate other quantities for plotting
+sum_cp =  np.sum(theta * cp)
+T = T01 + (-DELTAHR) * x1 / sum_cp
+Kc = KC0 * np.exp((DELTAHR/R) * (1/T_KC0 - 1/T))
+xe1 = Kc/(1 + Kc)
+
+plt.plot(v1,x1, label='$X$', color='#65489d')
+plt.plot(v1,xe1, label='$X_e$', linestyle='--', color='#65489d')
+
+plt.xlabel('Volume ($m^3$)')
+plt.ylabel('Conversion')
+
+plt.xlim(0,v_final)
+plt.ylim(0.0,0.8)
+set_yticks(4)
+
+plt.legend(loc='lower right')
+plt.title(f"T = {T01:.0f} K")
+plt.show()
+```
+
+## Optimum feed temperature
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+```{python}
+# Initial condition
+T02 = 330 # K
+y0 = [0]
+args = (fa0, ca0, T02, theta, cp)
+v_final = 5 
+sol = solve_ivp(adiabatic_pfr, [0, v_final], y0, args=args, dense_output=True)
+
+v2 = np.linspace(0,v_final, 1000)
+x2 = sol.sol(v2)[0]
+
+# recalculate other quantities for plotting
+sum_cp =  np.sum(theta * cp)
+T = T02 + (-DELTAHR) * x2 / sum_cp
+Kc = KC0 * np.exp((DELTAHR/R) * (1/T_KC0 - 1/T))
+xe2 = Kc/(1 + Kc)
+
+plt.plot(v2,x2, label='$X$', color='#388ecc')
+plt.plot(v2,xe2, label='$X_e$', linestyle='--', color='#388ecc')
+
+plt.xlabel('Volume ($m^3$)')
+plt.ylabel('Conversion')
+
+plt.xlim(0,v_final)
+plt.ylim(0.0,0.8)
+set_yticks(4)
+
+plt.legend(loc='lower right')
+plt.title(f"T = {T02:.0f} K")
+plt.show()
+```
+## Optimum feed temperature
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+```{python}
+# Initial condition
+T03 = 310 # K
+y0 = [0]
+args = (fa0, ca0, T03, theta, cp)
+v_final = 5 
+sol = solve_ivp(adiabatic_pfr, [0, v_final], y0, args=args, dense_output=True)
+
+v3 = np.linspace(0,v_final, 1000)
+x3 = sol.sol(v3)[0]
+
+# recalculate other quantities for plotting
+sum_cp =  np.sum(theta * cp)
+T = T03 + (-DELTAHR) * x3 / sum_cp
+Kc = KC0 * np.exp((DELTAHR/R) * (1/T_KC0 - 1/T))
+xe3 = Kc/(1 + Kc)
+
+plt.plot(v3,x3, label='$X$', color='#105e5d')
+plt.plot(v3,xe3, label='$X_e$', linestyle='--', color='#105e5d')
+
+plt.xlabel('Volume ($m^3$)')
+plt.ylabel('Conversion')
+
+plt.xlim(0,v_final)
+plt.ylim(0.0,0.8)
+set_yticks(4)
+
+plt.legend(loc='lower right')
+plt.title(f"T = {T03:.0f} K")
+plt.show()
+```
+
+## Optimum feed temperature
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+```{python}
+plt.plot(v1,x1, label=f"T = {T03:.0f} K", color='#65489d')
+plt.plot(v1,xe1, linestyle='--', color='#65489d')
+
+plt.plot(v2,x2, label=f"T = {T03:.0f} K", color='#388ecc')
+plt.plot(v2,xe2, linestyle='--', color='#388ecc')
+
+plt.plot(v3,x3, label=f"T = {T03:.0f} K", color='#105e5d')
+plt.plot(v3,xe3, linestyle='--', color='#105e5d')
+
+plt.xlabel('Volume ($m^3$)')
+plt.ylabel('Conversion')
+
+plt.xlim(0,v_final)
+plt.ylim(0.0,0.8)
+set_yticks(4)
+
+plt.legend()
+plt.title(f"T = {T03:.0f} K")
+plt.show()
+```
+
+## Optimum feed temperature
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+```{python}
+# Range of T0 values
+T0_range = np.linspace(T03, T01, 50)  # K
+final_x_values = []
+
+for T0 in T0_range:
+    args = (fa0, ca0, T0, theta, cp)
+    v_final = 5
+    sol = solve_ivp(adiabatic_pfr, [0, v_final], [0], args=args, dense_output=True)
+    v = np.linspace(0, v_final, 1000)
+    x = sol.sol(v)[0]
+    final_x_values.append(x[-1])
+
+imax = np.argmax(final_x_values)
+x_opt = final_x_values[imax]
+t_opt = T0_range[imax]
+
+# Plot final x vs T0
+
+plt.axhline(y=x_opt, color='grey', linestyle='--', linewidth=0.5)
+plt.axvline(x=t_opt, color='grey', linestyle='--', linewidth=0.5)
+
+plt.scatter(t_opt, x_opt, color='#388ecc')  
+plt.plot(T0_range, final_x_values, color='#65489d')
+
+plt.text(0.95, 0.05, f'$X_{{opt}}$ = {x_opt:.2f} at $T_{{opt}}$ ={t_opt:.1f} K',
+         horizontalalignment='right',
+         verticalalignment='bottom',
+         transform=plt.gca().transAxes,
+         color='#388ecc') 
+
+plt.xlabel('Initial Temperature $T_0$ (K)')
+plt.ylabel('Final Conversion, X')
+plt.xlim(T03,T01)
+plt.ylim(0.4,0.8)
+
+set_yticks(4)
+
+plt.show()
+```
 
 ## Steady-state tubular reactor with heat exchange
 

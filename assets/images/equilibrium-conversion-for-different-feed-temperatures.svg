@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
-   sodipodi:docname="equilibrium-and-energy-balance-exothermic-reactions.svg"
+   sodipodi:docname="equilibrium-conversion-for-different-feed-temperatures.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="true"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="203.11642"
-     inkscape:cy="347.18943"
+     inkscape:zoom="2"
+     inkscape:cx="182.25"
+     inkscape:cy="317"
      inkscape:window-width="2729"
      inkscape:window-height="2088"
      inkscape:window-x="1358"
@@ -97,6 +97,16 @@
          id="path15-9" />
     </marker>
   </defs>
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#697077;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.264583, 0.264583;stroke-dashoffset:0;stroke-opacity:1"
+     d="m 116.41666,124.35417 v 11.1125"
+     id="path4"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc"
+     inkscape:export-filename="equilibrium-conversion-for-different-feed-temperatures.png"
+     inkscape:export-xdpi="300"
+     inkscape:export-ydpi="300" />
   <g
      inkscape:label="Dark-Color-Pellette"
      inkscape:groupmode="layer"
@@ -169,7 +179,7 @@
      d="M 30.189276,44.475935 V 136.05248 H 124.55778"
      id="path13"
      sodipodi:nodetypes="ccc"
-     inkscape:export-filename="equilibrium-and-energy-balance-exothermic-reactions.png"
+     inkscape:export-filename="reactor-staging-exothermic-reactions.png"
      inkscape:export-xdpi="300"
      inkscape:export-ydpi="300" />
   <text
@@ -213,7 +223,7 @@
        y="49.424168"
        id="tspan15">Equilibrium conversion</tspan></text>
   <path
-     style="fill:none;fill-rule:evenodd;stroke:#525252;stroke-width:0.558393;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker15-2)"
+     style="fill:none;fill-rule:evenodd;stroke:#6f6f6f;stroke-width:0.26458333;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker15-2)"
      d="m 58.108951,48.11666 c -2.791968,0 -9.213495,0.100585 -14.79743,5.684515"
      id="path9"
      sodipodi:nodetypes="cc" />
@@ -233,123 +243,173 @@
      transform="scale(0.26458333)"
      id="text4"
      style="font-size:16px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect9);display:inline;fill:#000000;stroke:#525252;paint-order:markers fill stroke" />
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.328937;stroke-dasharray:none;paint-order:markers fill stroke"
-     x="68.791664"
-     y="141.41098"
-     id="text16"><tspan
-       sodipodi:role="line"
-       id="tspan16"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke:none;stroke-width:0.328937"
-       x="68.791664"
-       y="141.41098">T<tspan
-   style="font-size:65%;baseline-shift:sub"
-   id="tspan19">01</tspan></tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.328937;stroke-dasharray:none;paint-order:markers fill stroke"
-     x="44.700474"
-     y="141.41098"
-     id="text17"><tspan
-       sodipodi:role="line"
-       id="tspan17"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke:none;stroke-width:0.328937"
-       x="44.700474"
-       y="141.41098">T<tspan
-   style="font-size:65%;baseline-shift:sub"
-   id="tspan18">0</tspan></tspan></text>
   <path
-     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.264583, 0.264583;stroke-dashoffset:0;stroke-opacity:1"
-     d="M 66.14583,136.26042 107.15625,87.312502"
-     id="path19"
-     inkscape:connector-type="polyline"
-     inkscape:connector-curvature="0" />
-  <path
-     style="fill:none;fill-rule:evenodd;stroke:#105e5d;stroke-width:1.05833333;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-dasharray:none"
-     d="M 42.973624,135.56468 83.343696,87.312502"
-     id="path20"
+     style="fill:none;fill-rule:evenodd;stroke:#65489d;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.264583, 0.264583;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker15)"
+     d="M 81.557805,85.766659 H 31.551562"
+     id="path22"
      inkscape:connector-type="polyline"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="cc" />
   <path
-     style="fill:none;fill-rule:evenodd;stroke:#65489d;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker15)"
-     d="M 83.343746,87.312502 V 134.9375"
-     id="path21"
-     inkscape:connector-type="polyline"
-     inkscape:connector-curvature="0" />
-  <path
-     style="fill:none;fill-rule:evenodd;stroke:#65489d;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker15)"
-     d="M 83.343746,87.312502 H 31.75"
-     id="path22"
-     inkscape:connector-type="polyline"
-     inkscape:connector-curvature="0" />
-  <text
-     xml:space="preserve"
-     style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:start;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#65489d;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-dasharray:none;paint-order:markers fill stroke"
-     x="91.742584"
-     y="127.03941"
-     id="text22"><tspan
-       sodipodi:role="line"
-       style="text-align:start;text-anchor:start;fill:#65489d;stroke:none;stroke-width:0.529167;fill-opacity:1"
-       x="91.742584"
-       y="127.03941"
-       id="tspan22">Adiabatic</tspan><tspan
-       sodipodi:role="line"
-       style="text-align:start;text-anchor:start;fill:#65489d;stroke:none;stroke-width:0.529167;fill-opacity:1"
-       x="91.742584"
-       y="132.33107"
-       id="tspan26">temperature</tspan></text>
-  <path
-     style="fill:none;fill-rule:evenodd;stroke:#65489d;stroke-width:0.558393;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker15-2)"
-     d="m 91.016664,128.32292 c -2.607742,-0.0548 -5.843291,4.80004 -6.311909,5.50147"
+     style="fill:none;fill-rule:evenodd;stroke:#6f6f6f;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker15-2)"
+     d="m 78.346753,130.24833 c 2.08658,-1.15753 2.7315,-1.42212 4.84817,-0.0992"
      id="path24"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#65489d;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.264583, 0.264583;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker15)"
+     d="M 115.22881,123.74613 H 31.355785"
+     id="path32"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0"
      sodipodi:nodetypes="cc" />
   <text
      xml:space="preserve"
      style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:start;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-dasharray:none;paint-order:markers fill stroke"
-     x="100.73843"
-     y="102.34084"
-     id="text24"><tspan
+     x="71.865059"
+     y="131.68372"
+     id="text39"><tspan
        sodipodi:role="line"
        style="text-align:start;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.529167"
-       x="100.73843"
-       y="102.34084"
-       id="tspan24">T<tspan
+       x="71.865059"
+       y="131.68372"
+       id="tspan39">X<tspan
    style="font-size:65%;baseline-shift:sub"
-   id="tspan27">01</tspan> &gt; T<tspan
-   style="font-size:65%;baseline-shift:sub"
-   id="tspan28">0</tspan></tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:start;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#105e5d;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-dasharray:none;paint-order:markers fill stroke"
-     x="-66.028648"
-     y="117.18989"
-     id="text25"
-     transform="rotate(-50.279044)"><tspan
-       sodipodi:role="line"
-       style="text-align:start;text-anchor:start;fill:#105e5d;stroke:none;stroke-width:0.529167;fill-opacity:1"
-       x="-66.028648"
-       y="117.18989"
-       id="tspan25">Energy balance</tspan></text>
+   id="tspan37">EB</tspan></tspan></text>
   <path
-     style="fill:none;fill-rule:evenodd;stroke:#105e5d;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:0.264583, 0.264583;stroke-dashoffset:0;stroke-opacity:1"
-     d="M 83.343696,87.312502 93.596299,75.075523"
-     id="path28"
+     style="fill:none;fill-rule:evenodd;stroke:#105e5d;stroke-width:1.11681;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+     d="M 40.484758,135.82732 82.556109,85.603437"
+     id="path8"
      inkscape:connector-type="polyline"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="cc" />
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.328937;stroke-dasharray:none;paint-order:markers fill stroke"
-     x="28.338661"
-     y="88.459076"
-     id="text29"><tspan
+     x="108.46478"
+     y="140.82619"
+     id="text51"><tspan
        sodipodi:role="line"
-       id="tspan29"
+       id="tspan51"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke:none;stroke-width:0.328937"
-       x="28.338661"
-       y="88.459076">X<tspan
+       x="108.46478"
+       y="140.82619">T<tspan
    style="font-size:65%;baseline-shift:sub"
-   id="tspan30">e</tspan></tspan></text>
+   id="tspan54">0</tspan></tspan></text>
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#105e5d;stroke-width:1.11681;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+     d="M 106.09788,135.73125 116.00573,123.825"
+     id="path5"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc"
+     inkscape:export-filename="reactor-staging-exothermic-reactions.png"
+     inkscape:export-xdpi="300"
+     inkscape:export-ydpi="300" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#105e5d;stroke-width:1.11681;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+     d="M 80.925667,135.46667 98.160414,115.09375"
+     id="path7"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.328937;stroke-dasharray:none;paint-order:markers fill stroke"
+     x="83.284653"
+     y="140.82619"
+     id="text8"><tspan
+       sodipodi:role="line"
+       id="tspan8"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke:none;stroke-width:0.328937"
+       x="83.284653"
+       y="140.82619">T<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan7">1</tspan></tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.328937;stroke-dasharray:none;paint-order:markers fill stroke"
+     x="42.934948"
+     y="140.82619"
+     id="text10"><tspan
+       sodipodi:role="line"
+       id="tspan10"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke:none;stroke-width:0.328937"
+       x="42.934948"
+       y="140.82619">T<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan9">2</tspan></tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:4.23333px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:start;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:start;white-space:pre;inline-size:41.7836;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-dasharray:none;paint-order:markers fill stroke"
+     x="117.99356"
+     y="105.83334"
+     id="text19"
+     transform="translate(-96.012762,-10.246188)"><tspan
+       x="117.99356"
+       y="105.83334"
+       id="tspan5"><tspan
+         style="text-align:end;text-anchor:end"
+         id="tspan1">Slow rates, High </tspan></tspan><tspan
+       x="117.99356"
+       y="111.12501"
+       id="tspan11"><tspan
+         style="text-align:end;text-anchor:end"
+         id="tspan6">equilibrium </tspan></tspan><tspan
+       x="117.99356"
+       y="116.41667"
+       id="tspan14"><tspan
+         style="text-align:end;text-anchor:end"
+         id="tspan12">conversion</tspan></tspan></text>
+  <rect
+     style="display:inline;fill:#f4f4f4;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+     id="rect23"
+     width="13.229166"
+     height="14.552083"
+     x="109.66979"
+     y="-16.536459" />
+  <rect
+     style="display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+     id="rect24"
+     width="13.229166"
+     height="14.552083"
+     x="123.53871"
+     y="-16.536459" />
+  <rect
+     style="display:inline;fill:#6f6f6f;fill-opacity:1;stroke:none;stroke-width:0.264583px;-inkscape-stroke:none;paint-order:markers fill stroke"
+     id="rect9-3"
+     width="13.229166"
+     height="14.552083"
+     x="138.35539"
+     y="-16.536459" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#6f6f6f;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker15-2)"
+     d="m 124.35416,101.86459 c 6.68229,4.3567 3.9797,31.5825 -11.90625,28.575"
+     id="path21"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#6f6f6f;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker15-2)"
+     d="m 38.364582,100.54167 c -1.180659,2.2097 -5.105379,16.44056 13.97282,17.81617"
+     id="path25"
+     sodipodi:nodetypes="cc" />
+  <text
+     xml:space="preserve"
+     style="font-size:4.9389px;line-height:125%;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans, Normal';text-align:end;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+     x="94.754623"
+     y="95.90184"
+     id="text25"><tspan
+       sodipodi:role="line"
+       id="tspan25"
+       style="text-align:start;text-anchor:start;stroke:none;stroke-width:0.529167"
+       x="94.754623"
+       y="95.90184">Fast rates, Low </tspan><tspan
+       sodipodi:role="line"
+       style="text-align:start;text-anchor:start;stroke:none;stroke-width:0.529167"
+       x="94.754623"
+       y="102.07546"
+       id="tspan26">equilibrium</tspan><tspan
+       sodipodi:role="line"
+       style="text-align:start;text-anchor:start;stroke:none;stroke-width:0.529167"
+       x="94.754623"
+       y="108.24909"
+       id="tspan27">conversion</tspan></text>
 </svg>
