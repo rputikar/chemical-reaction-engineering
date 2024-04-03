@@ -28,6 +28,82 @@ $$
 The enthalpy of formation of ammonia at 25 &deg;C is $H_{NH_3}^\circ (T_R) =
 -11020 \ cal/(mol\ \ce{NH3})$
 
+::: {.callout-tip collapse="true"}
+## Solution
+
+
+The enthalpy of formations at 25 &deg;C 
+
+$H_{NH_3}^\circ (T_R) = -11020 \ cal/(mol\ \ce{NH3})$
+
+$H_{N_2}^\circ (T_R) = 0 \ cal/(mol\ \ce{NH3})$
+
+$H_{H_2}^\circ (T_R) = 0 \ cal/(mol\ \ce{NH3})$
+
+Heats of formation of pure components are 0.
+
+$$
+\Delta H_{Rx}^\circ(T_R) =
+      \sum_{i=1}^{N} \nu_i H_i^\circ (T_R)
+$$
+
+$$
+\Delta H_{Rx}(T) =  \Delta H_{Rx}^\circ(T_R)  + \Delta C_{P}(T - T_R)
+$$
+
+Getting the $C_{P}$ values from Perry's handbook (@green2019)
+
+$C_{P_{H_2}}$ = 6.992 $cal/mol\ H_2\ K$;
+$C_{P_{N_2}}$ = 6.984 $cal/mol\ N_2\ K$;
+$C_{P_{NH_3}}$ = 8.92 $cal/mol\ NH_3\ K$
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+T = 150 + 273.15
+TR = 25 + 273.15
+
+hf_nh3 = -11020
+hf_n2 = 0
+hf_h2 = 0
+
+# N2 + 3H2 -> 2 NH3
+nu_n2 = -1
+nu_h2 = -3
+nu_nh3 = 2
+
+# Getting the Cp values from Perry's handbook (@green2019)
+cp_h2 = 6.992 # cal/mol H2 K
+cp_n2 = 6.984 # cal/mol N2 K
+cp_nh3 = 8.92 # cal/mol NH3 K
+
+delta_h_tr = (nu_nh3 * hf_nh3) + (nu_n2 * hf_n2 + nu_h2 * hf_h2)
+delta_cp = (nu_nh3 * cp_nh3) + (nu_n2 * cp_n2 + nu_h2 * cp_h2)
+
+delta_h = delta_h_tr + delta_cp * (T - TR)
+
+cal = 4.184 # J
+delta_h_kj = cal * delta_h_tr + delta_cp * (T - TR)
+
+```
+
+$\Delta H_{Rx}^\circ(T_R)$  = `{python} f'{delta_h_tr/1e3:.2f}'` $kcal/mol\ N_2\ reacted$
+
+$\Delta H_{Rx}(T)$ at `{python} f'{T:.2f}'` K 
+=  `{python} f'{delta_h_kj/1e3:.2f}'` $kJ/mol\ N_2\ reacted$
+
+
+$$
+\Delta H_{Rx}(T)|_{H_2} =  \frac{\nu_{N_2}}{\nu_{H_2}} \Delta H_{Rx}(T)|_{N_2}
+$$
+
+$\Delta H_{Rx}(T)$ at `{python} f'{T:.2f}'` K 
+=  `{python} f'{(nu_n2/nu_h2)*delta_h_kj/1e3:.2f}'` $kJ/mol\ H_2\ reacted$
+
+
+:::
 
 ## Adiabatic Liquid-Phase Isomerization of Normal Butane
 
@@ -70,7 +146,228 @@ i-Pentane:
 $C_{P_{i-P}} = 161 \, J/mol \cdot K$
 
 
-## Adiabatic Equilibrium Temperature
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+### PFR algorithm
+
+1. Mole balance
+
+$$
+F_{A0} \frac{dX}{dV} = -r_A
+$${#eq-2-1}
+
+2. Rate law
+
+$$
+-r_A = k \left( C_A - \frac{C_B}{K_C}\right)
+$${#eq-2-2}
+
+$$
+k = k(T_1) \exp \left[ \frac{E}{R} \left( \frac{1}{T_1} - \frac{1}{T}\right)\right]
+$${#eq-2-3}
+
+$$
+K_C = K_C(T_2) \exp \left[ \frac{\Delta H_{Rx}}{R} \left( \frac{1}{T_2} - \frac{1}{T}\right)\right]
+$${#eq-2-4}
+
+3. Stoichiometry
+
+$$
+C_A = C_{A0} (1 - X)
+$${#eq-2-5}
+
+$$
+C_B = C_{A0} X
+$${#eq-2-6}
+
+4. Energy balance
+
+$$
+\dot Q 
+ - \dot W_s
+ -  F_{A0} \sum_{i=1}^{N}  \Theta_i C_{P_i} \left[ T_{i} - T_{i0}\right]
+   - \Delta H_{Rx} F_{A0} X
+= 0
+$${#eq-2-7}
+
+From problem statement:
+
+Adiabatic: $\dot Q$ = 0
+
+
+No work: $\dot W_s$ = 0
+
+$\Delta C_{P} = C_{P_A} - C_{P_B}$ = 141 - 141 = 0
+
+Substituting in @eq-2-7
+
+$$
+T = T_0 + \frac{ \left( -\Delta H^\circ_{Rx} \right) X_{EB}}{\sum \Theta_i C_{Pi}}
+$${#eq-2-8}
+
+
+5. Solve
+
+Solve equations [-@eq-2-1] to [-@eq-2-7] simultaneously.
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Constants
+K0 = 31.1 # 1/h
+T_K0 = 360 # K
+
+KC0 = 3.3
+T_KC0 = 60 + 273.15 # K
+
+E = 65700 # J/mol 
+R = 8.314 # J/mol K
+
+DELTAHR = -6900 # J/mol
+
+def adiabatic_pfr( V, y, *args ):
+
+  X = y[0]
+  (fa0,ca0, T0, theta, cp) = args
+
+  sum_cp =  np.sum(theta * cp)
+
+  T = T0 + (-DELTAHR) * X / sum_cp
+
+  k = K0 * np.exp((E/R) * (1/T_K0 - 1/T))
+  Kc = KC0 * np.exp((DELTAHR/R) * (1/T_KC0 - 1/T))
+
+  ca = ca0 * ( 1 - X )
+  cb = ca0 * X
+
+  rate = k * (ca - cb/Kc)
+
+  dXdV = rate/fa0
+
+  return dXdV
+
+# Problem data
+ya0 = 0.9
+yi0 = 0.1
+fa = 163.0 # kmol/h
+fa0 = ya0 * fa 
+ca0 = 9.3   # kmol/m3
+
+T0 = 330 # K
+
+# n-butane = comp 1; i-butane = comp 2; i-Pentane = component 3
+
+theta = np.array([1, 0, yi0/ya0])
+cp = np.array([141, 141, 161])
+                 
+# Initial condition
+y0 = [0]
+args = (fa0, ca0, T0, theta, cp)
+v_final = 5
+sol = solve_ivp(adiabatic_pfr, [0, v_final], y0, args=args, dense_output=True)
+
+v = np.linspace(0,v_final, 1000)
+x = sol.sol(v)[0]
+
+pfr_07 = v[np.argmax(x > 0.7)]
+```
+
+PFR volume required to obtain a conversion of 0.7 = 
+`{python} f'{pfr_07:.2f}'` $m^3$. 
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+# recalculate other quantities for plotting
+sum_cp =  np.sum(theta * cp)
+T = T0 + (-DELTAHR) * x / sum_cp
+Kc = KC0 * np.exp((DELTAHR/R) * (1/T_KC0 - 1/T))
+xe = Kc/(1 + Kc)
+``` 
+
+### Temperature profile
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-temp-profile
+#| fig-cap: Temperature profile
+
+
+plt.plot(v,T, label='Temperature')
+
+plt.xlabel('Volume ($m^3$)')
+plt.ylabel('Temperature (K)')
+
+plt.xlim(0,v_final)
+plt.ylim(T0,)
+
+plt.show()
+```
+
+### Conversion profile
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-conversion-profile
+#| fig-cap: Conversion profile
+
+plt.plot(v,x, label='$X$')
+plt.plot(v,xe, label='$X_e$')
+
+plt.xlabel('Volume ($m^3$)')
+plt.ylabel('Conversion')
+
+plt.xlim(0,v_final)
+plt.ylim(0,1)
+
+plt.legend()
+plt.show()
+```
+
+### CSTR volume
+
+```{python}
+#| echo: true
+#| warning: false
+
+pfr_04 = v[np.argmax(x > 0.4)]
+
+temp_04 = T[np.argmax(x > 0.4)]
+kc_04 = Kc[np.argmax(x > 0.4)]
+k_04 = K0 * np.exp((E/R) * (1/T_K0 - 1/temp_04))
+
+ca = ca0 * ( 1 - 0.4 )
+cb = ca0 * 0.4
+rate = k_04 * (ca - cb/kc_04)
+
+cstr_04 = fa0 * 0.4/ rate
+
+```
+
+PFR volume required to obtain a conversion of 0.4 = 
+`{python} f'{pfr_04:.2f}'` $m^3$. 
+
+CSTR volume required to obtain a conversion of 0.4 = 
+`{python} f'{cstr_04:.2f}'` $m^3$. 
+
+
+
+
+
+:::
+
+## Adiabatic Equilijbrium Temperature
 
 For the elementary liquid-phase reaction
 
@@ -97,11 +394,195 @@ $C_{P,A} = 50 \, cal/mol \cdot K$
 
 $C_{P,B} = 50 \, cal/mol \cdot K$
 
-$K_c = 100,000 $ at 298 K, 
+$K_c = 100,000$ at 298 K, 
 $k = 10^{-3} \exp \left( \frac{E}{R} \left( \frac{1}{298} - \frac{1}{T} \right)
 \right) \text{min}^{-1}$
 with $E = 10,000 \, \text{cal/mol}$
 
+
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+1. Rate law
+
+$$
+-r_A = k \left( C_A - \frac{C_B}{K_C}\right)
+$${#eq-3-2}
+
+$$
+k = k(T_1) \exp \left[ \frac{E}{R} \left( \frac{1}{T_1} - \frac{1}{T}\right)\right]
+$${#eq-3-3}
+
+$$
+K_C = K_C(T_2) \exp \left[ \frac{\Delta H_{Rx}}{R} \left( \frac{1}{T_2} - \frac{1}{T}\right)\right]
+$${#eq-3-4}
+
+2. Equilibrium
+
+$$
+K_e = \frac{C_{Be}}{C_{Ae}}
+$${#eq-3-5}
+
+
+3. Stoichiometry
+
+$$
+C_A = C_{A0} (1 - X)
+$${#eq-3-6}
+
+$$
+C_B = C_{A0} X
+$${#eq-3-7}
+
+Combining @eq-3-2, @eq-3-5, @eq-3-6, and @eq-3-7
+
+$$
+X_e = \frac{K_e(T)}{1 + K_e(T)}
+$${#eq-3-8}
+
+4. Energy balance
+
+$$
+\dot Q 
+ - \dot W_s
+ -  F_{A0} \sum_{i=1}^{N}  \Theta_i C_{P_i} \left[ T_{i} - T_{i0}\right]
+   - \Delta H_{Rx} F_{A0} X
+= 0
+$${#eq-3-9}
+
+From problem statement:
+
+Adiabatic: $\dot Q$ = 0
+
+
+No work: $\dot W_s$ = 0
+
+$\Delta C_{P} = C_{P_A} - C_{P_B}$ = 141 - 141 = 0
+
+Substituting in @eq-3-9
+
+$$
+ X_{EB} = \frac { \sum \Theta_i C_{P_i} \left[ T_{i} - T_{0}\right] }
+    {- \Delta H_{Rx}^\circ (T_R) } 
+$${#eq-3-10}
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+from scipy.optimize import fsolve
+
+# Constants
+HF_A = -40000 # cal/mol
+HF_B = -60000 # cal/mol
+
+CP_A = 50 # cal/mol K
+CP_B = 50 # cal/mol K
+
+# A <-> B
+D_CP = CP_B - CP_A
+
+KE0 = 100000
+T_KE0 = 298 # K
+
+K0 = 1e-3 # 1/h
+T_K0 = 298 # K
+
+E = 10000  # cal/mol
+R = 1.987 # cal/mol K
+
+DELTAHR = HF_B - HF_A
+
+T0 = 300 # K
+
+Ke = lambda T: KE0 * np.exp((DELTAHR/R) * (1/T_KE0 - 1/T))
+Xe = lambda T: Ke(T)/(1 + Ke(T))
+Xeb = lambda T, T0: CP_A * (T - T0)/(-DELTAHR)
+
+intersect = lambda T: Xe(T) - Xeb(T, T0)
+
+sol = fsolve(intersect, T0)
+
+T_adiab = sol[0]
+X_eadiab = Xe( T_adiab )
+``` 
+
+Adiabatic equilibrium temperature = 
+`{python} f'{T_adiab:.2f}'` K. 
+
+Adiabatic equilibrium conversion = 
+`{python} f'{X_eadiab:.2f}'`. 
+
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-adiabatic-temp-profile
+#| fig-cap: Conversion vs. temperatures
+
+T_final = T0 + 300
+temperatures = np.linspace(T0, T_final , 100)
+conv_eb = Xeb(temperatures, T0)
+conv_eq = Xe(temperatures)
+
+plt.plot(temperatures,conv_eb, label="$X_{eb}$")
+plt.plot(temperatures,conv_eq, label="$X_{eq}$")
+
+plt.xlabel('Temperature (K)')
+plt.ylabel('Conversion')
+
+plt.xlim(T0, T_final)
+plt.ylim(0,1)
+plt.legend()
+plt.show()
+
+```
+
+### CSTR Volume
+
+$$
+V = \frac{F_{A0} X}{ -r_A }
+$${#eq-3-11}
+
+Calculate temperature corresponding to X = 0.9 X~e~
+
+$$
+T = T_0 + \frac{ \left( -\Delta H^\circ_{Rx} \right) X_{EB}}{\sum \Theta_i C_{Pi}}
+$${#eq-3-12}
+
+Calculate rate at this temperature using @eq-3-2 and @eq-3-3.
+
+```{python}
+#| echo: true
+#| warning: false
+
+k = lambda T: K0 * np.exp((E/R) * (1/T_K0 - 1/T))
+
+v_0 = 5 # dm^3/min
+x_cstr = 0.9 * X_eadiab
+
+def v_cstr(x, xin, t0, ca0, v_0):
+  t_cstr = t0 + (x - xin)*(-DELTAHR)/CP_A
+  rate = k(t_cstr) * ca0 * (1 - (x/Xe(t_cstr)))
+  v_cstr = v_0 * ca0 * x/rate
+  return v_cstr,t_cstr
+
+V_cstr,T_cstr = v_cstr(x_cstr,0,T0,1.0,v_0)
+```
+
+For a CSTR to achieve a conversion of 90% of $X_e$ 
+(= `{python} f"{0.9 * X_eadiab:0.2f}"`), 
+volume required is 
+`{python} f"{V_cstr:0.2f}"` $dm^3$. 
+The CSTR operates at
+`{python} f"{T_cstr:0.2f}"` $K$. 
+
+:::
 
 ## Interstage Cooling for Highly Exothermic Reactions
 
@@ -110,6 +591,110 @@ coolers that had the capacity to cool the exit stream to 350 K were available?
 Also, determine the heat duty of each exchanger for a molar feed rate of A of
 40 mol/s. Assume that 95% of the equilibrium conversion is achieved in each
 reactor. The feed temperature to the first reactor is 300 K.
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{python}
+#| echo: true
+#| warning: false
+
+# Stage 1
+
+fa0 = 40.0 # mol/s
+
+x1 = 0.95 * X_eadiab
+v_cstr1, t_cstr1 = v_cstr(x1,0,T0,1.0,v_0)
+
+```
+
+Stage 1: 
+$X_{1}$ = `{python} f"{x1:0.2f}"`.
+$V_{CSTR}$  = `{python} f"{v_cstr1:0.2f}"` $dm^3$. 
+$T_{CSTR}$ = `{python} f"{t_cstr1:0.2f}"` $K$. 
+
+**Heat Load**:
+
+$$
+\dot Q - \dot W_s - \sum F_{i} C_{P_i}(T_2 - T_1) = 0
+$${#eq-4-1}
+
+$\dot W_s = 0$; $C_{P_A} = C_{P_B}$ 
+
+$$
+\dot Q = (F_{A} + F_B) C_{P_A}(T_2 - T_1)
+$${#eq-4-2}
+
+```{python}
+#| echo: true
+#| warning: false
+
+T_ic = 350
+qdot1 = fa0 * CP_A * (T_ic - t_cstr1)
+
+```
+Stage 1 cooling requirement : $\dot Q_1$  =
+`{python} f"{qdot1/1e3:0.2f}"` $kcal/s$. 
+
+```{python}
+#| echo: true
+#| warning: false
+
+# Stage 2
+# find adiabatic conversion and temperature for second stage
+
+intersect = lambda T: Xe(T) - ( x1 + Xeb(T, T_ic))
+
+sol = fsolve(intersect, T0)
+
+T2_adiab = sol[0]
+X2_eadiab = Xe( T2_adiab )
+
+x2 = X2_eadiab * 0.95
+
+v_cstr2, t_cstr2 = v_cstr(x2,x1,T_ic,1.0,v_0)
+qdot2 = fa0 * CP_A * (T_ic - t_cstr2)
+```
+Stage 2: 
+$X_{2}$ = `{python} f"{x2:0.2f}"`.
+$T_{adiab,2}$ = `{python} f"{T2_adiab:0.2f}"` $K$. 
+$V_{CSTR,2}$  = `{python} f"{v_cstr2:0.2f}"` $dm^3$. 
+$T_{CSTR,2}$ = `{python} f"{t_cstr2:0.2f}"` $K$. 
+
+Stage 2 cooling requirement : $\dot Q_2$  =
+`{python} f"{qdot2/1e3:0.2f}"` $kcal/s$. 
+
+
+```{python}
+#| echo: true
+#| warning: false
+
+# Stage 3
+# find adiabatic conversion and temperature for second stage
+
+intersect = lambda T: Xe(T) - ( x2 + Xeb(T, T_ic))
+
+sol = fsolve(intersect, T0)
+
+T3_adiab = sol[0]
+X3_eadiab = Xe( T3_adiab )
+
+x3 = X3_eadiab * 0.95
+
+v_cstr3, t_cstr3 = v_cstr(x3,x2,T_ic,1.0,v_0)
+qdot3 = fa0 * CP_A * (T_ic - t_cstr3)
+```
+Stage 3: 
+$X_{3}$ = `{python} f"{x3:0.2f}"`.
+$T_{adiab,3}$ = `{python} f"{T3_adiab:0.2f}"` $K$. 
+$V_{CSTR,3}$  = `{python} f"{v_cstr3:0.2f}"` $dm^3$. 
+$T_{CSTR,3}$ = `{python} f"{t_cstr3:0.2f}"` $K$. 
+
+Stage 3 cooling requirement : $\dot Q_3$  =
+`{python} f"{qdot3/1e3:0.2f}"` $kcal/s$. 
+
+:::
+
 
 ## Production of Acetic Anhydride
 
@@ -157,3 +742,10 @@ Additional information:
 = 71$ J/mol·K
 
 The overall heat transfer coefficient $Ua = 110$ $J/s \cdot m^3 \cdot K$.
+
+::: {.callout-tip collapse="false"}
+## Solution
+
+:::
+
+## References

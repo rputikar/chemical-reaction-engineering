@@ -198,8 +198,8 @@ $$
 $$
 \dot{W} =\overbrace{
    -\left.\sum_{i=1}^n F_i P \tilde V_i \right|_{in}
-   +\left.\sum_{i=1}^n F_i P \tilde V_i \right|_{out}}^{\color{red}{\text{flow work}}}
-   +\underbrace{\dot W_s}_{\color{red}{\text{shaft work}}}
+   +\left.\sum_{i=1}^n F_i P \tilde V_i \right|_{out}}^{\color{RoyalBlue}{\text{flow work}}}
+   +\underbrace{\dot W_s}_{\color{RoyalBlue}{\text{shaft work}}}
 $$
 
 * $P$: Pressure; $\tilde V_i$: Specific molar volume of species $i$
@@ -321,7 +321,7 @@ $$
    + (H_{I0} - H_I) \Theta_I
    \right] \\
    &\;\; - \underbrace{
-   \color{red}{
+   \color{RoyalBlue}{
    \left[
       \frac{d}{a} H_D
     + \frac{c}{a} H_C
@@ -436,7 +436,7 @@ $$
     + \frac{c}{a} H_C^\circ (T_R)
     - \frac{b}{a} H_B^\circ (T_R)
     -  H_A^\circ (T_R)
-   }_{\color{red}{\Delta H_{Rx}^\circ \text{ at } T_R}}
+   }_{\color{RoyalBlue}{\Delta H_{Rx}^\circ \text{ at } T_R}}
    \right]
    & + & \left[
    \underbrace{
@@ -444,7 +444,7 @@ $$
     + \frac{c}{a} C_{P_C}
     - \frac{b}{a} C_{P_B}
     -  C_{P_A}
-   }_{\color{red}{\Delta C_{P}}}
+   }_{\color{RoyalBlue}{\Delta C_{P}}}
    \right] \left(T - T_R \right)
 \end{aligned}
 $$
