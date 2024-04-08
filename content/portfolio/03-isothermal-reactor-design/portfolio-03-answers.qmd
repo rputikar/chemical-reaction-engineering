@@ -149,7 +149,7 @@ kJ/mol.
 
 * Combine \hfill (1 mark)
 
-  Solve equations [-eq-1], [-@eq-2], and [-@eq-3] to obtain conversion as a function
+  Solve equations [-@eq-1], [-@eq-2], and [-@eq-3] to obtain conversion as a function
   of catalyst weight.
 
 * Evaluate \hfill (6 mark)
@@ -289,6 +289,8 @@ Weight of catalyst required to achieve a conversion of 60%,
 W = `{python} f'{w_final:.2f}'` kg. 
 The final conversion is 
 X = `{python} f'{x_final:.2f}'`. 
+
+* half marks for essentially correct procedure but wrong answers.
 
 2. Effect of pressure drop \hfill (20 marks)
 
@@ -480,6 +482,9 @@ plt.ylim(0, 0.14)
 
 plt.legend(loc='upper right')
 
+ax = plt.gca()
+ax.grid(which='major', linestyle='-', linewidth='0.5', color='gray')
+
 plt.show()
 
 ```
@@ -503,9 +508,12 @@ plt.ylim(0, 1.4)
 
 plt.legend()
 
+ax = plt.gca()
+ax.grid(which='major', linestyle='-', linewidth='0.5', color='gray')
 plt.show()
 
 ```
+* half marks for essentially correct procedure but wrong answers.
 
 **c. Estimate the catalyst weight required to achieve 60% conversion** 
 
@@ -525,4 +533,4 @@ weight to manufacture our reactor, the real life conversion would have been
 underperform.  \hfill (2 marks)
 
 
-
+* half marks for essentially correct procedure but wrong answers.

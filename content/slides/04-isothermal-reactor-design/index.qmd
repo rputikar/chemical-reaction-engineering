@@ -63,14 +63,23 @@ revealjs-plugins:
 :::
 
 
-| Species   | Feed rate to reactor (mol/time)    | Change within reactor (mol/time)     | Effluent rate from reactor (mol/time) |
-| :-------- | :----------------- | :--------------- | :---------------------------------------- |
-| A         | $F_{A0}$          | $-F_{A0}X$      | $F_A = F_{A0} - F_{A0}X$                |
-| B         | $F_{B0}$          | $-(b/a)F_{A0}X$ | $F_B = F_{B0} -(b/a)F_{A0}X$            |
-| C         | $F_{C0}$          | $(c/a)F_{A0}X$  | $F_C = F_{C0} +(c/a)F_{A0}X$            |
-| D         | $F_{D0}$          | $(d/a)F_{A0}X$  | $F_D = F_{D0} +(d/a)F_{A0}X$            |
-| I         | $F_{I0}$          | 0                | $F_I = F_{I0}$                           |
-| **Total** | $\mathbf{F_{T0}}$ |                  | $\mathbf{F_T = F_{T0} + \delta F_{A0}X}$ |
+  --------------------------------------------------------------------------------------------
+  Species     Feed rate to        Change within     Effluent rate from reactor (mol/time)
+              reactor (mol/time)  reactor           
+                                  (mol/time)        
+  ----------- ------------------- ----------------- ------------------------------------------
+  A           $F_{A0}$            $-F_{A0}X$        $F_A = F_{A0} - F_{A0}X$
+
+  B           $F_{B0}$            $-(b/a)F_{A0}X$   $F_B = F_{B0} -(b/a)F_{A0}X$
+
+  C           $F_{C0}$            $(c/a)F_{A0}X$    $F_C = F_{C0} +(c/a)F_{A0}X$
+
+  D           $F_{D0}$            $(d/a)F_{A0}X$    $F_D = F_{D0} +(d/a)F_{A0}X$
+
+  I           $F_{I0}$            0                 $F_I = F_{I0}$
+
+  **Total**   $\mathbf{F_{T0}}$                     $\mathbf{F_T = F_{T0} + \delta F_{A0}X}$
+  --------------------------------------------------------------------------------------------
 
 
 * $\delta = +\frac{d}{a}+\frac{c}{a}-\frac{b}{a}-1$ 
@@ -345,13 +354,13 @@ $$
 
 * Batch reaction time ($t_R$) is just one component in batch cycle time
 
-  | | Activity || Time (h)|
-  |-|-|-|-|
-  |1 | Charge feed | $t_f$| 0.5 - 2|
-  |2 | Heat to reaction temperature| $t_e$| 0.5 - 2|
-  |3 | Reaction | $t_R$| varies |
-  |4 | Empty and clean reactor | $t_c$| 1.5 - 3|
-  | | Total|| (2.5h - 7h) + $t_R$|
+|     | Activity                     |       | Time (h)            |
+|-----|------------------------------|-------|---------------------|
+| 1   | Charge feed                  | $t_f$ | 0.5 - 2             |
+| 2   | Heat to reaction temperature | $t_e$ | 0.5 - 2             |
+| 3   | Reaction                     | $t_R$ | varies              |
+| 4   | Empty and clean reactor      | $t_c$ | 1.5 - 3             |
+|     | Total                        |       | (2.5h - 7h) + $t_R$ |
 
 :::{.callout-note }
 ## Activity: Batch time for second order reaction
@@ -364,13 +373,19 @@ for a second order reaction $-r_A = k_2 C_A^2$
 ## Batch reactor summary
 
 
-|               | First-Order                                 | | Second-Order                                     |
-|---------------|:--------------------------------------------:|:--:|:------------------------------------------------:|
-| Mole Balance  | |$$\frac{dX}{dt_R} = \frac{-r_A V}{N_{A0}}$$ ||
-| Rate Law      | $$-r_A = k_1 C_A$$                           || $$-r_A = k_2 C_A^2$$                             |
-| Stoichiometry | |$$C_A = \frac{N_A}{V_0} = C_{A0}(1 - X)$$   | |
-| Combine       | $$\frac{dX}{dt_R} = k_1(1 - X)$$            || $$\frac{dX}{dt_R} = k_2 C_{A0}(1 - X)^2$$       |
-| Evaluate      | $$t_R = \frac{1}{k_1} \ln\left(\frac{1}{1 - X}\right)$$ || $$t_R = \frac{X}{k_2 C_{A0}(1 - X)}$$ |
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                         First-Order                                                                                     Second-Order
+  --------------- --------------------------------------------------------- --------------------------------------------- -------------------------------------------
+  Mole Balance                                                               $$\frac{dX}{dt_R} = \frac{-r_A V}{N_{A0}}$$  
+
+  Rate Law                           $$-r_A = k_1 C_A$$                                                                              $$-r_A = k_2 C_A^2$$
+
+  Stoichiometry                                                               $$C_A = \frac{N_A}{V_0} = C_{A0}(1 - X)$$   
+
+  Combine                     $$\frac{dX}{dt_R} = k_1(1 - X)$$                                                             $$\frac{dX}{dt_R} = k_2 C_{A0}(1 - X)^2$$
+
+  Evaluate         $$t_R = \frac{1}{k_1} \ln\left(\frac{1}{1 - X}\right)$$                                                   $$t_R = \frac{X}{k_2 C_{A0}(1 - X)}$$
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## CSTR
 
