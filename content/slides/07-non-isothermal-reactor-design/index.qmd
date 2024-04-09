@@ -853,11 +853,127 @@ plt.show()
 
 ## Steady-state tubular reactor with heat exchange
 
+![](../../../assets/images/steady-state-tubular-reactor-with-heat-exchange.png){width=90%}
+
+::::{.columns}
+:::{.column width=70%}
+
+* Energy balance over volume $\Delta V$
+
+  $$
+  \Delta \dot Q + \sum F_i H_i |_V - \sum F_i H_i |_{V + \Delta V}  = 0
+  $$
+
+* Heat flow into the reactor $\Delta \dot Q$
+
+  $$
+  \Delta \dot Q  = U \Delta A (T_a - T) = Ua \Delta V (T_a - T)
+  $$
+
+  For tubular reactor $a = 4/D$
+
+:::
+:::{.column width=30%}
+* Dividing by $\Delta V$ and taking limit as $\Delta V \rightarrow 0$
+
+$$
+Ua (T_a - T) - \frac {d\sum F_i H_i}{dV} = 0
+$$
+
+:::
+::::
+
+## Steady-state tubular reactor with heat exchange
+
+* Expanding
+$$
+Ua (T_a - T) - \sum \frac {dF_i}{dV} H_i - \sum F_i \frac {dH_i}{dV} = 0
+$$
+
+* Mole balance: $\frac{dF_i}{dV} = r_i$
+  also, $\frac{dH_i}{dV} = C_{P_i} \frac{dT}{dV}$
+
+:::{.highlight .center}
+$$
+\frac{dT}{dV} = \frac{
+\overbrace{r_A \Delta H_{Rx}}^{\color{black}{\text{Heat generated, } Q_g }}
+- \overbrace{Ua (T - T_a)}^{\color{black}{\text{Heat removed,} Q_r }}
+}{ \Sigma F_i C_{P_i} }
+$$
+:::
+
+* $Q_g = r_A \Delta H_{Rx}$
+  
+  positive for exothermic reactions; negative for endothermic reactions
+
+* When $Q_g > Q_r$: Temperature will increase as the volume increases
+* When $Q_g < Q_r$: Temperature will decrease as the volume increases
+
+
 ## Balance on the heat-transfer fluid
 
-## Algorithm for PFR/PBR design with heat effects
+* The heat-transfer fluid will be a coolant for exothermic reactions and a
+heating medium for endothermic reactions. 
+
+* If the flow rate of the heat-transfer fluid is sufficiently high with respect
+to the heat released (or absorbed) by the reacting mixture, then the
+heat-transfer fluid temperature will be virtually constant along the reactor. 
+For all other cases, we need to write energy balance for the heat transfer
+fluid.  
+
+::::{.columns}
+
+:::{.column width=30%}
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+![](../../../assets/images/cocurrent-double-pipe-heat-exchanger.png){width=90%}
+
+:::
+:::{.column width=70%}
+
+:::{.smaller}
+$$
+\begin{aligned}
+\text{Rate of energy}
+&  & \text{Rate of energy}
+&  & \text{Rate of heat added}
+&  &
+\\
+\text{in at } V
+& \;\; - & \text{out at } V + \Delta V
+& \;\; + & \text{by conduction through}
+& \;\; = & 0
+\\
+&  & 
+&  & \text{the inner wall}
+&  &
+\end{aligned}
+$$
+:::
+
+$$
+\dot m_C H_C |_V 
+- \dot m_C H_C |_{ V + \Delta V } 
++ \underbrace{U a (T - T_a) \Delta V}_{\color{RoyalBlue}{\text{Cocurrent flow}}}
+= 0
+$$
+
+:::
+
+::::
+
+:::{.highlight .center}
+$$
+\frac{dT_a}{dV} = 
+\frac{U a (T - T_a)}
+{ \dot m_C C_{P_C} }
+$$
+:::
 
 ## CSTR with heat effects
+
 
 ## Multiple steady states
 

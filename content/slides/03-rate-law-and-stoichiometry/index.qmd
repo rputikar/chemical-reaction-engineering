@@ -10,7 +10,6 @@ revealjs-plugins:
 
 ## Reactor mole balance in terms of $X$
 
-
 :::: {.columns}
 ::: {.column width="30%"}
 
@@ -19,12 +18,12 @@ revealjs-plugins:
 
 :::{.extrapad}
 
-| Reactor | Mole balance |
-|:--------|:------------------|
-| Batch | $$ N_{A0}\frac{dX}{dt} = r_AV $$|
-| CSTR | $$V = \frac{F_{A0}X}{-r_A} $$  |
-| PFR | $$ F_{A0}\frac{dX}{dV} = -r_A $$|
-| PBR | $$ F_{A0}\frac{dX}{dW} = -r'_A $$|
+| Reactor | Mole balance                      |
+|:--------|:----------------------------------|
+| Batch   | $$ N_{A0}\frac{dX}{dt} = r_AV $$  |
+| CSTR    | $$V = \frac{F_{A0}X}{-r_A} $$     |
+| PFR     | $$ F_{A0}\frac{dX}{dV} = -r_A $$  |
+| PBR     | $$ F_{A0}\frac{dX}{dW} = -r'_A $$ |
 
 :::
 
@@ -244,13 +243,17 @@ $$
 \ce{A -> Products}
 $$
 
-| Reaction order | Rate equation | Units of $k_A$|
-|-|-|-|
-| $0^{th}$ order | $-r_A = k_A$ | $$\{k\} = \frac{mol}{volume \ s}$$|
-| $1^{st}$ order | $-r_A = k_A C_A$ | $$\{k\} = \frac{1}{s}$$|
-| $2^{nd}$ order | $-r_A = k_A C_A^2$ | $$\{k\} = \frac{volume}{mol \ s}$$|
-| $3^{rd}$ order | $-r_A = k_A C_A^3$ | $$\{k\} = \frac{(volume/mol)^2}{s}$$|
+  -------------------------------------------------------------------------------
+  Reaction order      Rate equation        Units of $k_A$
+  ------------------- -------------------- --------------------------------------
+  $0^{th}$ order      $-r_A = k_A$         $$\{k\} = \frac{mol}{volume \ s}$$
 
+  $1^{st}$ order      $-r_A = k_A C_A$     $$\{k\} = \frac{1}{s}$$
+
+  $2^{nd}$ order      $-r_A = k_A C_A^2$   $$\{k\} = \frac{volume}{mol \ s}$$
+
+  $3^{rd}$ order      $-r_A = k_A C_A^3$   $$\{k\} = \frac{(volume/mol)^2}{s}$$
+  -------------------------------------------------------------------------------
 
 ## Elementary reaction
 
@@ -577,14 +580,21 @@ of different species to each other.
   $$
 
 
-| Species   | Initially (mol)    | Change (mol)     | Remaining (mol)                           |
-| :-------- | :----------------- | :--------------- | :---------------------------------------- |
-| A         | $N_{A0}$          | $-N_{A0}X$      | $N_A = N_{A0} - N_{A0}X$                |
-| B         | $N_{B0}$          | $-(b/a)N_{A0}X$ | $N_B = N_{B0} -(b/a)N_{A0}X$            |
-| C         | $N_{C0}$          | $(c/a)N_{A0}X$  | $N_C = N_{C0} +(c/a)N_{A0}X$            |
-| D         | $N_{D0}$          | $(d/a)N_{A0}X$  | $N_D = N_{D0} +(d/a)N_{A0}X$            |
-| I         | $N_{I0}$          | 0                | $N_I = N_{I0}$                           |
-| **Total** | $\mathbf{N_{T0}}$ |                  | $\mathbf{N_T = N_{T0} + \delta N_{A0}X}$ |
+  --------------------------------------------------------------------------------------------
+  Species     Initially (mol)     Change (mol)      Remaining (mol)
+  ----------- ------------------- ----------------- ------------------------------------------
+  A           $N_{A0}$            $-N_{A0}X$        $N_A = N_{A0} - N_{A0}X$
+
+  B           $N_{B0}$            $-(b/a)N_{A0}X$   $N_B = N_{B0} -(b/a)N_{A0}X$
+
+  C           $N_{C0}$            $(c/a)N_{A0}X$    $N_C = N_{C0} +(c/a)N_{A0}X$
+
+  D           $N_{D0}$            $(d/a)N_{A0}X$    $N_D = N_{D0} +(d/a)N_{A0}X$
+
+  I           $N_{I0}$            0                 $N_I = N_{I0}$
+
+  **Total**   $\mathbf{N_{T0}}$                     $\mathbf{N_T = N_{T0} + \delta N_{A0}X}$
+  --------------------------------------------------------------------------------------------
 
 
 :::{style="margin-bottom: 40px;"}
@@ -678,14 +688,23 @@ $$
 :::
 
 
-| Species   | Feed rate to reactor (mol/time)    | Change within reactor (mol/time)     | Effluent rate from reactor (mol/time) |
-| :-------- | :----------------- | :--------------- | :---------------------------------------- |
-| A         | $F_{A0}$          | $-F_{A0}X$      | $F_A = F_{A0} - F_{A0}X$                |
-| B         | $F_{B0}$          | $-(b/a)F_{A0}X$ | $F_B = F_{B0} -(b/a)F_{A0}X$            |
-| C         | $F_{C0}$          | $(c/a)F_{A0}X$  | $F_C = F_{C0} +(c/a)F_{A0}X$            |
-| D         | $F_{D0}$          | $(d/a)F_{A0}X$  | $F_D = F_{D0} +(d/a)F_{A0}X$            |
-| I         | $F_{I0}$          | 0                | $F_I = F_{I0}$                           |
-| **Total** | $\mathbf{F_{T0}}$ |                  | $\mathbf{F_T = F_{T0} + \delta F_{A0}X}$ |
+  --------------------------------------------------------------------------------------------
+  Species     Feed rate to        Change within     Effluent rate from reactor (mol/time)
+              reactor (mol/time)  reactor           
+                                  (mol/time)        
+  ----------- ------------------- ----------------- ------------------------------------------
+  A           $F_{A0}$            $-F_{A0}X$        $F_A = F_{A0} - F_{A0}X$
+
+  B           $F_{B0}$            $-(b/a)F_{A0}X$   $F_B = F_{B0} -(b/a)F_{A0}X$
+
+  C           $F_{C0}$            $(c/a)F_{A0}X$    $F_C = F_{C0} +(c/a)F_{A0}X$
+
+  D           $F_{D0}$            $(d/a)F_{A0}X$    $F_D = F_{D0} +(d/a)F_{A0}X$
+
+  I           $F_{I0}$            0                 $F_I = F_{I0}$
+
+  **Total**   $\mathbf{F_{T0}}$                     $\mathbf{F_T = F_{T0} + \delta F_{A0}X}$
+  --------------------------------------------------------------------------------------------
 
 
 :::{style="margin-bottom: 40px;"}

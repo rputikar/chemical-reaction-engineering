@@ -367,7 +367,7 @@ CSTR volume required to obtain a conversion of 0.4 =
 
 :::
 
-## Adiabatic Equilijbrium Temperature
+## Adiabatic Equilibrium Temperature
 
 For the elementary liquid-phase reaction
 
@@ -734,17 +734,383 @@ The cases are as follows:
 
 Additional information:
 
-- For acetone (A): $\Delta H^{\circ}_{R}(T_R) = -216.67$ kJ/mol, $C_{p,A}
+- For acetone (A): $\Delta H^{\circ}_{A}(T_R) = -216.67$ kJ/mol, $C_{p,A}
 = 163$ J/mol·K
-- For ketene (B): $\Delta H^{\circ}_{R}(T_R) = -61.09$ kJ/mol, $C_{p,B} =
+- For ketene (B): $\Delta H^{\circ}_{B}(T_R) = -61.09$ kJ/mol, $C_{p,B} =
 83$ J/mol·K
-- For methane (C): $\Delta H^{\circ}_{R}(T_R) = -74.81$ kJ/mol, $C_{p,C}
+- For methane (C): $\Delta H^{\circ}_{C}(T_R) = -74.81$ kJ/mol, $C_{p,C}
 = 71$ J/mol·K
 
 The overall heat transfer coefficient $Ua = 110$ $J/s \cdot m^3 \cdot K$.
 
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
+
+Reaction: $\ce {A -> B + C}$
+
+1. Mole balance
+
+$$
+\frac{dX}{dV} = -\frac{r_A}{F_{A0}}
+$$
+
+2. Rate law
+
+$$
+-r_A = k C_A
+$$
+
+3. Stoichiometry
+$$
+C_A = \frac{  C_{A0} (1 - X) }{ (1 + \epsilon X) } \frac{ T_0 }{ T }
+$$
+
+4. Energy balance
+
+**Reactor balance**
+
+$$
+\frac{dT}{dV} = \frac{
+U a (T_a - T)
++ r_A \left[ \Delta H_{Rx}^\circ+ \Delta C_P (T - T_R)\right]
+}{
+F_{A0} \left( \sum \Theta_i C_{P_i} + X \Delta C_P \right)
+}
+$$
+
+**Heat exchanger**
+
+$$
+\frac{dT_a}{dV} = \frac{
+U a (T - T_a)
+}{
+\dot m_C C_{P_C}
+}
+$$
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Constants
+R = 8.314 # J/mol K
+TR = 298 # K
+# Components: 1: A(acetone), 2: B(ketene), 3: C(methane)
+HF = np.array ([-216.67, -61.09, -74.81])*1000   # J/mol
+CP = np.array ([163.0, 83.0, 71.0]) # J/mol K
+MW = np.array ([58.0, 42.0, 20.0]) # g/mol
+
+k = lambda t: np.exp( 34.34 - 34222/t )
+# k = lambda t: 3.58 * np.exp( 34222 * (1/1035 - 1/t))
+
+def pfr (v, x, *args):
+  X, T, Ta = x
+  (fa0, ca0, T0, epsilon, delta_hr_tr, delta_cp, theta, UA, mc, cpc) = args
+
+  ca = ca0 * (( 1 - X ) / ( 1 + epsilon * X )) * (T0/T)
+  rate = k(T) * ca # -r_A
+  delta_h = delta_hr_tr + delta_cp * (T - TR)
+
+  dxdv = rate/fa0
+  dtdv = (UA * ( Ta - T ) + (-rate * delta_h))/( fa0 * ( np.sum(theta * CP) + X * delta_cp) )
+  dtadv = UA * ( T - Ta )/ (mc * cpc)
+
+  return [dxdv, dtdv, dtadv]
+
+# Data
+
+nu = np.array ([-1.0, 1.0, 1.0]) # stoichiometric coefficients
+
+f0 = 7850 # kg/h
+T0 = 1035.0 # K
+P0 = 162.0e3 # Pa
+
+n_tubes = 1000
+d_tube = 26.64e-3  # 1" schedule 40 pipe inner diameter mm
+Ta0 = 1250 # K
+a = 4/d_tube
+U = 110.0 # J/s m^3 K
+UA = U * a
+
+
+mc = 0.111 # mol/s
+cpc = 34.5 # J/mol K
+
+# inlet mole fraction
+y0 = np.array ([1.0, 0.0, 0.0])
+theta = np.array([1.0, 0.0, 0.0])
+
+fa0 = (f0 / ( y0[0] * MW[0])) / n_tubes # kmol/h
+fa0 = fa0 * (1000/3600)  # mol/s
+
+pa0 = y0[0] * P0
+ca0 = pa0/(R * T0)
+v_0 = fa0/ca0
+ya0 = y0[0]
+
+# Heat of reaction at 298K
+delta_hr_tr = np.sum(HF * nu)
+delta_cp = np.sum(CP * nu)
+
+epsilon = ya0 * np.sum(nu)
+
+``` 
+
+| |                                          Parameter values  ||      
+|-|-|-|
+| $\Delta H^\circ_{Rx} (T_R)$ =   `{python} f'{delta_hr_tr:.2f}'`    $J/mol$ |       $\Delta C_P$ = `{python} f'{delta_cp:.2f}'`  $J/mol\ K$           |        $T_0$ = `{python} f'{T0:.2f}'` K|
+|  $F_{A0}$ = `{python} f'{fa0:.2e}'` mol/s  | $C_{A0}$ = `{python} f'{ca0:.2f}'`   $mol/m^3$  |          $T_R$ = `{python} f'{TR:.2f}'` K|
+|  $C_{P_A}$ =  `{python} f'{CP[0]:.2f}'` $J/mol\ K$   |$Ua$ = `{python} f'{UA:.2f}'` $J/m^3\ s\ K$  |   $\dot m_C$ = `{python} f'{mc:.2f}'` $mol/s$|
+|  $C_{P_C}$ = `{python} f'{cpc:.2f}'` $J/mol\ K$ ||$V_f$ = 0.001 $m^3$|
+
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: acetic-anhydride-adiabatic-temp-profile
+#| fig-cap: Adiabatic conversion and temperature
+
+args = (fa0, ca0, T0, epsilon, delta_hr_tr, delta_cp, theta, 0, mc, cpc)
+
+initial_conditions = np.array([0, T0, Ta0])
+v_final = 0.005
+
+sol = solve_ivp(pfr, [0, v_final], initial_conditions, args=args, dense_output=True)
+v = np.linspace(0,v_final, 1000)
+x = sol.sol(v)[0]
+T = sol.sol(v)[1]
+Ta = sol.sol(v)[2]
+
+fig, ax1 = plt.subplots()
+
+# Plot x on the original y-axis
+plt_x = ax1.plot(v, x, color='#105e5d', label='X')
+ax1.set_xlabel('volume ($m^3$)')
+ax1.set_ylabel('Conversion')
+ax1.set_xlim(0,v[-1])
+ax1.set_ylim(0,)
+
+# Create a second y-axis for T and Ta
+ax2 = ax1.twinx()
+plt_t = ax2.plot(v, T, label='T') 
+# plt_ta = ax2.plot(v, Ta, label='Ta') 
+ax2.set_ylabel('Temperature (K)')
+
+ax2.set_xlim(0,v[-1])
+ax2.set_ylim(top=T0)
+
+arrow_properties = dict(arrowstyle="<-,head_length=0.7,head_width=0.25",
+                        color="black")
+
+ax1.annotate('', xy=(v[100],x[100]), xytext=(v[0], x[100]),arrowprops=dict(arrowstyle="<-"))
+ax2.annotate('', xy=(v[100],T[100]), xytext=(v[200], T[100]),arrowprops=dict(arrowstyle="<-"))
+
+# fig.tight_layout()
+handles, labels = [], []
+for ax in [ax1, ax2]:
+    for handle, label in zip(*ax.get_legend_handles_labels()):
+        handles.append(handle)
+        labels.append(label)
+plt.legend(handles, labels)
+plt.show()
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: acetic-anhydride-constant-heat-exchange-fluid-temp
+#| fig-cap: "Constant heat exchange fluid temperature: conversion and temperature"
+
+def pfr_const_heatex_fluid_T (v, x, *args):
+  X, T, Ta = x
+  (fa0, ca0, T0, epsilon, delta_hr_tr, delta_cp, theta, UA, mc, cpc) = args
+
+  ca = ca0 * (( 1 - X ) / ( 1 + epsilon * X )) * (T0/T)
+  rate = k(T) * ca # -r_A
+  delta_h = delta_hr_tr + delta_cp * (T - TR)
+
+  dxdv = rate/fa0
+  dtdv = (UA * ( Ta - T ) + (-rate * delta_h))/( fa0 * ( np.sum(theta * CP) + X * delta_cp) )
+  dtadv = 0.0
+
+  return [dxdv, dtdv, dtadv]
+
+
+args = (fa0, ca0, T0, epsilon, delta_hr_tr, delta_cp, theta, UA, mc, cpc)
+
+initial_conditions = np.array([0, T0, Ta0])
+v_final = 0.001
+
+sol = solve_ivp(pfr_const_heatex_fluid_T, [0, v_final], initial_conditions, args=args, dense_output=True)
+v = np.linspace(0,v_final, 1000)
+x = sol.sol(v)[0]
+T = sol.sol(v)[1]
+Ta = sol.sol(v)[2]
+
+fig, ax1 = plt.subplots()
+
+# Plot x on the original y-axis
+plt_x = ax1.plot(v, x, color='#105e5d', label='X')
+ax1.set_xlabel('volume ($m^3$)')
+ax1.set_ylabel('Conversion')
+ax1.set_xlim(0,v[-1])
+ax1.set_ylim(0,)
+
+# Create a second y-axis for T and Ta
+ax2 = ax1.twinx()
+plt_t = ax2.plot(v, T, label='T') 
+# plt_ta = ax2.plot(v, Ta, label='Ta') 
+ax2.set_ylabel('Temperature (K)')
+
+ax2.set_xlim(0,v[-1])
+
+arrow_properties = dict(arrowstyle="<-,head_length=0.7,head_width=0.25",
+                        color="black")
+
+ax1.annotate('', xy=(v[100],x[100]), xytext=(v[0], x[100]),arrowprops=dict(arrowstyle="<-"))
+ax2.annotate('', xy=(v[100],T[100]), xytext=(v[200], T[100]),arrowprops=dict(arrowstyle="<-"))
+
+# fig.tight_layout()
+handles, labels = [], []
+for ax in [ax1, ax2]:
+    for handle, label in zip(*ax.get_legend_handles_labels()):
+        handles.append(handle)
+        labels.append(label)
+plt.legend(handles, labels)
+plt.show()
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: acetic-anhydride-cocurrent-temp-profile
+#| fig-cap: "Cocurrent heat exchange: conversion and temperature"
+
+args = (fa0, ca0, T0, epsilon, delta_hr_tr, delta_cp, theta, UA, mc, cpc)
+
+initial_conditions = np.array([0, T0, Ta0])
+v_final = 0.001
+
+sol = solve_ivp(pfr, [0, v_final], initial_conditions, args=args, dense_output=True)
+v = np.linspace(0,v_final, 1000)
+x = sol.sol(v)[0]
+T = sol.sol(v)[1]
+Ta = sol.sol(v)[2]
+
+fig, ax1 = plt.subplots()
+
+# Plot x on the original y-axis
+plt_x = ax1.plot(v, x, color='#105e5d', label='X')
+ax1.set_xlabel('volume ($m^3$)')
+ax1.set_ylabel('Conversion')
+ax1.set_xlim(0,v[-1])
+ax1.set_ylim(0,)
+
+# Create a second y-axis for T and Ta
+ax2 = ax1.twinx()
+plt_t = ax2.plot(v, T, label='T') 
+plt_ta = ax2.plot(v, Ta, label='Ta') 
+ax2.set_ylabel('Temperature (K)')
+
+ax2.set_xlim(0,v[-1])
+ax2.set_ylim(top=Ta0)
+
+arrow_properties = dict(arrowstyle="<-,head_length=0.7,head_width=0.25",
+                        color="black")
+
+ax1.annotate('', xy=(v[100],x[100]), xytext=(v[0], x[100]),arrowprops=dict(arrowstyle="<-"))
+ax2.annotate('', xy=(v[100],T[100]), xytext=(v[200], T[100]),arrowprops=dict(arrowstyle="<-"))
+ax2.annotate('', xy=(v[100],Ta[100]), xytext=(v[200], Ta[100]),arrowprops=dict(arrowstyle="<-"))
+
+# fig.tight_layout()
+handles, labels = [], []
+for ax in [ax1, ax2]:
+    for handle, label in zip(*ax.get_legend_handles_labels()):
+        handles.append(handle)
+        labels.append(label)
+plt.legend(handles, labels)
+plt.show()
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: acetic-anhydride-countercurrent-exchange
+#| fig-cap: "Countercurrent exchange: conversion and temperature"
+
+def pfr_countercurrent_exchange (v, x, *args):
+  X, T, Ta = x
+  (fa0, ca0, T0, epsilon, delta_hr_tr, delta_cp, theta, UA, mc, cpc) = args
+
+  ca = ca0 * (( 1 - X ) / ( 1 + epsilon * X )) * (T0/T)
+  rate = k(T) * ca # -r_A
+  delta_h = delta_hr_tr + delta_cp * (T - TR)
+
+  dxdv = rate/fa0
+  dtdv = (UA * ( Ta - T ) + (-rate * delta_h))/( fa0 * ( np.sum(theta * CP) + X * delta_cp) )
+  dtadv = - UA * ( T - Ta )/ (mc * cpc)
+
+  return [dxdv, dtdv, dtadv]
+
+
+v_final = 0.001
+
+# This temperature needs to be guessed for Ta to be 1250 at V = V_final
+Ta0 = 995.15
+
+args = (fa0, ca0, T0, epsilon, delta_hr_tr, delta_cp, theta, UA, mc, cpc)
+
+initial_conditions = np.array([0, T0, Ta0])
+
+sol = solve_ivp(pfr_countercurrent_exchange, [0, v_final], initial_conditions, args=args, dense_output=True)
+v = np.linspace(0,v_final, 1000)
+x = sol.sol(v)[0]
+T = sol.sol(v)[1]
+Ta = sol.sol(v)[2]
+
+fig, ax1 = plt.subplots()
+
+# Plot x on the original y-axis
+plt_x = ax1.plot(v, x, color='#105e5d', label='X')
+ax1.set_xlabel('volume ($m^3$)')
+ax1.set_ylabel('Conversion')
+ax1.set_xlim(0,v[-1])
+ax1.set_ylim(0,)
+
+# Create a second y-axis for T and Ta
+ax2 = ax1.twinx()
+plt_t = ax2.plot(v, T, label='T') 
+plt_ta = ax2.plot(v, Ta, label='Ta') 
+ax2.set_ylabel('Temperature (K)')
+
+ax2.set_xlim(0,v[-1])
+
+arrow_properties = dict(arrowstyle="<-,head_length=0.7,head_width=0.25",
+                        color="black")
+
+ax1.annotate('', xy=(v[200],x[200]), xytext=(v[100], x[200]),arrowprops=dict(arrowstyle="<-"))
+ax2.annotate('', xy=(v[100],T[100]), xytext=(v[200], T[100]),arrowprops=dict(arrowstyle="<-"))
+ax2.annotate('', xy=(v[400],Ta[400]), xytext=(v[500], Ta[400]),arrowprops=dict(arrowstyle="<-"))
+
+# fig.tight_layout()
+handles, labels = [], []
+for ax in [ax1, ax2]:
+    for handle, label in zip(*ax.get_legend_handles_labels()):
+        handles.append(handle)
+        labels.append(label)
+plt.legend(handles, labels)
+plt.show()
+
+```
+
+
 
 :::
 

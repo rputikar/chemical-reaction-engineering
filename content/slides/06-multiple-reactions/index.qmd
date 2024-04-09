@@ -133,7 +133,7 @@ setting up the balance equations (no conversion!)
   \begin{align*}
      \ce{C2H4O + NH3} & \ce{-> (HOCH2CH2)NH2} && \text{(mono ethanolamine)}\\
      \\
-     \ce{(HOCH2CH2)NH2 + C2H4O} & \ce{->} \underset{\textcolor{red}{\text{desired product}}}{\ce{(HOCH2CH2)2NH}} && \text{(di ethanolamine)} \\
+     \ce{(HOCH2CH2)NH2 + C2H4O} & \ce{->} \underset{\textcolor{RoyalBlue}{\text{desired product}}}{\ce{(HOCH2CH2)2NH}} && \text{(di ethanolamine)} \\
      \\
      \ce{(HOCH2CH2)2NH + C2H4O} & \ce{-> (HOCH2CH2)3N} && \text{(tri ethanolamine)}
   \end{align*}
