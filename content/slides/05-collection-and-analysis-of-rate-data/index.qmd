@@ -129,14 +129,14 @@ last-modified: 2024-04-02
 
 ## Reactor design problem
 
-:::{.incremental}
-* ![](../../../assets/images/kinetics-reactor-design-problem-volume-highight.png)
+:::{.incremental .extrapad}
+* ![](../../../assets/images/kinetics-reactor-design-problem-volume-highight.png){width=90%}
 
 
 * In practice, collection and analysis of rate data is the most time consuming
   task in reactor design
 
-* ![](../../../assets/images/kinetics-reactor-design-problem-kinetics.png)
+* ![](../../../assets/images/kinetics-reactor-design-problem-kinetics.png){width=90%}
 
 
 * Data collection is done in the lab, where we can simplify mole balance,
@@ -202,7 +202,7 @@ last-modified: 2024-04-02
 :::{style="margin-bottom: 50px;"}
 :::
 
-![](../../../assets/images/algorithm-for-rate-data-analysis.png)
+![](../../../assets/images/algorithm-for-rate-data-analysis.png){width=90%}
 
 
 ## Determination of rate law for homogenous reactions
@@ -233,13 +233,13 @@ last-modified: 2024-04-02
 
 :::{.column width=50%}
 
-![](../../../assets/images/batch_reactor_stoichiometry.png){width=70%}
+![](../../../assets/images/batch_reactor_stoichiometry.png){width=90%}
 
 :::
 
 ::::
 
-* Typical measurements
+* **Typical measurements**
   - Concentration
     Pressure
   - Temperature: Many times batch reactions are carried out isothermally. 

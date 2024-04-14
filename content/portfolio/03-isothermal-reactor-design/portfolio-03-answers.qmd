@@ -2,8 +2,7 @@
 title: "Portfolio 03: Isothermal reactor design"
 format:
   pdf
-draft: true
-last-modified: 2024-04-02
+last-modified: 2024-04-07
 ---
 
 ```{python}

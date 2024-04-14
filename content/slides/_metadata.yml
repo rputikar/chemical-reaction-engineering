@@ -25,5 +25,7 @@ format:
       - color: "#d02670"
       - pointerSize: 20
 
+    height: 900
+
 revealjs-plugins:
   - pointer

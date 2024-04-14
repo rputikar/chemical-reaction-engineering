@@ -1,0 +1,265 @@
+---
+title: "Portfolio 04: Analysis of rate data"
+format:
+  pdf:
+    output-file: "portfolio-04-analysis-of-rate-data"
+    output-ext: "pdf"
+draft: true
+resources:
+    - portfolio-4-raw-data.csv
+last-modified: 2024-04-11
+---
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib
+from matplotlib.ticker import AutoMinorLocator
+import matplotlib.pyplot as plt
+from scipy import stats
+import scipy.interpolate as interpolate
+import scipy.integrate as integrate
+from tabulate import tabulate
+from IPython.display import display, Markdown
+plt.style.use('../../../assets/templates/publish.mplstyle')
+```
+
+## General Instructions for take home Portfolios
+
+1.  The portolio is an open-book task.
+2.  It is expected that you will complete the portfolio assessment on your own.
+    You can use textbooks, the resources provided during class/ workshop etc.
+    to answer the questions. 
+4.  You are free to choose a solution technique. It is **not** required that
+    you use the provided python code to answer the questions. You can use any
+    tool (pen and paper, excel, ... ) and any technique (graphical, numerical,
+    analytical) that you are comfortable with. However, some of the tasks will
+    require use of coding/ computer. 
+5.  The tasks will be a mix of theory questions, short calculation type and
+    long numerical examples.
+6.  The portfolio tasks are not meant to take a lot of time. If you have
+    understood and practiced the relevant content, it should take you around 2
+    to 3 hours at the most.
+7.  You are required to upload the portolio answers on to blackboard: 
+    - Save your report as a **pdf** file (_Miri students should save it as a
+      word file_). 
+    - Rename the file as STUDENTID_Portfolio_x.pdf (Where STUDENTID is your
+      student ID, and x is the portfolio number) and 
+    - Upload it using assessment submission link on blackboard. 
+
+{{< pagebreak >}}
+
+## Academic Integrity
+
+Academic integrity at its core is about honesty and responsibility and is
+fundamental to Curtin’s expectations of you. This means that all of your work
+at Curtin should be your own and it should be underpinned by integrity, which
+means to act ethically, honestly and with fairness.
+
+As a Curtin student you are part of an academic community and you are asked to
+uphold the University’s [Code of
+Conduct](https://oasis.curtin.edu.au/ConductAtCurtin), principles of academic
+integrity, and [Curtin’s five core
+values](https://about.curtin.edu.au/who/vision-mission-values/curtin-values/)
+of integrity, respect, courage, excellence and impact during your studies.
+
+You are also expected to uphold the [Student
+Charter](https://students.curtin.edu.au/essentials/rights/student-charter/) and
+recognise that cheating, plagiarism collusion, and falsification of data and
+other forms of academic dishonesty are not acceptable.
+
+For more information, visit
+[https://students.curtin.edu.au/essentials/rights/academic-integrity/](https://students.curtin.edu.au/essentials/rights/academic-integrity/)
+
+{{< pagebreak >}}
+
+## Introduction
+
+Direct vapor phase oxidation of ethylene 
+
+$$
+\ce{C2H4 + 1/2 O2 -> C2H4O}
+$$
+
+was carried out in the presence of a silver catalyst in a differential reactor
+at 300 &deg;C. Experiments were conducted at different partial pressures of
+$\ce{C2H4}$ and $\ce{O2}$ and the effluent concentration of EO was measured.
+The measured rate data is shown in @tbl-rate-data. (The data is available in
+csv format: [portfolio-4-raw-data.csv](./portfolio-4-raw-data.csv)).
+
+  ----------------------------------------------------------------------------
+  Experiment      $P_{\ce{C2H4}}$   $P_{\ce{O2}}$   $C_{\ce{C2H4O}}$ (
+                  (atm)             (atm)           $mol/dm^3 \times 10^{4}$ )
+  --------------- ----------------- --------------- --------------------------
+  1               0.5               9.5             1.618
+
+  2               0.7               9.5             1.853
+
+  3               0.9               9.5             2.040
+
+  4               1.1               9.5             2.198
+
+  5               1.4               9.5             2.337
+
+  6               19.0              0.94            1.194
+
+  7               19.0              1.88            1.895
+
+  8               19.0              2.88            2.484
+
+  9               19.0              3.78            3.010
+
+  10              19.0              4.68            3.493
+  ----------------------------------------------------------------------------
+
+: Raw data {#tbl-rate-data}
+
+The exit volumetric flow rate from a differential packed bed containing 20g of
+catalyst was maintained at 300 $dm^3/min$ for each run. The
+partial pressures of $\ce{C2H4}$ and $\ce{O2}$ were determined at the entrance
+to the reactor, and the $\ce{C2H4O}$ concentration was measured at the reactor
+exit. 
+
+
+<!-- Determine the rate law and rate law parameters. -->
+<!---->
+<!-- The rate law for the reaction is -->
+<!---->
+<!-- $$ -->
+<!-- -r'_A = k P_A^{1/3} P_B^{2/3} -->
+<!-- $$ -->
+<!---->
+<!-- with k = 0.00392 $\frac{mol}{atm \ kg-cat\ s}$ at 260 $^\circ C$. The heat of -->
+<!-- reaction, $\Delta H$ is -106.7 kJ/mol and the activation energy, E is 69.49 -->
+<!-- kJ/mol. -->
+
+{{< pagebreak >}}
+
+## Questions
+
+1. Why do you think a differential reactor was used for these experiments?
+   \hfill (2 marks)
+
+{{< pagebreak >}}
+
+2. In a stepwise manner, outline the strategy (including any equations) you
+   will use to analyze the data and determine the dependence of rate law on
+   $P_{\ce{C2H4}}$ and, $P_{\ce{O2}}$. \hfill (12 marks)
+
+{{< pagebreak >}}
+
+3. Based on the data calculate the rates of reaction. \hfill (4 marks) 
+
+{{< pagebreak >}}
+
+4. Determine the rate law and rate law parameters. Report your values of the
+   orders of reaction with respect to $P_{\ce{C2H4}}$ and, $P_{\ce{O2}}$ and
+   reaction rate constant k (in $mol/atm\ kg-cat\ s$). Skeleton python code is
+   provided at the end of the portfolio statement. \hfill (8 marks)
+
+{{< pagebreak >}}
+
+5. What is the limitation of current experimental program? How will you
+   overcome it? \hfill (4 marks)
+
+{{< pagebreak >}}
+
+## Skeleton code {.appendix}
+ 
+```python
+import numpy as np
+from scipy.stats import linregress
+from scipy.optimize import least_squares
+import matplotlib.pyplot as plt
+
+Temperature = 300  # deg. C
+DeltaW = 20 # g
+V_0 = 300   # dm^3/min
+
+# Define the data type for each field
+dtype = [
+    ('Run', int),         # Run number (experiment number)
+    ('P_c2h4', float),    # Pressure of C2H4 in atm
+    ('P_o2', float),      # Pressure of O2 in atm
+    ('C_c2h4o', float)    # Concentration of C2H4O in mol/dm^3 x 10^4
+]
+
+# Data for each experiment
+data = np.array([
+    (1, 0.5, 9.5, 1.618),
+    (2, 0.7, 9.5, 1.853),
+    (3, 0.9, 9.5, 2.040),
+    (4, 1.1, 9.5, 2.198),
+    (5, 1.4, 9.5, 2.337),
+    (6, 19.0, 0.94, 1.194),
+    (7, 19.0, 1.88, 1.895),
+    (8, 19.0, 2.88, 2.484),
+    (9, 19.0, 3.78, 3.010),
+    (10, 19.0, 4.68, 3.493)
+], dtype=dtype)
+
+pc2h4 = data["P_c2h4"]
+po2 = data["P_o2"]
+cc2h4o = data["C_c2h4o"]*1e-4
+
+# Calculate rate
+
+# Select appropriate data for analysis
+
+# Example code
+# first data point has index 0
+# x_a = x[1:n] # Selects data points 2 to n from x array
+
+# transform the data for analysis
+
+# example code for linear regression
+# log_x = np.log(x) # calculate log
+# res = linregress(x,y) # fit line
+# slope, intercept, and r value can be accessed using res.slope, 
+# res.intercept, res.rvalue 
+# line = res.slope * x + res.intercept # Create a line from linear regression
+
+# Print results
+# print (res.slope, res.intercept, res.rvalue)
+
+# example code for least_squares
+# Objective function to minimize: the difference between rate (experimental)
+# and rate (calculated) 
+#def objective(params, *args):
+#    a, b  = params
+#    x, y_obs = args
+#
+#    # calculate objective function
+#    y_calc = (a * x**b)  # Replace with your own expressions
+#    return y_obs - y_calc
+#
+# # Initial guesses
+# a = 1 
+# b = 1
+#
+# guess = np.array([a,b])
+# bounds = (
+#    [1e-3, 1e-3],  # lower bound
+#    [1e3, 1e3]     # upper bound
+# )
+# args = (x,y_obs)
+#
+# # Minimize the objective function
+# result = least_squares(objective, guess, args=args, bounds=bounds)
+#
+# # Extract the results
+# a_fit, b_fit = result.x
+#
+
+# Print results
+# print (a_fit, b_fit)
+
+# Plotting
+
+# Example code
+
+# plt.plot(x,y, label="y") # Normal plot 
+# plt.loglog(x, y, 'o', label='Experimental') # log - log plot scatter points
+# plt.show()
+
+```

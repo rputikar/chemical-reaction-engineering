@@ -1,7 +1,7 @@
 ---
 title: "Isothermal reactor design"
 format: revealjs
-last-modified: 2024-04-02
+last-modified: 2024-04-08
 revealjs-plugins:
   - attribution
 ---
@@ -152,10 +152,10 @@ $$
 
 ## Design structure for isothemal reactors
 
+![](../../../assets/images/isothermal_reactor_design_algorithm.png){width=90%}
+
 :::{style="margin-bottom: 40px;"}
 :::
-
-![](../../../assets/images/isothermal_reactor_design_algorithm.png){width=90%}
 
 :::{.fragment .callout-note appearance=simple}
 
@@ -168,7 +168,7 @@ Use algorithm rather than memorizing equations
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
 
 :::
 
@@ -223,7 +223,7 @@ Fogler, H. Scott. 2016. Elements of Chemical Reaction Engineering. Fifth edition
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
 
 :::
 
@@ -354,13 +354,19 @@ $$
 
 * Batch reaction time ($t_R$) is just one component in batch cycle time
 
-|     | Activity                     |       | Time (h)            |
-|-----|------------------------------|-------|---------------------|
-| 1   | Charge feed                  | $t_f$ | 0.5 - 2             |
-| 2   | Heat to reaction temperature | $t_e$ | 0.5 - 2             |
-| 3   | Reaction                     | $t_R$ | varies              |
-| 4   | Empty and clean reactor      | $t_c$ | 1.5 - 3             |
-|     | Total                        |       | (2.5h - 7h) + $t_R$ |
+  ------------------------------------------------------------------------
+        Activity                                   Time (h)
+  ----- --------------------------------- -------- -----------------------
+  1     Charge feed                       $t_f$    0.5 - 2
+
+  2     Heat to reaction temperature      $t_e$    0.5 - 2
+
+  3     Reaction                          $t_R$    varies
+
+  4     Empty and clean reactor           $t_c$    1.5 - 3
+
+        Total                                      (2.5h - 7h) + $t_R$
+  ------------------------------------------------------------------------
 
 :::{.callout-note }
 ## Activity: Batch time for second order reaction
@@ -395,7 +401,7 @@ for a second order reaction $-r_A = k_2 C_A^2$
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
 
 :::
 
@@ -476,8 +482,8 @@ for a second order reaction $-r_A = k_2 C_A^2$
 
 
    $$
-   \underbrace{\frac{V}{\upsilon_0}}_{\text{variables we will vary}} =
-   \underbrace{\frac{X_A}{k (1 - X_A)}}_{\text{variables that are constant}}
+   \underbrace{\frac{V}{\upsilon_0}}_{\color{RoyalBlue}{\text{variables that vary}}} =
+   \underbrace{\frac{X_A}{k (1 - X_A)}}_{\color{RoyalBlue}{\text{variables that are constant}}}
    $$
 
 :::
@@ -570,7 +576,7 @@ $$
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
 
 :::
 
@@ -621,7 +627,7 @@ $$
 
 ## CSTRs in series
 
-![](../../../assets/images/CSTR_in_series_schematic.png){width=70%}
+![](../../../assets/images/CSTR_in_series_schematic.png){width=90%}
 
 * A first order reaction is carried out isothermally using 2 CSTRs that are the
   same size, and $\upsilon$ and $k$ are the same in both reactors ($\tau_1 =
@@ -672,6 +678,9 @@ Using the algorithm, obtain $C_{A2}$ in terms of $C_{A0}$ and $Da$
 
 :::
 ::::
+
+:::{style="margin-bottom: 40px;"}
+:::
 
 :::{.highlight}
 $$
@@ -733,6 +742,9 @@ $$
 
 ::::
 
+:::{style="margin-bottom: 40px;"}
+:::
+
 :::{.highlight}
 Conversion achieved by any one of the reactors in parallel is the same as if
 all the reactant were fed into one big reactor of volume V
@@ -745,7 +757,7 @@ all the reactant were fed into one big reactor of volume V
 ::::{.columns}
 :::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
 
 :::
 
@@ -784,15 +796,18 @@ all the reactant were fed into one big reactor of volume V
    \frac{\upsilon_0}{k} \int_0^X \frac{dX_A}{(1 - X_A)} = \int_0^V dV ;\quad 
    V = \frac{\upsilon_0}{k} \ln \left( \frac{1}{1 - X} \right) 
    $$
+
+:::
+
+<!-- :::{.fragment .callout-note appearance="simple"} -->
+:::{.fragment .callout-note}
+## Activity
+Derive equation for conversion in a liquid phase PFR for second order reaction
 :::
 
 :::
 
 ::::
-
-:::{.fragment .callout-note appearance="simple"}
-Derive equation for conversion in a liquid phase PFR for second order reaction
-:::
 
 
 ## Isobaric, isothermal, ideal reactions in tubular reactors
@@ -802,7 +817,7 @@ Derive equation for conversion in a liquid phase PFR for second order reaction
   - Plug flow: no radial variations in concentration, temperature, & ∴ $-r_A$
   - No stirring element $\Rightarrow$ flow must be turbulent
 
-![](../../../assets/images/pfr_schematic.png){width=70%}
+![](../../../assets/images/pfr_schematic.png){width=90%}
 
 * Gas phase
 
@@ -890,10 +905,10 @@ from sympy import symbols, integrate, pprint
 epsilon, x = symbols('epsilon x', real=True)
 X = symbols('X', real=True, positive=True)
 
-integrand = (1 + epsilon * x)**2 / (1 - x)**2
-integral_result = integrate(integrand,(x))
+integ = (1 + epsilon * x)**2 / (1 - x)**2
+integ_result = integrate(integ,(x))
 
-pprint(integral_result)
+pprint(integ_result)
 ```
 
 $$
@@ -940,7 +955,7 @@ $$
 
 :::{.column width=50%}
 
-![](../../../assets/images/change_in_volumetric_flowrate.png)
+![](../../../assets/images/change_in_volumetric_flowrate.png){width=90%}
 
 :::
 ::::
@@ -1110,13 +1125,13 @@ out isothermally
 ### Second order reaction $\ce{aA + bB -> cC + dD}$
 
 ::::{.columns}
-:::{.column width=40%}
+:::{.column width=30%}
 
-![](../../../assets/images/reaction_engineering_algorithm.png){width=70%}
+![](../../../assets/images/reaction_engineering_algorithm.png){width=90%}
 
 :::
 
-:::{.column width=60%}
+:::{.column width=70%}
 
 :::{.incremental .smaller}
 

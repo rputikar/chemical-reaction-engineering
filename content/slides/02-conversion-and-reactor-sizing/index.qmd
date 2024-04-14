@@ -251,7 +251,7 @@ $$
 :::{.column width=40%}
 ![](../../../assets/images/mole_balance_batch_reactor.png){width=70%}
 
-:::{.fragment .absolute top=600}
+:::{.fragment .absolute top=650}
 
 :::{.highlight}
 $$
@@ -300,7 +300,7 @@ $$
 
 :::{.column width=45%}
 
-![](../../../assets/images/mole_balance_cstr.png)
+![](../../../assets/images/mole_balance_cstr.png){width=90%}
 
 :::
 ::::
@@ -356,7 +356,7 @@ $–r_A$ are evaluated at the exit of the CSTR
 
 :::{.column width=35%}
 
-![](../../../assets/images/mole_balance_pbr.png){width=70%}
+![](../../../assets/images/mole_balance_pbr.png){width=90%}
 
 :::
 :::{.column width=5%}

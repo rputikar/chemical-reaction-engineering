@@ -613,7 +613,7 @@ $$
 
 :::{.column width=45%}
 
-![](../../../assets/images/batch_reactor_photo_sr100.png){width=70%}
+![](../../../assets/images/batch_reactor_photo_sr100.png){width=90%}
 
 :::
 ::::
@@ -730,7 +730,7 @@ $$
 
 :::{.column width=40%}
 
-![](../../../assets/images/mole_balance_batch_reactor.png){width=70%}
+![](../../../assets/images/mole_balance_batch_reactor.png){width=90%}
 
 
 :::
@@ -757,7 +757,7 @@ $$
 
 :::{.column width=40%}
 
-![](../../../assets/images/mole_balance_batch_reactor.png){width=70%}
+![](../../../assets/images/mole_balance_batch_reactor.png){width=90%}
 
 
 :::
@@ -777,7 +777,7 @@ $$
 ::::{.columns}
 :::{.column width=40%}
 
-![](../../../assets/images/mole_balance_cstr.png)
+![](../../../assets/images/mole_balance_cstr.png){width=90%}
  
 :::
 :::{.column width=5%}
@@ -801,7 +801,7 @@ $$
 ::::{.columns}
 :::{.column width=50%}
 
-![](../../../assets/images/mole_balance_cstr.png)
+![](../../../assets/images/mole_balance_cstr.png){width=90%}
  
 :::
 :::{.column width=5%}
@@ -834,7 +834,7 @@ $$
 
 ## Mole balance: PFR
 
-![](../../../assets/images/mole_balance_pfr.png){width=70%}
+![](../../../assets/images/mole_balance_pfr.png){width=90%}
 
 
 
@@ -846,7 +846,7 @@ $$
 
 :::{.column width=35%}
 
-![](../../../assets/images/mole_balance_pbr.png){width=70%}
+![](../../../assets/images/mole_balance_pbr.png){width=90%}
 
 :::
 :::{.column width=5%}
@@ -875,7 +875,7 @@ $$
 
 :::{.column width=35%}
 
-![](../../../assets/images/mole_balance_pbr.png){width=70%}
+![](../../../assets/images/mole_balance_pbr.png){width=90%}
 
 :::
 :::{.column width=5%}
@@ -887,5 +887,3 @@ $$
  
 :::
 ::::
-
-

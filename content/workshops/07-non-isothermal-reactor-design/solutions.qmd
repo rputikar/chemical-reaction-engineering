@@ -2,12 +2,17 @@
 title: 
   "Solutions to workshop 07: Non-isothermal reactor design"
 date: 2024-03-24
-last-modified: 2024-04-02
+last-modified: 2024-04-10
 format: 
    html: default
    pdf:
       output-file: "solutions-to-workshop-07-non-isothermal-reactor-design"
       output-ext: "pdf"
+resources:
+   - ./p11-5-solution.pdf
+   - ./p11-6-solution.pdf
+   - ./p12-6-solution.pdf
+   - ./p12-21-solution.pdf
 ---
 
 
@@ -58,6 +63,54 @@ $$ \alpha = 0.0075/kg-cat \: \text{for particle diameter} \: D_2 $$
 (e) Plot and then analyze the temperature, conversion, and pressure along the length of the reactor.
 Vary the parameters $\alpha$ and $P_0$ to learn the ranges of values in which they dramatically affect the conversion.
 
+ 
+::: {.callout-tip collapse="false"}
+## Solution
+
+[Hand written solution](./p11-5-solution.pdf)
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Constants
+R = 8.314 # J/mol K
+TR = 273 # K
+
+# A -> B + C 
+# 0: A; 1: B; 2: C
+
+HF = np.array ([-70.0, -50.0, -40.])*1000   # J/mol
+CP = np.array ([40.0, 25.0, 15.0]) # J/mol K
+
+E = 31.4 * 1e3 # J/mol
+k = lambda t: 0.133 * np.exp( (E/R) * (1/450.0 - 1/t) ) # dm3/ kgcat s
+
+def pfr (v, x, *args):
+  X, T = x
+  (fa0, ca0, T0, epsilon, delta_hr_tr, delta_cp, theta, UA, mc, cpc) = args
+
+  ca = ca0 * (( 1 - X ) / ( 1 + epsilon * X )) * (T0/T)
+  rate = k(T) * ca # -r_A
+  delta_h = delta_hr_tr + delta_cp * (T - TR)
+
+  dxdv = rate/fa0
+  dtdv = (UA * ( Ta - T ) + (-rate * delta_h))/( fa0 * ( np.sum(theta * CP) + X * delta_cp) )
+  dtadv = UA * ( T - Ta )/ (mc * cpc)
+
+  return [dxdv, dtdv, dtadv]
+
+# Data
+
+
+``` 
+
+:::
+
 ## P 11-6
 
 The irreversible endothermic vapor-phase reaction follows an elementary rate law
@@ -102,6 +155,15 @@ Explain why there “is” or “is not” a maximum.
 
 (f) Plot the heat that must be removed along the reactor ( Q vs. V) to maintain isothermal operation for pure A fed and an exothermic reaction.
 
+
+::: {.callout-tip collapse="false"}
+## Solution
+
+
+[Hand written solution](./p11-6-solution.pdf)
+
+:::
+
 ## P 12-6
 
 The endothermic liquid-phase elementary reaction
@@ -124,6 +186,14 @@ Agitator shaft horsepower: 25 hp
 Heat of reaction, $\Delta H_{Rx}^{\circ} = + 20000$ Btu/lb-mol of A (independent of temperature)
 
 ![](../../../assets/images/fig_p12.6.png){width=60%}
+
+::: {.callout-tip collapse="false"}
+## Solution
+
+
+[Hand written solution](./p12-6-solution.pdf)
+
+:::
 
 ## P 12-21
 
@@ -161,3 +231,11 @@ $k_{2D} = 0.4 (dm^3/mol \cdot s) \exp 5000 K \left[ \frac{1}{500} - \frac{1}{T}\
 
 (a) What is the activation energy for Reaction (1)?
 
+
+::: {.callout-tip collapse="false"}
+## Solution
+
+
+[Hand written solution](./p12-21-solution.pdf)
+
+:::

@@ -436,7 +436,7 @@ $$
 \ce{3H2 + CO ->[Ni] CH4 + H2O}
 $$
 
-was carried out at 5008F in a differential reactor where the effluent concentration of
+was carried out at 500 &deg;F in a differential reactor where the effluent concentration of
 methane was measured. The raw data is shown in @tbl-diff-reactor
 
 | Run | $P_{CO}$ (atm) | $P_{H_2}$ (atm) | $C_{CH_4}$ $(mol/dm^3) \times 10^{4}$ |

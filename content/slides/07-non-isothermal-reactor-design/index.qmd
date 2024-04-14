@@ -1,7 +1,7 @@
 ---
 title: "Non-isothermal reactor design"
 format: revealjs
-last-modified: 2024-04-02
+last-modified: 2024-04-08
 ---
 
 ```{python}
@@ -976,6 +976,7 @@ $$
 
 
 ## Multiple steady states
+
 
 ## Nonisothermal multiple chemical reactions
 
