@@ -2,7 +2,7 @@
 title: "Portfolio 04: Analysis of rate data"
 format:
   pdf:
-    output-file: "portfolio-04-analysis-of-rate-data"
+    output-file: "Answers-to-portfolio-04-analysis-of-rate-data"
     output-ext: "pdf"
 draft: true
 resources:
@@ -40,6 +40,7 @@ last-modified: 2024-04-11
     - Rename the file as STUDENTID_Portfolio_x.pdf (Where STUDENTID is your
       student ID, and x is the portfolio number) and 
     - Upload it using assessment submission link on blackboard. 
+
 
 {{< pagebreak >}}
 
@@ -121,15 +122,181 @@ exit.
 1. Why do you think a differential reactor was used for these experiments?
    \hfill (2 marks)
 
+**Answer**: 
+
+The reaction is gas phase solid catalyzed reaction.  
+
+(2 marks if all the keywords [gas phase, solid catalyzed] are present. 1 mark
+if only one keyword is present, 0 marks otherwise)
+
+
 {{< pagebreak >}}
 
 2. In a step wise manner, outline the strategy (including any equations) you
    will use to analyze the data and determine the dependence of rate law on
    $P_{\ce{C2H4}}$ and, $P_{\ce{O2}}$. \hfill (14 marks)
 
+**Answer**: 
+
+The reaction was carried out in a differential reactor.
+For a differential reactor, reaction rate can be estimated as: 
+
+$$
+-r'_A = \frac{\upsilon_0 C_P}{\Delta W}
+$${#eq-1} \hfill ( 2 marks )
+
+The data is given at different inlet partial pressures of $\ce{C2H4}$ and
+$\ce{O2}$. Below are the steps to obtain the rate expression.
+
+1. As the rate is dependent on both $P_{\ce{C2H4}}$ and $P_{\ce{O2}}$, we need to
+   decouple them so that individual dependence on each species can be
+   determined. 
+
+   (Identifies need for decoupling (1 marks)).
+
+2. We observe that the first five experiments were carried out at constant
+   partial pressure of $\ce{O2}$. These experiments will be used to determine
+   the dependence on  $P_{\ce{C2H4}}$.
+   
+   (1 mark)
+
+3. From the first 5 experiments, it is clear that $C_{\ce{C2H4O}}$ increases
+   with  $P_{\ce{C2H4}}$. Therefore rate dependence on $P_{\ce{C2H4}}$ can be
+   written as 
+
+   $$
+   r'_A = k' P_{\ce{C2H4}}^\alpha 
+   $${#eq-2} \hfill (2 mark)
+
+4. Steps to find $\alpha$: \hfill (3 marks)
+
+   a. Calculate rate for first five experiments using @eq-1
+
+   b. linearize @eq-2 by taking natural logarithm as:
+
+      $$
+      \ln (r'_A) = \ln k' + \alpha \ln P_{\ce{C2H4}}
+      $$ {#eq-3}
+
+   c. A plot of $\ln (r'_A)$ vs. $\ln P_{\ce{C2H4}}$ using first 5 experiments
+      will be linear with a slope of $\alpha$
+
+5. From the last 5 experiments, it is clear that $C_{\ce{C2H4O}}$ increases
+   with  $P_{\ce{O2}}$. Therefore rate dependence on $P_{\ce{O2}}$ can be
+   written as 
+
+   $$
+   r'_A = k'' P_{\ce{O2}}^\beta 
+   $${#eq-4} \hfill (2 mark)
+
+6. Steps to find $\beta$: Similar to step 4. \hfill (1 marks)
+
+   a. Calculate rate for last five experiments using @eq-1
+
+   b. linearize @eq-4 by taking natural logarithm as:
+
+      $$
+      \ln (r'_A) = \ln k'' + \beta \ln P_{\ce{O2}}
+      $$ {#eq-5}
+
+   c. A plot of $\ln (r'_A)$ vs. $\ln P_{\ce{O2}}$ using last five experiments
+      will be linear with a slope of $\beta$
+
+7. Calculate $k$ at 300 &deg;C using any of the experimental data as
+   \hfill (2 marks)
+
+   $$
+   k = \left. 
+    \frac{ r'_A }{ P_{\ce{C2H4}}^\alpha P_{\ce{O2}}^\beta }
+   \right|_{i}
+   $${#eq-6}
+
+   or $k$ can be calculated as an average of $k$ calculated for all experiments
+   using @eq-6. 
+
 {{< pagebreak >}}
 
 3. Based on the data calculate the rates of reaction. \hfill (4 marks) 
+
+
+The code below is not necessary in the final answer. 
+
+```{python}
+#| echo: true
+
+import numpy as np
+from scipy.stats import linregress
+from scipy.optimize import least_squares
+import matplotlib.pyplot as plt
+
+Temperature = 300  # deg. C
+DeltaW = 20 # g
+V_0 = 300   # dm^3/min
+
+# Define the data type for each field
+dtype = [
+    ('Run', int),         # Run number (experiment number)
+    ('P_c2h4', float),    # Pressure of C2H4 in atm
+    ('P_o2', float),      # Pressure of O2 in atm
+    ('C_c2h4o', float)    # Concentration of C2H4O in mol/dm^3 x 10^4
+]
+
+# Data for each experiment
+data = np.array([
+    (1, 0.5, 9.5, 1.618),
+    (2, 0.7, 9.5, 1.853),
+    (3, 0.9, 9.5, 2.040),
+    (4, 1.1, 9.5, 2.198),
+    (5, 1.4, 9.5, 2.337),
+    (6, 19.0, 0.94, 1.194),
+    (7, 19.0, 1.88, 1.895),
+    (8, 19.0, 2.88, 2.484),
+    (9, 19.0, 3.78, 3.010),
+    (10, 19.0, 4.68, 3.493)
+], dtype=dtype)
+
+pc2h4 = data["P_c2h4"]
+po2 = data["P_o2"]
+cc2h4o = data["C_c2h4o"]*1e-4
+
+# Calculate rate
+rate = V_0 * cc2h4o/DeltaW
+
+``` 
+
+```{python}
+import pandas as pd
+from IPython.display import display, Markdown
+
+# Convert structured numpy array to Pandas DataFrame
+df = pd.DataFrame(data)
+
+df.columns = [
+    'Experiment',
+    '$P_{\\ce{C2H4}}$ (atm)',
+    '$P_{\\ce{O2}}$ (atm)',
+    '$C_{\\ce{C2H4O}}$ ($mol/dm^3 \\times 10^4$)'
+]
+
+# Calculate the rate and add it to the DataFrame
+df['Rate ($mol/dm^3\\ min$)'] = rate
+df['Rate ($mol/dm^3\\ s$)'] = rate/60.0
+
+# Display the DataFrame as a Markdown table
+md = df.to_markdown(index=False)
+
+Markdown(md)
+
+```
+
+Rate calculate either as $mol/dm^3\ min$ or $mol/dm^3\ s$ is okay.
+
+Correct rate unit: 2 marks
+No rate unit given: 0 marks
+
+Correct values of rate: 2 marks
+Wrong values of rate: 0 marks
+
 
 {{< pagebreak >}}
 
@@ -138,10 +305,76 @@ exit.
    reaction rate constant k (in $mol/atm\ kg-cat\ s$). Skeleton python code is
    provided at the end of the portfolio statement. \hfill (8 marks)
 
+
+The code below is not necessary in the final answer. 
+
+```{python}
+#| echo: true
+
+# Select appropriate data for analysis
+p_c2h4_a = pc2h4[:5]
+rate_a = rate[:5]
+
+# transform the data for analysis
+log_p_c2h4_a = np.log(p_c2h4_a)
+log_rate_a = np.log(rate_a)
+res = linregress(log_p_c2h4_a, log_rate_a)
+alpha = res.slope
+
+# Select appropriate data for analysis
+p_o2_b = po2[5:]
+rate_b = rate[5:]
+
+# transform the data for analysis
+log_p_o2_b = np.log(p_o2_b)
+log_rate_b = np.log(rate_b)
+res = linregress(log_p_o2_b, log_rate_b)
+beta = res.slope
+
+k = rate/(pc2h4**alpha * po2**beta) #mol/atm\ g-cat min$
+k_avg = np.average(k)
+
+# Convert k to appropriate units 
+k = k * 1e3 /60.0  # mol/atm kg-cat s$
+k_avg = k_avg * 1e3 /60.0
+
+```
+
+**Answer**:
+
+Rate equation: 
+
+$$
+-r'_A = k P_{\ce{C2H4}}^\alpha P_{\ce{O2}}^\beta
+$$
+
+$\alpha$ = `{python} f'{alpha:.2f}'`  \hfill(3 marks - 0 marks for wrong value)
+
+$\beta$ = `{python} f'{beta:.2f}'`  \hfill(3 marks - 0 marks for wrong value)
+
+$k$ = `{python} f'{k[0]:.5f}'` $mol/atm\ kg-cat\ s$ (using first experiment)
+\hfill (2 marks - 0 marks for wrong value)
+
+$k$ = `{python} f'{k_avg:.5f}'` $mol/atm\ kg-cat\ s$ (using average of all 10
+experiments)
+
+
+
+
 {{< pagebreak >}}
 
 5. What is the limitation of current experimental program? How will you
    overcome it? \hfill (2 marks)
+
+**Answer**:
+
+These experiments were carried out at constant temperature Therefore, the
+activation energy ($E$) and pre-exponential constant ($k_0$) in Arrhenius
+equation can not be determined from these experiments \hfill (1 mark)
+
+Experiments should be carried out at different temperatures. The data on $k$
+vs. $T$ can be used to estimate $E$ and $k_0$ \hfill (1 mark)
+
 
 {{< pagebreak >}}
 
