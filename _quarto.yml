@@ -113,6 +113,8 @@ website:
             text: Collection and analysis of rate data
           - file: ./content/workshops/06-multiple-reactions/index.qmd
             text: Multiple reactions
+          - file: ./content/workshops/07-non-isothermal-reactor-design/index.qmd
+            text: Non-isothermal reactor design
       #
       - section: "Labs"
         id: labs

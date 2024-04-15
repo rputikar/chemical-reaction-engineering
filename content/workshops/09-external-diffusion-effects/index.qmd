@@ -10,10 +10,11 @@ format:
       output-ext: "pdf"
 ---
 
-::: {.callout-tip}
-## Solutions
-
-Solutions to these problems are uploaded at [Workshop 9 solutions](./solutions.qmd)
-
-:::
-
+<!-- ::: {.content-visible when-format="html"} -->
+<!-- ::: {.callout-tip} -->
+<!-- ## Solutions -->
+<!---->
+<!-- Solutions to these problems are uploaded at [Workshop 9 solutions](./solutions.qmd) -->
+<!---->
+<!-- ::: -->
+<!-- ::: -->
