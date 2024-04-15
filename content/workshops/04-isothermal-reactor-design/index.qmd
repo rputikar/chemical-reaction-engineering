@@ -10,6 +10,9 @@ format:
       output-ext: "pdf"
 ---
 
+::: {.content-visible when-format="html"}
+
+
 ::: {.callout-tip}
 ## Solutions
 
@@ -17,6 +20,7 @@ Solutions to these problems are uploaded at [Workshop 4 solutions](./solutions.q
 
 :::
 
+:::
 
 Try following problems from Fogler 5e [@fogler2016].
 

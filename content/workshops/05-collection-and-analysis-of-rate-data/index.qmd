@@ -10,10 +10,15 @@ format:
       output-ext: "pdf"
 ---
 
+::: {.content-visible when-format="html"}
+
+
 ::: {.callout-tip}
 ## Solutions
 
 Solutions to these problems are uploaded at [Workshop 5 solutions](./solutions.qmd)
+
+:::
 
 :::
 

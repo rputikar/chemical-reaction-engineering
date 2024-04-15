@@ -1,7 +1,7 @@
 ---
 title: "In class activity: Non-isothermal reactor design"
 date: 2024-04-01
-last-modified: 2024-04-09
+last-modified: 2024-04-11
 format: 
    html: default
    pdf:

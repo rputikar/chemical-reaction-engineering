@@ -72,7 +72,11 @@ function from `numpy`
 import numpy as np
 
 p1_expt_file = './workshop-02-problem-1-data.csv'
-p1_expt_data = np.genfromtxt(p1_expt_file, delimiter=',', dtype=[('x', float), ('fa0_by_ra', float)], skip_header=1)
+p1_expt_data = np.genfromtxt(p1_expt_file, 
+                             delimiter=',', 
+                             dtype=[('x', float), 
+                                    ('fa0_by_ra', float)], 
+                             skip_header=1)
 ```
 
 To interpolate the data, use
@@ -82,7 +86,8 @@ function from [`scipy.interpolate`](https://docs.scipy.org/doc/scipy/reference/i
 ```python
 import scipy.interpolate as interpolate
 
-p1_interp = interpolate.CubicSpline(p1_expt_data['x'], p1_expt_data_data['fa0_by_ra'])
+p1_interp = interpolate.CubicSpline(p1_expt_data['x'], 
+                                    p1_expt_data_data['fa0_by_ra'])
 ```
 
 Data plotting using [`matplotlib.pyplot`](https://matplotlib.org/stable/api/pyplot_summary.html)
@@ -92,7 +97,10 @@ import matplotlib.pyplot as plt
 
 fig,ax = plt.subplots()
 
-ax.scatter(p1_expt_data['x'], p1_expt_data['fa0_by_ra'], marker='s', color='red')
+ax.scatter(p1_expt_data['x'], 
+           p1_expt_data['fa0_by_ra'], 
+           marker='s', 
+           color='red')
 
 ax.set_xlabel('Conversion X')
 ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
@@ -135,14 +143,28 @@ ax.fill_between(x_fill, y_fill, color='skyblue', alpha=0.4)
 p1_expt_file = './workshop-02-problem-1-data.csv'
 p1_fit_file = './workshop-02-problem-1-fit.csv'
 
-p1_expt_data = np.genfromtxt(p1_expt_file, delimiter=',', dtype=[('x', float), ('y', float)], skip_header=1)
-p1_fit_data = np.genfromtxt(p1_fit_file, delimiter=',', dtype=[('x', float), ('y', float)], skip_header=1)
+p1_expt_data = np.genfromtxt(p1_expt_file, 
+                             delimiter=',', 
+                             dtype=[('x', float), 
+                                    ('y', float)], 
+                             skip_header=1)
+
+p1_fit_data = np.genfromtxt(p1_fit_file, 
+                            delimiter=',', 
+                            dtype=[('x', float), 
+                                   ('y', float)], 
+                            skip_header=1)
 
 # Interpolate using cubic spline 
 p1_interp = interpolate.CubicSpline(p1_fit_data['x'], p1_fit_data['y'])
 
 # Function to calculate the conversion in a CSTR for given volume
-def CSTR_Volume_Coordinates(curve_interp, target_volume, x_start=0, x_end=1, steps=1000, *args): 
+def CSTR_Volume_Coordinates(curve_interp, 
+                            target_volume, 
+                            x_start=0, 
+                            x_end=1, 
+                            steps=1000, 
+                            *args): 
 
    for x in np.linspace(x_start, x_end, steps):
 
@@ -160,7 +182,12 @@ def CSTR_Volume_Coordinates(curve_interp, target_volume, x_start=0, x_end=1, ste
    return None, None
 
 # Function to calculate the conversion in a PFR for a given volume
-def PFR_Volume_Coordinates(curve_interp, target_volume, x_start=0, x_end=1, steps=1000, *args): 
+def PFR_Volume_Coordinates(curve_interp, 
+                           target_volume, 
+                           x_start=0, 
+                           x_end=1, 
+                           steps=1000, 
+                           *args): 
 
    for x in np.linspace(x_start, x_end, steps):
 

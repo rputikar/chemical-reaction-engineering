@@ -7,7 +7,7 @@ format:
 draft: true
 resources:
     - portfolio-4-raw-data.csv
-last-modified: 2024-04-11
+last-modified: 2024-04-15
 ---
 
 ## Student ID: 
@@ -136,12 +136,14 @@ exit.
 4. Determine the rate law and rate law parameters. Report your values of the
    orders of reaction with respect to $P_{\ce{C2H4}}$ and, $P_{\ce{O2}}$ and
    reaction rate constant k (in $mol/atm\ kg-cat\ s$). Skeleton python code is
-   provided at the end of the portfolio statement. \hfill (8 marks)
-
+   provided at the end of the portfolio statement. Report all relevant
+   statistical data (such as slope, intercept, and $R^2$ value for a linear fit;
+   error estimates (optimality) for least squares fit)\hfill (8 marks)
+   
 {{< pagebreak >}}
 
-5. What is the limitation of current experimental program? How will you
-   overcome it? \hfill (2 marks)
+5. What is the limitation of current experimental program in context of
+   deriving the rate law? How will you overcome it? \hfill (2 marks)
 
 {{< pagebreak >}}
 
@@ -230,6 +232,7 @@ cc2h4o = data["C_c2h4o"]*1e-4
 #
 # # Extract the results
 # a_fit, b_fit = result.x
+# optimality = res.optimality
 #
 
 # Print results

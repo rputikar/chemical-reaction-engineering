@@ -10,12 +10,15 @@ format:
       output-ext: "pdf"
 ---
 
+::: {.content-visible when-format="html"}
+
 ::: {.callout-note}
 
 Solutions to these problems are uploaded at [Workshop 1 solutions](./solutions.qmd)
 
 :::
 
+:::
 
 Try following problems from Fogler 5e[@fogler2016].
 
