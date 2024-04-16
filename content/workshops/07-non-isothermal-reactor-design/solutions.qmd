@@ -15,7 +15,39 @@ resources:
    - ./p12-21-solution.pdf
 ---
 
+```{python}
+import numpy as np
+{{< include ../../../assets/partials/_mplinclude.py >}}
 
+def nicer_round(num, direction='nearest'):
+    """ Automatically rounds numbers to 'nice' values based on logarithmic scales. """
+    # Determine the order of magnitude of the number
+    magnitude = np.floor(np.log10(abs(num))) if num != 0 else 0
+    power = 10 ** magnitude
+    fraction = num / power
+    
+    # Define increments for rounding based on the fraction of the number
+    if fraction < 1.5:
+        increment = 0.1
+    elif fraction < 3:
+        increment = 0.2
+    elif fraction < 7.5:
+        increment = 0.5
+    else:
+        increment = 1
+    
+    # Calculate the rounded fraction
+    if direction == 'up':
+        rounded_fraction = np.ceil(fraction / increment) * increment
+    elif direction == 'down':
+        rounded_fraction = np.floor(fraction / increment) * increment
+    else:  # Nearest
+        rounded_fraction = np.round(fraction / increment) * increment
+    
+    # Convert back to the original scale
+    return rounded_fraction * power
+
+```
 Try following problems from Fogler 5e
 P 11-5,
 P 11-6,
@@ -64,7 +96,7 @@ $$ \alpha = 0.0075/kg-cat \: \text{for particle diameter} \: D_2 $$
 Vary the parameters $\alpha$ and $P_0$ to learn the ranges of values in which they dramatically affect the conversion.
 
  
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 [Hand written solution](./p11-5-solution.pdf)
@@ -90,22 +122,435 @@ CP = np.array ([40.0, 25.0, 15.0]) # J/mol K
 E = 31.4 * 1e3 # J/mol
 k = lambda t: 0.133 * np.exp( (E/R) * (1/450.0 - 1/t) ) # dm3/ kgcat s
 
-def pfr (v, x, *args):
-  X, T = x
-  (fa0, ca0, T0, epsilon, delta_hr_tr, delta_cp, theta, UA, mc, cpc) = args
+def pfr (w, x, *args):
+  X = x[0]
+  (ca0, fa0, T0, epsilon, delta_hr_tr, delta_cp, theta) = args
 
+  # Calculate T using energy balance
+  T  = T0 + X * (-delta_hr_tr)/( np.sum(theta * CP) + X * delta_cp) 
   ca = ca0 * (( 1 - X ) / ( 1 + epsilon * X )) * (T0/T)
+
   rate = k(T) * ca # -r_A
-  delta_h = delta_hr_tr + delta_cp * (T - TR)
+  dxdw = rate/fa0
 
-  dxdv = rate/fa0
-  dtdv = (UA * ( Ta - T ) + (-rate * delta_h))/( fa0 * ( np.sum(theta * CP) + X * delta_cp) )
-  dtadv = UA * ( T - Ta )/ (mc * cpc)
-
-  return [dxdv, dtdv, dtadv]
+  return [dxdw]
 
 # Data
+nu = np.array ([-1.0, 1.0, 1.0]) # stoichiometric coefficients
 
+V_0 = 20 # dm3/s
+P0 = 10 # atm
+T0 = 450 # K
+
+fa0 = P0 * V_0/ (R * T0)
+ca0 = fa0/V_0
+
+# inlet mole fraction
+y0 = np.array ([1.0, 0.0, 0.0])
+theta = np.array([1.0, 0.0, 0.0])
+
+# Heat of reaction at 298K
+delta_hr_tr = np.sum(HF * nu)
+delta_cp = np.sum(CP * nu)
+
+ya0 = y0[0]
+epsilon = ya0 * np.sum(nu)
+
+
+args = (ca0, fa0, T0, epsilon, delta_hr_tr, delta_cp, theta)
+
+# initial condition
+initial_conditions = np.array([0])
+w_final = 50 # kg
+
+sol = solve_ivp(pfr, 
+                [0, w_final], 
+                initial_conditions, 
+                args=args, 
+                dense_output=True)
+
+w = np.linspace(0,w_final, 1000)
+x = sol.sol(w)[0]
+T  = T0 + x * (-delta_hr_tr)/( np.sum(theta * CP) + x * delta_cp)
+
+```  
+
+-----------------------------------------------------------------------
+Parameter                           Value
+----------------------------------- -----------------------------------
+$T_R$                               `{python} f'{TR:.2f}'` K
+
+$P_0$                               `{python} f'{P0:.2f}'` bar
+
+$\Delta H^\circ_{Rx} (T_R)$         `{python} f'{delta_hr_tr:.2f}'`
+                                    $J/mol$
+
+$\Delta C_P$                        `{python} f'{delta_cp:.2f}'`
+                                    $J/mol\ K$
+
+$\epsilon$                          `{python} f'{epsilon:.2f}'` 
+
+$C_{A0}$                            `{python} f'{ca0:.3e}'`  $mol/dm^3$
+
+$F_{A0}$                            `{python} f'{fa0:.3f}'`  mol/s
+-----------------------------------------------------------------------
+
+Energy balance: 
+
+T = `{python} f'{T0:.2f}'` + `{python} f'{(-delta_hr_tr)/( np.sum(theta * CP)):.2f}'` X
+
+Catalyst weight required to achieve 80% conversion: 
+`{python} f'{w[x>0.8][0]:.2f}'` kg
+
+Temperature at 80% conversion: 
+`{python} f'{T[x>0.8][0]:.2f}'` K
+
+Exit (W = `{python} f'{w[-1]:.2f}'` kg) conversion: 
+`{python} f'{x[-1]:.2f}'`
+
+Exit (W = `{python} f'{w[-1]:.2f}'` kg) temperature: 
+`{python} f'{T[-1]:.2f}'` K
+
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p11-5-conv-vs-weight
+#| fig-cap: Conversion
+
+plt.plot(w,x, label="Conversion")
+
+plt.xlim(0,50)
+plt.ylim(0,1)
+plt.grid()
+plt.legend() 
+
+plt.xlabel('Catalyst weight ($kg$)')
+plt.ylabel('Conversion')
+
+plt.show()
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p11-5-temp-vs-weight
+#| fig-cap: Outlet temperature
+
+plt.plot(w,T, label='Temperature')
+
+plt.xlim(0,50)
+
+
+head_margin = (np.max(T) - np.min(T)) * 0.05
+ylim_lower = np.min(T)
+ylim_upper = nicer_round( np.max(T) + head_margin, 'up' )
+plt.ylim(ylim_lower, ylim_upper)
+
+plt.grid()
+plt.legend() 
+
+plt.xlabel('Catalyst weight ($kg$)')
+plt.ylabel('Temperature (K)')
+
+plt.show()
+```
+
+**Effect of temperature**
+
+```{python}
+#| echo: true
+#| warning: false
+T0_range = np.arange(400, 501, 1)
+X_final = np.zeros(len(T0_range))
+T_final =  np.zeros(len(T0_range))
+W_p8 =  np.zeros(len(T0_range))
+
+for i in range(len(T0_range)):
+
+  T0 = T0_range[i]
+  args = (ca0, fa0, T0, epsilon, delta_hr_tr, delta_cp, theta)
+
+  # initial condition
+  initial_conditions = np.array([0])
+  w_final = 50 # kg
+
+  sol = solve_ivp(pfr, 
+                  [0, w_final], 
+                 initial_conditions, 
+                 args=args, 
+                 dense_output=True)
+
+  w = np.linspace(0,w_final, 1000)
+  x = sol.sol(w)[0]
+  T  = T0 + x * (-delta_hr_tr)/( np.sum(theta * CP) + x * delta_cp)
+
+  # add values to array for reporting
+  X_final[i] = x[-1]
+  T_final[i] = T[-1]
+
+  # see if you reach 80% conversion
+  if x[-1] > 0.8:
+    W_p8[i] = w[x>0.8][0]
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p11-5-conv-vs-t0
+#| fig-cap: Effect of inlet temperature on conversion
+
+plt.plot(T0_range,X_final, label='Conversion')
+
+plt.xlim(T0_range[0],T0_range[-1])
+plt.ylim(0,1)
+plt.grid()
+plt.legend() 
+
+plt.xlabel('Inlet temperature (K)')
+plt.ylabel('Conversion')
+
+plt.show()
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p11-5-t-vs-t0
+#| fig-cap: Effect of inlet temperature on outlet temperature
+
+plt.plot(T0_range,T_final, label='Outlet temperature')
+
+plt.xlim(T0_range[0],T0_range[-1])
+
+head_margin = (np.max(T_final) - np.min(T_final)) * 0.05
+ylim_lower = nicer_round(np.min(T_final) - head_margin, 'down')
+ylim_upper = nicer_round( np.max(T_final) + head_margin, 'up' )
+print (np.max(T_final) + head_margin)
+plt.ylim(ylim_lower, ylim_upper)
+
+plt.grid()
+plt.legend() 
+
+plt.xlabel('Inlet temperature (K)')
+plt.ylabel('Temperature (K)')
+
+plt.show()
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p11-5-w-vs-t0
+#| fig-cap: Inlet temperature required to achieve 80% conversion  
+
+plt.plot(T0_range[W_p8 > 0], W_p8[W_p8 > 0], label='Catalyst weight (kg)')
+
+plt.xlim(T0_range[0],T0_range[-1])
+plt.ylim(np.min(W_p8), np.max(W_p8))
+plt.legend() 
+
+plt.xlabel('Inlet temperature (K)')
+plt.ylabel('Catalyst weight (kg)')
+
+plt.fill_between(T0_range, 0, 1, 
+                 where=W_p8==0, 
+                 color='gray', 
+                 alpha=0.3, 
+                 transform=plt.gca().get_xaxis_transform())
+
+x_pos = np.min(T0_range) + 0.5 * (T0_range[W_p8 > 0][0] - np.min(T0_range))
+y_pos = np.min(W_p8) + 0.5 * (np.max(W_p8) - np.min(W_p8))
+plt.text(x_pos, y_pos, 
+         'Conversion < 0.8', 
+         horizontalalignment='center', 
+         verticalalignment='center', 
+         color='black', 
+         fontsize=10)
+
+plt.show()
+```
+Minimum inlet temperature required to achieve 80% conversion: 
+`{python} f'{T0_range[W_p8 > 0][0]:.0f}'` K
+
+**Heat that must be removed along the reactor to maintain isothermal operation**:
+
+```{python}
+#| echo: true
+#| warning: false
+
+T0 = 450
+args = (ca0, fa0, T0, epsilon, delta_hr_tr, delta_cp, theta)
+
+# initial condition
+initial_conditions = np.array([0])
+w_final = 50 # kg
+
+sol = solve_ivp(pfr, 
+                [0, w_final], 
+                initial_conditions, 
+                args=args, 
+                dense_output=True)
+
+w = np.linspace(0,w_final, 1000)
+x = sol.sol(w)[0]
+T  = T0 + x * (-delta_hr_tr)/( np.sum(theta * CP) + x * delta_cp)
+delta_h = delta_hr_tr + delta_cp * (T - TR)
+ca = ca0 * (( 1 - x ) / ( 1 + epsilon * x )) * (T0/T)
+rate = k(T) * ca # -r_A
+heat_removed = -rate*delta_h
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p11-5-heat-removed
+#| fig-cap: Heat that must be removed along the reactor to maintain isothermal operation
+
+plt.plot(w, heat_removed, label='Heat removed')
+
+plt.xlim(np.min(w), np.max(w))
+
+head_margin = (np.max(heat_removed) - np.min(heat_removed)) * 0.05
+ylim_upper = nicer_round( np.max(heat_removed) + head_margin, 'up' )
+plt.ylim(np.min(heat_removed), ylim_upper)
+plt.legend() 
+
+plt.xlabel('Catalyst weight (kg)')
+plt.ylabel('Heat removed (J/s)')
+
+plt.show()
+```
+**Pressure drop**:
+
+```{python}
+#| echo: true
+#| warning: false
+
+
+def pfr_with_pressure_drop (w, x, *args):
+  X,p = x
+  (ca0, fa0, T0, epsilon, delta_hr_tr, delta_cp, theta, alpha) = args
+
+  # Calculate T using energy balance
+  T  = T0 + X * (-delta_hr_tr)/( np.sum(theta * CP) + X * delta_cp) 
+  ca = ca0 * p * (( 1 - X )  / ( 1 + epsilon * X )) * (T0/T)
+
+  rate = k(T) * ca # -r_A
+  dxdw = rate/fa0
+  dpdw = -(alpha/2*p) * (T/T0) * (1 + epsilon * X)
+
+  return [dxdw, dpdw]
+
+```
+```{python}
+#| echo: true
+#| warning: false
+T0 = 450
+
+# initial condition
+initial_conditions = np.array([0.0, 1.0])
+w_final = 50 # kg
+
+alpha1 = 0.0075 # 1/kg
+args = (ca0, fa0, T0, epsilon, delta_hr_tr, delta_cp, theta, alpha1)
+
+sol1 = solve_ivp(pfr_with_pressure_drop, 
+                [0, w_final], 
+                initial_conditions, 
+                args=args, 
+                dense_output=True)
+
+w = np.linspace(0,w_final, 1000)
+x1 = sol1.sol(w)[0]
+T1 = T0 + x1 * (-delta_hr_tr)/( np.sum(theta * CP) + x1 * delta_cp)
+p1 = sol1.sol(w)[1]
+
+alpha2 = 0.019 # 1/kg
+args = (ca0, fa0, T0, epsilon, delta_hr_tr, delta_cp, theta, alpha2)
+
+sol2 = solve_ivp(pfr_with_pressure_drop, 
+                [0, w_final], 
+                initial_conditions, 
+                args=args, 
+                dense_output=True)
+
+w = np.linspace(0,w_final, 1000)
+x2 = sol2.sol(w)[0]
+T2 = T0 + x2 * (-delta_hr_tr)/( np.sum(theta * CP) + x2 * delta_cp)
+p2 = sol2.sol(w)[1]
+
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p11-5-conversion-with-pressure-drop
+#| fig-cap: Conversion considering pressure drop
+
+plt.plot(w,x1, label=f'$\\alpha$ = {alpha1}')
+plt.plot(w,x2, label=f'$\\alpha$ = {alpha2}')
+
+plt.xlim(0,50)
+plt.ylim(0,1)
+plt.grid()
+plt.legend() 
+
+plt.xlabel('Catalyst weight ($kg$)')
+plt.ylabel('Conversion')
+
+plt.show()
+
+``` 
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p11-5-temp-vs-weight-dp
+#| fig-cap: Outlet temperature considering pressure drop
+
+plt.plot(w,T1, label=f'$\\alpha$ = {alpha1}')
+plt.plot(w,T2, label=f'$\\alpha$ = {alpha2}')
+
+plt.xlim(0,50)
+
+min_t = np.min(np.concatenate((T1, T2)))
+max_t = np.max(np.concatenate((T1, T2)))
+
+head_margin = (max_t - min_t) * 0.05
+ylim_lower = nicer_round( min_t + head_margin, 'down' )
+ylim_upper = nicer_round( max_t + head_margin, 'up' )
+plt.ylim(ylim_lower, ylim_upper)
+
+plt.grid()
+plt.legend() 
+
+plt.xlabel('Catalyst weight ($kg$)')
+plt.ylabel('Temperature (K)')
+
+plt.show()
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p11-5-pressure-drop
+#| fig-cap: Pressure drop
+
+plt.plot(w,p1, label=f'$\\alpha$ = {alpha1}')
+plt.plot(w,p2, label=f'$\\alpha$ = {alpha2}')
+
+plt.xlim(0,50)
+plt.ylim(0,1)
+plt.grid()
+plt.legend() 
+
+plt.xlabel('Catalyst weight ($kg$)')
+plt.ylabel('p $\\left( \\frac{P}{P_0} \\right)$')
+
+plt.show()
 
 ``` 
 
@@ -156,11 +601,239 @@ Explain why there “is” or “is not” a maximum.
 (f) Plot the heat that must be removed along the reactor ( Q vs. V) to maintain isothermal operation for pure A fed and an exothermic reaction.
 
 
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
-
 [Hand written solution](./p11-6-solution.pdf)
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+from scipy.optimize import minimize
+
+k116 = lambda t: np.exp(34.34 - 34222/t)
+def pfr116 (V, x, *args):
+  X = x[0]
+  (ca0, fa0, T0, epsilon, delta_hr_tr, sumCp) = args
+
+  # Calculate T using energy balance
+  T = (- delta_hr_tr * X + sumCp* T0)/(sumCp)
+  ca = ca0 * (( 1 - X ) / ( 1 + epsilon * X )) * (T0/T)
+
+  rate = k116(T) * ca # -r_A
+  dxdw = rate/fa0
+
+  return [dxdw]
+
+# data
+
+R = 0.082 # dm^3 atm / mol K
+# A -> B + C
+cpA = 170 #J/mol K
+cpB = 90 #J/mol K
+cpC = 80 #J/mol K
+cpI = 200 #J/mol K
+delta_hr_tr = 80000 # J/mol
+
+volume = 500 # dm^3
+fa0 = 10 # mol/min
+P0 = 2 # atm
+T0 = 1100 # K
+
+results = {}
+thetaIs = [0, 10, 100]
+
+for thetaI in thetaIs:
+  fi0 = fa0 * thetaI # mol/min
+  ft = fa0 + fi0
+
+  ca0 = P0/(R * T0) 
+  ci0 = P0/(R * T0)
+
+  ca01 = (ca0 + ci0)/(thetaI + 1)
+  epsilon = 1/(1 + thetaI)
+
+  sumCp = cpA + cpI * thetaI
+
+  args = (ca01, fa0, T0, epsilon, delta_hr_tr, sumCp)
+  initial_conditions = np.array([0.0])
+
+  sol116 = solve_ivp(pfr116, 
+                 [0, volume], 
+                 initial_conditions, 
+                 args=args, 
+                 dense_output=True)
+
+  v = np.linspace(0,volume, 1000)
+  x = sol116.sol(v)[0]
+  T = (- delta_hr_tr * x + sumCp* T0)/(sumCp)
+
+  results[thetaI] = {'v': v, 'x': x, 'T': T}
+
+```                                          
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p11-6-conversion
+#| fig-cap: Effect of $\Theta_I$ on conversion
+
+for thetaI, data in results.items():
+  plt.plot(data['v'],
+           data['x'], 
+           label=f'$\\Theta_I$ = {thetaI}')
+
+plt.xlim(0,volume)
+plt.ylim(0,1)
+plt.grid()
+plt.legend() 
+
+plt.xlabel('Volume ($dm^3$)')
+plt.ylabel('Conversion, $X$')
+
+plt.show()
+
+```
+
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p11-6-temperature
+#| fig-cap: Effect of $\Theta_I$ on temperature
+
+min_t = []
+max_t = []
+
+for thetaI, data in results.items():
+  v = data['v']
+  T = data['T']
+  plt.plot(v, T, 
+           label=f'$\\Theta_I$ = {thetaI}')
+
+  m = np.min(T)
+  min_t.append(m)
+
+  m = np.max(T)
+  max_t.append(m)
+
+plt.xlim(0,volume)
+
+min_temp = np.min(min_t)
+max_temp = np.max(max_t)
+head_margin = (max_temp - min_temp) * 0.05
+ylim_lower = nicer_round( min_temp + head_margin, 'down' )
+ylim_upper = nicer_round( max_temp + head_margin, 'up' )
+
+plt.ylim(ylim_lower,ylim_upper)
+
+plt.grid()
+plt.legend() 
+
+plt.xlabel('Volume ($dm^3$)')
+plt.ylabel('Temperature (K)')
+
+plt.show()
+
+```
+
+**Optimal $\Theta_I$**:
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p11-6-optimal_theta
+#| fig-cap: Optimal $\Theta_I$
+
+thetaIs = np.arange(0,15 + 0.5,0.5)
+conv = []
+for thetaI in thetaIs:
+  fi0 = fa0 * thetaI # mol/min
+  ft = fa0 + fi0
+
+  ca0 = P0/(R * T0) 
+  ci0 = P0/(R * T0)
+
+  ca01 = (ca0 + ci0)/(thetaI + 1)
+  epsilon = 1/(1 + thetaI)
+
+  sumCp = cpA + cpI * thetaI
+
+  args = (ca01, fa0, T0, epsilon, delta_hr_tr, sumCp)
+  initial_conditions = np.array([0.0])
+
+  sol116 = solve_ivp(pfr116, 
+                 [0, volume], 
+                 initial_conditions, 
+                 args=args, 
+                 dense_output=True)
+
+  v = np.linspace(0,volume, 1000)
+  x = sol116.sol(v)[0]
+  T = (- delta_hr_tr * x + sumCp* T0)/(sumCp)
+
+  conv.append(x[-1])
+
+plt.plot(thetaIs,conv)
+
+plt.xlim(np.min(thetaIs), np.max(thetaIs))
+
+min_x = np.min(conv)
+max_x = np.max(conv)
+head_margin = (max_x - min_x) * 0.05
+ylim_lower = nicer_round( min_x + head_margin, 'down' )
+ylim_upper = nicer_round( max_x + head_margin, 'up' )
+
+plt.grid()
+
+plt.xlabel('$\\Theta_I$')
+plt.ylabel('Conversion, $X$')
+
+plt.show()
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+
+def objective(thetaI):
+    ca0 = P0 / (R * T0)
+    ci0 = P0 / (R * T0)
+    ca01 = (ca0 + ci0) / (thetaI + 1)
+    epsilon = 1 / (1 + thetaI)
+    sumCp = cpA + cpI * thetaI
+    args = (ca01, fa0, T0, epsilon, delta_hr_tr, sumCp)
+    initial_conditions = np.array([0.0])
+
+    sol = solve_ivp(pfr116, [0, volume], initial_conditions, args=args, dense_output=True)
+    final_x = sol.y[0, -1]  # Get the final conversion
+    return -final_x  # Minimize the negative of the final conversion to maximize it
+
+# Constants
+R = 0.082  # dm^3 atm / mol K
+cpA = 170  # J/mol K
+cpI = 200  # J/mol K
+delta_hr_tr = 80000  # J/mol
+volume = 500  # dm^3
+fa0 = 10  # mol/min
+P0 = 2  # atm
+T0 = 1100  # K
+
+# Optimization setup
+thetaI_bounds = (0, 100)  # Define bounds for thetaI as a tuple (min, max)
+result = minimize(objective, x0=[10], bounds=[thetaI_bounds], method='L-BFGS-B')
+
+# Display results
+optimal_thetaI = result.x[0]
+```
+
+The optimal $\Theta_I$ is `{python} f'{optimal_thetaI:.3f}'`. 
+Maximum conversion = `{python} f'{-result.fun:.3f}'`
 
 :::
 
@@ -187,7 +860,7 @@ Heat of reaction, $\Delta H_{Rx}^{\circ} = + 20000$ Btu/lb-mol of A (independent
 
 ![](../../../assets/images/fig_p12.6.png){width=60%}
 
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 
@@ -232,7 +905,7 @@ $k_{2D} = 0.4 (dm^3/mol \cdot s) \exp 5000 K \left[ \frac{1}{500} - \frac{1}{T}\
 (a) What is the activation energy for Reaction (1)?
 
 
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 

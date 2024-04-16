@@ -4,7 +4,6 @@ format:
   pdf:
     output-file: "portfolio-04-analysis-of-rate-data"
     output-ext: "pdf"
-draft: true
 resources:
     - portfolio-4-raw-data.csv
 last-modified: 2024-04-15
