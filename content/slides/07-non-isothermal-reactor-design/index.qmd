@@ -1,7 +1,7 @@
 ---
 title: "Non-isothermal reactor design"
 format: revealjs
-last-modified: 2024-04-13
+last-modified: 2024-04-18
 ---
 
 ```{python}
@@ -974,13 +974,178 @@ $$
 
 ## CSTR with heat effects
 
+:::{.incremental .extrapad}
 
-## Multiple steady states
+* Steady state energy balance
 
+  $$
+  \dot{Q} - \dot{W}_s - F_{A0}\sum \theta_i C_{P,i} (T - T_{i0}) - 
+  [\Delta H^{\circ}_{Rx} (T_{Rx}) + \Delta C_{P} (T - T_{Rx})] F_{A0}X = 0
+  $$
 
-## Nonisothermal multiple chemical reactions
+* Shaft work, i.e., the work done by the stirrer or mixer in the CSTR on the
+  reacting fluid inside the CSTR. 
 
-## Safety
+  As $\dot W_s$: work done by the system on the surroundings is positive, the
+  CSTR stirrer work will be a negative number.
 
-## References
+* As $F_{A0} X = -r_A V$
 
+  :::{.box .center}
+  $$
+    \dot{Q} - \dot{W}_s - F_{A0}\sum{\theta_i C_{P,i}(T - T_{i0})} + 
+    (r_A V)(\Delta H_{Rx}) = 0 
+  $$
+  :::
+
+:::
+
+:::{.callout-note appearance='simple' .bottom .fragment}
+
+A CSTR's uniform temperature doesn't ensure isothermal conditions; for that,
+the incoming feed must match the reactor's internal temperature.
+
+Except for processes with highly viscous fluids, the work done by the mixer is
+typically small enough to ignore.
+
+:::
+
+## The $\dot Q$ Term in the CSTR
+
+::::{.columns}
+
+:::{.column width=48%}
+
+![](../../../assets/images/cstr-heat-balance.png){width=90%}
+
+* Rate of energy in by flow: 
+
+  $$ \dot m_c C_{P,c} (T_{a1} - T_R) $$
+
+* Rate of energy out by flow:
+
+  $$ \dot m_c C_{P,c} (T_{a2} - T_R) $$
+
+* Rate of heat transfer from exchanger to reactor:
+
+  $$
+  \frac{UA(T_{a1} - T_{a2})}{\ln{\left[\frac{(T - T_{a1})}
+  {(T - T_{a2})}\right]}}
+  $$
+
+:::
+
+:::{.column width=2%}
+:::
+:::{.column width=50%}
+
+* An energy balance on the heat-exchanger fluid entering and leaving the
+  exchanger 
+
+:::{.smaller .extrapad}
+$$
+\begin{aligned}
+\text{Rate of}
+&  & \text{Rate of}
+&  & \text{Rate of}
+&  & 
+\\
+\text{energy}
+&\;\; - & \text{energy} 
+&\;\; - & \text{heat transfer} 
+&\;\; = & \text{0} 
+\\
+\text{in}
+&  & \text{out} 
+&  & \text{from exchanger}
+&  & 
+\\
+\text{by flow}
+&  & \text{by flow} 
+&  & \text{to reactor}
+&  & 
+\end{aligned}
+$$
+
+$$
+\dot{Q} = \dot{m}_c C_{P,c} (T_{a1} - T_{a2}) = 
+  \frac{UA (T_{a1} - T_{a2})}
+  {\ln\left(\frac{T - T_{a1}}{T - T_{a2}}\right)}
+$$
+
+$$
+T_{a2} = T - (T - T_{a1}) \exp \left( \frac{-UA}{\dot{m}_c C_{P,c}} \right)
+$$
+
+:::{.highlight}
+$$
+\dot{Q} = \dot{m}_c C_{P,c} \left( T_{a1} - T \right) 
+  \left[ 1 - \exp \left( \frac{-UA}{\dot{m}_c C_{P,c}} \right) \right]
+$$
+:::
+
+:::
+
+* For very large $\dot m_c$
+
+  :::{.box}
+  $$
+  \dot{Q} = U A (T_a - T)
+  $$
+  :::
+
+:::
+::::
+
+## Conversion in a non-adiabatic CSTR
+
+* Ignoring $\dot W_s$
+
+  $$
+  \frac{UA}{F_{A0}} (T_a - T) - \sum \theta_i C_{P,i} (T - T_0) - \Delta H^{\circ}_{Rx} X = 0
+  $$
+
+* Solving for $X$
+
+  :::{.box .center}
+  $$
+  X = \frac{\frac{UA}{F_{A0}} (T - T_a) + 
+                 \sum \theta_i C_{P,i} (T - T_0)}
+          {-\Delta H^{\circ}_{Rx} (T_R)}
+  $${#eq-cstr-eb}
+  :::
+
+* Couple @eq-cstr-eb with the mole balance equation 
+  $V = \frac{F_{A0}X}{-r_A (X, T)}$
+  to design CSTR
+
+* Rearranging 
+
+:::{.highlight .center}
+$$
+X = \frac{C_{P,o} (1 + \kappa) (T - T_c)}{-\Delta H^{\circ}_{Rx}}
+\quad \text{and} \quad 
+T = T_c + \frac{(-\Delta H^{\circ}_{Rx})(X)}{C_{P,o}(1 + \kappa)}
+$$
+:::
+
+$$
+\text{Where} \quad 
+C_{P,o} = \sum \theta_i C_{P,i} 
+\quad \text{,} \quad 
+\kappa = \frac{UA}{F_{A0} C_{P,o}} 
+\quad \text{,and} \quad 
+T_c = \frac{\kappa T_a + T_0}{1 + \kappa}
+$$
+
+## Conversion in a non-adiabatic CSTR
+
+![](../../../assets/images/non-adiabatic-cstr-mb-eb.png){width=70%}
+
+<!-- ## Multiple steady states -->
+<!---->
+<!-- ## Nonisothermal multiple chemical reactions -->
+<!---->
+<!-- ## Safety -->
+<!---->
+<!-- ## References -->

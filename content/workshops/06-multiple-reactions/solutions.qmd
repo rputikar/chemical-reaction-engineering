@@ -2,7 +2,7 @@
 title: 
   "Solutions to workshop 06: Multiple reactions"
 date: 2024-03-24
-last-modified: 2024-04-11
+last-modified: 2024-04-16
 format: 
    html: default
    pdf:

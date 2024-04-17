@@ -2,7 +2,7 @@
 title: 
   "Workshop 05: Collection and analysis of rate data"
 date: 2024-03-24
-last-modified: 2024-04-02
+last-modified: 2024-04-16
 format: 
    html: default
    pdf:
