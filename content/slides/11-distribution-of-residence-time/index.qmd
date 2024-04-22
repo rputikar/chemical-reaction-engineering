@@ -4,14 +4,41 @@ format: revealjs
 last-modified: 2024-04-16
 ---
 
-```{python}
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-import pandas as pd
-import scipy.interpolate as interpolate
-import scipy.integrate as integrate
-import tabulate as tab
-from IPython.display import display, Markdown
-plt.style.use('../../../assets/templates/present.mpstyle')
-```
+
+## General Considerations
+
+## Residence Time Distribution (RTD) Function
+
+## Measurement of the RTD
+
+## Pulse Input Experiment
+
+## Step Tracer Experiment
+
+## Characteristics of the RTD
+
+## Integral Relationships
+
+## Mean Residence Time
+
+## Other Moments of the RTD
+
+## Normalized RTD Function,
+
+## Internal-Age Distribution,
+
+## RTD in Ideal Reactors
+
+## RTDs in Batch and Plug-Flow Reactors
+
+## Single-CSTR RTD
+
+## Laminar-Flow Reactor (LFR)
+
+## PFB'CSTR Series RTD
+
+## Diagnostics and Troubleshooting
+
+## General Comments
+
+## Simple Diagnostics and Troubleshooting Using the RTD for Ideal Reactors

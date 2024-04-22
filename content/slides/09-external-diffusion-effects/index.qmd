@@ -15,4 +15,19 @@ import tabulate as tab
 from IPython.display import display, Markdown
 plt.style.use('../../../assets/templates/present.mpstyle')
 ```
+## External mass transfer
+
+## Diffusion
+
+## Fick’s law
+
+## Binary diffusion
+
+## Diffusion through a stagnant film 
+
+## The mass transfer coefficient
+
+## Mass transfer–limited reactions in packed beds
+
+
 

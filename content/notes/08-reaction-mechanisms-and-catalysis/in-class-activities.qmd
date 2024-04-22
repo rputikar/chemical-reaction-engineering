@@ -3,7 +3,9 @@ title: "In class activity: Reaction mechanisms and catalysis"
 date: 2024-03-23
 last-modified: 2024-04-02
 format:
-  pdf
+  pdf:
+      output-file: "in-class-activity-reaction-mechanisms-and-catalysis"
+      output-ext: "pdf"
 ---
 
 ```{python}
@@ -11,4 +13,63 @@ import matplotlib.pyplot as plt
 from IPython.display import display, Markdown
 plt.style.use('../../../assets/templates/publish.mplstyle')
 ```
+
+## Gas phase decomposition of azomethane
+
+Consider the gas-phase decomposition of azomethane, AZO, to give ethane and
+nitrogen
+
+$$ \ce{(CH3)2N2 -> C2H6 + N2} $$
+
+Experimental observations show that the rate of formation of ethane is first
+order with respect to AZO at pressures greater than 1 atm (relatively high
+concentrations)
+
+$$ r_{\ce{C2H6}} \propto C_{AZO} $$
+
+and second order at pressures below 50 mmHg (low concentrations):
+
+$$ r_{\ce{C2H6}} \propto C_{AZO}^2 $$
+
+We could combine these two observations to postulate a rate law of the form
+
+$$ r_{\ce{C2H6}} =\frac{ k_1 C_{AZO}^2 } { 1 + k_2 C_{AZO} } $$
+
+find a mechanism that is consistent with the experimental observations
+
+
+## Decomposition of cumene to form benzene and propylene 
+
+Develop rate laws for catalytic decomposition of cumene to form benzene and
+propylene.
+
+$$
+\ce{ C6H5CH(CH3)2 -> C6H6 + C3H6  }
+$$
+
+## Rate law for catalytic reaction
+
+Find the reaction rate law of the reaction
+
+$$
+\ce{ SO2 + 1/2 O2 -> SO3 }
+$$
+
+## Surface reaction limiting reaction
+
+The reaction $\ce{ A + B <=> C + D }$$ is carried out over a solid catalyst,
+the reaction mechanism is believed to be
+
+$$
+\begin{gather*}
+\ce{A + S <=> A.S}
+\ce{B + S <=> B.S}
+\ce{A.S + B.S <=> C.S D.S}
+\ce{C.S <=> C + S}
+\ce{D.S <=> D + S}
+\end{gather*}
+$$
+
+We assume step 3 is the slowest step, derive the rate law for the reaction.
+
 
