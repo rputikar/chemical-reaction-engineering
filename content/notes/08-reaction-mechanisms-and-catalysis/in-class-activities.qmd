@@ -57,17 +57,17 @@ $$
 
 ## Surface reaction limiting reaction
 
-The reaction $\ce{ A + B <=> C + D }$$ is carried out over a solid catalyst,
+The reaction $\ce{ A + B <=> C + D }$ is carried out over a solid catalyst,
 the reaction mechanism is believed to be
 
 $$
-\begin{gather*}
-\ce{A + S <=> A.S}
-\ce{B + S <=> B.S}
-\ce{A.S + B.S <=> C.S D.S}
-\ce{C.S <=> C + S}
+\begin{gathered}
+\ce{A + S <=> A.S} \\
+\ce{B + S <=> B.S} \\
+\ce{A.S + B.S <=> C.S D.S} \\
+\ce{C.S <=> C + S} \\
 \ce{D.S <=> D + S}
-\end{gather*}
+\end{gathered}
 $$
 
 We assume step 3 is the slowest step, derive the rate law for the reaction.

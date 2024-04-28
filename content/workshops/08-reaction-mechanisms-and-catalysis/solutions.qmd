@@ -1,15 +1,20 @@
 ---
 title: 
-  "Solutions to workshop 08: Reaction mechanisms and catalysis"
-date: 2024-04-01
-last-modified: 2024-04-02
+  "Workshop 08: Reaction mechanisms and catalysis"
+date: 2024-03-24
+last-modified: 2024-04-16
 format: 
    html: default
    pdf:
-      output-file: "solutions-to-workshop-08-reaction-mechanisms-and-catalysis"
+      output-file: "workshop-08-reaction-mechanisms-and-catalysis"
       output-ext: "pdf"
+resources:
+    - "p9-3-solution.pdf"
+    - "p9-6-solution.pdf"
+    - "p10-3-solution.pdf"
+    - "p10-14-solution.pdf"
+    - "p10-19-solution.pdf"
 ---
-
 
 Try following problems from Fogler 5e (@fogler2016)
 
@@ -20,8 +25,7 @@ P 9-5,
 P 9-6,
 P 10-3,
 P 10-14,
-P 10-19,
-P 14-9
+P 10-19
 
 
 ## P 9-4
@@ -43,6 +47,15 @@ $\ce{ 2 CH3. ->[ k4 ] C2H6 }$
 $(-r_{CH_3CHO} = k C_{CH_3CHO}^{3/2})$
 
 (c) Sketch a reaction pathway diagram for this reaction.
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+
+[Hand written solution](./p9-4-solution.pdf)
+
+:::
+
 
 ## P 9-5
 
@@ -71,6 +84,15 @@ For each of the reactions in parts (a), (b), and (c), suggest a mechanism and ap
 Use the PSSH to show whether or not your mechanism is consistent with the rate law
 
     $$ r_{HBr} = \frac{k C_{H_2} C_{Br}^{3/2}}{C_{HBr} + k_2 C_{Br_2}} $$
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+
+[Hand written solution](./p9-5-solution.pdf)
+
+:::
+
 
 ## P 9-6
 
@@ -106,6 +128,15 @@ $\ce{ A. + RO2. ->[ k_{A2} ] inactive }$
 (c) How would your answer to part (a) change if the radicals $\ce{I.}$ were produced at a constant rate in the engine and then found their way into the oil?
 
 (d) Sketch a reaction pathway diagram for both high and low temperatures, with and without antioxidant.
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+
+[Hand written solution](./p9-6-solution.pdf)
+
+:::
+
 
 
 ## P 10-3
@@ -147,6 +178,16 @@ Derive a rate law assuming:
 
 (e) What generalization can you make by comparing the rate laws derived in parts (a) through (d)?
 
+::: {.callout-tip collapse="true"}
+## Solution
+
+
+[Hand written solution](./p10-3-solution.pdf)
+
+:::
+
+
+
 ## P 10-14
 
 Vanadium oxides are of interest for various sensor applications, owing to the sharp metal–insulator transitions they undergo as a function of temperature, pressure, or stress.
@@ -169,6 +210,14 @@ T = 200 $^{\circ}$C:
 
 In light of the material presented in this chapter, analyze the data and describe your results.
 Specify where additional data should be taken.
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+
+[Hand written solution](./p10-14-solution.pdf)
+
+:::
 
 
 ## P 10-19
@@ -208,40 +257,13 @@ What would the temperature–time trajectory look like for a CSTR? What if $E_T 
     with $k_d =0.2 atm^{-2} h^{-1}$.
     Redo parts (b) and (c) for these conditions.
 
-## P 14-9
+::: {.callout-tip collapse="true"}
+## Solution
 
-The irreversible gas-phase reaction
 
-$\ce{ A ->[ cat ] B}$
+[Hand written solution](./p10-19-solution.pdf)
 
-is carried out adiabatically over a packed bed of solid catalyst particles.
-The reaction is first order in the concentration of A on the catalyst surface
+:::
 
-$$-r_{As}' = k' C_{As} $$
-
-The feed consists of 50% (mole) A and 50% inerts, and enters the bed at a temperature of 300 K.
-The entering volumetric flow rate is 10 dm^3^/s (i.e., 10,000 cm^3^/s).
-The relationship between the Sherwood number and the Reynolds number is
-
-$$ Sh = 100 Re^{1/2}$$
-
-As a first approximation, one may neglect pressure drop.
-The entering concentration of A is 1.0 M.
-Calculate the catalyst weight necessary to achieve 60% conversion of A for
-
-(a) isothermal operation.
-
-(b) adiabatic operation.
-
-Additional information:
-
-- Kinematic viscosity: $\mu/\rho =  0.02 cm^2/s$
-- Particle diameter: $d_p = 0.1 cm$ 
-- Superficial velocity: $U =10 cm/s$
-- Catalyst surface area/mass of catalyst bed: $a= 60 cm^2/g-cat$ 
-- Diffusivity of A: $D_e =  10^{-2} cm^2/s$
-- Heat of reaction: $\Delta H_{Rx}^{\circ} = 10,000 cal/g mol A$ 
-- Heat capacities: $C_{pA} =  C_{pB} =  25 cal/g mol \cdot K, C_{pS}\, \text{(solvent)} =  75 cal/g mol \cdot K$
-- $k' (300 K) = 0.01 cm^3 /s \cdot g-cat \; \text{with}\; E = 4000 cal/mol$
 
 ## References

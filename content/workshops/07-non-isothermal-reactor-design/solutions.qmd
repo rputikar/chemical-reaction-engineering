@@ -244,7 +244,7 @@ plt.xlim(0,50)
 
 head_margin = (np.max(T) - np.min(T)) * 0.05
 ylim_lower = np.min(T)
-ylim_upper = nicer_round( np.max(T) + head_margin, 'up' )
+ylim_upper = np.max(T) + head_margin
 plt.ylim(ylim_lower, ylim_upper)
 
 plt.grid()
@@ -325,8 +325,8 @@ plt.plot(T0_range,T_final, label='Outlet temperature')
 plt.xlim(T0_range[0],T0_range[-1])
 
 head_margin = (np.max(T_final) - np.min(T_final)) * 0.05
-ylim_lower = nicer_round(np.min(T_final) - head_margin, 'down')
-ylim_upper = nicer_round( np.max(T_final) + head_margin, 'up' )
+ylim_lower = np.min(T_final) - head_margin
+ylim_upper = np.max(T_final) + head_margin
 print (np.max(T_final) + head_margin)
 plt.ylim(ylim_lower, ylim_upper)
 
@@ -413,7 +413,7 @@ plt.plot(w, heat_removed, label='Heat removed')
 plt.xlim(np.min(w), np.max(w))
 
 head_margin = (np.max(heat_removed) - np.min(heat_removed)) * 0.05
-ylim_upper = nicer_round( np.max(heat_removed) + head_margin, 'up' )
+ylim_upper = np.max(heat_removed) + head_margin
 plt.ylim(np.min(heat_removed), ylim_upper)
 plt.legend() 
 
@@ -520,8 +520,8 @@ min_t = np.min(np.concatenate((T1, T2)))
 max_t = np.max(np.concatenate((T1, T2)))
 
 head_margin = (max_t - min_t) * 0.05
-ylim_lower = nicer_round( min_t + head_margin, 'down' )
-ylim_upper = nicer_round( max_t + head_margin, 'up' )
+ylim_lower = min_t + head_margin
+ylim_upper = max_t + head_margin
 plt.ylim(ylim_lower, ylim_upper)
 
 plt.grid()
@@ -726,8 +726,8 @@ plt.xlim(0,volume)
 min_temp = np.min(min_t)
 max_temp = np.max(max_t)
 head_margin = (max_temp - min_temp) * 0.05
-ylim_lower = nicer_round( min_temp + head_margin, 'down' )
-ylim_upper = nicer_round( max_temp + head_margin, 'up' )
+ylim_lower = min_temp + head_margin
+ylim_upper = max_temp + head_margin
 
 plt.ylim(ylim_lower,ylim_upper)
 
@@ -785,8 +785,8 @@ plt.xlim(np.min(thetaIs), np.max(thetaIs))
 min_x = np.min(conv)
 max_x = np.max(conv)
 head_margin = (max_x - min_x) * 0.05
-ylim_lower = nicer_round( min_x + head_margin, 'down' )
-ylim_upper = nicer_round( max_x + head_margin, 'up' )
+ylim_lower = min_x + head_margin
+ylim_upper = max_x + head_margin
 
 plt.grid()
 

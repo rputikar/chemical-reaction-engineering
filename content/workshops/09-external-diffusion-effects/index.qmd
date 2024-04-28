@@ -18,3 +18,41 @@ format:
 <!---->
 <!-- ::: -->
 <!-- ::: -->
+
+## P 14-9
+
+The irreversible gas-phase reaction
+
+$\ce{ A ->[ cat ] B}$
+
+is carried out adiabatically over a packed bed of solid catalyst particles.
+The reaction is first order in the concentration of A on the catalyst surface
+
+$$-r_{As}' = k' C_{As} $$
+
+The feed consists of 50% (mole) A and 50% inerts, and enters the bed at a temperature of 300 K.
+The entering volumetric flow rate is 10 dm^3^/s (i.e., 10,000 cm^3^/s).
+The relationship between the Sherwood number and the Reynolds number is
+
+$$ Sh = 100 Re^{1/2}$$
+
+As a first approximation, one may neglect pressure drop.
+The entering concentration of A is 1.0 M.
+Calculate the catalyst weight necessary to achieve 60% conversion of A for
+
+(a) isothermal operation.
+
+(b) adiabatic operation.
+
+Additional information:
+
+- Kinematic viscosity: $\mu/\rho =  0.02 cm^2/s$
+- Particle diameter: $d_p = 0.1 cm$ 
+- Superficial velocity: $U =10 cm/s$
+- Catalyst surface area/mass of catalyst bed: $a= 60 cm^2/g-cat$ 
+- Diffusivity of A: $D_e =  10^{-2} cm^2/s$
+- Heat of reaction: $\Delta H_{Rx}^{\circ} = 10,000 cal/g mol A$ 
+- Heat capacities: $C_{pA} =  C_{pB} =  25 cal/g mol \cdot K, C_{pS}\, \text{(solvent)} =  75 cal/g mol \cdot K$
+- $k' (300 K) = 0.01 cm^3 /s \cdot g-cat \; \text{with}\; E = 4000 cal/mol$
+
+

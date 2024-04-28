@@ -96,6 +96,7 @@ website:
           - file: ./content/lectures/05-collection-and-analysis-of-rate-data/index.qmd
           - file: ./content/lectures/06-multiple-reactions/index.qmd
           - file: ./content/lectures/07-non-isothermal-reactor-design/index.qmd
+          - file: ./content/lectures/08-reaction-mechanisms-and-catalysis/index.qmd
           #
       - section: "Workshops"
         id: workshops
@@ -115,6 +116,8 @@ website:
             text: Multiple reactions
           - file: ./content/workshops/07-non-isothermal-reactor-design/index.qmd
             text: Non-isothermal reactor design
+          - file: ./content/workshops/08-reaction-mechanisms-and-catalysis/index.qmd
+            text: Reaction mechanisms and catalysis
       #
       - section: "Labs"
         id: labs

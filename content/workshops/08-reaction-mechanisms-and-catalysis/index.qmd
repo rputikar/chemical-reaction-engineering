@@ -1,23 +1,14 @@
 ---
 title: 
-  "Workshop 08: Reaction mechanisms and catalysis"
-date: 2024-03-24
-last-modified: 2024-04-16
+  "Solutions to workshop 08: Reaction mechanisms and catalysis"
+date: 2024-04-01
+last-modified: 2024-04-02
 format: 
    html: default
    pdf:
-      output-file: "workshop-08-reaction-mechanisms-and-catalysis"
+      output-file: "solutions-to-workshop-08-reaction-mechanisms-and-catalysis"
       output-ext: "pdf"
 ---
-
-<!-- ::: {.content-visible when-format="html"} -->
-<!-- ::: {.callout-tip} -->
-<!-- ## Solutions -->
-<!---->
-<!-- Solutions to these problems are uploaded at [Workshop 8 solutions](./solutions.qmd) -->
-<!---->
-<!-- ::: -->
-<!-- ::: -->
 
 Try following problems from Fogler 5e (@fogler2016)
 
@@ -28,8 +19,16 @@ P 9-5,
 P 9-6,
 P 10-3,
 P 10-14,
-P 10-19,
-P 14-9
+P 10-19
+
+::: {.content-visible when-format="html"}
+::: {.callout-tip}
+## Solutions
+
+Solutions to these problems are uploaded at [Workshop 8 solutions](./solutions.qmd)
+
+:::
+:::
 
 
 ## P 9-4
@@ -216,40 +215,3 @@ What would the temperature–time trajectory look like for a CSTR? What if $E_T 
     with $k_d =0.2 atm^{-2} h^{-1}$.
     Redo parts (b) and (c) for these conditions.
 
-## P 14-9
-
-The irreversible gas-phase reaction
-
-$\ce{ A ->[ cat ] B}$
-
-is carried out adiabatically over a packed bed of solid catalyst particles.
-The reaction is first order in the concentration of A on the catalyst surface
-
-$$-r_{As}' = k' C_{As} $$
-
-The feed consists of 50% (mole) A and 50% inerts, and enters the bed at a temperature of 300 K.
-The entering volumetric flow rate is 10 dm^3^/s (i.e., 10,000 cm^3^/s).
-The relationship between the Sherwood number and the Reynolds number is
-
-$$ Sh = 100 Re^{1/2}$$
-
-As a first approximation, one may neglect pressure drop.
-The entering concentration of A is 1.0 M.
-Calculate the catalyst weight necessary to achieve 60% conversion of A for
-
-(a) isothermal operation.
-
-(b) adiabatic operation.
-
-Additional information:
-
-- Kinematic viscosity: $\mu/\rho =  0.02 cm^2/s$
-- Particle diameter: $d_p = 0.1 cm$ 
-- Superficial velocity: $U =10 cm/s$
-- Catalyst surface area/mass of catalyst bed: $a= 60 cm^2/g-cat$ 
-- Diffusivity of A: $D_e =  10^{-2} cm^2/s$
-- Heat of reaction: $\Delta H_{Rx}^{\circ} = 10,000 cal/g mol A$ 
-- Heat capacities: $C_{pA} =  C_{pB} =  25 cal/g mol \cdot K, C_{pS}\, \text{(solvent)} =  75 cal/g mol \cdot K$
-- $k' (300 K) = 0.01 cm^3 /s \cdot g-cat \; \text{with}\; E = 4000 cal/mol$
-
-## References
