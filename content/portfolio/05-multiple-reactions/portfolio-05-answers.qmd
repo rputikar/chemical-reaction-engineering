@@ -1,0 +1,209 @@
+---
+title: "Portfolio 05: Multiple reactions"
+format:
+  pdf:
+    output-file: "portfolio-05-multiple-reactions"
+    output-ext: "pdf"
+last-modified: 2024-04-15
+---
+
+## Student ID: 
+
+## General Instructions for in class Portfolios
+
+1.  The portfolio is an open-book task.
+2.  You can use textbooks, the resources provided during class/ workshop etc.
+    to answer the questions. 
+3.  The portfolio task is made available in both pdf format and as a print. 
+4.  You are free to choose a solution technique. It is **not** required that
+    you use the provided python code to answer the questions. You can use any
+    tool (pen and paper, excel, ... ) and any technique (graphical, numerical,
+    analytical) that you are comfortable with. 
+5.  Irrespective of your solution method, you are expected to write your
+    answers on to the printed question paper provided. **This is what gets
+    marked.**
+6.  The portfolio will take place during designated time slot communicated
+    earlier by the unit coordinator. Please refer to the portfolio schedule on
+    blackboard for the portfolio dates and topics. 
+7.  The tasks will be a mix of theory questions, short calculation type and
+    long numerical examples.
+8.  You have **50 minutes** to complete the tasks in the portfolio. 
+9.  The portfolios will be marked immediately after completion by your peers
+    using a provided marking rubric.
+10. The portfolios will be collected by the instructors to verify peer marking
+    and record the marks. You will receive your portfolio back within a week. 
+11. When you are required to upload the portfolio answers on to blackboard: 
+    - Save your report as a pdf file. 
+    - Rename the file as STUDENTID_Portfolio_x.pdf (Where STUDENTID is your
+      student ID, and x is the portfolio number) and 
+    - Upload it using assessment submission link on blackboard. 
+
+{{< pagebreak >}}
+
+## Academic Integrity
+
+Academic integrity at its core is about honesty and responsibility and is
+fundamental to Curtin’s expectations of you. This means that all of your work
+at Curtin should be your own and it should be underpinned by integrity, which
+means to act ethically, honestly and with fairness.
+
+As a Curtin student you are part of an academic community and you are asked to
+uphold the University’s [Code of
+Conduct](https://oasis.curtin.edu.au/ConductAtCurtin), principles of academic
+integrity, and [Curtin’s five core
+values](https://about.curtin.edu.au/who/vision-mission-values/curtin-values/)
+of integrity, respect, courage, excellence and impact during your studies.
+
+You are also expected to uphold the [Student
+Charter](https://students.curtin.edu.au/essentials/rights/student-charter/) and
+recognize that cheating, plagiarism collusion, and falsification of data and
+other forms of academic dishonesty are not acceptable.
+
+For more information, visit
+[https://students.curtin.edu.au/essentials/rights/academic-integrity/](https://students.curtin.edu.au/essentials/rights/academic-integrity/)
+
+{{< pagebreak >}}
+
+## Introduction
+
+The direct vapor phase oxidation route to produce ethylene oxide (EO) from ethylene (E)
+
+$$
+\ce{C2H4 + 1/2 O2 -> C2H4O} \qquad \Delta H_{rxn, 1} = -103.246 \ kJ/mol 
+$${#eq-rxn1}
+
+is usually accompanied by two main side reactions.  
+
+Ethylene combustion: 
+
+$$
+\ce{C2H4 + 3O2 -> 2CO2 + 2H2O} \qquad \Delta H_{rxn, 2} = -1321.716 \ kJ/mol 
+$${#eq-rxn2}
+
+Ethylene oxide combustion:
+
+$$
+\ce{C2H4O + 5/2 O2 -> 2CO2 + 2H2O} \qquad \Delta H_{rxn, 3} = -1218 \ kJ/mol 
+$${#eq-rxn3}
+
+At reactor operating conditions (below 250 &deg;C), EO combustion (@eq-rxn3) is
+negligible.
+
+The reaction rate expressions and their parameters 
+for ethylene oxidation over silver catalyst on an alumina support were
+given by @borman1992ces.
+
+The rates of reactions ($r_i$) for reactions [-@eq-rxn1] and [-@eq-rxn2] are
+expressed using semi-empirical relations as: 
+
+$$
+r_i = \frac{k^i_r P_E P_O^{n_i}}
+     {1 + K^i_E P_E + K^i_C P_C + K^i_W P_W + K^i_{EO} P_{EO}} 
+$${#eq-ri}
+
+Where, $r_i$ is the rate of production of EO or $\ce{CO2}$ in $mol/(kg-cat\ s)$.
+$k^i_r$ is reaction rate constant for reaction $i$ (in $mol/kg-cat\ s\ bar$);
+$K^i_j$ is absorption rate constant for component $j$, reaction $i$, $P_j$ is
+the partial pressure of component $j$ in Pa, $T$ is the temperature in K. 
+
+The subscripts $E, O, C, W$, and $EO$ denote ethylene, oxygen, carbon dioxide,
+ethylene oxide, and water respectively. The values of all the constants is
+given in @tbl-reaction-data.  
+
+  ---------------------------------------------------------------------------------------
+                          Reaction 1                      Reaction 2
+  ----------------------- ------------------------------- -------------------------------
+  $k_r$                   $0.2572 \exp(-8068/T)$          $178 \exp(-11381/T)$
+
+  $n$                     0.13                            0.14
+
+  $K_E$                   0.30 $\times 10^{-3}$           0.49 $\times 10^{-3}$
+
+  $K_C$                   0.87 $\times 10^{-3}$           1.14 $\times 10^{-3}$
+
+  $K_{EO}$                0.90 $\times 10^{-3}$           0.49 $\times 10^{-3}$
+
+  $K_W$                   3.68                            4.04
+                          $\times 10^{-6} \exp(2370/T)$   $\times 10^{-7} \exp(3430/T)$
+  ---------------------------------------------------------------------------------------
+
+: Reaction rate data  {#tbl-reaction-data}
+
+<!-- EO in any fraction from 0.03 to 1 in the atmosphere is explosive at room -->
+<!-- temperature. As a result, it is normally stored at 5°C under 4.4 bar pressure -->
+<!-- (@moudgalya1998ipv). -->
+
+The reaction is carried out in vertical tubular packed bed reactor. Shell
+catalyst S882, which is silver impregnated on aluminum, in the form of Raschig
+rings of size 8mm $\times$ 8mm, is used. The tube diameter ($d_t$) is 0.0389 m
+and length ($L$) is 12.8 m. Catalyst density ($\rho_s$) is 890 $kg/m^3$ and void
+fraction ($\epsilon$) is 0.6. Inlet superficial gas velocity ($v$) is 1 $m/s$
+(volumetric flow rate $\upsilon_0 = v a_c  = 1.188 \times 10^{-3} m^3/s$) and
+the feed enters at 220 &deg;C.
+
+The gases enter the reactor at the top and leave from the bottom. The shell
+side of the reactor has boiling kerosene. About top one third has kerosene
+vapour and the bottom has liquid kerosene. The vapour heats up the entering
+gases while the liquid at the bottom removes the heat generated in the
+exothermic reactions.
+
+Inlet gas composition is given in @tbl-inlet-gas-comp.
+
+  Gas            volume fraction at inlet (%)
+  -------------- ------------------------------
+  $\ce{C2H4}$    31.36
+  $\ce{O2}$      6.30
+  $\ce{C2H4O}$   0.03
+  $\ce{CO2}$     2.35
+  Inert          59.96 
+
+: Inlet gas composition {#tbl-inlet-gas-comp}
+
+{{< pagebreak >}}
+
+## Questions
+
+1. Write expressions for  \hfill (6 marks)
+
+   (a) instantaneous and overall yield of EO, 
+   (b) instantaneous and overall selectivity of EO w.r.t. $\ce{CO2}$, and
+   (c) conversion of $\ce{C2H4}$. 
+
+   You may use just $r_i$ instead of expanding the expressions.
+
+{{< pagebreak >}}
+
+2. Comment on reactor selection and operating conditions to maximize yield of
+   EO. Explain your answer with relevant equations. 
+   \hfill (6 marks)
+
+{{< pagebreak >}}
+
+
+3. Yield and selectivity of EO. \hfill (6 marks) 
+
+    (a) Based on inlet conditions, calculate the yield and selectivity of EO. 
+    (b) For the outlet composition given in @tbl-outlet-gas-comp calculate yield
+        and selectivity of EO. Assume isothermal operations. Comment on the results.  
+
+Gas            volume fraction at outlet (%)
+-------------- ------------------------------
+$\ce{C2H4}$    28.84 
+$\ce{O2}$      4.26
+$\ce{C2H4O}$   2.45
+$\ce{CO2}$     3.14
+Inert          61.31 
+
+: Outlet gas composition {#tbl-outlet-gas-comp}
+
+
+{{< pagebreak >}}
+
+
+4. Write complete set of governing equations for calculating the conversion in
+   the reactor. \hfill (6 marks) 
+
+{{< pagebreak >}}
+
+## References
+
