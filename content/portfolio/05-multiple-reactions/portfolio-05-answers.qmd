@@ -2,7 +2,7 @@
 title: "Portfolio 05: Multiple reactions"
 format:
   pdf:
-    output-file: "portfolio-05-multiple-reactions"
+    output-file: "Answers-to-portfolio-05-multiple-reactions"
     output-ext: "pdf"
 last-modified: 2024-04-15
 ---
@@ -139,7 +139,7 @@ rings of size 8mm $\times$ 8mm, is used. The tube diameter ($d_t$) is 0.0389 m
 and length ($L$) is 12.8 m. Catalyst density ($\rho_s$) is 890 $kg/m^3$ and void
 fraction ($\epsilon$) is 0.6. Inlet superficial gas velocity ($v$) is 1 $m/s$
 (volumetric flow rate $\upsilon_0 = v a_c  = 1.188 \times 10^{-3} m^3/s$) and
-the feed enters at 220 &deg;C.
+the feed enters at 180 &deg;C.
 
 The gases enter the reactor at the top and leave from the bottom. The shell
 side of the reactor has boiling kerosene. About top one third has kerosene
@@ -171,20 +171,28 @@ Inlet gas composition is given in @tbl-inlet-gas-comp.
 
    You may use just $r_i$ instead of expanding the expressions.
 
+** Answer **: 
+
+
+
 {{< pagebreak >}}
 
 2. Comment on reactor selection and operating conditions to maximize yield of
    EO. Explain your answer with relevant equations. 
    \hfill (6 marks)
 
+** Answer **: 
+
+
 {{< pagebreak >}}
 
 
-3. Yield and selectivity of EO. \hfill (6 marks) 
+3. Yield and selectivity of EO. \hfill (12 marks) 
 
-    (a) Based on inlet conditions, calculate the yield and selectivity of EO. 
-    (b) For the outlet composition given in @tbl-outlet-gas-comp calculate yield
-        and selectivity of EO. Assume isothermal operations. Comment on the results.  
+    (a) Based on inlet conditions, calculate instantaneous yield and selectivity of EO. 
+    (b) For the outlet composition given in @tbl-outlet-gas-comp calculate
+    instantaneous yield and selectivity of EO. The outlet temperature is 220
+    &deg;C. Comment on the results.  
 
 Gas            volume fraction at outlet (%)
 -------------- ------------------------------
@@ -196,12 +204,18 @@ Inert          61.31
 
 : Outlet gas composition {#tbl-outlet-gas-comp}
 
+** Answer **: 
+
+
 
 {{< pagebreak >}}
 
 
 4. Write complete set of governing equations for calculating the conversion in
    the reactor. \hfill (6 marks) 
+
+** Answer **: 
+
 
 {{< pagebreak >}}
 
