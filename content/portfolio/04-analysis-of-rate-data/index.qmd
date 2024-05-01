@@ -9,6 +9,18 @@ resources:
 last-modified: 2024-04-15
 ---
 
+::: {.content-visible when-format="html"}
+
+::: {.callout-note}
+## Solutions
+
+Answers to the portfolio questions are uploaded at [Portfolio 4 answers](./portfolio-04-answers.qmd)
+
+:::
+
+:::
+
+
 ## Student ID: 
 
 ## General Instructions for in class Portfolios

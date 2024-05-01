@@ -142,7 +142,9 @@ website:
             text: Conversion and reactor sizing
           - file: ./content/portfolio/03-isothermal-reactor-design/index.qmd
             text: Isothermal reactor design
-#
+          - file: ./content/portfolio/04-analysis-of-rate-data/index.qmd
+            text: Analysis of rate data
+      #
 format:
   html:
     theme:

@@ -278,8 +278,8 @@ df.columns = [
 ]
 
 # Calculate the rate and add it to the DataFrame
-df['Rate ($mol/dm^3\\ min$)'] = rate
-df['Rate ($mol/dm^3\\ s$)'] = rate/60.0
+df['Rate ($mol/g-cat\\ min$)'] = rate
+df['Rate ($mol/g-cat\\ s$)'] = rate/60.0
 
 # Display the DataFrame as a Markdown table
 md = df.to_markdown(index=False)
@@ -288,7 +288,7 @@ Markdown(md)
 
 ```
 
-Rate calculate either as $mol/dm^3\ min$ or $mol/dm^3\ s$ is okay.
+Rate calculate either as $mol/g-cat\ min$ or $mol/g-cat\ s$ is okay.
 
 Correct rate unit: 2 marks
 No rate unit given: 0 marks
