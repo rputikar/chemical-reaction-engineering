@@ -6,13 +6,133 @@ last-modified: 2024-04-02
 
 ## Nonelementary rate laws
 
+* Rate law is typically determined from experimental data
+
+* Elementary reaction kinetics: the reaction orders and stoichiometric
+  coefficients are identical
+
+* Nonelementary reaction kinetics: no direct correspondence between reaction
+  order and stoichiometry
+
+  $$
+  \ce{CH3CHO -> CH4 + CO}; \qquad -r_{\ce{CH3CHO}} = k C_{\ce{CH3CHO}}^{3/2}
+  $$
+
+  $$
+  \ce{H2 + Br2  -> 2 HBr}; \qquad 
+  -r_{\ce{HBr}} = \frac{ k_1 C_{\ce{H2}} C_{\ce{Br2}}^{3/2} }
+                       { C_{\ce{H2}} + k_2 C_{\ce{Br2}} }
+  $$
+
+
+* Why the rate laws are complicated? $\rightarrow$ Reaction mechanism
+
+* Use the experimental rate law to postulate a reaction mechanism
+
+
+:::{.callout-note appearance='simple' .bottom .fragment}
+
+In practice, knowledge of the reaction mechanism helps use to design better
+catalyst, troubleshoot, aid in troubleshooting poor reactor performance 
+
+:::
+
+## Nonelementary rate laws
+
+* Nonelementary kinetics are the result of multiple elementary reaction steps
+
+* One or more active intermediates are involved
+
+### Active Intermediate
+
+* A high energy species that reacts further very fast. It is consumed as fast
+  as it is formed
+
+* It can be 
+  - A high energy molecule
+  - A free radical
+  - An ionic Intermediate 
+
+* It is present at extremely low concentration.
+
+
 ## Pseudo-Steady-State Hypothesis (PSSH)
+
+* Net rate of formation of reactive intermediate $\approx$ 0
+
+* If the active intermediate appears in n reactions, then
+
+:::{.box .center}
+
+$$
+r_{A^*} = \sum_{i = 1}^{n} r_{i, A^*} = 0
+$$
+
+:::
+
+:::{style="margin-bottom: 50px;"}
+:::
+
+### How do we determine the mechanism?
+
+* Postulate a reaction mechanism that is a series of elementary reactions
+
+* Derive a rate equation for the postulated mechanism
+
+* Is the rate equation for the postulated mechanism consistent with the
+  experimental results?
+
 
 ## Searching for a mechanism
 
+*  Propose an active intermediate(s).
+*  Propose a mechanism, utilizing the rate law obtained from experimental data,
+   if possible.
+*  Model each reaction in the mechanism sequence as an elementary reaction.
+*  After writing rate laws for the rate of formation of desired product, write
+   the rate laws for each of the active intermediates.
+*  Write the net rate of formation for the active intermediate and use the
+   PSSH.
+*  Eliminate the concentrations of the intermediate species in the rate laws by
+   solving the simultaneous equations developed in Steps 4 and 5.
+*  If the derived rate law does not agree with experimental observation, assume
+   a new mechanism and/or intermediates and go to Step 3. A strong background
+   in organic and inorganic chemistry is helpful in predicting the activated
+   intermediates for the reaction under consideration.
+
 ## Catalysts & catalysis
 
+* Definition 
+
+  - Fogler: A substance that affects the rate of a reaction but emerges from
+    the process unchanged.
+
+  - Ostwald (1895): A catalyst accelerates a chemical reaction without
+    affecting the position of the equilibrium.
+
+* Positive catalyst increases reaction rate.
+* Negative catalyst decreases reaction rate.
+
+* About 75% of all chemicals are produced by catalytic process.
+
+* Catalyst can be:
+	- Gas ($\ce{NO_x}$)
+	- Liquid ($\ce{H2SO4}$)
+	- Solid ($\ce{Ni}$)
+
+  Note: In this lecture only solid catalysts will be considered. 
+
+## Heterogeneous catalysis at different scales
+
+:::{style="margin-bottom: 50px;"}
+:::
+
+![](../../../assets/images/heterogeneous-catalysis-scales.png){width=90%}
+
+
 ## Steps in a heterogeneous catalytic reaction
+
+![](../../../assets/images/Steps-in-a-heterogeneous-catalytic-reaction.png){width=90%}
 
 ## Catalytic reaction kinetics
 
