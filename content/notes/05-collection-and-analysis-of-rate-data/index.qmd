@@ -1,7 +1,7 @@
 --- 
 title: "Collection and analysis of rate data"
 date: 2024-03-03
-last-modified: 2024-04-16
+last-modified: 2024-04-18
 resources:
   - "./Ranjeet_Notes_Fogler_Chapter 07 - Collection and Analysis of Rate Data.pdf"
 ---

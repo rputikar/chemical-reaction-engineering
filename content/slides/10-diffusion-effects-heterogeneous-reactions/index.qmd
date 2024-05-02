@@ -1,7 +1,7 @@
 ---
 title: "Diffusion effects: heterogeneous reactions"
 format: revealjs
-last-modified: 2024-04-02
+last-modified: 2024-04-22
 ---
 
 ## Diffusion and reactions in homogeneous systems
