@@ -2,7 +2,7 @@
 title: 
   "Workshop 02 Solution: Conversion and reactor sizing"
 date: 2024-03-03
-last-modified: 2024-04-18
+last-modified: 2024-05-03
 format: 
    html: default
    pdf:

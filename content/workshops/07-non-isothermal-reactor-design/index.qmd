@@ -2,7 +2,7 @@
 title: 
   "Workshop 07: Non-isothermal reactor design"
 date: 2024-04-02
-last-modified: 2024-04-28
+last-modified: 2024-05-03
 format: 
    html: default
    pdf:

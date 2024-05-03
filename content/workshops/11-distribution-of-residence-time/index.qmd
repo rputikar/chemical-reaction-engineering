@@ -2,7 +2,7 @@
 title: 
   "Workshop 11: Distribution of residence time"
 date: 2024-03-24
-last-modified: 2024-04-18
+last-modified: 2024-05-03
 format: 
    html: default
    pdf:

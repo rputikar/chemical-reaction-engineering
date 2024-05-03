@@ -1,7 +1,7 @@
 ---
 title: "Reaction mechanisms and catalysis"
 format: revealjs
-last-modified: 2024-05-01
+last-modified: 2024-05-03
 ---
 
 ## Nonelementary rate laws
@@ -99,6 +99,90 @@ $$
    a new mechanism and/or intermediates and go to Step 3. A strong background
    in organic and inorganic chemistry is helpful in predicting the activated
    intermediates for the reaction under consideration.
+
+
+## Rules of thumb for development of a mechanism
+
+* Species having the concentration(s) appearing in the denominator of the rate
+  law probably collide with the active intermediate
+
+  $$
+  \ce{M + A* -> [Collision products]} \qquad -r_{A1}^* = k_1 C_M C_{A \cdot}
+  $$
+
+* If a constant appears in the denominator, one of the reaction steps is
+  probably the spontaneous decomposition of the active intermediate
+
+  $$
+  \ce{A* -> [Decomposition products]} \qquad -r_{A2}^* = k_2 C_{A \cdot}
+  $$
+
+* Species having the concentration(s) appearing in the numerator of the rate
+  law probably produce the active intermediate in one of the reaction steps
+
+  $$
+  \ce{[Reactants] -> A* + [Other products]} \qquad r_{A3}^* = k_3  C_{Reactants}
+  $$
+
+## PSSH explanation for common first-order reactions
+
+* PSSH theory helps to explain why many reactions, such as the decomposition of
+  dimethyl ether commonly exhibit first-order kinetics
+
+  $$
+  \ce{(CH3)2O -> CH4 + H2 + CO}
+  $$
+
+* $\ce{ A -> Products }; \qquad -r_A = k C_A$
+
+  The reaction is first order but not elementary. 
+
+* Mechanism
+
+  - Activation:k $\ce{A + M ->[k_1] A^* + M}; \qquad r_{1,\ce{A^*}} = k_1 C_A C_M$ 
+
+  - Deactivation: $\ce{A^* + M ->[k_2] A + M}; \qquad r_{2,\ce{A^*}} = k_2 C_{\ce{A^*}} C_M$ 
+
+  - Decomposition: $\ce{A^* ->[k_3] P}; \qquad r_{3,\ce{A^*}} = k_3 C_{\ce{A^*}}$  
+
+* Rate of formation of product
+
+  $r_p = k_3 C_{\ce{A^*}}$
+
+  Need to eliminate $C_{\ce{A^*}}$
+
+
+## PSSH explanation for common first-order reactions
+
+* PSSH: $r_{A^*} = 0$ 
+
+  $$
+  \begin{aligned}
+  r_{A^*} &= k_1 C_A C_M - k_2 C_{A^*} C_M - k_3 C_{A^*} = 0 \\
+  \\
+  k_1 C_A C_M &= C_{A^*} (k_2 C_M + k_3) \\
+  \\
+  C_{A^*} &= \frac{k_1 C_A C_M}{k_2 C_M + k_3} \\
+  \\
+  r_P &= \frac{k_3 k_1 C_A C_M}{k_2 C_M + k_3}
+  \end{aligned}
+  $$
+
+* $C_M$ is constant
+
+  $$
+  k = \frac{k_3 k_1 C_M}{k_2 C_M + k_3}
+  $$
+
+  and
+
+  $$
+  -r_A = k C_A
+  $$
+
+
+
+
 
 ## Catalysts & catalysis
 

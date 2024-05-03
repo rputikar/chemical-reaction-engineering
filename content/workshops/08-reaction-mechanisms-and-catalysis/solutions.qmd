@@ -2,7 +2,7 @@
 title: 
   "Workshop 08: Reaction mechanisms and catalysis"
 date: 2024-03-24
-last-modified: 2024-04-28
+last-modified: 2024-05-03
 format: 
    html: default
    pdf:

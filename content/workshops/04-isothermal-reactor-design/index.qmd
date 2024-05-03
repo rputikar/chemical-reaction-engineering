@@ -2,7 +2,7 @@
 title: 
   "Workshop 04: Isothermal reactor design"
 date: 2024-03-19
-last-modified: 2024-04-18
+last-modified: 2024-05-03
 format: 
    html: default
    pdf:
