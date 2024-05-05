@@ -4,7 +4,7 @@ format:
   pdf:
     output-file: "portfolio-06-nonisothermal-reactor-design"
     output-ext: "pdf"
-last-modified: 2024-05-03
+last-modified: 2024-05-06
 ---
 
 ```{python}
