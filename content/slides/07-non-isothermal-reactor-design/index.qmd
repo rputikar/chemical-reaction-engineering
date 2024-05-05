@@ -896,18 +896,23 @@ $$
 :::{.highlight .center}
 $$
 \frac{dT}{dV} = \frac{
-\overbrace{r_A \Delta H_{Rx}}^{\color{black}{\text{Heat generated, } Q_g }}
+\overbrace{r_A \Delta H_{Rx}(T)}^{\color{black}{\text{Heat generated, } Q_g }}
 - \overbrace{Ua (T - T_a)}^{\color{black}{\text{Heat removed,} Q_r }}
-}{ \Sigma F_i C_{P_i} }
+}{ \Sigma_j^{n} F_j C_{P_j} }
 $$
 :::
 
-* $Q_g = r_A \Delta H_{Rx}$
+* $Q_g = r_A \Delta H_{Rx}(T)$
   
   positive for exothermic reactions; negative for endothermic reactions
 
 * When $Q_g > Q_r$: Temperature will increase as the volume increases
 * When $Q_g < Q_r$: Temperature will decrease as the volume increases
+
+* For multiple reactions
+
+  $Q_g = \sum_i^{n_{rxn}} r_i \Delta H_{Rx,i}(T)$
+
 
 
 ## Balance on the heat-transfer fluid
