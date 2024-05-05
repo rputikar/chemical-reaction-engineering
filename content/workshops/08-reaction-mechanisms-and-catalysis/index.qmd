@@ -2,7 +2,7 @@
 title: 
   "Solutions to workshop 08: Reaction mechanisms and catalysis"
 date: 2024-04-01
-last-modified: 2024-05-03
+last-modified: 2024-05-05
 format: 
    html: default
    pdf:
@@ -36,13 +36,13 @@ Solutions to these problems are uploaded at [Workshop 8 solutions](./solutions.q
 The pyrolysis of acetaldehyde is believed to take place according to the
 following sequence:
 
-$\ce{ CH3CHO ->[ k1 ] CH3. + CHO. }$
+$\ce{ CH3CHO ->[ k1 ] CH3* + CHO* }$
 
-$\ce{ CH3. + CH3CHO ->[ k2 ] CH3. + CO + H2 }$
+$\ce{ CH3* + CH3CHO ->[ k2 ] CH3* + CO + CH4 }$
 
-$\ce{ CHO. + CH3CHO ->[ k3 ] CH3. + 2 CO + H2 }$
+$\ce{ CHO* + CH3CHO ->[ k3 ] CH3* + 2 CO + H2 }$
 
-$\ce{ 2 CH3. ->[ k4 ] C2H6 }$
+$\ce{ 2 CH3* ->[ k4 ] C2H6 }$
 
 (a) Derive the rate expression for the rate of disappearance of acetaldehyde, $r_{Ac}$.
 

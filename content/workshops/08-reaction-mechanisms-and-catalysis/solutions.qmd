@@ -2,14 +2,16 @@
 title: 
   "Workshop 08: Reaction mechanisms and catalysis"
 date: 2024-03-24
-last-modified: 2024-05-03
+last-modified: 2024-05-05
 format: 
    html: default
    pdf:
       output-file: "workshop-08-reaction-mechanisms-and-catalysis"
       output-ext: "pdf"
 resources:
-    - "p9-3-solution.pdf"
+    - "p9-4-solution.pdf"
+    - "p9-5-b-solution.pdf"
+    - "p9-5-c-solution.pdf"
     - "p9-6-solution.pdf"
     - "p10-3-solution.pdf"
     - "p10-14-solution.pdf"
@@ -33,13 +35,13 @@ P 10-19
 The pyrolysis of acetaldehyde is believed to take place according to the
 following sequence:
 
-$\ce{ CH3CHO ->[ k1 ] CH3. + CHO. }$
+$\ce{ CH3CHO ->[ k1 ] CH3* + CHO* }$
 
-$\ce{ CH3. + CH3CHO ->[ k2 ] CH3. + CO + H2 }$
+$\ce{ CH3* + CH3CHO ->[ k2 ] CH3* + CO + CH4 }$
 
-$\ce{ CHO. + CH3CHO ->[ k3 ] CH3. + 2 CO + H2 }$
+$\ce{ CHO* + CH3CHO ->[ k3 ] CH3* + 2 CO + H2 }$
 
-$\ce{ 2 CH3. ->[ k4 ] C2H6 }$
+$\ce{ 2 CH3* ->[ k4 ] C2H6 }$
 
 (a) Derive the rate expression for the rate of disappearance of acetaldehyde, $r_{Ac}$.
 
@@ -89,7 +91,9 @@ Use the PSSH to show whether or not your mechanism is consistent with the rate l
 ## Solution
 
 
-[Hand written solution](./p9-5-solution.pdf)
+[Hand written solution problem 9-5 b](./p9-5-b-solution.pdf)
+
+[Hand written solution problem 9-5 c](./p9-5-c-solution.pdf)
 
 :::
 

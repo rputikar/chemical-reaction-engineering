@@ -1,7 +1,7 @@
 ---
 title: "In class activity: Reaction mechanisms and catalysis"
 date: 2024-03-23
-last-modified: 2024-05-03
+last-modified: 2024-05-05
 format:
   pdf:
       output-file: "in-class-activity-reaction-mechanisms-and-catalysis"
@@ -163,7 +163,7 @@ PSSH
 
 $r_{\ce{NO3*}} = r_{1} - r_{2} - r_{3}/2$
 
-$r_{\ce{AZO*}} = k_1 C_{\ce{NO}} C_{\ce{O2}} - k_2 C_{\ce{NO3*}} - \frac{k_3}{2} C_{\ce{NO3*}} C_{\ce{NO}} = 0$
+$r_{\ce{NO3*}} = k_1 C_{\ce{NO}} C_{\ce{O2}} - k_2 C_{\ce{NO3*}} - \frac{k_3}{2} C_{\ce{NO3*}} C_{\ce{NO}} = 0$
 
 Solving for $C_{\ce{NO3*}}$
 
@@ -175,7 +175,7 @@ $$
 Step 6: Eliminate the concentration of the active intermediate species in the rate
 laws by solving the simultaneous equations developed in Steps 4 and 5.
 
-At low AZO concentrations, $k_2 \gg \frac{k_3}{2} C_{\ce{NO}}$
+At low NO concentrations, $k_2 \gg \frac{k_3}{2} C_{\ce{NO}}$
 
 $$
 C_{\ce{NO3*}}  = \frac{k_1}{k_2} C_{\ce{NO}} C_{\ce{O2}}
