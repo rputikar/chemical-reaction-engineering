@@ -1,7 +1,7 @@
 ---
 title: "Reaction mechanisms and catalysis"
 format: revealjs
-last-modified: 2024-05-03
+last-modified: 2024-05-06
 ---
 
 ## Nonelementary rate laws
@@ -181,9 +181,6 @@ $$
   $$
 
 
-
-
-
 ## Catalysts & catalysis
 
 * Definition 
@@ -200,15 +197,39 @@ $$
 * About 75% of all chemicals are produced by catalytic process.
 
 * Catalyst can be:
-	- Gas ($\ce{NO_x}$)
-	- Liquid ($\ce{H2SO4}$)
-	- Solid ($\ce{Ni}$)
 
-  Note: In this lecture only solid catalysts will be considered. 
+  :::{.smaller}
+
+	- Gas ($\ce{NO_x}$): 
+	  Nitric Oxide (NO) for the Ostwald Process: In the industrial synthesis of
+	  nitric acid, nitric oxide acts as a catalyst in the oxidation of ammonia to
+	  nitrogen dioxide. This is part of a gas-phase reaction system where NO is
+	  regenerated and acts catalytically.
+
+	- Liquid ($\ce{H2SO4}$):
+    Sulfuric Acid in Alkylation: Used in the oil refining industry, sulfuric
+    acid serves as a liquid phase catalyst in alkylation reactions where
+    isobutane is alkylated with olefins to produce higher molecular weight
+    isoparaffins. The reaction occurs in the liquid phase, with sulfuric acid
+    enhancing the reaction by protonating the olefin to form a more reactive
+    carbocation intermediate.
+
+	- Solid ($\ce{Ag}$):
+    Silver on Alumina for Ethylene Oxide Production: Silver deposited on an
+    alumina support is a crucial catalyst for the oxidation of ethylene to
+    ethylene oxide, a precursor in the production of ethylene glycol. This is an
+    example of a solid catalyst used in a gas-phase reaction, highlighting the
+    versatility of catalyst forms and applications.
+
+  :::
+
+:::{.callout-note appearance='simple' .bottom .fragment}
+In this lecture only solid catalysts will be considered. 
+:::
 
 ## Heterogeneous catalysis at different scales
 
-:::{style="margin-bottom: 50px;"}
+:::{style="margin-bottom: 200px;"}
 :::
 
 ![](../../../assets/images/heterogeneous-catalysis-scales.png){width=90%}
@@ -216,25 +237,477 @@ $$
 
 ## Steps in a heterogeneous catalytic reaction
 
-![](../../../assets/images/Steps-in-a-heterogeneous-catalytic-reaction.png){width=90%}
-
-## Catalytic reaction kinetics
+![](../../../assets/images/steps-in-a-heterogeneous-catalytic-reaction.png){width=90%}
 
 ## Adsorption step
 
+* Chemisorption is a necessary part of catalytic processes
+
+* Adsorption data are often presented using
+adsorption isotherms, which show how much gas is adsorbed by a solid at various
+pressures at a constant temperature.
+
+* We first propose an adsorption mechanism and derive an
+isotherm from it. This theoretical isotherm is then compared with experimental
+data.
+
+* If the theoretical isotherm aligns well with the
+experimental data, it suggests that the model accurately reflects the physical
+processes occurring within the system. Discrepancies between the predicted and
+actual data indicate that the model may not capture one or more crucial aspects
+of the physical system.
+
+::::{.columns}
+
+:::{.column width=50%}
+
+### Molecular adsorption
+
+$$
+\ce{CO + S <=> CO*S}
+$$
+
+![](../../../assets/images/molecular-adsorption-CO-Ni.png)
+
+:::
+:::{.column width=50%}
+
+### Dissociative adsorption
+
+$$
+\ce{CO + 2S <=> C*S + O*S}
+$$
+
+![](../../../assets/images/dissociative-adsorption-CO-Fe.png)
+
+
+:::
+
+::::
+
+## Langmuir isotherm: molecular adsorption
+
+
+* The adsorption of A (gas phase) on an active site S is represented by:
+
+  $$
+  \ce{A(g) + S <=> A*S }
+  $$
+
+  S is a vacant surface site.
+  $\ce{A*S}$ is A bound to a surface site. 
+
+* Rate of adsorption = rate of attachment - rate of detachment
+
+  $$
+  r_{AD} = k_A P_A C_v - k_{-A} + C_{\ce{A*S}}
+  $$ 
+
+  - The rate is directly proportional to the number of collisions between the
+    reactant molecules and the catalyst surface, which is influenced by the partial
+    pressure of the reactant ($P_A$).
+  
+  - Additionally, the reaction rate is dependent on the availability of vacant
+    active sites on the catalyst surface. An active site is defined as a location
+    on the surface where a strong bond can form with an adsorbed species,
+    facilitating the reaction. 
+
+
+* Adsorption equilibrium constant  $K_A = k_A/k_{-A}$
+
+  $$
+  r_{\text{AD}} = k_A P_A C_v - k_{-A} C_{\ce{A*S}}
+  \qquad
+  r_{\text{AD}} = k_A \left( P_A C_v - \frac{k_{-A}}{k_A} C_{\ce{A*S}} \right)
+  $$
+
+  $\Rightarrow r_{\text{AD}} = k_A \left( P_A C_v - \frac{C_{\ce{A*S}}}{K_A} \right)$
+
+
 ## Site balance
+
+:::{style="margin-bottom: 50px;"}
+:::
+ 
+![](../../../assets/images/vacant-and-active-sites.png){width=90%}
+
+:::{style="margin-bottom: 50px;"}
+:::
+
+* $C_t$: Total number of active sites per unit mass of catalyst divided by
+  Avogadro’s number (mol/g cat)
+
+* $C_v$: Number of vacant sites per unit mass of catalyst divided by Avogadro’s
+  number
+
+* $C_v$ is not measurable, but the total number of sites $C_t$ can be measured
+
+* Site balance
+
+  In the absence of catalyst deactivation, assume the total number of active
+  sites remains constant:
+
+  $$
+  C_t = C_v + C_{\ce{A*S}} + C_{\ce{B*S}}
+  $$
+
+* We will use the site balance equation to put $C_v$ in terms of measurable species
+
+
+## Langmuir isotherm: molecular adsorption
+
+* Site balance
+
+  $$
+  C_t = C_v + C_{\ce{A*S}}
+  $$
+
+* At equilibrium: 
+  The net rate of adsorption is zero. 
+  Setting $r_{AD}=0$ we can obtain equation for concentration of A adsorbed on
+the surface
+
+  $$
+  C_{\ce{A*S}} = K_A C_v P_A
+  $$
+
+  $$
+  C_{\ce{A*S}} = K_A P_A (C_t - C_{\ce{A*S}})
+  $$
+
+* Langmuir isotherm: 
+  By rearranging, we obtain the Langmuir isotherm
+
+:::{.box .center}
+$$
+C_{\ce{A*S}} = \frac{K_A P_A C_t} {1 + K_A P_A}
+$$
+:::
+
+* This equation relates the equilibrium concentration of A adsorbed on the
+surface, $C_{\ce{A*S}}$, as a function of the partial pressure of A
+
+
+* Linearized form
+
+$$
+\frac{P_A}{C_{\ce{A*S}}} = \frac{1}{K_A C_t} + \frac{P_A}{C_t}
+$$
+  
+## Langmuir isotherm: Dissociative adsorption
+
+* Consider the adsorption of CO on iron where CO dissociates into separate atoms
+
+  $$
+  \ce{CO + 2S <=> C*S + O*S}
+  $$
+
+  Dissociative adsorption requires two adjacent vacant sites, unlike molecular
+  adsorption that needs only one.
+
+* The likelihood of finding two adjacent vacant sites is proportional to the
+square of the concentration of vacant sites, in line with the law of mass
+action.
+
+* Consequently, the rate of adsorption is proportional to the product of the
+carbon monoxide partial pressure and the square of the vacant-site
+concentration.
+
+* For desorption, two adjacent occupied sites are needed, making the rate of
+desorption proportional to the product of the occupied-site concentrations
+$C_\ce{C*S}$ and $C_{\ce{O*S}}$.
+
+* The net rate of adsorption
+
+  $$
+  r_{AD} = k_A P_{\ce{CO}} C_v^2 - k_{-A} C_{\ce{C*S}} C_{\ce{O*S}}
+  $$
+
+  $$
+  r_{AD} = k_A \left( P_{\ce{CO}} C_v^2 - \frac{ C_{\ce{C*S}} C_{\ce{O*S}} } { K_A }\right)
+  \qquad
+  K_A = \frac{k_A}{k_{-A}}
+  $$
+
+## Langmuir isotherm: Dissociative adsorption
+
+* At equilibrium $r_{AD} = 0$
+
+  $$ k_A P_{\ce{CO}} C_v^2 = k_{-A} C_{\ce{C*S}} C_{\ce{O*S}} $$
+
+* For $C_{\ce{C*S}} = C_{\ce{C*S}}$
+
+  $$ (K_A P_{\ce{CO}})^{1/2} C_v =  C_{\ce{O*S}} $$
+
+* Substituting for $C_{\ce{C*S}}$, and $C_{\ce{O*S}}$ in site balance equation
+
+  $$ C_t = C_v + C_{\ce{C*S}} + C_{\ce{O*S}}$$
+
+  $$ 
+  C_t = C_v + (K_A P_{\ce{CO}})^{1/2} C_v + (K_A P_{\ce{CO}})^{1/2} C_v 
+  = C_v (1 + 2(K_A P_{\ce{CO}})^{1/2})
+  $$
+
+* Solving for $C_v$
+  $$
+  C_v = \frac{C_t}{1 + 2(K_A P_{\ce{CO}})^{1/2}}
+  $$
+
+* Langmuir isotherm: 
+
+:::{.box .center}
+$$
+C_{\ce{O*S}} = \frac{(K_A P_{\ce{CO}})^{1/2} C_t}{1 + 2(K_A P_{\ce{CO}})^{1/2}}
+\qquad; \qquad
+\frac{(P_{\ce{CO}})^{1/2}} {C_{\ce{O*S}}} 
+= \frac{1}{C_t (K_A)^{1/2}} + \frac{2 (P_{\ce{CO}})^{1/2}}{C_t}
+$$
+:::
+
 
 ## Langmuir isotherm adsorption
 
-## Surface reaction step
+:::{style="margin-bottom: 200px;"}
+:::
+ 
+![](../../../assets/images/Langmuir-isotherm.png){width=90%}
+
+
+## Surface reaction step: single site
+
+* After a reactant has been adsorbed onto the surface, $\ce{A*S}$, is capable
+of reacting in a number of ways to form the reaction product
+
+* Single site mechanism 
+
+  - The surface reaction may be a single-site mechanism in which only the site
+    on which the reactant is adsorbed is involved in the reaction. 
+
+  - An adsorbed molecule of A may isomerize (or perhaps decompose)
+    directly on the site to which it is attached, for example, such as pentene isomerization
+
+:::{style="margin-bottom: 50px;"}
+:::
+ 
+::::{.columns}
+:::{.column width=50%}
+
+![](../../../assets/images/single-site-mechanism.png){width=90%}
+
+$$\ce{A*S <=> B*S}$$
+
+:::
+:::{.column width=50%}
+
+* Surface reaction rate law
+
+$$
+r_S = k_S C_{\ce{A*S}} - k_{-S} C_{\ce{B*S}}
+$$
+
+$$
+r_S = k_S \left( C_{\ce{A*S}} -\frac{C_{\ce{B*S}}}{K_S}\right)
+$$
+
+$$
+K_S = k_S/k_{-S}
+$$
+:::
+::::
+
+## Surface reaction step: dual site
+
+::::{.columns}
+:::{.column width=50%}
+
+* Mechanism 1
+
+$$\ce{A*S + S <=> B*S + S}$$
+
+$$
+r_S = k_S \left( C_{\ce{A*S}} C_v -\frac{C_{\ce{B*S}} C_v}{K_S}\right)
+$$
+
+* Mechanism 2
+
+$$\ce{A*S + B*S <=> C*S + D*S}$$
+
+$$
+r_S = k_S \left( C_{\ce{A*S}} C_{\ce{B*S}} -\frac{C_{\ce{C*S}} C_{\ce{D*S}}}{K_S}\right)
+$$
+
+* Mechanism 3: Two different kind of sites are involved
+
+$$\ce{A*S + B*S' <=> C*S' + D*S}$$
+
+$$
+r_S = k_S \left( C_{\ce{A*S}} C_{\ce{B*S'}} -\frac{C_{\ce{C*S'}} C_{\ce{D*S}}}{K_S}\right)
+$$
+
+
+:::
+:::{.column width=50%}
+
+![](../../../assets/images/dual-site-mechanism.png){width=90%}
+
+:::{style="margin-bottom: 50px;"}
+:::
+
+::: {.callout-note appearance='simple' .fragment}
+Reactions involving either single- or dual-site mechanisms, are referred to as
+following Langmuir-Hinshelwood kinetics. 
+:::
+
+:::
+::::
+
+## Surface reaction step: Eley-Rideal mechanism
+
+* Reaction between adsorbed molecule and a molecule in the gas phase
+
+
+* Unlike the Langmuir-Hinshelwood mechanism it postulates reactions between
+  adsorbed species and molecules directly from the gas phase.
+
+* Examples:   
+  - The reaction of propylene and benzene
+  - Hydrogenation reactions: hydrogen adsorbs on the catalyst surface and
+    reacts with an organic molecule directly striking from the gas phase.
+
+:::{style="margin-bottom: 50px;"}
+:::
+
+::::{.columns}
+:::{.column width=50%}
+
+![](../../../assets/images/Eley-Rideal-mechanism.png){width=90%}
+
+:::
+:::{.column width=50%}
+
+$$\ce{A*S + B (g) <=> C*S}$$
+
+$$
+r_S = k_S \left( C_{\ce{A*S}} P_B -\frac{C_{\ce{C*S}}}{K_S}\right)
+$$
+
+:::
+::::
 
 ## Desorption step
 
+* Products are desorbed into the gas phase
+
+  $$
+  \ce{C*S <=> C + S}
+  $$
+
+* Rate of desorption
+  
+  $$
+  r_{DC} = k_D \left( C_{\ce{C*S}} -\frac{P_C C_v}{K_{DC}}\right)
+  $$
+
+* The desorption of C is the reverse of the adsorption of C
+
+  $$ r_{DC} = - r_{AD,C} $$
+
+* The desorption equilibrium constant $K_{DC}$ is the reciprocal of the
+  adsorption equilibrium constant $K_C$
+
+  $$ K_{DC} = \frac{1}{K_C} $$
+
+$$
+r_{DC} = k_D \left[ C_{\ce{C*S}} - K_C P_C C_v \right ]
+$$
+
+## Rate limiting step
+
+* When heterogeneous reactions are carried out at steady state, the rates of
+  each of the three reaction steps in series (adsorption, surface reaction, and
+  desorption) are equal to one another 
+
+  $$ -r'_A = r_{AD} = r_S = r_D $$
+
+* One step is usually rate-limiting or rate-controlling
+
+  - slowest step among all.  
+  - If the rate-limiting step could be sped up, the entire reaction would be
+    faster
+  - Although reactions involve all 7 steps, if internal and external mass
+    transfer limitations are removed, only adsorption, surface reaction, or
+    desorption will be rate limiting
+  - Most of the times, the surface reaction step is rate limiting. 
+
+
 ## Derive a rate law for catalytic reaction
+
+* Postulate catalytic mechanism, and then derive the rate law for that
+  mechanism
+
+* Assume pseudo-steady state hypothesis ($-r'_A = r_{AD} = r_S = r_D$)  
+
+  - No accumulation of species on the surface or near interface
+  - Each species adsorbed on the surface is a reactive intermediate
+  - Net rate of formation of species i adsorbed on the surface is 0,
+    $r_{\ce{i*S}}=0$
+
+* Identify rate limiting step
+
+* Steps to derive the rate law
+  - Select among types of adsorption, surface reaction, and desorption
+  - Write rate laws for each individual step, assuming all are reversible
+  - Postulate which step is rate limiting
+  - Use non-rate-limiting steps to eliminate the surface concentration terms
+    that cannot be measured
+
+
+::: {.callout-note appearance='simple' .bottom .fragment}
+
+The approach in determining catalytic and heterogeneous mechanisms is usually
+termed the Langmuir-Hinshelwood approach, since it is derived from ideas
+proposed by Hinshelwood based on Langmuir’s principles for adsorption. The
+Langmuir-Hinshelwood approach was popularized by Hougen and Watson and
+occasionally includes their names (LHHW kinetics).
+
+:::
 
 ## Evaluating a catalytic reaction mechanism
 
+* Collect experimental data from test reactor
+* Postulate and derive equation for rate law using steps in previous slide
+* See if rate law is consistent with data
+* If not, then try other surface mechanism (i.e., dual-site adsorption or
+  Eley-Rideal) or choose a different rate-limiting step (adsorption or
+  desorption)
+* Repeat until the rate expression describes experimental data
+
+
 ## Catalyst deactivation
+
+* Solid catalyst activity changes with operation time.
+  - Catalyst activity usually decreases with operation time (chemical or/and
+    physical reasons).
+  - It is very rare to see catalyst activity increases with the operation time
+    
+    :::{.smaller}
+    The nickel-based catalysts used in hydroprocessing is 
+    often susceptible to sulfur poisoning. However, certain conditioning
+    processes involving controlled exposure to sulfur compounds can rearrange
+    the surface structure, enhancing the catalyst's activity or selectivity
+    over time.
+    :::
+
+* Catalyst life time is from few minutes to 10 years.
+* Regeneration of solid catalyst is important
+
+* Effect of catalyst decay on solid catalysed reaction
+  - Reactant conversion decreases
+  - Product selectivity decreases
+  - Require higher reaction temperature
+  - Pressure drop over the cat bed increases (fixed bed reactor)
+
+
 
 ## Catalysis reactor types
 
