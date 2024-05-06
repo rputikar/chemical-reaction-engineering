@@ -1,0 +1,368 @@
+---
+title: "Portfolio 07: Reaction mechanism and catalysis"
+format:
+  pdf:
+    output-file: "portfolio-07-reaction-mechanism-and-catalysis"
+    output-ext: "pdf"
+last-modified: 2024-05-06
+---
+
+```{python}
+{{< include ../../../assets/partials/_mplinclude.py >}}
+```
+## Student ID: 
+
+## General Instructions for take home Portfolios
+
+1.  The portolio is an open-book task.
+2.  It is expected that you will complete the portfolio assessment on your own.
+    You can use textbooks, the resources provided during class/ workshop etc.
+    to answer the questions. 
+4.  You are free to choose a solution technique. It is **not** required that
+    you use the provided python code to answer the questions. You can use any
+    tool (pen and paper, excel, ... ) and any technique (graphical, numerical,
+    analytical) that you are comfortable with. However, some of the tasks will
+    require use of coding/ computer. 
+5.  The tasks will be a mix of theory questions, short calculation type and
+    long numerical examples.
+6.  The portfolio tasks are not meant to take a lot of time. If you have
+    understood and practiced the relevant content, it should take you around 2
+    to 3 hours at the most.
+7.  You are required to upload the portolio answers on to blackboard: 
+    - Save your report as a **pdf** file (_Miri students should save it as a
+      word file_). 
+    - Rename the file as STUDENTID_Portfolio_x.pdf (Where STUDENTID is your
+      student ID, and x is the portfolio number) and 
+    - Upload it using assessment submission link on blackboard. 
+
+{{< pagebreak >}}
+
+
+## Academic Integrity
+
+Academic integrity at its core is about honesty and responsibility and is
+fundamental to Curtin’s expectations of you. This means that all of your work
+at Curtin should be your own and it should be underpinned by integrity, which
+means to act ethically, honestly and with fairness.
+
+As a Curtin student you are part of an academic community and you are asked to
+uphold the University’s [Code of
+Conduct](https://oasis.curtin.edu.au/ConductAtCurtin), principles of academic
+integrity, and [Curtin’s five core
+values](https://about.curtin.edu.au/who/vision-mission-values/curtin-values/)
+of integrity, respect, courage, excellence and impact during your studies.
+
+You are also expected to uphold the [Student
+Charter](https://students.curtin.edu.au/essentials/rights/student-charter/) and
+recognize that cheating, plagiarism collusion, and falsification of data and
+other forms of academic dishonesty are not acceptable.
+
+For more information, visit
+[https://students.curtin.edu.au/essentials/rights/academic-integrity/](https://students.curtin.edu.au/essentials/rights/academic-integrity/)
+
+{{< pagebreak >}}
+
+## Introduction
+
+Typically, an unpromoted, supported silver on α-alumina catalyst reaches about
+50% etylene oxide ( EO ) selectivity. However, this selectivity can be
+significantly enhanced to around 90% with the addition of promoters like Cl,
+Cs, Re, Mo, Mn, and S [@pu2019ac]. 
+
+Enhanced selectivity has a major implication in reducing $\ce{ CO2 }$ emissions
+as this process alone contribute about 9.3 million metric tons
+annually, making up 0.03% of global $\ce{ CO2 }$ emissions [@ghanta2017eost].
+
+Understanding the different oxygen species that participate in both selective
+and unselective ethylene oxidation pathways is crucial for developing highly
+selective EO catalysts, which will improve economic efficiency and help reduce
+$\ce{ CO2 }$ emissions.
+
+Recently, a team from Lehigh University has published study explaining the
+reaction mechanism for ethylene epoxidation by supported $Ag/\alpha-Al_2O_3$
+catalysts [@pu2024ac]. 
+
+As a budding chemical engineer, you are tasked with understanding and
+summarizing the study for your manager. You are not expected to use AI tools
+for this assessment. 
+
+## Questions
+
+1. Provide a summary of the study of @pu2024ac.  \hfill (10 marks)
+
+   Along with summary, your answer should address the following questions: 
+   a. What were the different experimental techniques used in the study and how
+      they were useful in understanding reaction mechanism?
+   b. How were the DFT calculations used in understanding kinetics?
+   c. What is the difference between Langmuir-Rideal (L-R) and
+      Langmuir-Hinshelwood (L-H) kinetics? 
+
+2. Long term deactivation of the catalyst \hfill (10 marks)
+
+   Over period, catalyst deactivation occurs due to variety of reasons.
+   @montrasi1983ac studied activity of spent catalyst after 6 years of use in
+   an industrial plant and compared it to that of a fresh catalyst. They
+   reported a change in apparent activation energies.  
+
+   For simplicity, we can divide the long term deactivation into three periods
+   of catalyst activity (p1, p2, and p3). The relative activity of the catalyst
+   in periods 2 and 3 to that in period 1 can be written as
+
+   $$
+   r_{i, p2} = f_{i, p2} r_{i, p1} \qquad
+   r_{i, p3} = f_{i, p3} r_{i, p1} 
+   $${#eq-cat-activity}
+
+   The values of $f_i$ for reactions 1 and 2 (as described in portfolio 5) are
+   as follows
+
+   $$ 
+   f_{1,p2} = 0.52; f_{1, p3} = 0.37; \\
+   f_{2,p3} = 0.49; f_{2, p3} = 0.32
+   $${#eq-f-value} 
+
+   Use all other data as provided in portfolio 5. 
+
+   Calculate the conversion, yield, and selectivity at the end of each period. 
+   You can adapt the code given in appendix for solving this question. 
+  
+{{< pagebreak >}}
+
+
+## Appendix
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
+
+# constants
+
+R = 8.314    # J/ (mol K)
+RATM = 0.082    # atm dm^3/ (mol K)
+TRR = 523    # K
+
+# Components
+# 0: ethylene
+# 1: oxygen
+# 2: ethylene oxide
+# 3: CO2
+# 4: water
+# 5: nitrogen
+
+# Heats of formation at 298 K in J/mol
+HF = np.array([-52470, 0, -52640, -393500, -285830, 0])
+
+# Specific Heat Capacities J/mol K
+CP = np.array([65, 30, 80, 45, 35, 30])
+
+# reactions
+# 0. C2H4 + 1/2 O2 -> C2H4O
+# 1. C2H4 + 3O2 -> 2CO2 + 2H2O
+
+# Stoichiometry
+NU = np.array([
+    [-1, -0.5, 1, 0, 0, 0],  # Reaction 0: C2H4 + 0.5 O2 -> C2H4O
+    [-1, -3, 0, 2, 2, 0]     # Reaction 1: C2H4 + 3 O2 -> 2 CO2 + 2 H2O
+])
+
+# Adsorption constants (1/atm)
+KE0, KE1 = 6.5, 4.33
+
+# Heat of reaction at reference temperature J/mol
+DELTA_HR_TR = np.dot(NU, HF)
+
+# Functions
+
+k0e = lambda t: 0.15 * np.exp((60700/R) * ((1/TRR) - (1/t)))
+k1e = lambda t: 0.0888 * np.exp((73200/R) * ((1/TRR) - (1/t)))
+
+# rates
+r0e = lambda t, pe, po: k0e(t) * pe * po**0.58 / (1 + KE0*pe)**2 
+r1e = lambda t, pe, po: k1e(t) * pe * po**0.3 / (1 + KE1*pe)**2 
+
+def pbr(w,y,*args):
+
+  # convert dependent variables
+  f = y[:-1] 
+  t = y[-1]
+
+  # convert args
+  (pt, ua, ta) = args
+
+  # total molar flow rate
+  ft = np.sum(f)
+
+  # mol fr. 
+  phi = f/ft
+
+  # partial pressures
+  p = pt * phi
+
+  # extract partial pressure for ethylene and oxygen
+  pe = p[0]
+  po = p[1]
+
+  # calculate reaction rates 
+  r0 = r0e(t,pe,po)
+  r1 = r1e(t,pe,po)
+  
+  # Could also be written as an array
+  # r = np.array([r1e(t,pe,po), r2e(t,pe,po)])
+
+  # calculate rates of individual species
+  r_e = -r0 -r1
+  r_o = -0.5 * r0 - 3 * r1
+  r_eo = r0
+  r_co2 = 2 * r1
+  r_h2o = 2 * r1
+  r_n2 = 0
+  
+  # could also be written as 
+  # ri = np.dot(NU.T, r)
+
+  # write mole balances
+  # dfdw = ri
+
+  df_e = r_e
+  df_o = r_o
+  df_eo = r_eo
+  df_co2 = r_co2
+  df_h2o = r_h2o
+  df_n2 = r_n2
+
+  # energy balance
+
+  delta_cp = np.dot(NU,CP)
+  delta_hr = DELTA_HR_TR + delta_cp * (t - 298)
+
+  # non-isothermal case
+  # replace dtdw with appropriate expression
+  qg = -r0 * delta_hr[0] - r1 * delta_hr[1]
+  qr = ua * (t - ta)
+
+  sum_fcp = np.sum(f * CP)
+
+  dtdw =  (qg - qr)/sum_fcp
+
+  # dydw = np.append(dfdw,dtdw)
+  dydw = [df_e, df_o, df_eo, df_co2, df_h2o, df_n2, dtdw] 
+
+  return dydw
+  
+
+# Problem data
+
+# Heat transfer properties
+ua = 300  # J/kg-cat s K
+
+ta = 250 + 273.15 # k
+
+# Inlet pressure and temperature
+t0 = 250 + 273.15 # K
+p0 = 2 # atm
+
+# inlet flow rate mol/s
+ft0 = 0.0093 
+
+# Inlet volume (mol) fraction
+phi = np.array([0.06,0.12,0,0,0,0.82])
+
+# Inlet molar flow rates for components mol/s
+f0  = phi*ft0
+
+# total catalyst weight kg
+wcat = 0.1
+
+# Differential equations
+# 0: dF_e/dW
+# 1: dF_o/dW
+# 2: dF_eo/dW
+# 3: dF_co2/dW
+# 4: dF_h2o/dW
+# 5: dF_n2/dW
+# 6: dT/dW
+
+initial_conditions = np.append(f0,t0)
+args = (p0, ua, ta)
+
+w_final = wcat
+
+sol = solve_ivp(pbr, 
+                [0, w_final], 
+                initial_conditions, 
+                args=args, 
+                method='LSODA',
+                dense_output=True)
+
+# Extract solution
+
+w = np.linspace(0,w_final, 1000)
+
+# molar flow rate
+f = sol.sol(w)[:-1]
+
+f_e = f[0]
+f_o = f[1]
+f_eo = f[2]
+f_co2 = f[3]
+f_h2o = f[4]
+f_n2 = f[5]
+
+# temperature
+t = sol.sol(w)[-1]
+
+# Calculate conversion, selectivity, max temperature etc. as required # after
+# this point
+
+```
+
+```python
+#| echo: true
+#| warning: false
+#| label: fig-conv
+#| fig-cap: Conversion 
+
+x = 1 - f_e/f0[0]
+sel = f_eo/f_co2
+
+print (x[-1], sel[-1])
+
+plt.plot(w,x, label="Conversion")
+
+plt.xlim(w[0],w[-1])
+plt.ylim(0,1)
+plt.grid()
+
+plt.xlabel('Catalyst weight ($kg$)')
+plt.ylabel('Conversion')
+
+plt.show()
+
+``` 
+
+```python
+#| echo: true
+#| warning: false
+#| label: fig-temp
+#| fig-cap: Temperature
+
+plt.plot(w,t, label="Temperature")
+
+plt.xlim(w[0],w[-1])
+plt.grid()
+
+plt.xlabel('Catalyst weight ($kg$)')
+plt.ylabel('Temperature')
+
+plt.show()
+
+``` 
+
+{{< pagebreak >}}
+
+## References
+
