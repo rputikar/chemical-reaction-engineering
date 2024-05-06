@@ -685,6 +685,10 @@ occasionally includes their names (LHHW kinetics).
 
 ## Catalyst deactivation
 
+::::{.columns}
+
+:::{.column width=60%}
+
 * Solid catalyst activity changes with operation time.
   - Catalyst activity usually decreases with operation time (chemical or/and
     physical reasons).
@@ -701,19 +705,42 @@ occasionally includes their names (LHHW kinetics).
 * Catalyst life time is from few minutes to 10 years.
 * Regeneration of solid catalyst is important
 
+:::
+
+:::{.column width=40%}
+
+![](../../../assets/images/catalyst-decay-with-time.png){width=90%}
+
+:::
+::::
+
 * Effect of catalyst decay on solid catalysed reaction
   - Reactant conversion decreases
   - Product selectivity decreases
   - Require higher reaction temperature
   - Pressure drop over the cat bed increases (fixed bed reactor)
 
+## Sintering
 
+![](../../../assets/images/catalyst-sintering.png){width=90%}
+
+## Fouling/ Coking
+
+![](../../../assets/images/catalyst-fouling.png){width=90%}
+
+## Poisoning
+
+![](../../../assets/images/catalyst-poisoning.png){width=90%}
+
+## Catalyst regenration
+
+![](../../../assets/images/catalyst-regeneration.png){width=90%}
 
 ## Catalysis reactor types
 
 ## Fixed bed reactor
 
-## Fluidised bed reactor
+## Fluidized bed reactor
 
 ## Three phase reactor
 
