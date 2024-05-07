@@ -1,7 +1,7 @@
 ---
 title: "Non-isothermal reactor design"
 format: revealjs
-last-modified: 2024-05-06
+last-modified: 2024-05-07
 ---
 
 ```{python}
@@ -979,7 +979,7 @@ $$
 
 ## CSTR with heat effects
 
-:::{.incremental .extrapad}
+:::{.incremental .pad}
 
 * Steady state energy balance
 
@@ -1047,7 +1047,7 @@ typically small enough to ignore.
 * An energy balance on the heat-exchanger fluid entering and leaving the
   exchanger 
 
-:::{.smaller .extrapad}
+:::{.smaller .pad}
 $$
 \begin{aligned}
 \text{Rate of}

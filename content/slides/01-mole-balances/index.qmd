@@ -1,7 +1,7 @@
 ---
 title: "Mole balances"
 format: revealjs
-last-modified: 2024-05-03
+last-modified: 2024-05-07
 ---
 
 
@@ -344,7 +344,7 @@ algae and are an example of bioreactors in industrial biotechnology.
 
 ## Reaction rate
 
-:::{.incremental .extrapad}
+:::{.incremental .pad}
 
 * A chemical species is said to have reacted when it has lost its chemical identity.
 
@@ -389,7 +389,7 @@ $$ \ce{A + B -> C + D} $$
 * $r_A, r_B$   = the rate of formation of species A, and B per unit volume
 * $-r_A, -r_B$ = the rate of a disappearance of species A, and B per unit volume 
 
-:::{.extrapad}
+:::{.pad}
 * $r_C, r_D$   = the rate of formation of species C, and D per unit volume 
 :::
 
@@ -485,7 +485,7 @@ $$
 :::{.fragment}
 
 
-:::{.extrapad}
+:::{.pad}
 $$
 \frac{mol}{s} \qquad + \qquad \frac{mol}{s} \qquad + \qquad \frac{mol}{s} \qquad = \qquad  \frac{d}{dt}\left(mol\right)
 $$
@@ -576,7 +576,7 @@ $$
 ![](../../../assets/images/mole_balance.png){width=80%}
 
 
-:::{.extrapad .incremental}
+:::{.pad .incremental}
 
 * General form: $F_{j0} - F_j  + G_j =  \frac{dN_j}{dt}$
 

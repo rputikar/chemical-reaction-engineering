@@ -1,7 +1,7 @@
 ---
 title: "Rate law and stoichiometry"
 format: revealjs
-last-modified: 2024-05-03
+last-modified: 2024-05-07
 revealjs-plugins:
   - attribution
 ---
@@ -16,7 +16,7 @@ revealjs-plugins:
 :::{style="margin-bottom: 40px;"}
 :::
 
-:::{.extrapad}
+:::{.pad}
 
 | Reactor | Mole balance                      |
 |:--------|:----------------------------------|

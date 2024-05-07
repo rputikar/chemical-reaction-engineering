@@ -1,7 +1,7 @@
 ---
 title: "Conversion and reactor sizing"
 format: revealjs
-last-modified: 2024-05-03
+last-modified: 2024-05-07
 ---
 
 ```{python}
@@ -41,7 +41,7 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 ![](../../../assets/images/mole_balance.png){width=80%}
 
 
-:::{.extrapad .incremental}
+:::{.pad .incremental}
 
 * General form: $F_{j0} - F_j  + G_j =  \frac{dN_j}{dt}$
 
@@ -67,7 +67,7 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 :::{style="margin-bottom: 40px;"}
 :::
 
-:::{.extrapad}
+:::{.pad}
 
 | Reactor | Differential form | Algebraic form | Integral form |
 |:--------|:------------------|:---------------|:--------------|
@@ -111,7 +111,7 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 
 ## Conversion, $X$
 
-:::{.extrapad}
+:::{.pad}
 Consider $\ce{A + 2B -> 2C}$, Start with 1 mole of A, and 1 mole of B
 :::
 
@@ -408,7 +408,7 @@ $–r_A$ are evaluated at the exit of the CSTR
 :::{style="margin-bottom: 40px;"}
 :::
 
-:::{.extrapad}
+:::{.pad}
 
 | Reactor | Differential form | Algebraic form | Integral form |
 |:--------|:------------------|:---------------|:--------------|

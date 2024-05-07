@@ -194,9 +194,34 @@ h1.title {
   border: none;
 }
 
-.reveal .extrapad li:not(:last-child) {
+.reveal .pad li:not(:last-child) {
   margin-bottom: 30px !important;
 }
+
+.reveal .pad50 {
+  margin-bottom: 50px !important;
+}
+
+.reveal .pad100 {
+  margin-bottom: 100px !important;
+}
+
+.reveal .center-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+.reveal .center-xy {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateY(-50%), translateX(-50%);
+  transform: translateY(-50%), translateX(-50%);
+}
+
 
 //
 // .center,
@@ -245,6 +270,15 @@ h1.title {
 .fragment.hide {
   transition: all 0s !important;
   # display: none !important;
+}
+
+.reveal .center-xy {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateY(-50%), translateX(-50%);
+  transform: translateY(-50%), translateX(-50%);
 }
 
 .center {

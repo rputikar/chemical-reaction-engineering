@@ -1,7 +1,7 @@
 ---
 title: "Collection and analysis of rate data"
 format: revealjs
-last-modified: 2024-05-03
+last-modified: 2024-05-07
 ---
 
 # Rate data analysis
@@ -129,7 +129,7 @@ last-modified: 2024-05-03
 
 ## Reactor design problem
 
-:::{.incremental .extrapad}
+:::{.incremental .pad}
 * ![](../../../assets/images/kinetics-reactor-design-problem-volume-highight.png){width=90%}
 
 
