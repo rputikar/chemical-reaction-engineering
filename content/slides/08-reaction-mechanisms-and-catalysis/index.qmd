@@ -1,7 +1,7 @@
 ---
 title: "Reaction mechanisms and catalysis"
 format: revealjs
-last-modified: 2024-05-07
+last-modified: 2024-05-08
 ---
 
 ## Nonelementary rate laws
@@ -308,10 +308,7 @@ $$
     pressure of the reactant ($P_A$).
   
   - Additionally, the reaction rate is dependent on the availability of vacant
-    active sites on the catalyst surface. An active site is defined as a location
-    on the surface where a strong bond can form with an adsorbed species,
-    facilitating the reaction. 
-
+    active sites on the catalyst surface. 
 
 * Adsorption equilibrium constant  $K_A = k_A/k_{-A}$
 
@@ -369,9 +366,7 @@ the surface
 
   $$
   C_{\ce{A*S}} = K_A C_v P_A
-  $$
-
-  $$
+  \qquad
   C_{\ce{A*S}} = K_A P_A (C_t - C_{\ce{A*S}})
   $$
 
@@ -431,13 +426,9 @@ $C_\ce{C*S}$ and $C_{\ce{O*S}}$.
 
 ## Langmuir isotherm: Dissociative adsorption
 
-* At equilibrium $r_{AD} = 0$
+* At equilibrium $r_{AD} = 0 \qquad \Rightarrow \qquad  k_A P_{\ce{CO}} C_v^2 = k_{-A} C_{\ce{C*S}} C_{\ce{O*S}}$
 
-  $$ k_A P_{\ce{CO}} C_v^2 = k_{-A} C_{\ce{C*S}} C_{\ce{O*S}} $$
-
-* For $C_{\ce{C*S}} = C_{\ce{C*S}}$
-
-  $$ (K_A P_{\ce{CO}})^{1/2} C_v =  C_{\ce{O*S}} $$
+* For $C_{\ce{C*S}} = C_{\ce{C*S}}: \qquad (K_A P_{\ce{CO}})^{1/2} C_v =  C_{\ce{O*S}}$
 
 * Substituting for $C_{\ce{C*S}}$, and $C_{\ce{O*S}}$ in site balance equation
 
@@ -877,27 +868,26 @@ $$
 
 ## Poisoning
 
-* If we assume the rate of depletion of the poison from the reactant gas stream
+* Rate of depletion of the poison from the reactant gas stream
   onto the catalyst sites, $r_{\ce{P*S}}$, is proportional to the number of
   sites that are unpoisoned ($C_{t0} - C_{\ce{P*S}}$) and the concentration of
   poison in the gas phase is $C_P$
 
   $$ r_{\ce{P*S}} = k_d (C_{t0} - C_{\ce{P*S}}) C_P $$
 
-* Because every molecule that is adsorbed from the gas phase onto a site is
-  assumed to poison the site, this rate is also equal to the rate of removal of
+* This rate is also equal to the rate of removal of
   total active sites ($C_t$) from the surface
 
   $$ - \frac{dC_t}{dt} = \frac{dC_{\ce{P*S}}}{dt} = r_{\ce{P*S}}
   = k_d (C_{t0} - C_{\ce{P*S}}) C_P 
   $$
 
-* Dividing through by $C_{t0}$ and letting $f$ be the fraction of the total
-  number of sites that have been poisoned yields
+* Dividing through by $C_{t0}$ 
+  $$ 
+  \frac{df}{dt} = k_d (1 - f) C_P \qquad f: \text{fraction of sites that have been poisoned} 
+  $$
 
-  $$ \frac{df}{dt} = k_d (1 - f) C_P $$
-
-* The fraction of sites available for adsorption $(1 - f)$ is essentially the
+* The fraction of sites available for adsorption $(1 - f)$ is the
   activity $a(t)$
 
   $$ -\frac{da}{dt} = a(t) k_d C_P $$
@@ -916,24 +906,19 @@ Linear         0           $-da/dt = \beta_0$           $a = 1 - \beta_0 t$     
 
 Exponential    1           $-da/dt = \beta_1 a$         $a = e^{-\beta_1 t}$     Ethylene hydrogenation
                                                                                  on Cu poisoned with
-                                                                                 CO; Paraffin
-                                                                                 dehydrogenation on
-                                                                                 Cr~2~/Al~2~O~3~; Cracking
+                                                                                 CO; Cracking
                                                                                  of gas oil; Vinyl
                                                                                  chloride monomer
                                                                                  formation
 
-Hyperbolic     2           $-da/dt = \beta_2 a^2$       $1/a = 1 + \beta_2 t$    Vinyl chloride monomer
-                                                                                 formation; Cyclohexane
+Hyperbolic     2           $-da/dt = \beta_2 a^2$       $1/a = 1 + \beta_2 t$    Cyclohexane
                                                                                  dehydrogenation on
                                                                                  Pt/Al~2~O~3~;
                                                                                  Isobutylene
                                                                                  hydrogenation on Ni
 
 Reciprocal     \-          $-da/dt = \beta_3 a^{1/5}$   $a = A_0 t^{-\beta_3}$   Cracking of gas oil
-power                                                                            and gasoline on clay;
-                                                                                 Cyclohexane
-                                                                                 aromatization on NiAl
+power                                                                            and gasoline on clay
 -------------------------------------------------------------------------------------------------------
 
 ## Catalyst regenration
