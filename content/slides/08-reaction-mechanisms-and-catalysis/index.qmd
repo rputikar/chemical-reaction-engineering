@@ -300,7 +300,7 @@ $$
 * Rate of adsorption = rate of attachment - rate of detachment
 
   $$
-  r_{AD} = k_A P_A C_v - k_{-A} + C_{\ce{A*S}}
+  r_{AD} = k_A P_A C_v - k_{-A} C_{\ce{A*S}}
   $$ 
 
   - The rate is directly proportional to the number of collisions between the
@@ -428,7 +428,7 @@ $C_\ce{C*S}$ and $C_{\ce{O*S}}$.
 
 * At equilibrium $r_{AD} = 0 \qquad \Rightarrow \qquad  k_A P_{\ce{CO}} C_v^2 = k_{-A} C_{\ce{C*S}} C_{\ce{O*S}}$
 
-* For $C_{\ce{C*S}} = C_{\ce{C*S}}: \qquad (K_A P_{\ce{CO}})^{1/2} C_v =  C_{\ce{O*S}}$
+* For $C_{\ce{C*S}} = C_{\ce{O*S}}: \qquad (K_A P_{\ce{CO}})^{1/2} C_v =  C_{\ce{O*S}}$
 
 * Substituting for $C_{\ce{C*S}}$, and $C_{\ce{O*S}}$ in site balance equation
 

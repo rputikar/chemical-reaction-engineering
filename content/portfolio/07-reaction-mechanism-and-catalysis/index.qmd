@@ -121,7 +121,7 @@ for this assessment.
    f_{2,p3} = 0.49; f_{2, p3} = 0.32
    $${#eq-f-value} 
 
-   Use all other data as provided in portfolio 5. 
+   Use all other data as provided in portfolio 6. 
 
    Calculate the conversion, yield, and selectivity at the end of each period. 
    You can adapt the code given in appendix for solving this question. 
