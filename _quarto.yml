@@ -147,6 +147,8 @@ website:
             text: Isothermal reactor design
           - file: ./content/portfolio/04-analysis-of-rate-data/index.qmd
             text: Analysis of rate data
+          - file: ./content/portfolio/05-multiple-reactions/index.qmd
+            text: Multiple reactions
       #
 format:
   html:
