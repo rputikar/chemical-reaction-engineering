@@ -2,7 +2,7 @@
 title: 
   "Solutions to workshop 04: Isothermal reactor design"
 date: 2024-03-19
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 format: 
    html: default
    pdf:
@@ -1175,3 +1175,4 @@ Volume of reacctor to achieve X = 0.85: `{python} f'{v_x85:.2f}'` $dm^3$.
 
 
 ## References
+

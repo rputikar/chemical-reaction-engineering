@@ -1,7 +1,7 @@
 ---
 title: "Reaction mechanisms and catalysis"
 format: revealjs
-last-modified: 2024-05-08
+date-modified: 2024-05-10
 ---
 
 ## Nonelementary rate laws
@@ -927,5 +927,6 @@ power                                                                           
 :::
 
 ![](../../../assets/images/catalyst-regeneration.png){width=90%}
+
 
 

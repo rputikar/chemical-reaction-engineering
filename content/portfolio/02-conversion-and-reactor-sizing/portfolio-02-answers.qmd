@@ -4,7 +4,7 @@ format:
   pdf
 resources:
    - "./ethylene_oxide_rate_vs_conversion.csv"
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 ---
 
 ```{python}
@@ -409,5 +409,6 @@ plt.show()
 5. Correct conversion is reported for reactor 2. \hfill (2 marks for X around `{python} "{x:.2f}".format(x=x2)`)
 
 * half marks for essentially correct procedure but wrong answers. 
+
 
 

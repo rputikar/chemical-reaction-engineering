@@ -17,16 +17,16 @@ foreach ($file in $qmdFiles)
   $content = Get-Content $file.FullName
   $updated = $false
     
-  # Get file's last write time, only considering the date part
+  # Get file's date write time, only considering the date part
   $fileLastWriteTime = (Get-Item $file.FullName).LastWriteTime.Date
 
   # Attempt to find and parse the last-updated date from the file
-  $lastUpdatedLine = $content | Where-Object { $_ -match '^last-modified: (.*)$' }
+  $lastUpdatedLine = $content | Where-Object { $_ -match '^date-modified: (.*)$' }
   $fileNeedsUpdate = $true
 
   if ($lastUpdatedLine)
   {
-    $lastUpdatedDateStr = $lastUpdatedLine -replace '^last-modified: (.*)$', '$1'
+    $lastUpdatedDateStr = $lastUpdatedLine -replace '^date-modified: (.*)$', '$1'
     try
     {
       $lastUpdatedDate = [DateTime]::ParseExact($lastUpdatedDateStr, "yyyy-MM-dd", $null)
@@ -37,7 +37,7 @@ foreach ($file in $qmdFiles)
       }
     } catch
     {
-      Write-Warning "Failed to parse last-modified date for $($file.FullName)"
+      Write-Warning "Failed to parse date-modified date for $($file.FullName)"
     }
   }
 
@@ -49,11 +49,11 @@ foreach ($file in $qmdFiles)
     $lastUpdatedIndex = [array]::IndexOf($content, $lastUpdatedLine)
     if ($lastUpdatedIndex -ne -1)
     {
-      $content[$lastUpdatedIndex] = "last-modified: " + $fileLastWriteTime.ToString("yyyy-MM-dd")
+      $content[$lastUpdatedIndex] = "date-modified: " + $fileLastWriteTime.ToString("yyyy-MM-dd")
       $updated = $true
     } else
     {
-      $content += "last-modified: " + $fileLastWriteTime.ToString("yyyy-MM-dd")
+      $content += "date-modified: " + $fileLastWriteTime.ToString("yyyy-MM-dd")
       $updated = $true
     }
         

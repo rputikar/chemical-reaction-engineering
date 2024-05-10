@@ -2,15 +2,23 @@
 title: 
   "Solutions to workshop 11: Distribution of residence time"
 date: 2024-03-24
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 format: 
    html: default
    pdf:
       output-file: "solutions-to-workshop-11-distribution-of-residence-time"
       output-ext: "pdf"
+resources:
+   - p16-3-solution.pdf
+   - p16-6-solution.pdf
+   - p16-11-solution.pdf
+   - Workshop-11-distribution-of-residence-time.xlsx
 ---
 
-
+```{python}
+import numpy as np
+{{< include ../../../assets/partials/_mplinclude.py >}}
+```
 
 Try following problems from Fogler 5e (@fogler2016)
 P 16-3,
@@ -35,6 +43,101 @@ For $t > 2\tau$, then $E(t) = 0$
 
 (b) What is the variance?
 
+::: {.callout-tip collapse="true"}
+## Solution
+
+[Hand written solution](./p16-3-solution.pdf)
+
+```{python}
+#| echo: true
+#| warning: false
+
+import sympy as sp
+from IPython.display import display, Markdown
+
+# Define variables
+t, u= sp.symbols('t, u')
+tau = sp.symbols('tau', real=True, positive=True)
+
+et = sp.sqrt(tau**2 - (t - tau)**2)
+# using u = t - tau integral becomes
+# E(t) = int from -tau to tau ( sqrt (tau^2 - u^2))
+integral_eu = sp.integrate(sp.sqrt(tau**2 - u**2), (u, -tau, tau))
+
+tau_est = sp.solve(integral_eu - 1, tau)
+
+# Evaluate the numeric value of tau_est
+tau_numeric = tau_est[0].evalf()
+
+```
+Integral of $E(t)$: 
+
+```{python}
+#| echo: true
+#| warning: false
+
+integral_latex = sp.latex(integral_eu)
+display(Markdown(f"$$E(t) = {integral_latex}$$"))
+
+```
+
+Solution for $\tau$
+
+```{python}
+#| echo: true
+#| warning: false
+
+tau_latex = sp.latex(sp.simplify(tau_est[0]))
+display(Markdown(f"$$\\tau = {tau_latex}$$"))
+```
+$\tau$ = `{python} f'{tau_numeric:.3f}'` min. 
+
+
+We can also solve this problem numerically
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+from scipy.integrate import quad
+from scipy.optimize import fsolve
+from IPython.display import display, Markdown
+
+# Define E(t) function
+def et(t, tau):
+    if 0 <= t <= 2 * tau:
+        return np.sqrt(tau**2 - (t - tau)**2)
+    else:
+        return 0
+
+# Function to find tau such that the integral equals 1
+def integral(tau):
+    res, _ = quad(et, 0, 2 * tau, args=(tau,))
+    return res - 1
+
+# Initial guess for tau
+tau_guess = 1
+
+# Solve for tau
+tau_est = fsolve(integral, tau_guess)[0]
+
+# Define the variance function
+def variance_func(t, tau):
+    return (t - tau)**2 * et(t, tau)
+
+# Calculate the variance using numerical integration
+variance_value, _ = quad(variance_func, 0, 2 * tau_est, args=(tau_est,))
+
+```
+Using numerical method: 
+
+$\tau \approx$ `{python} f'{tau_est:.3f}'` min. 
+
+$\sigma^2 \approx$ `{python} f'{variance_value:.3f}'` min^2^. 
+
+:::
+
 ## P 16-6
 
 An RTD experiment was carried out in a nonideal reactor that gave the following results:
@@ -52,6 +155,66 @@ An RTD experiment was carried out in a nonideal reactor that gave the following 
 (c) What fraction of fluid spends 2 minutes or less in the reactor?
 
 (d) What fraction of fluid spends between 1.5 and 2 minutes in the reactor?
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+[Hand written solution](./p16-6-solution.pdf),  ([Accompanying excel
+file](./Workshop-11-distribution-of-residence-time.xlsx)).
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+from scipy.integrate import quad
+from IPython.display import display, Markdown
+
+# Define E(t) function
+def et(t):
+    if t < 1:
+        return 0
+    elif 1 <= t <= 2:
+        return 1.0
+    else:
+        return 0
+
+# Mean residence time function
+def tau_func(t):
+    return t * et(t)
+
+# Variance function
+def variance_func(t, tm):
+    return (t - tm)**2 * et(t)
+
+# Calculate mean residence time (t_m)
+tau, _ = quad(tau_func, 0, np.inf)
+
+# Calculate variance (sigma^2)
+variance, _ = quad(variance_func, 0, np.inf, args=(tau,))
+
+# Fraction of fluid that spends 1.5 minutes or longer
+f1_5_inf, _ = quad(et, 1.5, np.inf)
+
+# Fraction of fluid that spends 2 minutes or less
+f0_2, _ = quad(et, 0, 2)
+
+# Fraction of fluid that spends between 1.5 and 2 minutes
+f1_5_2, _ = quad(et, 1.5, 2)
+
+```
+Mean Residence Time $\tau$ $\approx$ `{python} f'{tau:.4f}'`  min.
+
+Variance $\sigma^2$ $\approx$ `{python} f'{variance:.4f}'`  $min^2$.
+
+Fraction of fluid that spends 1.5 minutes or longer: `{python} f'{f1_5_inf:.2f}'`
+
+Fraction of fluid that spends 2 minutes or less: `{python} f'{f0_2:.2f}'`
+
+Fraction of fluid that spends between 1.5 and 2 minutes: `{python} f'{f1_5_2:.2f}'`
+
+:::
+
 
 ## P 16-11
 
@@ -91,4 +254,206 @@ A pulse test gave the following concentration measurements at the outlet:
 
 (j) What is the mean internal age $\alpha_m$ ?
 
+::: {.callout-tip collapse="true"}
+## Solution
+
+[Hand written solution](./p16-11-solution.pdf), ([Accompanying excel
+file](./Workshop-11-distribution-of-residence-time.xlsx)).
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+from scipy.integrate import quad
+from scipy.interpolate import interp1d
+import matplotlib.pyplot as plt
+from IPython.display import display, Markdown
+
+# Given data
+t = np.array([0, 0.4, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 
+              8.0, 10.0, 15, 20, 25, 30, 35, 40, 45, 50, 60])
+c = np.array([0, 329, 622, 812, 831, 785, 720, 650, 
+              523, 418, 238, 136, 77, 44, 25, 14, 8, 5, 1]) * 1e-5
+
+# Flow rate
+Q = 10  # dm^3/min
+
+# Normalize concentration to calculate E(t)
+integral_c = np.trapz(c, t)
+et = c / integral_c
+
+# Interpolation functions
+et_interp = interp1d(t, et, kind='cubic', fill_value="extrapolate")
+
+# f_interp = lambda t: np.array([quad(et_interp, 0, ti)[0] for ti in t])
+
+# Define cumulative distribution F(t)
+def f_interp(t):
+    return np.array([quad(et_interp, 0, ti, limit=1000)[0] for ti in np.atleast_1d(t)])
+
+# Mean residence time function
+tau_func = lambda t: t * et_interp(t)
+
+# Variance function
+variance_func = lambda t, tm: (t - tm)**2 * et_interp(t)
+
+# Calculate mean residence time (t_m)
+tau, _ = quad(tau_func, 0, np.max(t))
+
+# Calculate variance (σ²)
+variance, _ = quad(variance_func, 0, np.max(t), args=(tau,))
+
+```
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p16-11-Et
+#| fig-cap: Exit age distribution E(t)
+
+# Plot E(t) and F(t)
+t_plot = np.linspace(0, 60, 500)
+et_plot = et_interp(t_plot)
+f_plot = f_interp(t_plot)
+
+plt.scatter(t, et, label='E(t) experimental')
+plt.plot(t_plot, et_plot, label='E(t) fitted')
+plt.xlabel('Time (min)')
+plt.ylabel('E(t)')
+plt.xlim(np.min(t_plot), np.max(t_plot))
+plt.ylim(0,0.1)
+plt.legend()
+plt.show()
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p16-11-Ft
+#| fig-cap: Cumulative distribution F(t)
+
+plt.plot(t_plot, f_plot, label='F(t)')
+plt.xlabel('Time (min)')
+plt.ylabel('F(t)')
+plt.xlim(np.min(t_plot), np.max(t_plot))
+plt.ylim(0,1)
+plt.legend()
+plt.show()
+
+```
+```{python}
+#| echo: true
+#| warning: false
+
+# Calculate specific time fractions
+fraction_2_to_4, _ = quad(et_interp, 2, 4)
+fraction_above_6, _ = quad(et_interp, 6, np.max(t))
+fraction_below_3, _ = quad(et_interp, 0, 3)
+
+# Reactor volume calculation
+volume = Q * tau
+
+```
+Mean Residence Time $tau$: $\approx$ `{python} f'{tau:.2f}'` min.
+
+Variance $\sigma^2$: $\approx$ `{python} f'{variance:.2f}'` $min^2$
+
+Specific Time Fractions: 
+
+Fraction of material that spends between 2 and 4 minutes: $\approx$ `{python} f'{fraction_2_to_4:.3f}'` 
+
+Fraction of material that spends longer than 6 minutes: $\approx$ `{python} f'{fraction_above_6:.3f}'` 
+
+Fraction of material that spends less than 3 minutes: $\approx$ `{python} f'{fraction_below_3:.3f}'` 
+
+Reactor Volume: $V = Q \cdot \tau$: $\approx$ `{python} f'{volume:.2f}'`  $dm^3$
+
+Normalized distrubution: 
+
+To calculate normalized RTD, we convert t to $\Theta$ as $\Theta = t/\tau$. 
+
+The dimensionless RTD function is calculated as $E (\Theta)  = \tau E(t)$. 
+
+Normalized cumulative RTD: $F(\Theta) = \int_0^\Theta E(\Theta)d\Theta$
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p16-11-Etheta
+#| fig-cap: Normalized exit age distribution $E(\Theta)$
+
+
+theta = t/tau
+e_theta = tau * et
+e_theta_interp = interp1d(theta, e_theta, kind='cubic', fill_value="extrapolate")
+
+theta_plot = np.linspace(0, theta[-1], 500)
+e_theta_plot = e_theta_interp(theta_plot)
+
+plt.scatter(theta, e_theta, label='$E(\\Theta)$ experimental')
+plt.plot(theta_plot, e_theta_plot, label='$E(\\Theta)$ fitted')
+plt.xlabel('$\\Theta$')
+plt.ylabel('$E(\\Theta)$')
+plt.xlim(np.min(theta_plot), np.max(theta_plot))
+plt.ylim(0,1)
+plt.legend()
+plt.show()
+
+
+``` 
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p16-11-Ftheta
+#| fig-cap: Normalized cumulative distribution $F(\Theta)$
+
+f_theta_interp = lambda t: np.array([quad(e_theta_interp, 0, ti)[0] for ti in t])
+f_theta_plot = f_theta_interp(theta_plot)
+
+plt.plot(theta_plot, f_theta_plot, label='$F(\\Theta)$')
+plt.xlabel('$\\Theta$')
+plt.ylabel('F(t)')
+plt.xlim(np.min(theta_plot), np.max(theta_plot))
+plt.ylim(0,1)
+plt.legend()
+plt.show()
+
+```
+
+Internal age distribution
+
+$$ I(t) = \frac{1}{\tau} \left[ 1 - F(t) \right] $$
+
+Mean internal age 
+
+$$ \alpha_m = \int_0^\infty I(t)dt $$
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p16-11-It
+#| fig-cap: Internal age distribution $I(t)$
+
+internal_age = lambda t, tm: (1/tm) * (1 - f_interp(t)) 
+mean_internal_age, _ = quad(lambda t: internal_age(t, tau), 0, np.max(t))
+
+it_plot = internal_age(t_plot, tau)
+
+plt.plot(t_plot, it_plot, label='I(t)')
+plt.xlabel('Time (min)')
+plt.ylabel('I(t)')
+plt.xlim(np.min(t_plot), np.max(t_plot))
+plt.ylim(0,0.1)
+plt.legend()
+plt.show()
+
+```
+
+Mean Internal age $\alpha_m$: $\approx$ `{python} f'{mean_internal_age:.2f}'` min.
+
+:::
+
 ## References
+

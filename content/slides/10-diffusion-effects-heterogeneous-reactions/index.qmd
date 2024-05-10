@@ -1,7 +1,7 @@
 ---
 title: "Diffusion effects: heterogeneous reactions"
 format: revealjs
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 ---
 
 ## Diffusion and reactions in homogeneous systems
@@ -19,3 +19,4 @@ last-modified: 2024-05-03
 ## Mass transfer and reaction in a packed bed
 
 ## Determination of limiting situations from reaction- rate data
+

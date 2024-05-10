@@ -4,10 +4,23 @@ format:
   pdf:
     output-file: "portfolio-06-nonisothermal-reactor-design"
     output-ext: "pdf"
-last-modified: 2024-05-06
+date-modified: 2024-05-10
 ---
 
+::: {.content-visible when-format="html"}
+
+::: {.callout-note}
+## Solutions
+
+Answers to the portfolio questions are uploaded at [Portfolio 6 answers](./portfolio-06-answers.qmd)
+
+:::
+
+:::
+
+
 ```{python}
+
 {{< include ../../../assets/partials/_mplinclude.py >}}
 ```
 ## Student ID: 
@@ -414,4 +427,5 @@ t = sol.sol(w)[-1]
 {{< pagebreak >}}
 
 ## References
+
 

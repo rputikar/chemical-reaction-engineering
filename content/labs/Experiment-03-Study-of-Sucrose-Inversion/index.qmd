@@ -9,7 +9,7 @@ format:
 resources:
   - "./PC-0054962-Armfield-Manual-CEU-Issue 13.pdf"
   - "../prelab/Catalytic_Reactor/"
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 ---
 
 :::{.callout-important}
@@ -100,4 +100,5 @@ should consider the following:
    conversion in both the columns For the two datasets given, perform data
    analysis in Excel to calculate the effectiveness factors for the two
    columns. Present relevant calculations.                                                                                       
+
 

@@ -1,7 +1,7 @@
 ---
 title: "In class activity: Collection and analysis of rate data"
 date: 2024-03-23
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 format:
   pdf
 ---
@@ -749,3 +749,4 @@ a = `{python} f'{a_opt:.4f}'`
 b = `{python} f'{b_opt:.4f}'`
 
 :::
+

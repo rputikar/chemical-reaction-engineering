@@ -1,7 +1,7 @@
 ---
 title: "In class activity: Distribution of residence time"
-date: 2024-03-23
-last-modified: 2024-05-03
+date: 2024-05-09
+date-modified: 2024-05-10
 format:
   pdf:
     output-file: "in-class-activity-distribution-of-residence-time"
@@ -13,4 +13,100 @@ import matplotlib.pyplot as plt
 from IPython.display import display, Markdown
 plt.style.use('../../../assets/templates/publish.mplstyle')
 ```
+```{python}
+import numpy as np
+import pandas as pd
+import tabulate as tab
+
+```
+
+## Finding the RTD function by experiment
+
+Plot the C-curve and E-curve for a response to a pulse input into a reactor
+given in @tbl-problem_1. 
+
+```{python}
+#| label: tbl-problem_1
+#| tbl-cap: "Concentration-Time Data"
+#| echo: false
+
+data = np.array([
+    (0, 0), (5, 4), (10, 6), (15, 7), (20, 5),
+    (25, 3), (30, 2), (35, 1), (40, 0)
+], dtype=[('t(min)', float), ('$C_{\\text{tracer}} \ (g/dm^3)$', float)])
+
+df = pd.DataFrame(data)
+md = tab.tabulate(df.T, floatfmt='.2f')
+display(Markdown(md))
+
+```
+
+## Constructing the $C(t)$ and $E(t)$ Curves
+
+A sample of the tracer hytane at 320 K was injected as a pulse into a reactor, and the
+effluent concentration was measured as a function of time, resulting in the data
+shown in @tbl-problem_2
+
+```{python}
+#| label: tbl-problem_2
+#| tbl-cap: "Concentration-Time Data"
+#| echo: false
+
+data = np.array([
+    (0, 0), (1, 1), (2, 5), (3, 8), (4, 10),
+    (5, 8), (6, 6), (7, 4), (8, 3), (9, 2.2),
+    (10, 1.5), (12, 0.6), (14, 0)
+], dtype=[('t(min)', float), ('C ($g/m^3$)', float)])
+
+df = pd.DataFrame(data)
+md = tab.tabulate(df.T, floatfmt='.2f')
+display(Markdown(md))
+```
+
+The measurements represent the exact concentrations at the times listed and not
+average values between the various sampling tests.
+
+* Construct a figure showing the tracer concentration $C(t)$ as a function of time.
+* Construct a figure showing $E(t)$ as a function of time.
+
+## Mean Residence Time and Variance Calculations
+
+Using the data given in @tbl-problem_2 in the previous problem
+
+*  Construct the $F(t)$ curve.
+*  Calculate the mean residence time, $t_m$.
+*  Calculate the variance about the mean, $\sigma^2$.
+*  Calculate the fraction of fluid that spends between 3 and 6 minutes in the
+   reactor.
+*  Calculate the fraction of fluid that spends 2 minutes or less in the
+   reactor.
+*  Calculate the fraction of the material that spends 3 minutes or longer in
+   the reactor.
+
+## Step experiment
+
+A step experiment is made on a reactor at $C_{in} ( t \ge 0 ) = 0.5 \ mol/dm^3$. 
+The results are as given in @tbl-problem_3. 
+
+```{python}
+#| label: tbl-problem_3
+#| tbl-cap: "Concentration-Time data from step experiment"
+#| echo: false
+
+data = np.array([
+    (0, 0), (1, 0), (2, 0.1), (3, 0.2), (4, 0.3),
+    (5, 0.4), (6, 0.5), (7, 0.5), (8, 0.5)
+], dtype=[('t (min)', float), ('$C_{out} (mol/L)$', float)])
+
+df = pd.DataFrame(data)
+md = tab.tabulate(df.T, floatfmt='.2f')
+display(Markdown(md))
+```
+Plot the Concentration - time curve, $F(t)$ curve and $E(t)$ curve.
+
+## Mean conversion using segragation model
+
+Using the pulse input response in @tbl-problem_1, calculate the mean conversion
+in the reactor for first order reaction: $\ce{A ->[k] Products}$ with k = 0.1
+$[min]^{-1}$.
 

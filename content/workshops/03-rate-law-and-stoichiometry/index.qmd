@@ -2,7 +2,7 @@
 title: 
   "Workshop 03: Rate law and stoichiometry"
 date: 2024-03-10
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 format: 
    html: default
    pdf:
@@ -151,4 +151,5 @@ $V = (0.1)\ (P)$   (V in $ft^3$ , P in $atm$)
 Temperature of system (considered constant): $140 \ ^{\circ}F$
 
 Gas constant: $0.73 \ ft^3 atm/lb mol \cdot ^{\circ}R$
+
 

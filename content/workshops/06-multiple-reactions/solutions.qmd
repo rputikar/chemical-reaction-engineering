@@ -2,7 +2,7 @@
 title: 
   "Solutions to workshop 06: Multiple reactions"
 date: 2024-03-24
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 format: 
    html: default
    pdf:
@@ -859,3 +859,4 @@ $C_C$ = `{python} f'{cc[-1]:.2f}'` $mol/dm^3$
 
 
 ## References
+

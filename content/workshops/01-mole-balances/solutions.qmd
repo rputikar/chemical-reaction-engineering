@@ -2,7 +2,7 @@
 title: 
   "Solution to Workshop 01 - Mole balances"
 date: 2024-02-24
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 format:
    html: default
    pdf:
@@ -303,3 +303,4 @@ b. $V_{CSTR} = 2750 \ dm^3$; $V_{PFR}=127.9 \ dm^3$
 c. $V_{CSTR} = 660 \ dm^3$; $V_{PFR}=6.6 \ dm^3$
 
 d. Batch reactor: 66600 h
+

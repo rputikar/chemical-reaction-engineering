@@ -1,7 +1,7 @@
 ---
 title: "In class activity: Rate law and stoichiometry"
 date: 2024-03-03
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 format:
   pdf
 ---
@@ -698,5 +698,6 @@ $F_{A0} = C_{A0} \upsilon_0 = 3.6 mol/min$
 2. V at 288 &deg;C: 352 $m^3$
 
 :::
+
 
 

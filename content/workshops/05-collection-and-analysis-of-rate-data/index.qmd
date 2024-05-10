@@ -2,7 +2,7 @@
 title: 
   "Workshop 05: Collection and analysis of rate data"
 date: 2024-03-24
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 format: 
    html: default
    pdf:
@@ -184,3 +184,4 @@ weight). Determine as many rate law parameters as you can.
 
 
 ## References
+

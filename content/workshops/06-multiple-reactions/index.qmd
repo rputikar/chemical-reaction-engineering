@@ -2,7 +2,7 @@
 title: 
   "Workshop 06: Multiple reactions"
 date: 2024-03-24
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 format: 
    html: default
    pdf:
@@ -124,3 +124,4 @@ Assume that each reaction is irreversible, with $k_1 = 0.4 \, h^{-1}$ and $k_2 =
 Explain the consequence of $k_1 > 100$ and $k_2 < 0.1$ and with $k_{-1} = k_{-2} = 0$ and with $k_{-2}= 1, k_{-1} = 0$, and $k_{-2} = 0.25$.
 
 ## References
+

@@ -1,7 +1,7 @@
 ---
 title: "In class activity: Reaction mechanisms and catalysis"
 date: 2024-03-23
-last-modified: 2024-05-05
+date-modified: 2024-05-10
 format:
   pdf:
       output-file: "in-class-activity-reaction-mechanisms-and-catalysis"
@@ -681,3 +681,4 @@ r_0 = \frac{k_3 K_1 K_2 P_A P_B C_t}{1 + K_1 P_A + K_2 P_B}
 $$
 
 :::
+

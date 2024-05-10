@@ -2,7 +2,7 @@
 title: 
   "Solutions to workshop 03: Rate law and stoichiometry"
 date: 2024-03-10
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 format: 
    html: default
    pdf:
@@ -412,5 +412,6 @@ $$
 
 
 :::
+
 
 

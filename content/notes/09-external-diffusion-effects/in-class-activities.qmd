@@ -1,7 +1,7 @@
 ---
 title: "In class activity: External diffusion effects: heterogeneous reactions"
 date: 2024-03-23
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 format:
   pdf:
     output-file: "in-class-activity-external-diffusion-effects-heterogeneous-reactions"
@@ -13,4 +13,5 @@ import matplotlib.pyplot as plt
 from IPython.display import display, Markdown
 plt.style.use('../../../assets/templates/publish.mplstyle')
 ```
+
 

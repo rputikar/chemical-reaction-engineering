@@ -1,7 +1,7 @@
 ---
 title: "Distribution of residence time"
 format: revealjs
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 ---
 
 
@@ -23,9 +23,9 @@ last-modified: 2024-05-03
 
 ## Other Moments of the RTD
 
-## Normalized RTD Function,
+## Normalized RTD Function
 
-## Internal-Age Distribution,
+## Internal-Age Distribution
 
 ## RTD in Ideal Reactors
 
@@ -35,10 +35,11 @@ last-modified: 2024-05-03
 
 ## Laminar-Flow Reactor (LFR)
 
-## PFB'CSTR Series RTD
+## PFR/CSTR Series RTD
 
 ## Diagnostics and Troubleshooting
 
 ## General Comments
 
 ## Simple Diagnostics and Troubleshooting Using the RTD for Ideal Reactors
+

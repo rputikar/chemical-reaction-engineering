@@ -2,7 +2,7 @@
 title: 
   "Workshop 07: Non-isothermal reactor design"
 date: 2024-04-02
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 format: 
    html: default
    pdf:
@@ -167,4 +167,5 @@ $\;\;\;\;$
 $k_{2D} = 0.4 (dm^3/mol \cdot s) \exp 5000 K \left[ \frac{1}{500} - \frac{1}{T}\right]$
 
 (a) What is the activation energy for Reaction (1)?
+
 

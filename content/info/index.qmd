@@ -1,6 +1,6 @@
 ---
 title: Getting Ready
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 ---
 
 ## Pre-requisites
@@ -53,5 +53,6 @@ going through any issues that may have an impact on your participation in the
 unit (e.g. attending a session, sitting for test, completing project etc.),
 inform me at the earliest and I will do my best to accomodate your
 requirements.
+
 
 

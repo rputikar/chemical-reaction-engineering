@@ -1,7 +1,7 @@
 ---
 title: "In class activity: Isothermal reactor design"
 date: 2024-03-13
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 format:
   pdf
 ---
@@ -294,5 +294,6 @@ $$
    $$
 
 :::
+
 
 

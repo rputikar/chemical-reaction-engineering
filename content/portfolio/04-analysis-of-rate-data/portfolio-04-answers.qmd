@@ -6,7 +6,7 @@ format:
     output-ext: "pdf"
 resources:
     - portfolio-4-raw-data.csv
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 ---
 
 ## Student ID: 
@@ -487,3 +487,4 @@ cc2h4o = data["C_c2h4o"]*1e-4
 # plt.show()
 
 ```
+

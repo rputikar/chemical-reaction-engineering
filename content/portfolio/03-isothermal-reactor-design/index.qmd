@@ -2,7 +2,7 @@
 title: "Portfolio 03: Isothermal reactor design"
 format:
   pdf
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 ---
 
 ::: {.content-visible when-format="html"}
@@ -136,4 +136,5 @@ kJ/mol.
    c. Estimate the catalyst weight required to achieve 60% conversion
       considering pressure drop. Compare the results with those obtained in
       question 1. 
+
 

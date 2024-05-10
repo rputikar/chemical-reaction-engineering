@@ -2,7 +2,7 @@
 title: 
   "Workshop 01: mole balances"
 date: 2024-02-24
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 format:
    html: default
    pdf:
@@ -131,3 +131,4 @@ We will go through some of these problems in the workshop.
 ![Penicillium chrysogenum](../../../assets/images/penicillium.png){#fig-penicillium}
 
 :::
+

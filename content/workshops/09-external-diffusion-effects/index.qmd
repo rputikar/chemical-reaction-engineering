@@ -2,7 +2,7 @@
 title: 
   "Workshop 09: External diffusion effects"
 date: 2024-03-24
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 format: 
    html: default
    pdf:
@@ -54,5 +54,6 @@ Additional information:
 - Heat of reaction: $\Delta H_{Rx}^{\circ} = 10,000 cal/g mol A$ 
 - Heat capacities: $C_{pA} =  C_{pB} =  25 cal/g mol \cdot K, C_{pS}\, \text{(solvent)} =  75 cal/g mol \cdot K$
 - $k' (300 K) = 0.01 cm^3 /s \cdot g-cat \; \text{with}\; E = 4000 cal/mol$
+
 
 

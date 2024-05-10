@@ -2,7 +2,7 @@
 title: 
   Conversion and reactor sizing
 date: 2024-02-27
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 format: html
 ---
 
@@ -85,6 +85,7 @@ The in-class activities/ tasks for this lecture are at:
 
 :::
 :::
+
 
 
 

@@ -1,7 +1,7 @@
 ---
 title: "Pre class activity: Collection and Analysis of Rate Data"
 date: 2024-03-03
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 format:
   pdf
 ---
@@ -29,5 +29,6 @@ format:
 
   - [Online Integral Calculator with
     Wolfram|Alpha](https://www.wolframalpha.com/calculators/integral-calculator/)
+
 
 

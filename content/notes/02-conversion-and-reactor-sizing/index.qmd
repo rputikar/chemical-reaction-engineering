@@ -1,7 +1,7 @@
 --- 
 title: "Conversion and reactor sizing" 
 date: 2024-02-28
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 resources:
   - "./Ranjeet_Notes_Fogler_Chapter 02 - Conversion and reactor sizing.pdf"
 format:
@@ -17,4 +17,5 @@ format:
 [@fogler2016]](./Ranjeet_Notes_Fogler_Chapter 02 - Conversion and reactor sizing.pdf)
 
 :::
+
 

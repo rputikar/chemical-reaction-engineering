@@ -1,7 +1,7 @@
 ---
 title: "Multiple reactions"
 format: revealjs
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 ---
 
 ## Introduction
@@ -748,4 +748,5 @@ $${#eq-series-3}
 :::
 
 ::::
+
 

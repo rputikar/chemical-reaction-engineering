@@ -9,7 +9,7 @@ format:
 resources:
   - "./CET-MKII Issue 21 Instruction Manual.pdf"
   - "../prelab/Tubular_Reactor/"
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 ---
 
 :::{.callout-important}
@@ -149,3 +149,4 @@ The report should consider the following:
    Based on the analysis, report the reaction rate constants at three different
    reactant flow rates, and the activation energy for the reaction.
    Present relevant graphs for all the data sets.                                                                                                 
+

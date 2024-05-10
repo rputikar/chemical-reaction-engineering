@@ -2,7 +2,7 @@
 title: 
   "Workshop 02: Conversion and reactor sizing"
 date: 2024-02-28
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 format: 
    html: default
    pdf:
@@ -179,3 +179,4 @@ The data from @tbl-2-4 is provided in file [workshop-02-problem-2.csv](./worksho
 
 
 The data from @fig-p-2-10b is provided in file [workshop-02-problem-4.csv](./workshop-02-problem-4.csv)
+

@@ -2,7 +2,7 @@
 title: 
   External diffusion effects
 date: 2024-03-25
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 format: html
 ---
 
@@ -71,7 +71,7 @@ clicking on the link below.
 
 :::{.grid}
 ::: {.g-col-5}
-[Lecture Notes - Chapter 8](../../notes/09-external-diffusion-effects/Ranjeet_Notes_Fogler_Chapter 14 - Mass Transfer Limitations in Reacting Systems.pdf){.btn .btn-success .btn-lg role="button"}
+[Lecture Notes - Chapter 14](../../notes/09-external-diffusion-effects/Ranjeet_Notes_Fogler_Chapter 14 - Mass Transfer Limitations in Reacting Systems.pdf){.btn .btn-success .btn-lg role="button"}
 
 :::
 :::
@@ -88,5 +88,6 @@ The in-class activities/ tasks for this lecture are at:
 
 :::
 :::
+
 
 

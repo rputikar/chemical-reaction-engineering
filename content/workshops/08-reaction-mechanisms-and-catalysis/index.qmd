@@ -2,7 +2,7 @@
 title: 
   "Solutions to workshop 08: Reaction mechanisms and catalysis"
 date: 2024-04-01
-last-modified: 2024-05-05
+date-modified: 2024-05-10
 format: 
    html: default
    pdf:
@@ -214,4 +214,5 @@ What would the temperature–time trajectory look like for a CSTR? What if $E_T 
 
     with $k_d =0.2 atm^{-2} h^{-1}$.
     Redo parts (b) and (c) for these conditions.
+
 

@@ -4,7 +4,7 @@ format:
   pdf:
     output-file: "answers-to-portfolio-06-nonisothermal-reactor-design"
     output-ext: "pdf"
-last-modified: 2024-05-06
+date-modified: 2024-05-10
 ---
 
 ```{python}
@@ -270,6 +270,8 @@ Download the file `portfolio_6.ipynb` from blackboard.
 Open Google colab. From menu, click on File > Upload notebook.
 Upload the downloaded file and modify as per needed. 
 
+Below is complete code for non-isothermal case. 
+
 
 ```{python}
 #| echo: true
@@ -380,10 +382,17 @@ def pbr(w,y,*args):
   delta_hr = DELTA_HR_TR + delta_cp * (t - 298)
 
   # isothermal case
-  dtdw = 0
+  # dtdw = 0
   
   # non-isothermal case
   # replace dtdw with appropriate expression
+  qg = -r0 * delta_hr[0] - r1 * delta_hr[1]
+  qr = ua * (t - ta)
+
+  sum_fcp = np.sum(f * CP)
+
+  dtdw =  (qg - qr)/sum_fcp
+
 
   # dydw = np.append(dfdw,dtdw)
   dydw = [df_e, df_o, df_eo, df_co2, df_h2o, df_n2, dtdw] 
@@ -457,60 +466,50 @@ t = sol.sol(w)[-1]
 
 ```
 
-<!-- ```python -->
-<!--   qg = -r0 * delta_hr[0] - r1 * delta_hr[1] -->
-<!--   qr = ua * (t - ta) -->
-<!---->
-<!--   sum_fcp = np.sum(f * CP) -->
-<!---->
-<!--   dtdw =  (qg - qr)/sum_fcp -->
-<!-- ``` -->
-<!---->
-<!---->
-<!-- ```python -->
-<!-- #| echo: true -->
-<!-- #| warning: false -->
-<!-- #| label: fig-conv -->
-<!-- #| fig-cap: Conversion  -->
-<!---->
-<!-- x = 1 - f_e/f0[0] -->
-<!-- sel = f_eo/f_co2 -->
-<!---->
-<!-- print (x[-1], sel[-1]) -->
-<!---->
-<!-- plt.plot(w,x, label="Conversion") -->
-<!---->
-<!-- plt.xlim(w[0],w[-1]) -->
-<!-- plt.ylim(0,1) -->
-<!-- plt.grid() -->
-<!---->
-<!-- plt.xlabel('Catalyst weight ($kg$)') -->
-<!-- plt.ylabel('Conversion') -->
-<!---->
-<!-- plt.show() -->
-<!---->
-<!-- ```  -->
-<!---->
-<!-- ```python -->
-<!-- #| echo: true -->
-<!-- #| warning: false -->
-<!-- #| label: fig-temp -->
-<!-- #| fig-cap: Temperature -->
-<!---->
-<!-- plt.plot(w,t, label="Temperature") -->
-<!---->
-<!-- plt.xlim(w[0],w[-1]) -->
-<!-- plt.grid() -->
-<!---->
-<!-- plt.xlabel('Catalyst weight ($kg$)') -->
-<!-- plt.ylabel('Temperature') -->
-<!---->
-<!-- plt.show() -->
-<!---->
-<!-- ```  -->
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-conv
+#| fig-cap: Conversion 
 
+x = 1 - f_e/f0[0]
+sel = f_eo/f_co2
+
+print (f'Final conversion: {x[-1]:.2f}; Final selectivity :{sel[-1]:.2f}\n')
+
+plt.plot(w,x, label="Conversion")
+
+plt.xlim(w[0],w[-1])
+plt.ylim(0,1)
+plt.grid()
+
+plt.xlabel('Catalyst weight ($kg$)')
+plt.ylabel('Conversion')
+
+plt.show()
+
+``` 
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-temp
+#| fig-cap: Temperature
+
+plt.plot(w,t, label="Temperature")
+
+plt.xlim(w[0],w[-1])
+plt.grid()
+
+plt.xlabel('Catalyst weight ($kg$)')
+plt.ylabel('Temperature')
+
+plt.show()
+
+``` 
 
 {{< pagebreak >}}
 
 ## References
+
 

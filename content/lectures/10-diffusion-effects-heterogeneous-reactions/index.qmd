@@ -2,7 +2,7 @@
 title: 
   Diffusion effects- heterogeneous reactions
 date: 2024-03-25
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 format: html
 ---
 
@@ -71,7 +71,7 @@ clicking on the link below.
 
 :::{.grid}
 ::: {.g-col-5}
-[Lecture Notes - Chapter 8](../../notes/10-diffusion-effects-heterogeneous-reactions/Ranjeet_Notes_Fogler_Chapter 15 - Diffusion and Reaction.pdf){.btn .btn-success .btn-lg role="button"}
+[Lecture Notes - Chapter 15](../../notes/10-diffusion-effects-heterogeneous-reactions/Ranjeet_Notes_Fogler_Chapter 15 - Diffusion and Reaction.pdf){.btn .btn-success .btn-lg role="button"}
 
 :::
 :::
@@ -88,5 +88,6 @@ The in-class activities/ tasks for this lecture are at:
 
 :::
 :::
+
 
 

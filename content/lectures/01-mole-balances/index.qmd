@@ -2,7 +2,7 @@
 title: 
   Mole balances
 date: 2024-02-20
-last-modified: 2024-05-03
+date-modified: 2024-05-10
 format: html
 ---
 
@@ -87,6 +87,7 @@ The in-class activities/ tasks for this lecture are at:
 
 :::
 :::
+
 
 
 

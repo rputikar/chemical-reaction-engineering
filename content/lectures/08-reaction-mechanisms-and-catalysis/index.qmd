@@ -2,7 +2,7 @@
 title: 
   Reaction mechanisms and catalysis
 date: 2024-03-25
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 format: html
 ---
 
@@ -87,5 +87,6 @@ The in-class activities/ tasks for this lecture are at:
 
 :::
 :::
+
 
 

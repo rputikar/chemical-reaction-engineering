@@ -9,7 +9,7 @@ format:
 resources:
   - "./CEB-MKIII-Issue-3-Instruction-Manual.pdf"
   - "../prelab/Batch_Reactor/"
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 ---
 
 :::{.callout-important}
@@ -237,3 +237,4 @@ The report should consider the following:
    - Based on the analysis, report the reaction rate constants at the three
      different temperatures, and the activation energy for the reaction. 
    - Present relevant graphs for all the data sets.
+

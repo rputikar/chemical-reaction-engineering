@@ -19,7 +19,7 @@ format:
 metadata-files:
   - metadata.yml
 
-last-modified: 2024-04-02
+date-modified: 2024-05-10
 ---
 
 ## Course Overview
@@ -210,4 +210,5 @@ Best way to contact is via email. I hope to respond within 24-36 hours. If you w
 <!-- Grid person -->
 
 :::
+
 
