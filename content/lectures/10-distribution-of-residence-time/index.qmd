@@ -33,12 +33,12 @@ or window). You can also view them as pdf for printing, or later viewing.
 
 :::{.grid}
 ::: {.g-col-1}
-[Slides](../../slides/11-distribution-of-residence-time/index.qmd){target="_blank" .btn .btn-success .btn-lg role="button"}
+[Slides](../../slides/10-distribution-of-residence-time/index.qmd){target="_blank" .btn .btn-success .btn-lg role="button"}
 
 :::
 
 ::: {.g-col-1}
-[PDF](../../slides/11-distribution-of-residence-time/11-distribution-of-residence-time.pdf){target="_blank" .btn .btn-info .btn-lg role="button"}
+[PDF](../../slides/10-distribution-of-residence-time/11-distribution-of-residence-time.pdf){target="_blank" .btn .btn-info .btn-lg role="button"}
 
 :::
 :::
@@ -71,7 +71,7 @@ clicking on the link below.
 
 :::{.grid}
 ::: {.g-col-5}
-[Lecture Notes - Chapter 16](../../notes/11-distribution-of-residence-time/Ranjeet_Notes_Fogler_Chapter 16 - RTD.pdf){.btn .btn-success .btn-lg role="button"}
+[Lecture Notes - Chapter 16](../../notes/10-distribution-of-residence-time/Ranjeet_Notes_Fogler_Chapter 16 - RTD.pdf){.btn .btn-success .btn-lg role="button"}
 
 :::
 :::
@@ -84,7 +84,7 @@ The in-class activities/ tasks for this lecture are at:
 :::{.grid}
 ::: {.g-col-5}
 
-[in-class activities](../../notes/11-distribution-of-residence-time/in-class-activities.qmd){.btn .btn-success .btn-lg role="button"}
+[in-class activities](../../notes/10-distribution-of-residence-time/in-class-activities.qmd){.btn .btn-success .btn-lg role="button"}
 
 :::
 :::

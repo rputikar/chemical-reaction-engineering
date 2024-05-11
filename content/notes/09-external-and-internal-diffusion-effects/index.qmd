@@ -4,6 +4,7 @@ date: 2024-03-03
 date-modified: 2024-05-10
 resources:
   - "./Ranjeet_Notes_Fogler_Chapter 14 - Mass Transfer Limitations in Reacting Systems.pdf"
+  - "./Ranjeet_Notes_Fogler_Chapter 15 - Diffusion and Reaction.pdf"
 ---
 
 
@@ -11,6 +12,9 @@ resources:
 
 [Notes on Chapter 14 of Elements of Chemical Reaction Engineering
 [@fogler2016]](./Ranjeet_Notes_Fogler_Chapter 14 - Mass Transfer Limitations in Reacting Systems.pdf)
+
+[Notes on Chapter 15 of Elements of Chemical Reaction Engineering
+[@fogler2016]](./Ranjeet_Notes_Fogler_Chapter 15 - Diffusion and Reaction.pdf)
 
 :::
 

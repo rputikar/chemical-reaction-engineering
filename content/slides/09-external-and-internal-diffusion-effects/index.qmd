@@ -1,5 +1,5 @@
 ---
-title: "External diffusion effects"
+title: "External and internal diffusion effects"
 format: revealjs
 date-modified: 2024-05-10
 ---
@@ -29,6 +29,21 @@ plt.style.use('../../../assets/templates/present.mpstyle')
 
 ## Mass transfer–limited reactions in packed beds
 
+## Diffusion and reactions in homogeneous systems
+
+## Diffusion and reactions in spherical catalyst pellets
+
+## The internal effectiveness factor
+
+## Falsified kinetics
+
+## Overall effectiveness factor
+
+## Estimation of diffusion- and reaction-limited regimes
+
+## Mass transfer and reaction in a packed bed
+
+## Determination of limiting situations from reaction- rate data
 
 
 
