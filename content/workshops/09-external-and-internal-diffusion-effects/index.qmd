@@ -1,12 +1,12 @@
 ---
 title: 
-  "Workshop 09: External diffusion effects"
+  "Workshop 09: External and internal diffusion effects"
 date: 2024-03-24
 date-modified: 2024-05-11
 format: 
    html: default
    pdf:
-      output-file: "workshop-09-external-diffusion-effects"
+      output-file: "workshop-09-external-and-internal-diffusion-effects"
       output-ext: "pdf"
 ---
 
