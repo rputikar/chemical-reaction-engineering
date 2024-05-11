@@ -97,7 +97,7 @@ website:
           - file: ./content/lectures/06-multiple-reactions/index.qmd
           - file: ./content/lectures/07-non-isothermal-reactor-design/index.qmd
           - file: ./content/lectures/08-reaction-mechanisms-and-catalysis/index.qmd
-          - file: ./content/lectures/11-distribution-of-residence-time/index.qmd
+          - file: ./content/lectures/10-distribution-of-residence-time/index.qmd
           #
       - section: "Workshops"
         id: workshops
@@ -119,7 +119,7 @@ website:
             text: Non-isothermal reactor design
           - file: ./content/workshops/08-reaction-mechanisms-and-catalysis/index.qmd
             text: Reaction mechanisms and catalysis
-          - file: ./content/workshops/11-distribution-of-residence-time/index.qmd
+          - file: ./content/workshops/10-distribution-of-residence-time/index.qmd
             text: Distribution of residence times
       #
       - section: "Labs"
