@@ -2,11 +2,141 @@
 title: 
   "Solutions to workshop 09: External diffusion effects"
 date: 2024-03-24
-date-modified: 2024-05-10
+date-modified: 2024-05-11
 format: 
    html: default
    pdf:
       output-file: "solutions-to-workshop-09-external-diffusion-effects"
       output-ext: "pdf"
+resources:
+   - ./p14-9-solution.pdf
 ---
 
+## P 14-9
+
+The irreversible gas-phase reaction
+
+$\ce{ A ->[ cat ] B}$
+
+is carried out adiabatically over a packed bed of solid catalyst particles.
+The reaction is first order in the concentration of A on the catalyst surface
+
+$$-r_{As}' = k' C_{As} $$
+
+The feed consists of 50% (mole) A and 50% inerts, and enters the bed at a temperature of 300 K.
+The entering volumetric flow rate is 10 dm^3^/s (i.e., 10,000 cm^3^/s).
+The relationship between the Sherwood number and the Reynolds number is
+
+$$ Sh = 100 Re^{1/2}$$
+
+As a first approximation, one may neglect pressure drop.
+The entering concentration of A is 1.0 M.
+Calculate the catalyst weight necessary to achieve 60% conversion of A for
+
+(a) isothermal operation.
+
+(b) adiabatic operation.
+
+Additional information:
+
+- Kinematic viscosity: $\mu/\rho =  0.02 cm^2/s$
+- Particle diameter: $d_p = 0.1 cm$ 
+- Superficial velocity: $U =10 cm/s$
+- Catalyst surface area/mass of catalyst bed: $a= 60 cm^2/g-cat$ 
+- Diffusivity of A: $D_e =  10^{-2} cm^2/s$
+- Heat of reaction: $\Delta H_{Rx}^{\circ} = 10,000 cal/g mol A$ 
+- Heat capacities: $C_{pA} =  C_{pB} =  25 cal/g mol \cdot K, C_{pS}\, \text{(solvent)} =  75 cal/g mol \cdot K$
+- $k' (300 K) = 0.01 cm^3 /s \cdot g-cat \; \text{with}\; E = 4000 cal/mol$
+
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+[Hand written solution](./p14-9-solution.pdf)
+
+```{python}
+#| echo: true
+#| warning: false
+
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.integrate import solve_ivp
+
+# constants
+
+R = 8.314  # J/ (mol K)
+RCAL = 1.987  # cal⋅/ mol K
+RATM = 0.082  # atm dm^3/ (mol K)
+
+# data
+NU_VIS = 0.02 # cm^2/s
+DP = 0.1  # cm
+VEL = 10 # cm/s
+SP_AREA = 60 # cm^2/g-cat
+DE = 1e-2 # cm^2/s
+DELTA_HR_TR = 10000 # cal/gmol A
+CPA, CPB = 25 # cal/gmol K
+CPS = 75 # cal/gmol K
+
+KA0 = 0.01 # cm^3/s g-cat
+EA0 = 4000 # cal/mol
+TR = 300 # K
+# Functions
+k = lambda t: KA0 * np.exp((EA0 / RCAL) * ((1 / TR) - (1 / t)))
+
+Re = NU_VIS * VEL/ DP
+Sh = 100 * Re**0.5
+
+CA0 = 1.0e-3 # molar
+V0 = 1e5 # cm^3/s
+
+# def reactor(t, y, *args):
+#     # convert dependent variables
+#     x, a = y
+#     (w, pt0, nt0, T0) = args
+#
+#     pt = pt0 * (1 - x)  # as delta = 0 (epsilon = 0)
+#
+#     rate = rt(T0, a, pt)
+#
+#     dxdt = rate * w / nt0
+#     dadt = -rd(T0, a)
+#
+#     dydw = [dxdt, dadt]
+#     return dydw
+#
+#
+# initial_conditions = np.array([0])
+#
+# sol = solve_ivp(
+#     reactor,
+#     [0, t_final],
+#     initial_conditions,
+#     args=args,
+#     method="LSODA",
+#     dense_output=True,
+# )
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p10-19-conv-vs-weight
+#| fig-cap: Conversion and activity
+
+# plt.plot(time, x, label="conversion")
+# plt.plot(time, a, label="activity")
+#
+# plt.xlim(time[0], time[-1])
+# plt.ylim(0, 1)
+# plt.grid()
+# plt.legend()
+#
+# plt.xlabel("time ($h$)")
+# plt.ylabel("Conversion, activity")
+#
+# plt.show()
+```
+
+
+:::

@@ -2,7 +2,7 @@
 title: 
   "Workshop 09: External diffusion effects"
 date: 2024-03-24
-date-modified: 2024-05-10
+date-modified: 2024-05-11
 format: 
    html: default
    pdf:
@@ -10,14 +10,14 @@ format:
       output-ext: "pdf"
 ---
 
-<!-- ::: {.content-visible when-format="html"} -->
-<!-- ::: {.callout-tip} -->
-<!-- ## Solutions -->
-<!---->
-<!-- Solutions to these problems are uploaded at [Workshop 9 solutions](./solutions.qmd) -->
-<!---->
-<!-- ::: -->
-<!-- ::: -->
+::: {.content-visible when-format="html"}
+::: {.callout-tip}
+## Solutions
+
+Solutions to these problems are uploaded at [Workshop 9 solutions](./solutions.qmd)
+
+:::
+:::
 
 ## P 14-9
 
