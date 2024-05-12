@@ -1,7 +1,7 @@
 ---
 title: "In class activity: Reaction mechanisms and catalysis"
 date: 2024-03-23
-date-modified: 2024-05-10
+date-modified: 2024-05-12
 format:
   pdf:
       output-file: "in-class-activity-reaction-mechanisms-and-catalysis"
@@ -445,7 +445,7 @@ $$
 Therefore reaction rate:
 
 $$
--r'_{C,0} = r_D = k_D K_C K_S C_t \left( \frac{\frac{P_B P_P}{P_C} - \frac{P_B P_P}{K_B}}
+-r'_{C,0} = r_D = k_D K_C K_S C_t \left( \frac{P_C - \frac{P_B P_P}{K_P}}
 {P_P + K_C K_S P_C + K_C P_P P_C} \right)
 $$
 
