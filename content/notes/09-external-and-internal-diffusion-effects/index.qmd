@@ -1,7 +1,7 @@
 --- 
-title: "External diffusion effects: heterogeneous reactions"
+title: "External and internal diffusion effects"
 date: 2024-03-03
-date-modified: 2024-05-10
+date-modified: 2024-05-12
 resources:
   - "./Ranjeet_Notes_Fogler_Chapter 14 - Mass Transfer Limitations in Reacting Systems.pdf"
   - "./Ranjeet_Notes_Fogler_Chapter 15 - Diffusion and Reaction.pdf"

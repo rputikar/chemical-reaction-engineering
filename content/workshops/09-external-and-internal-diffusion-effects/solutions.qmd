@@ -2,7 +2,7 @@
 title: 
   "Solutions to workshop 09: External diffusion effects"
 date: 2024-03-24
-date-modified: 2024-05-11
+date-modified: 2024-05-12
 format: 
    html: default
    pdf:
@@ -11,6 +11,11 @@ format:
 resources:
    - ./p14-9-solution.pdf
 ---
+
+```{python}
+import numpy as np
+{{< include ../../../assets/partials/_mplinclude.py >}}
+```
 
 ## P 14-9
 
@@ -75,8 +80,10 @@ VEL = 10 # cm/s
 SP_AREA = 60 # cm^2/g-cat
 DE = 1e-2 # cm^2/s
 DELTA_HR_TR = 10000 # cal/gmol A
-CPA, CPB = 25 # cal/gmol K
-CPS = 75 # cal/gmol K
+CPA = 25 # cal/gmol K
+CPB = 25 # cal/gmol K
+CPS = 75 # cal/gmol K -- Solvent is inert
+
 
 KA0 = 0.01 # cm^3/s g-cat
 EA0 = 4000 # cal/mol
@@ -84,58 +91,113 @@ TR = 300 # K
 # Functions
 k = lambda t: KA0 * np.exp((EA0 / RCAL) * ((1 / TR) - (1 / t)))
 
-Re = NU_VIS * VEL/ DP
+Re = DP * VEL/ NU_VIS 
 Sh = 100 * Re**0.5
 
-CA0 = 1.0e-3 # molar
-V0 = 1e5 # cm^3/s
+kc = Sh * DE/DP # cm/s
+kc = kc * SP_AREA # cm^3 /s g-cat
 
-# def reactor(t, y, *args):
-#     # convert dependent variables
-#     x, a = y
-#     (w, pt0, nt0, T0) = args
-#
-#     pt = pt0 * (1 - x)  # as delta = 0 (epsilon = 0)
-#
-#     rate = rt(T0, a, pt)
-#
-#     dxdt = rate * w / nt0
-#     dadt = -rd(T0, a)
-#
-#     dydw = [dxdt, dadt]
-#     return dydw
-#
-#
-# initial_conditions = np.array([0])
-#
-# sol = solve_ivp(
-#     reactor,
-#     [0, t_final],
-#     initial_conditions,
-#     args=args,
-#     method="LSODA",
-#     dense_output=True,
-# )
+def reactor(w, y, *args):
+   # convert dependent variables
+   x = y[0]
+   (t0, ca0, fa0, phia, phis) = args
+
+   # isothermal case
+   t = t0
+
+   # Adiabatic case
+   t = t0 + (x * DELTA_HR_TR / (phia * CPA + phis * CPS))
+
+   ca = ca0 * (1-x) * (t0/t)
+   rate =  k(t) * kc * ca / (k(t) + kc)
+
+   dxdw = rate / fa0
+
+   dydw = [dxdw]
+   return dydw
+
+# Problem data
+ca0 = 1.0e-3 # mol/cm^3
+v0 = 1.0e4 # cm^3/s
+t0 = 300
+phia = 1 # 50% A in inlet
+phis = 1 # 50% A in inlet
+
+fa0 = ca0 * v0
+
+args = (t0, ca0, fa0, phia, phis)
+
+initial_conditions = np.array([0])
+w_final = 1e6 # 1000 kg 
+
+sol = solve_ivp(
+    reactor,
+    [0, w_final],
+    initial_conditions,
+    args=args,
+    method="LSODA",
+    dense_output=True,
+)
+
+# Extract solution
+w = np.linspace(0, w_final, 1000)
+
+# conversion
+x = sol.sol(w)[0]
+
+# isothermal case
+t = np.full(len(w), t0)
+
+# adiabatic case
+t = t0 + (x * DELTA_HR_TR / (phia * CPA + phis * CPS))
+
+```
+$k_c$ = `{python} f'{kc:.3f}'` $cm^3/s\ g-cat$
+
+$C_{A0}$ = `{python} f'{ca0:.3f}'` $mol/cm^3$
+
+$F_{A0}$ = `{python} f'{fa0:.3f}'` $mol/s$
+
+$T_0$ = `{python} f'{t0:.3f}'` K
+
+Catalyst weight required for X = 0.6: `{python} f'{w[x>=0.6][0]/1e3:.3f}'` kg
+
+Temperature:  `{python} f'{t[ x >= 0.6 ][0]:.2f}'` K
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p14-9-conv-vs-weight
+#| fig-cap: Conversion 
+
+plt.plot(w/1000, x, label="conversion")
+plt.xlim(w[0]/1000, w[-1]/1000)
+plt.ylim(0, 1)
+plt.grid()
+plt.legend()
+
+plt.xlabel("weight ($kg$)")
+plt.ylabel("Conversion")
+
+plt.show()
 ```
 
 ```{python}
 #| echo: true
 #| warning: false
-#| label: fig-p10-19-conv-vs-weight
-#| fig-cap: Conversion and activity
+#| label: fig-p14-9-temp-vs-weight
+#| fig-cap: Temperature 
 
-# plt.plot(time, x, label="conversion")
-# plt.plot(time, a, label="activity")
-#
-# plt.xlim(time[0], time[-1])
-# plt.ylim(0, 1)
-# plt.grid()
-# plt.legend()
-#
-# plt.xlabel("time ($h$)")
-# plt.ylabel("Conversion, activity")
-#
-# plt.show()
+plt.plot(w/1000, t, label="temperature")
+plt.xlim(w[0]/1000, w[-1]/1000)
+plt.ylim(t[0]-10, t[-1]+10)
+plt.grid()
+plt.legend()
+
+plt.xlabel("weight ($kg$)")
+plt.ylabel("Temperature ($K$)")
+
+plt.show()
 ```
 
 

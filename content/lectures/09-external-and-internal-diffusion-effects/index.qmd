@@ -2,7 +2,7 @@
 title: 
   External and internal diffusion effects
 date: 2024-03-25
-date-modified: 2024-05-10
+date-modified: 2024-05-12
 format: html
 ---
 
@@ -74,11 +74,12 @@ clicking on the link below.
 :::{.grid}
 ::: {.g-col-5}
 [Lecture Notes - Chapter 14](../../notes/09-external-and-internal-diffusion-effects/Ranjeet_Notes_Fogler_Chapter 14 - Mass Transfer Limitations in Reacting Systems.pdf){.btn .btn-success .btn-lg role="button"}
+:::
 
 ::: {.g-col-5}
 [Lecture Notes - Chapter 15](../../notes/09-external-and-internal-diffusion-effects/Ranjeet_Notes_Fogler_Chapter 15 - Diffusion and Reaction.pdf){.btn .btn-success .btn-lg role="button"}
-
 :::
+
 :::
 
 
