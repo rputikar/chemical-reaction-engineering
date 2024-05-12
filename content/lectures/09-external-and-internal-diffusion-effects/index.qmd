@@ -50,7 +50,7 @@ The slides are also placed below for your reference. Use your keypad's
 
 ::: {.container style="position: relative;overflow: hidden;width:
 100%;min-height:600px;"}
-<iframe src="../../slides/09-external-diffusion-effects/"
+<iframe src="../../slides/09-external-and-internal-diffusion-effects/"
 style="position=absolute;top: 0;left: 0;bottom: 0;right: 0;width:
 100%;min-height:600px;"></iframe>
 :::
