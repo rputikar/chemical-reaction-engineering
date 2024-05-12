@@ -69,9 +69,7 @@ from scipy.integrate import solve_ivp
 
 # constants
 
-R = 8.314  # J/ (mol K)
 RCAL = 1.987  # cal⋅/ mol K
-RATM = 0.082  # atm dm^3/ (mol K)
 
 # data
 NU_VIS = 0.02 # cm^2/s
@@ -84,23 +82,17 @@ CPA = 25 # cal/gmol K
 CPB = 25 # cal/gmol K
 CPS = 75 # cal/gmol K -- Solvent is inert
 
-
 KA0 = 0.01 # cm^3/s g-cat
 EA0 = 4000 # cal/mol
 TR = 300 # K
+
 # Functions
 k = lambda t: KA0 * np.exp((EA0 / RCAL) * ((1 / TR) - (1 / t)))
-
-Re = DP * VEL/ NU_VIS 
-Sh = 100 * Re**0.5
-
-kc = Sh * DE/DP # cm/s
-kc = kc * SP_AREA # cm^3 /s g-cat
 
 def reactor(w, y, *args):
    # convert dependent variables
    x = y[0]
-   (t0, ca0, fa0, phia, phis) = args
+   (t0, ca0, fa0, phia, phis, kc) = args
 
    # isothermal case
    t = t0
@@ -123,9 +115,15 @@ t0 = 300
 phia = 1 # 50% A in inlet
 phis = 1 # 50% A in inlet
 
+Re = DP * VEL/ NU_VIS 
+Sh = 100 * Re**0.5
+
+kc = Sh * DE/DP # cm/s
+kc = kc * SP_AREA # cm^3 /s g-cat
+
 fa0 = ca0 * v0
 
-args = (t0, ca0, fa0, phia, phis)
+args = (t0, ca0, fa0, phia, phis, kc)
 
 initial_conditions = np.array([0])
 w_final = 1e6 # 1000 kg 
