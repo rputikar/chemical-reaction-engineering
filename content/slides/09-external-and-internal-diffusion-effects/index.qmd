@@ -1,7 +1,7 @@
 ---
 title: "External and internal diffusion effects"
 format: revealjs
-date-modified: 2024-05-10
+date-modified: 2024-05-14
 ---
 
 ```{python}
@@ -15,15 +15,398 @@ import tabulate as tab
 from IPython.display import display, Markdown
 plt.style.use('../../../assets/templates/present.mpstyle')
 ```
+
+## Steps in a heterogeneous catalytic reaction
+
+![](../../../assets/images/steps-in-a-heterogeneous-catalytic-reaction.png){width=90%}
+
+## Diffusion effects
+
+* Industrial reactions at high temperature
+
+  - Limited by the rate of mass transfer between bulk fluid and the catalytic surface.
+
+* Mass transfer
+
+  - Any process in which diffusion plays a role.
+  - Rate laws cannot be applied directly.
+  - Need to consider fluid velocity and fluid properties while writing molar
+    balances.
+
+
 ## External mass transfer
 
-## Diffusion
+![](../../../assets/images/diffusion-through-external-boundary-layer.png){width=90%}
+
+## External mass transfer
+
+![](../../../assets/images/effect-of-particle-size-and-fluid-velocity-on-the-overall-reaction-rate.png){width=90%}
+
+## Internal mass transfer
+
+![](../../../assets/images/effect-of-particle-size-on-the-overall-reaction-rate.png){width=90%}
+
+## Diffusion: definitions
+
+
+* Molar flux with no diffusion
+
+  $$
+  W_{Az} = \frac{C_A \upsilon}{A_C} = \frac{F_{Az}}{A_C}
+  $$
+
+  $$
+  \frac{\text{mol}}{\text{m}^2 \cdot \text{s}}
+  \qquad 
+  \frac{\text{mol}}{\cancel{\text{m}^3}} \cdot
+  \frac{\cancel{\text{m}^3}}{\text{s}} \cdot \frac{1}{\text{m}^2} 
+  $$
+
+  - $F_{Az}$: Uniform at a given cross section (plug flow assumption)
+
+* Diffusion
+
+  - Spontaneous intermingling or mixing of atoms or molecules by random thermal
+    motion.
+  - Gives rise to the motion of species relative to the motion of the mixture.
+  - From regions of high concentration to regions of low concentration in the
+    absence of other gradients.
+  - Diffusion results in a molar flux of the species (A), $W_A$
+   (moles/area time), in the direction of the concentration gradient.
+
+  $$
+  W_A = i W_{Ax} + j W_{Ay} + k W_{Az} \qquad \text{[Rectangular coordinates]}
+  $$
+
+
+$\Rightarrow$ Need to develop mole balance that incorporates both diffusion and
+reaction.
+
+## Mole balance in rectangular coordinates
+
+![](../../../assets/images/mole-balance-rectangular-coordinates.png){width=90%}
+
+## Mole balance in rectangular coordinates
+
+  $$
+  \begin{aligned}
+  &  \left[ \text{molar flow rate in} \right]_z
+  -& \left[ \text{molar flow rate out} \right]_{z+\Delta z}
+  \\
+  +& \left[ \text{molar flow rate in} \right]_y
+  -& \left[ \text{molar flow rate out} \right]_{y+\Delta y}
+  \\
+  +& \left[ \text{molar flow rate in} \right]_x
+  -& \left[ \text{molar flow rate out} \right]_{x+\Delta x}
+  \\
+  +& \left[ \text{rate of generation} \right]
+  \\
+  =& \left[ \text{rate of accumulation} \right]
+  \end{aligned}
+  $$
+
+  $$
+  \begin{aligned}
+  & \Delta x \Delta y W_{Az} \bigg|_z & -&  \Delta x \Delta y W_{Az} \bigg|_{z+\Delta z}
+  & +\Delta x \Delta z W_{Ay} \bigg|_y & -&  \Delta x \Delta z W_{Ay} \bigg|_{y+\Delta y}
+  \\
+  & +\Delta z \Delta y W_{Ax} \bigg|_x & -&  \Delta z \Delta y W_{Ax} \bigg|_{x+\Delta x}
+  & +r_A \Delta x \Delta y \Delta z & =&  \Delta x \Delta y \Delta z \frac{\partial C_A}{\partial t}
+  \end{aligned}
+  $$
+
+* Differential Form:
+
+  Dividing by $\Delta x \Delta y \Delta z$ and taking the limit as they go to zero:
+
+:::{.center .box}
+$$
+\frac{\partial W_{Ax}}{\partial x} + \frac{\partial W_{Ay}}{\partial y} +
+  \frac{\partial W_{Az}}{\partial z} + r_A = \frac{\partial C_A}{\partial t}
+$$
+:::
+
+## Molar Flux
+
+- $W_A$: Total molar flux of species $A$
+    - $J_A$: Molecular diffusion flux relative to bulk motion of fluid due
+      to concentration gradient
+    - $B_A$: Flux resulting from bulk motion of fluid
+
+$$
+W_A = J_A + B_A
+$$
+
+- $B_A$: $= y_A \left( \sum W_i \right)$
+    - $\sum W_i$: Total flux of all molecules
+    - $y_A$: mole fraction of $A$
+
+- For $A \rightarrow B$ (two-component system):
+
+$$
+W_A = J_A + y_A \left( W_A + W_B \right) = J_A + C_A U
+$$
 
 ## Fick’s law
 
-## Binary diffusion
+* Describes how molar diffusive flux is related to the concentration gradient.
+
+* Fourier's Law (thermal conduction)
+
+  $q = -k_t \nabla T;\quad k_t: \text{thermal conductivity}$
+
+  $$
+  \nabla = i \frac{\partial}{\partial x} + j \frac{\partial}{\partial y} + k \frac{\partial}{\partial z}
+  $$
+
+* For Mass Transfer: Fick's Law
+
+  $$
+  J_A = -D_{AB} \nabla C_A
+  $$
+
+  - $D_{AB}$: Diffusivity of $A$ in $B$ $(m^2/s)$
+
+* $W_A = -D_{AB} \nabla C_A + C_A U$
+
+* In One Dimension
+
+$$
+W_{Az} = -D_{AB} \frac{dC_A}{dz} + C_A U_z
+$$
+
+## Evaluating Molar Flux
+
+- $A$ diffusing in $B$
+
+  $$
+  W_A = -D_{AB} \nabla C_A + y_A (W_A + W_B)
+  $$
+
+* Equimolar Counter Diffusion (EMCD)
+
+  $$ W_A = -W_B \qquad 
+  W_A = J_A = -D_{AB} \nabla C_A
+  $$
+
+* Species $A$ Diffusing Through Stagnant Species $B$ ( $W_B = 0; W_A = J_A + y_A W_A$ )
+
+  - Solid boundary with adjacent stagnant fluid layer
+
+  $$
+  W_A = \frac{J_A}{1 - y_A} = -\frac{D_{AB} \nabla C_A}{1 - y_A}; \qquad
+  W_A = -D_{AB} C \nabla \ln (1 - y_A)
+  $$
+
+* Bulk Flow of $A \gg$ Molecular Diffusion (plug flow model)
+
+  $$
+  W_A = B_A = y_A (W_A + W_B) = C_A U
+  $$
+
+## Evaluating Molar Flux
+
+* Small Bulk Flow $J_A \gg B_A$
+
+  $$
+  W_A = -D_{AB} \nabla C_A = J_A
+  $$
+
+* Knudsen Diffusion
+
+  - Occurs in porous catalyst where diffusing molecule collides more often with
+    catalyst walls/pore walls than with each other.
+
+    $$
+    W_A = J_A = -D_k \nabla C_A
+    $$
+
+  - $D_k$: Knudsen diffusivity
+
+* Diffusion and convective transport: $F_{Az} = W_{Az} A_C$
+
+  - $F_{Az}$: molar flow rate of $A$ in $z$ direction; $W_{Az}$: molar flux in
+    $z$; $A_C$: cross-sectional area normal to flow
+
+  $$
+  W_{Az} = -D_{Az} \frac{dC_A}{dz} + C_A U_z
+  $$
+
+  $$
+  F_{Az} = W_{Az} A_C = \left[ -D_{Az} \frac{dC_A}{dz} + C_A U_z \right] A_C
+  $$
+
+  - Similar expressions for $F_{Ay}$ and $F_{Ax}$.
+
+## Mole balance in rectangular coordinates
+
+* Substituting expressions for  $F_{Az}$, $F_{Ay}$, and $F_{Ax}$ in mole balance
+
+$$
+D_{AB} \left[ \frac{\partial^2 C_A}{\partial x^2} + 
+              \frac{\partial^2 C_A}{\partial y^2} + 
+              \frac{\partial^2 C_A}{\partial z^2} \right] 
+- u_x \frac{\partial C_A}{\partial x} 
+- u_y \frac{\partial C_A}{\partial y} 
+- u_z \frac{\partial C_A}{\partial z} 
++ r_A = \frac{\partial C_A}{\partial t}
+$$
+
+* In one dimension:
+
+$$
+D_{AB} \frac{\partial^2 C_A}{\partial z^2} 
+- U_z \frac{\partial C_A}{\partial z} 
++ r_A = \frac{\partial C_A}{\partial t}
+$$
+
+* Boundary conditions
+
+  - Concentration at boundary: 
+    $@ z = 0 \rightarrow C_A = C_{A0}; @ z = L \rightarrow  \frac{dC_A}{dz} = 0$
+    
+  - Specify flux at the boundary
+
+    - No mass transfer $W_A = 0$
+
+    - Molar flux at surface = rate of reaction at surface 
+
+      $W_A|_{surface} = -r''|_{surface}$
+
+    - Molar flux to boundary = convective transport across boundary layer
+
+      $W_A|_{boundary} = k_c (C_{Ab} - C_{As})$
+
+
+## Temperature and pressure dependence of $D_{AB}$
+
+  --------------------------------------------------------------------------------------------------------------------------------------------
+  Phase     $cm^2/s$    $m^2/s$       Temperature and pressure dependences
+  --------- ----------- ------------- --------------------------------------------------------------------------------------------------------
+  Gas                                 
+
+  Bulk      $10^{-1}$   $10^{-5}$     $D_{AB}(T_2, P_2) = D_{AB}(T_1, P_1) \frac{P_1}{P_2} \left( \frac{T_2}{T_1} \right)^{1.75}$
+
+  Knudsen   $10^{-2}$   $10^{-6}$     $D_{AB}(T_2) = D_{A}(T_1) \left( \frac{T_2}{T_1} \right)^{1/2}$
+
+  Liquid    $10^{-5}$   $10^{-9}$     $D_{AB}(T_2) = D_{AB}(T_1) \frac{\mu_1}{\mu_2} \left( \frac{T_2}{T_1} \right)$
+
+  Solid     $10^{-9}$   $10^{-13}$    $D_{AB}(T_2) = D_{AB}(T_1) \exp \left[ \frac{E_D}{R} \left( \frac{T_2 - T_1}{T_1 T_2} \right) \right]$
+  --------------------------------------------------------------------------------------------------------------------------------------------
+
+:::{.pad50}
+:::
+
+- $\mu_1, \mu_2$ are the liquid viscosities at temperatures $T_1$ and $T_2$ respectively. 
+- $E_D$ is the diffusion activation energy.
+- Knudsen, liquid, and solid $D_{AB}$ are independent of $P$.  
+
+## Modeling diffusion with chemical reaction
+
+* Diffusion of species through stagnant film in which no reaction takes place
+* $A$ reacts instantaneously upon reaching the surface $C_{As} \approx 0$
+* Rate of diffusion through stagnant film = rate of reaction on the surface
+
+### Steps:
+
+1. Perform differential mole balance $\rightarrow$ Equation for $W_{Az}$
+2. Replace $W_{Az}$ by appropriate expression for concentration gradient
+3. State boundary conditions
+4. Solve for concentration profile
+5. Solve for molar flux
 
 ## Diffusion through a stagnant film 
+
+![](../../../assets/images/diffusion-through-external-boundary-layer.png){width=90%}
+
+* Flow Past a Single Catalytic Pellet
+
+  - Reaction takes place only on external catalyst surface and not in fluid surrounding it.
+
+* Hydrodynamic Boundary Layer:
+  Distance from solid object to where the fluid velocity is 99% of the bulk
+  velocity $U_0$.
+
+* Mass Transfer Boundary Layer: Distance at which concentration of diffusing
+  species is 99% of the bulk concentration.
+  - We cannot measure $\delta$.
+
+
+## Diffusion through a stagnant film 
+
+- Assumption: 
+  - Fluid layer next to solid as stagnant film (hypothetical) of thickness $\delta$.
+  - All the resistance to mass transfer is within the film.
+  - Properties at the outer edge of the film are identical to those of bulk fluid.
+
+* For film thickness $\ll$ radius of pellet: 
+  - Curvature effects can be neglected
+  - Problem reduces to 1D diffusion.
+
+![](../../../assets/images/concentration-profile-stagnant-film.png){width=90%}
+
+$$
+\begin{align*}
+&\text{In} &-& \text{Out} &+& \text{Generation} &=& \text{Accumulation} \\
+&W_{Az}\big|_z &-& W_{Az}\big|_{z + \Delta z} &+& 0 &=& 0
+\end{align*}
+$$
+
+## Diffusion through a stagnant film 
+
+* Dividing by $\Delta z$ and taking the limit as $\Delta z \to 0$
+$$
+\frac{dW_{Az}}{dz} = 0
+$$
+
+* For diffusion through stagnant film at dilute concentrations,
+
+  $J_A \gg y_A (W_A + W_B)$
+
+$$
+W_{Az} = -D_{AB} \frac{dC_A}{dz} \quad \text{(also for EMCD)}
+$$
+
+* Therefore, mole balance becomes
+
+$$
+\frac{d^2C_A}{dz^2} = 0
+$$
+
+* Boundary Conditions (BCs)
+  - At $z = 0$, $C_A = C_{As}$; At $z = \delta$, $C_A = C_{Ab}$
+
+## Diffusion through a stagnant film 
+
+* Integrating twice
+$$
+C_A = k_1z + k_2 \implies C_{As} = k_2 \quad \text{and} \quad \left(
+\frac{C_{Ab} - C_{As}}{\delta} \right) = k_1 
+$$
+
+* Substituting BCs
+
+:::{.center .box}
+$$
+C_A = C_{As} + \left( C_{Ab} - C_{As} \right) \frac{z}{\delta}
+$$
+:::
+
+* Surface Flux
+
+$$
+W_{Az}\bigg|_{\delta} = -D_{AB} \frac{dC_A}{dz} \bigg|_{\delta}
+$$
+
+$$
+W_{Az} = \frac{D_{AB}}{\delta} \left[ C_{Ab} - C_{As} \right]
+$$
+
+* At steady state:
+$$
+\text{Flux of A to the surface} = \text{Rate of reaction of A on surface}
+$$
+
 
 ## The mass transfer coefficient
 
