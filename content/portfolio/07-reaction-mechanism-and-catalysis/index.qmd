@@ -4,7 +4,7 @@ format:
   pdf:
     output-file: "portfolio-07-reaction-mechanism-and-catalysis"
     output-ext: "pdf"
-date-modified: 2024-05-10
+date-modified: 2024-05-13
 ---
 
 ```{python}
@@ -14,7 +14,7 @@ date-modified: 2024-05-10
 
 ## General Instructions for take home Portfolios
 
-1.  The portolio is an open-book task.
+1.  The portfolio is an open-book task.
 2.  It is expected that you will complete the portfolio assessment on your own.
     You can use textbooks, the resources provided during class/ workshop etc.
     to answer the questions. 
@@ -28,7 +28,7 @@ date-modified: 2024-05-10
 6.  The portfolio tasks are not meant to take a lot of time. If you have
     understood and practiced the relevant content, it should take you around 2
     to 3 hours at the most.
-7.  You are required to upload the portolio answers on to blackboard: 
+7.  You are required to upload the portfolio answers on to blackboard: 
     - Save your report as a **pdf** file (_Miri students should save it as a
       word file_). 
     - Rename the file as STUDENTID_Portfolio_x.pdf (Where STUDENTID is your
@@ -64,7 +64,7 @@ For more information, visit
 
 ## Introduction
 
-Typically, an unpromoted, supported silver on α-alumina catalyst reaches about
+Typically, an unpromoted, supported silver on $\alpha-$alumina catalyst reaches about
 50% etylene oxide ( EO ) selectivity. However, this selectivity can be
 significantly enhanced to around 90% with the addition of promoters like Cl,
 Cs, Re, Mo, Mn, and S [@pu2019ac]. 
@@ -88,14 +88,15 @@ for this assessment.
 
 ## Questions
 
-1. Provide a summary of the study of @pu2024ac.  \hfill (10 marks)
-
-   Along with summary, your answer should address the following questions: 
+1. Provide a summary of the study of @pu2024ac. Along with summary, your
+   answer should address the following questions: \hfill (10 marks)
    a. What were the different experimental techniques used in the study and how
-      they were useful in understanding reaction mechanism?
-   b. How were the DFT calculations used in understanding kinetics?
-   c. What is the difference between Langmuir-Rideal (L-R) and
-      Langmuir-Hinshelwood (L-H) kinetics? 
+      they were useful in understanding reaction mechanism, catalyst
+      characterizing and/or testing?
+   b. How were the Density functional theory (DFT) calculations used in
+      understanding kinetics? 
+   c. What is the difference between Eley-Rideal and Langmuir-Hinshelwood
+      kinetics? 
 
 2. Long term deactivation of the catalyst \hfill (10 marks)
 
@@ -113,18 +114,20 @@ for this assessment.
    r_{i, p3} = f_{i, p3} r_{i, p1} 
    $${#eq-cat-activity}
 
-   The values of $f_i$ for reactions 1 and 2 (as described in portfolio 5) are
-   as follows
+   $r_{i,p}$ is the rate of reaction $i$ during period $p$ (either reaction 1
+   or reaction 2). $f_{i, p}$ is the deactivation factor for reaction $i$
+   during period $p$. The values of $f_i$ for reactions 1 and 2 (as described
+   in portfolio 6) are as follows. 
 
    $$ 
    f_{1,p2} = 0.52; f_{1, p3} = 0.37; \\
    f_{2,p3} = 0.49; f_{2, p3} = 0.32
    $${#eq-f-value} 
 
-   Use all other data as provided in portfolio 6. 
-
    Calculate the conversion, yield, and selectivity at the end of each period. 
    You can adapt the code given in appendix for solving this question. 
+   Use all other data as provided in portfolio 6. 
+
   
 {{< pagebreak >}}
 
@@ -321,15 +324,10 @@ t = sol.sol(w)[-1]
 ```
 
 ```python
-#| echo: true
-#| warning: false
-#| label: fig-conv
-#| fig-cap: Conversion 
-
 x = 1 - f_e/f0[0]
 sel = f_eo/f_co2
 
-print (x[-1], sel[-1])
+print (f'Final conversion: {x[-1]:.3f}; Final selectivity: {sel[-1]:.3f}\n')
 
 plt.plot(w,x, label="Conversion")
 
@@ -345,11 +343,6 @@ plt.show()
 ``` 
 
 ```python
-#| echo: true
-#| warning: false
-#| label: fig-temp
-#| fig-cap: Temperature
-
 plt.plot(w,t, label="Temperature")
 
 plt.xlim(w[0],w[-1])
