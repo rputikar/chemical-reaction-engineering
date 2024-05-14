@@ -407,26 +407,366 @@ $$
 \text{Flux of A to the surface} = \text{Rate of reaction of A on surface}
 $$
 
-
 ## The mass transfer coefficient
+
+:::{.box .center}
+
+$$ k_c = \frac{D_{AB}}{\delta} $$
+
+:::
+
+* Average molar flux from the bulk fluid to the surface
+
+$$ W_{Az} = k_c (C_{Ab} - C_{As}) $$
+
+$$ W_{Az} = \text{Flux} = \frac{\text{Driving force}}{\text{Resistance}} 
+= \frac{C_{Ab} - C_{As}}{\left(\frac{1}{k_c}\right)} $$
+
+* The mass transfer coefficient is found by experimentation
+* Correlations analogous to what one finds for a heat transfer coefficient. 
+
+  $$ Sh = 2 + 0.6 Re^{1/2} Sc^{1/3} \qquad \text{ Frössling correlation }$$
+
+  $$ 
+  Sh = \frac{k_c L}{D_{AB}} 
+  ;\quad 
+  Sc = \frac{\nu}{D_{AB}} = \frac{\mu}{\rho D_{AB}}
+  ;\quad 
+  Re = \frac{UL}{\nu} = \frac{UL\rho}{\mu} 
+  $$
+
 
 ## Mass transfer–limited reactions in packed beds
 
+![](../../../assets/images/packed-bed-reactor-mole-balance.png){width=90%}
+
+
+$$
+\left[ \text{Molar rate in} \right] 
+- \left[ \text{Molar rate out} \right]  \\
++ \left[ \text{Molar rate of generation} \right] 
+= \left[ \text{Molar rate of accumulation} \right]
+$$
+
+* In one dimension at steady state
+
+$$
+F_{Az} \bigg|_z - F_{Az} \bigg|_{z+\Delta z} + r''_A c (A_c \Delta z) = 0
+$$
+
+* Dividing by $A_c \Delta z$ and taking the limit as $\Delta z \to 0$
+
+$$
+-\frac{1}{A_c} \left( \frac{dF_{Az}}{dz} \right) + r''_A c = 0 
+$$
+
+## Mass transfer–limited reactions in packed beds
+
+* Express $F_{Az}$ and $r''$ in terms of concentration
+
+$$
+F_{Az} = A_c W_{Az} = (J_{Az} + B_{Az}) A_c
+$$
+
+* In almost all situations involving flow in packed-bed reactors, the amount of
+  material transported by diffusion or dispersion in the axial direction is
+  negligible compared with that transported by convection (i.e., bulk flow)
+
+* Neglecting dispersion as $J_{Az} \ll B_{Az}$
+
+  $$
+  F_{Az} = A_c W_{Az} = A_c B_{Az} = U_c A_c
+  $$
+
+  $$
+  -\frac{d(CU)}{dz} + r''_A c = 0
+  $$
+
+* For constant superficial velocity 
+
+:::{.box .center}
+$$
+-U\frac{dC}{dz} + r''_A c = 0
+$$
+:::  
+
+## Mass transfer–limited reactions in packed beds
+
+* The boundary condition at the external surface is
+
+  $$
+  -r''_A = W_{Ar} = k_c (C_A - C_{As})
+  $$
+
+  $$
+  -U\frac{dC}{dz} - k_c a_c (C_A - C_{As}) = 0
+  $$
+
+  $$
+  -U\frac{dC}{dz} = k_c a_c (C_A - C_{As})
+  $$
+
+* In most mass transfer-limited reactions, the surface concentration is
+  negligible with respect to the bulk concentration ($C_A \gg C_{As}$)
+
+  $$
+  -U\frac{dC}{dz} = k_c a_c C_A
+  $$
+
+
+* At $z = 0, C_A = C_{A0}$
+
+:::{.box .center}
+$$
+\frac{C_A}{C_{A0}} = \exp \left( - \frac{k_c a_c}{U} z \right )
+;\qquad
+\ln \frac{1}{1-X} = \frac{k_c a_c}{U} L 
+$$
+:::
+
 ## Diffusion and reactions in homogeneous systems
+
+![](../../../assets/images/mass-transfer-and-reaction-steps-for-a-catalyst-pellet.png){width=90%}
+
+* When reactants must diffuse inside a catalyst pellet in order to react
+  - The concentration at the pore mouth must be higher than that inside the pore. 
+  - Entire catalyst surface is not accessible to the same concentration
+  - The rate of reaction to vary throughout the pellet.
+
+
+## Diffusion and Reaction in Homogeneous Systems
+
+* Mole balance on species $A$ for 1D diffusion at steady state 
+
+::::{.columns}
+:::{.column width=50%}
+  $$
+  -\frac{dW_{Az}}{dz} + r_A = 0
+  $$
+
+  $$
+  W_{Az} = -D_{AB} \frac{dC_A}{dz}
+  $$
+
+  $$
+  D_{AB} \frac{d^2 C_A}{dz^2} + r_A = 0
+  $$
+:::
+:::{.column width=50%}
+* Applications
+
+  - Medicine
+  - Cancer treatment using drug-laced particulates
+  - Tissue engineering
+:::
+::::
+
+* Effective diffusivity
+  
+  $$
+  D_e = \frac{D_{AB} \phi_p \sigma_c}{\tilde{\tau}}
+  ;\qquad
+  W_{Az} = -D_{e} \frac{dC_A}{dz}
+  $$
+
+* The effective diffusivity accounts for the fact that:
+  - Not all of the area normal to the direction of the flux is available (i.e.,
+    the area occupied by solids) for the molecules to diffuse, (porosity, $\phi_p$)
+  - The paths are tortuous (tortuosity, $\tilde{\tau}$)
+  - The pores are of varying cross-sectional areas (Constriction factor, $\sigma_c$)
 
 ## Diffusion and reactions in spherical catalyst pellets
 
+::::{.columns}
+:::{.column width=50%}
+![](../../../assets/images/shell-balance-on-a-catalyst-pellet.png){width=90%}
+:::
+
+:::{.column width=50%}
+
+* Consider irreversible isomerization reaction $\ce{A -> B}$
+
+* The reaction occurs on the surface of pore walls within a spherical pellet of
+  radius $R$.
+* Assumptions
+  - Steady state; spherical coordinates
+  - Constant pressure and temperature conditions
+
+:::
+::::
+
+* Steady state mole balance on a spherical shell $r \rightarrow r + \Delta r$
+
+$$
+\begin{align*}
+(\text{In at } r) &-& (\text{Out at } r + \Delta r) &+& (\text{Generation within } \Delta r) &=& 0 \\
+(W_{Ar} 4 \pi r^2 |_r) &-&  (W_{Ar} 4 \pi r^2 |_{ r + \Delta r })  &+& (r'_A \rho_c 4 \pi r_m^2 \Delta r) &=& 0
+\end{align*}
+$$
+
+* Dividing by $-4 \pi \Delta r$ and taking limit as $\Delta r \rightarrow 0$
+
+:::{.box .center}
+$$
+\frac{d(W_{Ar}r^2)}{dr} - r'_A \rho_c r^2 = 0
+$$
+:::
+
+## Diffusion and reactions in spherical catalyst pellets
+
+* $W_{Ar} = -D_{e} \frac{dC_A}{dr}$
+
+  $$
+  \frac{-D_e (dC_A/dr) r^2}{dr} -  r^2 \rho_c r'_A = 0
+  $$
+
+* Reaction rate {$r'_A = k_n C_A^n$}
+
+  - per unit surface area $-r''_A$
+  - per unit mass of catalyst $-r'_A = S_a (-r''_A)$ 
+  - per unit volume $-r_A = \rho_c (-r'_A) = \rho_c S_a (-r''_A)$
+
+:::{.box .center}
+$$
+\frac{d^2 C_A}{dr^2} + \frac{2}{r} \left( \frac{dC_A}{dr} \right) - \frac{k_n}{D_e} C_A^n = 0
+$$
+:::
+
+* Boundary conditions
+
+  - At the center of pellet: at $r = 0$, $C_A$ is finite 
+  - At the external surface: at $r = R$, $C_A = C_{As}$
+
+
+## Diffusion and reactions in spherical catalyst pellets
+
+* Dimensionless form
+
+  $$
+  \psi = \frac{C_A}{C_{As}}; \quad 
+  \lambda = \frac{r}{R}
+  $$
+
+* Boundary conditions
+  
+  - At $\lambda = 0$, $\psi$ is finite
+  - At $\lambda = 1$, $\psi = 1$
+
+
+:::{.box .center}
+$$
+\frac{d^2 \psi}{d \lambda^2} 
++ \frac{2}{\lambda} \left( \frac{d \psi}{d \lambda} \right) 
+- \phi^2 \psi^n = 0
+$$
+:::
+
+* Thiele modulus
+
+:::{.box .center}
+$$
+\phi_n^2 = \frac{k_n R^{2} C_{As}^{n-1}}{D_e} 
+= \frac{k_n R C_{As}^n}{D_e \left( \frac{C_{As} - 0}{R} \right)} 
+\quad  = \frac{\text{``a'' surface reaction rate}}{\text{``a'' diffusion rate}}
+$$
+:::
+
+* When the Thiele modulus is large, internal diffusion usually limits the
+  overall rate of reaction; when $\phi_n$ is small, the surface reaction is
+  usually rate-limiting.
+
+
+## Diffusion and reactions in spherical catalyst pellets
+
+* Dimensionless concentration profile
+
+$$
+\psi = \frac{C_A}{C_{As}} 
+= \frac{1}{\lambda} \left( \frac{ \sinh \phi_1 \lambda }{ \sinh \phi_1 } \right )
+$$
+
+![](../../../assets/images/concentration-profile-in-a-spherical-catalyst-pellet.png){width=90%}
+
 ## The internal effectiveness factor
 
-## Falsified kinetics
+* The magnitude of the effectiveness factor (ranging from 0 to 1) indicates the
+  relative importance of diffusion and reaction limitations. 
 
-## Overall effectiveness factor
+:::{.box .center}
 
-## Estimation of diffusion- and reaction-limited regimes
+$$
+\eta = \frac{\text{Actual overall rate of reaction}}{
+\begin{array}{c}
+\text{Rate of reaction that would result if entire} \\
+\text{interior surface were exposed to the external} \\
+\text{pellet surface conditions } C_{As}, T_s
+\end{array}
+}
+$$
+:::
 
-## Mass transfer and reaction in a packed bed
+* Overall (observed) rate
+
+$$
+\eta = \frac{-r_A}{-r_{As}}
+= \frac{-r'_A}{-r'_{As}}
+= \frac{-r''_A}{-r''_{As}}
+$$
+
+::::{.columns}
+:::{.column width=60%}
+* Effectiveness factor for first order reaction spherical pellet
+
+$$
+\eta = \frac{3}{\phi_1^2} \left( \phi_1 \coth \phi_1 -1 \right)
+$$
+
+* Reaction rate $-r_A = \eta (k_1 C_{As})$
+:::
+:::{.columns width=40%}
+
+* If $\phi_1 < 2$: 
+  $\eta \approx \frac{3}{\phi_1^2}[\phi_1 -1]$
+
+* If $\phi_1 > 20$: 
+  $\eta \approx \frac{3}{\phi_1^2}$
+
+:::
+::::
+
+## The internal effectiveness factor
+
+![](../../../assets/images/effectiveness-factor-plot-for-nth-order-kinetics-on-spherical-catalyst-particles.png){width=90%}
+
+## The internal effectiveness factor
+
+![](../../../assets/images/first-order-reaction-in-different-pellet-geometrics.png){width=90%}
+
 
 ## Determination of limiting situations from reaction- rate data
 
+* Reaction rate per unit mass of catalyst
+  $$ -r'_A = k_c a_c C_A $$
+
+  $$ 
+  k_c \propto \frac{U^{1/2}}{d_p^{1/2}}
+  ; \qquad
+  a_c \propto \frac{1}{d_p} 
+  $$
+
+* For external mass transfer–limited reaction
+
+:::{.box .center .pad50}
+$$ 
+-r'_A \propto \frac{U^{1/2}}{d_p^{3/2}}
+$$
+:::
+
+
+| Type of Limitation    | Velocity         | Particle Size    | Temperature   |
+|-----------------------|------------------|------------------|---------------|
+| External diffusion    | $U^{1/2}$      | $(d_p)^{-3/2}$ | $\approx$ Linear |
+| Internal diffusion    | Independent      | $(d_p)^{-1}$   | Exponential   |
+| Surface reaction      | Independent      | Independent      | Exponential   |
 
 
