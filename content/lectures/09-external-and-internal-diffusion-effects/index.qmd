@@ -2,7 +2,7 @@
 title: 
   External and internal diffusion effects
 date: 2024-03-25
-date-modified: 2024-05-12
+date-modified: 2024-05-14
 format: html
 ---
 
@@ -83,15 +83,15 @@ clicking on the link below.
 :::
 
 
-## In-Class Resources
-
-The in-class activities/ tasks for this lecture are at:
-
-:::{.grid}
-::: {.g-col-5}
-
-[in-class activities](../../notes/09-external-and-internal-diffusion-effects/in-class-activities.qmd){.btn .btn-success .btn-lg role="button"}
-
-:::
-:::
-
+<!-- ## In-Class Resources -->
+<!---->
+<!-- The in-class activities/ tasks for this lecture are at: -->
+<!---->
+<!-- :::{.grid} -->
+<!-- ::: {.g-col-5} -->
+<!---->
+<!-- [in-class activities](../../notes/09-external-and-internal-diffusion-effects/in-class-activities.qmd){.btn .btn-success .btn-lg role="button"} -->
+<!---->
+<!-- ::: -->
+<!-- ::: -->
+<!---->
