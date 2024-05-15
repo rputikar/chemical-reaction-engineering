@@ -1,7 +1,7 @@
 ---
 title: "In class activity: Distribution of residence time"
 date: 2024-05-09
-date-modified: 2024-05-10
+date-modified: 2024-05-15
 format:
   pdf:
     output-file: "in-class-activity-distribution-of-residence-time"
@@ -33,13 +33,85 @@ given in @tbl-problem_1.
 data = np.array([
     (0, 0), (5, 4), (10, 6), (15, 7), (20, 5),
     (25, 3), (30, 2), (35, 1), (40, 0)
-], dtype=[('t(min)', float), ('$C_{\\text{tracer}} \ (g/dm^3)$', float)])
+], dtype=[('t(min)', float), ('$C_{\\text{tracer}} \\ (g/dm^3)$', float)])
 
 df = pd.DataFrame(data)
 md = tab.tabulate(df.T, floatfmt='.2f')
 display(Markdown(md))
 
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import quad
+from scipy.interpolate import interp1d
+
+data_p1 = np.array([
+    (0, 0), (5, 4), (10, 6), (15, 7), (20, 5),
+    (25, 3), (30, 2), (35, 1), (40, 0)
+], dtype=[('t(min)', float), ('$C_{tracer} \\ (g/dm^3)$', float)])
+
+t = data_p1["t(min)"]
+c = data_p1["$C_{tracer} \\ (g/dm^3)$"]
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p1-c-curve
+#| fig-cap: C Curve
+
+c_interp = interp1d(t, c, kind="cubic", fill_value="extrapolate")
+
+# Plot C(t)
+t_plot = np.linspace(0, np.max(t), 500)
+c_plot = c_interp(t_plot)
+
+plt.scatter(t, c, label='C(t) experimental')
+plt.plot(t_plot, c_plot, label='C(t) fitted')
+plt.xlabel('Time (min)')
+plt.ylabel('$C_{tracer} \\ (g/dm^3)$')
+plt.xlim(np.min(t_plot), np.max(t_plot))
+plt.ylim(0,10)
+plt.legend()
+plt.show()
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p1-e-curve
+#| fig-cap: E Curve
+
+# Normalize concentration to calculate E(t)
+integral_c = np.trapz(c, t)
+et = c / integral_c
+
+et_interp = interp1d(t, et, kind="cubic", fill_value="extrapolate")
+
+# Plot C(t)
+et_plot = et_interp(t_plot)
+
+plt.scatter(t, et, label='E(t) experimental')
+plt.plot(t_plot, et_plot, label='E(t) fitted')
+plt.xlabel('Time (min)')
+plt.ylabel('E(t)')
+plt.xlim(np.min(t_plot), np.max(t_plot))
+plt.ylim(0,0.06)
+plt.legend()
+plt.show()
+
+```
+
+:::
 
 ## Constructing the $C(t)$ and $E(t)$ Curves
 
@@ -69,6 +141,133 @@ average values between the various sampling tests.
 * Construct a figure showing the tracer concentration $C(t)$ as a function of time.
 * Construct a figure showing $E(t)$ as a function of time.
 
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{python}
+#| echo: true
+#| warning: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import quad
+from scipy.interpolate import interp1d
+
+data_p2 = np.array([
+    (0, 0), (1, 1), (2, 5), (3, 8), (4, 10),
+    (5, 8), (6, 6), (7, 4), (8, 3), (9, 2.2),
+    (10, 1.5), (12, 0.6), (14, 0)
+], dtype=[('t(min)', float), ('C ($g/m^3$)', float)])
+
+t = data_p2["t(min)"]
+c = data_p2["C ($g/m^3$)"]
+
+```
+
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p2-c-curve
+#| fig-cap: C Curve
+
+c_interp = interp1d(t, c, kind="cubic", fill_value="extrapolate")
+
+# Plot C(t)
+t_plot = np.linspace(0, np.max(t), 500)
+c_plot = c_interp(t_plot)
+
+plt.scatter(t, c, label='C(t) experimental')
+plt.plot(t_plot, c_plot, label='C(t) fitted')
+plt.xlabel('Time (min)')
+plt.ylabel('$C_{tracer} \\ (g/dm^3)$')
+plt.xlim(np.min(t_plot), np.max(t_plot))
+plt.legend()
+plt.show()
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p2-e-curve
+#| fig-cap: E Curve
+
+# Normalize concentration to calculate E(t)
+integral_c = np.trapz(c, t)
+et = c / integral_c
+
+et_interp = interp1d(t, et, kind="cubic", fill_value="extrapolate")
+
+# Plot C(t)
+et_plot = et_interp(t_plot)
+
+plt.scatter(t, et, label='E(t) experimental')
+plt.plot(t_plot, et_plot, label='E(t) fitted')
+plt.xlabel('Time (min)')
+plt.ylabel('E(t)')
+plt.xlim(np.min(t_plot), np.max(t_plot))
+plt.legend()
+plt.show()
+
+```
+The interpolation results in unrealistic values for $C(t)$ and $E(t)$ between 0
+and 1. An undershoot is observed resulting in negative concentrations. 
+
+The `interp1d` function with `kind='cubic'` performs cubic spline interpolation,
+which can sometimes result in overshooting, especially when the data points
+have steep slopes or sharp changes. Cubic splines are designed to produce
+smooth curves, but this smoothness can lead to values that fall below zero in
+regions where the slope changes rapidly.
+
+To avoid the cubic interpolation returning negative values, one can use the
+`scipy.interpolate.PchipInterpolator` instead of `interp1d`. The
+`PchipInterpolator` uses piecewise cubic Hermite interpolating polynomials
+(PCHIP stands for Piecewise Cubic Hermite Interpolating Polynomial) which
+preserve the shape and monotonicity of the data. This ensures that the
+interpolated values are monotonic and do not overshoot, which helps in avoiding
+negative values for this type of data.
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p2-modified-c-e-curve
+#| fig-cap: C and E Curve with proper interpolation
+
+from scipy.interpolate import PchipInterpolator
+
+c_interp = PchipInterpolator(t, c, extrapolate=True)
+et_interp = PchipInterpolator(t, et, extrapolate=True)
+
+c_plot = c_interp(t_plot)
+et_plot = et_interp(t_plot)
+
+# Plot side by side
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+# Plot C(t)
+ax1.scatter(t, c, label='C(t) experimental')
+ax1.plot(t_plot, c_plot, label='C(t) fitted')
+ax1.set_xlabel('Time (min)')
+ax1.set_ylabel('$C_{tracer} \\ (g/dm^3)$')
+ax1.set_xlim(np.min(t_plot), np.max(t_plot))
+ax1.legend()
+
+# Plot E(t)
+ax2.scatter(t, et, label='E(t) experimental')
+ax2.plot(t_plot, et_plot, label='E(t) fitted')
+ax2.set_xlabel('Time (min)')
+ax2.set_ylabel('E(t)')
+ax2.set_xlim(np.min(t_plot), np.max(t_plot))
+ax2.legend()
+
+plt.tight_layout()
+plt.show()
+
+```
+:::
+
+
 ## Mean Residence Time and Variance Calculations
 
 Using the data given in @tbl-problem_2 in the previous problem
@@ -82,6 +281,88 @@ Using the data given in @tbl-problem_2 in the previous problem
    reactor.
 *  Calculate the fraction of the material that spends 3 minutes or longer in
    the reactor.
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{python}
+#| echo: true
+#| warning: false
+
+# Define cumulative distribution F(t)
+def f_interp(t):
+    return np.array([quad(et_interp, 
+                          0, 
+                          ti, 
+                          limit=1000)[0] 
+        for ti in np.atleast_1d(t)])
+
+# Mean residence time function
+tau_func = lambda t: t * et_interp(t)
+
+# Variance function
+variance_func = lambda t, tm: (t - tm) ** 2 * et_interp(t)
+
+# Skewness function
+skewness_func = lambda t, tm: (t - tm) ** 3 * et_interp(t)
+
+# Calculate mean residence time (t_m)
+tau, _ = quad(tau_func, 0, np.max(t))
+
+# Calculate variance (σ²)
+variance, _ = quad(variance_func, 0, np.max(t), args=(tau,))
+
+# Calculate skewness (
+sigma = variance**0.5
+fac = 1.0 / (sigma**1.5)
+integral, _ = quad(skewness_func, 0, np.max(t), args=(tau,))
+skewness = fac * integral
+
+```
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p3-Ft
+#| fig-cap: Cumulative distribution F(t)
+
+f_plot = f_interp(t_plot)
+
+plt.plot(t_plot, f_plot, label='F(t)')
+plt.xlabel('Time (min)')
+plt.ylabel('F(t)')
+plt.xlim(np.min(t_plot), np.max(t_plot))
+plt.ylim(0,1)
+plt.legend()
+plt.show()
+
+```
+
+```{python}
+#| echo: true
+#| warning: false
+
+# Calculate specific time fractions
+fraction_3_to_6, _ = quad(et_interp, 3, 6)
+fraction_below_2, _ = quad(et_interp, 0, 2)
+fraction_above_3, _ = quad(et_interp, 3, np.max(t))
+
+```
+Mean Residence Time $tau$: $\approx$ `{python} f'{tau:.3f}'` min.
+
+Variance $\sigma^2$: $\approx$ `{python} f'{variance:.3f}'` $min^2$
+
+Skewness $s^3$: $\approx$ `{python} f'{skewness:.3f}'` $min^3$
+
+Specific Time Fractions: 
+
+Fraction of material that spends between 3 and 6 minutes: $\approx$ `{python} f'{fraction_3_to_6:.3f}'` 
+
+Fraction of material that spends less than 2 minutes: $\approx$ `{python} f'{fraction_below_2:.3f}'` 
+
+Fraction of material that spends longer than 3 minutes: $\approx$ `{python} f'{fraction_above_3:.3f}'` 
+
+:::
+
 
 ## Step experiment
 
@@ -104,9 +385,140 @@ display(Markdown(md))
 ```
 Plot the Concentration - time curve, $F(t)$ curve and $E(t)$ curve.
 
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{python}
+#| echo: true
+#| warning: false
+
+data_p4 = np.array([
+    (0, 0), (1, 0), (2, 0.1), (3, 0.2), (4, 0.3),
+    (5, 0.4), (6, 0.5), (7, 0.5), (8, 0.5)
+], dtype=[('t (min)', float), ('$C_{out} (mol/L)$', float)])
+
+t = data_p4["t (min)"]
+c = data_p4["$C_{out} (mol/L)$"]
+
+```
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p4-c-curve
+#| fig-cap: C Curve
+
+c_interp = interp1d(t, c, kind="linear", fill_value="extrapolate")
+
+# Plot C(t)
+t_plot = np.linspace(0, np.max(t), 500)
+c_plot = c_interp(t_plot)
+
+plt.scatter(t, c, label='C(t) experimental')
+plt.plot(t_plot, c_plot, label='C(t) fitted')
+plt.xlabel('Time (min)')
+plt.ylabel('$C_{tracer} \\ (g/dm^3)$')
+plt.xlim(np.min(t_plot), np.max(t_plot))
+plt.legend()
+plt.show()
+
+```
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p4-Ft
+#| fig-cap: Cumulative distribution F(t)
+
+C0 = 0.5 # mol/l
+f = c/C0
+f_interp = interp1d(t, f, kind="linear", fill_value="extrapolate")
+
+f_plot = f_interp(t_plot)
+
+plt.scatter(t, f, label='F(t) experimental')
+plt.plot(t_plot, f_plot, label='F(t) fitted')
+plt.xlabel('Time (min)')
+plt.ylabel('F(t)')
+plt.xlim(np.min(t_plot), np.max(t_plot))
+plt.ylim(0,1)
+plt.legend()
+plt.show()
+
+```
+To calculate $E(t)$ as the derivative of $F(t)$ with respect to time $t$,
+we can use the `np.gradient` function, which provides a numerical
+differentiation method. Once $E(t)$ is calculated, we can plot it against
+time.
+
+```{python}
+#| echo: true
+#| warning: false
+#| label: fig-p4-e-curve
+#| fig-cap: E Curve
+
+# Calculate E(t) as the derivative of F(t) with respect to t
+
+et_plot = np.gradient(f_plot, t_plot)
+et_interp = interp1d(t_plot, et_plot, kind="linear", fill_value="extrapolate")
+
+# Plot C(t)
+plt.plot(t_plot, et_plot, label='E(t)')
+plt.xlabel('Time (min)')
+plt.ylabel('E(t)')
+plt.xlim(np.min(t_plot), np.max(t_plot))
+plt.legend()
+plt.show()
+
+```
+:::
+
+
 ## Mean conversion using segragation model
 
 Using the pulse input response in @tbl-problem_1, calculate the mean conversion
 in the reactor for first order reaction: $\ce{A ->[k] Products}$ with k = 0.1
 $[min]^{-1}$.
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+For the first order reaction, conversion in each globule can be written as
+
+$$
+X(t) = 1 - e^{-kt} = 1 - e^{-0.1 t}
+$$
+
+The mean conversion can be calculated as
+
+$$
+\bar{X} = \int_0^\infty \left( 1 - e^{-0.1 t}\right ) E(t)dt 
+$$
+
+```{python}
+#| echo: true
+#| warning: false
+
+# For data in table 1
+t = data_p1["t(min)"]
+c = data_p1["$C_{tracer} \\ (g/dm^3)$"]
+
+k = 0.1
+# For data in table 2
+# t = data_p2["t(min)"]
+# c = data_p2["C ($g/m^3$)"]
+
+x = 1 - np.exp(-k * t)
+
+integral_c = np.trapz(c, t)
+et = c / integral_c
+
+xet = x * et
+
+xet_interp = PchipInterpolator(t, xet, extrapolate=True)
+
+mean_x,_ = quad(xet_interp, 0, np.max(t))
+```
+
+The mean conversion is `{python} f'{mean_x*100:.1f} %'` 
+
+:::
 
