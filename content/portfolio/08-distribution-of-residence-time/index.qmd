@@ -4,7 +4,7 @@ format:
   pdf:
     output-file: "portfolio-08-distribution-of-residence-times"
     output-ext: "pdf"
-date-modified: 2024-05-14
+date-modified: 2024-05-16
 resources:
   - portfolio_8_data.csv
 ---
@@ -131,7 +131,7 @@ The concentration of the tracer was measured at the outlet is reported in
    mean internal age $\alpha_m$? \hfill (6 marks)
 
 
-|                                          | $t_m (s)$              | $\sigma^2$           | $\alpha_m (s)$       |
+|                                          | $t_m$                  | $\sigma^2$           | $\alpha_m$           |
 |------------------------------------------|------------------------|----------------------|----------------------|
 |                                          |                        |                      |                      |
 | $\upsilon = 0.6 \, \text{dm}^3/\text{s}$ |           _______      |        _______       |        _______       |

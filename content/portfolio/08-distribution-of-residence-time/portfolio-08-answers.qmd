@@ -4,7 +4,8 @@ format:
   pdf:
     output-file: "answers-to-portfolio-08-distribution-of-residence-times"
     output-ext: "pdf"
-date-modified: 2024-05-14
+date: 2024-05-14
+date-modified: 2024-05-16
 ---
 
 ```{python}
@@ -177,7 +178,7 @@ The concentration of the tracer was measured at the outlet is reported in
    volume = Q * tau
    ```
 
-   $V = 1.05 dm^3$
+   $V = 1.05 \ dm^3$
 
 \vspace{2cm}
 
@@ -206,6 +207,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.integrate import quad
 from scipy.interpolate import interp1d
+from scipy.interpolate import PchipInterpolator 
 
 # Given data
 column_names = ["time (s)", "Tracer concentration (ppm)"]
@@ -268,6 +270,9 @@ et = c / integral_c
 
 # Interpolation functions
 et_interp = interp1d(t, et, kind="cubic", fill_value="extrapolate")
+
+# Better interpolation
+# et_interp = PchipInterpolator(t, et, extrapolate=True)
 
 # Define cumulative distribution F(t)
 def f_interp(t):

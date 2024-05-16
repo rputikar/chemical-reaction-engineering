@@ -152,6 +152,10 @@ website:
             text: Analysis of rate data
           - file: ./content/portfolio/05-multiple-reactions/index.qmd
             text: Multiple reactions
+          - file: ./content/portfolio/06-nonisothermal-reactor-design/index.qmd
+            text: Non-isothermal reactor design
+          - file: ./content/portfolio/07-reaction-mechanism-and-catalysis/
+            text: Reaction mechanism and catalysis
       #
 format:
   html:
