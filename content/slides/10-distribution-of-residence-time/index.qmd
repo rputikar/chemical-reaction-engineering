@@ -1,7 +1,7 @@
 ---
 title: "Distribution of residence time"
 format: revealjs
-date-modified: 2024-05-13
+date-modified: 2024-05-16
 ---
 
 
@@ -254,7 +254,7 @@ to obtain RTD.
 * Consider constant tracer addition to a feed that is initiated at $t = 0$
 
 $$
-C_{\text{out}}(t) = 
+C_{\text{in}}(t) = 
 \begin{cases} 
 0 & t < 0 \\ 
 C_0, \text{constant} & t \ge 0 
