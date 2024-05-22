@@ -6,7 +6,8 @@ format:
     output-ext: "pdf"
 date-modified: 2024-05-22
 resources:
-  - portfolio_8_data.csv
+  - ./portfolio_8_data.csv
+  - ./portfolio_8.ipynb
 ---
 
 ::: {.content-visible when-format="html"}
@@ -175,7 +176,7 @@ The concentration of the tracer was measured at the outlet is reported in
 ## Appendix
 
 The code is also available as `ipython` notebook. 
-Download the file `portfolio_8.ipynb` from blackboard. 
+Download the file [`portfolio_8.ipynb`](./portfolio_8.ipynb) from blackboard. 
 Open Google colab. From menu, click on File > Upload notebook.
 Upload the downloaded file and modify as per needed. 
 
