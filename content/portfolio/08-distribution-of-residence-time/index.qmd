@@ -4,7 +4,7 @@ format:
   pdf:
     output-file: "portfolio-08-distribution-of-residence-times"
     output-ext: "pdf"
-date-modified: 2024-05-16
+date-modified: 2024-05-22
 resources:
   - portfolio_8_data.csv
 ---
@@ -157,7 +157,7 @@ The concentration of the tracer was measured at the outlet is reported in
 \vspace{2cm}
 
 5. For $\upsilon = 0.6 \, \text{dm}^3/\text{s}$ what fraction of the material
-   spends longer than 1 minutes in the reactor? \hfill (2 marks)
+   spends longer than 1 s in the reactor? \hfill (2 marks)
 
 
 \vspace{2cm}

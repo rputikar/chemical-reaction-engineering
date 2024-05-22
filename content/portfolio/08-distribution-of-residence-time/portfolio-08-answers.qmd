@@ -5,7 +5,7 @@ format:
     output-file: "answers-to-portfolio-08-distribution-of-residence-times"
     output-ext: "pdf"
 date: 2024-05-14
-date-modified: 2024-05-16
+date-modified: 2024-05-22
 ---
 
 ```{python}
@@ -161,7 +161,7 @@ The concentration of the tracer was measured at the outlet is reported in
 \vspace{2cm}
 
 5. For $\upsilon = 0.6 \, \text{dm}^3/\text{s}$ what fraction of the material
-   spends longer than 1 minutes in the reactor? \hfill (2 marks)
+   spends longer than 1 s in the reactor? \hfill (2 marks)
 
    ```python 
    fraction_1_to_inf, _ = quad(et_interp, 1, np.max(t))
