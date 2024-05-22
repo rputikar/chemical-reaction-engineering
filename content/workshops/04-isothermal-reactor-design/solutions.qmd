@@ -2,7 +2,7 @@
 title: 
   "Solutions to workshop 04: Isothermal reactor design"
 date: 2024-03-19
-date-modified: 2024-05-10
+date-modified: 2024-05-22
 format: 
    html: default
    pdf:
@@ -312,11 +312,11 @@ $k=0.07 dm^3/mol \cdot min$ at 300 K and E = 20 kcal/mol.
 |:-|:-|:-|
 | $$C_A=\frac{F_A}{v} = \frac{F_{A0}(1 - X)}{v}$$ | $$= \frac{F_{A0}(1 - X)}{v_0(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ | $$= C_{A0} \frac{(1 - X)}{(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ |
 ||||
-| $$C_B=\frac{F_B}{v} = \frac{F_{A0}\Theta_B - (b/a)X}{v}$$ | $$= \frac{F_{A0}(\Theta_B - (b/a)X)}{v_0(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ | $$= C_{A0} \frac{(\Theta_B - (b/a)X)}{(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ |
+| $$C_B=\frac{F_B}{v} = \frac{F_{A0}(\Theta_B - (b/a)X)}{v}$$ | $$= \frac{F_{A0}(\Theta_B - (b/a)X)}{v_0(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ | $$= C_{A0} \frac{(\Theta_B - (b/a)X)}{(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ |
 ||||
-| $$C_C=\frac{F_C}{v} = \frac{F_{A0}\Theta_C + (c/a)X}{v}$$ | $$= \frac{F_{A0}(\Theta_C + (c/a)X)}{v_0(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ | $$= C_{A0} \frac{(\Theta_C + (c/a)X)}{(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ |
+| $$C_C=\frac{F_C}{v} = \frac{F_{A0}(\Theta_C + (c/a)X)}{v}$$ | $$= \frac{F_{A0}(\Theta_C + (c/a)X)}{v_0(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ | $$= C_{A0} \frac{(\Theta_C + (c/a)X)}{(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ |
 ||||
-| $$C_D=\frac{F_D}{v} = \frac{F_{A0}\Theta_D + (d/a)X}{v}$$ | $$= \frac{F_{A0}(\Theta_D + (d/a)X)}{v_0(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ | $$= C_{A0} \frac{(\Theta_D + (d/a)X)}{(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ |
+| $$C_D=\frac{F_D}{v} = \frac{F_{A0}(\Theta_D + (d/a)X)}{v}$$ | $$= \frac{F_{A0}(\Theta_D + (d/a)X)}{v_0(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ | $$= C_{A0} \frac{(\Theta_D + (d/a)X)}{(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ |
 ||||
 | $$C_1=\frac{F_1}{v} = \frac{F_{A0}\Theta_1}{v}$$ | $$= \frac{F_{A0}\Theta_1}{v_0(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ | $$= C_{A0}\Theta_1 \frac{1}{(1 + eX)}\left(\frac{T_0}{T}\right)\frac{P}{P_0}$$ |
 
