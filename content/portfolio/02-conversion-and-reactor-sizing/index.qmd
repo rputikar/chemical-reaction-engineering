@@ -4,7 +4,7 @@ format:
   pdf
 resources:
    - "./ethylene_oxide_rate_vs_conversion.csv"
-date-modified: 2024-05-10
+date-modified: 2024-05-29
 ---
 
 ```{python}
@@ -80,6 +80,8 @@ Answers to the portfolio questions are uploaded at [Portfolio 2 answers](./portf
 :::
 
 
+::: {.content-visible when-format="pdf"}
+
 ## General Instructions for in class Portfolios
 
 1.  The portolio is an open-book task.
@@ -134,6 +136,8 @@ For more information, visit
 [https://students.curtin.edu.au/essentials/rights/academic-integrity/](https://students.curtin.edu.au/essentials/rights/academic-integrity/)
 
 {{< pagebreak >}}
+
+:::
 
 ## Introduction
 

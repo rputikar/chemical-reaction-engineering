@@ -2,7 +2,7 @@
 title: "Portfolio 03: Isothermal reactor design"
 format:
   pdf
-date-modified: 2024-05-10
+date-modified: 2024-05-29
 ---
 
 ::: {.content-visible when-format="html"}
@@ -17,6 +17,7 @@ Answers to the portfolio questions are uploaded at [Portfolio 3 answers](./portf
 :::
 
 
+::: {.content-visible when-format="pdf"}
 ## General Instructions for take home Portfolios
 
 1.  The portolio is an open-book task.
@@ -65,6 +66,8 @@ For more information, visit
 [https://students.curtin.edu.au/essentials/rights/academic-integrity/](https://students.curtin.edu.au/essentials/rights/academic-integrity/)
 
 {{< pagebreak >}}
+
+:::
 
 ## Introduction
 

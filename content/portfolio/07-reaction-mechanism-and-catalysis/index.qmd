@@ -4,12 +4,13 @@ format:
   pdf:
     output-file: "portfolio-07-reaction-mechanism-and-catalysis"
     output-ext: "pdf"
-date-modified: 2024-05-22
+date-modified: 2024-05-29
 ---
 
 ```{python}
 {{< include ../../../assets/partials/_mplinclude.py >}}
 ```
+::: {.content-visible when-format="pdf"}
 ## Student ID: 
 
 ## General Instructions for take home Portfolios
@@ -61,6 +62,7 @@ For more information, visit
 [https://students.curtin.edu.au/essentials/rights/academic-integrity/](https://students.curtin.edu.au/essentials/rights/academic-integrity/)
 
 {{< pagebreak >}}
+:::
 
 ## Introduction
 

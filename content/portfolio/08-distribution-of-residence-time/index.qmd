@@ -4,7 +4,7 @@ format:
   pdf:
     output-file: "portfolio-08-distribution-of-residence-times"
     output-ext: "pdf"
-date-modified: 2024-05-22
+date-modified: 2024-05-29
 resources:
   - ./portfolio_8_data.csv
   - ./portfolio_8.ipynb
@@ -26,6 +26,9 @@ Answers to the portfolio questions are uploaded at [Portfolio 8 answers](./portf
 
 {{< include ../../../assets/partials/_mplinclude.py >}}
 ```
+::: {.content-visible when-format="pdf"}
+
+
 ## Student ID: 
 
 ## General Instructions for in class Portfolios
@@ -82,6 +85,8 @@ For more information, visit
 [https://students.curtin.edu.au/essentials/rights/academic-integrity/](https://students.curtin.edu.au/essentials/rights/academic-integrity/)
 
 {{< pagebreak >}}
+
+:::
 
 ## Introduction
 
