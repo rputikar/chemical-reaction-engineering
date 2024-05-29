@@ -154,8 +154,10 @@ website:
             text: Multiple reactions
           - file: ./content/portfolio/06-nonisothermal-reactor-design/index.qmd
             text: Non-isothermal reactor design
-          - file: ./content/portfolio/07-reaction-mechanism-and-catalysis/
+          - file: ./content/portfolio/07-reaction-mechanism-and-catalysis/index.qmd
             text: Reaction mechanism and catalysis
+          - file: ./content/portfolio/08-distribution-of-residence-time/index.qmd
+            text: Distribution of residence times
       #
 format:
   html:
