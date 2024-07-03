@@ -1,7 +1,7 @@
 ---
 subtitle: "Group Project: chemical reaction engineering S1 2024"
 author: ""
-date-modified: 2024-05-10
+date-modified: 2024-07-04
 format:
    docx: default
    pdf:
@@ -36,7 +36,7 @@ precaution helps to prevent potential detrimental impacts on the catalysts used
 in both the reforming and shift reactions and maintains the integrity of the
 hydrogen production process. A typical process is shown in @fig-1. 
 
-![Compact SMR reforming process](../../assets/images/hyserve30-reforming-process.png){#fig-1}
+![Compact SMR reforming process](../../../assets/images/hyserve30-reforming-process.png){#fig-1}
 
 Steam methane reforming occurs in reactors that are actually tubular furnaces
 (@worstell2014). A typical steam methane reformer preheats the gas feed in a
