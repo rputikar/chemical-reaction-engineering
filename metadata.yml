@@ -19,7 +19,7 @@ staff:
     name: Dr. Milin Shah
     name_no_title: Milin Shah
     email: "Milinkumar.Shah@curtin.edu.au"
-    phone: +61 08 9266 1263 
+    phone: +61 08 9266 1263
     url: "https://staffportal.curtin.edu.au/staff/profile/view/milin-shah-4b579da4/"
     office: Building 204, Room  319/320 <br>
       Bentley Campus
@@ -28,7 +28,7 @@ staff:
       If you would like to see me, please book an appointment.
     photo: ./assets/images/MilinShah.png
 
-  - id: jk 
+  - id: jk
     name: Dr. Jibrail Kansedo
     name_no_title: Jibrail Kansedo
     email: "jibrail.k@curtin.edu.my"
@@ -92,13 +92,11 @@ admin:
     email: dora.indin@curtin.edu.my
     phone: "+60 85 630100 Ext:2531"
     office: Skylark 3 - Room 402  <br>
-       Miri Campus
+      Miri Campus
     contact_policy: Best way to contact is via email.
       I hope to respond within 24-36 hours.
       If you would like to see me, please book an appointment.
     photo: ./assets/images/scientist_woman.jpeg
-
-
 # teaching-staff:
 #   staff:
 #     - ref: rpu

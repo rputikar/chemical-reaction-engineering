@@ -93,6 +93,10 @@ h1.title {
   // margin-left: 15px;
 }
 
+.reveal .subtitle {
+  text-align: left;
+}
+
 .reveal h2 {
   margin-bottom: 40px;
 }
@@ -107,10 +111,14 @@ h1.title {
   font-size: $h2-font-size;
 }
 
-.reveal .quarto-title-author {
-  text-align: left;
+.reveal .quarto-title-authors {
   font-size: $h2-font-size;
 }
+
+.reveal .date {
+  font-size: $h2-font-size;
+}
+
 
 .reveal .footer {
   // border-top: 2px solid $blue;

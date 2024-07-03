@@ -14,7 +14,7 @@ format:
     number-sections: true
     number-depth: 3
     shift-heading-level-by: -1
-    reference-doc: ../assets/templates/reference-doc.docx
+    reference-doc: ../../assets/templates/reference-doc.docx
   pdf:
     citeproc: true
     pdf-engine: lualatex
