@@ -1,7 +1,7 @@
 ---
 title: Syllabus
 
-date-modified: 2024-05-10
+date-modified: 2025-02-24
 ---
 
 ## Topics covered
@@ -37,17 +37,46 @@ Besides these books the following books are useful as well.
 
 ### Other materials
 
-- [Chemical Reaction Engineering 1 (Homogeneous Reactors)](https://www.youtube.com/playlist?list=PLbMVogVj5nJRrrhcrAIIJs1W0qgH5axqO)
-  by Prof K. Krishnaiah,Department of Chemical Engineering, IIT Madras. 
-- [Advanced Chemical Reaction Engineering Lectures](https://www.youtube.com/playlist?list=PLnqlE22sKQiaxcidrmQ2jRxyD04XQAWfV)
-  series by Dr. Sheila Samsatli
-- [Reaction Engineering](https://www.youtube.com/playlist?list=PLBUHO4VNB5hACoKj0fpVd5pBr2akmbvEO)
-  videos by Raili Taylor
-- [Chemical Reaction Engineering](https://www.youtube.com/playlist?list=PLE6AABEBC55CC0F74) course by Prof.Jayant Modak,Department of Chemical Engineering, IISc Bangalore.
+- [Chemical Reaction Engineering 1 (Homogeneous
+Reactors)](https://www.youtube.com/playlist?list=PLbMVogVj5nJRrrhcrAIIJs1W0qgH5axqO)
+by Prof K. Krishnaiah,Department of Chemical Engineering, IIT Madras. 
+
+- [Advanced Chemical Reaction Engineering
+Lectures](https://www.youtube.com/playlist?list=PLnqlE22sKQiaxcidrmQ2jRxyD04XQAWfV)
+series by Dr. Sheila Samsatli
+
+- [Reaction
+Engineering](https://www.youtube.com/playlist?list=PLBUHO4VNB5hACoKj0fpVd5pBr2akmbvEO)
+videos by Raili Taylor
+
+- [Chemical Reaction
+Engineering](https://www.youtube.com/playlist?list=PLE6AABEBC55CC0F74) course
+by Prof.Jayant Modak,Department of Chemical Engineering, IISc Bangalore.
 
 ## Course structure
 
-![Program calender 2024, Semester 1](../../assets/images/program_calendar_2024_s1.png)
+| Week  | Begin Date   | Lecture                                      | Workshop                                    | Laboratory  | Assessment                      |
+|-------|-------------|----------------------------------------------|---------------------------------------------|-------------|--------------------------------|
+| Orientation | 17 February  | Orientation Week                          |                                             |             |                                |
+| 1     | 24 February  | Mole balance                                | Mole balance                               |             | Portfolio 1 - Introduction    |
+| 2     | 3 March     | Conversion and Reactor sizing               | Conversion and reactor sizing              |             |                                |
+| 3     | 10 March    | Rate laws and Stoichiometry                 | Rate laws and Stoichiometry                |             |                                |
+| 4     | 17 March    | Isothermal reactor design                   | Isothermal reactor design                  | Lab session |                                |
+| 5     | 24 March    | Collection and Analysis of Rate data        | Collection and analysis of Rate data       | Lab session | Project released               |
+| 6     | 31 March    | Multiple reactions                          | Multiple reactions                         | Lab session |                                |
+| 7     | 7 April     | Non-isothermal reactor design               | Non-isothermal reactor design              | Lab session |                                |
+| 8     | 14 April    | Non-isothermal reactor design               | Non-isothermal reactor design              | Lab session | Portfolio 2 (Thursday 17 April) |
+| 9     | 21 April    | Tuition Free Week                           |                                             |             |                                |
+| 10    | 28 April    | Reaction mechanisms and Catalysis           | Reaction mechanisms and Catalysis          | Lab session |                                |
+| 11    | 5 May      | Distribution of residence time              | Distribution of residence time             |             |                                |
+| 12    | 12 May      | External diffusion effects: heterogeneous reactions | External diffusion effects on heterogeneous reactions |             | Portfolio 3 (Thursday 15 May) |
+| 13    | 19 May      | Diffusion effects: heterogeneous reactions  | Diffusion effects: heterogeneous reactions |             | Project submission            |
+| 14    | 26 May      | Study Week                                  |                                             |             |                                |
+| 15    | 2 June      | Examinations                                |                                             |             |                                |
+| 16    | 9 June      | Examinations                                |                                             |             |                                |
+
+
+<!-- ![Program calender 2024, Semester 1](../../assets/images/program_calendar_2024_s1.png) -->
 
 ## Course policies
 

@@ -7,7 +7,7 @@ subtitle:
   knowledge for those in the chemical engineering field."
 
 details: 
-  "CHEN3010, Semester 1, 2024 <br>
+  "CHEN3010, Semester 1, 2025 <br>
    West Australian School of Mines: Minerals, Energy, and Chemical Engineering <br>
    Curtin University"
 editor: source
@@ -19,7 +19,8 @@ format:
 metadata-files:
   - metadata.yml
 
-date-modified: 2024-05-10
+date-modified: 2025-02-24
+
 ---
 
 ## Course Overview
@@ -69,12 +70,13 @@ Failure twice may lead to the termination from that course.
 
 ## Learning Outcomes
 
-- Evaluate and apply principles and concepts of chemical reactions mechanisms
-  and kinetics in order to design reactors
-- Evaluate and apply the principles and modes of operation of different
-  reactors in order to design reactors
-- Design different types of industrial reactors for homogeneous and
-  heterogeneous systems
+- Apply reactor design principles and reaction kinetics for the selection,
+  fundamental design and evaluation of reactors for homogeneous reactions
+- Apply reactor design principles and reaction kinetics for the selection,
+  fundamental design and evaluation of reactors for solid catalysed reactions
+- Adapt and extend fundamental designs of solid catalysed reactors for
+  practical, industrial-scale operations 
+- Undertake risk assessment and control analysis of reactors
 
 ## Teaching Staff
 
