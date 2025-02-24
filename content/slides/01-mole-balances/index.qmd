@@ -1,7 +1,7 @@
 ---
 title: "Mole balances"
 format: revealjs
-date-modified: 2024-05-10
+date-modified: 2025-02-24 
 ---
 
 
@@ -618,110 +618,6 @@ $$
 :::
 ::::
 
-## Continuous stirred tank reactor (CSTR)
-
-::::{.columns}
-:::{.column width=50%}
-
-![](../../../assets/images/stallkamp-biogas-hochfermenter-cstr.jpg)
- 
-:::
-:::{.column width=5%}
-:::
-
-:::{.column width=45%}
-
-- **Open system**: Reactants are continuously fed and products removed.
-- The incoming stream blends immediately with the reactor's contents.
-- **Perfect mixing**: similar to an ideal batch reactor.
-- Temperature and concentration are consistent throughout.
-- Exit stream composition matches the reactor's interior.
-- Reaction rates are constant, maintaining steady-state.
-
-:::
-::::
-
-- **Typical uses**: Large-scale industrial chemical production (e.g. metallurgy), wastewater treatment
-
-
-## Plug flow reactor (PFR)
-
-
-::::{.columns}
-:::{.column width=50%}
-
-![](../../../assets/images/Plug-Flow-Reactor-Static-Mixer.jpg)
- 
-:::
-:::{.column width=5%}
-:::
-
-:::{.column width=45%}
-
-- Also known as a tubular reactor.
-- Cylindrical shape with openings at both ends.
-- Materials move steadily through the reactor's length.
-- Reactants are consumed along the reactor's length.
-- **Steady state operations**:
-  - **No radial gradients** Temperature, concentration, reaction rates are
-    constant at any given cross section.
-  - All material spends exactly same time in the reactor.
-
-:::
-::::
-
-- **Typical examples**: Food industry (continuous baking or sterilization), polymerization reactions
-
-
-## Packed bed reactor (PBR)
-
-::::{.columns}
-:::{.column width=50%}
-
-- Vertical cylindrical shell design.
-- Flow is often gravity-driven.
-- Heterogeneous reactions with a fixed catalyst bed.
-- Reactants pass from top through the catalyst layer.
-- Concentration gradient forms along the reactor's length.
-- Reactions occur at catalyst pellet surfaces.
-- Reaction rate ($r'_A$)depends on catalyst mass ($W$), not reactor volume ($V$).
-
-- **Typical examples**: Catalytic converters, petroleum refining, air purification
-  
-:::
-:::{.column width=5%}
-:::
-
-:::{.column width=45%}
-
-![](../../../assets/images/Packed-Tower-with-mist-elim.jpg){width=90%}
-
-:::
-::::
-
-## Selection of reactors
-
-* **Batch**
-  - small scale, production of expensive products (e.g. pharmacy)
-  - high labor costs per batch
-  - difficult for large-scale production
-
-* **CSTR**: most homogeneous liquid-phase flow reactors
-  - when intense agitation is required
-  - relatively easy to maintain good temperature control
-  - the conversion of reactant per volume of reactor is the smallest of the
-    flow reactors - very large reactors are necessary to obtain high
-    conversions
-
-* **PFR**: most homogeneous gas-phase flow reactors
-  - relatively easy to maintain
-  - usually produces the highest conversion per reactor volume (weight of
-    catalyst if it is a packed-bed catalyze gas reaction) of any of the flow
-    reactors
-  - difficult to control temperature within the reactor
-  - hot spots can occur
-
-
 ## Mole balance: Batch reactor
 
 ### Assumptions
@@ -770,6 +666,32 @@ $$
 :::
 ::::
 
+
+## Continuous stirred tank reactor (CSTR)
+
+::::{.columns}
+:::{.column width=50%}
+
+![](../../../assets/images/stallkamp-biogas-hochfermenter-cstr.jpg)
+ 
+:::
+:::{.column width=5%}
+:::
+
+:::{.column width=45%}
+
+- **Open system**: Reactants are continuously fed and products removed.
+- The incoming stream blends immediately with the reactor's contents.
+- **Perfect mixing**: similar to an ideal batch reactor.
+- Temperature and concentration are consistent throughout.
+- Exit stream composition matches the reactor's interior.
+- Reaction rates are constant, maintaining steady-state.
+
+:::
+::::
+
+- **Typical uses**: Large-scale industrial chemical production (e.g. metallurgy), wastewater treatment
+
 ## Mole balance: CSTR
 
 ### Assumptions
@@ -813,6 +735,35 @@ $$
 ::::
 
 
+
+## Plug flow reactor (PFR)
+
+
+::::{.columns}
+:::{.column width=50%}
+
+![](../../../assets/images/Plug-Flow-Reactor-Static-Mixer.jpg)
+ 
+:::
+:::{.column width=5%}
+:::
+
+:::{.column width=45%}
+
+- Also known as a tubular reactor.
+- Cylindrical shape with openings at both ends.
+- Materials move steadily through the reactor's length.
+- Reactants are consumed along the reactor's length.
+- **Steady state operations**:
+  - **No radial gradients** Temperature, concentration, reaction rates are
+    constant at any given cross section.
+  - All material spends exactly same time in the reactor.
+
+:::
+::::
+
+- **Typical examples**: Food industry (continuous baking or sterilization), polymerization reactions
+
 ## Mole balance: PFR
 
 ### Assumptions
@@ -837,6 +788,32 @@ $$
 ![](../../../assets/images/mole_balance_pfr.png){width=90%}
 
 
+
+## Packed bed reactor (PBR)
+
+::::{.columns}
+:::{.column width=50%}
+
+- Vertical cylindrical shell design.
+- Flow is often gravity-driven.
+- Heterogeneous reactions with a fixed catalyst bed.
+- Reactants pass from top through the catalyst layer.
+- Concentration gradient forms along the reactor's length.
+- Reactions occur at catalyst pellet surfaces.
+- Reaction rate ($r'_A$)depends on catalyst mass ($W$), not reactor volume ($V$).
+
+- **Typical examples**: Catalytic converters, petroleum refining, air purification
+  
+:::
+:::{.column width=5%}
+:::
+
+:::{.column width=45%}
+
+![](../../../assets/images/Packed-Tower-with-mist-elim.jpg){width=90%}
+
+:::
+::::
 
 ## Mole balance: PBR
 
@@ -887,4 +864,30 @@ $$
  
 :::
 ::::
+
+
+## Selection of reactors
+
+* **Batch**
+  - small scale, production of expensive products (e.g. pharmacy)
+  - high labor costs per batch
+  - difficult for large-scale production
+
+* **CSTR**: most homogeneous liquid-phase flow reactors
+  - when intense agitation is required
+  - relatively easy to maintain good temperature control
+  - the conversion of reactant per volume of reactor is the smallest of the
+    flow reactors - very large reactors are necessary to obtain high
+    conversions
+
+* **PFR**: most homogeneous gas-phase flow reactors
+  - relatively easy to maintain
+  - usually produces the highest conversion per reactor volume (weight of
+    catalyst if it is a packed-bed catalyze gas reaction) of any of the flow
+    reactors
+  - difficult to control temperature within the reactor
+  - hot spots can occur
+
+
+
 

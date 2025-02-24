@@ -90,41 +90,41 @@ website:
         id: lectures
         contents:
           - file: ./content/lectures/01-mole-balances/index.qmd
-          - file: ./content/lectures/02-conversion-and-reactor-sizing/index.qmd
-          - file: ./content/lectures/03-rate-law-and-stoichiometry/index.qmd
-          - file: ./content/lectures/04-isothermal-reactor-design/index.qmd
-          - file: ./content/lectures/05-collection-and-analysis-of-rate-data/index.qmd
-          - file: ./content/lectures/06-multiple-reactions/index.qmd
-          - file: ./content/lectures/07-non-isothermal-reactor-design/index.qmd
-          - file: ./content/lectures/08-reaction-mechanisms-and-catalysis/index.qmd
-          - file: ./content/lectures/09-external-and-internal-diffusion-effects/index.qmd
-          - file: ./content/lectures/10-distribution-of-residence-time/index.qmd
-          #
+          # - file: ./content/lectures/02-conversion-and-reactor-sizing/index.qmd
+      #     - file: ./content/lectures/03-rate-law-and-stoichiometry/index.qmd
+      #     - file: ./content/lectures/04-isothermal-reactor-design/index.qmd
+      #     - file: ./content/lectures/05-collection-and-analysis-of-rate-data/index.qmd
+      #     - file: ./content/lectures/06-multiple-reactions/index.qmd
+      #     - file: ./content/lectures/07-non-isothermal-reactor-design/index.qmd
+      #     - file: ./content/lectures/08-reaction-mechanisms-and-catalysis/index.qmd
+      #     - file: ./content/lectures/09-external-and-internal-diffusion-effects/index.qmd
+      #     - file: ./content/lectures/10-distribution-of-residence-time/index.qmd
+      #     #
       - section: "Workshops"
         id: workshops
         contents:
           - file: ./content/workshops/index.qmd
-          - file: ./content/workshops/01-mole-balances/index.qmd
-            text: Mole balances
-          - file: ./content/workshops/02-conversion-and-reactor-sizing/index.qmd
-            text: Conversion and reactor sizing
-          - file: ./content/workshops/03-rate-law-and-stoichiometry/index.qmd
-            text: Rate law and stoichiometry
-          - file: ./content/workshops/04-isothermal-reactor-design/index.qmd
-            text: Isothermal reactor design
-          - file: ./content/workshops/05-collection-and-analysis-of-rate-data/index.qmd
-            text: Collection and analysis of rate data
-          - file: ./content/workshops/06-multiple-reactions/index.qmd
-            text: Multiple reactions
-          - file: ./content/workshops/07-non-isothermal-reactor-design/index.qmd
-            text: Non-isothermal reactor design
-          - file: ./content/workshops/08-reaction-mechanisms-and-catalysis/index.qmd
-            text: Reaction mechanisms and catalysis
-          - file: ./content/workshops/09-external-and-internal-diffusion-effects/index.qmd
-            text: External and internal diffusion effects
-          - file: ./content/workshops/10-distribution-of-residence-time/index.qmd
-            text: Distribution of residence times
-      #
+      #     - file: ./content/workshops/01-mole-balances/index.qmd
+      #       text: Mole balances
+      #     - file: ./content/workshops/02-conversion-and-reactor-sizing/index.qmd
+      #       text: Conversion and reactor sizing
+      #     - file: ./content/workshops/03-rate-law-and-stoichiometry/index.qmd
+      #       text: Rate law and stoichiometry
+      #     - file: ./content/workshops/04-isothermal-reactor-design/index.qmd
+      #       text: Isothermal reactor design
+      #     - file: ./content/workshops/05-collection-and-analysis-of-rate-data/index.qmd
+      #       text: Collection and analysis of rate data
+      #     - file: ./content/workshops/06-multiple-reactions/index.qmd
+      #       text: Multiple reactions
+      #     - file: ./content/workshops/07-non-isothermal-reactor-design/index.qmd
+      #       text: Non-isothermal reactor design
+      #     - file: ./content/workshops/08-reaction-mechanisms-and-catalysis/index.qmd
+      #       text: Reaction mechanisms and catalysis
+      #     - file: ./content/workshops/09-external-and-internal-diffusion-effects/index.qmd
+      #       text: External and internal diffusion effects
+      #     - file: ./content/workshops/10-distribution-of-residence-time/index.qmd
+      #       text: Distribution of residence times
+      # #
       - section: "Labs"
         id: labs
         contents:
@@ -142,23 +142,23 @@ website:
       - section: "Portfolio"
         id: portfolio
         contents:
-          - file: ./content/portfolio/01-mole-balances/index.qmd
-            text: Mole balances
-          - file: ./content/portfolio/02-conversion-and-reactor-sizing/index.qmd
-            text: Conversion and reactor sizing
-          - file: ./content/portfolio/03-isothermal-reactor-design/index.qmd
-            text: Isothermal reactor design
-          - file: ./content/portfolio/04-analysis-of-rate-data/index.qmd
-            text: Analysis of rate data
-          - file: ./content/portfolio/05-multiple-reactions/index.qmd
-            text: Multiple reactions
-          - file: ./content/portfolio/06-nonisothermal-reactor-design/index.qmd
-            text: Non-isothermal reactor design
-          - file: ./content/portfolio/07-reaction-mechanism-and-catalysis/index.qmd
-            text: Reaction mechanism and catalysis
-          - file: ./content/portfolio/08-distribution-of-residence-time/index.qmd
-            text: Distribution of residence times
-      #
+      #     - file: ./content/portfolio/01-mole-balances/index.qmd
+      #       text: Mole balances
+      #     - file: ./content/portfolio/02-conversion-and-reactor-sizing/index.qmd
+      #       text: Conversion and reactor sizing
+      #     - file: ./content/portfolio/03-isothermal-reactor-design/index.qmd
+      #       text: Isothermal reactor design
+      #     - file: ./content/portfolio/04-analysis-of-rate-data/index.qmd
+      #       text: Analysis of rate data
+      #     - file: ./content/portfolio/05-multiple-reactions/index.qmd
+      #       text: Multiple reactions
+      #     - file: ./content/portfolio/06-nonisothermal-reactor-design/index.qmd
+      #       text: Non-isothermal reactor design
+      #     - file: ./content/portfolio/07-reaction-mechanism-and-catalysis/index.qmd
+      #       text: Reaction mechanism and catalysis
+      #     - file: ./content/portfolio/08-distribution-of-residence-time/index.qmd
+      #       text: Distribution of residence times
+      # #
 format:
   html:
     theme:
