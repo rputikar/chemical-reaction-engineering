@@ -1,4 +1,4 @@
 - source: project
   netlify:
     - id: a8c49cbf-8703-4d6f-8877-d4425f52fb83
-      url: 'https://cre.smilelab.dev'
+      url: https://cre.smilelab.dev

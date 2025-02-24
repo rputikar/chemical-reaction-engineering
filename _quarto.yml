@@ -36,7 +36,7 @@ execute:
 
 website:
   title: "CRE | Chemical Reaction Engineering"
-  site-url: https://cre.smilelab.dev/
+  site-url: https://cre.smilelab.dev/2024/
   page-navigation: true
   open-graph: true
   # cookie-consent: true
