@@ -14,6 +14,12 @@ subfolders.forEach(subfolder => {
   const folderName = path.basename(subfolder);
   const pdfPath = path.join(subfolder, `${folderName}.pdf`);
 
+  // Check if the PDF file already exists
+  if (fs.existsSync(pdfPath)) {
+    console.log(`Skipping ${indexPath} as ${pdfPath} already exists.`);
+    return;
+  }
+
   // Execute DeckTape
   try {
     execSync(`decktape reveal ${indexPath} ${pdfPath}`, { stdio: 'inherit' });
