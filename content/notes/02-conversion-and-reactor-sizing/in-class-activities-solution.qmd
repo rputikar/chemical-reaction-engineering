@@ -3,7 +3,8 @@ title: "In class activity: Conversion and Reactor sizing"
 date: 2024-03-03
 date-modified: 2024-05-10
 format:
-  pdf
+    live-html: default
+    pdf: default
 ---
 
 ```{python}

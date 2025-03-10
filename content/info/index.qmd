@@ -39,7 +39,7 @@ introductory series on using Excel for engineering applications.
 [Excel Training for
 Engineers](https://www.youtube.com/playlist?list=PLUQP7hTI4zC8-7mTTotSiNt1hma7irN_M).
 
-## Attendance and participation
+:## Attendance and participation
 
 It is **crucial** to complete the required pre-class activities for each
 session **before** watching the lecture.  

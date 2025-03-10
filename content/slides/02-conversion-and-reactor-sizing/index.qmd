@@ -263,6 +263,11 @@ $$
 :::
 ::::
 
+## In class exercise 
+
+Derive Design equation for a CSTR in terms of $X$. 
+
+![](../../../assets/images/mole_balance_cstr.png){width=90%}
 
 ## Design equation in terms of $X$: CSTR
 
@@ -312,6 +317,11 @@ $–r_A$ are evaluated at the exit of the CSTR
 
 :::
 
+## In class exercise 
+
+Derive Design equation for a PFR in terms of $X$. 
+
+![](../../../assets/images/mole_balance_pbr.png){width=90%}
 
 ## Design equation in terms of $X$: PFR
 
@@ -543,6 +553,36 @@ area under the curve $\frac{F_{A0}}{-r_{A}} = f(X_A)$
 
 :::
 
+## In class exercise: CSTR sizing
+
+Using following data: Calculate $V_{CSTR}$ for $X = 0.4$, and $X = 0.8$
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+
+```{python}
+data = np.array([
+    (0, 0.89), (0.1, 1.08), (0.2, 1.33), (0.4, 2.05), (0.6, 3.56),
+    (0.7, 5.06), (0.8, 8)
+], dtype=[('x', float), ('fa0_by_ra', float)])
+
+# Interpolate using cubic spline 
+data_interp = interpolate.CubicSpline(data['x'], data['fa0_by_ra'])
+
+df = {}
+df['data'] = pd.DataFrame({'X': data['x'], '$\\frac{F_{A0}}{-r_A}$': data['fa0_by_ra']})
+
+md = tab.tabulate(df['data'].T, floatfmt='.2f')
+display(Markdown(md))
+
+# data_for_table = [(row['x'], row['fa0_by_ra']) for row in data]
+# headers = ["X", "$\\frac{F_{A0}}{-r_A}$"]
+# md = tab.tabulate(data_for_table, headers=headers, floatfmt='.2f')
+# display(Markdown(md))
+```
+
+
 ## CSTR sizing
 
 Using following data: Calculate $V_{CSTR}$ for $X = 0.4$, and $X = 0.8$
@@ -576,13 +616,13 @@ display(Markdown(md))
 :::
 
 ::::{.columns}
-:::{.column width=50%}
+:::{.column width=60%}
 
 ```{python}
 #| echo: false 
 #| output: true 
 
-fig,ax = plt.subplots()
+fig,ax = plt.subplots(figsize=(6, 6))
 
 x = np.linspace(0, 0.8, 100)
 fa0_by_ra = data_interp(x)
@@ -591,12 +631,12 @@ fa0_by_ra = data_interp(x)
 
 # X = 0.4
 x_p4 = 0.4
-fa0_by_ra_p4 = data_interp(x_p4)
+fa0_by_ra_p4 = float(data_interp(x_p4))
 v_p4 = x_p4 * fa0_by_ra_p4
 
 # X = 0.8
 x_p8 = 0.8
-fa0_by_ra_p8 = data_interp(x_p8)
+fa0_by_ra_p8 = float(data_interp(x_p8))
 v_p8 = x_p8 * fa0_by_ra_p8
 
 ax.scatter(data['x'], data['fa0_by_ra'], marker='s', color='red')
@@ -624,13 +664,12 @@ ax.set_ylabel('$\\frac{F_{A0}}{-r_A} (m^3)$')
 ax.set_xlim(0, 1)
 ax.set_ylim(0, 10)
 
-
 plt.show()
 
 ```
 :::
 
-:::{.column width=50%}
+:::{.column width=40%}
 
 $$
 V = \left( \frac{F_{A0}}{(-r_A)_{exit}} \right) \cdot X 
@@ -651,6 +690,36 @@ $$
 
 :::
 ::::
+
+## In class exercise: PFR sizing
+
+Using following data: Calculate $V_{PFR}$ for $X = 0.4$, and $X = 0.8$
+
+:::{style="margin-bottom: 40px;"}
+:::
+
+```{python}
+data = np.array([
+    (0, 0.89), (0.1, 1.08), (0.2, 1.33), (0.4, 2.05), (0.6, 3.56),
+    (0.7, 5.06), (0.8, 8)
+], dtype=[('x', float), ('fa0_by_ra', float)])
+
+# Interpolate using cubic spline 
+data_interp = interpolate.CubicSpline(data['x'], data['fa0_by_ra'])
+
+df = {}
+df['data'] = pd.DataFrame({'X': data['x'], '$\\frac{F_{A0}}{-r_A}$': data['fa0_by_ra']})
+
+md = tab.tabulate(df['data'].T, floatfmt='.2f')
+display(Markdown(md))
+
+# data_for_table = [(row['x'], row['fa0_by_ra']) for row in data]
+# headers = ["X", "$\\frac{F_{A0}}{-r_A}$"]
+# md = tab.tabulate(data_for_table, headers=headers, floatfmt='.2f')
+# display(Markdown(md))
+```
+
+
 
 ## PFR sizing
 
@@ -684,13 +753,13 @@ display(Markdown(md))
 :::
 
 ::::{.columns}
-:::{.column width=50%}
+:::{.column width=60%}
 
 ```{python}
 #| echo: false 
 #| output: true 
 
-fig,ax = plt.subplots()
+fig,ax = plt.subplots(figsize=(6, 6))
 
 x = np.linspace(0, 0.8, 100)
 fa0_by_ra = data_interp(x)
@@ -739,7 +808,7 @@ plt.show()
 ```
 :::
 
-:::{.column width=50%}
+:::{.column width=40%}
 
 $$
 V = \int_0^X \left( \frac{F_{A0}}{(-r_A)}\right) dX
@@ -847,7 +916,7 @@ Fa0_by_ra = Fa0/data4['ra']
 data4_interp = interpolate.CubicSpline(data4['x'], Fa0_by_ra)
 
 df = {}
-df['data'] = pd.DataFrame({'X': data4['x'], '$-r_A, \\frac{kmol}{m^3 \cdot h}$': data4['ra']})
+df['data'] = pd.DataFrame({'X': data4['x'], '$-r_A, \\frac{kmol}{m^3 \\cdot h}$': data4['ra']})
 
 md = tab.tabulate(df['data'].T, floatfmt='.2f')
 display(Markdown(md))
@@ -864,7 +933,7 @@ display(Markdown(md))
 ### Example: An adiabatic liquid-phase isomerization
 
 ```{python}
-fig,ax = plt.subplots()
+fig,ax = plt.subplots(figsize=(9, 9))
 
 x = np.linspace(0, 0.8, 100)
 y = data4_interp(x)
@@ -874,7 +943,7 @@ y = data4_interp(x)
 # CSTR X1 = 0.2
 
 x_1 = 0.2
-v_cstr_1 = x_1 * data4_interp(x_1)
+v_cstr_1 = x_1 * float(data4_interp(x_1))
 
 # PFR X2 = 0.6
 x_2 = 0.6
@@ -883,13 +952,13 @@ v_pfr, err = integrate.quad(data4_interp, x_1, x_2)
 # CSTR X3 = 0.65
 
 x_3 = 0.65
-v_cstr_2 = (x_3 - x_1) * data4_interp(x_3)
+v_cstr_2 = (x_3 - x_1) * float(data4_interp(x_3))
 
 ax.scatter(data4['x'], Fa0_by_ra, marker='s', color='red')
 ax.plot(x, y, color='black')
 
 # CSTR 1 X = 0.2
-rectangle = plt.Rectangle((0, 0), x_1, data4_interp(x_1), color='skyblue', alpha=0.4)
+rectangle = plt.Rectangle((0, 0), x_1, float(data4_interp(x_1)), color='skyblue', alpha=0.4)
 ax.add_patch(rectangle)
 
 text_str = r"""$V_{{X={x:.2f}}}$ = {v:.2f} $m^3$""".format(x=x_1,v=v_cstr_1)
@@ -906,7 +975,7 @@ text_str = r"""$V_{{X={x:.2f}}}$ = {v:.2f} $m^3$""".format(x=x_2,v=v_pfr)
 ax.text(0.4, 0.25, text_str, ha='center', va='bottom')
 
 # CSTR 2 X = 0.65
-rectangle = plt.Rectangle((x_2, 0), x_3 - x_2, data4_interp(x_3), color='forestgreen', alpha=0.4)
+rectangle = plt.Rectangle((x_2, 0), x_3 - x_2, float(data4_interp(x_3)), color='forestgreen', alpha=0.4)
 ax.add_patch(rectangle)
 
 text_str = r"""$V_{{X={x:.2f}}}$ = {v:.2f} $m^3$""".format(x=x_3,v=v_cstr_2)

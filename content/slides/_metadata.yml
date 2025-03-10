@@ -27,5 +27,10 @@ format:
 
     height: 900
 
+    drop:
+      engine: pyodide
+      shortcut: "]"
+
 revealjs-plugins:
   - pointer
+  - drop

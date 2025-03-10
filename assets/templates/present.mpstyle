@@ -9,7 +9,7 @@ font.sans-serif: IBM Plex Sans
 
 # Figure 
 figure.figsize: 4,4 
-figure.dpi: 300
+figure.dpi: 96
 figure.facecolor: none
 
 # Axes

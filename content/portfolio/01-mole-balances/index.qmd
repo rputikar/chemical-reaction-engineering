@@ -1,34 +1,50 @@
 ---
 title: "Portfolio 01: Mole balances"
-date: 2024-02-22
-date-modified: 2024-05-10
+date: 2025-02-24
+date-modified: 2025-02-24
 format:
   pdf
 ---
 
-Answer following questions
+### Due date: 2025-03-07
 
-1. Write a paragraph describing both the content goals and the intellectual
-   goals of the course. (1 mark) 
+### Task 1: Course Goals (10 Marks)  
+Write a concise paragraph describing both the content goals and the
+intellectual goals of this course. Explain what students are expected to learn
+in terms of knowledge and skills.  
 
-2. Roam around the campus. Identify and photograph 5 reactors. (2 marks) 
+### Task 2: Reactor Identification (20 Marks)  
+Explore the campus and identify five different reactors. Capture clear
+photographs of each reactor and provide the following details:  
 
-   For each reactor, 
-   - Give one to two line description
-   - Identify what reactions take place
-   - What type of reactor is it? Single phase, multiphase, batch, semibatch,
-     continous, etc... 
-   - Determine the type of ideal reactor that may best describe the reactor. 
-   - Show photographs. 
+- A brief description (1-2 lines) of the reactor.  
+- The chemical reactions that take place inside the reactor.  
+- The reactor type (e.g., single-phase, multiphase, batch, semi-batch, continuous, etc.).  
+- The ideal reactor model that best describes its behavior (e.g., PFR, CSTR, batch reactor).  
+- Include photographs of each reactor.  
 
-3. For the following processes, search the web and determine the main reactions
-   and the reactors used. (2 marks)
-   - Ethylene polymerization 
-   - Saponification of fats
-   - Nitric acid production
-   - Iron production
-   - Ammonia synthesis
+Hint: The reactors do not need to be conventional chemical reactors.
+Consider any system where a chemical or biological reaction occurs.  
 
-Save your report as a pdf file. Rename the file as STUDENTID_Portfolio1.pdf 
-and upload it using assessment submission link on blackboard. 
+### Task 3: Industrial Processes (20 Marks)  
+Conduct research on the following industrial processes and determine:  
+- The main chemical reactions involved.  
+- The types of reactors used in each process.  
+
+1. Methane Reforming  
+2. Electrolysis of Water  
+3. Nitric Acid Production  
+4. Iron Production  
+5. Fischer-Tropsch Synthesis  
+
+### Submission Guidelines  
+
+- Page Limit: Maximum 5 pages (be concise).  
+- Save your report as a PDF file.  
+- Name your file as STUDENTID_Portfolio1.pdf.  
+- Upload the file using the assessment submission link on Blackboard.  
+
+Important Note: This portfolio does not contribute to your final mark, but
+failing to complete it and/or achieve a pass mark will result in a 5-mark
+deduction from your overall portfolio score.
 
