@@ -1,8 +1,6 @@
 ---
-title: | 
-  | Experiment 2
-  | Reaction rate constant using a tubular reactor 
-subtitle: CHEN3010/ CHEN5040 - Chemical Reaction Engineering - S1 2024
+title: "Experiment 2: Reaction rate constant using a tubular reactor"
+subtitle: CHEN3010/ CHEN5040 - Chemical Reaction Engineering - S1 2025
 author: ""
 format:
   pdf

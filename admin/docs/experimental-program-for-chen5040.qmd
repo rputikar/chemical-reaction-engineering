@@ -1,0 +1,138 @@
+---
+title: Experimental program for CHEN5040
+format:
+  pdf
+date-modified: 2024-05-10
+---
+
+## Experimental program
+
+As a fully online student, you won’t be able to attend the labs. Therefore, the
+experimental program will be replaced by a task involving analysis of
+experimental data. We have recorded the experiments and have prepared a short
+video for each experiment so that you can watch the experiments remotely. The
+data to be analysed will be similar to that you would have otherwise obtained
+after witnessing an experiment. Thus the learning outcomes would remain the
+same. Working in a group of two, you would understand the experiment (and
+theory behind it), interpret the data given, and prepare a short report
+addressing key questions for the task.
+
+This year, we will be exploring the following three experiements. For all the
+three experiments, I have uploaded the laboratory manuals onto blackboard.
+Please go through these laboratory manuals to understand more about the
+experimental setups and procedure.
+
+## Experiment 1: Batch saponification reaction of Et(Ac) and NaOH
+
+Reaction rate constant for the saponification of ethyl acetate by sodium
+hydroxide, will be determined using isothermal batch experiments. The reaction
+is chosen as it can be carried out under safe conditions of temperature and
+pressure and is well documented. The use of indicators allows to follow the
+reaction by changing the colour as the reaction takes place. The Armfield batch
+reactor is designed to demonstrate the mechanism of a chemical reaction in a
+reactor, as well as the effects of varying process conditions such as reaction
+temperature, reagent concentrations etc.
+
+### Instructions
+
+1. Watch 'Experiment 1 - Batch reactor - Introduction.mp4' as well as complete
+   the prelab module [Virtual Laboratory - Batch
+Reactor](https://cre.smilelab.dev/content/labs/prelab/Batch_Reactor/index.htm)
+2. Read 'Experiment 1 - Batch reactor - Instructions v3.pdf', and 'CEB-MKIII
+   Issue
+   3 Instruction Manual.pdf'
+3. Analyse 'Experiment 1 - Batch reactor - Data 1.xlsx', and 'Experiment 1 - Batch
+   reactor - Data 2.xlsx'
+4. Prepare a report and upload it in assessments.
+
+Note: The conductivity readings are in mS/cm. The results were exported from
+Armfield software. Given the limited space on Mimic diagram screen in the
+software, the units are abbreviated to mS.
+
+## Experiment 2: Reaction rate constant using a tubular reactor
+
+In this experiment we will determine the reaction rate constant for the
+saponification of ethyl acetate by sodium hydroxide as it can be carried out
+under safe conditions of temperature and pressure and is well documented. We
+use the Armfield Continuous Tubular Flow Reactor setup for this purpose. The
+setup is designed to demonstrate the mechanism of a chemical reaction in a plug
+flow reactor as well as the effects of varying the process conditions such as
+reaction temperature, reactant concentration, feed rate etc.
+
+### Instructions
+
+1. Watch 'Experiment 2 - Tubular reactor - Introduction.mp4' as well as complete the
+    the prelab module [Virtual Laboratory - Tubular
+Reactor](https://cre.smilelab.dev/content/labs/prelab/Tubular_Reactor/index.htm)
+2. Read 'Experiment 2 - Tubular reactor - Instructions.pdf', and 'CET-MKII
+   Issue 21 Instruction Manual.pdf'
+3. Analyse 'Experiment 2 - Tubular Reactor - Data 1.xlsx', and 'Experiment 2 -
+   Tubular Reactor - Data 2.xlsx'
+4. Prepare a report and upload it in assessments.
+
+Note: The conductivity readings are in mS/cm. The results were exported from
+Armfield software. Given the limited space on Mimic diagram screen in the
+software, the units are abbreviated to mS.
+
+## Experiment 3: Study of Sucrose Inversion using catalytic reactor
+
+The aim of this practical exercise is to study the sucrose inversion reaction.
+This reaction, a hydrolysis which has fructose and glucose as products, will
+take place in a fixed bed catalytic reactor. Two catalysts are proposed: a
+strong cationic exchange resin and an immobilised enzyme, invertase, the
+activity of which is specific to the catalysis of this reaction. The reactors’
+steady state conversion is followed either manually or by an automated
+analytical technique known as FIA (Flow Injection Analysis). Further objectives
+of this practical work are the familiarisation of the student with specific
+problems associated to catalytic and enzymatic reactions, as well as contact
+with the FIA analytical technique.
+
+### Instructions
+
+1. Watch 'Experiment 3 - Catalytic Reactor - Introduction.mp4' as well as complete
+    the prelab module [Virtual Laboratory - Catalytic
+Reactor](https://cre.smilelab.dev/content/labs/prelab/Catalytic_Reactor/index.htm)
+2. Read 'Experiment 3 - Catalytic Reactor - Instructions.pdf', and
+   'PC-0054962-Armfield-Manual-CEU-Issue 13.pdf'
+3. Analyse 'Experiment 3 - Catalytic Reactor - Data 1 v2.xlsx', and 'Experiment
+   3 - Catalytic Reactor - Data 2.xlsx'
+4. Prepare a report and upload it in assessments.
+
+The data is for two different particle sizes in two different columns. The data
+is continuous as a valve is used to switch between two columns. “chemical 1”
+and “chemical 2” are the two catalysts (chemical resins used). Chemical 1:
+$d_p$ = 0.855 mm Chemical 2: $d_p$ = 0.5325 mm
+
+For analysis you can use plug flow assumption.
+
+## Groups for analysis of experimental data
+
+You will work in a team of two to understand the experiment analyse the
+experimental data. The submission schedule is given below. It is expected that
+you will provide an evidence of collaboration (minutes of meeting) and working
+together on this group task. Below are the groups for the experimental program.
+Please get in touch with your group members at the earliest. If you can not
+make a contact with any of your team members, please get back to me as soon as
+possible so that I can assist in communication.
+
+| Group | Members |
+|-|-|
+| 1 | Ghimire	Arpan |
+|   | Koppula	Kiran Kumar|
+| 2 | Mainali	Subash|
+|   | Patel	Tanmaykumar|
+
+## Lab report submission
+
+Use the links on blackboard to submit your report. Please note that the report
+requirements are different than the internal students. You are only required to
+prepare a report that answers the tasks outlined in the experiment instructions. 
+
+| Experiment |Report Due | Instructions |
+|-|-|-|
+| 1 | 9 April 2024 | Follow week 5 submission link |
+| 2 | 23 April 2024 | Follow week 7 submission link |
+| 3 | 7 May 2024 | Follow week 9 submission link |
+
+
+

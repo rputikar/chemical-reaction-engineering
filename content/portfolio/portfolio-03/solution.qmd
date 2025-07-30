@@ -1,0 +1,1089 @@
+---
+title: "Portfolio 03: Non-isothermal reactor design"
+format:
+  pdf: default
+  docx: default
+date-modified: 2025-05-15 
+---
+<!-- ::: {.content-visible when-format="html"} -->
+<!---->
+<!-- ::: {.callout-note} -->
+<!-- ## Solutions -->
+<!---->
+<!-- Answers to the portfolio questions are uploaded at [Portfolio 2 answers](./portfolio-02-answers.qmd) -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- ::: -->
+<!---->
+
+::: {.content-visible when-format="pdf"}
+
+## Student ID: 
+
+## General Instructions for take home Portfolios
+
+1.  The portfolio is an open-book task.
+2.  It is expected that you will complete the portfolio assessment on your own.
+    You can use textbooks, the resources provided during class/ workshop etc.
+    to answer the questions. 
+4.  You are free to choose a solution technique. It is **not** required that
+    you use the provided python code to answer the questions. You can use any
+    tool (pen and paper, excel, ... ) and any technique (graphical, numerical,
+    analytical) that you are comfortable with. However, some of the tasks will
+    require use of coding/ computer. 
+5.  The tasks will be a mix of theory questions, short calculation type and
+    long numerical examples.
+6.  The portfolio tasks are not meant to take a lot of time. If you have
+    understood and practiced the relevant content, it should take you around 2
+    to 3 hours at the most.
+7.  You are required to upload the portfolio answers on to blackboard: 
+    - Save your report as a **pdf** file (_Miri students should save it as a
+      word file_). 
+    - Rename the file as STUDENTID_Portfolio_x.pdf (Where STUDENTID is your
+      student ID, and x is the portfolio number) and 
+    - Upload it using assessment submission link on blackboard. 
+
+## Academic Integrity
+
+Academic integrity at its core is about honesty and responsibility and is
+fundamental to Curtin’s expectations of you. This means that all of your work
+at Curtin should be your own and it should be underpinned by integrity, which
+means to act ethically, honestly and with fairness.
+
+As a Curtin student you are part of an academic community and you are asked to
+uphold the University’s [Code of
+Conduct](https://oasis.curtin.edu.au/ConductAtCurtin), principles of academic
+integrity, and [Curtin’s five core
+values](https://about.curtin.edu.au/who/vision-mission-values/curtin-values/)
+of integrity, respect, courage, excellence and impact during your studies.
+
+You are also expected to uphold the [Student
+Charter](https://students.curtin.edu.au/essentials/rights/student-charter/) and
+recognise that cheating, plagiarism collusion, and falsification of data and
+other forms of academic dishonesty are not acceptable.
+
+For more information, visit
+[https://students.curtin.edu.au/essentials/rights/academic-integrity/](https://students.curtin.edu.au/essentials/rights/academic-integrity/)
+
+{{< pagebreak >}}
+$~$
+{{< pagebreak >}}
+
+:::
+
+```{python}
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
+import pandas as pd
+import tabulate as tab
+from IPython.display import display, Markdown
+plt.style.use('../../../assets/templates/publish.mplstyle')
+```
+
+```{python}
+# Data
+v0_total = 100.0     # m^3/min
+ca0 = 2        # mol/ m^3
+n_tubes = 100 
+d_tube = 10 # cm
+l_tube = 10 # m
+
+T0 = 571  # K, reactor inlet temp
+T_c0 = 320  # K, coolant inlet temp
+
+k1 = 10.0  # m^3/mol min
+k2 = 5.0   # m^3/mol^0.2 min
+k3 = 2.0   # 1/min
+
+# Heat of reactions (J/mol)
+dH1 = -50000
+dH2 = -30000
+dHD = 25000
+
+# Thermophysical properties
+Cp = 150      # J/mol·K (reacting fluid)
+rho_c = 1000  # kg/m³
+Cp_c = 4180   # J/kg·K (coolant)
+U = 100       # W/m²·K
+
+# Reactor parameters
+v0_total = 100    # m^3/min
+ca0 = 2              # mol/m^3
+n_tubes = 25
+l_tube = 10          # m
+
+# Coolant flow rate (kg/min)
+m_dot_c = 3.2 
+
+# Experimental data
+t1  = 270
+data_270 = {
+    "Time (min)": [0.0, 0.5, 1.0, 2.0, 3.0, 4.0],
+    "$C_{A}$ (mol/m³)": [2.0, 0.132057, 0.060176, 0.018847, 0.007220, 0.003646],
+    "$C_{D}$ (mol/m³)": [0.000000, 0.484713, 0.313037, 0.114116, 0.047501, 0.017765]
+}
+
+t2 = 230
+data_230 = {
+    "Time (min)": [0, 2, 4, 6, 8, 10, 12, 15],
+    "$C_{A}$ (mol/m³)": [2.0, 0.1424, 0.0630, 0.0356, 0.0212, 0.0146, 0.0107, 0.0068],
+    "$C_{D}$ (mol/m³)": [0.0000, 0.4449, 0.2524, 0.1334, 0.0692, 0.0370, 0.0191, 0.0071]
+}
+
+df_230 = pd.DataFrame(data_230)
+df_270 = pd.DataFrame(data_270)
+
+```
+
+A specialty chemicals manufacturer produces a high-value intermediate D from
+feedstock A through a multi-reaction system.
+
+The following reactions occur in the process:
+
+$$
+\begin{aligned}
+\text{desired reaction: }      &\quad \ce{2A -> D} &\qquad -r_{1A} &= k_1 C_A^2 \\
+\text{undesired reaction: }    &\quad \ce{A -> U1} &\qquad -r_{2A} &= k_2 C_A^{1.2} \\
+\text{undesired degradation: } &\quad \ce{D -> U2} &\qquad -r_{D}  &= k_3 C_D
+\end{aligned}
+$$
+
+## Question 1: Reaction kinetics \hfill (20 marks)
+
+Experiments were performed in an isothermal batch reactor at two temperatures:
+230°C and 270°C. Initial concentration of A was `{python} f'{ca0}'` mol/m^3^.
+
+The experimental concentration profiles of A and D obtained are given below:
+
+```{python}
+#| label: tbl-exp230
+#| tbl-cap: Concentration profiles of $C_A$ and $C_D$ at 230 °C.
+
+# Create and format DataFrame
+df = pd.DataFrame(data_230)
+df["Time (min)"] = df["Time (min)"].map(lambda x: f"{x:.1f}")
+df["$C_{A}$ (mol/m³)"] = df["$C_{A}$ (mol/m³)"].map(lambda x: f"{x:.4f}")
+df["$C_{D}$ (mol/m³)"] = df["$C_{D}$ (mol/m³)"].map(lambda x: f"{x:.4f}")
+
+md = tab.tabulate(df.T)
+display(Markdown(md))
+
+```
+
+```{python}
+#| label: tbl-exp270
+#| tbl-cap: Concentration profiles of $C_A$ and $C_D$ at 270 °C.
+
+df = pd.DataFrame(data_270)
+df["Time (min)"] = df["Time (min)"].map(lambda x: f"{x:.1f}")
+df["$C_{A}$ (mol/m³)"] = df["$C_{A}$ (mol/m³)"].map(lambda x: f"{x:.4f}")
+df["$C_{D}$ (mol/m³)"] = df["$C_{D}$ (mol/m³)"].map(lambda x: f"{x:.4f}")
+
+md = tab.tabulate(df.T)
+display(Markdown(md))
+
+```
+{{< pagebreak >}}
+
+(a) Using the rate laws and appropriate numerical methods do the following:
+
+
+ - Write the mole balance equations for species A and D in a batch reactor. \hfill (4 marks)
+
+**Answer:**
+
+**Mole balance:**
+
+1. Reactions: 
+$$
+\begin{aligned}
+\text{desired reaction: }      &\quad \ce{2A -> D} &\qquad -r_{1A} &= k_1 C_A^2 \\
+\text{undesired reaction: }    &\quad \ce{A -> U1} &\qquad -r_{2A} &= k_2 C_A^{1.2} \\
+\text{undesired degradation: } &\quad \ce{D -> U2} &\qquad -r_{D}  &= k_3 C_D
+\end{aligned}
+$$
+
+2. Rates:  
+$$
+\begin{aligned}
+-r_{1} &= k_1 C_A^2 \\
+-r_{2} &= k_2 C_A^{1.2} \\
+-r_{3}  &= k_3 C_D
+\end{aligned}
+$$
+
+3. Mole balance for A and D
+
+For component A
+
+$$
+\frac{dC_A}{dt}= -2 r_1 - r_2
+$$
+
+For component D
+
+$$
+\frac{dC_D}{dt}= r_1 - r_3
+$$
+
+(*4 marks for correct expression; 2 marks for partially correct expression; 0 marks for no answer*)
+
+  - Define the objective function used for estimate the kinetic parameters from
+  experimental data. \hfill (4 marks)
+ 
+**Answer:**
+
+**Objective function:**
+
+$$
+  \sum_{i=1}^{i=n} \left( C_{A,i}^{exp} - C_{A,i}^{p} \right)^2
++ \sum_{i=1}^{i=n} \left( C_{D,i}^{exp} - C_{D,i}^{p} \right)^2
+$$
+
+Where,
+
+- $n$: Number of observations
+- $C_{A,i}^{exp}$: Experimentally observed concentration of A for $i^{th}$ experimental data.
+- $C_{A,i}^{p}$: Predicted concentration of A for $i^{th}$ experimental data.
+- $C_{D,i}^{exp}$: Experimentally observed concentration of D for $i^{th}$ experimental data.
+- $C_{D,i}^{p}$: Predicted concentration of D for $i^{th}$ experimental data.
+
+(*4 marks for correct expression; 2 marks for partially correct expression; 0 marks for no answer*)
+
+ - Estimate the values of k~1~, k~2~, k~3~ for both temperatures (i.e., using
+  both datasets), and compare model predictions with the experimental data
+  using appropriate plots. \hfill (6 marks)
+
+**Answer:**
+
+**Parameter estimation** 
+
+T = 230 °C
+
+```{python}
+
+import numpy as np
+from scipy.integrate import solve_ivp
+from scipy.optimize import minimize
+import matplotlib.pyplot as plt
+
+# Experimental data
+# T  = 270 + 273.15
+# t = np.array( [0.0, 0.5, 1.0, 2.0, 3.0, 4.0])
+# C_A_exp = np.array([2.0, 0.132057, 0.060176, 0.018847, 0.007220, 0.003646])
+# C_D_exp = np.array([0.000000, 0.484713, 0.313037, 0.114116, 0.047501, 0.017765])
+
+T = 230.0 + 273.15
+t = np.array([0, 2, 4, 6, 8, 10, 12, 15])       # min
+C_A_exp = np.array([2.0, 0.1424, 0.063, 0.0356, 0.0212, 0.0146, 0.0107, 0.0068]) # mol/m³
+C_D_exp = np.array([0, 0.4449, 0.2524, 0.1334, 0.0692, 0.037, 0.0191, 0.0071]) # mol/m³
+
+# Initial conditions
+y0 = [C_A_exp[0], C_D_exp[0]]
+
+# Define ODE system
+def batch_reactor(t, y, k1, k2, k3):
+
+    C_A, C_D = y
+
+    # Ensure concentrations don't go negative, which can happen during optimization
+    # with poor intermediate k values, especially with C_A^(1/2) term.
+    C_A = max(0, C_A)
+    C_D = max(0, C_D)
+
+    # TODO: write expressions for r1, r2, r3
+    r1 = k1 * C_A**2
+    r2 = k2 * C_A**1.2
+    r3 = k3 * C_D
+
+    # TODO: write differential equations
+    dCA_dt = -2 *r1 - r2
+    dCD_dt = r1 - r3
+
+    return [dCA_dt, dCD_dt]
+
+# Objective function
+def objective(params):
+    k1, k2, k3 = params
+
+    # Solve ODE model
+    sol = solve_ivp(
+        batch_reactor,
+        [t[0], t[-1]],
+        y0,
+        t_eval=t,
+        args=(k1, k2, k3)
+        )
+
+    C_A_model, C_D_model = sol.y
+
+    # TODO: Define the objective function used
+    # in terms of C_A_exp, C_A_model, C_D_exp, and C_D_model
+
+    ssr = np.sum((C_A_exp - C_A_model)**2 + (C_D_exp - C_D_model)**2)
+
+    return ssr
+
+# Estimate k values
+
+# --- Estimate k1, k2, k3 ---
+guess = [1, 1, 1]
+bounds = [(1e-4, 100)] * 3
+result = minimize(objective, guess, bounds=bounds)
+
+k1_opt, k2_opt, k3_opt = result.x
+
+results_T1 = {'T_K': T, 'k1': k1_opt, 'k2': k2_opt, 'k3': k3_opt}
+
+# --- Solve with fitted parameters over fine time grid ---
+t_fine = np.linspace(t[0], t[-1], 200)
+
+sol = solve_ivp(
+    batch_reactor,
+    [t_fine[0], t_fine[-1]],
+    y0,
+    t_eval=t_fine,
+    args=(k1_opt, k2_opt, k3_opt)
+    )
+
+C_A_model_fine, C_D_model_fine = sol.y
+
+# print(f"Estimated k1 = {k1_opt:.4f}, k2 = {k2_opt:.4f}, k3 = {k3_opt:.4f}")
+
+# Plot with experimental data and smooth model lines
+plt.figure(figsize=(3.5, 3.5))
+plt.plot(t, C_A_exp, 'o', label='Exp $C_A$')
+plt.plot(t, C_D_exp, 'o', label='Exp $C_D$')
+plt.plot(t_fine, C_A_model_fine, '-', label='Model $C_A$')
+plt.plot(t_fine, C_D_model_fine, '-', label='Model $C_D$')
+plt.xlabel('Time (min)')
+plt.ylabel('Concentration (mol/L)')
+plt.title(f'Batch Reactor Model Fit at {T} K')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+Estimated $k$ values: 
+
+- $k_1$: `{python} f"{k1_opt:.4f}"` $m^3/mol \cdot min$
+- $k_2$: `{python} f"{k2_opt:.4f}"` $m^{0.6}/mol^{0.2} \cdot min$
+- $k_3$: `{python} f"{k3_opt:.4f}"` $1/min$
+
+
+T = 270 °C
+
+
+```{python}
+
+# Experimental data
+T  = 270 + 273.15
+t = np.array( [0.0, 0.5, 1.0, 2.0, 3.0, 4.0])
+C_A_exp = np.array([2.0, 0.132057, 0.060176, 0.018847, 0.007220, 0.003646])
+C_D_exp = np.array([0.000000, 0.484713, 0.313037, 0.114116, 0.047501, 0.017765])
+
+# Initial conditions
+y0 = [C_A_exp[0], C_D_exp[0]]
+
+# Estimate k values
+
+# --- Estimate k1, k2, k3 ---
+guess = [1, 1, 1]
+bounds = [(1e-4, 100)] * 3
+result = minimize(objective, guess, bounds=bounds)
+
+k1_opt, k2_opt, k3_opt = result.x
+
+results_T2 = {'T_K': T, 'k1': k1_opt, 'k2': k2_opt, 'k3': k3_opt}
+
+# --- Solve with fitted parameters over fine time grid ---
+t_fine = np.linspace(t[0], t[-1], 200)
+
+sol = solve_ivp(
+    batch_reactor,
+    [t_fine[0], t_fine[-1]],
+    y0,
+    t_eval=t_fine,
+    args=(k1_opt, k2_opt, k3_opt)
+    )
+
+C_A_model_fine, C_D_model_fine = sol.y
+
+# print(f"Estimated k1 = {k1_opt:.4f}, k2 = {k2_opt:.4f}, k3 = {k3_opt:.4f}")
+
+# Plot with experimental data and smooth model lines
+plt.figure(figsize=(3.5, 3.5))
+plt.plot(t, C_A_exp, 'o', label='Exp $C_A$')
+plt.plot(t, C_D_exp, 'o', label='Exp $C_D$')
+plt.plot(t_fine, C_A_model_fine, '-', label='Model $C_A$')
+plt.plot(t_fine, C_D_model_fine, '-', label='Model $C_D$')
+plt.xlabel('Time (min)')
+plt.ylabel('Concentration (mol/L)')
+plt.title(f'Batch Reactor Model Fit at {T} K')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+Estimated $k$ values: 
+
+- $k_1$: `{python} f"{k1_opt:.4f}"` $m^3/mol \cdot min$
+- $k_2$: `{python} f"{k2_opt:.4f}"` $m^{0.6}/mol^{0.2} \cdot min$
+- $k_3$: `{python} f"{k3_opt:.4f}"` $1/min$
+
+(*6 marks for correct values with units; deduct 1 mark if units are not proper;
+3 marks for partially correct values; 0 marks for no answer*)
+
+{{< pagebreak >}}
+
+(b) Calculate the activation energies $E_1$, $E_2$, and $E_3$ and the
+corresponding pre-exponential factors $k_{0,1}, k_{0,2}, k_{0,3}$ using the
+rate constants obtained in part (a). \hfill (6 marks)
+
+**Answer:**
+
+Given two rate constants $k_1$ and $k_2$ at temperatures $T_1$ and $T_2$ (in
+Kelvin), the activation energy $E_a$ can be calculated using the Arrhenius
+equation:
+
+$$
+\ln\left(\frac{k_2}{k_1}\right) = \frac{-E_a}{R} \left( \frac{1}{T_2} - \frac{1}{T_1} \right)
+$$
+
+Rearranging to solve for $E_a$:
+
+$$
+E_a = R \cdot \ln\left(\frac{k_2}{k_1}\right) \cdot \frac{T_1 \cdot T_2}{T_2 - T_1}
+$$
+
+Where:
+- $R = 8.314 \, \text{J/mol·K}$ is the universal gas constant  
+- $k_1, k_2$ are the rate constants  
+- $T_1, T_2$ are the absolute temperatures  
+
+Once $E_a$ is known, the pre-exponential factor $k_0$ can be calculated using:
+
+$$
+k_1 = k_0 \cdot e^{-\frac{E_a}{R T_1}} \quad \Rightarrow \quad k_0 = k_1 \cdot e^{\frac{E_a}{R T_1}}
+$$
+
+```{python}
+# Store results for part (b) using the updated parameters
+# results_T1 = {'T_K': 503.15, 'k1': 1.1075, 'k2': 0.3761, 'k3': 0.3233}
+# results_T2 = {'T_K': 543.15, 'k1': 4.3127, 'k2': 1.8861, 'k3': 0.9856}
+# results_T1 = {'T_K': 503.15, 'k1': 2.2150, 'k2': 0.3761, 'k3': 0.3233}
+# results_T2 = {'T_K': 543.15, 'k1': 8.6239, 'k2': 1.8861, 'k3': 0.9856}
+
+# --- Activation Energy Estimation (using updated parameters) ---
+R_gas = 8.314  # J/(mol·K)
+
+def calculate_activation_energy(k_val_T1, k_val_T2, Temp1_K, Temp2_K):
+    if k_val_T1 <= 0 or k_val_T2 <= 0 or Temp1_K == Temp2_K:
+        print(f"Warning: Cannot calculate Ea with provided inputs (k1={k_val_T1}, k2={k_val_T2}, T1={Temp1_K}, T2={Temp2_K}).")
+        return np.nan, np.nan
+
+    E_a = R_gas * np.log(k_val_T2 / k_val_T1) * (Temp1_K * Temp2_K) / (Temp2_K - Temp1_K)
+
+    # Calculate k0 using T1 data
+    k0 = k_val_T1 * np.exp(E_a / (R_gas * Temp1_K))
+
+    return E_a, k0
+
+Ea1, k01 = calculate_activation_energy(results_T1['k1'], results_T2['k1'], results_T1['T_K'], results_T2['T_K'])
+Ea2, k02 = calculate_activation_energy(results_T1['k2'], results_T2['k2'], results_T1['T_K'], results_T2['T_K'])
+Ea3, k03 = calculate_activation_energy(results_T1['k3'], results_T2['k3'], results_T1['T_K'], results_T2['T_K'])
+```
+
+| Reaction Number | $E_{a} (kJ/mol)$ | $k_{0}$ | 
+|-|-|-|
+| 1 | `{python} f"{Ea1/1000:.2f}"`| `{python} f"{k01:.4e}"`  $m^3/(mol \cdot min)$ |
+| 2 | `{python} f"{Ea2/1000:.2f}"`| `{python} f"{k02:.4e}"`  $m^{0.6}/(mol^{0.2} \cdot min)$ |
+| 3 | `{python} f"{Ea3/1000:.2f}"`| `{python} f"{k03:.4e}"`  $1/min$ |
+
+(*6 marks for correct values along with units; deduct 1 mark for improper or
+incorrect units; 3 marks for partially correct values (along with unit) and
+correct formula given; 0 marks for no answer*)
+
+{{< pagebreak >}}
+
+## Question 2: Non-isothermal reactor design \hfill (20 marks)
+
+The current manufacturing facility uses a shell-and-tube tubular reactor
+comprising 100 parallel tubes. The reactor is operated isobarically and
+near-isothermal operations are maintained using external cooling. 
+
+The reactor is operated at constant pressure under non-isothermal steady-state
+conditions. The reaction mixture flows through the tubes, and a cooling fluid
+flows co-currently on the shell side to maintain thermal control.
+
+Each tube has a diameter of `{python} f'{d_tube}'`cm and a length of 
+`{python} f'{l_tube}'` m. The total volumetric flow rate of the feed is
+`{python} f'{v0_total}'` m³/min, and the inlet concentration of A is 
+`{python} f'{ca0}'` mol/m³. Values of other necessary parameters are given in
+@tbl-q2. 
+
+
+| Parameter                      | Value             |
+| ------------------------------ | ----------------- |
+| Reactor temperature            | `{python} f'{T0}'` K             |
+| Inlet reactant temperature     | `{python} f'{T0}'` K             |
+| Inlet coolant temperature        | `{python} f'{T_c0}'` K             |
+| Coolant flow rate        | `{python} f'{m_dot_c}'` kg/min             |
+| $\Delta H_{1A}$ (for A → D)    | `{python} f'{dH1}'` J/mol   |
+| $\Delta H_{2A}$ (for A → U1)   | `{python} f'{dH2}'` J/mol   |
+| $\Delta H_{D}$ (for D → U2)    | `{python} f'{dHD}'` J/mol |
+| Heat capacity of fluid, $C_p$ | `{python} f'{Cp}'` $J/mol \cdot K$      |
+| Heat capacity of coolant, $C_{p,c}$ |  `{python} f'{Cp_c}'` $J/kg \cdot K$ | 
+| Coolant density                        | `{python} f'{rho_c}'` $kg/m^3$        |
+| Heat transfer coefficient $U$  | `{python} f'{U}'` $W/m^2 \cdot K$        |
+
+: Additional information for question 2 {#tbl-q2}
+
+
+{{< pagebreak >}}
+
+
+(a) Write mole balances for all species in the reactor and energy
+balances for both the reacting fluid and the coolant. Define all terms and
+assumptions used. Assume constant physical properties and perfect radial
+mixing. \hfill (12 marks)
+
+**Answer:**
+
+Assumptions:
+
+- Steady-state plug flow reactor with axial variation only (perfect radial mixing)
+- Constant physical properties (e.g., density, heat capacity)
+- No pressure drop
+- First-order coolant dynamics in contact with a jacket or shell
+- Volumetric flow rate $v_0$ is constant
+- Heat transfer via external cooling fluid at temperature $T_c$
+
+Let:
+
+- $C_A$, $C_D$, $C_{U1}$, $C_{U2}$ = concentrations of species A, D, U1, U2 (mol/m³)  
+- $T$, $T_c$ = fluid and coolant temperatures (K)  
+- $V$ = reactor volume (m³)  
+- $r_1$, $r_2$, $r_3$ = reaction rates (mol/(m³·s))  
+- $dH_1$, $dH_2$, $dH_D$ = heat of reaction for reactions 1, 2, 3 (J/mol)  
+- $U$ = overall heat transfer coefficient (W/m²·K)  
+- $A_{surf}$ = heat transfer area per unit reactor volume (m²/m³)  
+- $C_p$ = specific heat capacity of fluid (J/mol·K)  
+- $m_{\text{dot},c}$ = mass flow rate of coolant (kg/s)  
+- $C_{p,c}$ = specific heat capacity of coolant (J/kg·K)  
+
+**Mole Balances**
+
+The mole balances for species A, D, \ce{U1}, and \ce{U2} are:
+
+$$
+\frac{dC_A}{dV} = \frac{-2 r_1 - r_2}{v_0}
+$$
+
+$$
+\frac{dC_D}{dV} = \frac{r_1 - r_3}{v_0}
+$$
+
+$$
+\frac{dC_{U1}}{dV} = \frac{r_2}{v_0}
+$$
+
+$$
+\frac{dC_{U2}}{dV} = \frac{r_3}{v_0}
+$$
+
+**Energy Balance on the Reacting Fluid**
+
+The energy balance accounts for heat generated by reaction and heat removed by the coolant:
+
+$$
+Q_{\text{gen}} = -\Delta H_1 r_1 - \Delta H_2 r_2 + \Delta H_D r_3
+$$
+
+$$
+Q_{\text{removal}} = U A_{\text{surf}} (T - T_c)
+$$
+
+The temperature change in the fluid phase is given by:
+
+$$
+\frac{dT}{dV} = \frac{Q_{\text{gen}} - Q_{\text{removal}}}{C_{\text{total}} v_0 C_p}
+$$
+
+where:
+
+$$
+C_{\text{total}} = C_A + C_D + C_{U1} + C_{U2}
+$$
+
+**Energy Balance on the Coolant**
+
+The energy gain by the coolant is:
+
+$$
+\frac{dT_c}{dV} = \frac{Q_{\text{removal}}}{\dot{m}_c C_{p,c}}
+$$
+
+ _Marking scheme:_
+
+_12 marks:_
+
+    - All aspects stated (assumptions, terms, equations)
+    - All equations are correctly stated (alternative forms ok)
+    - The answer is essentially correct
+
+_10 marks:_
+
+    - All aspects not stated (assumptions, terms, equations)
+    - All equations are correctly stated (alternative forms ok)
+    - The answer is essentially correct
+
+_8 marks:_
+
+    - All aspects not stated (assumptions, terms, equations)
+    - All equations not correctly stated (alternative forms ok)
+    - The equations that are stated are essentially correct
+
+_6 marks:_
+
+    - All aspects not stated (assumptions, terms, equations)
+    - All equations not correctly stated (alternative forms ok)
+    - some aspects of the answer are wrong. 
+
+_0 marks: no answer_
+
+
+{{< pagebreak >}}
+
+
+(b) Using the provided skeleton code, calculate the conversion of A and the
+    yield of D under the current coolant flow rate.
+
+  - What is the Conversion of A, and Yield of D \hfill (4 marks)
+
+**Answer:**
+
+```{python}
+
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
+
+# Data
+
+# Constants
+R = 8.314  # J/mol·K
+T0 = 571  # K, reactor inlet temp
+T_c0 = 320  # K, coolant inlet temp
+
+# Kinetic parameters at 571 K
+# k1 = 10.0 /60 # m^3/mol s
+# k2 = 5.0  /60 # m^3/mol^0.2 s
+# k3 = 2.0  /60 # 1/s
+
+# Define Arrhenius function to convert to k(T) in consistent SI units (per second)
+def k_arrhenius(T, k0, Ea):
+    R = 8.314  # J/mol·K
+    return (k0 / 60) * np.exp(-Ea / (R * T))  # convert k0 from per min to per s
+
+# Parameters
+k0_1, Ea1 = 1.1516e+08, 77.22e3  # m^3/mol·min, J/mol
+# k0_1, Ea1 = 2.2978e+08, 77.22e3  # m^3/mol·min, J/mol
+k0_2, Ea2 = 1.2133e+09, 91.59e3  # mol^(-0.2)·m^(0.6)/min, J/mol
+k0_3, Ea3 = 1.2106e+06, 63.32e3  # 1/min, J/mol
+
+# Heat of reactions (J/mol)
+dH1 = -50000
+dH2 = -30000
+dHD = 25000
+
+# Thermophysical properties
+Cp = 150      # J/mol·K (reacting fluid)
+rho_c = 1000  # kg/m³
+Cp_c = 4180   # J/kg·K (coolant)
+U = 100       # W/m²·K
+
+# Reactor parameters
+v0_total = 100/60    # m^3/s
+ca0 = 2              # mol/m^3
+n_tubes = 100
+d_tube = 10 / 100.0  # m
+l_tube = 10          # m
+v0 = v0_total / n_tubes  # per tube
+
+# Tube geometry
+A_tube = np.pi * (d_tube / 2)**2  # m²
+V_tube = A_tube * l_tube  # m³
+A_surf = np.pi * d_tube * l_tube  # heat transfer area per tube (m²)
+
+# Coolant flow rate (kg/s)
+m_dot_c = 3.2 /60
+m_dot_c = m_dot_c / n_tubes # per tube
+
+# Initial conditions: [C_A, C_D, C_U1, C_U2, T, T_coolant]
+y0 = [ca0, 0, 0, 0, T0, T_c0]
+
+# System of ODEs
+def odes(V, y):
+
+    C_A, C_D, C_U1, C_U2, T, T_c = y
+
+    k1 = k_arrhenius(T, k0_1, Ea1)
+    k2 = k_arrhenius(T, k0_2, Ea2)
+    k3 = k_arrhenius(T, k0_3, Ea3)
+
+    r1 = k1 * C_A**2
+    r2 = k2 * C_A**1.2
+    r3 = k3 * C_D
+
+    r_A = -2*r1 -r2
+    r_D = r1 - r3
+    r_U1 = r2
+    r_U2 = r3
+
+    # Mole balance
+    dC_A_dV = r_A / v0
+    dC_D_dV = r_D / v0
+    dC_U1_dV = r_U1 / v0
+    dC_U2_dV = r_U2 / v0
+
+    # Energy balance
+    Q_gen = (-dH1 * r1 - dH2 * r2 + dHD * r3)  # J/s
+    Q_removal = U * A_surf * (T - T_c)  # W
+
+    C_total = C_A + C_D + C_U1 + C_U2 + 1e-6  # avoid zero division
+    F_total = C_total * v0  # mol/s
+
+    dT_dV = (Q_gen - Q_removal ) / (F_total*Cp)  # K/m³
+    # dT_dV = 0
+
+    dT_c_dV = (Q_removal) / (m_dot_c * Cp_c)  # K/m³
+    # dT_c_dV = 0
+
+    return [dC_A_dV, dC_D_dV, dC_U1_dV, dC_U2_dV,dT_dV,dT_c_dV]
+
+# Solve ODEs
+V_span = (0, V_tube)
+V_eval = np.linspace(V_span[0], V_span[1], 100)
+
+solution = solve_ivp(odes, V_span, y0, t_eval=V_eval, method='BDF')
+C_A, C_D, C_U1, C_U2, T, T_c = solution.y
+
+# Outlet concentrations
+C_A0 = ca0
+C_Af = C_A[-1]
+C_Df = C_D[-1]
+C_U1f = C_U1[-1]
+C_U2f = C_U2[-1]
+
+# Calculate required output
+X_A_1 = 1 - C_Af / C_A0
+Y_D_1 = C_Df / (C_A0 - C_Af)
+S_DU1 = C_Df / C_U1f
+S_DU2 = C_Df / C_U2f
+S_DU1U2 = C_Df / (C_U1f + C_U2f)
+
+```
+- Conversion of A: `{python} f"{X_A_1*100:.2f}"`%
+- Yield of D: `{python} f"{Y_D_1:.4f}"`
+
+_4 marks: correct values; 0 marks: no answer_
+
+  - What would be the Conversion of A, and Yield of D if the coolant flow rate
+    was increased to 4 kg/min? Provide a small discussion on the impact of
+    increasing coolant flow rate on Conversion and Yield. \hfill (4 marks)
+
+```{python}
+
+# Coolant flow rate (kg/s)
+m_dot_c = 4 /60
+m_dot_c = m_dot_c / n_tubes # per tube
+
+# Initial conditions: [C_A, C_D, C_U1, C_U2, T, T_coolant]
+y0 = [ca0, 0, 0, 0, T0, T_c0]
+
+# Solve ODEs
+V_span = (0, V_tube)
+V_eval = np.linspace(V_span[0], V_span[1], 100)
+
+solution = solve_ivp(odes, V_span, y0, t_eval=V_eval, method='BDF')
+C_A, C_D, C_U1, C_U2, T, T_c = solution.y
+
+# Outlet concentrations
+C_A0 = ca0
+C_Af = C_A[-1]
+C_Df = C_D[-1]
+C_U1f = C_U1[-1]
+C_U2f = C_U2[-1]
+
+# Calculate required output
+X_A_2 = 1 - C_Af / C_A0
+Y_D_2 = C_Df / (C_A0 - C_Af)
+S_DU1 = C_Df / C_U1f
+S_DU2 = C_Df / C_U2f
+S_DU1U2 = C_Df / (C_U1f + C_U2f)
+```
+- Conversion of A: `{python} f"{X_A_2*100:.2f}"`%
+- Yield of D: `{python} f"{Y_D_2:.4f}"`
+
+Increasing the coolant flow rate from 3.2 kg/min to 4.0 kg/min leads to:
+
+- Lower Conversion of A: from `{python} f"{X_A_1*100:.2f}"` to `{python} f"{X_A_2*100:.2f}"`%
+- Higher Yield of D: from `{python} f"{Y_D_1:.4f}"` to `{python} f"{Y_D_2:.4f}"`
+
+This behavior suggests that increased coolant flow rate enhances heat removal,
+thereby lowering the reactor temperature. Since the reactions are
+temperature-sensitive, this results in slower kinetics for all reactions.
+However, side reactions leading to byproducts (U1 and U2) are reduced more than
+the desired reaction forming D, resulting in improved yield,
+despite lower overall conversion.
+
+
+_4 marks: correct values relevant discusion; 2 marks: incorrect values or irrelevant discussion; 0 marks: no answer_
+
+
+{{< pagebreak >}}
+
+## Question 3: Reaction mechanism \hfill (10 marks)
+
+The main reaction $\ce{2A -> D}$ has been observed to follow the empirical rate
+law $-r_{1A} = k_1 C_A^2$. 
+
+Propose a plausible multi-step reaction mechanism for this overall reaction.
+Your mechanism must include at least one active intermediate species.
+
+Apply the Pseudo-Steady-State Hypothesis (PSSH) to the active intermediate(s)
+in your proposed mechanism. Using the result from the PSSH, derive the rate law
+for the disappearance of reactant A ($-r_{1A}$) based on your mechanism.
+Finally, demonstrate how your derived rate law matches the given empirical rate
+law under the appropriate limiting conditions. Clearly defining the overall
+rate constant $k_1$ in terms of the rate constants of your proposed elementary
+steps.
+
+**Answer:**
+
+The overall reaction is: $2A \rightarrow D$
+The observed rate law is: $-r_A = k[A]^2$
+
+Active intermediate: $A^*$
+
+Proposed mechanism is:
+
+Activation/Deactivation
+$A + A \stackrel{k_1}{\underset{k_{-1}}{\rightleftharpoons}} A^* + A$ 
+
+forward rate constant: $k_1$, reverse rate constant: $k_{-1}$ 
+
+Decomposition to product
+
+$A^* + A^* \stackrel{k_2}{\rightarrow} D$
+
+rate constant: $k_2$
+
+The overall reaction is $2A \rightarrow D$. From the stoichiometry, the rate of
+disappearance of A is twice the rate of formation of D: $-r_A = 2 \times r_D$.
+The product D is formed only in step 2:
+
+$r_D = k_2[A^*]^2$
+
+So, $-r_A = 2 k_2[A^*]^2$
+
+This rate expression has concentration of $A^*$ ([$A^*$]) that we need to eliminate. 
+
+Applying the PSSH to the active intermediate $A^*$:
+
+The net rate of formation of $A^*$ is the rate of its formation minus the rate
+of its consumption from all steps:
+
+$\frac{d[A^*]}{dt} = (\text{rate of formation in step 1}) - (\text{rate of consumption in step 1}) - (\text{rate of consumption in step 2})$
+
+$\frac{d[A^*]}{dt} = k_1[A][A] - k_{-1}[A^*][A] - k_2[A^*][A^*]$
+
+$\frac{d[A^*]}{dt} = k_1[A]^2 - k_{-1}[A^*][A] - k_2[A^*]^2$
+
+Applying PSSH:
+
+$\frac{d[A^*]}{dt} \approx 0$
+
+So, $k_1[A]^2 - k_{-1}[A^*][A] - k_2[A^*]^2 = 0$
+
+Rearranging this gives a quadratic equation in $[A^*]$:
+
+$k_2[A^*]^2 + k_{-1}[A][A^*] - k_1[A]^2 = 0$
+
+Solving the quadratic for $[A^*]$:
+
+$[A^*] = \frac{-k_{-1}[A] \pm \sqrt{k_{-1}^2[A]^2 + 4k_1k_2[A]^2}}{2k_2}$
+
+$[A^*] = \frac{-k_{-1}[A] \pm [A] \sqrt{k_{-1}^2 + 4k_1k_2}}{2k_2}$
+
+Since $[A^*]$ must be a non-negative concentration, we take the positive root:
+
+$[A^*] = \frac{[A] \left( \sqrt{k_{-1}^2 + 4k_1k_2} - k_{-1} \right)}{2k_2}$
+
+Substituting this into the rate law $-r_A = 2k_2[A^*]^2$:
+
+$-r_A = 2k_2 \left[ \frac{[A] (\sqrt{k_{-1}^2 + 4k_1k_2} - k_{-1})}{2k_2} \right]^2$
+
+$-r_A = 2k_2 \frac{[A]^2 \left(\sqrt{k_{-1}^2 + 4k_1k_2} - k_{-1}\right)^2}{4k_2^2}$
+
+$-r_A = \frac{[A]^2}{2k_2} (k_{-1}^2 + 4k_1k_2 + k_{-1}^2 - 2k_{-1}\sqrt{k_{-1}^2 + 4k_1k_2})$
+
+$-r_A = \frac{[A]^2}{2k_2} (2k_{-1}^2 + 4k_1k_2 - 2k_{-1}\sqrt{k_{-1}^2 + 4k_1k_2})$
+
+$-r_A = \frac{[A]^2}{k_2} (k_{-1}^2 + 2k_1k_2 - k_{-1}\sqrt{k_{-1}^2 + 4k_1k_2})$
+
+This is the general rate law. 
+
+Limiting Case 1: The decomposition of $A^*$ (Step 2) is much faster than its
+deactivation (Step 1 reverse).
+
+This implies $k_2[A^*]^2 \gg k_{-1}[A][A^*]$.
+
+In this case, the PSSH equation approximately becomes:
+
+$k_1[A]^2 - k_2[A^*]^2 \approx 0$
+
+$k_2[A^*]^2 \approx k_1[A]^2$
+
+$[A^*]^2 \approx \frac{k_1}{k_2} [A]^2$
+
+$[A^*] \approx \sqrt{\frac{k_1}{k_2}} [A]$
+
+Now substitute this approximate $[A^*]$ into the rate law $-r_A = 2k_2[A^*]^2$:
+
+$-r_A \approx 2k_2 \left[ \sqrt{\frac{k_1}{k_2}}[A] \right]^2$
+
+$-r_A \approx 2k_2 \left(\frac{k_1}{k_2}\right) [A]^2$
+
+$-r_A \approx 2k_1 [A]^2$
+
+This is also of the form $k_{\text{overall}}[A]^2$, where the overall rate
+constant is $k = 2k_1$. This limiting case confirms the second-order rate law
+when the formation of $A^*$ is rate-limiting, and once formed, $A^*$ rapidly
+reacts to form the product.
+
+
+Limiting Case 2: Deactivation (Step 1 reverse) is much faster than the decomposition
+of $A^*$ (Step 2).
+
+This implies $k_{-1}[A][A^*] \gg k_2[A^*]^2$.
+
+In this case, the PSSH equation approximately becomes:
+
+$k_1[A]^2 - k_{-1}[A^*][A] \approx 0$
+
+$k_{-1}[A^*][A] \approx k_1[A]^2$
+
+$[A^*] \approx \frac{k_1}{k_{-1}} [A]$
+
+Condition for this case: $k_{-1}[A] \gg k_2[A^*]$. Substitute $[A^*] \approx (k_1/k_{-1})[A]$:
+
+$k_{-1}[A] \gg k_2 \left(\frac{k_1}{k_{-1}}\right)[A]$
+
+$k_{-1} \gg k_2 \left(\frac{k_1}{k_{-1}}\right)$
+
+$k_{-1}^2 \gg k_1k_2$
+
+Now substitute this approximate $[A^*]$ into the rate law $-r_A = 2k_2[A^*]^2$:
+
+$-r_A \approx 2k_2 \left[ \frac{k_1}{k_{-1}}[A] \right]^2$
+
+$-r_A \approx 2k_2 \frac{k_1^2}{k_{-1}^2} [A]^2$
+
+$-r_A \approx \left(\frac{2k_1^2k_2}{k_{-1}^2}\right) [A]^2$
+
+This is of the form $k_{\text{overall}}[A]^2$, where the overall rate constant
+is $k = \frac{2k_1^2k_2}{k_{-1}^2}$. This limiting case confirms the
+second-order rate law when deactivation of $A^*$ is much faster than its
+decomposition to form D.
+
+Both limiting cases predict a second-order rate law with respect to $[A]$,
+which is consistent with the observed rate equation $-r_A = k[A]^2$. Therefore,
+the proposed mechanism successfully confirms the rate equation under these
+specific limiting conditions. 
+
+
+**Alternative mechanism** 
+
+Proposed mechanism:
+Activation: $A \stackrel{k_1^*}{\rightarrow} A^*$ ($r_1 = k_1^* C_A$)
+Deactivation: $A^* \stackrel{k_2^*}{\rightarrow} A$ ($r_2 = k_2^* C_A^*$)
+Decomposition: $A + A^* \stackrel{k_3^*}{\rightarrow} D$ ($r_3 = k_3^* C_A C_A^*$)
+
+Here, $A^*$ is the active intermediate.
+
+$r_D = k_3^* C_A C_A^*$
+
+The overall stoichiometry is $2A \rightarrow D$. For every molecule of D
+formed, two molecules of A disappear. Therefore, 
+$-r_A = 2 r_D$. $-r_A = 2 k_3^* C_A C_A^*$
+
+This rate expression has concentration of $A^*$ ([$A^*$]) that we need to eliminate. 
+
+Applying the PSSH to the active intermediate $A^*$:
+
+$-r_{A^*} = r_1 - r_2 - r_3 = k_1^* C_A - k_2^* C_A^* - k_3^* C_A C_A^* \approx 0$
+
+$k_1^* C_A = k_2^* C_A^* + k_3^* C_A C_A^*$
+
+Solving for $C_A^*$:
+
+$C_A^* (k_2^* + k_3^* C_A) = k_1^* C_A$
+
+$C_A^* = \frac{k_1^* C_A}{k_2^* + k_3^* C_A}$ 
+
+Substitute the expression for $C_A^*$ into the rate law:
+
+$-r_A = 2 k_3^* C_A \left( \frac{k_1^* C_A}{k_2^* + k_3^* C_A} \right)$
+
+$-r_A = \frac{2 k_1^* k_3^* C_A^2}{k_2^* + k_3^* C_A}$
+
+This is the general rate law for this mechanism under PSSH. To match the
+empirical rate law $-r_A = k_1 C_A^2$, we need to consider limiting cases.
+
+Limiting Case: Deactivation of $A^*$ is much faster than its reaction with A.
+
+This means $k_2^* C_A^* \gg k_3^* C_A C_A^*$, which simplifies to $k_2^* \gg k_3^* C_A$.
+
+In this limit, the denominator of the general rate law becomes:
+$k_2^* + k_3^* C_A \approx k_2^*$
+
+Substitute this into the general rate law:
+$-r_A \approx \frac{2 k_1^* k_3^* C_A^2}{k_2^*}$
+$-r_A \approx \left(\frac{2 k_1^* k_3^*}{k_2^*}\right) C_A^2$
+
+This derived rate law is indeed second-order with respect to $C_A$, matching
+the empirical rate law $-r_A = k_1 C_A^2$. The overall rate constant in this
+limiting case is $k_1 = \frac{2 k_1^* k_3^*}{k_2^*}$. 
+
+_Marking scheme_
+
+7 - 10 Marks: 
+
+- Correct mechanism and PSSH application. 
+- Atleast one limiting case correctly identified and derived, showing the rate
+law matches with correct rate constants.
+
+5 - 7 marks:
+
+- Reasonable mechanism and attempt at PSSH.  
+- May have errors in setup or derivation, or only partially completes one
+limiting case derivation. 
+- For example, considers multi step reaction (e.g. $2A + M \rightarrow 2 A^* + M$)
+- Shows some understanding but lacks full accuracy or completeness.
+
+0 - 4 marks: 
+
+- Significant errors in mechanism, PSSH setup, or derivation. 
+- May misunderstand limiting cases or fail to complete derivations. 
+- Shows limited understanding.
+
+0 marks: 
+
+- Little to no relevant progress or incorrect approach. 
+- Does not demonstrate understanding of the steps required.
+
+{{< pagebreak >}}
+

@@ -1,12 +1,12 @@
 ---
 title: Labratory sessions
-subtitle: CHEN3010/ CHEN5040 - Chemical Reaction Engineering - S1 2024
+subtitle: CHEN3010/ CHEN5040 - Chemical Reaction Engineering - S1 2025
 author: ""
 # listing:
 #   contents: "./*/index.qmd"
 #   fields: [title]
 
-date-modified: 2024-05-10
+date-modified: 2025-03-14 
 ---
 
 ## Preamble
@@ -65,7 +65,7 @@ Explore the below virtual tours and complete the quiz questions. 
 
 ## Things to do before labs begin
 
-* Check lab schedule: Lab schedule: 2024 S1
+* Check lab schedule: Lab schedule: 2025 S1
 
 * Familiarize yourself with lab instructions on the experiments you are performing.
 * Go through lab safety presentation available on blackboard.
@@ -91,7 +91,7 @@ Each experiment has three steps for completion
    - Each person in the group should independently complete health and safety
      risk assessment (only once, before start of first experiment).
 
-   - Watch and complete pre-lab modules (if available).
+   - Watch and complete pre-lab modules (if available). 
 
    - Prepare a half- to one- page memo about the aims and experimental set up
      for the experiment you will be performing. Also include details of when
@@ -142,6 +142,7 @@ Each experiment has three steps for completion
 
       This may also involve answering some theory questions posed in tasks
       section of the experiment description. 
+
   6.  Results and critical analysis \hfill (Section 7-9: 20 marks)
   7.  Conclusions
   8.  References
@@ -158,6 +159,4 @@ Each experiment has three steps for completion
   - What explanation can you think of for the findings?	
   - How could this experiment be improved or extended?	
   - How do you ensure the accuracy of the measurements, and analysis?
-
-
 

@@ -1,8 +1,6 @@
 ---
-title: | 
-  | Experiment 1
-  | Batch Saponification Reaction of Et(Ac) and NaOH
-subtitle: CHEN3010/ CHEN5040 - Chemical Reaction Engineering - S1 2024
+title: "Experiment 1: Batch Saponification Reaction of Et(Ac) and NaOH"  
+subtitle: CHEN3010/ CHEN5040 - Chemical Reaction Engineering - S1 2025
 author: ""
 format:
   pdf

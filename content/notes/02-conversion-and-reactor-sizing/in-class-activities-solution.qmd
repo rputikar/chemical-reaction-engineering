@@ -3,7 +3,7 @@ title: "In class activity: Conversion and Reactor sizing"
 date: 2024-03-03
 date-modified: 2024-05-10
 format:
-    live-html: default
+    html: default
     pdf: default
 ---
 
@@ -151,6 +151,3 @@ md = tab.tabulate(df['data'].T, floatfmt='.3f')
 display(Markdown(md))
 
 ```
-
-
-

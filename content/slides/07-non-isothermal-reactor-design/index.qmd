@@ -616,7 +616,6 @@ reactions, the equilibrium conversion decreases with increasing temperature.
 :::{style="margin-bottom: 40px;"}
 :::
 
-
 ![](../../../assets/images/equilibrium-conversion-for-different-feed-temperatures.png){width=90%}
 
 ## Optimum feed temperature
@@ -626,6 +625,9 @@ reactions, the equilibrium conversion decreases with increasing temperature.
 
 
 ```{python}
+#| echo: false
+#| output: false
+
 # Constants
 K0 = 31.1 # 1/h
 T_K0 = 360 # K
@@ -666,7 +668,6 @@ fa = 163.0 # kmol/h
 fa0 = ya0 * fa 
 ca0 = 9.3   # kmol/m3
 
-
 # n-butane = comp 1; i-butane = comp 2; i-Pentane = component 3
 
 theta = np.array([1, 0, yi0/ya0])
@@ -674,7 +675,11 @@ cp = np.array([141, 141, 161])
 ``` 
 
 ```{python}
+#| echo: false
+#| output: false
+
 # Initial condition
+
 T01 = 350 # K
 y0 = [0]
 args = (fa0, ca0, T01, theta, cp)
@@ -702,8 +707,9 @@ set_yticks(4)
 
 plt.legend(loc='lower right')
 plt.title(f"T = {T01:.0f} K")
-plt.show()
+plt.savefig("optimum_feed_temp_1.svg", bbox_inches="tight")
 ```
+![](./optimum_feed_temp_1.svg)
 
 ## Optimum feed temperature
 :::{style="margin-bottom: 40px;"}
@@ -711,6 +717,9 @@ plt.show()
 
 
 ```{python}
+#| echo: false
+#| output: false
+
 # Initial condition
 T02 = 330 # K
 y0 = [0]
@@ -739,14 +748,20 @@ set_yticks(4)
 
 plt.legend(loc='lower right')
 plt.title(f"T = {T02:.0f} K")
-plt.show()
+plt.savefig("optimum_feed_temp_2.svg", bbox_inches="tight")
 ```
+![](./optimum_feed_temp_2.svg)
+
+
 ## Optimum feed temperature
 :::{style="margin-bottom: 40px;"}
 :::
 
 
 ```{python}
+#| echo: false
+#| output: false
+
 # Initial condition
 T03 = 310 # K
 y0 = [0]
@@ -775,8 +790,9 @@ set_yticks(4)
 
 plt.legend(loc='lower right')
 plt.title(f"T = {T03:.0f} K")
-plt.show()
+plt.savefig("optimum_feed_temp_3.svg", bbox_inches="tight")
 ```
+![](./optimum_feed_temp_3.svg)
 
 ## Optimum feed temperature
 :::{style="margin-bottom: 40px;"}
@@ -784,10 +800,13 @@ plt.show()
 
 
 ```{python}
-plt.plot(v1,x1, label=f"T = {T03:.0f} K", color='#65489d')
+#| echo: false
+#| output: false
+
+plt.plot(v1,x1, label=f"T = {T01:.0f} K", color='#65489d')
 plt.plot(v1,xe1, linestyle='--', color='#65489d')
 
-plt.plot(v2,x2, label=f"T = {T03:.0f} K", color='#388ecc')
+plt.plot(v2,x2, label=f"T = {T02:.0f} K", color='#388ecc')
 plt.plot(v2,xe2, linestyle='--', color='#388ecc')
 
 plt.plot(v3,x3, label=f"T = {T03:.0f} K", color='#105e5d')
@@ -800,10 +819,15 @@ plt.xlim(0,v_final)
 plt.ylim(0.0,0.8)
 set_yticks(4)
 
-plt.legend()
-plt.title(f"T = {T03:.0f} K")
-plt.show()
+# plt.legend()
+handles, labels = plt.gca().get_legend_handles_labels()
+plt.legend(handles[::-1], labels[::-1])
+
+# plt.title(f"T = {T03:.0f} K")
+# plt.show()
+plt.savefig("./optimum_temp.svg", bbox_inches='tight')
 ```
+![](./optimum_temp.svg)
 
 ## Optimum feed temperature
 :::{style="margin-bottom: 40px;"}
@@ -811,6 +835,9 @@ plt.show()
 
 
 ```{python}
+#| echo: false
+#| output: false
+
 # Range of T0 values
 T0_range = np.linspace(T03, T01, 50)  # K
 final_x_values = []
@@ -848,8 +875,9 @@ plt.ylim(0.4,0.8)
 
 set_yticks(4)
 
-plt.show()
+plt.savefig("./optimum_temp_2.svg", bbox_inches='tight')
 ```
+![](./optimum_temp_2.svg)
 
 ## Steady-state tubular reactor with heat exchange
 

@@ -1,0 +1,266 @@
+---
+title: "Portfolio 02: Isothermal reactor design"
+format:
+  pdf
+date-modified: 2025-04-14 
+---
+<!-- ::: {.content-visible when-format="html"} -->
+<!---->
+<!-- ::: {.callout-note} -->
+<!-- ## Solutions -->
+<!---->
+<!-- Answers to the portfolio questions are uploaded at [Portfolio 2 answers](./portfolio-02-answers.qmd) -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- ::: -->
+<!---->
+
+::: {.content-visible when-format="pdf"}
+
+## General Instructions for in class Portfolios
+
+1.  The portolio is an open-book task.
+2.  You can use textbooks, the resources provided during class/ workshop etc.
+    to answer the questions. 
+3.  The portfolio task is made available in both pdf format and as a print. 
+4.  You are free to choose a solution technique. It is **not** required that
+    you use the provided python code to answer the questions. You can use any
+    tool (pen and paper, excel, ... ) and any technique (graphical, numerical,
+    analytical) that you are comfortable with. 
+5.  Irrespective of your solution method, you are expected to write your
+    answers on to the printed question paper provided. **This is what gets
+    marked.**
+6.  The portfolio will take place during designated timeslot communicated
+    earlier by the unit coordinator. Please refer to the portfolio schedule on
+    blackboard for the portolio dates and topics. 
+7.  The tasks will be a mix of theory questions, short calculation type and
+    long numerical examples.
+8.  You have **90 minutes** to complete the tasks in the portfolio. 
+9.  When you are required to upload the portolio answers on to blackboard: 
+    - Save your report as a pdf file. 
+    - Rename the file as STUDENTID_Portfolio_x.pdf (Where STUDENTID is your
+      student ID, and x is the portfolio number) and 
+    - Upload it using assessment submission link on blackboard. 
+
+{{< pagebreak >}}
+
+## Academic Integrity
+
+Academic integrity at its core is about honesty and responsibility and is
+fundamental to Curtin’s expectations of you. This means that all of your work
+at Curtin should be your own and it should be underpinned by integrity, which
+means to act ethically, honestly and with fairness.
+
+As a Curtin student you are part of an academic community and you are asked to
+uphold the University’s [Code of
+Conduct](https://oasis.curtin.edu.au/ConductAtCurtin), principles of academic
+integrity, and [Curtin’s five core
+values](https://about.curtin.edu.au/who/vision-mission-values/curtin-values/)
+of integrity, respect, courage, excellence and impact during your studies.
+
+You are also expected to uphold the [Student
+Charter](https://students.curtin.edu.au/essentials/rights/student-charter/) and
+recognise that cheating, plagiarism collusion, and falsification of data and
+other forms of academic dishonesty are not acceptable.
+
+For more information, visit
+[https://students.curtin.edu.au/essentials/rights/academic-integrity/](https://students.curtin.edu.au/essentials/rights/academic-integrity/)
+
+{{< pagebreak >}}
+
+:::
+
+```{python}
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
+plt.style.use('../../../assets/templates/publish.mplstyle')
+```
+
+## Question 1: Indoor air quality \hfill (25 marks)
+```{python}
+# Data
+T = 25.0 # C
+P = 1.0 # atm
+R = 8.314   # J/mol/K
+v0 = 60.0     # m^3/min
+n_students = 100 
+area = 150.0 # m^2
+height = 4.0 # m
+
+y_co2_in = 0.04 #%
+t_ss = 2.0 # hr
+y_co2_ss = 0.3 #%
+
+```
+Room 402:220, where the reaction engineering lecture takes place, is designed
+for `{python} f'{n_students:.0f}'` students and has a mechanical ventilation
+system that supplies `{python} f'{v0:.2f}'` m³/min of fresh air and removes an
+equal amount of air to maintain well-mixed conditions. To help track air
+quality during lectures, CO₂ monitors are installed in the room. Since students
+continuously exhale CO₂, its concentration can build up over time. Monitoring
+these levels helps ensure the room is well-ventilated, keeps everyone
+comfortable and alert, and reduces the risk of spreading airborne illnesses.
+
+The floor area of the room is `{python} f'{area:.2f}'` m^2^, and the ceiling
+height is `{python} f'{height:.2f}'` m. 
+
+Assume:
+
+* Fresh air contains `{python} f'{y_co2_in:.2f}%'` CO₂.
+* The air within the room well-mixed.
+* Temperature is `{python} f'{T:.1f}'`°C, and pressure is `{python} f'{P:.1f}'` atm.
+
+(a) Which ideal reactor model best represents the room and its ventilation
+system? Justify your choice. \hfill (2 marks)
+
+**Answer: **
+
+{{< pagebreak >}}
+
+<!-- $~$ -->
+<!-- {{< pagebreak >}} -->
+
+(b) Based on the reactor model identified in part (a), derive mole balance
+equation to describe how the CO₂ concentration in the room changes with time.
+Clearly state your variables, steps, and assumptions. Make sure to include
+generation from occupants and the effect of fresh air ventilation. The
+generation can be assumed to be uniform throughout the lecture room. \hfill (8
+marks)
+
+**Answer: **
+
+
+{{< pagebreak >}}
+
+$~$
+{{< pagebreak >}}
+
+(c) After `{python} f'{t_ss:.0f}'` hours of lecture, the \ce{CO2} concentration in
+the room reaches a steady state level of `{python} f'{y_co2_ss:.2f}%'`
+\ce{CO2}. Assuming that \ce{CO2} generation by students follows zeroth-order
+kinetics, and using the mole balance derived in part (b), determine the rate
+expression and calculate all relevant constants. \hfill (5 marks)
+
+**Answer: **
+
+{{< pagebreak >}}
+
+$~$
+{{< pagebreak >}}
+
+(d) Once the lecture ends and the room is empty, how long will it take for the
+\ce{CO2} concentration to return to atmospheric levels ($y_{\ce{CO2}}$ = 
+`{python} f'{y_co2_in:.2f}%'`)? Use the mole balance developed in (b).
+Assume ventilation continues as before. \hfill (10 marks)
+
+**Answer: **
+
+{{< pagebreak >}}
+
+## Question 2: Selectivity in complex reactions \hfill (25 marks)
+
+A specialty chemicals manufacturer produces a high-value intermediate D from
+feedstock A through a multi-reaction system.
+
+The following reactions occur in the process:
+
+$$
+\begin{aligned}
+\text{desired reaction: }      &\quad \ce{2A -> D} &\qquad -r_{1A} &= k_1 C_A^2 \\
+\text{undesired reaction: }    &\quad \ce{A -> U1} &\qquad -r_{2A} &= k_2 C_A^{1.2} \\
+\text{undesired degradation: } &\quad \ce{D -> U2} &\qquad -r_{D}  &= k_3 C_D
+\end{aligned}
+$$
+
+(a) Derive expressions for the conversion of A, the yield of D, and the
+selectivity toward D with respect to $\ce{U1}$, $\ce{U2}$, and overall
+selectivity ($S_{\ce{D}/{\ce{U1U2}}}$) based on the kinetics.  \hfill (5 marks)
+
+**Answer: **
+
+{{< pagebreak >}}
+
+(b) Based on the reaction network, recommend a suitable reactor
+configuration to maximize the overall selectivity for D and justify your
+choice. \hfill (5 marks)
+
+**Answer: **
+
+{{< pagebreak >}}
+
+```{python}
+# Data
+v0_total = 100.0     # m^3/min
+ca0 = 2        # mol/ m^3
+n_tubes = 100 
+d_tube = 10 # cm
+l_tube = 10 # m
+
+k1 = 10.0  # m^3/mol min
+k2 = 5.0   # m^3/mol^0.2 min
+k3 = 2.0   # 1/min
+
+```
+
+
+The current manufacturing facility uses a tubular reactor consisting of a
+bank of `{python} f'{n_tubes}'` tubes. During maintenance, it is found that
+some tubes are blocked and no longer carry flow. Instead of halting production,
+the manager chooses to plug the inlets of the faulty tubes.  
+
+The reactor operates under isothermal, isobaric conditions. The total
+volumetric flow rate is `{python} f'{v0_total}'` m^3^/min. The concentration of A at inlet 
+is `{python} f'{ca0}'` mol/m^3^. Each tube in the reactor has a diameter of
+`{python} f'{d_tube}'`cm and a length of `{python} f'{l_tube}'`m. 
+
+At reactor temperature, the rate constants for the reaction
+are: 
+
+$k_1$ = `{python} f'{k1}'` m^3^/mol/min
+
+$k_2$ = `{python} f'{k2}'` m^3^/mol^0.2^/min
+
+$k_3$ = `{python} f'{k3}'` /min
+
+
+(c) To evaluate the impact of tube plugging, follow the steps outlined in the
+reaction engineering algorithm. Develop a comprehensive set of model equations
+for the tubular reactor and describe the solution methodology. \hfill (10
+marks)
+
+**Answer: **
+
+{{< pagebreak >}}
+
+$~$
+{{< pagebreak >}}
+
+(d) What would be the effect of plugging 20%, 50%, and 80% tubes on the yield,
+overall selectivity, and conversion? Assume all unblocked tubes continue to
+operate under identical conditions. Comment on the implications of these
+blockages in active tubes for process performance and decision-making. \hfill
+(5 marks)
+
+**Answer: **
+
+
+| % blockage                    |       0% |      20% |      50% |       80% |
+|:------------------------------|---------:|---------:|---------:|----------:|
+| Conversion of A ($X_A$)       |  |  |  | |
+||||||
+| Yield of D ($Y_D$)            |  |  |  | |
+||||||
+| Selectivity $S_{D/\ce{U1}}$   |  |  |  | |
+||||||
+| Selectivity $S_{D/\ce{U2}}$   |  |  |  | |
+||||||
+| Selectivity $S_{D/\ce{U1U2}}$ |  |  |  | |
+
+
+Discussion: 
+
+<!-- {{< pagebreak >}} -->
+<!---->
+

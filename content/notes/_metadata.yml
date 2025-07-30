@@ -6,6 +6,8 @@ author:
 format:
   html:
     fig-cap-location: bottom
+    fig-width: 4.5
+    fig-height: 4.5
     html-math-method: katex
     include-in-header:
       - text: |
@@ -21,6 +23,8 @@ format:
   #   shift-heading-level-by: -1
   #   reference-doc: ../../assets/templates/reference-odt.odt
   pdf:
+    fig-width: 4.5
+    fig-height: 4.5
     citeproc: true
     pdf-engine: lualatex
     latex-auto-install: true

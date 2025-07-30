@@ -1,0 +1,347 @@
+---
+subtitle: "Group Project: chemical reaction engineering S1 2025"
+author: ""
+date-modified: 2025-31-03
+format:
+   docx: default
+   pdf:
+     number-sections: true
+---
+
+# Modeling of packed-bed reactor for the water-gas shift reaction
+
+## Introduction
+
+Hydrogen is rapidly emerging as a key player in the global shift toward clean
+energy. 
+
+The primary production route is through methane reforming, which includes three
+main processes: steam reforming, autothermal reforming, and partial oxidation.
+Steam reforming is endothermic (requires heat), while partial oxidation is
+exothermic (releases heat). These reactions generate hydrogen along with carbon
+monoxide (CO), which must be removed for applications such as fuel cells, where
+CO levels must be below 10 ppm due to its poisoning effect on the
+electrocatalyst. 
+
+The water-gas shift (WGS) reaction is a key step in hydrogen production
+processes, particularly for lowering carbon monoxide (CO) concentrations in
+reformate streams to levels suitable for fuel cell applications. Due to its
+exothermic nature and equilibrium-limited conversion, the WGS reaction is
+typically conducted in two stages: a high-temperature (HT) stage using Fe-based
+catalysts and a low-temperature (LT) stage using Cu-based catalysts. Among
+low-temperature catalysts, commercial CuO/ZnO/Al₂O₃ formulations have
+demonstrated superior performance in terms of CO conversion and operational
+stability.
+
+To effectively utilize this catalyst in practical systems, there is a growing
+need for accurate modeling of packed-bed reactors used for the WGS reaction.
+These reactors are increasingly considered for compact, small-scale hydrogen
+generation units that can integrate with membrane reactors for producing
+high-purity H₂. Existing studies have provided kinetic parameters for the
+CuO/ZnO/Al₂O₃ catalyst based on Langmuir-Hinshelwood and Redox models,
+validated through experimental data over a range of temperatures (150–300 °C).
+Accurate reactor modeling is essential for designing and optimizing such
+systems, especially when targeting high CO conversion and integration with
+downstream purification units.
+
+## Problem description
+
+In this project, your team has been assigned the task of developing a reaction
+engineering model for a fixed-bed packed-bed reactor (PBR) employing a
+CuO/ZnO/Al₂O₃ catalyst for the low-temperature WGS reaction. The model will use
+previously reported kinetic expressions to simulate reactor behavior and will
+be validated against available experimental data. In addition, the study will
+perform systematic parametric analyses to investigate the effects of key
+process variables—including temperature, pressure, and feed gas composition—on
+reactor performance. The goal is to develop a predictive model that captures
+the core reaction behavior and supports the design and operation of WGS
+reactors in hydrogen production systems.
+
+The base references for this project are (@manrique2012ijcre, @zhou2023joec)
+
+### Reaction Engineering Aspects of the Water-Gas Shift Reaction  
+
+Prepare a comprehensive review (4-5 pages) on the reaction engineering
+fundamentals of the Water-Gas Shift (WGS) reaction. Cover key areas such as the
+industrial relevance of the WGS reaction, its role in hydrogen production, the
+catalytic systems used (including high-temperature iron-based and
+low-temperature copper-based catalysts), and mechanistic insights such as
+Langmuir-Hinshelwood and Redox pathways. Discuss reactor configurations (e.g.,
+adiabatic vs. isothermal packed beds, membrane reactors), typical operating
+conditions, and challenges such as CO poisoning in downstream fuel cells.
+Highlight recent advances in catalyst development and reactor miniaturization
+for small-scale H₂ generation. Use the provided reference (@manrique2012ijcre,
+@zhou2023joec) as a starting point to support discussions on kinetic models and
+the rationale behind the choice of catalyst and reactor type for this study.
+
+
+### Modeling of a Packed-Bed Reactor for the WGS Reaction
+
+Develop a one-dimensional isothermal reaction engineering model of a packed-bed
+reactor (PBR) for the low-temperature WGS reaction using the CuO/ZnO/Al₂O₃
+catalyst. Incorporate kinetic expressions as reported by @mendes2010iecr
+applying the Langmuir-Hinshelwood model at temperatures below 215 °C and a
+Redox mechanism above that threshold. Use the modeling approach described by
+@manrique2012ijcre to formulate mass balance equations assuming
+ideal packed bed reactor. Simulate species concentration profiles
+and CO conversion using appropriate computational tool (such as python or
+similar tools). Validate model predictions with experimental data from
+literature. State all assumptions clearly, justify them with literature, and
+tabulate physical and kinetic parameters used. 
+
+### Parametric Analysis of Process Variables
+
+Conduct a detailed parametric study to evaluate the influence of key process
+variables such as temperature, pressure, feed composition (CO and H₂O content),
+and flow rate on reactor performance. Use conditions and data from
+@manrique2012ijcre. Use your engineering judgment, literature sources, etc. for
+any missing data. Use the validated reactor model to simulate changes in CO
+conversion and hydrogen yield under different operating scenarios. Analyze
+trends in the results with reference to thermodynamic limitations and kinetic
+control. Compare trends with those reported in @manrique2012ijcre, including
+how conversion responds to increased space time or pressure. Conclude this
+section with a discussion on optimal operating conditions for maximizing
+hydrogen production. Include brief notes on implications for reactor control
+and safety (e.g., sensitivity to temperature changes and implications for
+catalyst stability).
+
+The project is deliberately set to be open‐ended. You are expected to do some
+self‐directed study of material outside of what has been covered in the unit. 
+
+## Report
+
+Prepare a report consisting of the following:
+
+1. Literature review on reaction engineering aspects of the Water-Gas Shift
+   (WGS) reaction.
+
+   Present a comprehensive note (5–6 pages) on the WGS reaction including
+   catalysis, reaction mechanisms, temperature regimes, reactor types, and
+   recent advances.
+
+2. Packed-bed reactor modeling and simulation.
+
+   Develop a reaction engineering model for a WGS packed-bed reactor, simulate
+   performance, and validate with available experimental data.
+
+3. Parametric studies and analysis.
+
+   Study the effect of key variables like temperature, pressure, and feed
+   composition on CO conversion and H₂ production.
+
+4. Critical review.
+
+   Provide a reflective analysis of your modeling work: What was reliable? What
+   assumptions were made? How can the model be improved?
+
+
+### Marking
+
+| Description   | Marks |
+| - | - |
+| Short note | 20 |
+| Reaction engineering aspects of WGS||
+| Modeling and Simulation | 60 |
+|  - Reactor model development and validation | _40_ |
+|  - Parametric analysis | _20_ |
+| Critical Review | 10 |
+| Report Presentation | 10 |
+| Total | 100 |
+
+See detailed rubric in @sec-rubric for marking key.
+
+### Report format
+
+The following guidelines are presented to ensure uniformity, clarity, and
+professionalism in your report submission.
+
+#### Cover page 
+
+The cover page should have following information
+
+**Project Title:**  
+Modeling and Simulation of a Packed-Bed Reactor for the Water-Gas Shift Reaction
+
+**Submitted by:**  
+Student Names and IDs:  
+- Student 1 (ID: )  
+- Student 2 (ID: )  
+- Student 3 (ID: )  
+- Student 4 (ID: )  
+
+**Date of Submission:**  
+[DD Month YYYY]
+
+
+**Peer Contribution**
+
+| Team Member | Overall Contribution (%) |
+|-|-|
+| Member 1 ||
+| Member 2 ||
+| Member 3 ||
+| Member 4 ||
+
+#### General requirements
+1. Maximum Length:
+   - **30 pages** total (excluding references, appendices, and nomenclature).
+   - Pages exceeding this limit will carry a 10% penalty.
+2. Font & Text Formatting:
+   - Font: Standard professional font either sans or sans serif
+   - Font Size: Main text:11 pt minimum; Captions, footnotes, references: 9–10 pt minimum
+   - Line Spacing: 1.15 minimum
+   - Text Alignment: Justified
+   - Paragraph Spacing: 6 pt after each paragraph
+   - Section Headings: Use numbered sections (e.g., 3.2 Catalyst types and activity)
+   - Subheadings: Use consistent formatting
+3. Page Layout:
+   - Paper Size: A4
+   - Margins: minimum 2 cm on all sides
+   - Header/Footer: May be used for page numbers and project title
+   - Page Numbers: Bottom-center or bottom-right, starting after the cover page
+
+#### Figures, tables, and equations
+- Figures/Tables:
+  - Must be numbered (e.g., *Figure 3.2*, *Table 5.1*)
+  - Caption placed below figures, above tables
+  - Cite in text (e.g., "as shown in Figure 3.2")
+- Equations:
+  - Center aligned
+  - Numbered on the right (e.g., (1), (2))
+  - Use consistent symbols and define them in the nomenclature section
+
+#### References
+- Citation Style: APA6 or Chicago (consistent throughout)
+- All references must be cited in-text
+- Include journal articles, books, and relevant technical standards
+- Suggested minimum: 10 quality references
+
+#### Technical writing
+- Avoid informal language
+- Use passive or formal voice (e.g., “The reactor was modeled using...”)
+- Define all acronyms upon first use
+- Be concise and clear – avoid redundant explanations
+- Avoid large blocks of text – use figures, tables, bullet points where suitable
+
+### Report structure
+
+The following structure is recommended for your report:
+
+```
+Cover page
+1.0 Executive Summary
+2.0 Introduction to the Water-Gas Shift Reaction
+3.0 Reaction Engineering Aspects
+    3.1 Reaction mechanism and thermodynamics
+    3.2 Catalyst types and activity
+    3.3 Operating regimes (HT/LT WGS)
+4.0 Reactor Model Development
+    4.1 Reactor configuration and assumptions
+    4.2 Kinetic model
+    4.3 Governing equations
+    4.4 Numerical methods and solution approach
+5.0 Model Validation
+    5.1 Comparison with experimental data
+6.0 Parametric Studies
+    6.1 Effect of temperature
+    6.2 Effect of pressure
+    6.3 Effect of feed composition
+7.0 Critical Review
+8.0 Conclusions and Recommendations
+9.0 References
+10.0 Appendices
+
+```
+
+Appendices should include supporting material that is too detailed for the main
+body but still essential for completeness, transparency, or reproducibility.
+Here’s what you can include in the appendices for your WGS reactor modeling
+project:
+
+* Detailed calculations
+   - Step-by-step derivations not shown in the main report
+
+* Kinetic parameters and data tables
+ - Complete list of values used (e.g., from Mendes et al., 2010a)
+ - Experimental conditions, catalyst properties, etc.
+
+* Python code
+   - Scripts used for simulation or solving ODEs
+   - Only include key parts if the full code is long
+
+* Format guidelines
+
+   - Use section numbers (e.g., Appendix A, Appendix B)
+   - Reference them in the main text (e.g., "see Appendix B for full kinetic parameters")
+   - Ensure readability and proper formatting even for raw data or code 
+
+### Submission Checklist
+- [ ] Cover page includes project title, student names, group number, and date  
+- [ ] All required sections are included  
+- [ ] Page limit not exceeded  
+- [ ] References formatted and cited properly  
+- [ ] Figures and tables clearly labeled  
+- [ ] Equation numbering is consistent  
+- [ ] Proofread for grammar and clarity  
+
+## Submission
+
+**Bentley Students**:
+
+The project is conducted in a group of four. 
+You are free to choose your group. 
+Please notify the instructors of your groups as soon as you form them.
+If you cannot find a group, please get in touch with your instructor at the earliest.
+
+**Miri Students**:
+
+Your project group will be same as your assigned lab group. 
+
+**Submission instructions**:
+
+You will need to submit all the files created electronically on blackboard 
+There should be one submission per group. 
+Please follow the instructions given below carefully for preparing the files for submission.
+Failure to follow these instructions may result in us not being able to assess the files.
+
+You will be uploading two files.
+
+1.  Report (pdf file containing the report).
+    You need to name the file as STUDENTID_CHEN3010_project_report.pdf (or )
+    STUDENTID_CHEN5040_project_report.pdf (Replace STUDENTID with your Student
+    ID; Miri students replace STUDENTID with Group number). You need to make
+    only one submission per group.
+
+2.  Create a zip file named STUDENTID_CHEN3010_project_Supporting_files.zip.
+    The zip file should contain a) All supporting files for design, modeling,
+    and simulation activities (excel, python, ...) presented in the PDF report
+    file. You may upload the supporting file to a cloud storage of your preference
+    and share a link with us.
+
+{{< pagebreak >}}
+
+::: {.landscape}
+## Marking rubric {#sec-rubric}
+
+| Marking Criteria | Unsatisfactory  <br/>  (Fail) <br/>  [0 – 49%] | Satisfactory <br/>   (Pass) <br/>  [50 – 59%] | Competent <br/>   (Credit) <br/>  [60 – 69%] | Very Competent <br/>   (Distinction) <br/>  [70 – 79%] | Excellent <br/>   (High Distinction) <br/>  [80 – 100%] |
+|-|-|-|-|-|-|
+|||||||
+| 1. Reaction Engineering Aspects of the WGS Reaction <br/> (20 marks) |No or incomplete discussion, lacking key concepts. <br/>  [0 – 9.8] | Basic discussion on WGS reaction, with minimal detail. <br/>  [10.0 – 11.8]|  Covers mechanism, catalysts, and process conditions with some technical depth. <br/>  [12.0 – 13.8] | Covers all core aspects in detail with comparisons and literature support. <br/>  [14.0 – 15.8] | Thorough, well-structured, and critically informed note with detailed references and examples. <br/>  [16.0 – 20.0] | 
+|||||||
+| 2. Packed-Bed Reactor Modeling <br/> (40 marks) | No clear modeling approach or incorrect equations used. <br/>  [0 – 19.6] | Basic plug-flow model with limited explanation and minimal validation. <br/>  [20.0 – 23.6] | Clear model development with reasonable assumptions and comparison to some data. <br/>  [24.0 – 27.6] | Detailed modeling using literature kinetics, supported with validation and analysis. <br/>  [28.0 – 31.6] | Complete model, well-validated, technically sound, and thoroughly justified using reference data. <br/>  [32.0 – 40.0] |
+|||||||
+| 3. Parametric Analysis of Process Variables <br/> (20 marks) | No analysis or disconnected from the model. <br/>  [0 – 9.8] | General trends described, limited linkage to model outputs. <br/>  [10.0 – 11.8] | Effect of key parameters like temperature/flow rate analyzed using model. <br/>  [12.0 – 13.8] | Parametric trends explained with supporting simulations and discussion. <br/>  [14.0 – 15.8] | Deep and insightful analysis with clear linkage to design and optimization decisions. <br/>  [16.0 – 20.0] |
+|||||||
+| 4. Critical Review <br/> (10 marks) | No reflection or irrelevant content. <br/>  [0 – 4.9] | Basic reflection on results and limitations. <br/>  [5.0 – 5.9] | Highlights strengths and weaknesses with some suggestions. <br/>  [6.0 – 6.9] | Thoughtful insights on model reliability and areas for improvement. <br/>  [7.0 – 7.9] | Critical and structured review supported with benchmarking or literature comparisons. <br/>  [8.0 – 10.0] |
+|||||||
+| 5. Report Presentation <br/> (10 marks) | Poorly structured, major formatting/grammar issues. <br/>  [0 – 4.9] | Basic structure and formatting, some clarity issues. <br/>  [5.0 – 5.9] | Clear layout with acceptable writing and referencing. <br/>  [6.0 – 6.9] | Professional formatting and writing with minimal errors. <br/>  [7.0 – 7.9] | Polished, professional report, free of errors, in the tone of a graduate engineer. <br/>  [8.0 – 10.0] |
+
+
+:::
+
+{{< pagebreak >}}
+
+## References
+
+
+

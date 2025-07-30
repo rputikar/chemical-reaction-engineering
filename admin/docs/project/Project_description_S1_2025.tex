@@ -1,0 +1,799 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode,linktoc=all}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  12pt,
+  a4paperpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+    \setmainfont[]{Gentium Plus}
+    \setsansfont[]{Gentium Plus}
+  \setmathfont[]{Gentium Plus}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm,bindingoffset=0mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\usepackage{mhchem}
+\usepackage{float}
+\usepackage{gensymb}
+\usepackage{unicode-math}
+\usepackage{setspace}
+\usepackage{array}
+\linespread{1.0}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\usepackage{pdflscape}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{american}
+\ifPDFTeX
+\else
+\babelfont{rm}[]{Gentium Plus}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage[english]{selnolig} % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Modeling of packed-bed reactor for the water-gas shift reaction},
+  pdflang={en-US},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Modeling of packed-bed reactor for the water-gas shift reaction}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Group Project: chemical reaction engineering S1 2025}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\section{Introduction}\label{introduction}
+
+Hydrogen is rapidly emerging as a key player in the global shift toward
+clean energy.
+
+The primary production route is through methane reforming, which
+includes three main processes: steam reforming, autothermal reforming,
+and partial oxidation. Steam reforming is endothermic (requires heat),
+while partial oxidation is exothermic (releases heat). These reactions
+generate hydrogen along with carbon monoxide (CO), which must be removed
+for applications such as fuel cells, where CO levels must be below 10
+ppm due to its poisoning effect on the electrocatalyst.
+
+The water-gas shift (WGS) reaction is a key step in hydrogen production
+processes, particularly for lowering carbon monoxide (CO) concentrations
+in reformate streams to levels suitable for fuel cell applications. Due
+to its exothermic nature and equilibrium-limited conversion, the WGS
+reaction is typically conducted in two stages: a high-temperature (HT)
+stage using Fe-based catalysts and a low-temperature (LT) stage using
+Cu-based catalysts. Among low-temperature catalysts, commercial
+CuO/ZnO/Al₂O₃ formulations have demonstrated superior performance in
+terms of CO conversion and operational stability.
+
+To effectively utilize this catalyst in practical systems, there is a
+growing need for accurate modeling of packed-bed reactors used for the
+WGS reaction. These reactors are increasingly considered for compact,
+small-scale hydrogen generation units that can integrate with membrane
+reactors for producing high-purity H₂. Existing studies have provided
+kinetic parameters for the CuO/ZnO/Al₂O₃ catalyst based on
+Langmuir-Hinshelwood and Redox models, validated through experimental
+data over a range of temperatures (150--300 °C). Accurate reactor
+modeling is essential for designing and optimizing such systems,
+especially when targeting high CO conversion and integration with
+downstream purification units.
+
+\section{Problem description}\label{problem-description}
+
+In this project, your team has been assigned the task of developing a
+reaction engineering model for a fixed-bed packed-bed reactor (PBR)
+employing a CuO/ZnO/Al₂O₃ catalyst for the low-temperature WGS reaction.
+The model will use previously reported kinetic expressions to simulate
+reactor behavior and will be validated against available experimental
+data. In addition, the study will perform systematic parametric analyses
+to investigate the effects of key process variables---including
+temperature, pressure, and feed gas composition---on reactor
+performance. The goal is to develop a predictive model that captures the
+core reaction behavior and supports the design and operation of WGS
+reactors in hydrogen production systems.
+
+The base references for this project are (Manrique et al.
+(\citeproc{ref-manrique2012ijcre}{2012}), Zhou et al.
+(\citeproc{ref-zhou2023joec}{2023}))
+
+\subsection{Reaction Engineering Aspects of the Water-Gas Shift
+Reaction}\label{reaction-engineering-aspects-of-the-water-gas-shift-reaction}
+
+Prepare a comprehensive review (4-5 pages) on the reaction engineering
+fundamentals of the Water-Gas Shift (WGS) reaction. Cover key areas such
+as the industrial relevance of the WGS reaction, its role in hydrogen
+production, the catalytic systems used (including high-temperature
+iron-based and low-temperature copper-based catalysts), and mechanistic
+insights such as Langmuir-Hinshelwood and Redox pathways. Discuss
+reactor configurations (e.g., adiabatic vs.~isothermal packed beds,
+membrane reactors), typical operating conditions, and challenges such as
+CO poisoning in downstream fuel cells. Highlight recent advances in
+catalyst development and reactor miniaturization for small-scale H₂
+generation. Use the provided reference (Manrique et al.
+(\citeproc{ref-manrique2012ijcre}{2012}), Zhou et al.
+(\citeproc{ref-zhou2023joec}{2023})) as a starting point to support
+discussions on kinetic models and the rationale behind the choice of
+catalyst and reactor type for this study.
+
+\subsection{Modeling of a Packed-Bed Reactor for the WGS
+Reaction}\label{modeling-of-a-packed-bed-reactor-for-the-wgs-reaction}
+
+Develop a one-dimensional isothermal reaction engineering model of a
+packed-bed reactor (PBR) for the low-temperature WGS reaction using the
+CuO/ZnO/Al₂O₃ catalyst. Incorporate kinetic expressions as reported by
+Mendes et al. (\citeproc{ref-mendes2010iecr}{2010}) applying the
+Langmuir-Hinshelwood model at temperatures below 215\,°C and a Redox
+mechanism above that threshold. Use the modeling approach described by
+Manrique et al. (\citeproc{ref-manrique2012ijcre}{2012}) to formulate
+mass balance equations assuming ideal packed bed reactor. Simulate
+species concentration profiles and CO conversion using appropriate
+computational tool (such as python or similar tools). Validate model
+predictions with experimental data from literature. State all
+assumptions clearly, justify them with literature, and tabulate physical
+and kinetic parameters used.
+
+\subsection{Parametric Analysis of Process
+Variables}\label{parametric-analysis-of-process-variables}
+
+Conduct a detailed parametric study to evaluate the influence of key
+process variables such as temperature, pressure, feed composition (CO
+and H₂O content), and flow rate on reactor performance. Use conditions
+and data from Manrique et al. (\citeproc{ref-manrique2012ijcre}{2012}).
+Use your engineering judgment, literature sources, etc. for any missing
+data. Use the validated reactor model to simulate changes in CO
+conversion and hydrogen yield under different operating scenarios.
+Analyze trends in the results with reference to thermodynamic
+limitations and kinetic control. Compare trends with those reported in
+Manrique et al. (\citeproc{ref-manrique2012ijcre}{2012}), including how
+conversion responds to increased space time or pressure. Conclude this
+section with a discussion on optimal operating conditions for maximizing
+hydrogen production. Include brief notes on implications for reactor
+control and safety (e.g., sensitivity to temperature changes and
+implications for catalyst stability).
+
+The project is deliberately set to be open‐ended. You are expected to do
+some self‐directed study of material outside of what has been covered in
+the unit.
+
+\section{Report}\label{report}
+
+Prepare a report consisting of the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Literature review on reaction engineering aspects of the Water-Gas
+  Shift (WGS) reaction.
+
+  Present a comprehensive note (5--6 pages) on the WGS reaction
+  including catalysis, reaction mechanisms, temperature regimes, reactor
+  types, and recent advances.
+\item
+  Packed-bed reactor modeling and simulation.
+
+  Develop a reaction engineering model for a WGS packed-bed reactor,
+  simulate performance, and validate with available experimental data.
+\item
+  Parametric studies and analysis.
+
+  Study the effect of key variables like temperature, pressure, and feed
+  composition on CO conversion and H₂ production.
+\item
+  Critical review.
+
+  Provide a reflective analysis of your modeling work: What was
+  reliable? What assumptions were made? How can the model be improved?
+\end{enumerate}
+
+\subsection{Marking}\label{marking}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Description & Marks \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Short note & 20 \\
+Reaction engineering aspects of WGS & \\
+Modeling and Simulation & 60 \\
+- Reactor model development and validation & \emph{40} \\
+- Parametric analysis & \emph{20} \\
+Critical Review & 10 \\
+Report Presentation & 10 \\
+Total & 100 \\
+\end{longtable}
+
+See detailed rubric in Section~\ref{sec-rubric} for marking key.
+
+\subsection{Report format}\label{report-format}
+
+The following guidelines are presented to ensure uniformity, clarity,
+and professionalism in your report submission.
+
+\subsubsection{Cover page}\label{cover-page}
+
+The cover page should have following information
+
+\textbf{Project Title:}\\
+Modeling and Simulation of a Packed-Bed Reactor for the Water-Gas Shift
+Reaction
+
+\textbf{Submitted by:}\\
+Student Names and IDs:\\
+- Student 1 (ID: )\\
+- Student 2 (ID: )\\
+- Student 3 (ID: )\\
+- Student 4 (ID: )
+
+\textbf{Date of Submission:}\\
+{[}DD Month YYYY{]}
+
+\textbf{Peer Contribution}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Team Member & Overall Contribution (\%) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Member 1 & \\
+Member 2 & \\
+Member 3 & \\
+Member 4 & \\
+\end{longtable}
+
+\subsubsection{General requirements}\label{general-requirements}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Maximum Length:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{30 pages} total (excluding references, appendices, and
+    nomenclature).
+  \item
+    Pages exceeding this limit will carry a 10\% penalty.
+  \end{itemize}
+\item
+  Font \& Text Formatting:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Font: Standard professional font either sans or sans serif
+  \item
+    Font Size: Main text:11 pt minimum; Captions, footnotes, references:
+    9--10 pt minimum
+  \item
+    Line Spacing: 1.15 minimum
+  \item
+    Text Alignment: Justified
+  \item
+    Paragraph Spacing: 6 pt after each paragraph
+  \item
+    Section Headings: Use numbered sections (e.g., 3.2 Catalyst types
+    and activity)
+  \item
+    Subheadings: Use consistent formatting
+  \end{itemize}
+\item
+  Page Layout:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Paper Size: A4
+  \item
+    Margins: minimum 2 cm on all sides
+  \item
+    Header/Footer: May be used for page numbers and project title
+  \item
+    Page Numbers: Bottom-center or bottom-right, starting after the
+    cover page
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{Figures, tables, and
+equations}\label{figures-tables-and-equations}
+
+\begin{itemize}
+\tightlist
+\item
+  Figures/Tables:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Must be numbered (e.g., \emph{Figure 3.2}, \emph{Table 5.1})
+  \item
+    Caption placed below figures, above tables
+  \item
+    Cite in text (e.g., ``as shown in Figure 3.2'')
+  \end{itemize}
+\item
+  Equations:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Center aligned
+  \item
+    Numbered on the right (e.g., (1), (2))
+  \item
+    Use consistent symbols and define them in the nomenclature section
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{References}\label{references}
+
+\begin{itemize}
+\tightlist
+\item
+  Citation Style: APA6 or Chicago (consistent throughout)
+\item
+  All references must be cited in-text
+\item
+  Include journal articles, books, and relevant technical standards
+\item
+  Suggested minimum: 10 quality references
+\end{itemize}
+
+\subsubsection{Technical writing}\label{technical-writing}
+
+\begin{itemize}
+\tightlist
+\item
+  Avoid informal language
+\item
+  Use passive or formal voice (e.g., ``The reactor was modeled
+  using\ldots{}'')
+\item
+  Define all acronyms upon first use
+\item
+  Be concise and clear -- avoid redundant explanations
+\item
+  Avoid large blocks of text -- use figures, tables, bullet points where
+  suitable
+\end{itemize}
+
+\subsection{Report structure}\label{report-structure}
+
+The following structure is recommended for your report:
+
+\begin{verbatim}
+Cover page
+1.0 Executive Summary
+2.0 Introduction to the Water-Gas Shift Reaction
+3.0 Reaction Engineering Aspects
+    3.1 Reaction mechanism and thermodynamics
+    3.2 Catalyst types and activity
+    3.3 Operating regimes (HT/LT WGS)
+4.0 Reactor Model Development
+    4.1 Reactor configuration and assumptions
+    4.2 Kinetic model
+    4.3 Governing equations
+    4.4 Numerical methods and solution approach
+5.0 Model Validation
+    5.1 Comparison with experimental data
+6.0 Parametric Studies
+    6.1 Effect of temperature
+    6.2 Effect of pressure
+    6.3 Effect of feed composition
+7.0 Critical Review
+8.0 Conclusions and Recommendations
+9.0 References
+10.0 Appendices
+\end{verbatim}
+
+Appendices should include supporting material that is too detailed for
+the main body but still essential for completeness, transparency, or
+reproducibility. Here's what you can include in the appendices for your
+WGS reactor modeling project:
+
+\begin{itemize}
+\item
+  Detailed calculations
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Step-by-step derivations not shown in the main report
+  \end{itemize}
+\item
+  Kinetic parameters and data tables
+\item
+  Complete list of values used (e.g., from Mendes et al., 2010a)
+\item
+  Experimental conditions, catalyst properties, etc.
+\item
+  Python code
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Scripts used for simulation or solving ODEs
+  \item
+    Only include key parts if the full code is long
+  \end{itemize}
+\item
+  Format guidelines
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Use section numbers (e.g., Appendix A, Appendix B)
+  \item
+    Reference them in the main text (e.g., ``see Appendix B for full
+    kinetic parameters'')
+  \item
+    Ensure readability and proper formatting even for raw data or code
+  \end{itemize}
+\end{itemize}
+
+\subsection{Submission Checklist}\label{submission-checklist}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Cover page includes project title, student names, group number, and
+  date\\
+\item[$\square$]
+  All required sections are included\\
+\item[$\square$]
+  Page limit not exceeded\\
+\item[$\square$]
+  References formatted and cited properly\\
+\item[$\square$]
+  Figures and tables clearly labeled\\
+\item[$\square$]
+  Equation numbering is consistent\\
+\item[$\square$]
+  Proofread for grammar and clarity
+\end{itemize}
+
+\section{Submission}\label{submission}
+
+\textbf{Bentley Students}:
+
+The project is conducted in a group of four. You are free to choose your
+group. Please notify the instructors of your groups as soon as you form
+them. If you cannot find a group, please get in touch with your
+instructor at the earliest.
+
+\textbf{Miri Students}:
+
+Your project group will be same as your assigned lab group.
+
+\textbf{Submission instructions}:
+
+You will need to submit all the files created electronically on
+blackboard There should be one submission per group. Please follow the
+instructions given below carefully for preparing the files for
+submission. Failure to follow these instructions may result in us not
+being able to assess the files.
+
+You will be uploading two files.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Report (pdf file containing the report). You need to name the file as
+  STUDENTID\_CHEN3010\_project\_report.pdf (or )
+  STUDENTID\_CHEN5040\_project\_report.pdf (Replace STUDENTID with your
+  Student ID; Miri students replace STUDENTID with Group number). You
+  need to make only one submission per group.
+\item
+  Create a zip file named
+  STUDENTID\_CHEN3010\_project\_Supporting\_files.zip. The zip file
+  should contain a) All supporting files for design, modeling, and
+  simulation activities (excel, python, \ldots) presented in the PDF
+  report file. You may upload the supporting file to a cloud storage of
+  your preference and share a link with us.
+\end{enumerate}
+
+\newpage{}
+
+\begin{landscape}
+
+\section{Marking rubric}\label{sec-rubric}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Marking Criteria
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Unsatisfactory (Fail) {[}0 -- 49\%{]}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Satisfactory (Pass) {[}50 -- 59\%{]}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Competent (Credit) {[}60 -- 69\%{]}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Very Competent (Distinction) {[}70 -- 79\%{]}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Excellent (High Distinction) {[}80 -- 100\%{]}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+& & & & & \\
+1. Reaction Engineering Aspects of the WGS Reaction (20 marks) & No or
+incomplete discussion, lacking key concepts. {[}0 -- 9.8{]} & Basic
+discussion on WGS reaction, with minimal detail. {[}10.0 -- 11.8{]} &
+Covers mechanism, catalysts, and process conditions with some technical
+depth. {[}12.0 -- 13.8{]} & Covers all core aspects in detail with
+comparisons and literature support. {[}14.0 -- 15.8{]} & Thorough,
+well-structured, and critically informed note with detailed references
+and examples. {[}16.0 -- 20.0{]} \\
+& & & & & \\
+2. Packed-Bed Reactor Modeling (40 marks) & No clear modeling approach
+or incorrect equations used. {[}0 -- 19.6{]} & Basic plug-flow model
+with limited explanation and minimal validation. {[}20.0 -- 23.6{]} &
+Clear model development with reasonable assumptions and comparison to
+some data. {[}24.0 -- 27.6{]} & Detailed modeling using literature
+kinetics, supported with validation and analysis. {[}28.0 -- 31.6{]} &
+Complete model, well-validated, technically sound, and thoroughly
+justified using reference data. {[}32.0 -- 40.0{]} \\
+& & & & & \\
+3. Parametric Analysis of Process Variables (20 marks) & No analysis or
+disconnected from the model. {[}0 -- 9.8{]} & General trends described,
+limited linkage to model outputs. {[}10.0 -- 11.8{]} & Effect of key
+parameters like temperature/flow rate analyzed using model. {[}12.0 --
+13.8{]} & Parametric trends explained with supporting simulations and
+discussion. {[}14.0 -- 15.8{]} & Deep and insightful analysis with clear
+linkage to design and optimization decisions. {[}16.0 -- 20.0{]} \\
+& & & & & \\
+4. Critical Review (10 marks) & No reflection or irrelevant content.
+{[}0 -- 4.9{]} & Basic reflection on results and limitations. {[}5.0 --
+5.9{]} & Highlights strengths and weaknesses with some suggestions.
+{[}6.0 -- 6.9{]} & Thoughtful insights on model reliability and areas
+for improvement. {[}7.0 -- 7.9{]} & Critical and structured review
+supported with benchmarking or literature comparisons. {[}8.0 --
+10.0{]} \\
+& & & & & \\
+5. Report Presentation (10 marks) & Poorly structured, major
+formatting/grammar issues. {[}0 -- 4.9{]} & Basic structure and
+formatting, some clarity issues. {[}5.0 -- 5.9{]} & Clear layout with
+acceptable writing and referencing. {[}6.0 -- 6.9{]} & Professional
+formatting and writing with minimal errors. {[}7.0 -- 7.9{]} & Polished,
+professional report, free of errors, in the tone of a graduate engineer.
+{[}8.0 -- 10.0{]} \\
+\end{longtable}
+
+\end{landscape}
+
+\newpage{}
+
+\section*{References}\label{references-1}
+\addcontentsline{toc}{section}{References}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-manrique2012ijcre}
+Manrique, Yaidelin A., Carlos V. Miguel, Diogo Mendes, Adelio Mendes,
+and Luis M. Madeira. 2012. {``Modeling and Simulation of a Packed-Bed
+Reactor for Carrying Out the Water-Gas Shift Reaction.''}
+\emph{International Journal of Chemical Reactor Engineering} 10 (1).
+\url{https://doi.org/10.1515/1542-6580.3105}.
+
+\bibitem[\citeproctext]{ref-mendes2010iecr}
+Mendes, Diogo, Vânia Chibante, Adélio Mendes, and Luis M. Madeira. 2010.
+{``Determination of the Low-Temperature Water−gas Shift Reaction
+Kinetics Using a Cu-Based Catalyst.''} \emph{Industrial \& Engineering
+Chemistry Research} 49 (22): 11269--79.
+\url{https://doi.org/10.1021/ie101137b}.
+
+\bibitem[\citeproctext]{ref-zhou2023joec}
+Zhou, Limin, Yanyan Liu, Shuling Liu, Huanhuan Zhang, Xianli Wu, Ruofan
+Shen, Tao Liu, et al. 2023. {``For More and Purer Hydrogen-the Progress
+and Challenges in Water Gas Shift Reaction.''} \emph{Journal of Energy
+Chemistry} 83 (August): 363--96.
+\url{https://doi.org/10.1016/j.jechem.2023.03.055}.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}

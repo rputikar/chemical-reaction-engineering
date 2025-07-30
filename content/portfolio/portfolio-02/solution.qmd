@@ -1,0 +1,695 @@
+---
+title: "Portfolio 02: Isothermal reactor design"
+format:
+  pdf
+date-modified: 2025-04-14 
+---
+<!-- ::: {.content-visible when-format="html"} -->
+<!---->
+<!-- ::: {.callout-note} -->
+<!-- ## Solutions -->
+<!---->
+<!-- Answers to the portfolio questions are uploaded at [Portfolio 2 answers](./portfolio-02-answers.qmd) -->
+<!---->
+<!-- ::: -->
+<!---->
+<!-- ::: -->
+<!---->
+
+::: {.content-visible when-format="pdf"}
+
+## General Instructions for in class Portfolios
+
+1.  The portolio is an open-book task.
+2.  You can use textbooks, the resources provided during class/ workshop etc.
+    to answer the questions. 
+3.  The portfolio task is made available in both pdf format and as a print. 
+4.  You are free to choose a solution technique. It is **not** required that
+    you use the provided python code to answer the questions. You can use any
+    tool (pen and paper, excel, ... ) and any technique (graphical, numerical,
+    analytical) that you are comfortable with. 
+5.  Irrespective of your solution method, you are expected to write your
+    answers on to the printed question paper provided. **This is what gets
+    marked.**
+6.  The portfolio will take place during designated timeslot communicated
+    earlier by the unit coordinator. Please refer to the portfolio schedule on
+    blackboard for the portolio dates and topics. 
+7.  The tasks will be a mix of theory questions, short calculation type and
+    long numerical examples.
+8.  You have **90 minutes** to complete the tasks in the portfolio. 
+9.  When you are required to upload the portolio answers on to blackboard: 
+    - Save your report as a pdf file. 
+    - Rename the file as STUDENTID_Portfolio_x.pdf (Where STUDENTID is your
+      student ID, and x is the portfolio number) and 
+    - Upload it using assessment submission link on blackboard. 
+
+{{< pagebreak >}}
+
+## Academic Integrity
+
+Academic integrity at its core is about honesty and responsibility and is
+fundamental to Curtin’s expectations of you. This means that all of your work
+at Curtin should be your own and it should be underpinned by integrity, which
+means to act ethically, honestly and with fairness.
+
+As a Curtin student you are part of an academic community and you are asked to
+uphold the University’s [Code of
+Conduct](https://oasis.curtin.edu.au/ConductAtCurtin), principles of academic
+integrity, and [Curtin’s five core
+values](https://about.curtin.edu.au/who/vision-mission-values/curtin-values/)
+of integrity, respect, courage, excellence and impact during your studies.
+
+You are also expected to uphold the [Student
+Charter](https://students.curtin.edu.au/essentials/rights/student-charter/) and
+recognise that cheating, plagiarism collusion, and falsification of data and
+other forms of academic dishonesty are not acceptable.
+
+For more information, visit
+[https://students.curtin.edu.au/essentials/rights/academic-integrity/](https://students.curtin.edu.au/essentials/rights/academic-integrity/)
+
+{{< pagebreak >}}
+
+:::
+
+```{python}
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
+plt.style.use('../../../assets/templates/publish.mplstyle')
+```
+
+## Question 1: Indoor air quality \hfill (25 marks)
+```{python}
+# Data
+T = 25.0 # C
+P = 1.0 # atm
+R = 8.314   # J/mol/K
+v0 = 60.0     # m^3/min
+n_students = 100 
+area = 150.0 # m^2
+height = 4.0 # m
+
+y_co2_in = 0.04 #%
+t_ss = 2.0 # hr
+y_co2_ss = 0.3 #%
+
+```
+Room 402:220, where the reaction engineering lecture takes place, is designed
+for `{python} f'{n_students:.0f}'` students and has a mechanical ventilation
+system that supplies `{python} f'{v0:.2f}'` m³/min of fresh air and removes an
+equal amount of air to maintain well-mixed conditions. To help track air
+quality during lectures, CO₂ monitors are installed in the room. Since students
+continuously exhale CO₂, its concentration can build up over time. Monitoring
+these levels helps ensure the room is well-ventilated, keeps everyone
+comfortable and alert, and reduces the risk of spreading airborne illnesses.
+
+The floor area of the room is `{python} f'{area:.2f}'` m^2^, and the ceiling
+height is `{python} f'{height:.2f}'` m. 
+
+Assume:
+
+* Fresh air contains `{python} f'{y_co2_in:.2f}%'` CO₂.
+* The air within the room well-mixed.
+* Temperature is `{python} f'{T:.1f}'`°C, and pressure is `{python} f'{P:.1f}'` atm.
+
+(a) Which ideal reactor model best represents the room and its ventilation
+system? Justify your choice. \hfill (2 marks)
+
+**Answer: **
+
+The lecture room can be modeled as a Continuous Stirred Tank Reactor
+(CSTR). \hfill (1 mark)
+
+Justification: \hfill (1 mark)
+
+1. Air within the classroom is well-mixed.
+2. Continuous inflow and outflow of air.
+3. Uniform generation of CO₂ throughout the volume.
+
+{{< pagebreak >}}
+
+(b) Based on the reactor model identified in part (a), derive mole balance
+equation to describe how the CO₂ concentration in the room changes with time.
+Clearly state your variables, steps, and assumptions. Make sure to include
+generation from occupants and the effect of fresh air ventilation. The
+generation can be assumed to be uniform throughout the lecture room. \hfill (8
+marks)
+
+**Answer: **
+
+Assumptions: \hfill (4 marks) 
+
+* Well-mixed air (CSTR behavior)  
+* Constant physical properties, temperature, and pressure  
+* Steady inflow and outflow  
+* CO₂ generation is uniform throughout the room
+
+Mass balance on CO₂: \hfill (4 marks for correct derivation, nomenclature with units)
+
+$$
+\frac{dN_{\ce{CO2}}}{dt} = F_{\ce{CO2},\text{in}} - F_{\ce{CO2},\text{out}} + r_{\ce{CO2}} V
+$$
+
+
+Where:
+
+* $N_{\ce{CO2}}$ : total moles of CO₂ in the room  
+* $F_{\ce{CO2},\text{in}}$ : molar inflow rate of CO₂ (mol/s)  
+* $F_{\ce{CO2},\text{out}}$ : molar outflow rate of CO₂ (mol/s)  
+* $r_{\ce{CO2}}$ : molar generation rate of CO₂ per unit volume (mol/m³ s)  
+* $V$ : room volume (m³)
+
+
+$$
+N_{\ce{CO2}} = C_{\ce{CO2}} V \quad ; \quad F_{\ce{CO2}} = C_{\ce{CO2}} v_0 \quad 
+$$
+
+Where:
+
+* $C_{\ce{CO2}}$ : concentration of \ce{CO2} (mols/m^3^)
+* $v_{0}$ : volumetric flow rate (m^3^/s)  
+
+Therefore,
+
+$$
+\frac{dC_{\ce{CO2}}}{dt} = \frac{v_0}{V} \left( C_{\ce{CO2},\text{in}} - C_{\ce{CO2}} \right) + r_{\ce{CO2}}
+$$
+
+
+{{< pagebreak >}}
+
+<!-- $~$ -->
+<!-- {{< pagebreak >}} -->
+
+(c) After `{python} f'{t_ss:.0f}'` hours of lecture, the \ce{CO2} concentration in
+the room reaches a steady state level of `{python} f'{y_co2_ss:.2f}%'`
+\ce{CO2}. Assuming that \ce{CO2} generation by students follows zeroth-order
+kinetics, and using the mole balance derived in part (b), determine the rate
+expression and calculate all relevant constants. \hfill (5 marks)
+
+**Answer: **
+
+$$
+r_{\ce{CO2}} = k_0
+$$
+
+* $k_0$ : 0^th^ order rate constant (mol/ m^3^ s)
+
+At steady state 
+
+$$
+\frac{dC_{\ce{CO2}}}{dt} = 0
+$$
+
+Therefore, the mole balance equation becomes: 
+
+$$
+0 = \frac{v_0}{V} \left( C_{\ce{CO2},\text{in}} - C_{\ce{CO2}} \right) + k_{0}
+$$
+
+and 
+$$
+k_{0} = \frac{v_0}{V} \left( C_{\ce{CO2}} - C_{\ce{CO2},\text{in}} \right)
+$$
+
+
+Data: 
+
+```{python}
+# Data
+T = T + 273.15 # K
+P = P * 101325 # Pa
+R = 8.314   # J/mol/K
+v0 = v0/60     # m^3/s
+V = area * height # m^3
+
+y_co2_in = y_co2_in/100
+t_ss = t_ss*3600 # s 
+y_co2_ss = y_co2_ss/100
+
+# Molar concentration of air
+c_total = P / (R * T)  # mol/m^3
+
+# Convert to concentrations
+c_in = y_co2_in * c_total
+c_ss = y_co2_ss * c_total
+
+k0 = (v0/V)*(c_ss - c_in) 
+
+```
+
+$T$ = `{python} f'{T:0.2f}'` K.
+
+$P$ = `{python} f'{P:0.2f}'` Pa.
+
+$R$ = `{python} f'{R:0.3f}'` $J/mol/K$.
+
+$v_0$ = `{python} f'{v0:0.2f}'` $m^3/s$.
+
+$V = A * h$ = (`{python} f'{area:0.2f}'`)(`{python} f'{height:0.2f}'`) 
+= `{python} f'{V:0.2f}'` $m^3$.
+
+$y_{\ce{CO2},in}$ = `{python} f'{y_co2_in:0.2e}'`
+
+$y_{\ce{CO2},in}$ = `{python} f'{y_co2_in:0.2e}'`
+
+Total concentration: $C_T = \frac{P}{RT}$
+
+$C_T$ = `{python} f"{P:.2f} / ({R:0.3f} * {T:0.2f})"`
+
+$C_T$ = `{python} f'{c_total:0.2f}'` $mol/m^3$
+
+Substituting: 
+
+$k_0$ = `{python} f'({v0}/{V}) ({c_ss:.4f} - {c_in:.4f}) = {k0:.4e}'`  $mol/m^3 /s$.
+
+{{< pagebreak >}}
+
+(d) Once the lecture ends and the room is empty, how long will it take for the
+\ce{CO2} concentration to return to atmospheric levels ($y_{\ce{CO2}}$ = 
+`{python} f'{y_co2_in*100:.2f}%'`)? Use the mole balance developed in (b).
+Assume ventilation continues as before. \hfill (10 marks)
+
+**Answer: **
+
+```{python}
+#| echo: true
+
+# mole balance
+def classroom(t, y, *args):
+    c = y[0]
+    (k0, v0, V, c_in) = args
+
+    dcdt = (v0/V) * (c_in - c) + k0
+    return [dcdt] 
+
+# No reaction takes place
+k0 = 0
+
+# Initial concentration at the end of lecture
+c0 = c_ss
+t_end = 10000 # end time
+
+# Solve ODE
+args = (k0, v0, V, c_in)
+sol = solve_ivp(classroom, [0, t_end], [c0], args=args, dense_output=True)
+
+# Evaluate solution
+t = np.linspace(0, t_end, 1000)
+c = sol.sol(t)[0]
+
+time_to_return = 0
+
+if np.any(c <= c_in):
+    idx = np.where(c <= c_in)[0][0]
+    time_to_return = t[idx] / 60  # in minutes
+    message = (
+        f"CO₂ concentration returned to atmospheric level in "
+        f"{time_to_return:.1f} minutes"
+    )
+else:
+    message = (
+        f"CO₂ concentration did not return to atmospheric level within "
+        f"{t_end / 60:.1f} minutes"
+    )
+```
+
+`{python} f'{message}'`. 
+
+```{python}
+#| label: fig-question-1d
+#| fig-cap: CO₂ Decay in Classroom (Mole Fraction)
+
+CO2_molfr = c / c_total
+# Plotting
+
+plt.plot(t/ 60, CO2_molfr, label="CO₂ concentration")
+plt.axhline(0.0004, 
+            color='gray', 
+            linestyle='--', 
+            label="Atmospheric CO₂ (0.04%)"
+            )
+plt.xlabel("Time after class finishes (minutes)")
+plt.ylabel("CO₂ Mole Fraction")
+plt.xlim(left=0)
+plt.ylim(bottom=0)
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()
+```
+{{< pagebreak >}}
+
+$~$
+{{< pagebreak >}}
+
+
+## Question 2: Selectivity in complex reactions \hfill (25 marks)
+
+A specialty chemicals manufacturer produces a high-value intermediate D from
+feedstock A through a multi-reaction system.
+
+The following reactions occur in the process:
+
+$$
+\begin{aligned}
+\text{desired reaction: }      &\quad \ce{2A -> D} &\qquad -r_{1A} &= k_1 C_A^2 \\
+\text{undesired reaction: }    &\quad \ce{A -> U1} &\qquad -r_{2A} &= k_2 C_A^{1.2} \\
+\text{undesired degradation: } &\quad \ce{D -> U2} &\qquad -r_{D}  &= k_3 C_D
+\end{aligned}
+$$
+
+(a) Derive expressions for the conversion of A, the yield of D, and the
+selectivity toward D with respect to $\ce{U1}$, $\ce{U2}$, and overall
+selectivity ($S_{\ce{D}/{\ce{U1U2}}}$) based on the kinetics.  \hfill (5 marks)
+
+**Answer: **
+
+Conversion:  \hfill (1 mark)
+
+$$
+X_A = \frac{C_{A0} - C_A}{C_{A0}}
+$$
+
+Yield of D: \hfill (1 mark) 
+
+$$
+Y_D = \frac{\text{moles of D formed}}{\text{moles of A consumed}}
+    = \frac{r_{1A} - r_{D}}{-r_{1A} -r_{2A}} 
+    = \frac{k_1 C_A^2 - k_3 C_D}{k_1 C_A^2 + k_2 C_A^{1.2}}
+$$
+
+Selectivity: \hfill (3 marks) 
+
+$$
+S_{D/U1} = \frac{r_D}{r_{U1}}
+    = \frac{r_{1A} - r_{D}}{r_{2A}} 
+    = \frac{k_1 C_A^2 - k_3 C_D}{k_2 C_A^{1.2}} 
+$$
+
+
+$$
+S_{D/U2} = \frac{r_D}{r_{U2}}
+    = \frac{r_{1A} - r_{D}}{r_{D}} 
+    = \frac{k_1 C_A^2 - k_3 C_D}{k_3 C_D} 
+$$
+
+
+$$
+S_{D/U1U2} = \frac{r_D}{r_{U1} + r_{U2}}
+    = \frac{r_{1A} - r_{D}}{r_{2A} + r_{D}} 
+    = \frac{k_1 C_A^2 - k_3 C_D}{k_2 C_A^{1.2} + k_3 C_D} 
+$$
+
+{{< pagebreak >}}
+
+(b) Based on the reaction network, recommend a suitable reactor
+configuration to maximize the overall selectivity for B and justify your
+choice. \hfill (5 marks)
+
+**Answer: **
+
+$$
+S_{D/U1U2} = 
+    = \frac{k_1 C_A^2 - k_3 C_D}{k_2 C_A^{1.2} + k_3 C_D} 
+$$
+
+At high concentration of A ($C_{A} \gg C_{D}$): 
+
+$$
+k_1 C_A^2 \gg k_3 C_D \qquad \text{ and } \qquad k_2 C_A^{1.2} \gg k_3 C_D 
+$$
+
+
+$$
+S_{D/U1U2} = \frac{k_1 C_A^2}{k_2 C_A^{1.2}} \propto C_A^{0.8}
+$$
+
+Therefore reactors that offer high concentration of A should be preferred
+
+- plug flow reactor
+- batch reactor 
+- CSTRs in series
+
+
+At high concentration of D ($C_{D} \gg C_{A}$): 
+
+$$
+k_1 C_A^2 \ll k_3 C_D \qquad \text{ and } \qquad k_2 C_A^{1.2} \ll k_3 C_D 
+$$
+
+$$
+S_{D/U1U2} = \frac{- k_3 C_D}{ + k_3 C_D} = -1
+$$
+
+This is unrealistic and occurs because the degradation rate of D is too
+high, causing D to degrade into \ce{U1} immediately after being formed. To
+prevent this, it is recommended to maintain the concentration of D as low as
+possible.
+
+- Limit conversion in a reactor (multipass reaction with product removal)
+- plug flow reactor with removal of D (e.g. membrane reactor)
+- CSTRs in series (with removal of D after each CSTR)
+
+
+{{< pagebreak >}}
+
+```{python}
+# Data
+v0_total = 100.0     # m^3/min
+ca0 = 2        # mol/ m^3
+n_tubes = 100 
+d_tube = 10 # cm
+l_tube = 10 # m
+
+k1 = 10.0  # m^3/mol min
+k2 = 5.0   # m^3/mol^0.2 min
+k3 = 2.0   # 1/min
+
+```
+
+
+The current manufacturing facility uses a tubular reactor consisting of a
+bank of `{python} f'{n_tubes}'` tubes. During maintenance, it is found that
+some tubes are blocked and no longer carry flow. Instead of halting production,
+the manager chooses to plug the inlets of the faulty tubes.  
+
+The reactor operates under isothermal, isobaric conditions. The total
+volumetric flow rate is `{python} f'{v0_total}'` m^3^/min. The concentration of A at inlet 
+is `{python} f'{ca0}'` mol/m^3^. Each tube in the reactor has a diameter of
+`{python} f'{d_tube}'`cm and a length of `{python} f'{l_tube}'`m. 
+
+At reactor temperature, the rate constants for the reaction
+are: 
+
+$k_1$ = `{python} f'{k1}'` m^3^/mol/min
+
+$k_2$ = `{python} f'{k2}'` m^3^/mol^0.2^/min
+
+$k_3$ = `{python} f'{k3}'` /min
+
+
+(c) To evaluate the impact of tube plugging, follow the steps outlined in the
+reaction engineering algorithm. Develop a comprehensive set of model equations
+for the tubular reactor and describe the solution methodology. \hfill (10
+marks)
+
+**Answer: **
+
+1. Number each and every reaction separately.
+
+$$
+\begin{aligned}
+\text{Reaction 1A: } &\qquad -r_{1A} &= k_1 C_A^2 \\
+\text{Reaction 2A: } &\qquad -r_{2A} &= k_2 C_A^{1.2} \\
+\text{Reaction D:  } &\qquad -r_{D}  &= k_3 C_D
+\end{aligned}
+$$
+
+2. Mole balance for each and every species: 
+
+$$
+\begin{aligned}
+\ce{A}: &\qquad \frac{dC_A}{dV} = \frac{r_A}{v_0} \\
+\ce{D}: &\qquad \frac{dC_D}{dV} = \frac{r_D}{v_0} \\
+\ce{U1}: &\qquad \frac{dC_{\ce{U1}}}{dV} = \frac{r_{\ce{U1}}}{v_0} \\
+\ce{U2}: &\qquad \frac{dC_{\ce{U2}}}{dV} = \frac{r_{\ce{U2}}}{v_0}
+\end{aligned}
+$$
+
+3. Rate law
+
+$$
+\begin{aligned}
+\ce{A}: &\qquad r_A = -k_1 C_A^2 - k_2 C_A^{1.2} \\
+\ce{D}: &\qquad r_D = k_1 C_A^2 - k_3 C_D \\
+\ce{U1}: &\qquad r_{\ce{U1}} = k_2 C_A^{1.2} \\
+\ce{U2}: &\qquad r_{\ce{U2}} = k_3 C_D
+\end{aligned}
+$$
+
+4. Combine the mole balances and the rate law to obtain a system of ODEs
+
+5. Solve the system numerically with following initial conditions
+
+$$
+\text{At }V = 0: \qquad C_A = C_{A0}; \qquad C_D, C_{\ce{U1}}, C_{\ce{U2}} = 0
+$$
+
+6. To assess the effect of plugging change the volumetric flow rate $v_0$
+   depending on number of blocked tubes. 
+
+Marking: 
+
+All steps correctly followed (10 marks)
+
+Some steps incomplete or missing 
+
+- 2 marks deducted each missing or wrong step,
+- 1 mark deducted for each incomplete/ partially wrong step
+
+{{< pagebreak >}}
+
+(d) What would be the effect of plugging 20%, 50%, and 80% tubes on the yield,
+overall selectivity, and conversion? Assume all unblocked tubes continue to
+operate under identical conditions. Comment on the implications of these
+blockages in active tubes for process performance and decision-making. \hfill
+(5 marks)
+
+**Answer: **
+
+```{python}
+
+# Convert diameter to meters
+d_tube = d_tube / 100.0  # m
+
+# Cross-sectional area of one tube
+A_tube = np.pi * (d_tube / 2)**2  # m^2
+
+# Volume per tube
+V_tube = A_tube * l_tube  # m^3
+
+# Volumetric flow rate per tube
+v0 = v0_total / n_tubes  # m^3/min
+
+# Initial conditions
+C_A0 = ca0
+y0 = [C_A0, 0, 0, 0]  # [C_A, C_D, C_U1, C_U2]
+
+# System of ODEs
+def odes(V, y):
+    C_A, C_D, C_U1, C_U2 = y
+    r_A = -k1 * C_A**2 - k2 * C_A**1.2
+    r_D = k1 * C_A**2 - k3 * C_D
+    r_U1 = k2 * C_A**1.2
+    r_U2 = k3 * C_D
+
+    dC_A_dV = r_A / v0
+    dC_D_dV = r_D / v0
+    dC_U1_dV = r_U1 / v0
+    dC_U2_dV = r_U2 / v0
+
+    return [dC_A_dV, dC_D_dV, dC_U1_dV, dC_U2_dV]
+
+# Solve ODEs
+V_span = (0, V_tube)
+V_eval = np.linspace(V_span[0], V_span[1], 100)
+
+solution = solve_ivp(odes, V_span, y0, t_eval=V_eval)
+C_A, C_D, C_U1, C_U2 = solution.y
+
+# Performance metrics
+C_Af = C_A[-1]
+C_Df = C_D[-1]
+C_U1f = C_U1[-1]
+C_U2f = C_U2[-1]
+
+X_A = (C_A0 - C_Af) / C_A0
+Y_D = C_Df / (C_A0 - C_Af) if (C_A0 - C_Af) > 0 else 0
+S_DU1 = C_Df / C_U1f if C_U1f > 0 else 0
+S_DU2 = C_Df / C_U2f if C_U2f > 0 else 0
+S_DU1U2 = C_Df / (C_U1f + C_U2f) if (C_U1f + C_U2f) > 0 else 0
+```
+
+```{python}
+#| label: fig-question-2d
+#| fig-cap: Concentration Profiles in Tubular Reactor
+
+# Plot concentration profiles
+plt.plot(solution.t, C_A, label='C_A (mol/m³)')
+plt.plot(solution.t, C_D, label='C_D (mol/m³)')
+plt.plot(solution.t, C_U1, label='C_U1 (mol/m³)')
+plt.plot(solution.t, C_U2, label='C_U2 (mol/m³)')
+
+plt.xlabel('Reactor Volume (m³)')
+plt.ylabel('Concentration (mol/m³)')
+plt.legend()
+plt.grid(True)
+plt.xlim(left=0)
+plt.ylim(bottom=0)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| results: asis
+import pandas as pd
+
+# Define blocked tube scenarios: 20%, 50%, 80% blocking
+block_levels = [0.0, 0.2, 0.5, 0.8]
+results = {}
+
+# Run for each block level
+for block in block_levels:
+
+    n_tubes_active = int(100 * (1 - block))
+    v0 = v0_total / n_tubes_active
+
+    # Solve ODEs
+    solution = solve_ivp(odes, V_span, y0, t_eval=V_eval)
+    C_A, C_D, C_U1, C_U2 = solution.y
+
+    # Final values
+    C_Af = C_A[-1]
+    C_Df = C_D[-1]
+    C_U1f = C_U1[-1]
+    C_U2f = C_U2[-1]
+
+    # Metrics
+    X_A = (C_A0 - C_Af) / C_A0
+    Y_D = C_Df / (C_A0 - C_Af) if (C_A0 - C_Af) > 0 else 0
+    S_DU1 = C_Df / C_U1f if C_U1f > 0 else 0
+    S_DU2 = C_Df / C_U2f if C_U2f > 0 else 0
+    S_DU1U2 = C_Df / (C_U1f + C_U2f) if (C_U1f + C_U2f) > 0 else 0
+
+    results[f"{int(block*100)}%"] = [X_A, Y_D, S_DU1, S_DU2, S_DU1U2]
+
+# Create DataFrame
+df = pd.DataFrame(
+    results,
+    index=["Conversion of A (X_A)", "Yield of D (Y_D)",
+           "Selectivity D/U1", "Selectivity D/U2", "Selectivity D/(U1+U2)"]
+)
+
+print(df.to_markdown(tablefmt="github", floatfmt=".4f"))
+# print(df.to_markdown(index=True))
+```
+
+Discussion: 
+
+As the number of active tubes decreases, the flow rate per tube increases,
+resulting in shorter residence time and consequently lower conversion of A.
+
+At higher blockage levels, selectivity improves, particularly toward D over
+undesired products, as there is less time for side reactions to occur.
+
+The yield of D increases slightly with more blockage, not because of more
+reaction, but due to reduced degradation of D. Therefore, a higher yield does
+not imply better conversion.
+
+marking: Correct values of all quantities (3 marks); Relevant discussion (2 marks)
+
+<!-- {{< pagebreak >}} -->
+<!---->
+<!-- $~$ -->
+<!-- {{< pagebreak >}} -->

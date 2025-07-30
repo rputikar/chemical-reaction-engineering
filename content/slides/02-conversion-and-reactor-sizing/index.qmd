@@ -952,7 +952,7 @@ v_pfr, err = integrate.quad(data4_interp, x_1, x_2)
 # CSTR X3 = 0.65
 
 x_3 = 0.65
-v_cstr_2 = (x_3 - x_1) * float(data4_interp(x_3))
+v_cstr_2 = (x_3 - x_2) * float(data4_interp(x_3))
 
 ax.scatter(data4['x'], Fa0_by_ra, marker='s', color='red')
 ax.plot(x, y, color='black')
